@@ -1,0 +1,27 @@
+extends Label
+
+onready var timer = $Timer
+
+var time = 0.0
+
+func _ready():
+	visible = true
+
+func _process(_delta):
+	time = 999.9 - timer.time_left
+	var minute = int(floor(time / 60))
+	var second = int(floor(time - (minute * 60)))
+	var tenth = stepify(time - ((minute*60) + second), 0.1) * 10
+	if tenth == 10: 
+		tenth = 0
+	if second < 10: 
+		second = str(second)
+		second = "0"+second
+	
+	text = (
+		str(minute) +
+		":" +
+		str(second) +
+		"." +
+		str(tenth)
+		)

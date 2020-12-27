@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Entities/player/item_thinkers/bow/bow_thinker.gd" type="Script" id=1]
+
+[node name="bow_thinker" type="Node"]
+script = ExtResource( 1 )
+PRIMARY_ACTION_MODE = 2
+my_item = "Bow"
+cooldown_time = 0.45
+
+[node name="charge" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="cooldown" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+autostart = true
+
+[node name="uncharge" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="buffer" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="uncharge" to="." method="_on_uncharge_timeout"]

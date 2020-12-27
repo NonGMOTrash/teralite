@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/spikes/spikes_offest/spikes_offset.gd" type="Script" id=2]
+[ext_resource path="res://Entities/spikes/spikes.png" type="Texture" id=3]
+[ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5, 6 )
+
+[sub_resource type="Animation" id=2]
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="spikes_offset" type="KinematicBody2D"]
+process_priority = 100
+script = ExtResource( 2 )
+STATIC = true
+truName = "spikes"
+
+[node name="stats" parent="." instance=ExtResource( 1 )]
+TRUE_DAMAGE = 2
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+offset = Vector2( 0, 3 )
+hframes = 3
+frame = 1
+
+[node name="hitbox" parent="." instance=ExtResource( 4 )]
+visible = false
+COOLDOWN = 0.05
+iTime = 0.4
+KNOCKBACK = 50
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+position = Vector2( 0, 3 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "spikes"
+anims/spikes = SubResource( 2 )
+
+[node name="delay_timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+[connection signal="timeout" from="delay_timer" to="." method="_on_delay_timer_timeout"]
+
+[editable path="hitbox"]

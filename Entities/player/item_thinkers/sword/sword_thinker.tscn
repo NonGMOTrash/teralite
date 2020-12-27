@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Entities/player/item_thinkers/sword/sword_thinker.gd" type="Script" id=1]
+
+[node name="sword_thinker" type="Node"]
+script = ExtResource( 1 )
+my_item = "Sword"
+
+[node name="cooldown" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true

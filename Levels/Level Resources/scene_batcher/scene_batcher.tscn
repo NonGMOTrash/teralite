@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Levels/Level Resources/scene_batcher/scene_batcher.gd" type="Script" id=13]
+
+[node name="scene_batcher" type="TileMap"]
+cell_size = Vector2( 8, 8 )
+cell_y_sort = true
+centered_textures = true
+format = 1
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_lock_": true
+}

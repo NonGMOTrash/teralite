@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Components/health_bar/healthBar.gd" type="Script" id=1]
+[ext_resource path="res://Components/health_bar/healthbar.png" type="Texture" id=2]
+
+[node name="healthBar" type="Sprite"]
+visible = false
+position = Vector2( 0, -11.0925 )
+texture = ExtResource( 2 )
+vframes = 20
+frame = 4
+script = ExtResource( 1 )
+[connection signal="tree_entered" from="." to="." method="_on_healthBar_tree_entered"]

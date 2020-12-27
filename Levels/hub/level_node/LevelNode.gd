@@ -1,0 +1,89 @@
+extends Node2D
+
+onready var label = $Node2D/Label
+onready var sprite = $Area2D/Sprite
+
+export var LEVEL_LABEL = "level"
+export var LOAD_NAME = "null-null"
+export var LEVEL_LOAD = preload("res://Levels/A/A-1.tscn")
+export var STAR_REQUIREMENT = 0
+
+var player = null
+
+func _ready() -> void:
+	var txt
+	
+	if global.stars < STAR_REQUIREMENT: 
+		sprite.frame = 0
+	elif global.stars >= STAR_REQUIREMENT: 
+		if global.cleared_levels.has(LOAD_NAME):
+			if global.perfected_levels.has(LOAD_NAME):
+				sprite.frame = 3
+			else:
+				sprite.frame = 2
+		else:
+			sprite.frame = 1
+	
+	match sprite.frame:
+		0: 
+			var missing_stars = STAR_REQUIREMENT - global.stars
+			if missing_stars == 1:
+				txt = "You need 1 more star"
+			else:
+				txt = "You need %s more stars" % missing_stars
+			
+		1, 2, 3: txt = "Press [E] to enter"
+	
+	var death_txt = "Deaths: NA"
+	if LOAD_NAME in global.level_deaths:
+		death_txt = "Deaths: %s" % global.level_deaths[LOAD_NAME]
+	
+	var time_txt = "Best Time: NA"
+	if LOAD_NAME in global.level_times:
+		var time = global.level_times[LOAD_NAME]
+		var minute = int(floor(time / 60))
+		var second = int(floor(time - (minute * 60)))
+		var tenth = stepify(time - ((minute*60) + second), 0.1) * 10
+		if tenth == 10: 
+			# PROBLEM_NOTE: I think this is the wrong way to display it but whatever
+			tenth = 0
+		if second < 10: 
+			second = str(second)
+			second = "0"+second
+		
+		var final_time = (
+			str(minute) +
+			":" +
+			str(second) +
+			"." +
+			str(tenth)
+			)
+		time_txt = "Best Time: %s" % final_time
+	
+	label.text = (
+		LEVEL_LABEL + "\n" +
+		txt + "\n" +
+		death_txt + "\n" +
+		time_txt
+	)
+	
+	label.visible = false
+
+func _input(event: InputEvent) -> void:
+	if player == null: return
+	if global.stars < STAR_REQUIREMENT: return
+	if (Input.is_action_just_released("swap_left") || Input.is_action_just_released("swap_right")):
+		global.player_hub_pos = global_position
+		get_tree().change_scene_to(LEVEL_LOAD)
+
+func _on_Area2D_body_entered(body: Node) -> void:
+	if global.players_path == null: return
+	elif body != get_node(global.players_path) : return
+	player = body
+	label.visible = true
+
+func _on_Area2D_body_exited(body: Node) -> void:
+	if global.players_path == null: return
+	elif body != get_node(global.players_path) : return
+	player = null
+	label.visible = false

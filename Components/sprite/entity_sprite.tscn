@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Components/sprite/color_overlay/color_overlay.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Components/sprite/entity_sprite.gd" type="Script" id=2]
+[ext_resource path="res://Components/sprite/shadow1.png" type="Texture" id=3]
+[ext_resource path="res://Components/sprite/texture_overlay/texture_overlay.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/crate/crate.png" type="Texture" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[node name="entity_sprite" type="Sprite"]
+material = SubResource( 1 )
+texture = ExtResource( 5 )
+script = ExtResource( 2 )
+
+[node name="shadow" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.333333 )
+show_behind_parent = true
+position = Vector2( 0, 3 )
+texture = ExtResource( 3 )
+
+[node name="color_overlay_a" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="texture_overlay_a" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="color_overlay_b" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="texture_overlay_b" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="color_overlay_c" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="texture_overlay_c" parent="." instance=ExtResource( 4 )]
+visible = false
+[connection signal="tree_entered" from="." to="." method="_on_entity_sprite_tree_entered"]

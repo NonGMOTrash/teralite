@@ -1,0 +1,722 @@
+ === TO DO LIST: ===
+
+a complete rewrite of the brain component (watch the AI video first for a refresher):
+	
+	fake pathfinding for returning to guard_pos
+	
+	only follow memories if there's LOS to them
+	
+	update all entitys to make there AI work with the new system
+
+entities wake up when their health is changed
+
+investigate double hit issue? (noticeable on swords)
+
+fix item duplication with multiple players
+steps to reproduce:
+	get two players right next to eachother
+	hold middle click
+
+fix mouse cursor not updating for pistol (maybe other items also? test)
+
+----------------------------------
+Version Beta 2.5 Release
+	update the itch page
+	download and make sure it works
+	make an announcement on the discord server
+----------------------------------
+
+consider moving this todo list to trello
+
+better status_effect system. status effects are seperate sub components that are added as childen of the stats
+component (similar to items)
+
+change the spike sprite so that there's just one spike
+
+make the dividers look better
+
+add a entity that makes a message appear (probably will need to make a new UI thing for that)
+	add "you found a secret!" message(s)
+
+add a hide props option
+
+have the pointer cursor be for menus, and have a new cursor (a dot) for empty hand
+
+----------------------------------
+Version Beta 2.6 Release
+	update the itch page
+	download and make sure it works
+	make an announcement on the discord server
+----------------------------------
+
+have UI elements store themselves in a dictionary in global.gd
+
+add an armor break mechanic:
+	entitys with defense have a seperate "armor bar"
+	the armor bar can absorb 1.5x the amount of the entity's defense
+	the armor bar is depleted by damage from blocked attacks
+	the entity's defense will not work on the next hit after tha armor bar is depleted
+
+give knights 1 defense but only 3-4 health
+
+go in and fix ALL of the # PROBLEM_NOTEs. this might take awhile...
+
+options menu has 3 categories: Gameplay, Control, and Video
+
+add a "wrap item bar selection" option (on by default)
+
+make it so that saves track your total time (add up the stopwatch time at the end of each level)
+
+add a stopwatch option (dropdown):
+	OFF
+	PER LEVEL (default)
+	PER PLAYTHROUGH (paused in hub)
+
+----------------------------------
+Version Beta 2.7 Release
+	update the itch page
+	download and make sure it works
+	make an announcement on the discord server
+----------------------------------
+
+how to get pixelated lines: 
+https://www.reddit.com/r/godot/comments/jftj4m/is_it_possible_to_draw_pixelated_2d_lines_to/g9mhjbt/
+try it maybe
+
+add sound effects
+
+AI improvements:
+	
+	fix melee's blocking enemy line of sight
+	
+	awareness spreading between allies
+
+add a volume slider
+
+all melee attacks will boost you forward a bit when you use them, and also slow you for a bit while
+they are active. this will make the weapons feel a lot more heavy
+
+better player death:
+	player becomes a grave or corpse, and/or some kind of animation is played
+	"press space to retry"
+	the game world will still continue on as normal, all entities will ignore you when dead
+
+try to make it so that the ysort on props works so they don't have to be on walls
+(make a /r/godot post to get help with this maybe)
+
+add screen shake, use it when you take damage or deal damage
+
+make the game pause for a frame when you hit an enemy or take damage
+
+player intro effect of them falling from the sky (use sprite offset for this)
+
+----------------------------------
+Version Beta 2.8 Release
+	update the itch page
+	download and make sure it works
+	make an announcement on the discord server
+----------------------------------
+
+melee attacks have reqoil if they hit something
+
+come up with a name for the game. don't continue until this step is complete
+
+you are slowed while charging the bow
+
+the player (and maybe in the future some enemies as well?) will have their held item be visible
+
+particles:
+	damage particles
+	dust particles (from dashing)
+	smoke (fire and bullet impact)
+	muzzle flash (for pistol shooting)
+	blood particles (for bleed effect)
+	poison bubbles (for poison, maybe they come from green spikes as well)
+	leaves (randomly spawns on fall levels)
+
+use tweening a lot more in all the animations (more bouncy and fun)
+
+fix input buffer (maybe even have an input buffer option in the settings)
+
+add hitstun
+
+make arrows leave an arrow effect (just a simple sprite that fades after awhile) if it hits a wall
+
+give items some bouncy animations
+
+make the hit effect spawn at the location of the HIT, instead of the location of the ENTITY
+(maybe just guestimate the position by getting the average between the damage source and the target)
+
+rename chasers faction to monster
+
+----------------------------------
+Version Beta 2.9 Release
+	update the itch page
+	download and make sure it works
+	make an announcement on the discord server
+----------------------------------
+
+come up with actual names for the worlds, and use the first letter of the name for the letter
+
+if I haven't yet, fix the .exe icon. i cannot let this stand
+
+big fancy "you got a star!!1!" animation
+
+all menu buttons / tickboxes / whatever will enlarge and rotate back and forth a bit when selected
+(maybe even have some screen shake when they are selected)
+
+better title screen
+	big logo
+	version number is in the corner
+	below the logo is the update subtitle (i.e. "Magic and Melee")
+	some fancy background animation (shaders??)
+
+better zooming for pistol
+(also make it slow you down)
+
+make the itembar smaller
+
+----------------------------------
+Version Beta 2.10 Release
+	update the itch page
+	download and make sure it works
+	make an announcement on the discord server
+----------------------------------
+
+fix some of the tiny problems on the maple wall tileset
+
+make a generic entity sprite
+
+make velocity work for effects
+
+add little icons for different status effects the player has
+
+rename Thing.gd to Attack.gd
+
+add tent prop
+
+make negative defense work (if it doesn't already?)
+
+better intro:
+	has a fake error (get a snip from the actual windows OS)
+		maybe even use multiple snips from different OSs and have it match the correct one)
+	then it explodes
+	orange guy falls from the top and then walks off
+	"created by NonGMOTrash"
+	have a simple tune that plays during this whole thing (it's like 3 seconds long)
+
+do a resprite of chasers to make them more distinct
+
+----------------------------------
+Version Beta 2.11 Release
+	update the itch page
+	download and make sure it works
+	make an announcement on the discord server
+	post on /r/godot
+----------------------------------
+
+add new status effects
+	speed
+	slowness
+	regeneration
+	courage (regeneration but for bonus health)
+
+(reminder: update patch notes)
+
+add a xbow:
+	shoots bolt projectiles
+	reloads like a gun
+	3 damage + 1 in bleed
+	only 1 shot and longish reload
+	(should be better than bow though)
+
+(reminder: update patch notes)
+
+add a magic wand (standard blue, there will be elementral ones added later)
+	semi automatic, shoots blue magic projectiles at a high rate
+	no reload
+	does all true damage, but has a lower DPS than the pistol still
+	for it's secondary attack it has the shine
+
+add a wizard enemy (friend of the knights, archers, ext faction)
+
+add in the unused specter maze level
+
+(reminder: update patch notes)
+
+add a spear:
+	longer range than the sword
+	1 damage + 1 in bleed
+	much longer cooldown and lower DPS overall
+	you can throw it with the secondary attack
+
+make it so the sword has a counter as a secondary
+
+(reminder: update patch notes)
+
+improve entity health bar:
+	it uses a progress bar node
+	colors that match the new palette
+	the bars length is determinded by max_health
+	works with bonus health
+	consider using this for the player
+
+(reminder: update patch notes)
+
+remove the enviorment faction
+
+make the brute chaser regenerate health
+
+add a dagger:
+	shorter than the sword
+	faster than sword. 
+	does 2 damage
+	high risk high reward
+	has dash attack as a secondary attack (like melee fox side b)
+	4 damage, but leaves you more vulnerable and puts the weapon on cooldown
+
+(reminder: update patch notes)
+
+add new types of wands:
+	
+	earth:
+		primary has 1 damage and poison, but is a bit slower
+		raises a stone for secondary (does damage if something is under it but is also a barrier)
+	
+	(reminder: update patch notes)
+	
+	fire: 
+		primary attack does 1 damage and spawns a fire, with a pretty fast speed
+		has the firefox move from melee as the secondary (high damage and gives fire)
+	
+	(reminder: update patch notes)
+	
+	wind: 
+		low dmg
+		primary is fast and has super high knockback
+		makes a cyclone for secondary that pulls things in (does a little damage if enemy is in the middle)
+
+(reminder: update patch notes)
+
+make new kingdom enemies that use the new weapons
+
+(reminder: update patch notes)
+
+make a slime enemy that duplicates itself everytime it takes damage (just like brogue)
+also maybe make it lunge in bursts rather than move at a constant speed
+
+(reminder: update patch notes)
+
+make a new faction with new enemies, very similar to the existing kingdom faction
+enemies will function the same but with slightly different stats, and they will have different colored sprites
+they will be enemies of eachother, so i can make some epic kingdom battles
+
+(reminder: update patch notes)
+
+make specter death effect
+
+make a misc folder (everything in level resources should go in there, maybe some other stuff also)
+
+(reminder: update patch notes)
+
+actually add in that specter maze level
+
+low walls that block movement but not projectiles (the first one will be water)
+
+(reminder: update patch notes)
+
+add a rock:
+	consumeable, you lose it once you throw it
+	does 2 damage
+	it drops after it hits something (set death_spawn of it's projectile to the rock item)
+
+wood spikes:
+	is always up. only triggers damage once when you first walk into one, and does only 1 damage.
+	has a hurtbox so you can destory it. it's also highly flamable
+	and it also takes damage when it hits something, but has very high health (~8)
+	but the hurtbox has a +3 to damage so it will die quicker from hitting it
+
+(reminder: update patch notes)
+
+add a "spark", it's a tiny entity that will spawn a fire if it finds a fuel
+maybe have fires spawn sparks instead of other fires
+
+a health potion item:
+	restores you to full health
+	you can throw it to heal something for the secondary attack
+
+new potions (or other items that give these effects):
+	slowness
+	regeneration
+	poison
+	rage (new effect, gives more damage)
+	speed
+
+(reminder: update patch notes)
+
+add keys (active) and locked blocks
+
+add some kind of door or something that is active if there's entities of a particular faction nearby
+
+a medic for the kingdom faction that throws health poitions
+
+(reminder: update patch notes)
+
+add boots, or some kind of artifact, that gives your dash iFrames (maybe a new animation?)
+
+add green hearts that increase max health
+
+add a charm that makes everything you hit catch fire
+
+(reminder: update patch notes)
+
+add a ring that makes you deal and take double knockback
+
+add a necklace that gives you +1 damage
+
+a scroll of discord from brogue (sets all nearby entity's factions to NA (except player)
+
+some type of consumable mind control item (converts an enemy to the player faction)
+
+(reminder: update patch notes)
+
+----------------------------------------------------------------------------
+Version Beta 3.0: "Magic & Melee"
+	update the itch page to look much fancier
+	download and make sure it works
+	reorder patch notes
+	make an announcement on the discord server
+
+PATCH NOTES:
+	dum dum
+----------------------------------------------------------------------------
+
+(this is a smaller update because i'll be busy quitting youtube)
+
+fix any reported problems
+
+----------------------------------
+Version Beta 3.1 Release
+	update the itch page
+	download and make sure it works
+	make an announcement on the discord server
+----------------------------------
+
+optimize memory management 
+have entity's preload things they might need in _init() so there aren't
+lag spikes when something new is loaded
+
+try to get random fliping on hit effect to work 
+(50% chance for flip_h, and 50% chance for flip_v)
+
+make it so red spikes lower after awhile
+
+have an dictionary in Global.gd with Color8's of all 32 colors that are matched to their name
+use this for the colors of buttons and stuff for menus
+(there's a color pallete plugin that might help with this)
+
+maybe optimize AI by replacing physics_process with a timer that triggers 20 times per second or something
+
+----------------------------------
+Version Beta 3.2 Release
+	update the itch page
+	download and make sure it works
+	make an announcement on the discord server
+----------------------------------
+
+make a curse status effect that makes healing hurt the entity
+
+add a charm (and maybe a potion or something?) that gives this status effect
+maybe even add a item that gives healing so you can use that to kill enemies after they are cursed
+
+make a level that uses this curse effect
+
+add a shield active item
+	primary blocks attacks (slows you while it's active)
+	secondary is a shield bash (1 damage, but high-ish knockback and lots of hitstun. also high cooldown)
+
+add the shield to some earlier levels
+
+make a level where you have to block attacks
+
+add an item that gives you DEFENSE (not a shield, I want a shield active item)
+
+(make 5.0 content, a wasteland desert world B with lots of new gun weapons)
+
+----------------------------------------------------------------------------
+Version Beta 5.0: "The I Do Know Yet" Update
+	update the itch page
+	download and make sure it works
+	reorder patch notes
+	make an announcement on the discord server
+	make a post on /r/godot
+
+PATCH NOTES:
+	poyo!
+----------------------------------------------------------------------------
+
+(smaller update so i can work on video(s))
+
+----------------------------------
+Version Beta 5.1 Release
+	update the itch page
+	download and make sure it works
+	make an announcement on the discord server
+----------------------------------
+
+maybe some kind of scene transition
+
+add a "sleep_time" export var to the sleeper component
+
+loading screen (?)
+
+aspect ratio settings
+
+smart fire spreading (they spread towards fuel sources)
+
+redo the sprites for the slash and small_bullet
+
+fix all the PROBLEM_NOTEs
+
+start working on learning to make music. just try to practice a bit
+
+----------------------------------
+Version Beta 5.2 Release
+	update the itch page
+	download and make sure it works
+	make an announcement on the discord server
+----------------------------------
+
+have Entity inheireit from a new class, StaticEntity
+
+lighting? normal maps (whatever those even are)?
+
+improve the save select menu:
+	add a preview window for selected saves (shows stars, total playtime, and options to play or delete)
+	allow the player to set an icon for their save (you can pick from a list)
+	have a confirmation dialog before you delete a save
+
+----------------------------------
+Version Beta 5.3 Release
+	update the itch page
+	download and make sure it works
+	make an announcement on the discord server
+----------------------------------
+
+make 6.0 content (finish world B)
+
+add magic teleporters
+
+----------------------------------------------------------------------------
+Version Beta 6.0: "The I Don't Know Yet Part II Update"
+	update the itch page
+	download and make sure it works
+	reorder patch notes
+	make an announcement on the discord server
+	make another post on /r/godot
+
+PATCH NOTES:
+	i really hope i actually get this far
+----------------------------------------------------------------------------
+
+make projectile speed based off the velocity of the source entity
+(have this be a toggle, because it makes sense for arrows but not so much for bullets)
+
+as usual, fix some bugs and work on videos
+maybe also practice music making some more more
+
+----------------------------------
+Version Beta 6.1 Release
+	update the itch page
+	download and make sure it works
+	make an announcement on the discord server
+----------------------------------
+
+implement EIGHT_WAY_MOVEMENT for AIs
+
+make 7.0 content (world c; sci-fi themed)
+
+----------------------------------------------------------------------------
+Version Beta 7.0: "The null_value Update"
+	update the itch page
+	download and make sure it works
+	reorder patch notes
+	make an announcement on the discord server
+	make another post on /r/godot
+
+PATCH NOTES:
+	getting close
+----------------------------------------------------------------------------
+
+delete the effects folder and move the effects to be next to their sources
+
+as usual, fix some bugs and work on videos
+maybe also practice music making some more more
+
+----------------------------------
+Version Beta 7.1 Release
+	update the itch page
+	download and make sure it works
+	make an announcement on the discord server
+----------------------------------
+
+make camera smoothing a slider instead of on or off
+
+make a custom theme for every UI thing (no artsyle breaking)
+
+make it so pressing tab will restart
+
+add a bunch of new options:
+	vignette
+	click effect
+	screen shake
+	cursor color (?)
+	charater color (?)
+	color modulation (change modulate of scene root)
+	lighting
+	particles
+	show status effect indicators
+	input buffer slider (maybe, not sure about this)
+	dash negative edge (releasing the input will trigger)
+	disable tab restart (safe)
+
+----------------------------------
+Version Beta 7.2 Release
+	update the itch page
+	download and make sure it works
+	make an announcement on the discord server
+----------------------------------
+
+fix all PROBLEM_NOTES
+
+add a poison thorn plant thing, does damage on contact as well as poison.
+has a ton of health but is very vulnerable to fire damage
+
+add an anidote (cures poison)
+
+add a golden apple
+
+add a dash crystal that lowers the dash cooldown
+
+add a item that gives you +5 defense for 10 seconds
+
+make a lot of new (mostly optional) levels that use the new bits of content
+
+make a credits scene
+
+add selectable difficulties
+(easy difficulty gives you double health, and has a warning before you can select it)
+(hard difficulty has remixed entity layous on every level)
+
+make it so that the tooltip on save files also shows the difficulty
+
+make it so you can switch down to easy mode in the middle of a playthrough (or revert to the original)
+
+add some kind of statistics panel in one of the hubs that shows total deaths, best time sum, levels completed,
+levels perfected, maybe more idk
+
+add a secret dev room
+
+make a trailer, if im feeling extra cool
+
+==============================================================================================
+Version 1.0 Full Release
+	upload the trailer (if i made one) on the channel
+	update the itch page
+	download and make sure it works
+	reorder patch notes
+	make an announcement on the discord server
+
+PATCH NOTES:
+	i did it.
+==============================================================================================
+
+fix any reported problems, but that's it
+take a break. don't even work on videos, just relax and focus on school for a week
+
+----------------------------------
+Version 1.1 Release
+	update the itch page
+	download and make sure it works
+	make an announcement on the discord server
+	maybe do a speedrunning competition idk
+----------------------------------
+
+add a reset to default option for settings (both global and for singular settings)
+
+mostly just work on videos though
+
+----------------------------------
+Version 1.2 Release
+	update the itch page
+	download and make sure it works
+	make an announcement on the discord server
+----------------------------------
+
+do a survey with 5 options (il probably do the top 2):
+	[1] rebindable controls (ETA: 2 weeks)
+	[2] an endless survival / horde mode (ETA: 3 weeks)
+	[3] music (ETA: 4 weeks)
+	[4] a 4th world (also add a secret world as a surprise). (ETA: 7 weeks)
+	[5] a level editor that allows you to create and save levels (including hubs!) (ETA: 8 weeks)
+	[6] none of those sound very good, just start working on other stuff 
+
+fix all the PROBLEM_NOTEs
+
+practice making music some more
+
+----------------------------------
+Version 1.3 Release
+	update the itch page
+	download and make sure it works
+	make an announcement on the discord server
+----------------------------------
+
+make it so that levels can override the faction relations
+
+(do the top requested thing from the survey)
+
+----------------------------------------------------------------------------
+Version 2.0: 1st survey thing
+	update the itch page
+	download and make sure it works
+	reorder patch notes
+	make an announcement on the discord server
+
+PATCH NOTES:
+	:0
+----------------------------------------------------------------------------
+
+better splash screen
+
+fix stuff, work on videos (/music?)
+
+----------------------------------
+Version 2.1 Release
+	update the itch page
+	download and make sure it works
+	make an announcement on the discord server
+----------------------------------
+
+(do the 2nd most requested thing from the survey)
+
+----------------------------------------------------------------------------
+Version 3.0: 2nd survey thing
+	update the itch page
+	download and make sure it works
+	reorder patch notes
+	make an announcement on the discord server
+
+PATCH NOTES:
+	:i
+----------------------------------------------------------------------------
+
+fix stuff, work on videos (/music?)
+
+----------------------------------
+Version 3.1 Release
+	update the itch page
+	download and make sure it works
+	make an announcement on the discord server
+	this is probably the final update
+----------------------------------

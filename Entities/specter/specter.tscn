@@ -1,0 +1,155 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Entities/specter/specter.gd" type="Script" id=1]
+[ext_resource path="res://Entities/specter/specter.png" type="Texture" id=2]
+[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/entity_push/entityPush.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/death_spawn/death_spawn.tscn" type="PackedScene" id=9]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 7.07107
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+
+[sub_resource type="Animation" id=3]
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "spawn"
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.1, 0.1 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 6.0
+height = 12.0
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id=7]
+
+[node name="specter" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 1 )
+ACCELERATION = 400
+truName = "specter"
+faction = "undead"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 5 )
+shape = SubResource( 1 )
+
+[node name="stats" parent="." instance=ExtResource( 6 )]
+DAMAGE = 2
+TRUE_DAMAGE = 2
+modifiers = {
+"bleeding": -99,
+"burning": 1,
+"poison": -99
+}
+
+[node name="sprite" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 2 )
+position = Vector2( 0, -7 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+hframes = 5
+
+[node name="shadow" parent="sprite" index="0"]
+position = Vector2( 0, 12 )
+
+[node name="wiggle" type="AnimationPlayer" parent="."]
+autoplay = "wiggle"
+anims/wiggle = SubResource( 3 )
+
+[node name="spawned" type="AnimationPlayer" parent="."]
+autoplay = "spawn"
+anims/spawn = SubResource( 4 )
+
+[node name="hitbox" parent="." instance=ExtResource( 4 )]
+visible = false
+COOLDOWN = 0.4
+KNOCKBACK = 900
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+position = Vector2( 0, -1 )
+shape = SubResource( 5 )
+
+[node name="hurtbox" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+position = Vector2( 0, -6 )
+shape = SubResource( 6 )
+
+[node name="brain" parent="." instance=ExtResource( 7 )]
+SIGHT_RANGE = 110
+WAIT_TIME = 0.5
+default_responses = {
+"NA": 0,
+"ally": 0,
+"enemy": 4
+}
+
+[node name="entityPush" parent="." instance=ExtResource( 8 )]
+
+[node name="CollisionShape2D" parent="entityPush" index="0"]
+position = Vector2( 0, 3 )
+shape = SubResource( 7 )
+
+[node name="dup_timer" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true
+
+[node name="death_spawn" parent="." instance=ExtResource( 9 )]
+spawn_entity = "Hit_Effect"
+[connection signal="timeout" from="dup_timer" to="." method="_on_dup_timer_timeout"]
+
+[editable path="sprite"]
+
+[editable path="hitbox"]
+
+[editable path="hurtbox"]
+
+[editable path="entityPush"]

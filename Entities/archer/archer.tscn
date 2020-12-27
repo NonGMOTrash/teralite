@@ -1,0 +1,122 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Entities/archer/archer.gd" type="Script" id=1]
+[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/archer/archer.png" type="Texture" id=3]
+[ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/hit_spawn/hit_spawn.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/death_spawn/death_spawn.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Components/health_bar/healthBar.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Components/entity_push/entityPush.tscn" type="PackedScene" id=12]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 3.0
+height = 6.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 7.07107
+
+[sub_resource type="Animation" id=4]
+resource_name = "attack"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6 ),
+"transitions": PoolRealArray( 1, 2, 1, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.25, 1.25 ), Vector2( 1, 1 ), Vector2( 1.25, 1.25 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack"
+} ]
+}
+
+[node name="archer" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 1 )
+ACCELERATION = 200
+truName = "archer"
+faction = "blue_kingdom"
+attack_cooldown_time = 1.85
+
+[node name="stats" parent="." instance=ExtResource( 9 )]
+MAX_HEALTH = 2
+HEALTH = 2
+DAMAGE = 2
+
+[node name="sprite" parent="." instance=ExtResource( 2 )]
+material = SubResource( 1 )
+texture = ExtResource( 3 )
+offset = Vector2( 2, 0 )
+auto_flip_mode = 2
+
+[node name="entityPush" parent="." instance=ExtResource( 12 )]
+visible = false
+
+[node name="CollisionShape2D" parent="entityPush" index="0"]
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2 )
+shape = SubResource( 2 )
+
+[node name="hurtbox" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+shape = SubResource( 3 )
+
+[node name="hit_spawn" parent="." instance=ExtResource( 5 )]
+spawn_entity = "hit_effect"
+
+[node name="death_spawn" parent="." instance=ExtResource( 6 )]
+spawn_entity = "Archer_Death"
+
+[node name="sleeper" parent="." instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 7.15256e-07, 0.5 )
+scale = Vector2( 0.7, 0.95 )
+
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 1.7
+one_shot = true
+autostart = true
+
+[node name="healthBar" parent="." instance=ExtResource( 10 )]
+
+[node name="brain" parent="." instance=ExtResource( 7 )]
+visible = false
+general_springs = {
+"friendly": -1,
+"hostile": 50,
+"neutral": -1
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack = SubResource( 4 )
+
+[editable path="entityPush"]
+
+[editable path="hurtbox"]

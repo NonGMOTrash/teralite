@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://HUD and Menus/Scripts/Options.gd" type="Script" id=1]
+[ext_resource path="res://HUD and Menus/Themes/general_theme.tres" type="Theme" id=2]
+[ext_resource path="res://HUD and Menus/smart_ui_nodes/smart_checkbox/SmartCheckbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://HUD and Menus/smart_ui_nodes/smart_button/SmartButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://HUD and Menus/Icons/exit.png" type="Texture" id=5]
+
+[node name="Options" type="TabContainer"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.784314 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -182.0
+margin_top = -98.0
+margin_right = 182.0
+margin_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbour_left = NodePath("General")
+focus_neighbour_right = NodePath("Exit")
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.37449
+margin_top = 22.2494
+margin_right = -2.12428
+margin_bottom = -2.24938
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="smooth" parent="Options" instance=ExtResource( 3 )]
+margin_right = 359.0
+shortcut_in_tooltip = false
+text = "Smooth camera"
+
+[node name="hidebar" parent="Options" instance=ExtResource( 3 )]
+margin_top = 28.0
+margin_right = 359.0
+margin_bottom = 52.0
+shortcut_in_tooltip = false
+text = "Hide item bar when empty"
+
+[node name="perfection" parent="Options" instance=ExtResource( 3 )]
+margin_top = 56.0
+margin_right = 359.0
+margin_bottom = 80.0
+shortcut_in_tooltip = false
+text = "Perfection mode (any damage kills you)"
+
+[node name="fullscreen" parent="Options" instance=ExtResource( 3 )]
+margin_top = 84.0
+margin_right = 359.0
+margin_bottom = 108.0
+shortcut_in_tooltip = false
+text = "Fullscreen"
+
+[node name="pixel" parent="Options" instance=ExtResource( 3 )]
+margin_top = 112.0
+margin_right = 359.0
+margin_bottom = 136.0
+text = "Pixel perfect filter (not recomended)"
+
+[node name="HSeparator" type="HSeparator" parent="Options"]
+margin_top = 140.0
+margin_right = 359.0
+margin_bottom = 144.0
+
+[node name="exit" parent="Options" instance=ExtResource( 4 )]
+margin_top = 148.0
+margin_right = 359.0
+margin_bottom = 170.0
+text = "Exit"
+icon = ExtResource( 5 )
+flat = true
+[connection signal="visibility_changed" from="." to="." method="_on_Options_visibility_changed"]
+[connection signal="pressed" from="Options/exit" to="." method="_on_exit_pressed"]

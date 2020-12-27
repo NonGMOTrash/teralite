@@ -1,0 +1,116 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Entities/chaser/Chaser.gd" type="Script" id=1]
+[ext_resource path="res://Components/health_bar/healthBar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/entity_push/entityPush.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/chaser/chaser.png" type="Texture" id=9]
+[ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Components/death_spawn/death_spawn.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Components/hit_spawn/hit_spawn.tscn" type="PackedScene" id=12]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="Animation" id=2]
+length = 0.4
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 3.99999
+height = 4.00003
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 6.07457
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 8.71243
+
+[node name="Chaser" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 1 )
+ACCELERATION = 120
+SLOWDOWN = 200
+TOP_SPEED = 90
+FORCE_MULT = 1.25
+truName = "chaser"
+faction = "chasers"
+
+[node name="stats" parent="." instance=ExtResource( 5 )]
+MAX_HEALTH = 2
+HEALTH = 2
+
+[node name="sprite" parent="." instance=ExtResource( 3 )]
+material = SubResource( 1 )
+texture = ExtResource( 9 )
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "speed"
+anims/speed = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 3 )
+rotation = 1.5708
+shape = SubResource( 3 )
+
+[node name="hitbox" parent="." instance=ExtResource( 7 )]
+COOLDOWN = 0.05
+iTime = 0.6
+TEAM_ATTACK = false
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+position = Vector2( 0, 2.05111 )
+shape = SubResource( 4 )
+
+[node name="hurtbox" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+self_modulate = Color( 0.968627, 0.909804, 0.054902, 1 )
+shape = SubResource( 5 )
+
+[node name="entityPush" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="CollisionShape2D" parent="entityPush" index="0"]
+position = Vector2( 0, 6.02912 )
+rotation = 1.5708
+shape = SubResource( 3 )
+
+[node name="brain" parent="." instance=ExtResource( 4 )]
+
+[node name="sleeper" parent="." instance=ExtResource( 10 )]
+visible = false
+
+[node name="death_spawn" parent="." instance=ExtResource( 11 )]
+spawn_entity = "Chaser_Death"
+
+[node name="healthBar" parent="." instance=ExtResource( 2 )]
+
+[node name="hit_spawn" parent="." instance=ExtResource( 12 )]
+spawn_entity = "hit_effect"
+
+[editable path="hitbox"]
+
+[editable path="hurtbox"]
+
+[editable path="entityPush"]

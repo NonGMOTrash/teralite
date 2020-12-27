@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Entities/player/item_thinkers/pistol/pistol_thinker.gd" type="Script" id=1]
+
+[node name="pistol thinker" type="Node"]
+script = ExtResource( 1 )
+auto_ready_check = false
+my_item = "Pistol"
+
+[node name="cooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="reload" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]

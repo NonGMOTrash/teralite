@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Levels/Level Resources/camera/camera.gd" type="Script" id=1]
+
+[sub_resource type="ShaderMaterial" id=1]
+
+[node name="Camera" type="Position2D"]
+material = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+process_mode = 0
+limit_left = 0
+limit_top = 0
+limit_right = 1000
+limit_bottom = 1000
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 10.0
+editor_draw_limits = true
+__meta__ = {
+"_editor_description_": ""
+}

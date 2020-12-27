@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Components/hitbox/hitbox.gd" type="Script" id=1]
+
+[node name="hitbox" type="Area2D"]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.1
+one_shot = true
+[connection signal="area_entered" from="." to="." method="_on_hitbox_area_entered"]
+[connection signal="body_exited" from="." to="." method="_on_hitbox_body_exited"]
+[connection signal="tree_entered" from="." to="." method="_on_hitbox_tree_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
