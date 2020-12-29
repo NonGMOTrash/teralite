@@ -1,13 +1,28 @@
 extends Node
 
-export var tag = "aggresive"
+enum tags {
+	attack,
+	defend,
+	support
+}
+
+export(tags) var tag = tags.attack
+export var custom_tag = ""
 export var best_distance = -1
 export(int, -1, 100) var best_health_percent = -1
 export var status_effect = "null"
 export(float, 0.0, 3.0) var status_effect_multiplier = 2.0
 export(float, 0.0, 3.0) var warning_multiplier = 1.0
 
-func _ready(): get_parent().actions.append(self)
+func _ready(): 
+	if custom_tag == "":
+		tag = custom_tag
+	else:
+		match tag:
+			tags.attack: tag = "attack"
+			tags.defend: tag = "defend"
+			tags.support: tag = "support"
+	get_parent().actions.append(self)
 
 func get_score(warned = false):
 	var scores = []
@@ -65,6 +80,7 @@ func get_score(warned = false):
 			final_score = scores[i]
 			final_target = targets[i]
 	
+	prints(get_name(), final_score)
 	return [final_score, final_target]
 
 func score_modification(score):

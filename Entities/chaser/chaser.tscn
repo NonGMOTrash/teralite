@@ -96,6 +96,9 @@ rotation = 1.5708
 shape = SubResource( 3 )
 
 [node name="brain" parent="." instance=ExtResource( 4 )]
+SMART_SLOWDOWN = false
+MEMORY_TIME = 3.0
+AUTO_ACT = false
 
 [node name="sleeper" parent="." instance=ExtResource( 10 )]
 visible = false

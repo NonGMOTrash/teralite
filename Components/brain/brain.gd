@@ -82,6 +82,7 @@ func _ready():
 		get_parent().components["hurtbox"].connect("triggered", self, "got_hit")
 
 func _draw():
+	return
 	for i in memory.size():
 		draw_circle(to_local(memory[i]), 2, Color.blue)
 		if targets == []:
@@ -174,13 +175,23 @@ func closest_target():
 func get_spring(target:Entity):
 	var spring = -1
 	
-	spring = general_springs.get(global.get_relation(get_parent(), target))
+	if global.get_relation(get_parent(), target) != "":
+		spring = general_springs.get(global.get_relation(get_parent(), target))
 	if faction_springs.has(target.faction):
 		spring = faction_springs.get(target.faction)
 	if entity_springs.has(target.truName):
 		spring = entity_springs.get(target.truName)
 	if get_parent().marked_enemies.has(target):
 		spring = general_springs["hostile"]
+	
+	if spring == null:
+		prints("target:", target.get_name(), target)
+		prints("target_relation:", global.get_relation(get_parent(), target))
+		prints("general_springs:", general_springs)
+		prints("faction_springs:", faction_springs)
+		prints("faction_springs:", faction_springs)
+		prints("entity_springs:", entity_springs)
+		prints("marked_enemies:", get_parent().marked_enemies)
 	
 	spring = clamp(spring, -1, SIGHT_RANGE + 8) 
 	
@@ -348,6 +359,7 @@ func _on_sight_body_exited(body: Node) -> void:
 	remove_target(body)
 
 func _on_think_timer_timeout() -> void:
+	if get_parent().is_physics_processing() == false: return
 	
 	if round(rand_range(0, 15)) == 1:
 		pass
@@ -373,7 +385,7 @@ func _on_think_timer_timeout() -> void:
 		var target_to_me = this_memory.direction_to(global_position).normalized()
 		best_position = this_memory + target_to_me * best_distance
 		
-		if global_position.distance_to(best_position) < 10 and los_check(best_position) == best_position:
+		if global_position.distance_to(best_position) < 10 and los_check(best_position) != null:
 			memory.remove(i)
 			if mem_times_queue != []:
 				memory_timer.wait_time = mem_times_queue[0] + 0.01
