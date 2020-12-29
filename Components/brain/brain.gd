@@ -49,12 +49,14 @@ export var faction_springs = {}
 export var entity_springs = {}
 
 var guard_pos = Vector2.ZERO
+var guard_path = null
 export(int, 1, 99) var MAX_TARGETS = 5
 var targets = []
 var target_paths = []
 var memory = []
 var memory_springs = []
 var mem_times_queue = []
+var memory_paths = []
 var actions = []
 
 signal found_target
@@ -80,14 +82,16 @@ func _ready():
 		get_parent().components["hurtbox"].connect("triggered", self, "got_hit")
 
 func _draw():
-	var path = get_tree().current_scene.pathfind(global_position, get_node(global.players_path).global_position)
-	for i in path.size():
-		path[i] = to_local(path[i])
-	draw_multiline(path, Color.red, 5.0, false)
-	
-	return
 	for i in memory.size():
 		draw_circle(to_local(memory[i]), 2, Color.blue)
+		if targets == []:
+			if los_check(memory[i]) != null:
+				draw_line(position, to_local(memory[i]), Color.lightblue, 1.0)
+			else:
+				var path = get_tree().current_scene.pathfind(global_position, memory[i])
+				if path.size() < 2: path = [position, Vector2.ZERO]
+				for x in path.size(): path[x] = to_local(path[x])
+				draw_multiline(path, Color.lightblue)
 	
 	for i in targets.size():
 		var target = targets[i]
@@ -100,14 +104,35 @@ func _draw():
 	
 	if targets == [] and memory == []:
 		draw_circle(to_local(guard_pos), WANDER_RANGE, Color8(255, 255, 0, 50))
-		draw_line(position, to_local(guard_pos), Color.yellow, 1, false)
+		if guard_path == null:
+			draw_line(position, to_local(guard_pos), Color.yellow, 1, false)
+		else:
+			var path = guard_path
+			if path.size() < 2: path = [Vector2.ZERO, Vector2.ZERO]
+			for i in path.size(): path[i] = to_local(path[i])
+			draw_multiline(path, Color.yellow, 1, false)
+			draw_circle(path[0], 1.5, Color.yellow)
 
 func _on_idle_timer_timeout() -> void:
 	wander_timer.wait_time = clamp(WANDER_TIME + rand_range(-(WANDER_OFFSET), WANDER_OFFSET), 0.01, 999.0)
 	if targets != []: return 
 	get_parent().input_vector = Vector2(rand_range(-1.0, 1.0),rand_range(-1.0, 1.0)).normalized()
+	
 	if global_position.distance_to(guard_pos) > WANDER_RANGE: 
-		get_parent().input_vector = global_position.direction_to(guard_pos).normalized()
+		# wander back to guard pos
+		if los_check(guard_pos) != null:
+			get_parent().input_vector = global_position.direction_to(guard_pos).normalized()
+			guard_path = null
+		else:
+			if guard_path == null or los_check(guard_path[0]) == null:
+				guard_path = get_tree().current_scene.pathfind(global_position, guard_pos)
+			if guard_path.size() < 2: guard_path = null
+			if guard_path != null and global_position.distance_to(guard_path[0]) < 10:
+				guard_path.remove(0)
+			if guard_path != null and not guard_path.size() < 2:
+				get_parent().input_vector = global_position.direction_to(guard_path[0]).normalized()
+	else:
+		guard_path = null
 	wander_timer.start()
 
 func _on_wander_timer_timeout() -> void:
@@ -210,7 +235,12 @@ func los_check(target_pos:Vector2):
 		else: 
 			return vision.collider
 	else:
-		return null
+		if memory.has(target_pos):
+			return target_pos
+		elif target_pos == guard_pos:
+			return guard_pos
+		else:
+			return null
 
 func add_target(tar: Node):
 	if not tar is Entity or tar is Melee or tar is Projectile or tar is Item or tar == get_parent(): return
@@ -268,6 +298,7 @@ func add_memory(pos: Vector2, spring: float):
 	wander_timer.stop()
 	memory.push_front(pos)
 	memory_springs.push_front(spring)
+	memory_paths.push_front(null)
 	
 	if memory_timer.time_left == 0:
 		memory_timer.start()
@@ -321,10 +352,6 @@ func _on_think_timer_timeout() -> void:
 	if round(rand_range(0, 15)) == 1:
 		pass
 	
-	# adds memories for fake pathfinding back to wander position
-	#if los_check(guard_pos) == null:
-	#	add_memory(global_position, 0)
-	
 	# search get_overlapping_bodies() for new targets
 	for i in sight.get_overlapping_bodies().size():
 		var body = sight.get_overlapping_bodies()[i]
@@ -346,7 +373,7 @@ func _on_think_timer_timeout() -> void:
 		var target_to_me = this_memory.direction_to(global_position).normalized()
 		best_position = this_memory + target_to_me * best_distance
 		
-		if global_position.distance_to(best_position) < 3:
+		if global_position.distance_to(best_position) < 10 and los_check(best_position) == best_position:
 			memory.remove(i)
 			if mem_times_queue != []:
 				memory_timer.wait_time = mem_times_queue[0] + 0.01
@@ -359,6 +386,18 @@ func _on_think_timer_timeout() -> void:
 	var trigger_anti_stuck = true
 	
 	if targets == []: # no targets
+		# for adjusting guard_path
+		if memory == []:
+			if guard_path != null:
+				if guard_path.size() == 0 or los_check(guard_path[0]) == null:
+					guard_path = get_tree().current_scene.pathfind(global_position, guard_pos)
+				if guard_path != null and global_position.distance_to(guard_path[0]) < 10:
+					guard_path.remove(0)
+				if guard_path.size() != 0:
+					get_parent().input_vector = global_position.direction_to(guard_path[0]).normalized()
+			
+			return
+		
 		# change intention based on memories
 		for i in range(memory.size()-1, -1, -1):
 			var this_memory = memory[i]
@@ -374,7 +413,20 @@ func _on_think_timer_timeout() -> void:
 			best_position = this_memory + target_to_me * best_distance
 			
 			var strength = SIGHT_RANGE / global_position.distance_to(best_position)
-			intention += global_position.direction_to(best_position) * strength
+			
+			if los_check(best_position) != null:
+				intention += global_position.direction_to(best_position) * strength
+			else:
+				var path = memory_paths[i]
+				if path == null or los_check(path[0]) == null:
+					path = get_tree().current_scene.pathfind(global_position, best_position)
+				if path.size() < 2: path = null
+				if path != null and global_position.distance_to(path[0]) < 10:
+					path.remove(0)
+				if path != null and not path.size() < 2:
+					intention += global_position.direction_to(path[0]).normalized()
+					memory_paths[i] = path
+			
 			if strength > 0: trigger_anti_stuck = false
 	
 	else: # has target(s)

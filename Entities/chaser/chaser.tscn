@@ -34,8 +34,8 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 3.99999
-height = 4.00003
+radius = 2.99999
+height = 4.00002
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 6.07457
@@ -67,7 +67,6 @@ autoplay = "speed"
 anims/speed = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 3 )
 rotation = 1.5708
 shape = SubResource( 3 )
