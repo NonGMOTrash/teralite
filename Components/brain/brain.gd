@@ -184,14 +184,14 @@ func get_spring(target:Entity):
 	if get_parent().marked_enemies.has(target):
 		spring = general_springs["hostile"]
 	
-	if spring == null:
-		prints("target:", target.get_name(), target)
-		prints("target_relation:", global.get_relation(get_parent(), target))
-		prints("general_springs:", general_springs)
-		prints("faction_springs:", faction_springs)
-		prints("faction_springs:", faction_springs)
-		prints("entity_springs:", entity_springs)
-		prints("marked_enemies:", get_parent().marked_enemies)
+#	if spring == null:
+#		prints("target:", target.get_name(), target)
+#		prints("target_relation:", global.get_relation(get_parent(), target))
+#		prints("general_springs:", general_springs)
+#		prints("faction_springs:", faction_springs)
+#		prints("faction_springs:", faction_springs)
+#		prints("entity_springs:", entity_springs)
+#		prints("marked_enemies:", get_parent().marked_enemies)
 	
 	spring = clamp(spring, -1, SIGHT_RANGE + 8) 
 	

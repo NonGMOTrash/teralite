@@ -9,16 +9,20 @@ func _ready():
 
 func _on_brain_action(action, target) -> void:
 	#print(action, target)
-	if cooldown.time_left > 0 or action != "sdash": return
+	if cooldown.time_left > 0: return
 	
-	var dash_direction = input_vector
-	if action == "sdash": 
+	var dash_direction = Vector2.ZERO
+	
+	if global_position.distance_to(target.global_position) > 50: 
+		print("forward dash")
+		dash_direction = global_position.direction_to(target.global_position)
+	else:
+		print("side dash")
 		# PROBLEM_NOTE: might be a better way to do this
+		dash_direction = global_position.direction_to(target.global_position)
 		var a = dash_direction.x
 		var b = dash_direction.y
 		dash_direction = Vector2(b, a)
-	elif action == "rdash":
-		dash_direction = Vector2(rand_range(-1.0, 1.0), rand_range(-1.0, 1.0))
 	
 	dash_direction = dash_direction.normalized()
 	

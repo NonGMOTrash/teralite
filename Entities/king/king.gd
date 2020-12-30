@@ -16,11 +16,6 @@ func _physics_process(delta):
 	# 0, 0, and it never is on this enemy so..
 	velocity = velocity.move_toward(Vector2.ZERO, SLOWDOWN * delta) # applys slowdown
 
-func _on_brain_entity_input(input) -> void:
-	if cooldown.time_left > 0 or animation.is_playing() == true: return
-	stored_input = input
-	animation.play("summon")
-
 func summon():
 	var guard
 	
@@ -29,6 +24,7 @@ func summon():
 		"archer": guard = global.aquire("Archer")
 		"rogue": guard = global.aquire("Rogue")
 	
+	guard.marked_enemies = marked_enemies
 	get_parent().call_deferred("add_child", guard)
 	guard.global_position = global_position #+ Vector2(rand_range(-16, 16), rand_range(-16, 16))
 	guard.velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() * 90
@@ -38,3 +34,8 @@ func _on_stats_health_changed(_type) -> void:
 	if stats.HEALTH < stats.MAX_HEALTH / 2:
 		# anger
 		cooldown.wait_time = cooldown_time / 1.5
+
+func _on_brain_action(action, target) -> void:
+	if cooldown.time_left > 0 or animation.is_playing() == true: return
+	stored_input = action
+	animation.play("summon")

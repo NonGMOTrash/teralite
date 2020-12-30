@@ -34,15 +34,14 @@ AUTO_ACT = true
 ACTION_TIME = 1.21
 PATIENCE = 0.25
 ACT_ON_WARNING = true
+tag_favors = {
+"attack": 1.0,
+"defend": 1.0,
+"support": 1.0
+}
 
-[node name="fdash" parent="brain" index="8" instance=ExtResource( 4 )]
-tag = 2
-best_distance = 0
-best_health_percent = 1
-
-[node name="sdash" parent="brain" index="9" instance=ExtResource( 4 )]
+[node name="dash" parent="brain" index="8" instance=ExtResource( 4 )]
 best_distance = 35
-warning_multiplier = 3.0
 
 [node name="death_spawn" parent="." index="9"]
 spawn_entity = "Ultra_Chaser_Death"

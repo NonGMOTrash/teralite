@@ -36,9 +36,6 @@ position = Vector2( 1, 0 )
 position = Vector2( 0.5, 1 )
 scale = Vector2( 0.85, 0.8 )
 
-[node name="CollisionShape2D" parent="." index="5"]
-visible = true
-
 [node name="death_spawn" parent="." index="8"]
 spawn_entity = "Rogue_Death"
 
@@ -46,11 +43,15 @@ spawn_entity = "Rogue_Death"
 position = Vector2( 0, -9 )
 
 [node name="brain" parent="." index="10"]
-SIGHT_RANGE = 220
-inputs = {
-"attack": 0
+SIGHT_RANGE = 100.0
+general_springs = {
+"friendly": -1,
+"hostile": 8,
+"neutral": -1
 }
-MIN_INPUT_SCORE = 175
+
+[node name="attack" parent="brain" index="8"]
+best_distance = 8
 
 [editable path="sprite"]
 

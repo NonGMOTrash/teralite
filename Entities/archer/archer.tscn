@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Entities/archer/archer.gd" type="Script" id=1]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=2]
@@ -10,13 +10,14 @@
 [ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Components/health_bar/healthBar.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Components/brain/action/action.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Components/entity_push/entityPush.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 3.0
+radius = 2.0
 height = 6.0
 
 [sub_resource type="CircleShape2D" id=3]
@@ -72,6 +73,9 @@ texture = ExtResource( 3 )
 offset = Vector2( 2, 0 )
 auto_flip_mode = 2
 
+[node name="shadow" parent="sprite" index="0"]
+position = Vector2( 0, 2 )
+
 [node name="entityPush" parent="." instance=ExtResource( 12 )]
 visible = false
 
@@ -108,14 +112,25 @@ autostart = true
 
 [node name="brain" parent="." instance=ExtResource( 7 )]
 visible = false
+IDLE_TIME = 0.6
+WANDER_TIME = 0.25
+TOLERANCE = 3
+SIGHT_RANGE = 160.0
+ACTION_TIME = 0.885
 general_springs = {
 "friendly": -1,
 "hostile": 50,
 "neutral": -1
 }
 
+[node name="action" parent="brain" instance=ExtResource( 11 )]
+best_distance = 50
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 4 )
+[connection signal="action" from="brain" to="." method="_on_brain_action"]
+
+[editable path="sprite"]
 
 [editable path="entityPush"]
 

@@ -80,7 +80,7 @@ func get_score(warned = false):
 			final_score = scores[i]
 			final_target = targets[i]
 	
-	prints(get_name(), final_score)
+	#prints(get_name(), final_score)
 	return [final_score, final_target]
 
 func score_modification(score):
