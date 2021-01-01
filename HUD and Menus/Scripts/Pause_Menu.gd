@@ -49,6 +49,8 @@ func _on_options_pressed() -> void:
 func _on_return_to_pressed() -> void:
 	get_tree().paused = false
 	if get_tree().current_scene.LEVEL_TYPE == 1: 
+		global.player_hub_pos = global.get_node(global.players_path).global_position
+		global.write_save(global.save_name, global.get_save_data_dict())
 		get_tree().change_scene_to(load("res://HUD and Menus/title_screen/TitleScreen.tscn"))
 		
 	else: 
@@ -56,6 +58,9 @@ func _on_return_to_pressed() -> void:
 		# PROBLEM_NOTE: this ^^ won't work with multiple hubs
 
 func _on_quit_pressed() -> void:
+	if get_tree().current_scene.LEVEL_TYPE == 1: 
+		global.player_hub_pos = global.get_node(global.players_path).global_position
+		global.write_save(global.save_name, global.get_save_data_dict())
 	get_tree().quit()
 
 func _on_Options_closed() -> void:

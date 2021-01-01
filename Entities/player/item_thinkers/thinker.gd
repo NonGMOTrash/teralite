@@ -1,17 +1,18 @@
 extends Node
 class_name Thinker
 
-enum ACTION_MODES {
-	SEMI,
-	AUTOMATIC,
-	RELEASE
-}
+enum ACTION_MODES { SEMI, AUTOMATIC, RELEASE }
+
+enum CURSOR_MODES { POINTER, CENTERED }
 
 export var auto_ready_check = true
 export(ACTION_MODES) var PRIMARY_ACTION_MODE = ACTION_MODES.SEMI
 export(ACTION_MODES) var SECONDARY_ACTION_MODE = ACTION_MODES.SEMI
 
 export var my_item = "" 
+
+export(Texture) var CURSOR
+export(CURSOR_MODES) var CURSOR_MODE
 
 var bar_max = 0.0
 var bar_value = 0.0
@@ -34,6 +35,8 @@ func _ready():
 	if get_parent().inventory[global.selection] == my_item: selected()
 	if get_parent().get_name() == "player":
 		global.emit_signal("update_item_bar", get_parent().inventory)
+	
+	if get_parent().inventory[global.selection] == my_item.to_lower(): selected()
 
 func _check_if_selected(swapped_item):
 	if swapped_item == my_item.to_lower():
@@ -110,6 +113,14 @@ func _input(_event: InputEvent):
 func get_ready():
 	return true
 
+func update_cursor(custom_img = CURSOR):
+	var img = custom_img
+	var hotspot
+	match CURSOR_MODE:
+		CURSOR_MODES.CENTERED: hotspot = Vector2(22.5, 22.5)
+		CURSOR_MODES.POINTER: hotspot = Vector2.ZERO
+	Input.set_custom_mouse_cursor(img, Input.CURSOR_ARROW, hotspot)
+
 func selected(): 
 	global.emit_signal("update_item_info", # set a condition to null to hide it
 		my_item, # current item
@@ -118,6 +129,7 @@ func selected():
 		null, # item bar value 
 		null # bar timer duration
 		)
+	update_cursor()
 
 func unselected(): pass
 

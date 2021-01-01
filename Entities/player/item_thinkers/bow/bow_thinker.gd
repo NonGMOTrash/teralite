@@ -28,6 +28,7 @@ func selected():
 		0.001, # item bar value 
 		null # bar timer duration
 		)
+	update_cursor()
 
 func _process(_delta):
 	# PROBLEM_NOTE: this is bad for optimization

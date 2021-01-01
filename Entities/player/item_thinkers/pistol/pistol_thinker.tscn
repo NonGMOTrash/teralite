@@ -1,11 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Entities/player/item_thinkers/pistol/pistol_thinker.gd" type="Script" id=1]
+[ext_resource path="res://HUD and Menus/CURSOR_PISTOL.png" type="Texture" id=2]
 
 [node name="pistol thinker" type="Node"]
 script = ExtResource( 1 )
 auto_ready_check = false
 my_item = "Pistol"
+CURSOR = ExtResource( 2 )
+CURSOR_MODE = 1
 
 [node name="cooldown" type="Timer" parent="."]
 one_shot = true

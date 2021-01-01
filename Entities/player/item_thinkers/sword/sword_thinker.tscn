@@ -1,10 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Entities/player/item_thinkers/sword/sword_thinker.gd" type="Script" id=1]
+[ext_resource path="res://HUD and Menus/CURSOR_SWORD.png" type="Texture" id=2]
 
 [node name="sword_thinker" type="Node"]
 script = ExtResource( 1 )
 my_item = "Sword"
+CURSOR = ExtResource( 2 )
+CURSOR_MODE = 1
+cooldown_time = 0.55
 
 [node name="cooldown" type="Timer" parent="."]
 wait_time = 0.1

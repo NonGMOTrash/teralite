@@ -76,4 +76,3 @@ func _on_Timer_timeout() -> void:
 	the_area = null
 	the_area_used = false
 	set_deferred("monitorable", true)
-

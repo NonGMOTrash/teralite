@@ -13,8 +13,18 @@ export(PackedScene) var thinker
 
 var SOURCE
 
+var the_body = null
+var the_body_used = false
+
 func _on_Area2D_body_entered(body: Node) -> void:
 	if body == SOURCE or body == self: return
+	
+	if the_body == null: the_body = body
+	
+	if body != the_body: return
+	if the_body_used == true: return
+	
+	the_body_used = true
 	
 	if body.truName == "player":
 		on_pickup(body)
@@ -74,3 +84,6 @@ func on_pickup(player): pass
 func _on_Area2D_body_exited(body: Node) -> void:
 	if body == SOURCE:
 		SOURCE = null
+	if body == the_body:
+		the_body = null
+		the_body_used = false

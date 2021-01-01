@@ -59,7 +59,6 @@ FORCE_MULT = 0.45
 truName = "king"
 faction = "blue_kingdom"
 cooldown_time = 2.5
-anger_cooldown_multiplier = 0.5
 
 [node name="stats" parent="." instance=ExtResource( 6 )]
 MAX_HEALTH = 24
@@ -104,12 +103,12 @@ MEMORY_TIME = 9.0
 ACTION_TIME = 0.4
 
 [node name="rogue" parent="brain" instance=ExtResource( 7 )]
-best_distance = 0
+best_distance = 30
 best_health_percent = 100
 
 [node name="knight" parent="brain" instance=ExtResource( 7 )]
 best_distance = 16
-best_health_percent = 1
+best_health_percent = 0
 
 [node name="archer" parent="brain" instance=ExtResource( 7 )]
 tag = 1

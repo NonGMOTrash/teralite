@@ -4,4 +4,3 @@
 
 [node name="action" type="Node"]
 script = ExtResource( 1 )
-status_effect_multiplier = 1.0

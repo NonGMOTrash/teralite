@@ -14,10 +14,8 @@ func _on_brain_action(action, target) -> void:
 	var dash_direction = Vector2.ZERO
 	
 	if global_position.distance_to(target.global_position) > 50: 
-		print("forward dash")
 		dash_direction = global_position.direction_to(target.global_position)
 	else:
-		print("side dash")
 		# PROBLEM_NOTE: might be a better way to do this
 		dash_direction = global_position.direction_to(target.global_position)
 		var a = dash_direction.x

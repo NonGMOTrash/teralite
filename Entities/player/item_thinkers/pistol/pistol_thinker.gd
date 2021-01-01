@@ -37,6 +37,7 @@ func selected():
 		null, # item bar value 
 		null # bar timer duration
 		)
+	update_cursor()
 
 func unselected():
 	reload.stop()

@@ -60,7 +60,7 @@ script = ExtResource( 1 )
 ACCELERATION = 200
 truName = "archer"
 faction = "blue_kingdom"
-attack_cooldown_time = 1.85
+attack_cooldown_time = 1.2
 
 [node name="stats" parent="." instance=ExtResource( 9 )]
 MAX_HEALTH = 2

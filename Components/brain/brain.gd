@@ -34,11 +34,12 @@ export var AUTO_ACT = true
 export(float, 0.2, 10.0) var ACTION_TIME = 1.0
 export(float, 0.0, 0.999) var PATIENCE = 0.4
 export var ACT_ON_WARNING = false
-export var tag_favors = {
-	"attack": 1.0,
-	"defend": 1.0,
-	"support": 1.0
+export var tag_modifiers = {
+	"attack": 0.5,
+	"defend": 0.5,
+	"support": 0.5
 }
+export(int, 0, 10) var tag_weight = 0
 
 export var general_springs = {
 	"friendly": -1,
@@ -184,15 +185,6 @@ func get_spring(target:Entity):
 	if get_parent().marked_enemies.has(target):
 		spring = general_springs["hostile"]
 	
-#	if spring == null:
-#		prints("target:", target.get_name(), target)
-#		prints("target_relation:", global.get_relation(get_parent(), target))
-#		prints("general_springs:", general_springs)
-#		prints("faction_springs:", faction_springs)
-#		prints("faction_springs:", faction_springs)
-#		prints("entity_springs:", entity_springs)
-#		prints("marked_enemies:", get_parent().marked_enemies)
-	
 	spring = clamp(spring, -1, SIGHT_RANGE + 8) 
 	
 	return spring
@@ -233,6 +225,7 @@ func act(warned = false):
 	if highscore <= PATIENCE: return
 	
 	emit_signal("action", chosen_action, target)
+	print("======")
 
 func los_check(target_pos:Vector2):
 	var ss = get_world_2d().direct_space_state
@@ -290,6 +283,7 @@ func remove_target(tar):
 	if target == tar:
 		if get_spring(targets[target_id]) != -1 and MEMORY_TIME > 0:
 			if get_node_or_null(target_paths[target_id]) == null: return
+			if get_parent().is_queued_for_deletion() == true: return
 			add_memory(targets[target_id].global_position, get_spring(targets[target_id]))
 			
 			var effect = global.aquire("question")
@@ -305,6 +299,8 @@ func remove_target(tar):
 			idle_timer.start()
 
 func add_memory(pos: Vector2, spring: float):
+	if get_parent().is_queued_for_deletion() == true: return
+	
 	idle_timer.stop()
 	wander_timer.stop()
 	memory.push_front(pos)
@@ -325,6 +321,7 @@ func got_hit(body):
 	if source is Melee or source is Projectile:
 		source = source.SOURCE
 	if source == null: return
+	if targets.has(source) == true: return
 	
 	match global.get_relation(get_parent(), source):
 		"neutral":
@@ -333,7 +330,6 @@ func got_hit(body):
 		"hostile":
 			if los_check(source.global_position) != null:
 				add_memory(source.global_position, get_spring(source))
-				
 				
 				var effect = global.aquire("question")
 				get_parent().get_parent().call_deferred("add_child", effect)
