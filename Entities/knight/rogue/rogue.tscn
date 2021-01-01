@@ -44,6 +44,7 @@ position = Vector2( 0, -9 )
 
 [node name="brain" parent="." index="10"]
 SIGHT_RANGE = 100.0
+PATIENCE = 0.15
 general_springs = {
 "friendly": -1,
 "hostile": 8,

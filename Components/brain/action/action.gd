@@ -17,6 +17,8 @@ export(int, 0, 10) var status_weight = 1
 export var respond_to_warning = false
 export(int, 0, 10) var warning_weight = 1
 
+var weight = stepify(rand_range(0, 1), 0.1)
+
 func return_score(current: float, best: float, max_difference: float):
 	var difference = abs(current-best)
 	return range_lerp(difference, 0, max_difference, 1, 0)
@@ -31,6 +33,9 @@ func _ready():
 			tags.support: tag = "support"
 	
 	get_parent().actions.append(self)
+	
+	if get_parent().actions.size() == 1:
+		weight == 0
 
 func get_score(warned = false):
 	var scores = []
@@ -72,6 +77,7 @@ func get_score(warned = false):
 		if get_parent().tag_weight != 0 and get_parent().tag_modifiers.has(my_tag) == true:
 			for x in get_parent().tag_weight: score.append(get_parent().tag_modifiers[my_tag])
 		
+		
 		# adjusting for custom score modification
 		score = score_modification(score)
 		
@@ -80,7 +86,12 @@ func get_score(warned = false):
 			var new_score = 0
 			for x in score.size(): new_score += score[i]
 			new_score /= score.size()
+			# adjusting for weight
+			new_score -= weight
+			if new_score < 0: new_score = 0
 			scores.append(new_score)
+			
+		
 		targets.append(target)
 	
 	var final_score = -999
@@ -91,8 +102,20 @@ func get_score(warned = false):
 			final_score = scores[i]
 			final_target = targets[i]
 	
-	prints(get_name(), final_score)
+	#prints(get_name(), "->", final_target.get_name(), "score:"+str(final_score), "(weight:"+str(weight)+")")
 	return [final_score, final_target]
 
 func score_modification(score): # for custom score modification
 	return score
+
+#var w = 1
+#func _process(_delta):
+#	if get_name() != "archer": return
+#	if w > 15:
+#		print(weight)
+#		w = 1
+#	else:
+#		w += 1
+
+func _on_deweight_timer_timeout() -> void:
+	weight *= 0.8

@@ -34,6 +34,9 @@ export var AUTO_ACT = true
 export(float, 0.2, 10.0) var ACTION_TIME = 1.0
 export(float, 0.0, 0.999) var PATIENCE = 0.4
 export var ACT_ON_WARNING = false
+export(float, 0.0, 1.0) var ACTION_WEIGHTING = 0.2
+export(float, 0.0, 1.0) var ACTION_DEWEIGHTING = 0.1
+export var AUTO_ACTION_WEIGHTING = false
 export var tag_modifiers = {
 	"attack": 0.5,
 	"defend": 0.5,
@@ -209,9 +212,9 @@ func early_slowdown(destination: Vector2):
 		return false
 
 func act(warned = false):
-	var chosen_action = []
-	var highscore = -1
+	var chosen_action = null
 	var target = null
+	var highscore = -1
 	
 	for i in actions.size():
 		var action = actions[i]
@@ -224,8 +227,19 @@ func act(warned = false):
 	
 	if highscore <= PATIENCE: return
 	
+	if AUTO_ACTION_WEIGHTING == true: weight_actions(chosen_action)
+	
 	emit_signal("action", chosen_action, target)
-	print("======")
+	#print("======")
+
+func weight_actions(chosen_action: String):
+	for i in actions.size():
+		var action = actions[i]
+		if action.get_name() == chosen_action:
+			action.weight += ACTION_WEIGHTING
+		else:
+			action.weight -= ACTION_DEWEIGHTING
+		action.weight = clamp(action.weight, 0, 1)
 
 func los_check(target_pos:Vector2):
 	var ss = get_world_2d().direct_space_state
@@ -318,8 +332,7 @@ func remove_memory(id: int):
 func got_hit(body):
 	var source = body.get_parent()
 	if source == self or targets.has(source): return
-	if source is Melee or source is Projectile:
-		source = source.SOURCE
+	if source is Melee or source is Projectile: source = source.SOURCE
 	if source == null: return
 	if targets.has(source) == true: return
 	
@@ -355,6 +368,7 @@ func _on_sight_body_exited(body: Node) -> void:
 	remove_target(body)
 
 func _on_think_timer_timeout() -> void:
+	think_timer.wait_time = THINK_TIME + rand_range(-0.1, 0.1)
 	if get_parent().is_physics_processing() == false: return
 	
 	if round(rand_range(0, 15)) == 1:

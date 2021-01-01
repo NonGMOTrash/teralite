@@ -3,6 +3,7 @@ extends Entity
 onready var stats = $stats
 onready var cooldown = $cooldown
 onready var animation = $AnimationPlayer
+onready var brain = $brain
 export(float, 0.01, 8.0) var cooldown_time = 3.8
 export(float, 0.01, 1.0) var anger_cooldown_multiplier = 0.5
 
@@ -37,5 +38,6 @@ func _on_stats_health_changed(_type) -> void:
 
 func _on_brain_action(action, target) -> void:
 	if cooldown.time_left > 0 or animation.is_playing() == true: return
+	brain.weight_actions(action)
 	stored_input = action
 	animation.play("summon")

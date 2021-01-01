@@ -4,3 +4,7 @@
 
 [node name="action" type="Node"]
 script = ExtResource( 1 )
+
+[node name="deweight_timer" type="Timer" parent="."]
+autostart = true
+[connection signal="timeout" from="deweight_timer" to="." method="_on_deweight_timer_timeout"]
