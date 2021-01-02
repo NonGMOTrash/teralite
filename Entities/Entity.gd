@@ -38,6 +38,7 @@ func _ready():
 	# I think it has sometihng to do with the sorting only being triggered when the y position changes
 
 func _physics_process(delta): # physics logic
+	marked_enemies = []
 	if STATIC == true: return
 	
 	input_vector = input_vector.normalized() # diagonally is same speed as straight

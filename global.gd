@@ -38,7 +38,7 @@ var settings = {
 var preloads = {
 	#entities:
 	"player": "res://Entities/player/player.tscn",
-	"spikes": "res://Entities/spikes/Spikes.tscn",
+	"spikes": "res://Entities/spikes/spikes.tscn",
 	"spikes_offset": "res://Entities/spikes/spikes_offest/spikes_offset.tscn",
 	"chaser": "res://Entities/chaser/chaser.tscn",
 	"brute_chaser": "res://Entities/chaser/brute_chaser/Brute_Chaser.tscn",

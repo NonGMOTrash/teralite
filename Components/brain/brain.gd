@@ -86,7 +86,7 @@ func _ready():
 		get_parent().components["hurtbox"].connect("triggered", self, "got_hit")
 
 func _draw():
-	return
+	#return
 	for i in memory.size():
 		draw_circle(to_local(memory[i]), 2, Color.blue)
 		if targets == []:
@@ -102,9 +102,9 @@ func _draw():
 		var target = targets[i]
 		
 		if get_node_or_null(target_paths[i]) == null:
-			return
+			break
 		elif target.is_queued_for_deletion() == true:
-			return
+			break
 		draw_line(position, to_local(target.global_position), Color.red, 1, false)
 	
 	if targets == [] and memory == []:
@@ -245,12 +245,15 @@ func los_check(target_pos:Vector2):
 	var ss = get_world_2d().direct_space_state
 	var vision = ss.intersect_ray(target_pos, global_position, [get_parent()], LOS_MASK)
 	if vision == null: return null
-	else: vision = ss.intersect_ray(global_position, target_pos, [get_parent()], LOS_MASK)
+	else: vision = ss.intersect_ray(global_position.move_toward(target_pos, 2.5),
+	target_pos, [get_parent()], LOS_MASK)
 	
 	if vision:
 		if vision.collider.name == "WorldTiles": 
 			return null
-		else: 
+		elif vision.collider.global_position != target_pos: 
+			return null
+		else:
 			return vision.collider
 	else:
 		if memory.has(target_pos):
@@ -369,6 +372,8 @@ func _on_sight_body_exited(body: Node) -> void:
 
 func _on_think_timer_timeout() -> void:
 	think_timer.wait_time = THINK_TIME + rand_range(-0.1, 0.1)
+	if get_parent().get_name() == "archer":
+		prints(get_parent().get_name(), targets)
 	if get_parent().is_physics_processing() == false: return
 	
 	if round(rand_range(0, 15)) == 1:
