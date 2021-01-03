@@ -17,7 +17,7 @@ var the_body = null
 var the_body_used = false
 
 func _on_Area2D_body_entered(body: Node) -> void:
-	if body == SOURCE or body == self: return
+	if body == SOURCE or body == self or body.truName != "player": return
 	
 	if the_body == null: the_body = body
 	

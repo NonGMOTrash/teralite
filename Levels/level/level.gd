@@ -8,4 +8,5 @@ func _ready() -> void:
 
 func pathfind(start:Vector2, end:Vector2):
 	var path = get_simple_path(start, end, true)
+	#if path.size() == 0: path = get_simple_path(start, get_closest_point(end), true)
 	return path

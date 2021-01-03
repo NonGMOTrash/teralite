@@ -90,7 +90,7 @@ func _draw():
 	for i in memory.size():
 		draw_circle(to_local(memory[i]), 2, Color.blue)
 		if targets == []:
-			if los_check(memory[i]) != null:
+			if los_check(memory[i]) == true:
 				draw_line(position, to_local(memory[i]), Color.lightblue, 1.0)
 			else:
 				var path = get_tree().current_scene.pathfind(global_position, memory[i])
@@ -125,11 +125,11 @@ func _on_idle_timer_timeout() -> void:
 	
 	if global_position.distance_to(guard_pos) > WANDER_RANGE: 
 		# wander back to guard pos
-		if los_check(guard_pos) != null:
+		if los_check(guard_pos) == true:
 			get_parent().input_vector = global_position.direction_to(guard_pos).normalized()
 			guard_path = null
 		else:
-			if guard_path == null or los_check(guard_path[0]) == null:
+			if guard_path == null or los_check(guard_path[0]) == false:
 				guard_path = get_tree().current_scene.pathfind(global_position, guard_pos)
 			if guard_path.size() < 2: guard_path = null
 			if guard_path != null and global_position.distance_to(guard_path[0]) < 10:
@@ -200,7 +200,7 @@ func is_target_valid(index: int):
 		return false
 	elif target.is_queued_for_deletion() == true:
 		return false
-	elif los_check(target.global_position) == null and not global_position.distance_to(target.global_position)<5:
+	elif los_check(target) == false and not global_position.distance_to(target.global_position) < 5:
 		return false
 	else:
 		return true
@@ -241,27 +241,30 @@ func weight_actions(chosen_action: String):
 			action.weight -= ACTION_DEWEIGHTING
 		action.weight = clamp(action.weight, 0, 1)
 
-func los_check(target_pos:Vector2):
+func los_check(target):
+	var target_pos = target
+	if target is Entity: target_pos = target.global_position
 	var ss = get_world_2d().direct_space_state
+	
 	var vision = ss.intersect_ray(target_pos, global_position, [get_parent()], LOS_MASK)
 	if vision == null: return null
 	else: vision = ss.intersect_ray(global_position.move_toward(target_pos, 2.5),
 	target_pos, [get_parent()], LOS_MASK)
 	
 	if vision:
-		if vision.collider.name == "WorldTiles": 
-			return null
-		elif vision.collider.global_position != target_pos: 
-			return null
-		else:
-			return vision.collider
+		if vision.collider is TileMap: 
+			return false
+		elif target is Entity and vision.collider == target:
+			return true
 	else:
-		if memory.has(target_pos):
-			return target_pos
+		if target is Entity:
+			return false
+		elif target is Vector2 and memory.has(target_pos):
+			return true
 		elif target_pos == guard_pos:
-			return guard_pos
+			return true
 		else:
-			return null
+			return false
 
 func add_target(tar: Node):
 	if not tar is Entity or tar is Melee or tar is Projectile or tar is Item or tar == get_parent(): return
@@ -330,7 +333,7 @@ func add_memory(pos: Vector2, spring: float):
 		mem_times_queue.push_front(MEMORY_TIME - memory_timer.time_left)
 
 func remove_memory(id: int):
-	pass
+	pass # PROBLEM_NOTE: make this work
 
 func got_hit(body):
 	var source = body.get_parent()
@@ -344,7 +347,7 @@ func got_hit(body):
 			get_parent().marked_enemies.append(source)
 		
 		"hostile":
-			if los_check(source.global_position) != null:
+			if los_check(source) == true:
 				add_memory(source.global_position, get_spring(source))
 				
 				var effect = global.aquire("question")
@@ -364,12 +367,13 @@ func _on_warning_area_entered(area: Area2D) -> void:
 	act(true)
 
 func _on_sight_body_entered(body: Node) -> void:
-	if los_check(body.global_position) != null:
+	if los_check(body) == true:
 		add_target(body)
 
 func _on_sight_body_exited(body: Node) -> void:
 	remove_target(body)
 
+# PROBLEM_NOTE: i think this is the single most intensive function in the whole game so maybe optimize it
 func _on_think_timer_timeout() -> void:
 	think_timer.wait_time = THINK_TIME + rand_range(-0.1, 0.1)
 	if get_parent().get_name() == "archer":
@@ -383,7 +387,7 @@ func _on_think_timer_timeout() -> void:
 	for i in sight.get_overlapping_bodies().size():
 		var body = sight.get_overlapping_bodies()[i]
 		if body is Entity and body.get_name() != "WorldTiles" and not targets.has(body):
-			if los_check(body.global_position) != null:
+			if los_check(body) == true:
 				add_target(body)
 	
 	# remove memories
@@ -400,7 +404,7 @@ func _on_think_timer_timeout() -> void:
 		var target_to_me = this_memory.direction_to(global_position).normalized()
 		best_position = this_memory + target_to_me * best_distance
 		
-		if global_position.distance_to(best_position) < 10 and los_check(best_position) != null:
+		if global_position.distance_to(best_position) < 10 and los_check(best_position) == true:
 			memory.remove(i)
 			if mem_times_queue != []:
 				memory_timer.wait_time = mem_times_queue[0] + 0.01
@@ -416,7 +420,7 @@ func _on_think_timer_timeout() -> void:
 		# for adjusting guard_path
 		if memory == []:
 			if guard_path != null:
-				if guard_path.size() == 0 or los_check(guard_path[0]) == null:
+				if guard_path.size() == 0 or los_check(guard_path[0]) == false:
 					guard_path = get_tree().current_scene.pathfind(global_position, guard_pos)
 				if guard_path != null and global_position.distance_to(guard_path[0]) < 10:
 					guard_path.remove(0)
@@ -441,7 +445,7 @@ func _on_think_timer_timeout() -> void:
 			
 			var strength = SIGHT_RANGE / global_position.distance_to(best_position)
 			
-			if los_check(best_position) != null:
+			if los_check(best_position) == true:
 				intention += global_position.direction_to(best_position) * strength
 			else:
 				var path = memory_paths[i]
