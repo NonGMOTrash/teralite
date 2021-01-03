@@ -23,7 +23,7 @@ export(float, 0, 999) var WANDER_RANGE = 80 # max range from starting pos it can
 
 export var SMART_SLOWDOWN = true # starts slowing down before reaching distination to avoid overshooting
 export var EIGHT_WAY_MOVEMENT = false # can only move in eight directions like wasd controls
-export(int, 0, 20) var TOLERANCE = 2 # the amount of damage it will tolerate before starting to infight
+export(int, 0, 20) var TOLERANCE = 3 # the amount of damage it will tolerate before starting to infight
 
 export(float, 0.01666, 3.0) var THINK_TIME = 0.05
 export(float, 0, 200) var SIGHT_RANGE = 100
@@ -57,6 +57,7 @@ var guard_path = null
 export(int, 1, 99) var MAX_TARGETS = 5
 var targets = []
 var target_paths = []
+var best_position_paths = []
 var memory = []
 var memory_springs = []
 var mem_times_queue = []
@@ -86,7 +87,7 @@ func _ready():
 		get_parent().components["hurtbox"].connect("triggered", self, "got_hit")
 
 func _draw():
-	#return
+	return
 	for i in memory.size():
 		draw_circle(to_local(memory[i]), 2, Color.blue)
 		if targets == []:
@@ -100,12 +101,21 @@ func _draw():
 	
 	for i in targets.size():
 		var target = targets[i]
-		
-		if get_node_or_null(target_paths[i]) == null:
-			break
-		elif target.is_queued_for_deletion() == true:
-			break
-		draw_line(position, to_local(target.global_position), Color.red, 1, false)
+		if is_target_valid(i) == true:
+			var best_distance = 0
+			best_distance = get_spring(target)
+			
+			var best_position = Vector2.ZERO
+			var target_to_me = target.global_position.direction_to(global_position).normalized()
+			best_position = target.global_position + target_to_me * best_distance
+			
+			if los_check(best_position) == true:
+				draw_line(position, to_local(best_position), Color.red, 1, false)
+			else:
+				var path = get_tree().current_scene.pathfind(global_position, best_position)
+				if path.size() < 2: path = [Vector2.ZERO, Vector2.ZERO]
+				for x in path.size(): path[x] = to_local(path[x])
+				draw_multiline(path, Color.red, 1, false)
 	
 	if targets == [] and memory == []:
 		draw_circle(to_local(guard_pos), WANDER_RANGE, Color8(255, 255, 0, 50))
@@ -272,6 +282,7 @@ func add_target(tar: Node):
 	
 	targets.append(tar)
 	target_paths.append(tar.get_path())
+	best_position_paths.append(null)
 	
 	if is_target_valid(targets.size()-1) == false:
 		targets.remove(targets.size()-1)
@@ -376,8 +387,6 @@ func _on_sight_body_exited(body: Node) -> void:
 # PROBLEM_NOTE: i think this is the single most intensive function in the whole game so maybe optimize it
 func _on_think_timer_timeout() -> void:
 	think_timer.wait_time = THINK_TIME + rand_range(-0.1, 0.1)
-	if get_parent().get_name() == "archer":
-		prints(get_parent().get_name(), targets)
 	if get_parent().is_physics_processing() == false: return
 	
 	if round(rand_range(0, 15)) == 1:
@@ -447,15 +456,16 @@ func _on_think_timer_timeout() -> void:
 			
 			if los_check(best_position) == true:
 				intention += global_position.direction_to(best_position) * strength
+				memory_paths[i] = null
 			else:
 				var path = memory_paths[i]
-				if path == null or los_check(path[0]) == null:
+				if path == null or los_check(path[0]) == false:
 					path = get_tree().current_scene.pathfind(global_position, best_position)
-				if path.size() < 2: path = null
-				if path != null and global_position.distance_to(path[0]) < 10:
+				if path.size() < 1: path = null
+				if path != null and global_position.distance_to(path[0]) < 5:
 					path.remove(0)
-				if path != null and not path.size() < 2:
-					intention += global_position.direction_to(path[0]).normalized()
+				if path != null and not path.size() < 1:
+					intention += global_position.direction_to(path[0]).normalized() * strength
 					memory_paths[i] = path
 			
 			if strength > 0: trigger_anti_stuck = false
@@ -475,7 +485,23 @@ func _on_think_timer_timeout() -> void:
 				
 				var strength = SIGHT_RANGE / global_position.distance_to(best_position)
 				if early_slowdown(best_position) == true: strength = 0 # PROBLEM_NOTE: this causes flicker
-				intention += global_position.direction_to(best_position) * strength
+				
+				if los_check(best_position) == true:
+					intention += global_position.direction_to(best_position) * strength
+					best_position_paths[i] = null
+				else:
+					strength *= 0.8
+					
+					var path = best_position_paths[i]
+					if path == null or los_check(path[0]) == false:
+						path = get_tree().current_scene.pathfind(global_position, best_position)
+					if path.size() < 1: path = null
+					if path != null and global_position.distance_to(path[0]) < 5:
+						path.remove(0)
+					if path != null and not path.size() < 1:
+						intention += global_position.direction_to(path[0]).normalized() * strength
+						best_position_paths[i] = path
+				
 				if strength > 0: trigger_anti_stuck = false
 	
 	debug.global_position = global_position + (intention.normalized() * 16)
@@ -490,4 +516,5 @@ func _on_think_timer_timeout() -> void:
 	
 	get_parent().input_vector = intention
 
-func _process(_delta): update()
+func _process(_delta):
+	update()
