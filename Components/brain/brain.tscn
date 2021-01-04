@@ -13,6 +13,11 @@ radius = 20.0
 script = ExtResource( 2 )
 TOLERANCE = 5
 THINK_TIME = 0.1
+general_springs = {
+"friendly": -1,
+"hostile": 0,
+"neutral": -1
+}
 
 [node name="idle_timer" type="Timer" parent="."]
 one_shot = true

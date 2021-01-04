@@ -23,8 +23,8 @@ export(float, 0, 999) var WANDER_RANGE = 80 # max range from starting pos it can
 
 export var SMART_SLOWDOWN = true # starts slowing down before reaching distination to avoid overshooting
 export var EIGHT_WAY_MOVEMENT = false # can only move in eight directions like wasd controls
-export(int, 0, 20) var TOLERANCE = 3 # the amount of damage it will tolerate before starting to infight
-
+export(int, 0, 20) var TOLERANCE = 3 # the amount of times it will tolerate friendly fire before starting 
+																							  # to infight
 export(float, 0.01666, 3.0) var THINK_TIME = 0.05
 export(float, 0, 200) var SIGHT_RANGE = 100
 export(float, 0, 200) var WARNING_RANGE = 50
@@ -59,6 +59,7 @@ var targets = []
 var target_paths = []
 var best_position_paths = []
 var memory = []
+var memory_id = []
 var memory_springs = []
 var mem_times_queue = []
 var memory_paths = []
@@ -266,15 +267,15 @@ func los_check(target):
 			return false
 		elif target is Entity and vision.collider == target:
 			return true
-	else:
-		if target is Entity:
-			return false
-		elif target is Vector2 and memory.has(target_pos):
-			return true
-		elif target_pos == guard_pos:
+		elif target is Vector2 and vision.collider.global_position == target:
 			return true
 		else:
 			return false
+	else:
+		if target is Entity:
+			return false
+		elif target is Vector2:
+			return true
 
 func add_target(tar: Node):
 	if not tar is Entity or tar is Melee or tar is Projectile or tar is Item or tar == get_parent(): return
@@ -315,7 +316,8 @@ func remove_target(tar):
 		if get_spring(targets[target_id]) != -1 and MEMORY_TIME > 0:
 			if get_node_or_null(target_paths[target_id]) == null: return
 			if get_parent().is_queued_for_deletion() == true: return
-			add_memory(targets[target_id].global_position, get_spring(targets[target_id]))
+			add_memory(targets[target_id].global_position, 
+			get_spring(targets[target_id]), targets[target_id].get_instance_id())
 			
 			var effect = global.aquire("question")
 			get_parent().get_parent().call_deferred("add_child", effect)
@@ -329,22 +331,39 @@ func remove_target(tar):
 			get_parent().input_vector = Vector2.ZERO
 			idle_timer.start()
 
-func add_memory(pos: Vector2, spring: float):
+func add_memory(pos: Vector2, spring: float, id: int):
 	if get_parent().is_queued_for_deletion() == true: return
+	
+	# removes previous memory with matching id
+	for i in memory_id.size():
+		if memory_id[i] == id: 
+			remove_memory(i)
+			break
 	
 	idle_timer.stop()
 	wander_timer.stop()
-	memory.push_front(pos)
-	memory_springs.push_front(spring)
-	memory_paths.push_front(null)
+	memory.push_front(pos) # PROBLEM_NOTE: make use .append instead (better preformance
+	memory_springs.push_front(spring) # <<<
+	memory_paths.push_front(null) # <<<
+	memory_id.push_front(id)
 	
 	if memory_timer.time_left == 0:
 		memory_timer.start()
 	else:
 		mem_times_queue.push_front(MEMORY_TIME - memory_timer.time_left)
 
-func remove_memory(id: int):
-	pass # PROBLEM_NOTE: make this work
+func remove_memory(i: int):
+	if memory.size()-1 < i: return
+	memory.remove(i)
+	memory_id.remove(i)
+	memory_paths.remove(i)
+	memory_springs.remove(i)
+	if mem_times_queue != []:
+		memory_timer.wait_time = mem_times_queue[0] + 0.01
+		mem_times_queue.pop_front()
+		memory_timer.start()
+	else:
+		memory_timer.wait_time = MEMORY_TIME
 
 func got_hit(body):
 	var source = body.get_parent()
@@ -359,7 +378,7 @@ func got_hit(body):
 		
 		"hostile":
 			if los_check(source) == true:
-				add_memory(source.global_position, get_spring(source))
+				add_memory(source.global_position, get_spring(source), source.get_instance_id())
 				
 				var effect = global.aquire("question")
 				get_parent().get_parent().call_deferred("add_child", effect)
@@ -414,13 +433,7 @@ func _on_think_timer_timeout() -> void:
 		best_position = this_memory + target_to_me * best_distance
 		
 		if global_position.distance_to(best_position) < 10 and los_check(best_position) == true:
-			memory.remove(i)
-			if mem_times_queue != []:
-				memory_timer.wait_time = mem_times_queue[0] + 0.01
-				mem_times_queue.pop_front()
-				memory_timer.start()
-			else:
-				memory_timer.wait_time = MEMORY_TIME
+			remove_memory(i)
 	
 	var intention = Vector2.ZERO
 	var trigger_anti_stuck = true
@@ -431,7 +444,7 @@ func _on_think_timer_timeout() -> void:
 			if guard_path != null:
 				if guard_path.size() == 0 or los_check(guard_path[0]) == false:
 					guard_path = get_tree().current_scene.pathfind(global_position, guard_pos)
-				if guard_path != null and global_position.distance_to(guard_path[0]) < 10:
+				if guard_path.size() != 0 and global_position.distance_to(guard_path[0]) < 10:
 					guard_path.remove(0)
 				if guard_path.size() != 0:
 					get_parent().input_vector = global_position.direction_to(guard_path[0]).normalized()
