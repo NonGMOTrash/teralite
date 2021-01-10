@@ -6,11 +6,9 @@ export var DAMAGE = 0
 export var TRUE_DAMAGE = 0
 export var DAM_TYPE = "null"
 export var KNOCKBACK = 120
-export var STATUS_EFFECT = {
-	"type": "type_name",
-	"duration": 0.0,
-	"level": 0
-}
+export(String) var STATUS_EFFECT = ""
+export var STATUS_DURATION = 5.0
+export var STATUS_LEVEL = 1.0
 export var TEAM_ATTACK = true
 
 onready var timer = $Timer

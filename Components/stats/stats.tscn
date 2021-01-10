@@ -4,18 +4,4 @@
 
 [node name="stats" type="Node"]
 script = ExtResource( 1 )
-
-[node name="deplete_timer" type="Timer" parent="."]
-wait_time = 0.025
-autostart = true
-
-[node name="poison_trigger" type="Timer" parent="."]
-
-[node name="burning_trigger" type="Timer" parent="."]
-
-[node name="bleeding_trigger" type="Timer" parent="."]
 [connection signal="tree_entered" from="." to="." method="_on_stats_tree_entered"]
-[connection signal="timeout" from="deplete_timer" to="." method="_on_deplete_timer_timeout"]
-[connection signal="timeout" from="poison_trigger" to="." method="_on_poison_trigger_timeout"]
-[connection signal="timeout" from="burning_trigger" to="." method="_on_burning_trigger_timeout"]
-[connection signal="timeout" from="bleeding_trigger" to="." method="_on_bleeding_trigger_timeout"]

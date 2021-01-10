@@ -88,11 +88,8 @@ COOLDOWN = 4.0
 iTime = 0.0
 DAM_TYPE = "burn"
 KNOCKBACK = 0
-STATUS_EFFECT = {
-"duration": 2.2,
-"level": 1,
-"type": "burning"
-}
+STATUS_EFFECT = "burning"
+STATUS_DURATION = 2.1
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 shape = SubResource( 2 )

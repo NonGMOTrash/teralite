@@ -46,13 +46,11 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	
 	# applies status effect
 	
-	var effect = area.STATUS_EFFECT
-	if effect.get("duration") > 0 and effect.get("level") > 0:
-		entity.components["stats"].add_status_effect(
-			effect.get("type"),
-			effect.get("duration"),
-			effect.get("level")
-		)
+	entity.components["stats"].add_status_effect(
+		area.STATUS_EFFECT,
+		area.STATUS_DURATION,
+		area.STATUS_LEVEL
+	)
 	
 	if area.KNOCKBACK > 0:
 		var source_pos = area.global_position

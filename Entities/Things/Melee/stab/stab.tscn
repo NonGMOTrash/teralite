@@ -56,7 +56,6 @@ tracks/2/keys = {
 }
 
 [node name="stab" instance=ExtResource( 2 )]
-id = 13
 ONHIT_SELF_DAMAGE = 5
 RANGE = 9
 sprite_persist = true
@@ -82,11 +81,8 @@ shape = SubResource( 1 )
 [node name="hitbox" parent="." index="3"]
 visible = false
 iTime = 0.25
-STATUS_EFFECT = {
-"duration": 2.5,
-"level": 1,
-"type": "bleeding"
-}
+STATUS_EFFECT = "bleed"
+STATUS_DURATION = 2.0
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 position = Vector2( 2, 0 )

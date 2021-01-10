@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Components/stats/status_effects/status_effect.gd" type="Script" id=1]
+
+[node name="status_effect" type="Node"]
+script = ExtResource( 1 )
+
+[node name="duration" type="Timer" parent="."]
+wait_time = 0.001
+one_shot = true
+
+[node name="trigger" type="Timer" parent="."]
+[connection signal="timeout" from="duration" to="." method="_on_duration_timeout"]
+[connection signal="timeout" from="trigger" to="." method="_on_trigger_timeout"]

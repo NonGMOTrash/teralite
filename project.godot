@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Props/Prop.gd"
 }, {
+"base": "Node",
+"class": "Status_Effect",
+"language": "GDScript",
+"path": "res://Components/stats/status_effects/status_effect.gd"
+}, {
 "base": "Entity",
 "class": "Thing",
 "language": "GDScript",
@@ -56,6 +61,7 @@ _global_script_class_icons={
 "Melee": "",
 "Projectile": "",
 "Prop": "",
+"Status_Effect": "",
 "Thing": "",
 "Thinker": ""
 }
