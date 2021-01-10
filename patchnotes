@@ -130,3 +130,17 @@
 - fixed weird issues with hitbox cooldowns
 - fixed issues with collisions
 - a bunch of miscellaneous improvements
+
+### Beta 2.5 (1/30/2020)
+
+- entities can now kill their target without crashing the game (this also fixed all known crashes previously in the game)
+- added entity pathfinding
+- entities can now have multiple targets at once
+- entities can now space a certain distance away from their target
+- attacks can now hurt allies of the same faction
+- added entity infighting
+- improved action selection
+- entities now wander back to their starting position if they are too far away
+- added support for neutral enemies
+- fixed item duplication on Duo
+- a ton of behind the scenes improvements
