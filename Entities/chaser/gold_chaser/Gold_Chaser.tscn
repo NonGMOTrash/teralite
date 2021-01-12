@@ -24,37 +24,49 @@ material = SubResource( 1 )
 texture = ExtResource( 2 )
 frame = 1
 
+[node name="shadow" parent="sprite" index="0"]
+position = Vector2( 0, 1 )
+
 [node name="CollisionShape2D" parent="." index="3"]
-position = Vector2( 0, 5.23598 )
+visible = false
+position = Vector2( 0, 2.05111 )
 
 [node name="hitbox" parent="." index="4"]
+visible = false
 KNOCKBACK = 190
 
 [node name="hurtbox" parent="." index="5"]
+position = Vector2( 0, 2.05111 )
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+position = Vector2( 0, -2.05111 )
+
+[node name="entityPush" parent="." index="6"]
 visible = true
+
+[node name="CollisionShape2D" parent="entityPush" index="0"]
 position = Vector2( 0, 2.05111 )
 
 [node name="brain" parent="." index="7"]
-SIGHT_RANGE = 120
-default_responses = {
-"NA": 0,
-"ally": 0,
-"enemy": 4
+general_springs = {
+"friendly": -1,
+"hostile": 0,
+"neutral": -1
 }
-responses = {
-"Blue Kingdom": null,
-"Chasers": null,
-"Dead": 5,
-"Enviorment": null,
-"NA": null,
-"Player": null
-}
+
+[node name="warning" parent="brain" index="6"]
+visible = false
 
 [node name="death_spawn" parent="." index="9"]
 spawn_entity = "Gold_Heart"
 
 [node name="death_spawn2" parent="." index="10" instance=ExtResource( 4 )]
 spawn_entity = "Gold_Chaser_Death"
+
+[node name="healthBar" parent="." index="11"]
+position = Vector2( 0, -8 )
+
+[editable path="sprite"]
 
 [editable path="hitbox"]
 

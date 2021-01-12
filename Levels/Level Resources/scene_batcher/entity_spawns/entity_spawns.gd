@@ -13,8 +13,8 @@ func set_data():
 		"heart": get_used_cells_by_id(12),
 		"gold_heart": get_used_cells_by_id(13),
 		"star": get_used_cells_by_id(14),
-		"spikes": get_used_cells_by_id(15),
-		"spikes_offset": get_used_cells_by_id(16),
+		"spikes": get_used_cells_by_id(27),
+		"spikes_offset": get_used_cells_by_id(30),
 		"fire": get_used_cells_by_id(17),
 		"timber_box": get_used_cells_by_id(18),
 		"unlite_timber_box": get_used_cells_by_id(19),
@@ -25,7 +25,7 @@ func set_data():
 		"rogue": get_used_cells_by_id(24),
 		"king": get_used_cells_by_id(25),
 		"ultra_chaser": get_used_cells_by_id(26),
-		"red_spikes": get_used_cells_by_id(27),
-		"diamond_spikes": get_used_cells_by_id(28)
+		"red_spikes": get_used_cells_by_id(31),
+		"diamond_spikes": get_used_cells_by_id(32)
 	}
 

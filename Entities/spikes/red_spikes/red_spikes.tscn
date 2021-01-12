@@ -1,9 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Entities/spikes/spikes.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Entities/spikes/red_spikes/red_spikes.png" type="Texture" id=2]
+[ext_resource path="res://Entities/spikes/red_spikes/red_spike.png" type="Texture" id=2]
 [ext_resource path="res://Entities/spikes/red_spikes/red_spikes.gd" type="Script" id=3]
-
 
 [sub_resource type="Animation" id=1]
 resource_local_to_scene = true
@@ -67,6 +66,7 @@ autoplay = ""
 anims/spikes = SubResource( 1 )
 
 [node name="activation" type="Area2D" parent="." index="4"]
+position = Vector2( 0.5, 0 )
 collision_layer = 0
 collision_mask = 2
 

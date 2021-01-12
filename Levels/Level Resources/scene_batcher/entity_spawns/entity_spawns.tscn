@@ -9,7 +9,7 @@
 [ext_resource path="res://Entities/Items Pickups/star/star.png" type="Texture" id=7]
 [ext_resource path="res://Entities/Items Pickups/sword/sword.png" type="Texture" id=8]
 [ext_resource path="res://Entities/crate/crate.png" type="Texture" id=9]
-[ext_resource path="res://Entities/spikes/spikes.png" type="Texture" id=10]
+[ext_resource path="res://Entities/spikes/spike.png" type="Texture" id=10]
 [ext_resource path="res://Entities/chaser/gold_chaser/gold chaser.png" type="Texture" id=11]
 [ext_resource path="res://Entities/chaser/brute_chaser/brute chaser.png" type="Texture" id=12]
 [ext_resource path="res://Entities/player/player.png" type="Texture" id=13]
@@ -24,8 +24,8 @@
 [ext_resource path="res://Entities/knight/rogue/rogue.png" type="Texture" id=22]
 [ext_resource path="res://Entities/king/king.png" type="Texture" id=23]
 [ext_resource path="res://Entities/chaser/ultra_chaser/ultra chaser.png" type="Texture" id=24]
-[ext_resource path="res://Entities/spikes/red_spikes/red_spikes.png" type="Texture" id=25]
-[ext_resource path="res://Entities/spikes/red_spikes/diamond_spikes/diamond spikes.png" type="Texture" id=26]
+[ext_resource path="res://Entities/spikes/red_spikes/diamond_spikes/diamond_spike.png" type="Texture" id=25]
+[ext_resource path="res://Entities/spikes/red_spikes/red_spike.png" type="Texture" id=26]
 
 [sub_resource type="TileSet" id=1]
 2/name = "player.png 2"
@@ -182,34 +182,6 @@
 14/shape_one_way_margin = 0.0
 14/shapes = [  ]
 14/z_index = 0
-15/name = "spikes.png 15"
-15/texture = ExtResource( 10 )
-15/tex_offset = Vector2( 0, 0 )
-15/modulate = Color( 1, 1, 1, 1 )
-15/region = Rect2( 32, 0, 16, 16 )
-15/tile_mode = 0
-15/occluder_offset = Vector2( 0, 0 )
-15/navigation_offset = Vector2( 0, 0 )
-15/shape_offset = Vector2( 0, 0 )
-15/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-15/shape_one_way = false
-15/shape_one_way_margin = 0.0
-15/shapes = [  ]
-15/z_index = 0
-16/name = "spikes.png 16"
-16/texture = ExtResource( 10 )
-16/tex_offset = Vector2( 0, 0 )
-16/modulate = Color( 1, 1, 1, 1 )
-16/region = Rect2( 32, 0, 16, 16 )
-16/tile_mode = 0
-16/occluder_offset = Vector2( 0, 0 )
-16/navigation_offset = Vector2( 0, 0 )
-16/shape_offset = Vector2( 0, 0 )
-16/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-16/shape_one_way = false
-16/shape_one_way_margin = 0.0
-16/shapes = [  ]
-16/z_index = 0
 17/name = "fire.png 17"
 17/texture = ExtResource( 15 )
 17/tex_offset = Vector2( 0, 0 )
@@ -350,11 +322,11 @@
 26/shape_one_way_margin = 0.0
 26/shapes = [  ]
 26/z_index = 0
-27/name = "red_spikes.png 27"
-27/texture = ExtResource( 25 )
+27/name = "spike.png 27"
+27/texture = ExtResource( 10 )
 27/tex_offset = Vector2( 0, 0 )
 27/modulate = Color( 1, 1, 1, 1 )
-27/region = Rect2( 34, 1, 12, 14 )
+27/region = Rect2( 10, 0, 5, 14 )
 27/tile_mode = 0
 27/occluder_offset = Vector2( 0, 0 )
 27/navigation_offset = Vector2( 0, 0 )
@@ -364,20 +336,48 @@
 27/shape_one_way_margin = 0.0
 27/shapes = [  ]
 27/z_index = 0
-28/name = "diamond spikes.png 28"
-28/texture = ExtResource( 26 )
-28/tex_offset = Vector2( 0, 0 )
-28/modulate = Color( 1, 1, 1, 1 )
-28/region = Rect2( 34, 1, 12, 14 )
-28/tile_mode = 0
-28/occluder_offset = Vector2( 0, 0 )
-28/navigation_offset = Vector2( 0, 0 )
-28/shape_offset = Vector2( 0, 0 )
-28/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-28/shape_one_way = false
-28/shape_one_way_margin = 0.0
-28/shapes = [  ]
-28/z_index = 0
+30/name = "spike.png 30"
+30/texture = ExtResource( 10 )
+30/tex_offset = Vector2( 0, 0 )
+30/modulate = Color( 1, 1, 1, 1 )
+30/region = Rect2( 0, 0, 5, 14 )
+30/tile_mode = 0
+30/occluder_offset = Vector2( 0, 0 )
+30/navigation_offset = Vector2( 0, 0 )
+30/shape_offset = Vector2( 0, 0 )
+30/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+30/shape_one_way = false
+30/shape_one_way_margin = 0.0
+30/shapes = [  ]
+30/z_index = 0
+31/name = "red_spike.png 31"
+31/texture = ExtResource( 26 )
+31/tex_offset = Vector2( 0, 0 )
+31/modulate = Color( 1, 1, 1, 1 )
+31/region = Rect2( 10, 0, 5, 14 )
+31/tile_mode = 0
+31/occluder_offset = Vector2( 0, 0 )
+31/navigation_offset = Vector2( 0, 0 )
+31/shape_offset = Vector2( 0, 0 )
+31/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+31/shape_one_way = false
+31/shape_one_way_margin = 0.0
+31/shapes = [  ]
+31/z_index = 0
+32/name = "diamond_spike.png 32"
+32/texture = ExtResource( 25 )
+32/tex_offset = Vector2( 0, 0 )
+32/modulate = Color( 1, 1, 1, 1 )
+32/region = Rect2( 10, 0, 5, 14 )
+32/tile_mode = 0
+32/occluder_offset = Vector2( 0, 0 )
+32/navigation_offset = Vector2( 0, 0 )
+32/shape_offset = Vector2( 0, 0 )
+32/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+32/shape_one_way = false
+32/shape_one_way_margin = 0.0
+32/shapes = [  ]
+32/z_index = 0
 
 [node name="entity_spawns" instance=ExtResource( 1 )]
 position = Vector2( 4, 4 )

@@ -13,11 +13,11 @@ radius = 2.0
 [node name="arrow" instance=ExtResource( 1 )]
 rotation = 0.0
 SLOWDOWN = 150
-id = 14
 ONHIT_SELF_DAMAGE = 3
 RANGE = 400
 auto_rotate = true
 SPEED = 185
+VELOCITY_ARMOR = 2
 ONHIT_SPEED_MULTIPLIER = 0.45
 
 [node name="stats" parent="." index="0"]

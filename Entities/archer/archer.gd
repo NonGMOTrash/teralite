@@ -13,6 +13,9 @@ func _ready():
 	attack_cooldown.wait_time = attack_cooldown_time
 
 func attack():
+	var pos
+	if targit != null: pos = targit.global_position
+	else: pos = global_position + (input_vector * 5) + Vector2(rand_range(-0.1, 0.1), rand_range(-0.1, 0.1))
 	var arrow = global.aquire("Arrow")
 	arrow.setup(self, targit.global_position)
 	get_parent().add_child(arrow)

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=2]
+[gd_resource type="Theme" load_steps=12 format=2]
 
 [ext_resource path="res://HUD and Menus/Fonts/m6x11.tres" type="DynamicFont" id=1]
 [ext_resource path="res://HUD and Menus/Themes/Styles/stylebox_full.tres" type="StyleBox" id=2]
@@ -11,6 +11,17 @@
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxLine" id=3]
+color = Color( 1, 1, 1, 1 )
+grow_begin = 0.0
+grow_end = 0.0
+
+[sub_resource type="StyleBoxLine" id=4]
+color = Color( 1, 1, 1, 1 )
+grow_begin = 0.0
+grow_end = 0.0
+vertical = true
 
 [resource]
 default_font = ExtResource( 1 )
@@ -43,6 +54,8 @@ CheckBox/styles/hover = null
 CheckBox/styles/hover_pressed = null
 CheckBox/styles/normal = null
 CheckBox/styles/pressed = null
+HSeparator/constants/separation = 1
+HSeparator/styles/separator = SubResource( 3 )
 Icons/icons/close = null
 Panel/styles/panel = ExtResource( 4 )
 PanelContainer/styles/panel = ExtResource( 4 )
@@ -75,3 +88,5 @@ TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.1 )
 TooltipLabel/constants/shadow_offset_x = 1
 TooltipLabel/constants/shadow_offset_y = 1
 TooltipLabel/fonts/font = null
+VSeparator/constants/separation = 1
+VSeparator/styles/separator = SubResource( 4 )

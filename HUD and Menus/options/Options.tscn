@@ -41,46 +41,48 @@ __meta__ = {
 }
 
 [node name="smooth" parent="Options" instance=ExtResource( 3 )]
+margin_top = 2.0
 margin_right = 359.0
+margin_bottom = 26.0
 shortcut_in_tooltip = false
 text = "Smooth camera"
 
 [node name="hidebar" parent="Options" instance=ExtResource( 3 )]
-margin_top = 28.0
+margin_top = 30.0
 margin_right = 359.0
-margin_bottom = 52.0
+margin_bottom = 54.0
 shortcut_in_tooltip = false
 text = "Hide item bar when empty"
 
 [node name="perfection" parent="Options" instance=ExtResource( 3 )]
-margin_top = 56.0
+margin_top = 58.0
 margin_right = 359.0
-margin_bottom = 80.0
+margin_bottom = 82.0
 shortcut_in_tooltip = false
 text = "Perfection mode (any damage kills you)"
 
 [node name="fullscreen" parent="Options" instance=ExtResource( 3 )]
-margin_top = 84.0
+margin_top = 86.0
 margin_right = 359.0
-margin_bottom = 108.0
+margin_bottom = 110.0
 shortcut_in_tooltip = false
 text = "Fullscreen"
 
 [node name="pixel" parent="Options" instance=ExtResource( 3 )]
-margin_top = 112.0
+margin_top = 114.0
 margin_right = 359.0
-margin_bottom = 136.0
+margin_bottom = 138.0
 text = "Pixel perfect filter (not recomended)"
 
 [node name="HSeparator" type="HSeparator" parent="Options"]
-margin_top = 140.0
+margin_top = 142.0
 margin_right = 359.0
-margin_bottom = 144.0
+margin_bottom = 143.0
 
 [node name="exit" parent="Options" instance=ExtResource( 4 )]
-margin_top = 148.0
+margin_top = 147.0
 margin_right = 359.0
-margin_bottom = 170.0
+margin_bottom = 169.0
 text = "Exit"
 icon = ExtResource( 5 )
 flat = true

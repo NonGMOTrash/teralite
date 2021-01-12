@@ -129,6 +129,7 @@ var faction_relationships = {
 
 # cursor sprites preloaded:
 const CURSOR_NORMAL = preload("res://HUD and Menus/CURSOR_NORMAL.png")
+const CURSOR_EMPTY = preload("res://HUD and Menus/CURSOR_EMPTY.png")
 const CURSOR_SWORD = preload("res://HUD and Menus/CURSOR_SWORD.png")
 const CURSOR_PISTOL = preload("res://HUD and Menus/CURSOR_PISTOL.png")
 const CURSOR_BOW = preload("res://HUD and Menus/CURSOR_BOW.png")
@@ -344,11 +345,14 @@ func update_cursor():
 	var pointer = Vector2.ZERO
 	var centered = Vector2(22.5, 22.5)
 	
-	match player.inventory[selection]:
-		null: Input.set_custom_mouse_cursor(CURSOR_NORMAL, Input.CURSOR_ARROW, pointer)
-		"Sword": Input.set_custom_mouse_cursor(CURSOR_SWORD, Input.CURSOR_ARROW, centered)
-		"Pistol": Input.set_custom_mouse_cursor(CURSOR_PISTOL, Input.CURSOR_ARROW, centered)
-		"Bow": Input.set_custom_mouse_cursor(CURSOR_BOW, Input.CURSOR_ARROW, centered)
+	if get_tree().paused == true or get_tree().current_scene.get_name() == "TitleScreen":
+		Input.set_custom_mouse_cursor(CURSOR_NORMAL, Input.CURSOR_ARROW, pointer)
+	else:
+		match player.inventory[selection]:
+			null: Input.set_custom_mouse_cursor(CURSOR_EMPTY, Input.CURSOR_ARROW, centered)
+			"Sword": Input.set_custom_mouse_cursor(CURSOR_SWORD, Input.CURSOR_ARROW, centered)
+			"Pistol": Input.set_custom_mouse_cursor(CURSOR_PISTOL, Input.CURSOR_ARROW, centered)
+			"Bow": Input.set_custom_mouse_cursor(CURSOR_BOW, Input.CURSOR_ARROW, centered)
 
 func debug_msg(src, lvl=0, details="(no details provided)"):
 	var level

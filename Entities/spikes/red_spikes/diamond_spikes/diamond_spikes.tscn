@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Entities/spikes/red_spikes/red_spikes.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Entities/spikes/red_spikes/diamond_spikes/diamond spikes.png" type="Texture" id=2]
+[ext_resource path="res://Entities/spikes/red_spikes/diamond_spikes/diamond_spike.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_local_to_scene = true
@@ -47,7 +47,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 5.22559
+radius = 8.0
 
 [node name="diamond_spikes" instance=ExtResource( 1 )]
 truName = "diamond_spikes"
@@ -66,6 +66,7 @@ disabled = true
 anims/spikes = SubResource( 1 )
 
 [node name="CollisionShape2D" parent="activation" index="0"]
+position = Vector2( 0.5, 0 )
 shape = SubResource( 2 )
 
 [editable path="hitbox"]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/diamond spikes.png-a2deaf3f18c76b0e00774923a4c78d75.stex"
+path="res://.import/red_spike.png-4c96c9141135431b50e451c55844fb9f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/spikes/red_spikes/diamond_spikes/diamond spikes.png"
-dest_files=[ "res://.import/diamond spikes.png-a2deaf3f18c76b0e00774923a4c78d75.stex" ]
+source_file="res://Entities/spikes/red_spikes/red_spike.png"
+dest_files=[ "res://.import/red_spike.png-4c96c9141135431b50e451c55844fb9f.stex" ]
 
 [params]
 
