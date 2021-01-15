@@ -144,3 +144,13 @@
 - added support for neutral enemies
 - fixed item duplication on Duo
 - a ton of behind the scenes improvements
+
+### Beta 2.6 (1/11/2021)
+
+- chaser sprite improvements
+- minor-ish level design improvements
+- spikes can now be placed individually instead of in pairs
+- changed some animations to be more bouncy (experimental, not sure how I feel about it yet)
+- menus use the pointer cursor and a new cursor was added for an empty hand
+- bleeding now works differently: the duration is increased each time you take any physical damage while bleeding
+- a big behind the scenes improvement (singular)
