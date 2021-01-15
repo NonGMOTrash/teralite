@@ -23,11 +23,11 @@ signal update_ui(bar_max, bar_value, info_string)
 func _ready():
 	
 	if my_item == "":
-		global.var_debug_msg(self, 1, "my_item")
+		push_error("my_time was not set")
 		queue_free()
 	
 	if get_parent().truName != "player":
-		global.debug_msg(self, 1, "my parent was not player")
+		push_error("thinker's parent was not a player")
 		queue_free()
 	
 	get_parent().connect("swapped_item", self, "_check_if_selected")

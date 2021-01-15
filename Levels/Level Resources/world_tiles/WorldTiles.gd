@@ -8,6 +8,7 @@ extends TileMap
 const _nav_tile_id = 10
 
 func _ready() -> void:
+	global.nodes["world_tiles"] = self
 	
 	# for doing the entire level
 	#var bounds_min = Vector2(0, 0)

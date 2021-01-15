@@ -41,32 +41,25 @@ func _on_exit_pressed() -> void:
 					SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, Vector2(384, 216)
 				)
 	
-	var camera = get_tree().current_scene
-	if camera == null: global.debug_msg(self, 0, "could not find current_scene")
-	else: camera = camera.find_node("Camera")
-	if camera == null: global.debug_msg(self, 0, "could not find Camera")
-	else: camera = camera.find_node("Camera2D")
-	if camera == null: global.debug_msg(self, 0, "could not find Camera2D")
+	var camera = global.nodes["camera"].find_node("Camera2D")
+	if camera == null: 
+		push_warning("could not find camera")
 	else:
 		camera.smoothing_enabled = global.settings["smooth_camera"]
 		camera.limit_smoothed = global.settings["smooth_camera"]
 	
-	var item_bar = get_tree().current_scene
-	if item_bar == null: global.debug_msg(self, 0, "could not find current_scene")
-	else: item_bar = item_bar.find_node("CanvasLayer")
-	if item_bar == null: global.debug_msg(self, 0, "could not find CanvasLayer")
-	else: item_bar = item_bar.find_node("itemBar")
-	if item_bar == null: global.debug_msg(self, 0, "could not find itemBar")
+	var item_bar = global.nodes["item_bar"]
+	if item_bar == null: 
+		push_warning("could not find item_bar")
 	else:
-		if global.players_path == null: return
-		var player = get_node_or_null(global.players_path)
+		if global.nodes["player"] == null: return
+		var player = get_node_or_null(global.nodes["player"])
 		if player == null: return
 		var inventory = player.inventory
 		if global.settings["hide_bar"]==true and inventory[0]==null and inventory[1]==null and inventory[2]==null:
 			item_bar.visible = false
 		else:
 			item_bar.visible = true
-	
 	
 	var settings_config = File.new()
 	
@@ -79,7 +72,7 @@ func _on_exit_pressed() -> void:
 			settings_config.close()
 		else:
 			# load failed
-			global.debug_msg(self, 0, "could not find settings_config (on save)")
+			push_warning("could not find settings_config (on save)")
 	
 	visible = false
 	emit_signal("closed")

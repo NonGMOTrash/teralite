@@ -53,7 +53,7 @@ func _on_Area2D_body_entered(body: Node) -> void:
 					body.inventory[x] = truName
 					global.update_cursor()
 					if thinker == null && type != item_types.POWERUP:
-						global.var_debug_msg(self, 0, thinker)
+						push_warning("item was not given a thinker")
 					else:
 						body.call_deferred("add_child", thinker.instance())
 				

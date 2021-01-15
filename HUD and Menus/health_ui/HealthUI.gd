@@ -10,14 +10,15 @@ var remMaxHealth = 10
 var remBonusHealth = 10
 
 func _ready():
+	global.nodes["health_ui"] = self
 	global.connect("update_health", self, "main")
 	main()
 	effect.play("blue")
 	visible = true
 
 func main():
-	if global.players_path == null: return
-	var player = get_tree().current_scene.get_node_or_null(global.players_path)
+	if global.nodes["player"] == null: return
+	var player = get_tree().current_scene.get_node_or_null(global.nodes["player"])
 	if player == null: return
 	player = player.components["stats"]
 	if player == null: return

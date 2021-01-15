@@ -6,7 +6,6 @@ var the_seed = "downwardspiral"
 
 # PROBLEM_NOTE: this should probably be in the player
 var selection = 0 # <-- for the item bar (0 1 2)
-var players_path = null
 var FOV = Vector2(1, 1)
 var cam_zoom_default = Vector2(3, 1) # PROBLEM_NOTE: maybe this should be in the camera
 var cam_zoom = cam_zoom_default #X = favors player, Y = favors mouse
@@ -26,6 +25,20 @@ const SAVE_DIR = "user://saves/"
 var save_name = "untitled save"
 var save_path = SAVE_DIR + save_name
 var saves = []
+
+var nodes = {
+	"player": null,
+	"canvaslayer": null,
+	"health_ui": null,
+	"item_bar": null,
+	"item_info": null,
+	"stopwatch": null,
+	"pause_menu": null,
+	"camera": null,
+	"ysort": null,
+	"world_tiles": null,
+	"background": null
+}
 
 var settings = {
 	"fullscreen": false,
@@ -147,11 +160,11 @@ func _ready():
 		print("you just got rickrolled!!!!1!")
 		OS.shell_open("https://www.youtube.com/watch?v=DLzxrzFCyOs")
 	
-	var_debug_msg(self, 0, "quality_of_this_game")
+	push_warning("quality_of_this_game == -999")
 	print("===============")
 	
 
-#global functions
+# global functions
 func get_relation(me:Entity, other:Entity):
 	var faction_one = me.faction
 	var faction_two = other.faction
@@ -234,7 +247,7 @@ func write_save(entered_save_name, data):
 		save_file.close()
 	else:
 		#what happens on a failed load
-		global.debug_msg(self, 1, "could not read "+save_name+" on write")
+		push_warning("could not read save on write")
 
 func load_save(entered_save_name):
 	var save_file = File.new()
@@ -269,10 +282,10 @@ func load_save(entered_save_name):
 			
 		else:
 			#load failed
-			global.debug_msg(self, 2, "could not open "+save_name+" on load")
+			push_warning("could not open save on load")
 	else:
 		#file didn't exist
-		global.debug_msg(self, 1, "could not find "+save_name+" on load")
+		push_warning("could not find save on load")
 
 func delete_save(entered_save_name):
 	var save_file = File.new()
@@ -286,7 +299,7 @@ func delete_save(entered_save_name):
 		dir.remove(save_path)
 	else:
 		# file not found
-		global.debug_msg(self, 1, "could not find "+save_name+" on delete")
+		push_warning("could not find save on delete")
 
 func physics_logic(delta, entity):
 	# PROBLEM NOTE:
@@ -335,12 +348,13 @@ func physics_logic(delta, entity):
 	entity.forces = forces
 
 func update_cursor():
-	if players_path == null: return
-	var player = get_node_or_null(players_path)
+	if nodes["player"] == null: return
+	var player = get_node_or_null(nodes["player"])
 	if player == null: return
 	# PROBLEM_NOTE: probably would be better to just have Input.set_custom_mouse_cursor be 
 	# called in the item thinkers instead. 
 	# (maybe have a default cursor var that is automatically used when the item is selected)
+	# UPDATE: I think im doing that already?? not sure. but i might be able to delete this function
 	
 	var pointer = Vector2.ZERO
 	var centered = Vector2(22.5, 22.5)
@@ -353,25 +367,6 @@ func update_cursor():
 			"Sword": Input.set_custom_mouse_cursor(CURSOR_SWORD, Input.CURSOR_ARROW, centered)
 			"Pistol": Input.set_custom_mouse_cursor(CURSOR_PISTOL, Input.CURSOR_ARROW, centered)
 			"Bow": Input.set_custom_mouse_cursor(CURSOR_BOW, Input.CURSOR_ARROW, centered)
-
-func debug_msg(src, lvl=0, details="(no details provided)"):
-	var level
-	match lvl:
-		0: level = "<warning>"
-		1: level ="<error>"
-		_: level = "<fatal_error>"
-	
-	print("[",src.get_name()," / ",src.get_script().get_path(),"] ", level,": ", details)
-
-func var_debug_msg(src, lvl=0, varr="(no var provided)"):
-	var level
-	match lvl:
-		0: level = "<warning>"
-		1: level ="<error>"
-		_: level = "<fatal_error>"
-	var val = "(no value found)"
-	if src.get(str(varr)) != null: val = src.get(str(varr))
-	print("[",src.get_name()," / ",src.get_script().get_path(),"] ", level,": ", str(varr), " == ", str(val))
 
 #all the global signals
 

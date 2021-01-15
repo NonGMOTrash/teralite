@@ -9,7 +9,7 @@ func _ready() -> void:
 	global.update_cursor()
 	var player = $YSort.find_node("player")
 	if player == null: 
-		global.var_debug_msg(self, 0, player)
+		push_warning("could not find player")
 		return
 	if global.player_hub_pos == null or global.player_hub_pos == Vector2.ZERO: return
 	player.global_position = global.player_hub_pos

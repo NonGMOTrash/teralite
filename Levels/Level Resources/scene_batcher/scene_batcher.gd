@@ -12,7 +12,7 @@ func set_data():
 func _ready(): # converts tiles to their respective scenes
 	set_data()
 	if data == {}:
-		global.var_debug_msg(self, 2, data)
+		push_error("data was not set")
 		return
 	
 	# replaces the number with the cells of that id

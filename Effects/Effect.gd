@@ -10,7 +10,7 @@ onready var default_sprite = preload("res://Entities/crate/crate.png")
 
 func _ready():
 	if animation_player == null:
-		global.var_debug_msg(self, 0, "animation_player")
+		push_warning("animation_player == null")
 	elif animation_player:
 		animation_player = get_node(animation_player)
 		animation_player.playback_speed *= effect_speed
@@ -18,13 +18,13 @@ func _ready():
 			animation_player.play(custom_animation)
 	
 	if sprite == null:
-		global.var_debug_msg(self, 0, "sprite")
+		push_warning("sprite == null")
 	else:
 		sprite = get_node_or_null(sprite)
 		if sprite == null:
-			global.debug_msg(self, 0, "could not find sprite node")
+			push_warning("could not find sprite node")
 		elif sprite.texture == null:
-			global.debug_msg(self, 1, "sprite was not given a texture, defaulting to crate.png")
+			push_error("spriter was not given a texture")
 			sprite.texture = default_sprite
 
 # old code for the speed change based on duration value

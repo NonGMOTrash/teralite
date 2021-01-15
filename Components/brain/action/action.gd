@@ -38,7 +38,7 @@ func _ready():
 	get_parent().actions.append(self)
 	
 	if get_parent().actions.size() == 1:
-		weight == 0
+		weight = 0
 
 func get_score(warned = false):
 	var scores = []

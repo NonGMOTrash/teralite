@@ -15,7 +15,7 @@ func _ready() -> void:
 	percent_chance = clamp(percent_chance, 0, 100)
 	
 	if spawn_entity == "":
-		global.var_debug_msg(self, 0, spawn_entity)
+		push_warning("spawn_entity was not set")
 		queue_free()
 		return
 	

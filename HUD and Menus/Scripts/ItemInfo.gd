@@ -6,6 +6,7 @@ onready var iBar = $Bar
 onready var timer = $Timer
 
 func _ready():
+	global.nodes["item_info"] = self
 	global.connect("update_item_info", self, "update_item_info")
 	visible = true
 

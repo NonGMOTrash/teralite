@@ -5,6 +5,9 @@ const LEVEL_TYPE = 0
 func _ready() -> void:
 	if name != "test_level":
 		global.write_save(global.save_name, global.get_save_data_dict())
+	
+	global.nodes["canvaslayer"] = $CanvasLayer
+	global.nodes["ysort"] = $YSort
 
 func pathfind(start:Vector2, end:Vector2):
 	var path = get_simple_path(start, end, true)

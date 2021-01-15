@@ -15,14 +15,10 @@ func on_pickup(player):
 		): 
 			global.perfected_levels.push_back(str(lvl))
 	
-	# PROBLEM_NOTE: this is a horrible way to do this
-	var stopwatch = get_tree().current_scene
-	if stopwatch == null: global.debug_msg(self, 1, "could not find current_scene")
-	else: stopwatch = stopwatch.find_node("CanvasLayer")
-	if stopwatch == null: global.debug_msg(self, 1, "could not find CanvasLayer")
-	else: stopwatch = stopwatch.find_node("stopwatch")
-	if stopwatch == null: global.debug_msg(self, 1, "could not find stopwatch")
-	elif not global.level_times.has(lvl) or stopwatch.time < global.level_times[lvl]:
+	var stopwatch = global.nodes["stopwatch"]
+	if stopwatch == null: 
+		push_warning("could not find stopwatch")
+	else:
 		global.level_times[lvl] = stopwatch.time
 	
 	

@@ -88,7 +88,14 @@ global="*res://global.gd"
 
 [debug]
 
-settings/fps/force_fps=9999
+gdscript/warnings/unassigned_variable=false
+gdscript/warnings/unused_variable=false
+gdscript/warnings/unused_argument=false
+gdscript/warnings/function_may_yield=false
+gdscript/warnings/variable_conflicts_function=false
+gdscript/warnings/unused_signal=false
+gdscript/warnings/return_value_discarded=false
+gdscript/warnings/integer_division=false
 gdscript/warnings/deprecated_keyword=false
 
 [display]

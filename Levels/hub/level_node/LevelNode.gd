@@ -77,13 +77,13 @@ func _input(event: InputEvent) -> void:
 		get_tree().change_scene_to(LEVEL_LOAD)
 
 func _on_Area2D_body_entered(body: Node) -> void:
-	if global.players_path == null: return
-	elif body != get_node(global.players_path) : return
+	if global.nodes["player"] == null: return
+	elif body != get_node(global.nodes["player"]) : return
 	player = body
 	label.visible = true
 
 func _on_Area2D_body_exited(body: Node) -> void:
-	if global.players_path == null: return
-	elif body != get_node(global.players_path) : return
+	if global.nodes["player"] == null: return
+	elif body != get_node(global.nodes["player"]) : return
 	player = null
 	label.visible = false

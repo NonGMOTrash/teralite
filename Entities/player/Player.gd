@@ -43,7 +43,7 @@ func _ready():
 	global.selection = 0
 	iTimer.start()
 	if get_name() == "player":
-		global.players_path = get_path()
+		global.nodes["player"] = get_path()
 	else:
 		health_bar.update_bar("hurt")
 		health_bar.visible = true
@@ -146,7 +146,7 @@ func death():
 					name = "dedplayer"
 					child.name = "player"
 					child.components["health_bar"].visible = false
-					global.players_path = child.get_path()
+					global.nodes["player"] = child.get_path()
 					global.emit_signal("update_health")
 					global.emit_signal("update_item_bar", child.inventory)
 					global.emit_signal("update_item_info", # set a condition to null to hide it

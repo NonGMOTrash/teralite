@@ -5,6 +5,7 @@ onready var timer = $Timer
 var time = 0.0
 
 func _ready():
+	global.nodes["stopwatch"] = self
 	visible = true
 
 func _process(_delta):

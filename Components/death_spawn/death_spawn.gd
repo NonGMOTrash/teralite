@@ -63,7 +63,7 @@ func spawn():
 			if spawn_sprite == null: spawn_sprite = spawn.find_node("Sprite")
 			elif spawn_sprite == null: spawn_sprite = spawn.find_Node("sprite")
 			if spawn_sprite == null:
-				global.var_debug_msg(self, 1, "spawn_sprite")
+				push_warning("spawn_sprite == null")
 				return
 			
 			spawn_sprite.flip_h = sprite.flip_h

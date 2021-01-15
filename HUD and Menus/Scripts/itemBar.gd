@@ -19,6 +19,7 @@ const SWORD = preload("res://Entities/Items Pickups/sword/sword.png")
 const BOW = preload("res://Entities/Items Pickups/bow/bow.png")
 
 func _ready():
+	global.nodes["item_bar"] = self
 	global.connect("update_item_bar", self, "update_icons")
 	if global.settings["hide_bar"] == false: visible = true
 

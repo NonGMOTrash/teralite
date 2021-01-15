@@ -47,9 +47,9 @@ func _ready() -> void:
 
 		else:
 			# load failed
-			global.debug_msg(self, 0, "could not load settings_config")
+			push_warning("could not load settings_config")
 	else:
-		global.debug_msg(self, 0, "could not find settings_config")
+		push_warning("could not find settings_config")
 	
 	OS.window_fullscreen = global.settings["fullscreen"]
 

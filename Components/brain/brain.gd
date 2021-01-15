@@ -425,7 +425,7 @@ func _on_think_timer_timeout() -> void:
 		var best_distance = null
 		best_distance = memory_springs[i]
 		if best_distance == null:
-			global.debug_msg(self, 0, "could not find spring for memory_truNames[i]")
+			push_warning("could not find spring for memory_truNames[i]")
 			best_distance = 0
 		
 		var best_position = Vector2.ZERO
@@ -458,7 +458,7 @@ func _on_think_timer_timeout() -> void:
 			var best_distance = null
 			best_distance = memory_springs[i]
 			if best_distance == null:
-				global.debug_msg(self, 0, "could not find spring for memory_truNames[i]")
+				push_warning("could not find spring for memory_truNames[i]")
 				best_distance = 0
 			
 			var best_position = Vector2.ZERO
