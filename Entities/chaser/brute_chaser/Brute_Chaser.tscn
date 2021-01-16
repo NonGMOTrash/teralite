@@ -33,26 +33,14 @@ visible = true
 position = Vector2( 0, 2.05111 )
 
 [node name="brain" parent="." index="7"]
-SIGHT_RANGE = 100
-default_responses = {
-"NA": 0,
-"ally": 0,
-"enemy": 4
-}
-responses = {
-"Blue Kingdom": null,
-"Chasers": null,
-"Dead": 4,
-"Enviorment": null,
-"NA": null,
-"Player": null
+general_springs = {
+"friendly": -1,
+"hostile": 0,
+"neutral": -1
 }
 
 [node name="death_spawn" parent="." index="9"]
 spawn_entity = "Brute_Chaser_Death"
-
-[node name="healthBar" parent="." index="10"]
-position = Vector2( 0, -10.1464 )
 
 [editable path="hitbox"]
 

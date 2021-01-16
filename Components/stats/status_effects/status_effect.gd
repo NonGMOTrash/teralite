@@ -15,7 +15,6 @@ func _ready() -> void:
 	var x = floor(level)
 	if x < 1: x = 1
 	trigger.wait_time = TRIGGER_TIME / x
-	if INIT_DURATION <= 0: print("INIT_DURATION:",INIT_DURATION)
 	duration.wait_time = INIT_DURATION
 	duration.start()
 	trigger.start()
@@ -40,6 +39,6 @@ func _on_duration_timeout() -> void:
 func _on_trigger_timeout() -> void:
 	triggered()
 
-func depleted(): print("depleted")
+func depleted(): pass
 
-func triggered(): print("triggered")
+func triggered(): pass

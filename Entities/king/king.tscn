@@ -77,6 +77,10 @@ visible = false
 shape = SubResource( 2 )
 
 [node name="healthBar" parent="." instance=ExtResource( 4 )]
+margin_left = -10.2972
+margin_top = -12.9489
+margin_right = 10.7028
+margin_bottom = -8.94715
 
 [node name="hit_spawn" parent="." instance=ExtResource( 9 )]
 spawn_entity = "hit_effect"
@@ -101,6 +105,11 @@ THINK_TIME = 0.25
 SIGHT_RANGE = 200.0
 MEMORY_TIME = 9.0
 ACTION_TIME = 0.4
+general_springs = {
+"friendly": -1,
+"hostile": 0,
+"neutral": -1
+}
 
 [node name="rogue" parent="brain" instance=ExtResource( 7 )]
 best_distance = 30

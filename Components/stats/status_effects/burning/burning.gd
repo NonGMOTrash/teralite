@@ -2,18 +2,13 @@ extends Status_Effect
 
 func _ready() -> void:
 	get_parent().get_parent().connect("death", self, "entity_dies")
-	print("BURNING CREATED")
 
 func entity_dies():
 	var new_fire = global.aquire("Fire")
 	new_fire.global_position = get_parent().get_parent().global_position
 	get_parent().get_parent().get_parent().call_deferred("add_child", new_fire)
 
-func depleted():
-	print("BURNING DEPLETED")
-
 func triggered():
-	print("BURNING TRIGGERED")
 	get_parent().change_health(0, -1, "burn")
 	var fire = global.aquire("Fire")
 	fire.global_position = get_parent().get_parent().global_position + Vector2(rand_range(-8,8), rand_range(-8,8))

@@ -125,6 +125,10 @@ visible = false
 spawn_entity = "Chaser_Death"
 
 [node name="healthBar" parent="." instance=ExtResource( 2 )]
+margin_left = -10.4298
+margin_top = -11.7557
+margin_right = 10.5702
+margin_bottom = -7.75391
 
 [node name="hit_spawn" parent="." instance=ExtResource( 12 )]
 spawn_entity = "hit_effect"

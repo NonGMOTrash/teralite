@@ -88,7 +88,6 @@ func add_status_effect(new_status_effect:String, duration=2.5, level=1.0):
 	
 	emit_signal("status_recieved", status_name)
 	
-	prints(status_effects.keys(), status_name)
 	if not status_name in status_effects.keys(): return
 	
 	if status_effects[status_name] == null and duration > 0 and level > 0: 

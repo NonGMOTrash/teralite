@@ -109,6 +109,10 @@ one_shot = true
 autostart = true
 
 [node name="healthBar" parent="." instance=ExtResource( 10 )]
+margin_left = -10.4298
+margin_top = -13.3908
+margin_right = 10.5702
+margin_bottom = -9.3891
 
 [node name="brain" parent="." instance=ExtResource( 7 )]
 IDLE_TIME = 0.6

@@ -149,6 +149,10 @@ wait_time = 3.0
 one_shot = true
 
 [node name="healthBar" parent="." instance=ExtResource( 7 )]
+margin_left = -10.2072
+margin_top = -12.2674
+margin_right = 10.7928
+margin_bottom = -8.26565
 
 [node name="entityPush" parent="." instance=ExtResource( 8 )]
 visible = false

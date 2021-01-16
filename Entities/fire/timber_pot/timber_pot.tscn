@@ -31,11 +31,7 @@ position = Vector2( 0, 3 )
 
 [node name="hitbox" parent="." index="4"]
 visible = false
-STATUS_EFFECT = {
-"duration": 0.0,
-"level": 0,
-"type": "burning"
-}
+STATUS_EFFECT = ""
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 disabled = true
@@ -54,7 +50,10 @@ position = Vector2( 0, 3 )
 shape = SubResource( 1 )
 
 [node name="healthBar" parent="." index="10" instance=ExtResource( 9 )]
-position = Vector2( 0, -10 )
+margin_left = -10.474
+margin_top = -11.7998
+margin_right = 10.526
+margin_bottom = -7.79811
 [connection signal="status_recieved" from="stats" to="." method="_on_stats_status_recieved"]
 
 [editable path="hitbox"]
