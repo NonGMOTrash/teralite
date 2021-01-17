@@ -40,14 +40,23 @@ func update_bar(_type) -> void:
 	# bonus health
 	if stats.BONUS_HEALTH > 0:
 		bonus.visible = true
-		bonus.step = 9.5 * (bonus.max_value / 100)
 		if stats.BONUS_HEALTH > bonus.max_value:
 			bonus.max_value = stats.BONUS_HEALTH
+		bonus.step = 9.5 * (bonus.max_value / 100)
 		bonus.value = stats.BONUS_HEALTH
+		bonus.tint_progress = BONUS_GRAD.interpolate(bonus.ratio)
 	else:
 		bonus.visible = false
 	
-	# add armor here
+	# armor
+	if stats.DEFENCE > 0:
+		armor.visible = true
+		armor.max_value = stats.DEFENCE
+		armor.step = 9.5 * (armor.max_value / 100)
+		armor.value = stats.armor
+		armor.tint_progress = ARMOR_GRAD.interpolate(armor.ratio)
+	else:
+		armor.visible = false
 
 func _on_Timer_timeout() -> void:
 	visible = false

@@ -41,10 +41,11 @@ func _on_exit_pressed() -> void:
 					SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, Vector2(384, 216)
 				)
 	
-	var camera = global.nodes["camera"].find_node("Camera2D")
+	var camera = global.nodes["camera"]
 	if camera == null: 
 		push_warning("could not find camera")
 	else:
+		camera = camera.find_node("Camera2D")
 		camera.smoothing_enabled = global.settings["smooth_camera"]
 		camera.limit_smoothed = global.settings["smooth_camera"]
 	

@@ -2,7 +2,6 @@
 
 [ext_resource path="res://HUD and Menus/Scripts/SmartButton.gd" type="Script" id=1]
 
-
 [node name="SmartButton" type="Button"]
 margin_right = 12.0
 margin_bottom = 20.0

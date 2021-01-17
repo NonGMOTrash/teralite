@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Components/health_bar/healthBar.gd" type="Script" id=1]
 [ext_resource path="res://Components/health_bar/health_bar_under.png" type="Texture" id=2]
@@ -11,6 +11,9 @@ colors = PoolColorArray( 0.94902, 0.0745098, 0.0745098, 1, 0.94902, 0.0745098, 0
 
 [sub_resource type="Gradient" id=2]
 colors = PoolColorArray( 0.94902, 0.92549, 0.588235, 0.705882, 0.976563, 0.965476, 0.267029, 1 )
+
+[sub_resource type="Gradient" id=3]
+colors = PoolColorArray( 0.328476, 0.53051, 0.816406, 1, 0.179596, 0.297532, 0.835938, 1 )
 
 [node name="healthBar" type="TextureProgress"]
 margin_right = 11.0
@@ -27,6 +30,7 @@ __meta__ = {
 }
 PROGRESS_GRAD = SubResource( 1 )
 BONUS_GRAD = SubResource( 2 )
+ARMOR_GRAD = SubResource( 3 )
 
 [node name="bonus" type="TextureProgress" parent="."]
 margin_right = 40.0
@@ -48,7 +52,6 @@ step = 9.5
 value = 38.0
 texture_under = ExtResource( 4 )
 texture_progress = ExtResource( 3 )
-tint_progress = Color( 0.117647, 0.0980392, 0.662745, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

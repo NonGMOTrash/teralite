@@ -15,6 +15,8 @@ export var MAX_HEALTH = 1
 export var HEALTH = 1
 export var BONUS_HEALTH = 0
 export var DEFENCE = 0
+var armor = 0
+var reset_armor = false
 export var DAMAGE = 1
 export var TRUE_DAMAGE = 0
 
@@ -36,6 +38,7 @@ func _on_stats_tree_entered() -> void:
 func _ready():
 	if HEALTH > MAX_HEALTH:
 		HEALTH = MAX_HEALTH
+	armor = DEFENCE
 
 func change_health(value, true_value, type: String = "hurt"):
 	BONUS_HEALTH = clamp(BONUS_HEALTH, 0, 99)
@@ -44,9 +47,24 @@ func change_health(value, true_value, type: String = "hurt"):
 	var sum = amount + true_amount
 	var final_type = type
 	
+	# PROBLEM_NOTE: i can probably do this same calculation with a lot less loops. try it maybe
+	
 	if sum < 0: 
 		# if is an attack:
-		amount = move_toward(amount, 0, DEFENCE) # account for defence here
+		#amount = move_toward(amount, 0, DEFENCE) # account for defence here OLD
+		# NEW defence calculation
+		
+		while amount != 0 and armor > 0:
+			armor -= 1
+			amount += 1
+		
+		if reset_armor == true:
+			armor = DEFENCE
+			reset_armor = false
+		
+		if armor == 0: 
+			reset_armor = true
+		
 		sum = amount + true_amount
 		
 		if sum == 0: 

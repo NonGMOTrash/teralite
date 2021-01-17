@@ -3,8 +3,8 @@ extends Node
 export var spawn_entity = ""
 export(int, 100) var percent_chance = 100
 
-export var types_list = ["poison", "burn", "bleed"]
-export var use_whitelist = false
+export var types_list = ["hurt"]
+export var use_whitelist = true
 
 var stats
 

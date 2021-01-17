@@ -4,5 +4,4 @@
 
 [node name="hit_spawn" type="Node"]
 script = ExtResource( 1 )
-types_list = [ "poison", "burn", "bleed", "heal" ]
 [connection signal="tree_entered" from="." to="." method="_on_hit_spawn_tree_entered"]

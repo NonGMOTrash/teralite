@@ -65,8 +65,9 @@ faction = "blue_kingdom"
 attack_cooldown_time = 1.7
 
 [node name="stats" parent="." instance=ExtResource( 8 )]
-MAX_HEALTH = 5
-HEALTH = 5
+MAX_HEALTH = 3
+HEALTH = 3
+DEFENCE = 1
 
 [node name="sprite" parent="." instance=ExtResource( 2 )]
 material = SubResource( 1 )
