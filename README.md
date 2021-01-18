@@ -1,5 +1,5 @@
 project epsilon
-magic and melee: Beta 2.6
+magic and melee: Beta 2.7
 
 please don't share these files, i wanna keep this game sorta secret for now. if you violate this policy... i will do abesolutely nothing. 
 
