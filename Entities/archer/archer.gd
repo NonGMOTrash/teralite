@@ -17,7 +17,7 @@ func attack():
 	if targit != null: pos = targit.global_position
 	else: pos = global_position + (input_vector * 5) + Vector2(rand_range(-0.1, 0.1), rand_range(-0.1, 0.1))
 	var arrow = global.aquire("Arrow")
-	arrow.setup(self, targit.global_position)
+	arrow.setup(self, pos)
 	get_parent().add_child(arrow)
 	attack_cooldown.start()
 

@@ -12,9 +12,6 @@ onready var sshape = $sight/CollisionShape2D
 onready var warning = $warning
 onready var wshape = $warning/CollisionShape2D
 
-# PROBLEM_NOTE: remove this
-onready var debug = $debug
-
 export var IDLE_TIME = 0.8
 export var IDLE_OFFSET = 0.4
 export var WANDER_TIME = 0.8
@@ -140,7 +137,9 @@ func _on_idle_timer_timeout() -> void:
 			get_parent().input_vector = global_position.direction_to(guard_pos).normalized()
 			guard_path = null
 		else:
-			if guard_path == null or los_check(guard_path[0]) == false:
+			if guard_path == null:
+				guard_path = get_tree().current_scene.pathfind(global_position, guard_pos)
+			elif los_check(guard_path[0]) == false:
 				guard_path = get_tree().current_scene.pathfind(global_position, guard_pos)
 			if guard_path.size() < 2: guard_path = null
 			if guard_path != null and global_position.distance_to(guard_path[0]) < 10:
@@ -342,9 +341,9 @@ func add_memory(pos: Vector2, spring: float, id: int):
 	
 	idle_timer.stop()
 	wander_timer.stop()
-	memory.push_front(pos) # PROBLEM_NOTE: make use .append instead (better preformance
-	memory_springs.push_front(spring) # <<<
-	memory_paths.push_front(null) # <<<
+	memory.push_front(pos)
+	memory_springs.push_front(spring)
+	memory_paths.push_front(null)
 	memory_id.push_front(id)
 	
 	if memory_timer.time_left == 0:
@@ -516,8 +515,6 @@ func _on_think_timer_timeout() -> void:
 						best_position_paths[i] = path
 				
 				if strength > 0: trigger_anti_stuck = false
-	
-	debug.global_position = global_position + (intention.normalized() * 16)
 	
 	if targets == [] and memory == []: return
 	

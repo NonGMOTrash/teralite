@@ -23,7 +23,6 @@ step = 0.475
 value = 5.0
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 3 )
-tint_progress = Color( 0.933333, 0.207843, 0.172549, 1 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -33,6 +32,7 @@ BONUS_GRAD = SubResource( 2 )
 ARMOR_GRAD = SubResource( 3 )
 
 [node name="bonus" type="TextureProgress" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 step = 9.5
@@ -44,7 +44,6 @@ __meta__ = {
 }
 
 [node name="armor" type="TextureProgress" parent="."]
-visible = false
 margin_top = -3.0
 margin_right = 40.0
 margin_bottom = 37.0

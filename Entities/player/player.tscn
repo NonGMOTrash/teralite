@@ -124,6 +124,7 @@ material = SubResource( 1 )
 texture = ExtResource( 10 )
 vframes = 2
 hframes = 4
+frame = 2
 
 [node name="playerControlled" parent="." instance=ExtResource( 5 )]
 
@@ -139,14 +140,6 @@ visible = false
 position = Vector2( 0, 2 )
 rotation = 1.5708
 shape = SubResource( 3 )
-
-[node name="itemCooldown" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
-[node name="itemReload" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
 
 [node name="healthBar" parent="." instance=ExtResource( 7 )]
 margin_left = -10.2072
@@ -175,7 +168,6 @@ spawn_entity = "hit_effect"
 [node name="death_spawn" parent="." instance=ExtResource( 1 )]
 spawn_entity = "Hit_Effect"
 [connection signal="health_changed" from="stats" to="." method="_on_stats_health_changed"]
-[connection signal="timeout" from="itemReload" to="." method="_on_itemRecharge_timeout"]
 
 [editable path="hurtbox"]
 

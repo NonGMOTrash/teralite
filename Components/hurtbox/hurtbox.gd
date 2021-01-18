@@ -28,6 +28,10 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		elif area_entity is Projectile and area_entity.SOURCE == get_parent():
 			if area_entity.has_left_src == false: return
 	
+	if area_entity is Projectile:
+		if area_entity.get_speed() < area_entity.MIN_DAM_SPEED:
+			return
+	
 	if the_area == null: the_area = area
 	
 	if area != the_area: return

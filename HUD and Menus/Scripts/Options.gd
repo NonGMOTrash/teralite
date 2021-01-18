@@ -1,10 +1,10 @@
 extends TabContainer
 
-onready var smooth = $Options/smooth
-onready var hidebar = $Options/hidebar
-onready var fullscreen = $Options/fullscreen
-onready var perfection = $Options/perfection
-onready var pixel = $Options/pixel
+onready var smooth = $Visual/smooth
+onready var hidebar = $Visual/hidebar
+onready var fullscreen = $Visual/fullscreen
+onready var perfection = $Control/auto_restart
+onready var pixel = $Visual/pixel
 
 signal closed
 
@@ -17,7 +17,7 @@ func _on_Options_visibility_changed() -> void:
 	smooth.pressed = global.settings["smooth_camera"]
 	hidebar.pressed = global.settings["hide_bar"]
 	fullscreen.pressed = global.settings["fullscreen"]
-	perfection.pressed = global.settings["perfection_mode"]
+	perfection.pressed = global.settings["auto_restart"]
 	pixel.pressed = global.settings["pixel_perfect"]
 	
 	if visible == false: return
@@ -28,7 +28,7 @@ func _on_exit_pressed() -> void:
 	global.settings["smooth_camera"] = smooth.pressed
 	global.settings["hide_bar"] = hidebar.pressed
 	global.settings["fullscreen"] = fullscreen.pressed
-	global.settings["perfection_mode"] = perfection.pressed
+	global.settings["auto_restart"] = perfection.pressed
 	global.settings["pixel_perfect"] = pixel.pressed
 	
 	OS.window_fullscreen = fullscreen.pressed
@@ -45,7 +45,6 @@ func _on_exit_pressed() -> void:
 	if camera == null: 
 		push_warning("could not find camera")
 	else:
-		camera = camera.find_node("Camera2D")
 		camera.smoothing_enabled = global.settings["smooth_camera"]
 		camera.limit_smoothed = global.settings["smooth_camera"]
 	

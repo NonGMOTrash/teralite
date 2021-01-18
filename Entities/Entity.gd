@@ -58,3 +58,8 @@ func apply_force(force:Vector2):
 func death():
 	emit_signal("death")
 	queue_free()
+
+func get_speed():
+	var velo = velocity
+	if input_vector != Vector2.ZERO: velo *= input_vector.normalized()
+	return abs(velo.x) + abs(velo.y)

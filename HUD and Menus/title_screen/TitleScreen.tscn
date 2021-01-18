@@ -13,6 +13,8 @@
 [node name="TitleScreen" type="ColorRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -0.445465
+margin_right = -0.445465
 color = Color( 0, 0, 0, 1 )
 script = ExtResource( 3 )
 __meta__ = {
@@ -60,7 +62,7 @@ margin_right = 120.0
 margin_bottom = 100.0
 theme = ExtResource( 1 )
 custom_colors/font_color = Color( 0.129412, 0.235294, 0.937255, 1 )
-text = "Beta 2.6"
+text = "Beta 2.7"
 align = 1
 valign = 1
 __meta__ = {
@@ -255,6 +257,14 @@ text = "Cancel"
 flat = true
 
 [node name="Options" parent="." instance=ExtResource( 8 )]
+
+[node name="Audio" parent="Options" index="1"]
+margin_right = -2.12428
+margin_bottom = -2.24938
+
+[node name="Control" parent="Options" index="2"]
+margin_right = -2.12428
+margin_bottom = -2.24938
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5

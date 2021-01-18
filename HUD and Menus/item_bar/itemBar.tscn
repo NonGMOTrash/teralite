@@ -4,7 +4,6 @@
 [ext_resource path="res://HUD and Menus/item_bar/itemBar0.png" type="Texture" id=2]
 
 [node name="itemBar" type="Control"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 3.57497

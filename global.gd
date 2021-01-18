@@ -42,7 +42,7 @@ var nodes = {
 
 var settings = {
 	"fullscreen": false,
-	"perfection_mode": false,
+	"auto_restart": false,
 	"pixel_perfect": false,
 	"smooth_camera": true,
 	"hide_bar": true

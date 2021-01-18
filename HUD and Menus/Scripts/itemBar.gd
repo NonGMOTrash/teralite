@@ -45,9 +45,9 @@ func update_icons(inventory):
 	for i in 6: match_icon(i, inventory[i])
 	global.update_cursor()
 	if global.settings["hide_bar"] == true and inventory[0]==null and inventory[1]==null and inventory[2]==null:
-		visible = false
+		bar.visible = false
 	else:
-		visible = true
+		bar.visible = true
 
 func match_icon(slot, item):
 	match item:

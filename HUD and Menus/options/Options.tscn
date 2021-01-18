@@ -28,7 +28,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Options" type="VBoxContainer" parent="."]
+[node name="Visual" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.37449
@@ -40,51 +40,105 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="smooth" parent="Options" instance=ExtResource( 3 )]
-margin_top = 2.0
+[node name="smooth" parent="Visual" instance=ExtResource( 3 )]
+margin_top = 29.0
 margin_right = 359.0
-margin_bottom = 26.0
+margin_bottom = 53.0
 shortcut_in_tooltip = false
 text = "Smooth camera"
 
-[node name="hidebar" parent="Options" instance=ExtResource( 3 )]
-margin_top = 30.0
+[node name="hidebar" parent="Visual" instance=ExtResource( 3 )]
+margin_top = 57.0
 margin_right = 359.0
-margin_bottom = 54.0
+margin_bottom = 81.0
 shortcut_in_tooltip = false
 text = "Hide item bar when empty"
 
-[node name="perfection" parent="Options" instance=ExtResource( 3 )]
-margin_top = 58.0
+[node name="fullscreen" parent="Visual" instance=ExtResource( 3 )]
+margin_top = 85.0
 margin_right = 359.0
-margin_bottom = 82.0
-shortcut_in_tooltip = false
-text = "Perfection mode (any damage kills you)"
-
-[node name="fullscreen" parent="Options" instance=ExtResource( 3 )]
-margin_top = 86.0
-margin_right = 359.0
-margin_bottom = 110.0
+margin_bottom = 109.0
 shortcut_in_tooltip = false
 text = "Fullscreen"
 
-[node name="pixel" parent="Options" instance=ExtResource( 3 )]
-margin_top = 114.0
+[node name="pixel" parent="Visual" instance=ExtResource( 3 )]
+margin_top = 113.0
 margin_right = 359.0
-margin_bottom = 138.0
+margin_bottom = 137.0
 text = "Pixel perfect filter (not recomended)"
 
-[node name="HSeparator" type="HSeparator" parent="Options"]
-margin_top = 142.0
+[node name="HSeparator" type="HSeparator" parent="Visual"]
+margin_top = 141.0
 margin_right = 359.0
-margin_bottom = 143.0
+margin_bottom = 142.0
 
-[node name="exit" parent="Options" instance=ExtResource( 4 )]
-margin_top = 147.0
+[node name="exit" parent="Visual" instance=ExtResource( 4 )]
+margin_top = 146.0
 margin_right = 359.0
-margin_bottom = 169.0
+margin_bottom = 168.0
+text = "Exit"
+icon = ExtResource( 5 )
+flat = true
+
+[node name="Audio" type="VBoxContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.37449
+margin_top = 22.2494
+margin_right = -321.626
+margin_bottom = -133.751
+alignment = 1
+
+[node name="Label" type="Label" parent="Audio"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "(empty, coming soon)"
+align = 1
+
+[node name="HSeparator2" type="HSeparator" parent="Audio"]
+margin_top = 171.0
+margin_right = 359.0
+margin_bottom = 172.0
+
+[node name="exit2" parent="Audio" instance=ExtResource( 4 )]
+margin_top = 176.0
+margin_right = 359.0
+margin_bottom = 198.0
+text = "Exit"
+icon = ExtResource( 5 )
+flat = true
+
+[node name="Control" type="VBoxContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.37449
+margin_top = 22.2494
+margin_right = -321.626
+margin_bottom = -133.751
+alignment = 1
+
+[node name="auto_restart" parent="Control" instance=ExtResource( 3 )]
+margin_top = 71.0
+margin_right = 359.0
+margin_bottom = 95.0
+shortcut_in_tooltip = false
+text = "Auto restart on hit"
+
+[node name="HSeparator3" type="HSeparator" parent="Control"]
+margin_top = 171.0
+margin_right = 359.0
+margin_bottom = 172.0
+
+[node name="exit3" parent="Control" instance=ExtResource( 4 )]
+margin_top = 176.0
+margin_right = 359.0
+margin_bottom = 198.0
 text = "Exit"
 icon = ExtResource( 5 )
 flat = true
 [connection signal="visibility_changed" from="." to="." method="_on_Options_visibility_changed"]
-[connection signal="pressed" from="Options/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Visual/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Audio/exit2" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Control/exit3" to="." method="_on_exit_pressed"]

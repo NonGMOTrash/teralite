@@ -1,12 +1,10 @@
-extends Position2D
-
-onready var cam = $Camera2D
+extends Camera2D
 
 func _ready():
 	global.nodes["camera"] = self
 	
-	cam.smoothing_enabled = global.settings["smooth_camera"]
-	cam.limit_smoothed = global.settings["smooth_camera"]
+	smoothing_enabled = global.settings["smooth_camera"]
+	limit_smoothed = global.settings["smooth_camera"]
 	
 	global.connect("update_camera", self, "update_fov")
 	
@@ -16,13 +14,14 @@ func _ready():
 		global_position = get_global_mouse_position()
 
 func update_fov():
-	cam.zoom = global.FOV
+	zoom = global.FOV
 
 func _physics_process(_delta: float) -> void:
 	var array = []
 	if global.nodes["player"] == null: return
 	if get_node_or_null(global.nodes["player"]) == null: return
 	
+	# PROBLEM_NOTE: i can do this faster by using a weighted average calculation
 	for i in global.cam_zoom.x:
 		array.append(get_tree().current_scene.get_node(global.nodes["player"]).global_position)
 	for i in global.cam_zoom.y:

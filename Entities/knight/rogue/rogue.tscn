@@ -18,6 +18,7 @@ attack_cooldown_time = 1.0
 [node name="stats" parent="." index="0"]
 MAX_HEALTH = 2
 HEALTH = 2
+DEFENCE = 0
 
 [node name="sprite" parent="." index="1"]
 material = SubResource( 1 )
@@ -38,9 +39,6 @@ scale = Vector2( 0.85, 0.8 )
 
 [node name="death_spawn" parent="." index="8"]
 spawn_entity = "Rogue_Death"
-
-[node name="healthBar" parent="." index="9"]
-position = Vector2( 0, -9 )
 
 [node name="brain" parent="." index="10"]
 SIGHT_RANGE = 100.0

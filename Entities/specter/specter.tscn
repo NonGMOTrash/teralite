@@ -73,7 +73,7 @@ collision_layer = 2
 script = ExtResource( 1 )
 ACCELERATION = 400
 truName = "specter"
-faction = "undead"
+faction = "dead"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 5 )
@@ -81,7 +81,7 @@ shape = SubResource( 1 )
 
 [node name="stats" parent="." instance=ExtResource( 6 )]
 DAMAGE = 2
-TRUE_DAMAGE = 2
+TRUE_DAMAGE = 1
 modifiers = {
 "bleeding": -99,
 "burning": 1,
@@ -110,7 +110,8 @@ anims/spawn = SubResource( 4 )
 [node name="hitbox" parent="." instance=ExtResource( 4 )]
 visible = false
 COOLDOWN = 0.4
-KNOCKBACK = 900
+KNOCKBACK = 190
+TEAM_ATTACK = false
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 position = Vector2( 0, -1 )
@@ -124,12 +125,10 @@ position = Vector2( 0, -6 )
 shape = SubResource( 6 )
 
 [node name="brain" parent="." instance=ExtResource( 7 )]
-SIGHT_RANGE = 110
-WAIT_TIME = 0.5
-default_responses = {
-"NA": 0,
-"ally": 0,
-"enemy": 4
+general_springs = {
+"friendly": -1,
+"hostile": 0,
+"neutral": -1
 }
 
 [node name="entityPush" parent="." instance=ExtResource( 8 )]

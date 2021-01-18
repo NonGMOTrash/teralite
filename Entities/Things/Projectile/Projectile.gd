@@ -5,6 +5,7 @@ class_name Projectile
 export var SPEED = 250
 export var VELOCITY_ARMOR = 1
 export var ONHIT_SPEED_MULTIPLIER = 0.8
+export var MIN_DAM_SPEED = 30
 
 var has_left_src = false
 var original_force_mult
@@ -61,6 +62,7 @@ func _on_collision_body_entered(body: Node) -> void:
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if visible == false: return
 	if global.get_relation(self, area.get_parent()) == "friendly": return
+	#if get_speed() < MIN_DAM_SPEED: return
 	if "ONHIT_SELF_DAMAGE" in area.get_parent(): return
 	stats.change_health(0, -(ONHIT_SELF_DAMAGE))
 	VELOCITY_ARMOR -= ONHIT_SELF_DAMAGE

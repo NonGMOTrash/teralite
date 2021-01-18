@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Effects/exclaimation/exclaimation.png" type="Texture" id=1]
 [ext_resource path="res://Components/brain/brain.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -54,13 +53,6 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="warning"]
 visible = false
 shape = SubResource( 2 )
-
-[node name="debug" type="Sprite" parent="."]
-visible = false
-modulate = Color( 0.164706, 0.545098, 0.85098, 1 )
-position = Vector2( -2.38419e-07, 2.38419e-07 )
-z_index = 99
-texture = ExtResource( 1 )
 [connection signal="tree_entered" from="." to="." method="_on_brain_tree_entered"]
 [connection signal="timeout" from="idle_timer" to="." method="_on_idle_timer_timeout"]
 [connection signal="timeout" from="wander_timer" to="." method="_on_wander_timer_timeout"]

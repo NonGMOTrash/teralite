@@ -1,8 +1,6 @@
 extends Entity
 
-# extra vars -------------------------------------------------------------------------------------------
-# PROBLEM_NOTE: i can remove this i think
-var perfect = true;
+var perfect = true
 
 export var dash_strength = 300
 
@@ -31,8 +29,6 @@ signal swapped_item(new_item)
 onready var hurtbox = $hurtbox
 onready var iTimer = $hurtbox/Timer
 onready var sprite = $sprite
-onready var itemCooldown = $itemCooldown
-onready var itemReload = $itemReload
 onready var stats = $stats
 onready var animation = $AnimationPlayer
 onready var dash_cooldown = $dash_cooldown
@@ -129,7 +125,7 @@ func death():
 	
 	emit_signal("death")
 	
-	if global.settings["perfection_mode"] == true:
+	if global.settings["auto_restart"] == true:
 		if not global.level_deaths.has(get_tree().current_scene.get_name()):
 			global.level_deaths[get_tree().current_scene.get_name()] = 0
 		global.level_deaths[get_tree().current_scene.get_name()] += 1
@@ -139,7 +135,7 @@ func death():
 	if self.get_name() == "player": 
 		var stop = false
 		
-		for i in get_parent().get_child_count(): # PROBLEM_NOTE: kinda bad way to do this
+		for i in get_parent().get_child_count(): # PROBLEM_NOTE: kinda bad way to do this, use a group
 			var child = get_parent().get_children()[i]
 			if child is Entity and not child == self and child.is_queued_for_deletion() == false:
 				if child.truName == "player":
@@ -170,18 +166,10 @@ func death():
 	else:
 		queue_free()
 
-#signal functions -------------------------------------------------------------------------------------------	
-
-# PROBLEM_NOTE: remove some useless functions and nodes
-
-func _on_itemReload_timeout() -> void:
-	pass
-	#global.emit_signal("update_item_hud", 0, 1, 2, 3)
-
 func _on_stats_health_changed(type) -> void:
-	if type != "heal": 
+	if type != "heal" and type != "blocked": 
 		perfect = false
-		if global.settings["perfection_mode"] == true: 
+		if global.settings["auto_restart"] == true: 
 			death()
 	
 	global.emit_signal("update_health")
