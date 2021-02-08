@@ -18,12 +18,12 @@ Portions of this software are copyright ©2021 The FreeType Project (www.freetyp
 
 sound credits:
 sound: "soundname" by creator ( link ) licensed under CC
-
 sword_hit: "slashkut" by Abyssmal ( https://freesound.org/people/Abyssmal/sounds/35213/ ) licensed under CC0
 sword_clank: "sword slash" by ethanchase7744 ( https://freesound.org/people/ethanchase7744/sounds/441666/ ) licensed under CC0
 sword_miss: "Sword Swipe11" by LukeSharples ( https://freesound.org/people/LukeSharples/sounds/209121/ ) licensed under CC BY 3.0
 sword_equip: "Drawing sword from scabbard" by giddster ( https://freesound.org/people/giddster/sounds/484298/ ) licensed under CC0
 sword_kill: "Sword Attack" by Saviraz ( https://freesound.org/people/Saviraz/sounds/547600/ ) licensed under CC BY 3.0
+sword_tint: "sword04" by Erdie ( https://freesound.org/people/Erdie/sounds/27858/ ) licensed under CC BY 3.0
 footstep_grass: "Rustling Grass 2" by morganpurkis ( https://freesound.org/people/morganpurkis/sounds/396013/ ) licensed under CC0
 footstep_wood: "Footstep_Wood_Heel" by GiocoSound ( https://freesound.org/people/GiocoSound/sounds/421150/ ) licensed under CC0
 star_pickup: "Bonus earned in video game" from MixKit ( https://mixkit.co/free-sound-effects/game/ ) licensed under Mixkit Sound Effects Free License 
@@ -36,6 +36,9 @@ damage: "Hit 4 8 Bit" by Mrthenoronha ( https://freesound.org/people/Mrthenoronh
 bow_shoot: "bow01" by Erdie ( https://freesound.org/people/Erdie/sounds/65733/ ) licensed under CC BY 3.0
 arrow_hit: "Arrow strike" by plantmonkey ( https://freesound.org/people/plantmonkey/sounds/410751/ ) licensed under CC0
 bow_drawn: "Regular Arrow Shot with rattle slow draw" by brendan89 ( https://freesound.org/people/brendan89/sounds/321554/ ) licensed under CC BY 3.0
+menu_hover: "CLICK_143" by Jaszunio15 ( https://freesound.org/people/Jaszunio15/sounds/421475/ ) licensed under CC0
+menu_click: "Wooden Hover" by BenjaminNelan ( https://freesound.org/people/BenjaminNelan/sounds/321082/ ) licensed under CC0
+menu_pause: "Access Denied" by suntemple ( https://freesound.org/people/suntemple/sounds/249300/ ) licensed under CC0
 
 note that all of the sounds above have been modified in some way
 
