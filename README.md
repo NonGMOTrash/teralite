@@ -1,5 +1,5 @@
 # project epsilon
-current version: magic and melee: Beta 2.7
+current version: **Kings & Castles: Beta 2.9**
 
 please don't share these files, i wanna keep this game sorta secret for now. if you violate this policy... i will do abesolutely nothing. 
 
@@ -34,13 +34,57 @@ thanks for downloading
 
 # credits
 
-hold on
+**developer:**
+created by NonGMOTrash
+
+**play testers:**
+you!
+will add all the people later
+(you'll be in the credits of the game itself to)
+
+**engine:**
+
+created with Godot Engine
+
+Copyright (c) 2007-2020 Juan Linietsky, Ariel Manzur. Copyright (c) 2014-2020 Godot Engine contributors.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Portions of this software are copyright ©2021 The FreeType Project (www.freetype.org). All rights reserved.
+
+**sound credits:**
+sound: "soundname" by creator ( link ) licensed under CC
+sword_hit: "slashkut" by Abyssmal ( https://freesound.org/people/Abyssmal/sounds/35213/ ) licensed under CC0
+sword_clank: "sword slash" by ethanchase7744 ( https://freesound.org/people/ethanchase7744/sounds/441666/ ) licensed under CC0
+sword_miss: "Sword Swipe11" by LukeSharples ( https://freesound.org/people/LukeSharples/sounds/209121/ ) licensed under CC BY 3.0
+sword_equip: "Drawing sword from scabbard" by giddster ( https://freesound.org/people/giddster/sounds/484298/ ) licensed under CC0
+sword_kill: "Sword Attack" by Saviraz ( https://freesound.org/people/Saviraz/sounds/547600/ ) licensed under CC BY 3.0
+sword_tint: "sword04" by Erdie ( https://freesound.org/people/Erdie/sounds/27858/ ) licensed under CC BY 3.0
+footstep_grass: "Rustling Grass 2" by morganpurkis ( https://freesound.org/people/morganpurkis/sounds/396013/ ) licensed under CC0
+footstep_wood: "Footstep_Wood_Heel" by GiocoSound ( https://freesound.org/people/GiocoSound/sounds/421150/ ) licensed under CC0
+star_pickup: "Bonus earned in video game" from MixKit ( https://mixkit.co/free-sound-effects/game/ ) licensed under Mixkit Sound Effects Free License 
+armor_pickup: "armor10" by pepingrillin ( https://freesound.org/people/pepingrillin/sounds/252144/ ) licensed under CC0
+forest_ambiance: "Ambiance_Wind_Forest_Calm_Loop" by Nox_Sound ( https://freesound.org/people/Nox_Sound/sounds/506910/ ) licensed under CC0
+pistol_fire: "9mm gunside" by cedarstudios ( https://freesound.org/people/cedarstudios/sounds/148839/ ) licensed under CC0
+pistol_pickup: "Pistol Cock" by nebulasnails ( https://freesound.org/people/nebulasnails/sounds/405538/ ) licensed under CC0
+pistol_reload: "AR15 pistol load and chamber" by michorvath ( https://freesound.org/people/michorvath/sounds/427599/ ) licensed under CC0
+damage: "Hit 4 8 Bit" by Mrthenoronha ( https://freesound.org/people/Mrthenoronha/sounds/507702/ ) licensed under CC BY-NC
+bow_shoot: "bow01" by Erdie ( https://freesound.org/people/Erdie/sounds/65733/ ) licensed under CC BY 3.0
+arrow_hit: "Arrow strike" by plantmonkey ( https://freesound.org/people/plantmonkey/sounds/410751/ ) licensed under CC0
+bow_drawn: "Regular Arrow Shot with rattle slow draw" by brendan89 ( https://freesound.org/people/brendan89/sounds/321554/ ) licensed under CC BY 3.0
+menu_hover: "CLICK_143" by Jaszunio15 ( https://freesound.org/people/Jaszunio15/sounds/421475/ ) licensed under CC0
+menu_click: "Wooden Hover" by BenjaminNelan ( https://freesound.org/people/BenjaminNelan/sounds/321082/ ) licensed under CC0
+menu_pause: "Access Denied" by suntemple ( https://freesound.org/people/suntemple/sounds/249300/ ) licensed under CC0
 
 # license information
 
 lol nothing yet
 
-# **Patchnotes**
+# Patchnotes
 
 ## Beta 1.0 (8/16/2020)
 
