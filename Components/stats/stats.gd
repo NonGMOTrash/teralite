@@ -1,5 +1,6 @@
 extends Node
 
+# PROBLEM_NOTE: add these to global.gd, and have them preloaded in hitboxes instead of here
 const burning = preload("res://Components/stats/status_effects/burning/burning.tscn")
 const poison = preload("res://Components/stats/status_effects/poison/poison.tscn")
 const bleed = preload("res://Components/stats/status_effects/bleed/bleed.tscn")
