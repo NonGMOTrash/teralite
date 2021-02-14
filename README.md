@@ -69,6 +69,8 @@ created with Godot Engine, it's license is as follows:
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 
+addtionally,
+
     Portions of this software are copyright ©2021 The FreeType Project (www.freetype.org). All rights reserved.
 
 ### sound credits:
@@ -127,7 +129,7 @@ the github is here: (private for now until offical release)
 
 # Patchnotes
 
-## Beta 1.0: *no fancy subtitle lol* (8/16/2020)
+## Beta 1.0: (8/16/2020)
 
 - initial soft release
 - 3 enemies (normal, brute, and gold chasers)
