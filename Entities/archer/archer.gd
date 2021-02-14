@@ -21,7 +21,7 @@ func attack():
 	get_parent().add_child(arrow)
 	attack_cooldown.start()
 
-func _on_brain_action(action, target) -> void:
+func _on_action_lobe_action(action, target) -> void:
 	if attack_cooldown.time_left > 0: return
 	targit = target
 	animation.play("attack")

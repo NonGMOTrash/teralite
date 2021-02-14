@@ -11,6 +11,7 @@ script = ExtResource( 2 )
 ACCELERATION = 0
 SLOWDOWN = 100
 truName = "(projectile)"
+MIN_DAM_SPEED = 0
 
 [node name="Sprite" parent="." index="1"]
 rotation = 0.0

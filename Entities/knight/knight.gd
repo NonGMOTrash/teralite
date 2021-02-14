@@ -20,7 +20,8 @@ func attack():
 	add_child(slash) 
 	slash.SOURCE_PATH = self.get_path()
 	attack_cooldown.start()
-
-func _on_brain_action(action, target) -> void:
-	if attack_cooldown.time_left > 0: return
 	animation.play("attack")
+
+func _on_action_lobe_action(action, target) -> void:
+	if attack_cooldown.time_left > 0: return
+	animation.play("warning")

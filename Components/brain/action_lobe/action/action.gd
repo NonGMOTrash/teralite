@@ -1,20 +1,29 @@
 extends Node
 
+onready var brain = get_parent().get_parent()
+onready var cooldown_timer = $cooldown_timer
+
 enum relations { hostile, friendly }
 
 enum tags { attack, defend, support }
 
 export(relations) var target_type = relations.hostile
+# export var use_on_self = false
 export(tags) var tag = tags.attack
 export var custom_tag = ""
 export(int, 0, 200) var best_distance = -1
 export(int, 0, 10) var distance_weight = 1
 export(int, 0, 100) var best_health_percent = -1
-export(int, 0, 10) var health_weight = 1
+export(int, 0, 10) var health_weight = 0
 export var status_effect = "null"
-export(int, 0, 10) var status_weight = 1
+export(int, 0, 10) var status_weight = 0
 export var respond_to_warning = false
-export(int, 0, 10) var warning_weight = 1
+export(int, 0, 10) var warning_weight = 0
+export(float, 0, 1) var default_score = 1
+
+export(float, 0.0, 60.0) var COOLDOWN = 1.2
+export var GLOBAL_COOLDOWN = false
+export(int, 0, 100) var ENERGY_COST = 0
 
 var weight = stepify(rand_range(0, 1), 0.1)
 
@@ -39,22 +48,32 @@ func _ready():
 	
 	if get_parent().actions.size() == 1:
 		weight = 0
+	
+	if COOLDOWN == 0.0:
+		cooldown_timer.queue_free()
+	else:
+		cooldown_timer.wait_time = COOLDOWN
+		cooldown_timer.start()
 
 func get_score(warned = false):
+	if COOLDOWN > 0 and cooldown_timer.time_left > 0:
+		return [0, brain.targets[0]]
+	
 	var scores = []
 	var targets = []
 	
-	for i in get_parent().targets.size():
-		var target = get_parent().targets[i]
-		if global.get_relation(get_parent().get_parent(), target) == target_type:
+	for i in brain.targets.size():
+		var target = brain.targets[i]
+		
+		if global.get_relation(brain.get_parent(), target) == target_type:
 			
 			var stats = target.components["stats"]
 			var score = []
 			
 			# adjusting for distance
 			if distance_weight != 0:
-				var distance = get_parent().global_position.distance_to(target.global_position)
-				var distance_score = return_score(distance, best_distance, get_parent().SIGHT_RANGE)
+				var distance = brain.global_position.distance_to(target.global_position)
+				var distance_score = return_score(distance, best_distance, brain.SIGHT_RANGE)
 				for x in distance_weight: score.append(distance_score)
 			
 			# adjusting for health percent
@@ -85,10 +104,10 @@ func get_score(warned = false):
 			# adjusting for custom score modification
 			score = score_modification(score)
 			
-			if score.size() == 0: scores.append(0)
+			if score.size() == 0: scores.append(default_score)
 			else:
 				var new_score = 0
-				for x in score.size(): new_score += score[i]
+				for num in score: new_score += num
 				new_score /= score.size()
 				# adjusting for weight
 				new_score -= weight

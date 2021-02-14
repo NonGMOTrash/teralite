@@ -170,7 +170,8 @@ func get_relation(me:Entity, other:Entity):
 	var faction_two = other.faction
 	var relation = ""
 	
-	if faction_one == "" or faction_two == "": return relation
+	if faction_one == "" or faction_two == "": 
+		return relation
 	
 	relation = faction_relationships.get(faction_one).get(faction_two)
 	

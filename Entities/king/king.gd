@@ -36,8 +36,7 @@ func _on_stats_health_changed(_type) -> void:
 		# anger
 		cooldown.wait_time = cooldown_time / 1.5
 
-func _on_brain_action(action, target) -> void:
+func _on_action_lobe_action(action, target) -> void:
 	if cooldown.time_left > 0 or animation.is_playing() == true: return
-	brain.weight_actions(action)
 	stored_input = action
 	animation.play("summon")

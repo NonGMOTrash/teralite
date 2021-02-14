@@ -27,6 +27,7 @@ func update_item_info(current_item, extra_info, item_bar_max, item_bar_value, ba
 		iBar.visible = true
 		iBar.max_value = item_bar_max
 		iBar.value = item_bar_value
+		iBar.step = item_bar_max / 100
 	else:
 		iBar.visible = false
 	

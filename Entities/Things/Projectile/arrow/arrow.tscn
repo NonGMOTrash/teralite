@@ -19,6 +19,7 @@ auto_rotate = true
 SPEED = 185
 VELOCITY_ARMOR = 2
 ONHIT_SPEED_MULTIPLIER = 0.45
+MIN_DAM_SPEED = 15
 
 [node name="stats" parent="." index="0"]
 MAX_HEALTH = 3

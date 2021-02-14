@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Entities/chaser/chaser.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/chaser/ultra_chaser/ultra_chaser.gd" type="Script" id=2]
 [ext_resource path="res://Entities/chaser/ultra_chaser/ultra chaser.png" type="Texture" id=3]
-[ext_resource path="res://Components/brain/action/action.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -15,8 +16,8 @@ SLOWDOWN = 600
 TOP_SPEED = 85
 FORCE_MULT = 1.0
 truName = "ultra_chaser"
-dash_cooldown = 1.2
-dash_power = 140
+dash_cooldown = 0.75
+dash_power = 75
 
 [node name="stats" parent="." index="0"]
 MAX_HEALTH = 6
@@ -28,20 +29,20 @@ material = SubResource( 1 )
 texture = ExtResource( 3 )
 
 [node name="brain" parent="." index="7"]
-WANDER_RANGE = 70.0
 SIGHT_RANGE = 120.0
-AUTO_ACT = true
-ACTION_TIME = 1.21
-PATIENCE = 0.25
-ACT_ON_WARNING = true
-tag_favors = {
-"attack": 1.0,
-"defend": 1.0,
-"support": 1.0
+
+[node name="movement_lobe" parent="brain" index="2"]
+general_springs = {
+"friendly": "",
+"hostile": "default_spring",
+"neutral": ""
 }
 
-[node name="dash" parent="brain" index="8" instance=ExtResource( 4 )]
-best_distance = 35
+[node name="action_lobe" parent="brain" index="4" instance=ExtResource( 5 )]
+
+[node name="dash" parent="brain/action_lobe" index="2" instance=ExtResource( 4 )]
+distance_weight = 0
+COOLDOWN = 0.75
 
 [node name="death_spawn" parent="." index="9"]
 spawn_entity = "Ultra_Chaser_Death"
@@ -49,10 +50,6 @@ spawn_entity = "Ultra_Chaser_Death"
 [node name="dash_cooldown" type="Timer" parent="." index="10"]
 one_shot = true
 autostart = true
-
-[node name="healthBar" parent="." index="11"]
-position = Vector2( 0, -9 )
-[connection signal="action" from="brain" to="." method="_on_brain_action"]
 
 [editable path="hitbox"]
 

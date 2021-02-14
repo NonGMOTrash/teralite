@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Entities/chaser/Chaser.gd" type="Script" id=1]
 [ext_resource path="res://Components/health_bar/healthBar.tscn" type="PackedScene" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Components/death_spawn/death_spawn.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Components/hit_spawn/hit_spawn.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=15]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -109,14 +111,17 @@ rotation = 1.5708
 shape = SubResource( 3 )
 
 [node name="brain" parent="." instance=ExtResource( 4 )]
+
+[node name="movement_lobe" parent="brain" instance=ExtResource( 14 )]
 SMART_SLOWDOWN = false
-MEMORY_TIME = 3.0
-AUTO_ACT = false
+MOVEMENT_EFFICIENCY = 8
 general_springs = {
-"friendly": -1,
-"hostile": 0,
-"neutral": -1
+"friendly": "",
+"hostile": "default_spring",
+"neutral": ""
 }
+
+[node name="memory_lobe" parent="brain" instance=ExtResource( 15 )]
 
 [node name="sleeper" parent="." instance=ExtResource( 10 )]
 visible = false

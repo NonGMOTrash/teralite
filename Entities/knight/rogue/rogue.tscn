@@ -40,22 +40,37 @@ scale = Vector2( 0.85, 0.8 )
 [node name="death_spawn" parent="." index="8"]
 spawn_entity = "Rogue_Death"
 
-[node name="brain" parent="." index="10"]
+[node name="brain" parent="." index="9"]
 SIGHT_RANGE = 100.0
-PATIENCE = 0.15
+
+[node name="movement_lobe" parent="brain" index="2"]
+IDLE_TIME = 0.4
+IDLE_OFFSET = 0.1
+WANDER_TIME = 0.6
+WANDER_OFFSET = 0.1
+WANDER_RANGE = 150.0
+MOVEMENT_EFFICIENCY = 22
 general_springs = {
-"friendly": -1,
-"hostile": 8,
-"neutral": -1
+"friendly": "",
+"hostile": "spring",
+"neutral": ""
 }
 
-[node name="attack" parent="brain" index="8"]
+[node name="spring" parent="brain/movement_lobe" index="4"]
+DISTANCE = 8
+
+[node name="memory_lobe" parent="brain" index="3"]
+MEMORY_TIME = 3.0
+
+[node name="action_lobe" parent="brain" index="4"]
+PATIENCE = 0.2
+
+[node name="action" parent="brain/action_lobe" index="2"]
 best_distance = 8
+COOLDOWN = 0.95
 
 [editable path="sprite"]
 
 [editable path="entityPush"]
 
 [editable path="hurtbox"]
-
-[editable path="brain"]

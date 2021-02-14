@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Entities/knight/knight.gd" type="Script" id=1]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=2]
@@ -8,10 +8,14 @@
 [ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Components/brain/action/action.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Components/death_spawn/death_spawn.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Components/hit_spawn/hit_spawn.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Components/health_bar/healthBar.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Components/brain/movement_lobe/spring/spring.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -25,6 +29,22 @@ height = 4.0
 
 [sub_resource type="Animation" id=4]
 resource_name = "attack"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.05, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 2, 0.5 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 0.8 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
 length = 0.6
 step = 0.05
 tracks/0/type = "value"
@@ -107,30 +127,39 @@ spawn_entity = "hit_effect"
 [node name="death_spawn" parent="." instance=ExtResource( 10 )]
 spawn_entity = "Knight_Death"
 
+[node name="brain" parent="." instance=ExtResource( 6 )]
+
+[node name="movement_lobe" parent="brain" instance=ExtResource( 9 )]
+general_springs = {
+"friendly": "",
+"hostile": "spring",
+"neutral": ""
+}
+
+[node name="spring" parent="brain/movement_lobe" instance=ExtResource( 16 )]
+DISTANCE = 14
+
+[node name="memory_lobe" parent="brain" instance=ExtResource( 13 )]
+MEMORY_TIME = 6.5
+
+[node name="action_lobe" parent="brain" instance=ExtResource( 14 )]
+
+[node name="action" parent="brain/action_lobe" instance=ExtResource( 15 )]
+best_distance = 16
+COOLDOWN = 1.05
+GLOBAL_COOLDOWN = true
+
 [node name="healthBar" parent="." instance=ExtResource( 12 )]
 margin_left = -10.3945
 margin_top = -13.3911
 margin_right = 10.6055
 margin_bottom = -9.38938
 
-[node name="brain" parent="." instance=ExtResource( 6 )]
-show_behind_parent = true
-SIGHT_RANGE = 135.0
-general_springs = {
-"friendly": -1,
-"hostile": 16,
-"neutral": -1
-}
-
-[node name="attack" parent="brain" instance=ExtResource( 9 )]
-best_distance = 16
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 4 )
-[connection signal="action" from="brain" to="." method="_on_brain_action"]
+anims/warning = SubResource( 5 )
+[connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 
 [editable path="entityPush"]
 
 [editable path="hurtbox"]
-
-[editable path="brain"]

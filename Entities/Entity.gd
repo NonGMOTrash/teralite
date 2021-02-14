@@ -18,6 +18,11 @@ var marked_enemies = []
 
 var components = { # PROBLEM_NOTE, this doesn't support duplicate components but whatever
 	"brain": null,
+	"movement_lobe": null,
+	"memory_lobe": null,
+	"action_lobe": null,
+	"warning_lobe": null,
+	"communication_lobe": null,
 	"death_spawn": null,
 	"entity_push": null,
 	"health_bar": null,

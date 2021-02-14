@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Entities/archer/archer.gd" type="Script" id=1]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=2]
@@ -10,8 +10,12 @@
 [ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Components/health_bar/healthBar.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Components/brain/action/action.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Components/entity_push/entityPush.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Components/brain/movement_lobe/spring/spring.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -115,23 +119,47 @@ margin_right = 10.5702
 margin_bottom = -9.3891
 
 [node name="brain" parent="." instance=ExtResource( 7 )]
-IDLE_TIME = 0.6
-WANDER_TIME = 0.25
-TOLERANCE = 3
+TOLERANCE = 1
 SIGHT_RANGE = 160.0
-ACTION_TIME = 0.885
+
+[node name="movement_lobe" parent="brain" instance=ExtResource( 11 )]
+IDLE_TIME = 1.1
+WANDER_RANGE = 40.0
+MOVEMENT_EFFICIENCY = 22
 general_springs = {
-"friendly": -1,
-"hostile": 50,
-"neutral": -1
+"friendly": "",
+"hostile": "space",
+"neutral": ""
+}
+entity_springs = {
+"knight": "follow"
 }
 
-[node name="action" parent="brain" instance=ExtResource( 11 )]
+[node name="space" parent="brain/movement_lobe" instance=ExtResource( 14 )]
+DISTANCE = 40
+
+[node name="follow" parent="brain/movement_lobe" instance=ExtResource( 14 )]
+DEADZONE = 32
+USE_DEADZONE = true
+
+[node name="memory_lobe" parent="brain" instance=ExtResource( 15 )]
+MEMORY_TIME = 6.5
+
+[node name="action_lobe" parent="brain" instance=ExtResource( 13 )]
+PATIENCE = 0.55
+ACTION_WEIGHTING = 0.0
+ACTION_DEWEIGHTING = 0.0
+
+[node name="action" parent="brain/action_lobe" instance=ExtResource( 16 )]
 best_distance = 50
+distance_weight = 4
+health_weight = 1
+COOLDOWN = 1.0
+GLOBAL_COOLDOWN = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 4 )
-[connection signal="action" from="brain" to="." method="_on_brain_action"]
+[connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 
 [editable path="sprite"]
 

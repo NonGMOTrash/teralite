@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Components/brain/action_lobe/action_lobe.gd" type="Script" id=1]
+
+[node name="action_lobe" type="Node"]
+script = ExtResource( 1 )
+
+[node name="action_timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="energy_timer" type="Timer" parent="."]
+[connection signal="tree_entered" from="." to="." method="_on_action_lobe_tree_entered"]
+[connection signal="timeout" from="action_timer" to="." method="_on_action_timer_timeout"]
+[connection signal="timeout" from="energy_timer" to="." method="_on_energy_timer_timeout"]
