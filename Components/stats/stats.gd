@@ -41,7 +41,7 @@ func _ready():
 		HEALTH = MAX_HEALTH
 	armor = DEFENCE
 
-func change_health(value, true_value, type: String = "hurt"):
+func change_health(value, true_value, type: String = "hurt") -> String:
 	BONUS_HEALTH = clamp(BONUS_HEALTH, 0, 99)
 	var amount = value
 	var true_amount = true_value
@@ -52,7 +52,7 @@ func change_health(value, true_value, type: String = "hurt"):
 	
 	if sum < 0: 
 		# if is an attack:
-		#amount = move_toward(amount, 0, DEFENCE) # account for defence here OLD
+		# amount = move_toward(amount, 0, DEFENCE) # account for defence here OLD
 		# NEW defence calculation
 		
 		while amount != 0 and armor > 0:
@@ -81,8 +81,9 @@ func change_health(value, true_value, type: String = "hurt"):
 			sum -= 1
 	elif sum == 0: # hit by a 0 damage attack
 		final_type = ""
+		# PROBLEM_NOTE, maybe i should make the type here block
 	else:
-		#not an attack (i.e. healing):
+		# not an attack
 		HEALTH += value
 		HEALTH = clamp(HEALTH, 0, MAX_HEALTH)
 		BONUS_HEALTH += true_value
@@ -90,11 +91,18 @@ func change_health(value, true_value, type: String = "hurt"):
 	
 	if HEALTH <= 0:
 		get_parent().death()
-		return
+		return "killed"
 	
-	if get_parent().truName == "player": global.emit_signal("update_health")
+	# PROBLEM_NOTE: would be better to put this in the player script instead of here
+	if get_parent().truName == "player": 
+		global.emit_signal("update_health")
+	
 	if final_type != "":
 		emit_signal("health_changed", final_type)
+		return final_type
+	else:
+		return ""
+		# PROBLEM_NOTE: should change "" -> "null"
 
 func add_status_effect(new_status_effect:String, duration=2.5, level=1.0):
 	var status_effect = new_status_effect

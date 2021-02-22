@@ -8,6 +8,9 @@ var active = true
 
 var brain
 
+signal slept # << PROBLEM_NOTE: never emitted
+signal awoken
+
 func _on_sleeper_tree_entered() -> void:
 	get_parent().components["sleeper"] = self
 
@@ -26,6 +29,8 @@ func set_activation(activation: bool):
 	if sleep_timer.is_inside_tree() == false: return
 	
 	if activation == true: 
+		if active != true:
+			emit_signal("awoken")
 		sleep_timer.stop()
 		active = true
 		get_parent().set_physics_process(true)

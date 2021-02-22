@@ -21,7 +21,7 @@ func _ready() -> void:
 	memory_timer.wait_time = MEMORY_TIME
 	
 	if brain.get_parent().components.has("hurtbox"):
-		brain.get_parent().components["hurtbox"].connect("triggered", self, "got_hit")
+		brain.get_parent().components["hurtbox"].connect("got_hit", self, "got_hit")
 
 func add_memory(pos: Vector2, spring: Node, id: int):
 	if brain.get_parent().is_queued_for_deletion() == true: return
@@ -72,7 +72,7 @@ func _on_memory_timer_timeout() -> void:
 	else:
 		memory_timer.wait_time = MEMORY_TIME
 
-func got_hit(body):
+func got_hit(body, _type):
 	var source = body.get_parent()
 	if source == self or brain.targets.has(source): return
 	if source is Melee or source is Projectile: source = source.SOURCE

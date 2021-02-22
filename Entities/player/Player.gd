@@ -1,5 +1,7 @@
 extends Entity
 
+const OW = preload("res://Misc/damage.wav")
+
 var perfect = true
 
 export var dash_strength = 300
@@ -33,6 +35,7 @@ onready var stats = $stats
 onready var animation = $AnimationPlayer
 onready var dash_cooldown = $dash_cooldown
 onready var health_bar = $healthBar
+onready var sound_player = $sound_player
 
 # basic funcions -------------------------------------------------------------------------------------------
 func _ready():
@@ -102,8 +105,6 @@ func _input(_event: InputEvent) -> void:
 			emit_signal("swapped_item", inventory[global.selection])
 			global.update_cursor()
 
-# other functions -------------------------------------------------------------------------------------------	
-
 func swapped_item(new_item):
 	if new_item == null:
 		global.emit_signal("update_item_info", # set a condition to null to hide it
@@ -168,6 +169,14 @@ func death():
 
 func _on_stats_health_changed(type) -> void:
 	if type != "heal" and type != "blocked": 
+		global.nodes["camera"].shake(5, 15, 0.2)
+		OS.delay_msec(10)
+		
+		# PROBLEM_NOTE: this is a terrible way to do the sound
+		var sfx = Sound.new()
+		sfx.stream = OW
+		components["sound_player"].add_sound(sfx)
+		
 		perfect = false
 		if global.settings["auto_restart"] == true: 
 			death()

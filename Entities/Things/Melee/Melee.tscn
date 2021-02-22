@@ -13,9 +13,6 @@ auto_rotate = true
 [node name="Sprite" parent="." index="1"]
 rotation = 0.0
 
-[node name="hurtbox" parent="." index="2"]
-iTime_multiplier = 1.0
-
 [editable path="hurtbox"]
 
 [editable path="hitbox"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Components/sound_player/sound/sound.gd" type="Script" id=1]
+
+[node name="sound" type="AudioStreamPlayer2D"]
+autoplay = true
+attenuation = 2.67943
+script = ExtResource( 1 )

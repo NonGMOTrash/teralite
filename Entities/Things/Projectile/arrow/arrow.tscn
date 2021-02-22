@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Entities/Things/Projectile/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Things/Projectile/arrow/arrow.png" type="Texture" id=2]
+[ext_resource path="res://Misc/arrow_hit.wav" type="AudioStream" id=3]
+[ext_resource path="res://Misc/bow_shoot.wav" type="AudioStream" id=4]
+[ext_resource path="res://Misc/damage.wav" type="AudioStream" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 2.19433
@@ -13,13 +16,19 @@ radius = 2.0
 [node name="arrow" instance=ExtResource( 1 )]
 rotation = 0.0
 SLOWDOWN = 150
-ONHIT_SELF_DAMAGE = 3
+ONHIT_SELF_DAMAGE = 6
 RANGE = 400
 auto_rotate = true
+SPAWN_SOUND = ExtResource( 4 )
+HIT_SOUND = ExtResource( 5 )
+KILL_SOUND = ExtResource( 5 )
+BLOCKED_SOUND = ExtResource( 5 )
+COLLIDE_SOUND = ExtResource( 3 )
 SPEED = 185
 VELOCITY_ARMOR = 2
 ONHIT_SPEED_MULTIPLIER = 0.45
 MIN_DAM_SPEED = 15
+RECOIL = 20
 
 [node name="stats" parent="." index="0"]
 MAX_HEALTH = 3

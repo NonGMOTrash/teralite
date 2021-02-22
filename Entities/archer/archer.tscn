@@ -131,9 +131,6 @@ general_springs = {
 "hostile": "space",
 "neutral": ""
 }
-entity_springs = {
-"knight": "follow"
-}
 
 [node name="space" parent="brain/movement_lobe" instance=ExtResource( 14 )]
 DISTANCE = 40

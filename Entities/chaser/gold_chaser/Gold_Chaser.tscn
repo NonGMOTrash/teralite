@@ -22,7 +22,6 @@ DAMAGE = 3
 [node name="sprite" parent="." index="1"]
 material = SubResource( 1 )
 texture = ExtResource( 2 )
-frame = 1
 
 [node name="shadow" parent="sprite" index="0"]
 position = Vector2( 0, 1 )
@@ -47,24 +46,18 @@ visible = true
 [node name="CollisionShape2D" parent="entityPush" index="0"]
 position = Vector2( 0, 2.05111 )
 
-[node name="brain" parent="." index="7"]
+[node name="movement_lobe" parent="brain" index="2"]
 general_springs = {
-"friendly": -1,
-"hostile": 0,
-"neutral": -1
+"friendly": "",
+"hostile": "default_spring",
+"neutral": ""
 }
-
-[node name="warning" parent="brain" index="6"]
-visible = false
 
 [node name="death_spawn" parent="." index="9"]
 spawn_entity = "Gold_Heart"
 
 [node name="death_spawn2" parent="." index="10" instance=ExtResource( 4 )]
 spawn_entity = "Gold_Chaser_Death"
-
-[node name="healthBar" parent="." index="11"]
-position = Vector2( 0, -8 )
 
 [editable path="sprite"]
 

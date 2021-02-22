@@ -9,13 +9,12 @@ export var dash_power = 5000
 func _ready():
 	cooldown.wait_time = dash_cooldown
 
-func _on_brain_action(action, target) -> void:
+func _on_action_lobe_action(action, target) -> void:
 	if cooldown.time_left > 0: return
-	brain.weight_actions(action)
 	
 	var dash_direction = Vector2.ZERO
 	
-	if global_position.distance_to(target.global_position) > 50: 
+	if global_position.distance_to(target.global_position) > 25: 
 		dash_direction = global_position.direction_to(target.global_position)
 	else:
 		# PROBLEM_NOTE: might be a better way to do this

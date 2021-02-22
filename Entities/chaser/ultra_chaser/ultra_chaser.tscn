@@ -22,7 +22,6 @@ dash_power = 75
 [node name="stats" parent="." index="0"]
 MAX_HEALTH = 6
 HEALTH = 6
-DAMAGE = 2
 
 [node name="sprite" parent="." index="1"]
 material = SubResource( 1 )
@@ -50,6 +49,7 @@ spawn_entity = "Ultra_Chaser_Death"
 [node name="dash_cooldown" type="Timer" parent="." index="10"]
 one_shot = true
 autostart = true
+[connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 
 [editable path="hitbox"]
 

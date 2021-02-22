@@ -61,9 +61,11 @@ tracks/3/keys = {
 [node name="item_pickup_effect" instance=ExtResource( 2 )]
 
 [node name="Sprite" parent="." index="0"]
-scale = Vector2( 0.6, 0.6 )
+self_modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 1 )
 hframes = 5
+frame = 4
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "animation"

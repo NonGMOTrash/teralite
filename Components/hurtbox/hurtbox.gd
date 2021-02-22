@@ -9,7 +9,7 @@ var entity
 var the_area = null
 var the_area_used = false
 
-signal triggered(body)
+signal got_hit(by_area, type)
 
 func _on_hurtbox_tree_entered() -> void:
 	get_parent().components["hurtbox"] = self
@@ -38,7 +38,6 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if the_area_used == true: return
 	
 	the_area_used = true
-	emit_signal("triggered", area)
 	
 	# applies damage
 	
@@ -46,7 +45,14 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.DAMAGE + area.TRUE_DAMAGE < 0: type = "heal"
 	if area.DAM_TYPE != "null": 
 		type = area.DAM_TYPE
-	entity.components["stats"].change_health(-(area.DAMAGE), -(area.TRUE_DAMAGE), type)
+	
+	var result_type = entity.components["stats"].change_health(-(area.DAMAGE), -(area.TRUE_DAMAGE), type)
+	
+	# signals
+	
+	if result_type != "":
+		emit_signal("got_hit", area, result_type)
+	area.emit_signal("hit", self, result_type)
 	
 	# applies status effect
 	
@@ -65,8 +71,8 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		entity.apply_force((source_pos.direction_to(global_position) * area.KNOCKBACK))
 	
 	if (
-		area.get_name() == "hitbox" && 
-		monitorable == true #&& 
+		area.get_name() == "hitbox" and
+		monitorable == true #and
 		#global.get_relation(get_parent(), area_entity) != "friendly"
 		):
 			# triggers invincibility

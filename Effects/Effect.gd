@@ -26,8 +26,15 @@ func _ready():
 		elif sprite.texture == null:
 			push_error("spriter was not given a texture")
 			sprite.texture = default_sprite
+	
+	animation_player.connect("animation_finished", self, "delete_self")
 
-# old code for the speed change based on duration value
+# have to do this because animation_finished has 1 argument and queue_free() only takes 0 arguments
+func delete_self(_anim_name: String):
+	queue_free()
+
+# old code for the speed change based on duration value:
+
 # if abs(effect_duration) < 1.0:
 #	animation_player.playback_speed = 1.0 + abs(effect_duration)
 # elif abs(effect_duration) > 1.0:

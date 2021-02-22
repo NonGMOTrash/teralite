@@ -44,6 +44,9 @@ func _ready() -> void:
 	movement_timer.wait_time = 1.0 / MOVEMENT_EFFICIENCY
 	movement_timer.start()
 	
+	if brain.get_parent().components["sleeper"] != null:
+		brain.get_parent().components["sleeper"].connect("awoken", self, "awoken")
+	
 	# setting springs (replacing strings with paths to the spring node)
 	for child in get_children():
 		if child is Node:
@@ -78,8 +81,10 @@ func _on_idle_timer_timeout() -> void:
 			
 			# PROBLEM_NOTE: the game crashes with no error message without this. strangely, putting it
 			# anywhere in this function before this line will also stop the error, super weird
-			emit_signal("debug")
+			# actually, this still causes a (non-fatal) error sometimes. very strange
+			debug()
 			yield(self, "debug")
+
 		
 		brain.get_parent().input_vector = global_position.direction_to(wander_path[1]).normalized()
 	
@@ -89,7 +94,7 @@ func _on_idle_timer_timeout() -> void:
 			brain.get_parent().input_vector = global_position.direction_to(guard_pos).normalized()
 			guard_path = null
 		else:
-			if guard_path == null:
+			if guard_path == null or guard_path.size() < 2:
 				guard_path = get_tree().current_scene.pathfind(global_position, guard_pos)
 			elif brain.los_check(guard_path[0]) == false:
 				guard_path = get_tree().current_scene.pathfind(global_position, guard_pos)
@@ -109,6 +114,15 @@ func _on_wander_timer_timeout() -> void:
 	if not global_position.distance_to(guard_pos) > WANDER_RANGE*1.5: 
 		brain.get_parent().input_vector = Vector2.ZERO
 	idle_timer.start()
+
+func awoken():
+	match int(rand_range(0, 1)):
+		0:
+			idle_timer.start()
+			wander_timer.stop()
+		1:
+			idle_timer.stop()
+			wander_timer.start()
 
 func get_spring(target:Entity):
 	var spring = null
@@ -136,6 +150,7 @@ func early_slowdown(destination: Vector2): # PROBLEM_NOTE: clean this up
 		else:
 			return false
 
+# PROBLEM_NOTE: i think this is the single most intensive function in the whole game so maybe optimize it
 func _on_movement_timer_timeout() -> void:
 	var intention = Vector2.ZERO
 	var trigger_anti_stuck = true
@@ -240,6 +255,9 @@ func _on_movement_timer_timeout() -> void:
 					if path == null or path.size() < 2 or brain.los_check(path[0]) == null:
 						path = get_tree().current_scene.pathfind(global_position, best_position)
 					
+					if path.size() < 2:
+						continue
+					
 					best_position_paths[i] = path
 					
 					if spring.INVERT_DISTANCE == false:
@@ -259,4 +277,6 @@ func _on_movement_timer_timeout() -> void:
 	
 	brain.get_parent().input_vector = intention
 
-func debug(): emit_signal("debug")
+func debug(): 
+	if brain.get_parent().is_queued_for_deletion() == false:
+		emit_signal("debug")

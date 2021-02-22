@@ -32,7 +32,8 @@ var components = { # PROBLEM_NOTE, this doesn't support duplicate components but
 	"player_controlled": null,
 	"sleeper": null,
 	"entity_sprite": null,
-	"stats": null
+	"stats": null,
+	"sound_player": null,
 }
 
 signal death()
@@ -40,7 +41,9 @@ signal death()
 func _ready():
 	global_position.y -= 0.01
 	# this is to solve ysort issues. it's a little jank but it works
-	# I think it has sometihng to do with the sorting only being triggered when the y position changes
+	# i think the sorting is only triggered when the y position changes
+	
+	# PROBLEM_NOTE: maybe do global_position.y += 0.01, might break things though
 
 func _physics_process(delta): # physics logic
 	marked_enemies = []
@@ -57,7 +60,6 @@ func _physics_process(delta): # physics logic
 	velocity = move_and_slide(velocity)
 
 func apply_force(force:Vector2):
-	var delta = get_physics_process_delta_time()
 	velocity += force * FORCE_MULT
 
 func death():

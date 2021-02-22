@@ -17,3 +17,12 @@ script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="tween" type="Tween" parent="."]
+
+[node name="frequency" type="Timer" parent="."]
+
+[node name="duration" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="frequency" to="." method="_on_frequency_timeout"]
+[connection signal="timeout" from="duration" to="." method="_on_duration_timeout"]

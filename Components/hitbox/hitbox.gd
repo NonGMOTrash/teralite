@@ -14,6 +14,8 @@ export var TEAM_ATTACK = true
 onready var timer = $Timer
 var stats
 
+signal hit(area, type)
+
 func _on_hitbox_tree_entered() -> void:
 	get_parent().components["hitbox"] = self
 

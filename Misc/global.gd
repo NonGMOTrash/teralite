@@ -11,6 +11,7 @@ var cam_zoom_default = Vector2(3, 1) # PROBLEM_NOTE: maybe this should be in the
 var cam_zoom = cam_zoom_default #X = favors player, Y = favors mouse
 var previous_scene = null # PROBLEM_NOTE i don't think this is used
 var player_hub_pos = Vector2(0, 0)
+var last_ambiance = 0 # PROBLEM_NOTE: this isn't used
 
 # data vars
 var stars = 0
@@ -27,6 +28,7 @@ var save_path = SAVE_DIR + save_name
 var saves = []
 
 var nodes = {
+	"level": null,
 	"player": null,
 	"canvaslayer": null,
 	"health_ui": null,
@@ -146,6 +148,7 @@ const CURSOR_EMPTY = preload("res://HUD and Menus/CURSOR_EMPTY.png")
 const CURSOR_SWORD = preload("res://HUD and Menus/CURSOR_SWORD.png")
 const CURSOR_PISTOL = preload("res://HUD and Menus/CURSOR_PISTOL.png")
 const CURSOR_BOW = preload("res://HUD and Menus/CURSOR_BOW.png")
+# PROBLEM_NOTE: not sure if i should do this ^
 
 func _ready(): 
 	seed(the_seed.hash())
@@ -162,7 +165,6 @@ func _ready():
 	
 	push_warning("quality_of_this_game == -999")
 	print("===============")
-	
 
 # global functions
 func get_relation(me:Entity, other:Entity):

@@ -200,7 +200,6 @@ func _on_sight_body_entered(body: Node) -> void:
 func _on_sight_body_exited(body: Node) -> void:
 	remove_target(body)
 
-# PROBLEM_NOTE: i think this is the single most intensive function in the whole game so maybe optimize it
 func _on_think_timer_timeout() -> void:
 	think_timer.wait_time = THINK_TIME + rand_range(-0.1, 0.1)
 	if get_parent().is_physics_processing() == false: return

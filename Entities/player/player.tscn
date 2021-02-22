@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Components/death_spawn/death_spawn.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/player/Player.gd" type="Script" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Components/entity_push/entityPush.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Components/hit_spawn/hit_spawn.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/player/player.png" type="Texture" id=10]
+[ext_resource path="res://Misc/footstep_grass.wav" type="AudioStream" id=11]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -22,7 +24,7 @@ radius = 3.5
 
 [sub_resource type="CircleShape2D" id=4]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "dash"
 length = 0.35
 step = 0.02
@@ -51,9 +53,10 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.12, 0.88 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.6
 loop = true
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:frame")
 tracks/0/interp = 1
@@ -77,6 +80,24 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.05, 0.95 ), Vector2( 0.95, 1.05 ), Vector2( 1.05, 0.95 ), Vector2( 0.95, 1.05 ) ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 11 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 11 )
+} ],
+"times": PoolRealArray( 0, 0.31 )
 }
 
 [sub_resource type="Animation" id=7]
@@ -155,8 +176,8 @@ visible = false
 shape = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/dash = SubResource( 6 )
-anims/run = SubResource( 5 )
+anims/dash = SubResource( 5 )
+anims/run = SubResource( 6 )
 anims/stand = SubResource( 7 )
 
 [node name="dash_cooldown" type="Timer" parent="."]
@@ -168,6 +189,12 @@ spawn_entity = "hit_effect"
 
 [node name="death_spawn" parent="." instance=ExtResource( 1 )]
 spawn_entity = "Hit_Effect"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+
+[node name="sound_player" parent="." instance=ExtResource( 12 )]
+FREE_WHEN_EMPTY = false
 [connection signal="health_changed" from="stats" to="." method="_on_stats_health_changed"]
 
 [editable path="hurtbox"]

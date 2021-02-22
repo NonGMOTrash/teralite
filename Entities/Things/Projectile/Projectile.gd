@@ -6,6 +6,7 @@ export var SPEED = 250
 export var VELOCITY_ARMOR = 1
 export var ONHIT_SPEED_MULTIPLIER = 0.8
 export var MIN_DAM_SPEED = 30
+export var RECOIL = 50
 
 var has_left_src = false
 var original_force_mult
@@ -15,6 +16,10 @@ func _init():
 	visible = false
 	original_force_mult = FORCE_MULT
 	FORCE_MULT = 0.0
+
+func _ready():
+	if SOURCE != null:
+		SOURCE.apply_force(target_pos.direction_to(SOURCE.global_position).normalized() * RECOIL)
 
 func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	# base Thing.gd setup
@@ -49,15 +54,9 @@ func death():
 	if components["hitbox"] != null: 
 		hitbox.queue_free()
 	
-	if sprite_persist == false:
+	if death_free == true:
 		queue_free()
 		
-
-# signal functions -------------------------------------------------------------------------------------------
-func _on_collision_body_entered(body: Node) -> void:
-	if visible == false: return
-	if body.get_name() == "WorldTiles":
-		queue_free()
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if visible == false: return

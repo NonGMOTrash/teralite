@@ -33,7 +33,7 @@ func update_bar(_type) -> void:
 	
 	# health
 	max_value = stats.MAX_HEALTH
-	step = 9.5 * (max_value / 100)
+	#step = 9.5 * (max_value / 100)
 	value = stats.HEALTH
 	tint_progress = PROGRESS_GRAD.interpolate(ratio)
 	
@@ -42,7 +42,7 @@ func update_bar(_type) -> void:
 		bonus.visible = true
 		if stats.BONUS_HEALTH > bonus.max_value:
 			bonus.max_value = stats.BONUS_HEALTH
-		bonus.step = 9.5 * (bonus.max_value / 100)
+		#bonus.step = 9.5 * (bonus.max_value / 100)
 		bonus.value = stats.BONUS_HEALTH
 		bonus.tint_progress = BONUS_GRAD.interpolate(bonus.ratio)
 	else:
@@ -52,7 +52,7 @@ func update_bar(_type) -> void:
 	if stats.DEFENCE > 0:
 		armor.visible = true
 		armor.max_value = stats.DEFENCE
-		armor.step = 9.5 * (armor.max_value / 100)
+		#armor.step = 9.5 * (armor.max_value / 100)
 		armor.value = stats.armor
 		armor.tint_progress = ARMOR_GRAD.interpolate(armor.ratio)
 	else:

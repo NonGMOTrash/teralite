@@ -1,5 +1,8 @@
 extends Node2D
 
+enum AMBIANCE_TYPES {NONE, FOREST}
+export(AMBIANCE_TYPES) var AMBIANCE = AMBIANCE_TYPES.FOREST
+
 const LEVEL_TYPE = 1
 
 func _ready() -> void:
@@ -13,3 +16,35 @@ func _ready() -> void:
 		return
 	if global.player_hub_pos == null or global.player_hub_pos == Vector2.ZERO: return
 	player.global_position = global.player_hub_pos
+	
+	global.nodes["level"] = self
+	global.nodes["canvaslayer"] = $CanvasLayer
+	global.nodes["ysort"] = $YSort
+	
+	if global.last_ambiance == AMBIANCE: return
+	else: 
+		# PROBLEM_NOTE: not sure why i have to do this instead of find_node(), maybe a bug with godot
+		# (this same thing is also done in level.gd)
+		var old_ambiance
+		for global_sound in global.get_children():
+			if global_sound.name == "ambiance":
+				old_ambiance = global_sound
+				break
+		
+		if old_ambiance != null: 
+			old_ambiance.free()
+	
+	var ambiance = Global_Sound.new()
+	ambiance.volume_db = 0.2
+	ambiance.name = "ambiance"
+	ambiance.SCENE_PERSIST = true
+	ambiance.autoplay = true
+	ambiance.pause_mode = PAUSE_MODE_PROCESS
+	ambiance.MODE = Sound.MODES.REPEATING
+	
+	match AMBIANCE:
+		AMBIANCE_TYPES.FOREST: ambiance.stream = load("res://Levels/level/forest_ambiance.wav")
+		_: return
+	
+	global.add_child(ambiance)
+	global.nodes["ambiance"] = ambiance

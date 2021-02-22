@@ -1,5 +1,15 @@
 extends Camera2D
 
+const DEFAULT_TRANS = Tween.TRANS_ELASTIC
+const DEFAULT_EASE = Tween.EASE_OUT_IN
+
+onready var tween = $tween 
+onready var frequency_timer = $frequency
+onready var duration_timer = $duration
+
+var power = 0
+var priority = -99
+
 func _ready():
 	global.nodes["camera"] = self
 	
@@ -33,3 +43,34 @@ func _physics_process(_delta: float) -> void:
 	sum /= array.size()
 	
 	global_position = sum
+
+func shake(power=10, frequency=10, duration=0.2):
+	if not (power * frequency * duration) > priority: 
+		return
+	
+	priority = power * frequency * duration
+	self.power = power
+	
+	duration_timer.wait_time = duration
+	frequency_timer.wait_time = 1.0 / frequency
+	duration_timer.start()
+	frequency_timer.start()
+
+func single_shake(TRANS = DEFAULT_TRANS, EASE = DEFAULT_EASE):
+	var final_offset = Vector2( rand_range(-power,power) , rand_range(-power,power) )
+	tween.interpolate_property(self, "offset", offset, final_offset, frequency_timer.wait_time, 
+			TRANS, EASE)
+	tween.start()
+
+func stop_shaking(TRANS = DEFAULT_TRANS, EASE = DEFAULT_EASE):
+	tween.interpolate_property(self, "offset", offset, Vector2.ZERO, frequency_timer.wait_time, 
+			TRANS, EASE)
+	tween.start()
+	priority = -99
+
+func _on_frequency_timeout() -> void:
+	single_shake()
+
+func _on_duration_timeout() -> void:
+	frequency_timer.stop()
+	stop_shaking()

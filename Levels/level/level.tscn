@@ -29,10 +29,6 @@ texture = ExtResource( 3 )
 
 [node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 5 )]
 show_behind_parent = true
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 319.0
-margin_bottom = 32.0
 
 [node name="itemBar" parent="CanvasLayer" instance=ExtResource( 6 )]
 
