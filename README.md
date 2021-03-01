@@ -33,7 +33,7 @@ thanks for downloading
 
 # credits
 
-**developer:**
+### developer:
 
 NonGMOTrash
 
@@ -90,20 +90,19 @@ addtionally,
 - pistol_fire: "9mm gunside" by cedarstudios ( https://freesound.org/people/cedarstudios/sounds/148839/ ) licensed under CC0
 - pistol_pickup: "Pistol Cock" by nebulasnails ( https://freesound.org/people/nebulasnails/sounds/405538/ ) licensed under CC0
 - pistol_reload: "AR15 pistol load and chamber" by michorvath ( https://freesound.org/people/michorvath/sounds/427599/ ) licensed under CC0
-- damage: "Hit 4 8 Bit" by Mrthenoronha ( https://freesound.org/people/Mrthenoronha/sounds/507702/ ) licensed under CC BY-NC
+- damage: "Hit 4 8 Bit" by Mrthenoronha ( https://freesound.org/people/Mrthenoronha/sounds/507702/ ) licensed under CC BY-NC 3.0
 - bow_shoot: "bow01" by Erdie ( https://freesound.org/people/Erdie/sounds/65733/ ) licensed under CC BY 3.0
 - arrow_hit: "Arrow strike" by plantmonkey ( https://freesound.org/people/plantmonkey/sounds/410751/ ) licensed under CC0
 - bow_drawn: "Regular Arrow Shot with rattle slow draw" by brendan89 ( https://freesound.org/people/brendan89/sounds/321554/ ) licensed under CC BY 3.0
 - menu_hover: "CLICK_143" by Jaszunio15 ( https://freesound.org/people/Jaszunio15/sounds/421475/ ) licensed under CC0
 - menu_click: "Wooden Hover" by BenjaminNelan ( https://freesound.org/people/BenjaminNelan/sounds/321082/ ) licensed under CC0
-- menu_pause: "Access Denied" by suntemple ( https://freesound.org/people/suntemple/sounds/249300/ ) licensed under CC0
+- menu_pause + menu_unpause: "Access Denied" by suntemple ( https://freesound.org/people/suntemple/sounds/249300/ ) licensed under CC0
+- spike_rise: "Spiketrap" by Deathscyp ( https://freesound.org/people/Deathscyp/sounds/443806/ ) licensed under CC0
 
 # license information
 
 note that this is not the license for the engine, but rather the game itself (although they both use the MIT license)
 
-    MIT License
-    
     Copyright (c) 2021 NonGMOTrash
     
     Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -124,10 +123,17 @@ note that this is not the license for the engine, but rather the game itself (al
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 
-this does mean you could create mods if you *really* like this dumb little game
-the github is here: (private for now until offical release)
+this does mean you could create mods if you *really* like this dumb game  
+the github is here: (private for now until offical release) 
+good luck working with my terrible game architecture though 
 
 # Patchnotes
+
+### Beta 2.10 (in development)
+
+- added weapon equip sounds for the sword and pistol
+- fixed ultra chaser dashing (it's been broken for awhile, whoops) and added an animation
+- footstep sounds are no longer cut off when you stop walking
 
 ### Beta 2.9 (2/21/2021)
 
@@ -313,13 +319,13 @@ the github is here: (private for now until offical release)
 - 3 levels
 - 3 items (sword, pistol, white armor)
 
-#### how the version numbering works
+### how the version numbering works
 i don't use semantic versioning because i suck    
 instead, its: 
 
 *Phase* **content**.**patch** *Hotfix*  
 
 *Phase* is Alpha or Beta. if the version is after the official release, *Phase* is ommited  
-**content** is only incremented for big content updates   
+**content** is only incremented for big content updates (although it starts at 1)   
 **patch** is incremented for minor polish updates   
-*Hotfix* isn't displayed they're actually is a hotfix for that version. if there's multiple hotfixes for a version, a counter is added (i.e. Hotfix #2)
+*Hotfix* isn't displayed unless there's a hotfix for that version. if there's multiple hotfixes for a version, a counter is added (i.e. Hotfix #2)
