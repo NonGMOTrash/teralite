@@ -1,7 +1,5 @@
 # project epsilon
 
-current version: **Kings & Castles: Beta 2.9**
-
 please don't share these files, i wanna keep this game sorta secret for now. if you violate this policy... i will do abesolutely nothing. 
 
 you can use an old save from a 1.X version, but levels have been changed and reordered so I recomend you just start over with a new save (besides, you'll only lose like 5 minutes of progress lol)
@@ -35,19 +33,19 @@ thanks for downloading
 
 # credits
 
-**developer:**
+### developer:
 
 NonGMOTrash
 
 ### play testers:
 
-you!
-will add all the people later
-(you'll be in the credits of the game itself to)
+you!  
+will add all the people later   
+(you'll be in the credits of the game itself to)    
 
 ### engine:
 
-created with Godot Engine, it's license is as follows:
+project epsilon created with the Godot Engine, it's license is as follows:
 
     Copyright (c) 2007-2020 Juan Linietsky, Ariel Manzur. Copyright (c) 2014-2020 Godot Engine contributors.
     
@@ -75,6 +73,8 @@ addtionally,
 
 ### sound credits:
 
+(keep in mind, most of these sounds are currently unused)
+
 - sound: "soundname" by creator ( link ) licensed under CC
 - sword_hit: "slashkut" by Abyssmal ( https://freesound.org/people/Abyssmal/sounds/35213/ ) licensed under CC0
 - sword_clank: "sword slash" by ethanchase7744 ( https://freesound.org/people/ethanchase7744/sounds/441666/ ) licensed under CC0
@@ -90,20 +90,19 @@ addtionally,
 - pistol_fire: "9mm gunside" by cedarstudios ( https://freesound.org/people/cedarstudios/sounds/148839/ ) licensed under CC0
 - pistol_pickup: "Pistol Cock" by nebulasnails ( https://freesound.org/people/nebulasnails/sounds/405538/ ) licensed under CC0
 - pistol_reload: "AR15 pistol load and chamber" by michorvath ( https://freesound.org/people/michorvath/sounds/427599/ ) licensed under CC0
-- damage: "Hit 4 8 Bit" by Mrthenoronha ( https://freesound.org/people/Mrthenoronha/sounds/507702/ ) licensed under CC BY-NC
+- damage: "Hit 4 8 Bit" by Mrthenoronha ( https://freesound.org/people/Mrthenoronha/sounds/507702/ ) licensed under CC BY-NC 3.0
 - bow_shoot: "bow01" by Erdie ( https://freesound.org/people/Erdie/sounds/65733/ ) licensed under CC BY 3.0
 - arrow_hit: "Arrow strike" by plantmonkey ( https://freesound.org/people/plantmonkey/sounds/410751/ ) licensed under CC0
 - bow_drawn: "Regular Arrow Shot with rattle slow draw" by brendan89 ( https://freesound.org/people/brendan89/sounds/321554/ ) licensed under CC BY 3.0
 - menu_hover: "CLICK_143" by Jaszunio15 ( https://freesound.org/people/Jaszunio15/sounds/421475/ ) licensed under CC0
 - menu_click: "Wooden Hover" by BenjaminNelan ( https://freesound.org/people/BenjaminNelan/sounds/321082/ ) licensed under CC0
-- menu_pause: "Access Denied" by suntemple ( https://freesound.org/people/suntemple/sounds/249300/ ) licensed under CC0
+- menu_pause + menu_unpause: "Access Denied" by suntemple ( https://freesound.org/people/suntemple/sounds/249300/ ) licensed under CC0
+- spike_rise: "Spiketrap" by Deathscyp ( https://freesound.org/people/Deathscyp/sounds/443806/ ) licensed under CC0
 
 # license information
 
 note that this is not the license for the engine, but rather the game itself (although they both use the MIT license)
 
-    MIT License
-    
     Copyright (c) 2021 NonGMOTrash
     
     Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -124,79 +123,113 @@ note that this is not the license for the engine, but rather the game itself (al
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 
-this does mean you could create mods if you *really* like this dumb little game
-the github is here: (private for now until offical release)
+this does mean you could create mods if you *really* like this dumb game  
+the github is here: (private for now until offical release) 
+good luck working with my terrible game architecture though 
 
 # Patchnotes
 
-## Beta 1.0: (8/16/2020)
+### Beta 2.10 (in development)
 
-- initial soft release
-- 3 enemies (normal, brute, and gold chasers)
-- 3 levels
-- 3 items (sword, pistol, white armor)
+- added weapon equip sounds for the sword and pistol
+- fixed ultra chaser dashing (it's been broken for awhile, whoops) and added an animation
+- footstep sounds are no longer cut off when you stop walking
 
-### Beta 1.1  (8/23/2020)
+### Beta 2.9 (2/21/2021)
 
-- major improvements to the sword, it is much less janky now
-- fixed a bug with the enemy AI that would severely stunt their reaction time
-- added 2 more levels
-- added a death effect
-- increased player acceleration (it should feel less "slippery" now)
-- fixed the floating bullets bug
-- gold chasers now drop gold hearts
-- other small miscellaneous fixes and improvements
+- added sound effects (very WIP)
+- melee and projectile attacks now have recoil
+- added screen shake
+- added frame freeze
+- melee attacks now boost you forwards slightly
+- greatly updated README
+- a few behind the scenes improvements
 
-### Beta 1.2 (8/30/2020)
+### Beta 2.8 (1/31/2021)
 
-- settings menu overhaul (UI aesthetic will be overhauled soon as well
-- reload bar is the right size now
-- added a hit effect
-- improved item pickup system
-- lots of miscellaneous fixes and improvements
+- fixed the .exe icon
+- added an armor break mechanic (entities with defense now have a separate armor bar and they will become vulnerable once it's depleted)
+- knights now have less health, but 1 defense
+- improved entity health bars (now displays bonus health and armor)
+- options menu is now split into tabs
+- projectiles now have a minimum speed they need to deal damage (WIP, feels a little wrong on arrows)
+- some behind the scenes improvements
 
-### Beta 1.3 (9/7/2020)
+### Beta 2.7 (1/17/2021)
 
-- added a hub world
-- added a title screen
-- added shadows
-- fixed many bugs with the settings menu (still no UI aesthetic overhaul sorry)
-- fixes for effects
-- fixes for depth sorting with spikes (still not perfect, im working on it)
-- a few miscellaneous fixes
+- fixed the .exe icon
+- added an armor break mechanic (entities with defense now have a separate armor bar and they will become vulnerable once it's depleted)
+- knights now have less health, but 1 defense
+- improved entity health bars (now displays bonus health and armor)
+- options menu is now split into tabs
+- projectiles now have a minimum speed they need to deal damage (WIP, feels a little wrong on arrows)
+- some behind the scenes improvements
 
-### Beta 1.4 (9/20/2020)
+### Beta 2.6 (1/11/2021)
 
-- added knockback
-- fixed a bug where you could get double hit if you were damaged twice on the same frame
-- added entity pushing
-- gold chasers no longer drop gold hearts (this is temporary)
-- improvements to the UI and progress bar
-- some miscellaneous fixes and improvements
+- chaser sprite improvements
+- minor-ish level design improvements
+- spikes can now be placed individually instead of in pairs
+- changed some animations to be more bouncy (experimental, not sure how I feel about it yet)
+- menus use the pointer cursor and a new cursor was added for an empty hand
+- bleeding now works differently: the duration is increased each time you take any physical damage while bleeding
+- a big behind the scenes improvement (singular)
 
-### Beta 1.5 (9/27/2020)
+### Beta 2.5 (1/30/2020)
 
-- added saving and loading
-- menus now work with the mouse and are much less janky overall
-- removed keyboard only mode
-- remade all levels (they are still a little rough)
-- added perfection mode
-- added a fullscreen option
-- added dirt paths
-- improvements to entity pushing
-- gold chasers drop gold hearts again
-- pistol bullets now only do 1 damage (this is temporary until 2.0) 
-- a few miscellaneous fixes and improvements
+- entities can now kill their target without crashing the game (this also fixed all known crashes previously in the game)
+- added entity pathfinding
+- entities can now have multiple targets at once
+- entities can now space a certain distance away from their target
+- attacks can now hurt allies of the same faction
+- added entity infighting
+- improved action selection
+- entities now wander back to their starting position if they are too far away
+- added support for neutral enemies
+- fixed item duplication on Duo
+- a ton of behind the scenes improvements
 
-#### Beta 1.5 Hotfix (9/28/2020)
+### Beta 2.4 (11/29/2020)
 
-- fixed a bug very minor bug where levels wouldn't load
+- remade the level Brick
+- tutorial and HUD text now has a shadow for better clarity
+- fixed weird issues with hitbox cooldowns
+- fixed issues with collisions
+- a bunch of miscellaneous improvements
 
-### Beta 1.6 (originally posted on 10/4/2020)
+### Beta 2.3 (11/25/2020)
 
-- graphics overhaul, almost every sprite and tile has been redone
-- gold chasers work differently, they now have more health, no damage, and run away
-- some miscellaneous fixes and improvements
+- levels now track your best time
+- added a stopwatch timer
+- adjusted entity collisions
+- some miscellaneous improvements
+
+### Beta 2.2 (11/23/2020)
+
+- added a new level (Duo)
+- added an intro (WIP)
+- the item bar will now be hidden if it's empty (experimental, you can disable this)
+- added item pickup effect
+- multiple effects can now play on a sprite at once, so they won't override eachother
+- some changes to physics (should feel about the same)
+- changed the look of the health bar (similar to how it was pre 1.6)
+
+### Beta 2.1 (11/17/2020)
+
+- options are now saved automatically (so they don't reset every time you play)
+- levels now track your deaths
+- knockback has been adjusted and increased
+- improved bow (you don't have to wait out the cooldown before you start charging)
+- regular pink chasers now have 2 health, but take a ton of knockback
+- knights have 5 health instead of 6
+- improved the fire status effect
+- you can see the amount of stars on a save by hovering over it
+- fixed aNOTHER potential crash on Entrance (can't have 2 enemies that fight i guess)
+- some small fixes and improvements
+
+#### Beta 2.0 Hotfix (11/11/2020)
+
+- fixed the crash on the level Entrance
 
 ## Beta 2.0: *Kings & Castles* (11/11/2020)
 
@@ -217,88 +250,82 @@ the github is here: (private for now until offical release)
 - pistol does 2 damage again
 - a few sprite improvements
 
-#### Beta 2.0 Hotfix (11/11/2020)
+### Beta 1.6 (originally posted on 10/4/2020)
 
-- fixed the crash on the level Entrance
+- graphics overhaul, almost every sprite and tile has been redone
+- gold chasers work differently, they now have more health, no damage, and run away
+- some miscellaneous fixes and improvements
 
-### Beta 2.1 (11/17/2020)
+#### Beta 1.5 Hotfix (9/28/2020)
 
-- options are now saved automatically (so they don't reset every time you play)
-- levels now track your deaths
-- knockback has been adjusted and increased
-- improved bow (you don't have to wait out the cooldown before you start charging)
-- regular pink chasers now have 2 health, but take a ton of knockback
-- knights have 5 health instead of 6
-- improved the fire status effect
-- you can see the amount of stars on a save by hovering over it
-- fixed aNOTHER potential crash on Entrance (can't have 2 enemies that fight i guess)
-- some small fixes and improvements
+- fixed a bug very minor bug where levels wouldn't load
 
-### Beta 2.2 (11/23/2020)
+### Beta 1.5 (9/27/2020)
 
-- added a new level (Duo)
-- added an intro (WIP)
-- the item bar will now be hidden if it's empty (experimental, you can disable this)
-- added item pickup effect
-- multiple effects can now play on a sprite at once, so they won't override eachother
-- some changes to physics (should feel about the same)
-- changed the look of the health bar (similar to how it was pre 1.6)
+- added saving and loading
+- menus now work with the mouse and are much less janky overall
+- removed keyboard only mode
+- remade all levels (they are still a little rough)
+- added perfection mode
+- added a fullscreen option
+- added dirt paths
+- improvements to entity pushing
+- gold chasers drop gold hearts again
+- pistol bullets now only do 1 damage (this is temporary until 2.0) 
+- a few miscellaneous fixes and improvements
 
-### Beta 2.3 (11/25/2020)
+### Beta 1.4 (9/20/2020)
 
-- levels now track your best time
-- added a stopwatch timer
-- adjusted entity collisions
-- some miscellaneous improvements
+- added knockback
+- fixed a bug where you could get double hit if you were damaged twice on the same frame
+- added entity pushing
+- gold chasers no longer drop gold hearts (this is temporary)
+- improvements to the UI and progress bar
+- some miscellaneous fixes and improvements
 
-### Beta 2.4 (11/29/2020)
+### Beta 1.3 (9/7/2020)
 
-- remade the level Brick
-- tutorial and HUD text now has a shadow for better clarity
-- fixed weird issues with hitbox cooldowns
-- fixed issues with collisions
-- a bunch of miscellaneous improvements
+- added a hub world
+- added a title screen
+- added shadows
+- fixed many bugs with the settings menu (still no UI aesthetic overhaul sorry)
+- fixes for effects
+- fixes for depth sorting with spikes (still not perfect, im working on it)
+- a few miscellaneous fixes
 
-### Beta 2.5 (1/30/2020)
+### Beta 1.2 (8/30/2020)
 
-- entities can now kill their target without crashing the game (this also fixed all known crashes previously in the game)
-- added entity pathfinding
-- entities can now have multiple targets at once
-- entities can now space a certain distance away from their target
-- attacks can now hurt allies of the same faction
-- added entity infighting
-- improved action selection
-- entities now wander back to their starting position if they are too far away
-- added support for neutral enemies
-- fixed item duplication on Duo
-- a ton of behind the scenes improvements
+- settings menu overhaul (UI aesthetic will be overhauled soon as well
+- reload bar is the right size now
+- added a hit effect
+- improved item pickup system
+- lots of miscellaneous fixes and improvements
 
-### Beta 2.6 (1/11/2021)
+### Beta 1.1  (8/23/2020)
 
-- chaser sprite improvements
-- minor-ish level design improvements
-- spikes can now be placed individually instead of in pairs
-- changed some animations to be more bouncy (experimental, not sure how I feel about it yet)
-- menus use the pointer cursor and a new cursor was added for an empty hand
-- bleeding now works differently: the duration is increased each time you take any physical damage while bleeding
-- a big behind the scenes improvement (singular)
+- major improvements to the sword, it is much less janky now
+- fixed a bug with the enemy AI that would severely stunt their reaction time
+- added 2 more levels
+- added a death effect
+- increased player acceleration (it should feel less "slippery" now)
+- fixed the floating bullets bug
+- gold chasers now drop gold hearts
+- other small miscellaneous fixes and improvements
 
-### Beta 2.7 (1/17/2021)
+## Beta 1.0: (8/16/2020)
 
-- fixed the .exe icon
-- added an armor break mechanic (entities with defense now have a separate armor bar and they will become vulnerable once it's depleted)
-- knights now have less health, but 1 defense
-- improved entity health bars (now displays bonus health and armor)
-- options menu is now split into tabs
-- projectiles now have a minimum speed they need to deal damage (WIP, feels a little wrong on arrows)
-- some behind the scenes improvements
+- initial soft release
+- 3 enemies (normal, brute, and gold chasers)
+- 3 levels
+- 3 items (sword, pistol, white armor)
 
-### Beta 2.8 (1/31/2021)
+### how the version numbering works
+i don't use semantic versioning because i suck    
+instead, its: 
 
-- fixed the .exe icon
-- added an armor break mechanic (entities with defense now have a separate armor bar and they will become vulnerable once it's depleted)
-- knights now have less health, but 1 defense
-- improved entity health bars (now displays bonus health and armor)
-- options menu is now split into tabs
-- projectiles now have a minimum speed they need to deal damage (WIP, feels a little wrong on arrows)
-- some behind the scenes improvements
+*Phase* **content**.**patch** *Hotfix*  
+
+*Phase* is Alpha or Beta. if the version is after the official release, *Phase* is ommited  
+**content** is only incremented for big content updates (although it starts at 1)   
+**patch** is incremented for minor polish updates   
+*Hotfix* isn't displayed unless there's a hotfix for that version. if there's multiple hotfixes for a version, a counter is added (i.e. Hotfix #2)
