@@ -129,11 +129,17 @@ good luck working with my terrible game architecture though
 
 # Patchnotes
 
-### Beta 2.10 (in development)
+### Beta 2.10 (3/7/2021)
 
+- added volume slider
 - added weapon equip sounds for the sword and pistol
+- fixed some navpoly issues (this also fixed some crashes)
 - fixed ultra chaser dashing (it's been broken for awhile, whoops) and added an animation
 - footstep sounds are no longer cut off when you stop walking
+- added footstep sound for wood
+- other enemies now also emit footstep sounds
+- added menu and pause sounds
+- a few behind the scenes improvements
 
 ### Beta 2.9 (2/21/2021)
 
