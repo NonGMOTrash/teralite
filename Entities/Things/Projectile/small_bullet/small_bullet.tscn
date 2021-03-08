@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Entities/Things/Projectile/small_bullet/small bullet.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Things/Projectile/Projectile.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Misc/pistol_fire.wav" type="AudioStream" id=3]
+[ext_resource path="res://Entities/Things/Projectile/small_bullet/pistol_fire.wav" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.0
@@ -20,9 +20,10 @@ FORCE_MULT = 0.02
 truName = "bullet"
 ONHIT_SELF_DAMAGE = 6
 RANGE = 200
+death_free = true
 SPAWN_SOUND = ExtResource( 3 )
 SPEED = 400
-ONHIT_SPEED_MULTIPLIER = 0.65
+ONHIT_SPEED_MULTIPLIER = 0.8
 RECOIL = 60
 
 [node name="stats" parent="." index="0"]

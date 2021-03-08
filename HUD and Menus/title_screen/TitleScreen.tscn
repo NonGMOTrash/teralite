@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://HUD and Menus/Themes/general_theme.tres" type="Theme" id=1]
 [ext_resource path="res://HUD and Menus/Themes/Styles/stylebox_box.tres" type="StyleBox" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://HUD and Menus/Icons/gear.png" type="Texture" id=7]
 [ext_resource path="res://HUD and Menus/options/Options.tscn" type="PackedScene" id=8]
 [ext_resource path="res://HUD and Menus/smart_ui_nodes/smart_button/SmartButton.tscn" type="PackedScene" id=9]
+[ext_resource path="res://HUD and Menus/Themes/Styles/stylebox_selected_box.tres" type="StyleBox" id=10]
 
 [node name="TitleScreen" type="ColorRect"]
 anchor_right = 1.0
@@ -62,7 +63,7 @@ margin_right = 120.0
 margin_bottom = 100.0
 theme = ExtResource( 1 )
 custom_colors/font_color = Color( 0.129412, 0.235294, 0.937255, 1 )
-text = "Beta 2.9"
+text = "Beta 2.10"
 align = 1
 valign = 1
 __meta__ = {
@@ -120,6 +121,11 @@ __meta__ = {
 [node name="saves_list" type="ItemList" parent="saves"]
 anchor_right = 1.0
 margin_bottom = 152.0
+custom_styles/cursor = ExtResource( 2 )
+custom_styles/selected_focus = ExtResource( 10 )
+custom_styles/bg_focus = ExtResource( 2 )
+custom_styles/cursor_unfocused = ExtResource( 2 )
+custom_styles/selected = ExtResource( 10 )
 custom_styles/bg = ExtResource( 2 )
 custom_colors/font_color_selected = Color( 0.823529, 0.654902, 0.0823529, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -138,41 +144,41 @@ __meta__ = {
 }
 
 [node name="new" parent="saves/HBoxContainer" instance=ExtResource( 9 )]
-margin_left = 22.0
-margin_right = 90.0
+margin_left = 26.0
+margin_right = 94.0
 text = "New Save"
 flat = true
 
 [node name="VSeparator" type="VSeparator" parent="saves/HBoxContainer"]
-margin_left = 94.0
-margin_right = 98.0
+margin_left = 98.0
+margin_right = 99.0
 margin_bottom = 20.0
 
 [node name="load" parent="saves/HBoxContainer" instance=ExtResource( 9 )]
-margin_left = 102.0
-margin_right = 175.0
+margin_left = 103.0
+margin_right = 176.0
 text = "Load Save"
 flat = true
 
 [node name="VSeparator2" type="VSeparator" parent="saves/HBoxContainer"]
-margin_left = 179.0
-margin_right = 183.0
+margin_left = 180.0
+margin_right = 181.0
 margin_bottom = 20.0
 
 [node name="delete" parent="saves/HBoxContainer" instance=ExtResource( 9 )]
-margin_left = 187.0
-margin_right = 270.0
+margin_left = 185.0
+margin_right = 268.0
 text = "Delete Save"
 flat = true
 
 [node name="VSeparator3" type="VSeparator" parent="saves/HBoxContainer"]
-margin_left = 274.0
-margin_right = 278.0
+margin_left = 272.0
+margin_right = 273.0
 margin_bottom = 20.0
 
 [node name="back" parent="saves/HBoxContainer" instance=ExtResource( 9 )]
-margin_left = 282.0
-margin_right = 322.0
+margin_left = 277.0
+margin_right = 317.0
 text = "Back"
 flat = true
 
@@ -211,7 +217,8 @@ margin_left = 70.0
 margin_right = 344.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-max_length = 60
+custom_constants/minimum_spaces = 0
+max_length = 40
 context_menu_enabled = false
 shortcut_keys_enabled = false
 selecting_enabled = false
@@ -257,14 +264,6 @@ text = "Cancel"
 flat = true
 
 [node name="Options" parent="." instance=ExtResource( 8 )]
-
-[node name="Audio" parent="Options" index="1"]
-margin_right = -2.12428
-margin_bottom = -2.24938
-
-[node name="Control" parent="Options" index="2"]
-margin_right = -2.12428
-margin_bottom = -2.24938
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5

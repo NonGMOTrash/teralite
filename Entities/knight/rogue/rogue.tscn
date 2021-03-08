@@ -16,8 +16,6 @@ truName = "rogue"
 attack_cooldown_time = 1.0
 
 [node name="stats" parent="." index="0"]
-MAX_HEALTH = 2
-HEALTH = 2
 DEFENCE = 0
 
 [node name="sprite" parent="." index="1"]

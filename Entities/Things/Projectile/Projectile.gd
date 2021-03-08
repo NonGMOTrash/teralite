@@ -28,6 +28,8 @@ func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	faction = SOURCE.faction
 	start_pos = SOURCE.global_position
 	DIRECTION = start_pos.direction_to(target_pos).normalized()
+	SOURCE_PATH = SOURCE.get_path()
+	# PROBLEM_NOTE: might be better to try .setup(new_source, new_target_pos) (also applies to Melee.gd)
 	# Projectile.gd setup
 	velocity = Vector2(SPEED, SPEED) * DIRECTION
 	visible = true
@@ -45,9 +47,7 @@ func _physics_process(delta):
 	
 	if auto_rotate == true:
 		rotation += get_angle_to(global_position + velocity)
-	
 
-# other functions -------------------------------------------------------------------------------------------
 func death():
 	velocity = velocity * ONHIT_SPEED_MULTIPLIER
 	
@@ -63,7 +63,9 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	if global.get_relation(self, area.get_parent()) == "friendly": return
 	#if get_speed() < MIN_DAM_SPEED: return
 	if "ONHIT_SELF_DAMAGE" in area.get_parent(): return
+	
 	stats.change_health(0, -(ONHIT_SELF_DAMAGE))
+	
 	VELOCITY_ARMOR -= ONHIT_SELF_DAMAGE
 	if VELOCITY_ARMOR < 1:
 		FORCE_MULT = original_force_mult

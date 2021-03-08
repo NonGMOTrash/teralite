@@ -7,6 +7,7 @@ onready var tween = $tween
 onready var frequency_timer = $frequency
 onready var duration_timer = $duration
 
+var old_player_pos = null
 var power = 0
 var priority = -99
 
@@ -28,12 +29,24 @@ func update_fov():
 
 func _physics_process(_delta: float) -> void:
 	var array = []
+	var player
 	if global.nodes["player"] == null: return
-	if get_node_or_null(global.nodes["player"]) == null: return
+	player = get_node_or_null(global.nodes["player"])
+	
+	if player == null:
+		if old_player_pos == null: return
+		
+		tween.interpolate_property(self, "global_position", global_position, old_player_pos, 4.0, 
+				Tween.TRANS_EXPO, Tween.EASE_OUT)
+		tween.start()
+		set_physics_process(false)
+		return
+	
+	old_player_pos = player.global_position
 	
 	# PROBLEM_NOTE: i can do this faster by using a weighted average calculation
 	for i in global.cam_zoom.x:
-		array.append(get_tree().current_scene.get_node(global.nodes["player"]).global_position)
+		array.append(player.global_position)
 	for i in global.cam_zoom.y:
 		array.append(get_global_mouse_position())
 	

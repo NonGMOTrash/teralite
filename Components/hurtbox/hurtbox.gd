@@ -1,6 +1,9 @@
 extends Area2D
 
 export(float) var iTime_multiplier = 1.0
+export(AudioStream) var HURT_SOUND
+export(AudioStream) var BLOCK_SOUND
+export(AudioStream) var HEAL_SOUND
 
 onready var iTimer = $Timer
 
@@ -52,6 +55,18 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	
 	if result_type != "":
 		emit_signal("got_hit", area, result_type)
+		
+		# for sfx
+		if (HURT_SOUND != null and BLOCK_SOUND != null and HEAL_SOUND != null 
+		and get_parent().components["sound_player"] != null):
+			var sfx = Sound.new()
+			match result_type:
+				"hurt": sfx.stream = HURT_SOUND
+				"block": sfx.stream = BLOCK_SOUND
+				"heal": sfx.stream = HEAL_SOUND
+			
+			get_parent().components["sound_player"].add_sound(sfx)
+		
 	area.emit_signal("hit", self, result_type)
 	
 	# applies status effect

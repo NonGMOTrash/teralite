@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://HUD and Menus/Scripts/SmartButton.gd" type="Script" id=1]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Misc/menu_click.wav" type="AudioStream" id=3]
+[ext_resource path="res://Misc/menu_hover.wav" type="AudioStream" id=4]
 
 [node name="SmartButton" type="Button"]
 margin_right = 12.0
@@ -9,6 +12,12 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+hover_sound = ExtResource( 4 )
+click_sound = ExtResource( 3 )
+
+[node name="sound_player" parent="." instance=ExtResource( 2 )]
+FREE_WHEN_EMPTY = false
+[connection signal="button_down" from="." to="." method="_on_SmartButton_button_down"]
 [connection signal="focus_entered" from="." to="." method="_on_SmartButton_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_SmartButton_focus_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_SmartButton_mouse_entered"]

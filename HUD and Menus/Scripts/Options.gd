@@ -5,6 +5,8 @@ onready var hidebar = $Visual/hidebar
 onready var fullscreen = $Visual/fullscreen
 onready var perfection = $Control/auto_restart
 onready var pixel = $Visual/pixel
+onready var volume = $Audio/volume
+onready var volume_label = $Audio/volume_label
 
 signal closed
 
@@ -19,21 +21,31 @@ func _on_Options_visibility_changed() -> void:
 	fullscreen.pressed = global.settings["fullscreen"]
 	perfection.pressed = global.settings["auto_restart"]
 	pixel.pressed = global.settings["pixel_perfect"]
+	volume.value = global.settings["volume"] * 100
 	
 	if visible == false: return
 	current_tab = 0
 	smooth.grab_focus()
 
+func _on_volume_value_changed(value: float) -> void:
+	volume_label.text = "Volume ("+str(value)+"%)"
+	# PROBLEM_NOTE: maybe make a smart_slider that does the above line automatically
+	# maybe it could also use a texture progress somehow to look a little nicer
+	AudioServer.set_bus_volume_db(0, linear2db(value/100))
+	
 func _on_exit_pressed() -> void:
 	global.settings["smooth_camera"] = smooth.pressed
 	global.settings["hide_bar"] = hidebar.pressed
 	global.settings["fullscreen"] = fullscreen.pressed
 	global.settings["auto_restart"] = perfection.pressed
 	global.settings["pixel_perfect"] = pixel.pressed
+	global.settings["volume"] = volume.value / 100
 	
 	OS.window_fullscreen = fullscreen.pressed
+	
 	if global.settings["pixel_perfect"] == true:
-			get_tree().set_screen_stretch(
+		# PROBLEM_NOTE: should use a screen_size var in global.gd instead of just having a vector2 
+			get_tree().set_screen_stretch(#                                                \/
 					SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_KEEP, Vector2(384, 216)
 				)
 	else:
@@ -60,6 +72,9 @@ func _on_exit_pressed() -> void:
 			item_bar.visible = false
 		else:
 			item_bar.visible = true
+	
+	AudioServer.set_bus_volume_db(0, linear2db(volume.value/100))
+	
 	
 	var settings_config = File.new()
 	

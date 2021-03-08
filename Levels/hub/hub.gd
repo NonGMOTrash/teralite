@@ -13,13 +13,15 @@ func _ready() -> void:
 	var player = $YSort.find_node("player")
 	if player == null: 
 		push_warning("could not find player")
-		return
-	if global.player_hub_pos == null or global.player_hub_pos == Vector2.ZERO: return
-	player.global_position = global.player_hub_pos
+	else:
+		if not global.player_hub_pos == null and not global.player_hub_pos == Vector2.ZERO:
+			player.global_position = global.player_hub_pos
 	
 	global.nodes["level"] = self
 	global.nodes["canvaslayer"] = $CanvasLayer
 	global.nodes["ysort"] = $YSort
+	global.nodes["background"] = $Background
+	global.nodes["background_tiles"] = $YSort/background_tiles
 	
 	if global.last_ambiance == AMBIANCE: return
 	else: 

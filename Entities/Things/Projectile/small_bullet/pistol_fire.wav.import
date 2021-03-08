@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pistol_fire.wav-2f08ffe9ebfbf2091d08efc7aef54237.sample"
+
+[deps]
+
+source_file="res://Entities/Things/Projectile/small_bullet/pistol_fire.wav"
+dest_files=[ "res://.import/pistol_fire.wav-2f08ffe9ebfbf2091d08efc7aef54237.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -11,3 +11,6 @@ type = 2
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = true

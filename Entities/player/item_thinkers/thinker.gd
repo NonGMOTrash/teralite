@@ -14,6 +14,10 @@ export var my_item = ""
 export(Texture) var CURSOR
 export(CURSOR_MODES) var CURSOR_MODE
 
+export(AudioStream) var EQUIP_SOUND
+
+onready var sound_player = $sound_player
+
 var bar_max = 0.0
 var bar_value = 0.0
 
@@ -37,6 +41,8 @@ func _ready():
 		global.emit_signal("update_item_bar", get_parent().inventory)
 	
 	if get_parent().inventory[global.selection] == my_item.to_lower(): selected()
+	elif EQUIP_SOUND != null:
+		sound_player.create_sound(EQUIP_SOUND)
 
 func _check_if_selected(swapped_item):
 	if swapped_item == my_item.to_lower():
@@ -130,6 +136,9 @@ func selected():
 		null # bar timer duration
 		)
 	update_cursor()
+	
+	if EQUIP_SOUND != null:
+		sound_player.create_sound(EQUIP_SOUND)
 
 func unselected(): pass
 

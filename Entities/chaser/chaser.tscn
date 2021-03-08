@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Entities/chaser/Chaser.gd" type="Script" id=1]
 [ext_resource path="res://Components/health_bar/healthBar.tscn" type="PackedScene" id=2]
@@ -12,8 +12,10 @@
 [ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Components/death_spawn/death_spawn.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Components/hit_spawn/hit_spawn.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Misc/damage.wav" type="AudioStream" id=13]
 [ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -46,6 +48,23 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.03, 0.97 ) ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("foot_stepper")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "footstep"
+}, {
+"args": [  ],
+"method": "footstep"
+} ]
+}
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 2.99999
@@ -73,6 +92,7 @@ HEALTH = 2
 
 [node name="sprite" parent="." instance=ExtResource( 3 )]
 material = SubResource( 1 )
+scale = Vector2( 1.02453, 0.975469 )
 texture = ExtResource( 9 )
 hframes = 2
 frame = 1
@@ -87,9 +107,11 @@ rotation = 1.5708
 shape = SubResource( 3 )
 
 [node name="hitbox" parent="." instance=ExtResource( 7 )]
+visible = false
 COOLDOWN = 0.05
 iTime = 0.6
 TEAM_ATTACK = false
+TRIGGERED_SOUND = ExtResource( 13 )
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 position = Vector2( 0, 2.05111 )
@@ -137,6 +159,11 @@ margin_bottom = -7.75391
 
 [node name="hit_spawn" parent="." instance=ExtResource( 12 )]
 spawn_entity = "hit_effect"
+
+[node name="foot_stepper" parent="." instance=ExtResource( 16 )]
+RATE = 0.0
+OFFSET = 0.0
+VOLUME_ADJUST = -2.0
 
 [editable path="hitbox"]
 

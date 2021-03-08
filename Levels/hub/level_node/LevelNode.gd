@@ -72,7 +72,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if player == null: return
 	if global.stars < STAR_REQUIREMENT: return
-	if (Input.is_action_just_released("swap_left") || Input.is_action_just_released("swap_right")):
+	if (Input.is_action_just_released("interact")):
 		global.player_hub_pos = global_position
 		get_tree().change_scene_to(LEVEL_LOAD)
 

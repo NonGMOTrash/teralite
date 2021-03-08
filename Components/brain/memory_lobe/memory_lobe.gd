@@ -75,7 +75,7 @@ func _on_memory_timer_timeout() -> void:
 func got_hit(body, _type):
 	var source = body.get_parent()
 	if source == self or brain.targets.has(source): return
-	if source is Melee or source is Projectile: source = source.SOURCE
+	if source is Thing: source = source.SOURCE
 	if source == null: return
 	if brain.targets.has(source) == true: return
 	

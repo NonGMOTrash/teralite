@@ -1,14 +1,18 @@
 extends ColorRect
 
+
+const yellow = Color8(242, 211, 53)
+const white = Color8(255, 255, 255)
+const PAUSE_SOUND = preload("res://Misc/menu_pause.wav")
+const UNPAUSE_SOUND = preload("res://Misc/menu_unpause.wav")
+
 onready var resume = $items/resume
 onready var options = $items/options
 onready var return_to = $items/return_to
 onready var quit = $items/quit
 onready var pause_menu = $items
 onready var options_menu = $Options
-
-const yellow = Color8(242, 211, 53)
-const white = Color8(255, 255, 255)
+onready var sound_player = $sound_player
 
 func _ready():
 	global.nodes["pause_menu"] = self
@@ -27,9 +31,11 @@ func _input(event: InputEvent) -> void:
 			global.emit_signal("paused")
 			resume.grab_focus()
 			Input.set_custom_mouse_cursor(global.CURSOR_NORMAL, Input.CURSOR_ARROW, Vector2(0, 0))
+			sound_player.create_sound(PAUSE_SOUND, true)
 		else:
 			global.emit_signal("unpaused")
 			global.update_cursor()
+			sound_player.create_sound(UNPAUSE_SOUND, true)
 
 func multi_color_set(target:Control, color:Color):
 	target.set_deferred("custom_colors/font_color", color)
@@ -42,6 +48,7 @@ func _on_resume_pressed() -> void:
 	get_tree().paused = false
 	global.emit_signal("unpaused")
 	global.update_cursor()
+	sound_player.create_sound(UNPAUSE_SOUND, true)
 
 func _on_options_pressed() -> void:
 	pause_menu.visible = false
@@ -52,8 +59,13 @@ func _on_return_to_pressed() -> void:
 	if get_tree().current_scene.LEVEL_TYPE == 1: 
 		global.player_hub_pos = global.get_node(global.nodes["player"]).global_position
 		global.write_save(global.save_name, global.get_save_data_dict())
-		get_tree().change_scene_to(load("res://HUD and Menus/title_screen/TitleScreen.tscn"))
 		
+		for sound in global.get_children():
+			if sound.name == "ambiance":
+				sound.free()
+				break
+		
+		get_tree().change_scene_to(load("res://HUD and Menus/title_screen/TitleScreen.tscn"))
 	else: 
 		get_tree().change_scene_to(load("res://Levels/A/A_hub.tscn")) 
 		# PROBLEM_NOTE: this ^^ won't work with multiple hubs

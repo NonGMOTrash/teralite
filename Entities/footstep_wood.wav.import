@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/bow_shoot.wav-a89a3d46a92fbfaf50ea7e86a027d4ca.sample"
+path="res://.import/footstep_wood.wav-c6a32f46455d21ff994f67b29517bc7d.sample"
 
 [deps]
 
-source_file="res://Misc/bow_shoot.wav"
-dest_files=[ "res://.import/bow_shoot.wav-a89a3d46a92fbfaf50ea7e86a027d4ca.sample" ]
+source_file="res://Entities/footstep_wood.wav"
+dest_files=[ "res://.import/footstep_wood.wav-c6a32f46455d21ff994f67b29517bc7d.sample" ]
 
 [params]
 

@@ -10,6 +10,7 @@ export(String) var STATUS_EFFECT = ""
 export var STATUS_DURATION = 5.0
 export var STATUS_LEVEL = 1.0
 export var TEAM_ATTACK = true
+export(AudioStream) var TRIGGERED_SOUND 
 
 onready var timer = $Timer
 var stats
@@ -30,10 +31,20 @@ func _ready():
 	TRUE_DAMAGE += stats.TRUE_DAMAGE
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	if area.get_parent() is Projectile or area.get_parent() is Melee or area.get_parent() == get_parent(): 
-		return
+	var area_entity = area.get_parent()
+	if (
+		area_entity is Thing or
+		area.entity == get_parent() or
+		TEAM_ATTACK == false and global.get_relation(get_parent(), area_entity) == "friendly"
+		): return
+	
 	set_deferred("monitorable", false)
 	timer.start()
+	
+	if get_parent().components["sound_player"] != null and TRIGGERED_SOUND != null:
+		var sfx = Sound.new()
+		sfx.stream = TRIGGERED_SOUND
+		get_parent().components["sound_player"].add_sound(sfx)
 
 func _on_Timer_timeout() -> void:
 	set_deferred("monitorable", true)

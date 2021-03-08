@@ -32,6 +32,9 @@ var strafe_change = 1
 
 signal debug
 
+# PROBLEM_NOTE: it would probably be alot more streamlined to have a state variable
+# it could also probably fix the bug where sometimes enemies won't wander
+
 func _on_movement_lobe_tree_entered() -> void:
 	get_parent().movement_lobe = self
 	if get_parent().get_parent() is Entity:
@@ -74,6 +77,9 @@ func _on_idle_timer_timeout() -> void:
 	else:
 		var wander_path = get_tree().current_scene.pathfind(global_position, wander_pos)
 		
+		#debug()
+		#yield(self, "debug")
+		
 		while wander_path.size() < 2:
 			wander_pos = global_position + (Vector2(rand_range(-1,1),rand_range(-1,1)).normalized()*100)
 			wander_path = []
@@ -81,10 +87,15 @@ func _on_idle_timer_timeout() -> void:
 			
 			# PROBLEM_NOTE: the game crashes with no error message without this. strangely, putting it
 			# anywhere in this function before this line will also stop the error, super weird
-			# actually, this still causes a (non-fatal) error sometimes. very strange
-			debug()
-			yield(self, "debug")
-
+			# this stil casues a non fatal error a bunch, but its better than a crash
+			# Internal Script Error! opcode #38 (report please).
+			#debug()
+			#yield(self, "debug")
+			# EDIT: moved it to line 80, that seemed to fix it??
+			# EDIT2: moved it to brain.gd (i think the error is with target tracking)
+			# EDIT3: IM PRETTY SURE I KNOW WHAT THE PROBLEM IS. if you go to a-6 and just hold right,
+			# the game crashes as soon as you enter a deadzone in the navpoly generation.
+			# so i think this must be an error with the pathfinding
 		
 		brain.get_parent().input_vector = global_position.direction_to(wander_path[1]).normalized()
 	
@@ -162,7 +173,7 @@ func _on_movement_timer_timeout() -> void:
 			if guard_path != null:
 				if guard_path.size() == 0 or brain.los_check(guard_path[0]) == false:
 					guard_path = get_tree().current_scene.pathfind(global_position, 
-					brain.movement_lobe.guard_pos)
+							brain.movement_lobe.guard_pos)
 				if guard_path.size() != 0 and global_position.distance_to(guard_path[0]) < 7:
 					guard_path.remove(0)
 				if guard_path.size() != 0:
@@ -222,7 +233,7 @@ func _on_movement_timer_timeout() -> void:
 						target_to_me = Vector2(target_to_me.y, target_to_me.x)
 					if strafe_dir < 0:
 						target_to_me *= -1
-					#breakpoint
+					
 				var best_position = target.global_position + target_to_me * spring.DISTANCE
 				
 				var strength = 0

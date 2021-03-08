@@ -5,8 +5,6 @@ export(AMBIANCE_TYPES) var AMBIANCE = AMBIANCE_TYPES.FOREST
 
 const LEVEL_TYPE = 0
 
-signal pathfound(start, end)
-
 func _ready() -> void:
 	if name != "test_level":
 		global.write_save(global.save_name, global.get_save_data_dict())
@@ -14,6 +12,8 @@ func _ready() -> void:
 	global.nodes["level"] = self
 	global.nodes["canvaslayer"] = $CanvasLayer
 	global.nodes["ysort"] = $YSort
+	global.nodes["background"] = $Background
+	global.nodes["background_tiles"] = $YSort/background_tiles
 	
 	if global.last_ambiance == AMBIANCE: return
 	else:
@@ -41,8 +41,13 @@ func _ready() -> void:
 	global.add_child(ambiance)
 	global.nodes["ambiance"] = ambiance
 
-func pathfind(start:Vector2, end:Vector2):
+func pathfind(start:Vector2, end:Vector2) -> PoolVector2Array:
+	#if start != get_closest_point(start):
+	#	return PoolVector2Array([])
+	var true_end = get_closest_point(end)
+	#breakpoint
+	
 	var path = get_simple_path(start, get_closest_point(end), true)
 	#if path.size() == 0: path = get_simple_path(start, get_closest_point(end), false)
+	
 	return path
-	emit_signal("pathfound", start, end)

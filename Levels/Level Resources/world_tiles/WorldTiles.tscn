@@ -13,3 +13,4 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
+valid_ids = PoolIntArray( 2, 7, 9, 10 )

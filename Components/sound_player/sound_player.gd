@@ -35,9 +35,6 @@ func _ready():
 			
 			if child.autoplay == true:
 				child.play()
-			
-		else:
-			push_warning("sound player's child ("+child.get_name()+") was not a Sound or Global_Sound")
 
 func sound_finished(sound_name):
 	var sound = sounds[sound_name]
@@ -52,9 +49,10 @@ func sound_finished(sound_name):
 		queue_free()
 
 func add_sound(audioplayer:Node):
+	
 	if not audioplayer is Sound and not audioplayer is Global_Sound:
 		push_error("sound_player add_sound was given a node that wasn't a Sound or Global_Sound")
-	
+	 
 	if audioplayer.stream == null:
 		push_error("a Sound / Global_Sound added to sound_player did not have a AudioStream")
 		return
@@ -67,8 +65,32 @@ func add_sound(audioplayer:Node):
 	if audioplayer.autoplay == true:
 		audioplayer.play()
 	
-	if get_parent() is Entity:
-		audioplayer.global_position = get_parent().global_position
+	if audioplayer is Sound:
+		var src = get_parent()
+		if src is Thinker: src = src.get_parent()
+		if src is Entity:
+			audioplayer.global_position = src.global_position
+
+func create_sound(
+	stream: AudioStream, 
+	global_sound = false,
+	mode = Sound.MODES.ONESHOT, 
+	auto_play = true, 
+	scene_persist = false, 
+	auto_set_physical = true,
+	volume = 0.0
+	):
+		var sfx 
+		if global_sound == false: sfx = Sound.new()
+		else: sfx = Global_Sound.new()
+		sfx.stream = stream
+		sfx.MODE = mode
+		sfx.AUTO_PLAY = auto_play
+		sfx.SCENE_PERSIST = scene_persist
+		if global_sound == false:
+			sfx.AUTO_SET_PHYSICAL = auto_set_physical
+		sfx.volume_db = volume
+		add_sound(sfx)
 
 func _on_sound_player_tree_exiting() -> void:
 	# make all sounds non-repeating delete themselves after they finished

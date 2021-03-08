@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Components/death_spawn/death_spawn.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/player/Player.gd" type="Script" id=2]
@@ -10,8 +10,7 @@
 [ext_resource path="res://Components/entity_push/entityPush.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Components/hit_spawn/hit_spawn.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/player/player.png" type="Texture" id=10]
-[ext_resource path="res://Misc/footstep_grass.wav" type="AudioStream" id=11]
-[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -52,6 +51,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.12, 0.88 ), Vector2( 1, 1 ) ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("foot_stepper")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "footstep"
+} ]
+}
 
 [sub_resource type="Animation" id=6]
 length = 0.6
@@ -81,23 +94,22 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 1.05, 0.95 ), Vector2( 0.95, 1.05 ), Vector2( 1.05, 0.95 ), Vector2( 0.95, 1.05 ) ]
 }
-tracks/2/type = "audio"
-tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/type = "method"
+tracks/2/path = NodePath("foot_stepper")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 11 )
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "footstep"
 }, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 11 )
-} ],
-"times": PoolRealArray( 0, 0.31 )
+"args": [  ],
+"method": "footstep"
+} ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -190,12 +202,11 @@ spawn_entity = "hit_effect"
 [node name="death_spawn" parent="." instance=ExtResource( 1 )]
 spawn_entity = "Hit_Effect"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 11 )
-
-[node name="sound_player" parent="." instance=ExtResource( 12 )]
-FREE_WHEN_EMPTY = false
+[node name="foot_stepper" parent="." instance=ExtResource( 11 )]
+RATE = 0.0
+OFFSET = 0.0
 [connection signal="health_changed" from="stats" to="." method="_on_stats_health_changed"]
+[connection signal="got_hit" from="hurtbox" to="." method="_on_hurtbox_got_hit"]
 
 [editable path="hurtbox"]
 

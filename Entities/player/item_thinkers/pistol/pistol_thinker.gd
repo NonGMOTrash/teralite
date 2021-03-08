@@ -38,6 +38,10 @@ func selected():
 		null # bar timer duration
 		)
 	update_cursor()
+	
+	# PROBLEM_NOTE: would be better if i could get this to inheireit \/
+	if EQUIP_SOUND != null:
+		sound_player.create_sound(EQUIP_SOUND)
 
 func unselected():
 	reload.stop()

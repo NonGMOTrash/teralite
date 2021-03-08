@@ -39,7 +39,8 @@ var nodes = {
 	"camera": null,
 	"ysort": null,
 	"world_tiles": null,
-	"background": null
+	"background_tiles": null,
+	"background": null,
 }
 
 var settings = {
@@ -47,7 +48,8 @@ var settings = {
 	"auto_restart": false,
 	"pixel_perfect": false,
 	"smooth_camera": true,
-	"hide_bar": true
+	"hide_bar": true,
+	"volume": 0.50,
 }
 
 var preloads = {

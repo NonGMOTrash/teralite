@@ -52,6 +52,7 @@ func _ready() -> void:
 		push_warning("could not find settings_config")
 	
 	OS.window_fullscreen = global.settings["fullscreen"]
+	AudioServer.set_bus_volume_db(0, global.settings["volume"])
 
 func multi_color_set(target:Control, color:Color):
 	target.set_deferred("custom_colors/font_color", color)

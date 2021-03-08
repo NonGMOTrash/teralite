@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://HUD and Menus/Themes/general_theme.tres" type="Theme" id=1]
 [ext_resource path="res://HUD and Menus/Scripts/Pause_Menu.gd" type="Script" id=2]
 [ext_resource path="res://HUD and Menus/options/Options.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD and Menus/smart_ui_nodes/smart_button/SmartButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://HUD and Menus/Icons/gear.png" type="Texture" id=6]
 [ext_resource path="res://HUD and Menus/Icons/play.png" type="Texture" id=7]
 [ext_resource path="res://HUD and Menus/Icons/x.png" type="Texture" id=8]
@@ -38,51 +39,54 @@ __meta__ = {
 }
 
 [node name="title" type="Label" parent="items"]
-margin_top = 35.0
+margin_top = 36.0
 margin_right = 117.0
-margin_bottom = 49.0
+margin_bottom = 50.0
 text = "Paused"
 align = 1
 valign = 1
 
 [node name="HSeparator" type="HSeparator" parent="items"]
-margin_top = 53.0
+margin_top = 54.0
 margin_right = 117.0
-margin_bottom = 57.0
+margin_bottom = 55.0
 
 [node name="resume" parent="items" instance=ExtResource( 4 )]
-margin_top = 61.0
+margin_top = 59.0
 margin_right = 117.0
-margin_bottom = 83.0
+margin_bottom = 81.0
 text = "Resume"
 icon = ExtResource( 7 )
 flat = true
 
 [node name="options" parent="items" instance=ExtResource( 4 )]
-margin_top = 87.0
+margin_top = 85.0
 margin_right = 117.0
-margin_bottom = 109.0
+margin_bottom = 107.0
 text = "Options"
 icon = ExtResource( 6 )
 flat = true
 
 [node name="return_to" parent="items" instance=ExtResource( 4 )]
-margin_top = 113.0
+margin_top = 111.0
 margin_right = 117.0
-margin_bottom = 135.0
+margin_bottom = 133.0
 text = "Return to Hub"
 icon = ExtResource( 9 )
 flat = true
 
 [node name="quit" parent="items" instance=ExtResource( 4 )]
-margin_top = 139.0
+margin_top = 137.0
 margin_right = 117.0
-margin_bottom = 161.0
+margin_bottom = 159.0
 text = "Quit"
 icon = ExtResource( 8 )
 flat = true
 
 [node name="Options" parent="." instance=ExtResource( 3 )]
+
+[node name="sound_player" parent="." instance=ExtResource( 5 )]
+FREE_WHEN_EMPTY = false
 [connection signal="pressed" from="items/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="items/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="items/return_to" to="." method="_on_return_to_pressed"]

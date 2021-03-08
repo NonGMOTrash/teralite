@@ -1,8 +1,10 @@
 extends Entity
 
+const player_death = preload("res://Entities/player/player_death/player_death.tscn")
 const OW = preload("res://Misc/damage.wav")
 
 var perfect = true
+var death_message = ";-;"
 
 export var dash_strength = 300
 
@@ -26,8 +28,8 @@ var item_bar_value = 0.0
 var item_info_text = ""
 
 signal swapped_item(new_item)
+signal updated_death_message
 
-# get access to other nodes or components -----------------------------------------------------------------------------
 onready var hurtbox = $hurtbox
 onready var iTimer = $hurtbox/Timer
 onready var sprite = $sprite
@@ -35,14 +37,16 @@ onready var stats = $stats
 onready var animation = $AnimationPlayer
 onready var dash_cooldown = $dash_cooldown
 onready var health_bar = $healthBar
-onready var sound_player = $sound_player
+onready var sound_player = $foot_stepper
 
-# basic funcions -------------------------------------------------------------------------------------------
 func _ready():
 	global.selection = 0
 	iTimer.start()
 	if get_name() == "player":
 		global.nodes["player"] = get_path()
+		# PROBLEM_NOTE: this is inconsistant with other things in global.nodes, most are direct references
+		# instead of paths. it is a bit nessesarly for the player though, because the path is needed to check
+		# if the player still exists with get_node_or_null(). really glad is_instance_valid() doesn't work '-'
 	else:
 		health_bar.update_bar("hurt")
 		health_bar.visible = true
@@ -116,6 +120,8 @@ func swapped_item(new_item):
 		)
 
 func death():
+	yield(self, "updated_death_message")
+	
 	for i in 6:
 		if inventory[i] != null:
 			var item = global.aquire(inventory[i])
@@ -126,20 +132,17 @@ func death():
 	
 	emit_signal("death")
 	
-	if global.settings["auto_restart"] == true:
-		if not global.level_deaths.has(get_tree().current_scene.get_name()):
-			global.level_deaths[get_tree().current_scene.get_name()] = 0
-		global.level_deaths[get_tree().current_scene.get_name()] += 1
-		get_tree().reload_current_scene()
-		return
-	
-	if self.get_name() == "player": 
-		var stop = false
+	if name == "player": 
+		var found_replacement = false
 		
-		for i in get_parent().get_child_count(): # PROBLEM_NOTE: kinda bad way to do this, use a group
-			var child = get_parent().get_children()[i]
+		for child in get_parent().get_children(): # PROBLEM_NOTE: kinda bad way to do this, use a group
 			if child is Entity and not child == self and child.is_queued_for_deletion() == false:
 				if child.truName == "player":
+					
+					if global.settings["auto_restart"] == true:
+						child.death()
+						continue
+					
 					name = "dedplayer"
 					child.name = "player"
 					child.components["health_bar"].visible = false
@@ -154,23 +157,51 @@ func death():
 						null # bar timer duration
 					)
 					
-					stop = true
+					var my_death = player_death.instance()
+					if name == "player":
+						my_death.simple_mode = false
+					my_death.flip_h = sprite.flip_h
+					my_death.death_message = death_message
+					get_parent().add_child(my_death)
+					my_death.global_position = global_position
+					
+					found_replacement = true
 					queue_free()
 					return
 		
-		if stop == true: return
+		if found_replacement == true: return
 		
 		if not global.level_deaths.has(get_tree().current_scene.get_name()):
 			global.level_deaths[get_tree().current_scene.get_name()] = 0
 		global.level_deaths[get_tree().current_scene.get_name()] += 1
-		get_tree().reload_current_scene()
-	else:
-		queue_free()
+		
+		# hide ui
+		global.nodes["stopwatch"].pause(true)
+		
+		var elements = []
+		elements.append(global.nodes["health_ui"])
+		elements.append(global.nodes["item_bar"])
+		elements.append(global.nodes["item_info"])
+		
+		for element in elements:
+			if element != null:
+				element.visible = false
+	
+	var my_death = player_death.instance()
+	if name == "player":
+		my_death.simple_mode = false
+	my_death.flip_h = sprite.flip_h
+	my_death.death_message = death_message
+	get_parent().add_child(my_death)
+	my_death.global_position = global_position
+	
+	queue_free()
 
 func _on_stats_health_changed(type) -> void:
 	if type != "heal" and type != "blocked": 
-		global.nodes["camera"].shake(5, 15, 0.2)
-		OS.delay_msec(10)
+		if type == "hurt" and name == "player":
+			global.nodes["camera"].shake(5, 15, 0.2)
+			OS.delay_msec(10)
 		
 		# PROBLEM_NOTE: this is a terrible way to do the sound
 		var sfx = Sound.new()
@@ -182,3 +213,41 @@ func _on_stats_health_changed(type) -> void:
 			death()
 	
 	global.emit_signal("update_health")
+
+func _on_hurtbox_got_hit(by_area, _type) -> void:
+	# this only half works, but it doesn't update for the source of the killing blow.
+	# only the last hit BEFORE the killing blow.
+	
+	var entity = by_area.get_parent()
+	var entity_name = entity.truName
+	var source
+	var source_name
+	if entity is Thing and get_node_or_null(entity.SOURCE_PATH) != null:
+		source = entity.SOURCE
+		source_name = source.truName
+	
+	if entity_name == "player" or source_name == "player":
+		death_message = "Death by stupidity."
+	elif entity.truName == "player":
+		death_message = "Death by betrayal."
+	elif source != null and source.truName == "player":
+		death_message = "Death by betrayal."
+	else:
+		match entity_name:
+			#"player": death_message = "Death by betrayal."
+			"crate": death_message = "Death by... a crate? what??"
+			"chaser": death_message = "Death by chaser."
+			"brute_chaser": death_message = "Death by brute chaser."
+			"gold_chaser": death_message = "Death by golden chaser."
+			"ultra_chaser": death_message = "Death by ultra chaser."
+			"spikes", "red_spikes", "diamond_spikes": death_message = "Death by impalement."
+			"slash": death_message = "Death by %s's blade." % source_name
+			"stab": death_message = "Death by %s's dagger." % source_name
+			"arrow": death_message = "Death by %s's arrow." % source_name
+			_: death_message = "death message messed up, report pls ;-;"
+	
+	
+	if "Null" in death_message:
+		push_error("death message is bugged; '%s'" % death_message)
+	
+	emit_signal("updated_death_message")

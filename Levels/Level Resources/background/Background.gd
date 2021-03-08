@@ -1,4 +1,9 @@
 extends TextureRect
 
-func _phyiscs_process(_delta):
-	pass
+enum IDs {
+	NONE = -1, 
+	MAPLE
+}
+
+export(IDs) var ID = IDs.MAPLE
+

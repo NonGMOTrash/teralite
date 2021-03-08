@@ -9,11 +9,11 @@ export var TOP_SPEED = 80
 export(float, 0.0, 10.0) var FORCE_MULT = 1.0
 
 var velocity = Vector2.ZERO
-
 var input_vector = Vector2.ZERO
 
 export var truName = ""
 export var faction = ""
+
 var marked_enemies = []
 
 var components = { # PROBLEM_NOTE, this doesn't support duplicate components but whatever
@@ -62,6 +62,7 @@ func _physics_process(delta): # physics logic
 func apply_force(force:Vector2):
 	velocity += force * FORCE_MULT
 
+# maybe should rename this to die()
 func death():
 	emit_signal("death")
 	queue_free()

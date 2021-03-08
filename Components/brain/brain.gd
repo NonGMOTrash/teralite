@@ -58,11 +58,16 @@ func _draw():
 			var target = targets[i]
 			if is_target_valid(i) == true:
 				var spring = movement_lobe.get_spring(target)
-	
+				
 				var best_position = Vector2.ZERO
 				var target_to_me = target.global_position.direction_to(global_position).normalized()
+				# Internal Script Error! - opcode #0 (report please).
+				
+				debug()
+				yield(self, "debug")
+				
 				best_position = target.global_position + target_to_me * spring.DISTANCE
-	
+				
 				if los_check(best_position) == true:
 					draw_line(position, to_local(best_position), Color.red, 1, false)
 				else:
@@ -85,6 +90,7 @@ func _draw():
 				draw_circle(path[0], 1.5, Color.yellow)
 
 func closest_target():
+	# PROBLEM_NOTE: make \/ this string more simple so it's easier to check for it (probably just use null or "")
 	var target = "no target found from closest_target()"
 	var dist = 999
 	for i in targets.size():
@@ -95,7 +101,7 @@ func closest_target():
 	return target
 
 func is_target_valid(index: int): # maybe make this work with the target node OR target index
-	if index > targets.size() - 1: 
+	if index > targets.size() - 1 or index > target_paths.size() -1: 
 		return false
 		
 	var target = targets[index]
@@ -112,7 +118,9 @@ func is_target_valid(index: int): # maybe make this work with the target node OR
 
 func los_check(target):
 	var target_pos = target
-	if target is Entity: target_pos = target.global_position
+	if target is Entity: 
+		target_pos = target.global_position
+	
 	var ss = get_world_2d().direct_space_state
 	
 	var vision = ss.intersect_ray(target_pos, global_position, [get_parent()], LOS_MASK)
@@ -135,7 +143,11 @@ func los_check(target):
 		elif target is Vector2:
 			return true
 
-func add_target(tar: Node, force = true):
+func add_target(tar: Node, force = false):
+	if force == true:
+		breakpoint
+	
+	# PROBLEM_NOTE: im pretty sure i can just do    if not tar is Entity
 	if not tar is Entity or tar is Melee or tar is Projectile or tar is Item or tar == get_parent(): return
 	if movement_lobe != null and movement_lobe.get_spring(tar) == null: return
 	
@@ -144,8 +156,8 @@ func add_target(tar: Node, force = true):
 	if movement_lobe != null: movement_lobe.best_position_paths.append(null)
 	
 	if is_target_valid(targets.size()-1) == false and force == false:
-		targets.remove(targets.size()-1)
-		target_paths.remove(target_paths.size()-1)
+		if targets.size() != 0: targets.remove(targets.size()-1)
+		if target_paths.size() != 0: target_paths.remove(target_paths.size()-1)
 		return
 	
 	if movement_lobe != null:
@@ -194,7 +206,7 @@ func remove_target(tar):
 			movement_lobe.wander_timer.start()
 
 func _on_sight_body_entered(body: Node) -> void:
-	if los_check(body) == true:
+	if body.is_queued_for_deletion() == false and los_check(body) == true:
 		add_target(body)
 
 func _on_sight_body_exited(body: Node) -> void:
@@ -208,7 +220,8 @@ func _on_think_timer_timeout() -> void:
 	# search get_overlapping_bodies() for new targets
 	for body in sight.get_overlapping_bodies():
 		if body is Entity and body.get_name() != "WorldTiles" and not targets.has(body):
-			if los_check(body) == true:
+			# original was if (body) == true:
+			if body.is_queued_for_deletion() == false:
 				add_target(body)
 	
 	#if movement_lobe == null:
@@ -220,3 +233,7 @@ func _on_think_timer_timeout() -> void:
 		update()
 	
 	#if targets != []: print(is_target_valid(0))
+
+func debug(): 
+	if get_parent().is_queued_for_deletion() == false:
+		emit_signal("debug")

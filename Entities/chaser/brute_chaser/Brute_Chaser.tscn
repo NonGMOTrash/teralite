@@ -16,6 +16,7 @@ truName = "brute_chaser"
 [node name="stats" parent="." index="0"]
 MAX_HEALTH = 4
 HEALTH = 4
+DAMAGE = 2
 
 [node name="sprite" parent="." index="1"]
 material = SubResource( 1 )
@@ -28,7 +29,6 @@ position = Vector2( 0, 5.23597 )
 KNOCKBACK = 140
 
 [node name="hurtbox" parent="." index="5"]
-visible = true
 position = Vector2( 0, 2.05111 )
 
 [node name="movement_lobe" parent="brain" index="2"]

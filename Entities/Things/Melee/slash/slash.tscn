@@ -83,6 +83,7 @@ self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 4, 0 )
 texture = ExtResource( 2 )
 hframes = 3
+frame = 2
 
 [node name="hurtbox" parent="." index="2"]
 visible = false
@@ -94,8 +95,8 @@ shape = SubResource( 1 )
 
 [node name="hitbox" parent="." index="3"]
 position = Vector2( 4, 0 )
-KNOCKBACK = 130
 iTime = 0.35
+KNOCKBACK = 130
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 position = Vector2( 2, 0 )

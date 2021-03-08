@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Entities/chaser/chaser.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/chaser/ultra_chaser/ultra_chaser.gd" type="Script" id=2]
@@ -9,6 +9,23 @@
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 
+[sub_resource type="Animation" id=2]
+resource_name = "dash"
+length = 0.2
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.02, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 0.8 ), Vector2( 1, 1 ) ]
+}
+
 [node name="ultra_chaser" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 ACCELERATION = 150
@@ -17,15 +34,20 @@ TOP_SPEED = 85
 FORCE_MULT = 1.0
 truName = "ultra_chaser"
 dash_cooldown = 0.75
-dash_power = 75
+dash_power = 140
 
 [node name="stats" parent="." index="0"]
-MAX_HEALTH = 6
-HEALTH = 6
+MAX_HEALTH = 5
+HEALTH = 5
+DAMAGE = 2
 
 [node name="sprite" parent="." index="1"]
 material = SubResource( 1 )
 texture = ExtResource( 3 )
+frame = 0
+
+[node name="AnimationPlayer" parent="." index="2"]
+anims/dash = SubResource( 2 )
 
 [node name="brain" parent="." index="7"]
 SIGHT_RANGE = 120.0
@@ -39,9 +61,18 @@ general_springs = {
 
 [node name="action_lobe" parent="brain" index="4" instance=ExtResource( 5 )]
 
-[node name="dash" parent="brain/action_lobe" index="2" instance=ExtResource( 4 )]
-distance_weight = 0
+[node name="fdash" parent="brain/action_lobe" index="2" instance=ExtResource( 4 )]
+best_distance = 16
+distance_weight = 4
+health_weight = 1
 COOLDOWN = 0.75
+GLOBAL_COOLDOWN = true
+
+[node name="sdash" parent="brain/action_lobe" index="3" instance=ExtResource( 4 )]
+tag = 1
+best_distance = 50
+COOLDOWN = 0.75
+GLOBAL_COOLDOWN = true
 
 [node name="death_spawn" parent="." index="9"]
 spawn_entity = "Ultra_Chaser_Death"

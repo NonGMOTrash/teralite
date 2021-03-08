@@ -3,13 +3,16 @@ extends Label
 onready var timer = $Timer
 
 var time = 0.0
+var paused = false
 
 func _ready():
 	global.nodes["stopwatch"] = self
 	visible = true
 
 func _process(_delta):
-	time = 999.9 - timer.time_left
+	if paused == false:
+		time = 999.9 - timer.time_left
+	
 	var minute = int(floor(time / 60))
 	var second = int(floor(time - (minute * 60)))
 	var tenth = stepify(time - ((minute*60) + second), 0.1) * 10
@@ -26,3 +29,9 @@ func _process(_delta):
 		"." +
 		str(tenth)
 		)
+
+func pause(force: bool):
+	if force != null:
+		paused = force
+	else:
+		paused = not paused

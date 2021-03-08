@@ -8,7 +8,6 @@ enum item_types {
 }
 
 export(item_types) var type = item_types.ACTIVE
-
 export(PackedScene) var thinker
 
 var SOURCE
