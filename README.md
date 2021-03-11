@@ -92,12 +92,15 @@ addtionally,
 - pistol_reload: "AR15 pistol load and chamber" by michorvath ( https://freesound.org/people/michorvath/sounds/427599/ ) licensed under CC0
 - damage: "Hit 4 8 Bit" by Mrthenoronha ( https://freesound.org/people/Mrthenoronha/sounds/507702/ ) licensed under CC BY-NC 3.0
 - bow_shoot: "bow01" by Erdie ( https://freesound.org/people/Erdie/sounds/65733/ ) licensed under CC BY 3.0
-- arrow_hit: "Arrow strike" by plantmonkey ( https://freesound.org/people/plantmonkey/sounds/410751/ ) licensed under CC0
+- arrow_collide: "Arrow strike" by plantmonkey ( https://freesound.org/people/plantmonkey/sounds/410751/ ) licensed under CC0
+- arrow_hit: "arrow_damage" by braqoon ( https://freesound.org/people/braqoon/sounds/161098/ ) licensed under CC0
 - bow_drawn: "Regular Arrow Shot with rattle slow draw" by brendan89 ( https://freesound.org/people/brendan89/sounds/321554/ ) licensed under CC BY 3.0
 - menu_hover: "CLICK_143" by Jaszunio15 ( https://freesound.org/people/Jaszunio15/sounds/421475/ ) licensed under CC0
 - menu_click: "Wooden Hover" by BenjaminNelan ( https://freesound.org/people/BenjaminNelan/sounds/321082/ ) licensed under CC0
 - menu_pause + menu_unpause: "Access Denied" by suntemple ( https://freesound.org/people/suntemple/sounds/249300/ ) licensed under CC0
 - spike_rise: "Spiketrap" by Deathscyp ( https://freesound.org/people/Deathscyp/sounds/443806/ ) licensed under CC0
+- crate_destory: "Wood Crate Destory 3" by Bertsz ( https://freesound.org/people/Bertsz/sounds/500900/ ) licensed under CC0
+- player_death: "Retro Video Game Death" by SRJA_Gaming ( https://freesound.org/people/SRJA_Gaming/sounds/543255/ ) licensed under CC0
 
 # license information
 
@@ -131,14 +134,15 @@ good luck working with my terrible game architecture though
 
 ### Beta 2.10 (3/7/2021)
 
+- added player death animation
 - added volume slider
 - added weapon equip sounds for the sword and pistol
+- added menu and pause sounds
 - fixed some navpoly issues (this also fixed some crashes)
 - fixed ultra chaser dashing (it's been broken for awhile, whoops) and added an animation
 - footstep sounds are no longer cut off when you stop walking
 - added footstep sound for wood
 - other enemies now also emit footstep sounds
-- added menu and pause sounds
 - a few behind the scenes improvements
 
 ### Beta 2.9 (2/21/2021)
