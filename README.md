@@ -1,12 +1,13 @@
 # project epsilon
 
-please don't share these files, i wanna keep this game sorta secret for now. if you violate this policy... i will do abesolutely nothing. 
+helo thanks for downloading
+
+please don't share these files, i wanna keep this game sorta secret for now. if you violate this policy, i will do nothing except be very very sad.
 
 you can use an old save from a 1.X version, but levels have been changed and reordered so I recomend you just start over with a new save (besides, you'll only lose like 5 minutes of progress lol)
 
 also, you have to keep the .exe has to be in the same folder as the .pck or it won't work. if you want to have access to it somewhere else, just make a shortcut of the .exe file
 
-thanks for downloading
 
 
                                  ###############                                
@@ -84,7 +85,7 @@ addtionally,
 - sword_tint: "sword04" by Erdie ( https://freesound.org/people/Erdie/sounds/27858/ ) licensed under CC BY 3.0
 - footstep_grass: "Rustling Grass 2" by morganpurkis ( https://freesound.org/people/morganpurkis/sounds/396013/ ) licensed under CC0
 - footstep_wood: "Footstep_Wood_Heel" by GiocoSound ( https://freesound.org/people/GiocoSound/sounds/421150/ ) licensed under CC0
-- star_pickup: "Bonus earned in video game" from MixKit ( https://mixkit.co/free-sound-effects/game/ ) licensed under Mixkit Sound Effects Free License 
+- star_pickup: "Get Item 4 8 Bit" by Mrthenoronha ( https://freesound.org/people/Mrthenoronha/sounds/516824/ ) licensed under CC BY-NC 3.0
 - armor_pickup: "armor10" by pepingrillin ( https://freesound.org/people/pepingrillin/sounds/252144/ ) licensed under CC0
 - forest_ambiance: "Ambiance_Wind_Forest_Calm_Loop" by Nox_Sound ( https://freesound.org/people/Nox_Sound/sounds/506910/ ) licensed under CC0
 - pistol_fire: "9mm gunside" by cedarstudios ( https://freesound.org/people/cedarstudios/sounds/148839/ ) licensed under CC0
@@ -101,6 +102,7 @@ addtionally,
 - spike_rise: "Spiketrap" by Deathscyp ( https://freesound.org/people/Deathscyp/sounds/443806/ ) licensed under CC0
 - crate_destory: "Wood Crate Destory 3" by Bertsz ( https://freesound.org/people/Bertsz/sounds/500900/ ) licensed under CC0
 - player_death: "Retro Video Game Death" by SRJA_Gaming ( https://freesound.org/people/SRJA_Gaming/sounds/543255/ ) licensed under CC0
+- heal: "Healing 2 (Tranquillity)" by SilverIllusionist ( https://freesound.org/people/SilverIllusionist/sounds/518800/ ) licensed under CC BY 3.0
 
 # license information
 
