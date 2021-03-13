@@ -1,12 +1,13 @@
 # project epsilon
 
-please don't share these files, i wanna keep this game sorta secret for now. if you violate this policy... i will do abesolutely nothing. 
+helo thanks for downloading
+
+please don't share these files, i wanna keep this game sorta secret for now. if you violate this policy, i will do nothing except be very very sad.
 
 you can use an old save from a 1.X version, but levels have been changed and reordered so I recomend you just start over with a new save (besides, you'll only lose like 5 minutes of progress lol)
 
 also, you have to keep the .exe has to be in the same folder as the .pck or it won't work. if you want to have access to it somewhere else, just make a shortcut of the .exe file
 
-thanks for downloading
 
 
                                  ###############                                
@@ -84,7 +85,7 @@ addtionally,
 - sword_tint: "sword04" by Erdie ( https://freesound.org/people/Erdie/sounds/27858/ ) licensed under CC BY 3.0
 - footstep_grass: "Rustling Grass 2" by morganpurkis ( https://freesound.org/people/morganpurkis/sounds/396013/ ) licensed under CC0
 - footstep_wood: "Footstep_Wood_Heel" by GiocoSound ( https://freesound.org/people/GiocoSound/sounds/421150/ ) licensed under CC0
-- star_pickup: "Bonus earned in video game" from MixKit ( https://mixkit.co/free-sound-effects/game/ ) licensed under Mixkit Sound Effects Free License 
+- star_pickup: "Get Item 4 8 Bit" by Mrthenoronha ( https://freesound.org/people/Mrthenoronha/sounds/516824/ ) licensed under CC BY-NC 3.0
 - armor_pickup: "armor10" by pepingrillin ( https://freesound.org/people/pepingrillin/sounds/252144/ ) licensed under CC0
 - forest_ambiance: "Ambiance_Wind_Forest_Calm_Loop" by Nox_Sound ( https://freesound.org/people/Nox_Sound/sounds/506910/ ) licensed under CC0
 - pistol_fire: "9mm gunside" by cedarstudios ( https://freesound.org/people/cedarstudios/sounds/148839/ ) licensed under CC0
@@ -92,12 +93,16 @@ addtionally,
 - pistol_reload: "AR15 pistol load and chamber" by michorvath ( https://freesound.org/people/michorvath/sounds/427599/ ) licensed under CC0
 - damage: "Hit 4 8 Bit" by Mrthenoronha ( https://freesound.org/people/Mrthenoronha/sounds/507702/ ) licensed under CC BY-NC 3.0
 - bow_shoot: "bow01" by Erdie ( https://freesound.org/people/Erdie/sounds/65733/ ) licensed under CC BY 3.0
-- arrow_hit: "Arrow strike" by plantmonkey ( https://freesound.org/people/plantmonkey/sounds/410751/ ) licensed under CC0
+- arrow_collide: "Arrow strike" by plantmonkey ( https://freesound.org/people/plantmonkey/sounds/410751/ ) licensed under CC0
+- arrow_hit: "arrow_damage" by braqoon ( https://freesound.org/people/braqoon/sounds/161098/ ) licensed under CC0
 - bow_drawn: "Regular Arrow Shot with rattle slow draw" by brendan89 ( https://freesound.org/people/brendan89/sounds/321554/ ) licensed under CC BY 3.0
 - menu_hover: "CLICK_143" by Jaszunio15 ( https://freesound.org/people/Jaszunio15/sounds/421475/ ) licensed under CC0
 - menu_click: "Wooden Hover" by BenjaminNelan ( https://freesound.org/people/BenjaminNelan/sounds/321082/ ) licensed under CC0
 - menu_pause + menu_unpause: "Access Denied" by suntemple ( https://freesound.org/people/suntemple/sounds/249300/ ) licensed under CC0
 - spike_rise: "Spiketrap" by Deathscyp ( https://freesound.org/people/Deathscyp/sounds/443806/ ) licensed under CC0
+- crate_destory: "Wood Crate Destory 3" by Bertsz ( https://freesound.org/people/Bertsz/sounds/500900/ ) licensed under CC0
+- player_death: "Retro Video Game Death" by SRJA_Gaming ( https://freesound.org/people/SRJA_Gaming/sounds/543255/ ) licensed under CC0
+- heal: "Healing 2 (Tranquillity)" by SilverIllusionist ( https://freesound.org/people/SilverIllusionist/sounds/518800/ ) licensed under CC BY 3.0
 
 # license information
 
@@ -129,11 +134,18 @@ good luck working with my terrible game architecture though
 
 # Patchnotes
 
-### Beta 2.10 (in development)
+### Beta 2.10 (3/7/2021)
 
+- added player death animation
+- added volume slider
 - added weapon equip sounds for the sword and pistol
+- added menu and pause sounds
+- fixed some navpoly issues (this also fixed some crashes)
 - fixed ultra chaser dashing (it's been broken for awhile, whoops) and added an animation
 - footstep sounds are no longer cut off when you stop walking
+- added footstep sound for wood
+- other enemies now also emit footstep sounds
+- a few behind the scenes improvements
 
 ### Beta 2.9 (2/21/2021)
 
