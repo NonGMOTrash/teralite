@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/menu_pause.wav-c53ef184b6b00951a4da558431acf16e.sample"
+path="res://.import/menu_click.wav-16b6c77626569d7bd84dad1607abd2f5.sample"
 
 [deps]
 
-source_file="res://Misc/menu_pause.wav"
-dest_files=[ "res://.import/menu_pause.wav-c53ef184b6b00951a4da558431acf16e.sample" ]
+source_file="res://HUD and Menus/menu_click.wav"
+dest_files=[ "res://.import/menu_click.wav-16b6c77626569d7bd84dad1607abd2f5.sample" ]
 
 [params]
 

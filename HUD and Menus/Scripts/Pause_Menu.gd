@@ -1,10 +1,9 @@
 extends ColorRect
 
-
 const yellow = Color8(242, 211, 53)
 const white = Color8(255, 255, 255)
-const PAUSE_SOUND = preload("res://Misc/menu_pause.wav")
-const UNPAUSE_SOUND = preload("res://Misc/menu_unpause.wav")
+export(AudioStream) var PAUSE_SOUND
+export(AudioStream) var UNPAUSE_SOUND
 
 onready var resume = $items/resume
 onready var options = $items/options
@@ -35,7 +34,7 @@ func _input(event: InputEvent) -> void:
 		else:
 			global.emit_signal("unpaused")
 			global.update_cursor()
-			sound_player.create_sound(UNPAUSE_SOUND, true)
+			sound_player.create_sound(UNPAUSE_SOUND, true, Sound.MODES.ONESHOT, true, true)
 
 func multi_color_set(target:Control, color:Color):
 	target.set_deferred("custom_colors/font_color", color)

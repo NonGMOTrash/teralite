@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/menu_unpause.wav-b94900e70c3f13985d47e2ade65b1260.sample"
+
+[deps]
+
+source_file="res://HUD and Menus/pause_menu/menu_unpause.wav"
+dest_files=[ "res://.import/menu_unpause.wav-b94900e70c3f13985d47e2ade65b1260.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,7 +1,6 @@
 extends Entity
 
-const player_death = preload("res://Entities/player/player_death/player_death.tscn")
-const OW = preload("res://Misc/damage.wav")
+export(PackedScene) var player_death
 
 var perfect = true
 var death_message = ";-;"
@@ -202,11 +201,6 @@ func _on_stats_health_changed(type) -> void:
 		if type == "hurt" and name == "player":
 			global.nodes["camera"].shake(5, 15, 0.2)
 			OS.delay_msec(10)
-		
-		# PROBLEM_NOTE: this is a terrible way to do the sound
-		var sfx = Sound.new()
-		sfx.stream = OW
-		components["sound_player"].add_sound(sfx)
 		
 		perfect = false
 		if global.settings["auto_restart"] == true: 

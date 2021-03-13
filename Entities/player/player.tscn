@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Components/death_spawn/death_spawn.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/player/Player.gd" type="Script" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://Components/hit_spawn/hit_spawn.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/player/player.png" type="Texture" id=10]
 [ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Entities/player/damage.wav" type="AudioStream" id=12]
+[ext_resource path="res://Entities/Things/Melee/slash/sword_tint.wav" type="AudioStream" id=13]
+[ext_resource path="res://Entities/player/player_death/player_death.tscn" type="PackedScene" id=14]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -146,6 +149,7 @@ script = ExtResource( 2 )
 ACCELERATION = 600
 truName = "player"
 faction = "player"
+player_death = ExtResource( 14 )
 dash_strength = 170
 
 [node name="stats" parent="." instance=ExtResource( 4 )]
@@ -164,6 +168,9 @@ frame = 2
 
 [node name="hurtbox" parent="." instance=ExtResource( 3 )]
 visible = false
+HURT_SOUND = ExtResource( 12 )
+BLOCK_SOUND = ExtResource( 13 )
+KILLED_SOUND = ExtResource( 12 )
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 position = Vector2( 0, 1 )

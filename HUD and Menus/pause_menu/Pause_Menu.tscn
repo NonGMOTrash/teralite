@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://HUD and Menus/Themes/general_theme.tres" type="Theme" id=1]
 [ext_resource path="res://HUD and Menus/Scripts/Pause_Menu.gd" type="Script" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://HUD and Menus/Icons/play.png" type="Texture" id=7]
 [ext_resource path="res://HUD and Menus/Icons/x.png" type="Texture" id=8]
 [ext_resource path="res://HUD and Menus/Icons/exit.png" type="Texture" id=9]
+[ext_resource path="res://HUD and Menus/pause_menu/menu_unpause.wav" type="AudioStream" id=10]
+[ext_resource path="res://HUD and Menus/pause_menu/menu_pause.wav" type="AudioStream" id=11]
 
 [node name="Pause_Menu" type="ColorRect"]
 pause_mode = 2
@@ -24,6 +26,8 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+PAUSE_SOUND = ExtResource( 11 )
+UNPAUSE_SOUND = ExtResource( 10 )
 
 [node name="items" type="VBoxContainer" parent="."]
 margin_left = 142.0
@@ -86,7 +90,6 @@ flat = true
 [node name="Options" parent="." instance=ExtResource( 3 )]
 
 [node name="sound_player" parent="." instance=ExtResource( 5 )]
-FREE_WHEN_EMPTY = false
 [connection signal="pressed" from="items/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="items/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="items/return_to" to="." method="_on_return_to_pressed"]

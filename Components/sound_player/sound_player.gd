@@ -2,7 +2,7 @@ extends Node
 
 enum MODES {ONESHOT, STANDBY, REPEATING}
 
-export var FREE_WHEN_EMPTY = true # if true, queue_free() if all the sounds are gone
+export var FREE_WHEN_EMPTY = false # if true, queue_free() if all the sounds are gone
 
 var sounds = {
 	#"soundname": node
@@ -65,11 +65,15 @@ func add_sound(audioplayer:Node):
 	if audioplayer.autoplay == true:
 		audioplayer.play()
 	
+	if audioplayer in sounds: breakpoint
 	if audioplayer is Sound:
 		var src = get_parent()
+		if audioplayer in sounds: breakpoint
 		if src is Thinker: src = src.get_parent()
+		if audioplayer in sounds: breakpoint
 		if src is Entity:
 			audioplayer.global_position = src.global_position
+			if audioplayer in sounds: breakpoint
 
 func create_sound(
 	stream: AudioStream, 

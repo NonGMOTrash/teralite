@@ -9,6 +9,8 @@ export var SCENE_PERSIST = false
 export var AUTO_SET_PHYSICAL = true # auto set max_distance and attenuation
 
 func _init():
+	autoplay = false
+	
 	if AUTO_SET_PHYSICAL == true:
 		max_distance = 400
 		attenuation = 2.5
@@ -28,3 +30,7 @@ func _ready() -> void:
 	
 	if AUTO_PLAY == true:
 		play()
+	
+	yield(get_tree().create_timer(0.1), "timeout")
+	if global_position == Vector2.ZERO:
+		push_warning("sound '"+get_name()+"' created at (0, 0), possibly an error.")

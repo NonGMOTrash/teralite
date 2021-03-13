@@ -32,6 +32,5 @@ collision_mask = 2
 shape = SubResource( 2 )
 
 [node name="sound_player" parent="." instance=ExtResource( 3 )]
-FREE_WHEN_EMPTY = false
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

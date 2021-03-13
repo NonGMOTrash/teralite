@@ -73,3 +73,6 @@ func reload():
 		reload.time_left, # item bar value 
 		reload.wait_time # bar timer duration
 		)
+	
+	var s = sound_player.sounds["reload"]
+	sound_player.sounds["reload"].play()

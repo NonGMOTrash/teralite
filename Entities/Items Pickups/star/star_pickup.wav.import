@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/star_pickup.wav-b344ebe42f8d368247b8ba41757c417d.sample"
+
+[deps]
+
+source_file="res://Entities/Items Pickups/star/star_pickup.wav"
+dest_files=[ "res://.import/star_pickup.wav-b344ebe42f8d368247b8ba41757c417d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

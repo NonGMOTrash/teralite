@@ -84,7 +84,7 @@ func _on_collision_body_entered(body: Node) -> void:
 func hitbox_hit(area: Area2D, type: String):
 	# PROBLEM_NOTE: maybe find some way to put this in the player script or something
 	if get_node_or_null(SOURCE_PATH) != null and SOURCE.truName == "player":
-		OS.delay_msec(5)
+		OS.delay_msec(10)
 	
 	var sfx = Sound.new()
 	

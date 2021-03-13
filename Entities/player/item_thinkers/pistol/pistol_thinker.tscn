@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Entities/player/item_thinkers/pistol/pistol_thinker.gd" type="Script" id=1]
 [ext_resource path="res://HUD and Menus/CURSOR_PISTOL.png" type="Texture" id=2]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Things/Projectile/small_bullet/pistol_pickup.wav" type="AudioStream" id=4]
+[ext_resource path="res://Entities/player/item_thinkers/pistol/pistol_reload.wav" type="AudioStream" id=5]
+[ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=6]
 
 [node name="pistol thinker" type="Node"]
 script = ExtResource( 1 )
@@ -20,5 +22,9 @@ one_shot = true
 one_shot = true
 
 [node name="sound_player" parent="." instance=ExtResource( 3 )]
-FREE_WHEN_EMPTY = false
+
+[node name="reload" parent="sound_player" instance=ExtResource( 6 )]
+stream = ExtResource( 5 )
+MODE = 1
+AUTO_PLAY = false
 [connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]
