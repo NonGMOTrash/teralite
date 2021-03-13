@@ -12,10 +12,11 @@
 [ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Components/death_spawn/death_spawn.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Components/hit_spawn/hit_spawn.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Entities/player/damage.wav" type="AudioStream" id=13]
+[ext_resource path="res://Entities/damage.wav" type="AudioStream" id=13]
 [ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=16]
+
 
 
 [sub_resource type="ShaderMaterial" id=1]

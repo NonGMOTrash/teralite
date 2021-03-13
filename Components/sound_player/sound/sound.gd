@@ -31,6 +31,10 @@ func _ready() -> void:
 	if AUTO_PLAY == true:
 		play()
 	
-	yield(get_tree().create_timer(0.1), "timeout")
-	if global_position == Vector2.ZERO:
-		push_warning("sound '"+get_name()+"' created at (0, 0), possibly an error.")
+	# moving to sound_player (putting it in here causes an error sometimes
+	# resume: Resumed function '_ready()' after yield, but class instance is gone. 
+	# At script: res://Components/sound_player/sound/sound.gd:34
+	
+#	yield(get_tree().create_timer(0.1), "timeout")
+#	if global_position == Vector2.ZERO:
+#		push_warning("sound '"+get_name()+"' created at (0, 0), possibly an error.")

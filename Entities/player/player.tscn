@@ -11,9 +11,10 @@
 [ext_resource path="res://Components/hit_spawn/hit_spawn.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/player/player.png" type="Texture" id=10]
 [ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Entities/player/damage.wav" type="AudioStream" id=12]
+[ext_resource path="res://Entities/damage.wav" type="AudioStream" id=12]
 [ext_resource path="res://Entities/Things/Melee/slash/sword_tint.wav" type="AudioStream" id=13]
 [ext_resource path="res://Entities/player/player_death/player_death.tscn" type="PackedScene" id=14]
+
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true

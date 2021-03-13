@@ -35,6 +35,9 @@ func _ready():
 			
 			if child.autoplay == true:
 				child.play()
+			
+			if child is Sound and child.global_position == Vector2.ZERO:
+				push_warning("sound '"+get_name()+"' created at (0, 0), probably a mistake.")
 
 func sound_finished(sound_name):
 	var sound = sounds[sound_name]
@@ -99,6 +102,10 @@ func create_sound(
 func _on_sound_player_tree_exiting() -> void:
 	# make all sounds non-repeating delete themselves after they finished
 	for sound in sounds.values():
+		if sound.is_inside_tree() == false:
+			sound.queue_free()
+			continue
+		
 		if not sound.is_connected("finished", sound, "queue_free") and not sound.MODE == sound.MODES.REPEATING:
 			sound.connect("finished", sound, "queue_free")
 		elif sound.MODE == sound.MODES.STANDBY and sound.playing == false:

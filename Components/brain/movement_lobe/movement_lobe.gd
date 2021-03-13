@@ -88,14 +88,16 @@ func _on_idle_timer_timeout() -> void:
 			# PROBLEM_NOTE: the game crashes with no error message without this. strangely, putting it
 			# anywhere in this function before this line will also stop the error, super weird
 			# this stil casues a non fatal error a bunch, but its better than a crash
-			# Internal Script Error! opcode #38 (report please).
+			# also got this once: Internal Script Error! opcode #38 (report please).
 			#debug()
 			#yield(self, "debug")
 			# EDIT: moved it to line 80, that seemed to fix it??
 			# EDIT2: moved it to brain.gd (i think the error is with target tracking)
 			# EDIT3: IM PRETTY SURE I KNOW WHAT THE PROBLEM IS. if you go to a-6 and just hold right,
 			# the game crashes as soon as you enter a deadzone in the navpoly generation.
-			# so i think this must be an error with the pathfinding
+			# so i think this must be an error with the pathfinding.
+			# EDIT4: never fixed the error with the pathfinding (i think it might be on godot's end)
+			# however, i did fix the nav poly generation so that should pretty much fix this issue
 		
 		brain.get_parent().input_vector = global_position.direction_to(wander_path[1]).normalized()
 	

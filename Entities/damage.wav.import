@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/damage.wav-52e18002cba73da62fd98dffa8a9e8a0.sample"
+path="res://.import/damage.wav-0b8ce40e2375cf172df231d85e73924b.sample"
 
 [deps]
 
-source_file="res://Entities/player/damage.wav"
-dest_files=[ "res://.import/damage.wav-52e18002cba73da62fd98dffa8a9e8a0.sample" ]
+source_file="res://Entities/damage.wav"
+dest_files=[ "res://.import/damage.wav-0b8ce40e2375cf172df231d85e73924b.sample" ]
 
 [params]
 
