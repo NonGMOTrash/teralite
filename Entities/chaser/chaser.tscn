@@ -17,8 +17,6 @@
 [ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=16]
 
-
-
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 

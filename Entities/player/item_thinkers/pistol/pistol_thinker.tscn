@@ -14,6 +14,7 @@ my_item = "Pistol"
 CURSOR = ExtResource( 2 )
 CURSOR_MODE = 1
 EQUIP_SOUND = ExtResource( 4 )
+reload_time = 2.46
 
 [node name="cooldown" type="Timer" parent="."]
 one_shot = true

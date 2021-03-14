@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/spike_rise.wav-ee35da8f7b938714ca2cb04de51c6d5e.sample"
+
+[deps]
+
+source_file="res://Entities/spikes/spike_rise.wav"
+dest_files=[ "res://.import/spike_rise.wav-ee35da8f7b938714ca2cb04de51c6d5e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -3,6 +3,9 @@ extends Navigation2D
 enum AMBIANCE_TYPES {NONE, FOREST}
 export(AMBIANCE_TYPES) var AMBIANCE = AMBIANCE_TYPES.FOREST
 
+
+export var FORCE_SLEEP_UNTIL_VISIBLE = false
+
 const LEVEL_TYPE = 0
 
 func _ready() -> void:

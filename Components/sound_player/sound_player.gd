@@ -33,6 +33,9 @@ func _ready():
 			else:
 				get_tree().current_scene.add_child(child)
 			
+			if child is Sound:
+				child.global_position = get_position_for(child)
+			
 			if child.autoplay == true:
 				child.play()
 			
@@ -68,15 +71,8 @@ func add_sound(audioplayer:Node):
 	if audioplayer.autoplay == true:
 		audioplayer.play()
 	
-	if audioplayer in sounds: breakpoint
 	if audioplayer is Sound:
-		var src = get_parent()
-		if audioplayer in sounds: breakpoint
-		if src is Thinker: src = src.get_parent()
-		if audioplayer in sounds: breakpoint
-		if src is Entity:
-			audioplayer.global_position = src.global_position
-			if audioplayer in sounds: breakpoint
+		audioplayer.global_position = get_position_for(audioplayer)
 
 func create_sound(
 	stream: AudioStream, 
@@ -98,6 +94,25 @@ func create_sound(
 			sfx.AUTO_SET_PHYSICAL = auto_set_physical
 		sfx.volume_db = volume
 		add_sound(sfx)
+
+func play_sound(sound_name:String) -> void:
+	var sfx = sounds.get(sound_name)
+	if sfx != null:
+		sfx.play()
+		if sfx is Sound:
+			sfx.global_position = get_position_for(sfx)
+	else:
+		push_warning("could not find sound effect '"+sound_name+"' in sound_player")
+		breakpoint
+
+func get_position_for(sound:Sound) -> Vector2:
+	var src = get_parent()
+	if src is Thinker: src = src.get_parent()
+	if src is Entity:
+		return src.global_position
+	else:
+		push_warning("src was not an Entity")
+		return Vector2.ZERO
 
 func _on_sound_player_tree_exiting() -> void:
 	# make all sounds non-repeating delete themselves after they finished

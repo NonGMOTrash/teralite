@@ -27,10 +27,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.05 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true, false ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath("AnimationPlayer")
@@ -44,6 +44,20 @@ tracks/2/keys = {
 "values": [ {
 "args": [  ],
 "method": "queue_free"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("sound_player")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.051 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "sound" ],
+"method": "play_sound"
 } ]
 }
 
@@ -60,6 +74,9 @@ TRUE_DAMAGE = 4
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+disabled = true
 
 [node name="AnimationPlayer" parent="." index="3"]
 autoplay = ""

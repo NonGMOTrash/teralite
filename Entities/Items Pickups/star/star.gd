@@ -30,4 +30,3 @@ func on_pickup(player):
 		return
 
 	get_tree().change_scene_to(load("res://Levels/A/A_hub.tscn"))
-	breakpoint

@@ -61,17 +61,19 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 			pass
 		
 		# for sfx
-		if (HURT_SOUND != null or BLOCK_SOUND != null or HEAL_SOUND != null or KILLED_SOUND != null
-		and get_parent().components["sound_player"] != null):
-			var sfx = Sound.new()
-			match result_type:
-				"hurt": sfx.stream = HURT_SOUND
-				"block": sfx.stream = BLOCK_SOUND
-				"heal": sfx.stream = HEAL_SOUND
-				"killed": sfx.stream = KILLED_SOUND
+		if HURT_SOUND != null or BLOCK_SOUND != null or HEAL_SOUND != null or KILLED_SOUND != null:
+			if get_parent().components["sound_player"] != null:
+				var sfx = Sound.new()
+				match result_type:
+					"hurt": sfx.stream = HURT_SOUND
+					"block": sfx.stream = BLOCK_SOUND
+					"heal": sfx.stream = HEAL_SOUND
+					"killed": sfx.stream = KILLED_SOUND
+				
+				get_parent().components["sound_player"].add_sound(sfx)
 			
-			get_parent().components["sound_player"].add_sound(sfx)
-			#breakpoint
+			else:
+				push_warning("hurtbox can not play sounds because "+get_parent().truName+" has no sound_player")
 		
 	area.emit_signal("hit", self, result_type)
 	

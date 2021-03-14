@@ -31,7 +31,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 #		"Slash": return
 	if area.get_parent() is Melee or area.get_parent().components["stats"] == null: return
 	var modifier = area.get_parent().components["stats"].modifiers["burning"]
-	if modifier < 0 and abs(modifier) > hitbox.STATUS_EFFECT_LEVEL: return
+	if modifier < 0 and abs(modifier) > hitbox.STATUS_LEVEL: return
 	
 	fuel.wait_time = fuel.time_left + 6.5
 	fuel.start()

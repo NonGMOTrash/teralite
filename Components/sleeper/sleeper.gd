@@ -7,6 +7,7 @@ export(float, 0.01, 60.0) var sleep_delay = 3.0
 var active = true
 
 var brain
+var has_awoken = false
 
 signal slept # << PROBLEM_NOTE: never emitted
 signal awoken
@@ -25,10 +26,15 @@ func _ready() -> void:
 	brain.connect("found_target", self, "target_found")
 	brain.connect("lost_target", self, "target_lost")
 
-func set_activation(activation: bool):
+func set_activation(activation: bool, force:=false):
 	if sleep_timer.is_inside_tree() == false: return
 	
-	if activation == true: 
+	if (
+		activation == true and get_tree().current_scene.FORCE_SLEEP_UNTIL_VISIBLE == false 
+		or has_awoken == true
+		or is_on_screen() == true
+	):
+		has_awoken = true
 		if active != true:
 			emit_signal("awoken")
 		sleep_timer.stop()

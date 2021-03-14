@@ -26,10 +26,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.833333 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.833333 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true, false ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath("AnimationPlayer")
@@ -45,6 +45,20 @@ tracks/2/keys = {
 "method": "queue_free"
 } ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath("sound_player")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.833 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "sound" ],
+"method": "play_sound"
+} ]
+}
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 8.0
@@ -58,6 +72,7 @@ TRUE_DAMAGE = 3
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )
+frame = 1
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 disabled = true
@@ -65,8 +80,10 @@ disabled = true
 [node name="AnimationPlayer" parent="." index="3"]
 anims/spikes = SubResource( 1 )
 
+[node name="activation" parent="." index="4"]
+visible = false
+
 [node name="CollisionShape2D" parent="activation" index="0"]
-position = Vector2( 0.5, 0 )
 shape = SubResource( 2 )
 
 [editable path="hitbox"]
