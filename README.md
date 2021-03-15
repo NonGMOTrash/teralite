@@ -134,6 +134,13 @@ good luck working with my terrible game architecture though
 
 # Patchnotes
 
+### Beta 2.11 (3/14/2021)
+
+- added more sound effects (death, spikes, crates, +more)
+- added pitch shifting to sound effects
+- half fixed issues with ! and ? spam from groups of AIs (still WIP)
+- the pistol now has a much longer cooldown (temporary)
+
 ### Beta 2.10 (3/7/2021)
 
 - added player death animation
