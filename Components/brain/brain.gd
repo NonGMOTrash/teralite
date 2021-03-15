@@ -5,6 +5,7 @@ const LOS_MASK = 3
 onready var think_timer = $think_timer
 onready var sight = $sight
 onready var sight_shape = $sight/CollisionShape2D
+onready var effect_cooldown = $effect_cooldown
 var movement_lobe
 var action_lobe
 var memory_lobe
@@ -166,9 +167,10 @@ func add_target(tar: Node, force = false):
 	
 	emit_signal("found_target")
 	
-	var effect = global.aquire("exclaimation")
-	get_parent().get_parent().call_deferred("add_child", effect)
-	effect.global_position = global_position.move_toward(tar.global_position, 32)
+#	var effect = global.aquire("exclaimation")
+#	get_parent().get_parent().call_deferred("add_child", effect)
+#	effect.global_position = global_position.move_toward(tar.global_position, 32)
+	spawn_effect("exclaimation", global_position.move_toward(tar.global_position, 32))
 
 func remove_target(tar):
 	if targets == []: return
@@ -192,9 +194,10 @@ func remove_target(tar):
 			memory_lobe.add_memory(targets[target_id].global_position, 
 			movement_lobe.get_spring(targets[target_id]), targets[target_id].get_instance_id())
 			
-			var effect = global.aquire("question")
-			get_parent().get_parent().call_deferred("add_child", effect)
-			effect.global_position = global_position.move_toward(targets[target_id].global_position, 32)
+#			var effect = global.aquire("question")
+#			get_parent().get_parent().call_deferred("add_child", effect)
+#			effect.global_position = global_position.move_toward(targets[target_id].global_position, 32)
+			spawn_effect("question", global_position.move_toward(targets[target_id].global_position, 32))
 		
 	targets.remove(target_id)
 	target_paths.remove(target_id)
@@ -233,6 +236,21 @@ func _on_think_timer_timeout() -> void:
 		update()
 	
 	#if targets != []: print(is_target_valid(0))
+
+# PROBLEM_NOTE: this is a bad way to prevent effect spam, better to have entities be able to see through
+# eachother. couldn't get it working though
+func spawn_effect(effect: String, pos: Vector2):
+	if effect_cooldown.time_left != 0: return
+	
+	var new_effect = global.aquire(effect)
+	if not new_effect is Effect:
+		push_warning("effect was invalid")
+		return
+	
+	get_parent().get_parent().call_deferred("add_child", new_effect)
+	new_effect.global_position = pos
+	
+	effect_cooldown.start()
 
 func debug(): 
 	if get_parent().is_queued_for_deletion() == false:

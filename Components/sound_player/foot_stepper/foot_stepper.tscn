@@ -5,7 +5,6 @@
 
 [node name="foot_stepper" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-FREE_WHEN_EMPTY = false
 RATE = 3.2
 OFFSET = -3.2
 

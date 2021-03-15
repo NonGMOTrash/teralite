@@ -159,7 +159,6 @@ GLOBAL_COOLDOWN = true
 anims/attack = SubResource( 4 )
 
 [node name="foot_stepper" parent="." instance=ExtResource( 17 )]
-CONSTANT_RATE = false
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 
 [editable path="sprite"]

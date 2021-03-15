@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=2]
@@ -12,10 +12,14 @@
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 9, 9 )
+[sub_resource type="AudioStreamRandomPitch" id=2]
+audio_stream = ExtResource( 5 )
+random_pitch = 1.05
 
 [sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 9, 9 )
+
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 8, 6 )
 
 [node name="Crate" type="KinematicBody2D"]
@@ -34,17 +38,17 @@ DAMAGE = 0
 [node name="hurtbox" parent="." instance=ExtResource( 1 )]
 visible = false
 position = Vector2( 0, 4 )
-KILLED_SOUND = ExtResource( 5 )
+KILLED_SOUND = SubResource( 2 )
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 position = Vector2( 0, -7 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 modulate = Color( 0.129412, 0.309804, 0.92549, 1 )
 position = Vector2( 0, -3 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="death_spawn" parent="." instance=ExtResource( 6 )]
 spawn_entity = "hit_effect"

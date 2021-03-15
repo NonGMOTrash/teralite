@@ -5,7 +5,7 @@ const FOOTSTEP_WOOD = preload("res://Entities/footstep_wood.wav")
 
 export(float, 0.0, 9.9) var RATE = 0.33
 export(float, -9.9, 9.9) var OFFSET = -0.33
-export var CONSTANT_RATE = true
+export var CONSTANT_RATE = true # PROBLEM_NOTE: setting CONSTANT_RATE to false doesn't work properly
 export(float, -84.0, 12.0) var VOLUME_ADJUST = 0
 
 var old_speed = 0
@@ -75,6 +75,7 @@ func footstep():
 	if audio == null: return
 	
 	var sfx = Sound.new()
-	sfx.stream = audio
+	sfx.stream = AudioStreamRandomPitch.new()
+	sfx.stream.audio_stream = audio
 	sfx.volume_db = VOLUME_ADJUST
 	add_sound(sfx)

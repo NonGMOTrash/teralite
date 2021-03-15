@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Entities/player/item_thinkers/pistol/pistol_thinker.gd" type="Script" id=1]
 [ext_resource path="res://HUD and Menus/CURSOR_PISTOL.png" type="Texture" id=2]
@@ -7,13 +7,17 @@
 [ext_resource path="res://Entities/player/item_thinkers/pistol/pistol_reload.wav" type="AudioStream" id=5]
 [ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=6]
 
+[sub_resource type="AudioStreamRandomPitch" id=1]
+audio_stream = ExtResource( 4 )
+random_pitch = 1.05
+
 [node name="pistol thinker" type="Node"]
 script = ExtResource( 1 )
 auto_ready_check = false
 my_item = "Pistol"
 CURSOR = ExtResource( 2 )
 CURSOR_MODE = 1
-EQUIP_SOUND = ExtResource( 4 )
+EQUIP_SOUND = SubResource( 1 )
 reload_time = 2.46
 
 [node name="cooldown" type="Timer" parent="."]

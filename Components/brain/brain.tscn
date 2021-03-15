@@ -13,6 +13,11 @@ SIGHT_RANGE = 135.0
 wait_time = 0.05
 autostart = true
 
+[node name="effect_cooldown" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+autostart = true
+
 [node name="sight" type="Area2D" parent="."]
 visible = false
 collision_layer = 0

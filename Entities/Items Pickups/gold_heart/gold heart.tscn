@@ -1,13 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Entities/Items Pickups/item.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Items Pickups/gold_heart/gold_heart.png" type="Texture" id=2]
 [ext_resource path="res://Entities/Items Pickups/gold_heart/gold heart.gd" type="Script" id=3]
+[ext_resource path="res://Entities/heal.wav" type="AudioStream" id=4]
+
+[sub_resource type="AudioStreamRandomPitch" id=1]
+audio_stream = ExtResource( 4 )
+random_pitch = 1.05
 
 [node name="gold heart" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 truName = "gold_heart"
 type = 2
+pickup_sound = SubResource( 1 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
