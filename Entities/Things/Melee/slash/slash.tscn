@@ -11,23 +11,23 @@
 
 [sub_resource type="AudioStreamRandomPitch" id=1]
 audio_stream = ExtResource( 6 )
-random_pitch = 1.05
+random_pitch = 1.02
 
 [sub_resource type="AudioStreamRandomPitch" id=2]
 audio_stream = ExtResource( 7 )
-random_pitch = 1.05
+random_pitch = 1.02
 
 [sub_resource type="AudioStreamRandomPitch" id=3]
 audio_stream = ExtResource( 4 )
-random_pitch = 1.05
+random_pitch = 1.02
 
 [sub_resource type="AudioStreamRandomPitch" id=4]
 audio_stream = ExtResource( 5 )
-random_pitch = 1.05
+random_pitch = 1.02
 
 [sub_resource type="AudioStreamRandomPitch" id=5]
 audio_stream = ExtResource( 8 )
-random_pitch = 1.05
+random_pitch = 1.02
 
 [sub_resource type="CapsuleShape2D" id=6]
 radius = 3.0

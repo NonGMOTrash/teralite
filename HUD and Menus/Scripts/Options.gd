@@ -1,12 +1,13 @@
-extends TabContainer
+extends Control
 
-onready var smooth = $Visual/smooth
-onready var hidebar = $Visual/hidebar
-onready var fullscreen = $Visual/fullscreen
-onready var perfection = $Control/auto_restart
-onready var pixel = $Visual/pixel
-onready var volume = $Audio/volume
-onready var volume_label = $Audio/volume_label
+onready var tabs = $tabs
+onready var smooth = $tabs/Visual/smooth
+onready var hidebar = $tabs/Visual/hidebar
+onready var fullscreen = $tabs/Visual/fullscreen
+onready var perfection = $tabs/Control/auto_restart
+onready var pixel = $tabs/Visual/pixel
+onready var volume = $tabs/Audio/volume
+onready var volume_label = $tabs/Audio/volume_label
 
 signal closed
 
@@ -24,7 +25,7 @@ func _on_Options_visibility_changed() -> void:
 	volume.value = global.settings["volume"] * 100
 	
 	if visible == false: return
-	current_tab = 0
+	tabs.current_tab = 0
 	smooth.grab_focus()
 
 func _on_volume_value_changed(value: float) -> void:

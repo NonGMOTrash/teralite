@@ -6,23 +6,23 @@
 [ext_resource path="res://Entities/Things/Projectile/arrow/bow_shoot.wav" type="AudioStream" id=4]
 [ext_resource path="res://Entities/Things/Projectile/arrow/arrow_hit.wav" type="AudioStream" id=5]
 
-[sub_resource type="AudioStreamRandomPitch" id=4]
+[sub_resource type="AudioStreamRandomPitch" id=1]
 audio_stream = ExtResource( 4 )
-random_pitch = 1.05
+random_pitch = 1.02
 
-[sub_resource type="AudioStreamRandomPitch" id=5]
+[sub_resource type="AudioStreamRandomPitch" id=2]
 audio_stream = ExtResource( 5 )
-random_pitch = 1.05
+random_pitch = 1.02
 
 [sub_resource type="AudioStreamRandomPitch" id=3]
 audio_stream = ExtResource( 3 )
-random_pitch = 1.05
+random_pitch = 1.02
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 2.19433
 height = 11.6113
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=5]
 radius = 2.0
 
 [node name="arrow" instance=ExtResource( 1 )]
@@ -31,9 +31,9 @@ truName = "arrow"
 RANGE = 400
 auto_rotate = true
 death_free = true
-SPAWN_SOUND = SubResource( 4 )
-HIT_SOUND = SubResource( 5 )
-KILL_SOUND = SubResource( 5 )
+SPAWN_SOUND = SubResource( 1 )
+HIT_SOUND = SubResource( 2 )
+KILL_SOUND = SubResource( 2 )
 BLOCKED_SOUND = SubResource( 3 )
 COLLIDE_SOUND = SubResource( 3 )
 DEATH_SOUND = SubResource( 3 )
@@ -61,7 +61,7 @@ visible = false
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 rotation = 1.5708
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 
 [node name="hitbox" parent="." index="3"]
 visible = false
@@ -70,14 +70,14 @@ KNOCKBACK = 65
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 rotation = 1.5708
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 
 [node name="collision" parent="." index="4"]
 visible = false
 
 [node name="CollisionShape2D" parent="collision" index="0"]
 position = Vector2( 4, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 
 [editable path="hurtbox"]
 

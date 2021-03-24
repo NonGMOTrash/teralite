@@ -5,7 +5,7 @@
 [ext_resource path="res://HUD and Menus/Scripts/TitleScreen.gd" type="Script" id=3]
 [ext_resource path="res://HUD and Menus/Icons/play.png" type="Texture" id=4]
 [ext_resource path="res://HUD and Menus/Icons/x.png" type="Texture" id=5]
-[ext_resource path="res://HUD and Menus/Icons/epsilon_small.png" type="Texture" id=6]
+[ext_resource path="res://HUD and Menus/title_screen/teralite_title.png" type="Texture" id=6]
 [ext_resource path="res://HUD and Menus/Icons/gear.png" type="Texture" id=7]
 [ext_resource path="res://HUD and Menus/options/Options.tscn" type="PackedScene" id=8]
 [ext_resource path="res://HUD and Menus/smart_ui_nodes/smart_button/SmartButton.tscn" type="PackedScene" id=9]
@@ -22,12 +22,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="main" type="VBoxContainer" parent="."]
+[node name="main" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="center" type="VBoxContainer" parent="main"]
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -60.0
-margin_right = 60.0
+margin_left = -96.0
+margin_right = 96.0
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme = ExtResource( 1 )
@@ -36,74 +43,80 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="TextureRect" parent="main"]
-margin_top = 32.0
-margin_right = 120.0
-margin_bottom = 64.0
+[node name="icon" type="TextureRect" parent="main/center"]
+margin_top = 38.0
+margin_right = 192.0
+margin_bottom = 95.0
 size_flags_horizontal = 5
 size_flags_vertical = 0
 texture = ExtResource( 6 )
-stretch_mode = 4
+stretch_mode = 6
 
-[node name="title" type="Label" parent="main"]
-margin_top = 68.0
-margin_right = 120.0
-margin_bottom = 82.0
-custom_colors/font_color = Color( 0.937255, 0.52549, 0.129412, 1 )
-text = "Project Epsilon"
-align = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ver" type="Label" parent="main"]
-margin_top = 86.0
-margin_right = 120.0
+[node name="HSeparator" type="HSeparator" parent="main/center"]
+margin_top = 99.0
+margin_right = 192.0
 margin_bottom = 100.0
-theme = ExtResource( 1 )
-custom_colors/font_color = Color( 0.129412, 0.235294, 0.937255, 1 )
-text = "Beta 2.11"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HSeparator" type="HSeparator" parent="main"]
-margin_top = 104.0
-margin_right = 120.0
-margin_bottom = 105.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 
-[node name="play" parent="main" instance=ExtResource( 9 )]
-margin_top = 109.0
-margin_right = 120.0
-margin_bottom = 131.0
+[node name="play" parent="main/center" instance=ExtResource( 9 )]
+margin_top = 104.0
+margin_right = 192.0
+margin_bottom = 126.0
 shortcut_in_tooltip = false
 text = "Play"
 icon = ExtResource( 4 )
 flat = true
 
-[node name="options" parent="main" instance=ExtResource( 9 )]
-margin_top = 135.0
-margin_right = 120.0
-margin_bottom = 157.0
+[node name="options" parent="main/center" instance=ExtResource( 9 )]
+margin_top = 130.0
+margin_right = 192.0
+margin_bottom = 152.0
 shortcut_in_tooltip = false
 text = "Options"
 icon = ExtResource( 7 )
 flat = true
 
-[node name="quit" parent="main" instance=ExtResource( 9 )]
-margin_top = 161.0
-margin_right = 120.0
-margin_bottom = 183.0
+[node name="quit" parent="main/center" instance=ExtResource( 9 )]
+margin_top = 156.0
+margin_right = 192.0
+margin_bottom = 178.0
 shortcut_in_tooltip = false
 text = "Quit"
 icon = ExtResource( 5 )
 flat = true
+
+[node name="ver" type="Label" parent="main"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -62.0
+margin_top = -17.0
+margin_right = -2.0
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0.129412, 0.235294, 0.937255, 1 )
+text = "Beta 2.12"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="msg" type="Label" parent="main"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = -17.0
+margin_right = 60.0
+margin_bottom = -2.0
+theme = ExtResource( 1 )
+text = "idk lol"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="saves" type="Control" parent="."]
 visible = false
@@ -267,9 +280,9 @@ flat = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
-[connection signal="pressed" from="main/play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="main/options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="main/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="main/center/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="main/center/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="main/center/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="saves/HBoxContainer/new" to="." method="_on_new_pressed"]
 [connection signal="pressed" from="saves/HBoxContainer/load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="saves/HBoxContainer/delete" to="." method="_on_delete_pressed"]

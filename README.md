@@ -1,4 +1,4 @@
-# project epsilon
+# teralite
 
 helo thanks for downloading
 
@@ -8,28 +8,46 @@ you can use an old save from a 1.X version, but levels have been changed and reo
 
 also, you have to keep the .exe has to be in the same folder as the .pck or it won't work. if you want to have access to it somewhere else, just make a shortcut of the .exe file
 
+### restoring saves from pre-2.12 versions:
+due to the name change from project epsilon to teralite in beta 2.12, the game won't be able to find the folder where old save data is stored.    
+it's pretty easy to fix tho, just follow these steps:    
+#1: go to the search bar on windows and search %APPDATA% (should take you to a file folder)      
+#2: find the folder named "Project Epsilon" and rename it to "Teralite"   
+#3: if it asks you if you want to replace the folder that's already named Teralite, click Yes    
+#4: reopen teralite, and you should see your saves   
+(you can also just cut and paste the actual save files from Project Epsilon into Teralite)
 
-
-                                 ###############                                
-                              (######################                           
-                            ###########################                         
-                         (#########          (############                      
-                         (#######                 (##                           
-                         (#######                                               
-                         (#######                                               
-                            ##########                                          
-                            ####################                                
-                              (#################                                
-                            ####################                                
-                         (#########                                             
-                       ##########                                               
-                       #######                                                  
-                       #######                                                  
-                       #######                       ##                         
-                         (#########             ##########                      
-                         (################################                      
-                            ###########################                         
-                                 #################                              
+                                                                                
+                                                                                
+                                   ###########                                  
+                                   ###########                                  
+                                   ###,   ,###                                  
+                                   ###,   ,###                                  
+                                   ###,   ,###                                  
+                       *##############,   ,##############*                      
+                       *###                           ###/....                  
+                       *###                           ###/....                  
+                       *###                           ###/....                  
+                       *#################################/....                  
+                       *#################################/....                  
+                                   ###########................                  
+                                   ###########....                              
+                                   ###########....                              
+                                   ###########....                              
+                                   ###########....                              
+                                   ###########....                              
+                                   ###########....                              
+                                   ###########....                              
+                                   ###########....                              
+                                   ###########....                              
+                                   ###########....                              
+                                   ###########....                              
+                                   ###########....                              
+                                      *#######....                              
+                                      *#######....                              
+                                          ,###....                              
+                                              ....                              
+                                              ....                              
                                                                                 
 
 # credits
@@ -46,7 +64,7 @@ will add all the people later
 
 ### engine:
 
-project epsilon created with the Godot Engine, it's license is as follows:
+teralite was created with the Godot Engine, it's license reads as follows:
 
     Copyright (c) 2007-2020 Juan Linietsky, Ariel Manzur. Copyright (c) 2014-2020 Godot Engine contributors.
     
@@ -73,8 +91,6 @@ addtionally,
     Portions of this software are copyright ©2021 The FreeType Project (www.freetype.org). All rights reserved.
 
 ### sound credits:
-
-(keep in mind, most of these sounds are currently unused)
 
 - sound: "soundname" by creator ( link ) licensed under CC
 - sword_hit: "slashkut" by Abyssmal ( https://freesound.org/people/Abyssmal/sounds/35213/ ) licensed under CC0
@@ -103,6 +119,8 @@ addtionally,
 - crate_destory: "Wood Crate Destory 3" by Bertsz ( https://freesound.org/people/Bertsz/sounds/500900/ ) licensed under CC0
 - player_death: "Retro Video Game Death" by SRJA_Gaming ( https://freesound.org/people/SRJA_Gaming/sounds/543255/ ) licensed under CC0
 - heal: "Healing 2 (Tranquillity)" by SilverIllusionist ( https://freesound.org/people/SilverIllusionist/sounds/518800/ ) licensed under CC BY 3.0
+
+thank you all for letting me legally steal your hard work to use in my game <3
 
 # license information
 
@@ -133,6 +151,12 @@ the github is here: (private for now until offical release)
 good luck working with my terrible game architecture though 
 
 # Patchnotes
+
+### Beta 2.12 (4/1/2021)
+
+- renamed the game from project epsilon to teralite
+- significantly toned down pitch shifting on sound effects
+- improved options menu a bit
 
 ### Beta 2.11 (3/14/2021)
 

@@ -1,16 +1,23 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://HUD and Menus/Scripts/Options.gd" type="Script" id=1]
 [ext_resource path="res://HUD and Menus/Themes/general_theme.tres" type="Theme" id=2]
 [ext_resource path="res://HUD and Menus/smart_ui_nodes/smart_checkbox/SmartCheckbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD and Menus/smart_ui_nodes/smart_button/SmartButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://HUD and Menus/Icons/exit.png" type="Texture" id=5]
 [ext_resource path="res://HUD and Menus/Themes/Styles/stylebox_selected_box.tres" type="StyleBox" id=6]
 [ext_resource path="res://HUD and Menus/Themes/Styles/stylebox_box.tres" type="StyleBox" id=7]
 [ext_resource path="res://Levels/Level Resources/world_tiles/nothing.png" type="Texture" id=8]
 
-[node name="Options" type="TabContainer"]
+[node name="Options" type="Control"]
 visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tabs" type="TabContainer" parent="."]
 self_modulate = Color( 1, 1, 1, 0.784314 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -19,19 +26,18 @@ anchor_bottom = 0.5
 margin_left = -182.0
 margin_top = -98.0
 margin_right = 182.0
-margin_bottom = 98.0
+margin_bottom = 83.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_neighbour_left = NodePath("General")
 focus_neighbour_right = NodePath("Exit")
 theme = ExtResource( 2 )
-script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Visual" type="VBoxContainer" parent="."]
+[node name="Visual" type="VBoxContainer" parent="tabs"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.37449
@@ -43,47 +49,34 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="smooth" parent="Visual" instance=ExtResource( 3 )]
-margin_top = 16.0
+[node name="smooth" parent="tabs/Visual" instance=ExtResource( 3 )]
+margin_top = 24.0
 margin_right = 359.0
-margin_bottom = 40.0
+margin_bottom = 48.0
 shortcut_in_tooltip = false
 text = "Smooth camera"
 
-[node name="hidebar" parent="Visual" instance=ExtResource( 3 )]
-margin_top = 44.0
+[node name="hidebar" parent="tabs/Visual" instance=ExtResource( 3 )]
+margin_top = 52.0
 margin_right = 359.0
-margin_bottom = 68.0
+margin_bottom = 76.0
 shortcut_in_tooltip = false
 text = "Hide item bar when empty"
 
-[node name="fullscreen" parent="Visual" instance=ExtResource( 3 )]
-margin_top = 72.0
+[node name="fullscreen" parent="tabs/Visual" instance=ExtResource( 3 )]
+margin_top = 80.0
 margin_right = 359.0
-margin_bottom = 96.0
+margin_bottom = 104.0
 shortcut_in_tooltip = false
 text = "Fullscreen"
 
-[node name="pixel" parent="Visual" instance=ExtResource( 3 )]
-margin_top = 100.0
+[node name="pixel" parent="tabs/Visual" instance=ExtResource( 3 )]
+margin_top = 108.0
 margin_right = 359.0
-margin_bottom = 124.0
+margin_bottom = 132.0
 text = "Pixel perfect filter (not recomended)"
 
-[node name="HSeparator" type="HSeparator" parent="Visual"]
-margin_top = 128.0
-margin_right = 359.0
-margin_bottom = 129.0
-
-[node name="exit" parent="Visual" instance=ExtResource( 4 )]
-margin_top = 133.0
-margin_right = 359.0
-margin_bottom = 155.0
-text = "Exit"
-icon = ExtResource( 5 )
-flat = true
-
-[node name="Audio" type="VBoxContainer" parent="."]
+[node name="Audio" type="VBoxContainer" parent="tabs"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -93,7 +86,7 @@ margin_right = -2.12428
 margin_bottom = -2.24938
 alignment = 1
 
-[node name="volume_label" type="Label" parent="Audio"]
+[node name="volume_label" type="Label" parent="tabs/Audio"]
 margin_top = 53.0
 margin_right = 359.0
 margin_bottom = 67.0
@@ -101,10 +94,9 @@ text = "Volume (50%)"
 align = 1
 valign = 1
 
-[node name="volume" type="HSlider" parent="Audio"]
-margin_left = 5.0
+[node name="volume" type="HSlider" parent="tabs/Audio"]
 margin_top = 71.0
-margin_right = 354.0
+margin_right = 359.0
 margin_bottom = 87.0
 custom_icons/grabber_highlight = ExtResource( 8 )
 custom_icons/grabber = ExtResource( 8 )
@@ -116,21 +108,7 @@ allow_greater = true
 allow_lesser = true
 ticks_on_borders = true
 
-[node name="HSeparator2" type="HSeparator" parent="Audio"]
-margin_top = 91.0
-margin_right = 359.0
-margin_bottom = 92.0
-
-[node name="exit2" parent="Audio" instance=ExtResource( 4 )]
-margin_top = 96.0
-margin_right = 359.0
-margin_bottom = 118.0
-size_flags_horizontal = 5
-text = "Exit"
-icon = ExtResource( 5 )
-flat = true
-
-[node name="Control" type="VBoxContainer" parent="."]
+[node name="Control" type="VBoxContainer" parent="tabs"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -140,27 +118,28 @@ margin_right = -2.12428
 margin_bottom = -2.24938
 alignment = 1
 
-[node name="auto_restart" parent="Control" instance=ExtResource( 3 )]
-margin_top = 71.0
+[node name="auto_restart" parent="tabs/Control" instance=ExtResource( 3 )]
+margin_top = 58.0
 margin_right = 359.0
-margin_bottom = 95.0
+margin_bottom = 82.0
 shortcut_in_tooltip = false
 text = "Auto restart on hit"
 
-[node name="HSeparator3" type="HSeparator" parent="Control"]
-margin_top = 171.0
-margin_right = 359.0
-margin_bottom = 172.0
-
-[node name="exit3" parent="Control" instance=ExtResource( 4 )]
-margin_top = 176.0
-margin_right = 359.0
-margin_bottom = 198.0
+[node name="exit" parent="." instance=ExtResource( 4 )]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -27.0
+margin_right = -10.0
+margin_bottom = -7.0
+theme = ExtResource( 2 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 7 )
+custom_styles/normal = ExtResource( 7 )
 text = "Exit"
-icon = ExtResource( 5 )
-flat = true
-[connection signal="visibility_changed" from="." to="." method="_on_Options_visibility_changed"]
-[connection signal="pressed" from="Visual/exit" to="." method="_on_exit_pressed"]
-[connection signal="value_changed" from="Audio/volume" to="." method="_on_volume_value_changed"]
-[connection signal="pressed" from="Audio/exit2" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="Control/exit3" to="." method="_on_exit_pressed"]
+[connection signal="visibility_changed" from="tabs" to="tabs" method="_on_Options_visibility_changed"]
+[connection signal="value_changed" from="tabs/Audio/volume" to="tabs" method="_on_volume_value_changed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

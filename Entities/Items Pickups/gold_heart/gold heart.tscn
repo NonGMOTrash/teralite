@@ -7,7 +7,7 @@
 
 [sub_resource type="AudioStreamRandomPitch" id=1]
 audio_stream = ExtResource( 4 )
-random_pitch = 1.05
+random_pitch = 1.02
 
 [node name="gold heart" instance=ExtResource( 1 )]
 script = ExtResource( 3 )

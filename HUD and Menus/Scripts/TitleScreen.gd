@@ -2,9 +2,10 @@ extends ColorRect
 
 onready var delay = $Timer
 
-onready var play = $main/play
-onready var options = $main/options
-onready var quit = $main/quit
+onready var play = $main/center/play
+onready var options = $main/center/options
+onready var quit = $main/center/quit
+onready var msg = $main/msg
 onready var title_menu = $main
 onready var saves_menu = $saves
 onready var new_save_menu = $new_save
@@ -18,6 +19,37 @@ var locked_input = true
 
 const yellow = Color8(242, 211, 53)
 const white = Color8(255, 255, 255)
+const MESSAGES = [
+	"idk lol",
+	"now with big floppa",
+	"the least bad game yet!",
+	"_",
+	"worse than school",
+	"don't play project epsilon",
+	"downward spiral",
+	"no amogus allowed",
+	"waiting for godot 4.0",
+	"loading a rocket launcher",
+	"pls enjoy",
+	"helo",
+	"0% political",
+	"a deep polticial statement!",
+	"blebsome",
+	"has a little something for everyone",
+	"5/10",
+	"don't play at 4:20 PM",
+	"all lowercase",
+	"now with 50% more bugs",
+	"play friday night funkin!",
+	"play 20xx.io!",
+	"it's okay",
+	"5 merits lost :(",
+	"dumpy baby",
+	"spikes galore",
+	"women aren't real",
+	"it really makes you feel orange",
+	"t posing allowed",
+]
 
 # save icon preload
 onready var SAVE_ICON = preload("res://HUD and Menus/Icons/save.png")
@@ -27,6 +59,9 @@ func _ready() -> void:
 	visible = true
 	load_saves_list_items()
 	
+	# set random msg
+	msg.text = MESSAGES[randi() % MESSAGES.size()]
+
 	# load settings config
 	var settings_config = File.new()
 	

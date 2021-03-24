@@ -6,7 +6,7 @@
 
 [sub_resource type="AudioStreamRandomPitch" id=1]
 audio_stream = ExtResource( 3 )
-random_pitch = 1.05
+random_pitch = 1.02
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 4.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Entities/chaser/Chaser.gd" type="Script" id=1]
 [ext_resource path="res://Components/health_bar/healthBar.tscn" type="PackedScene" id=2]
@@ -70,10 +70,14 @@ tracks/2/keys = {
 radius = 2.99999
 height = 4.00002
 
-[sub_resource type="CircleShape2D" id=4]
-radius = 6.07457
+[sub_resource type="AudioStreamRandomPitch" id=4]
+audio_stream = ExtResource( 13 )
+random_pitch = 1.02
 
 [sub_resource type="CircleShape2D" id=5]
+radius = 6.07457
+
+[sub_resource type="CircleShape2D" id=6]
 radius = 8.71243
 
 [node name="Chaser" type="KinematicBody2D"]
@@ -111,18 +115,18 @@ visible = false
 COOLDOWN = 0.05
 iTime = 0.6
 TEAM_ATTACK = false
-TRIGGERED_SOUND = ExtResource( 13 )
+TRIGGERED_SOUND = SubResource( 4 )
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 position = Vector2( 0, 2.05111 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="hurtbox" parent="." instance=ExtResource( 8 )]
 visible = false
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 self_modulate = Color( 0.968627, 0.909804, 0.054902, 1 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="entityPush" parent="." instance=ExtResource( 6 )]
 visible = false
@@ -148,14 +152,14 @@ general_springs = {
 [node name="sleeper" parent="." instance=ExtResource( 10 )]
 visible = false
 
-[node name="death_spawn" parent="." instance=ExtResource( 11 )]
-spawn_entity = "Chaser_Death"
-
 [node name="healthBar" parent="." instance=ExtResource( 2 )]
 margin_left = -10.4298
 margin_top = -11.7557
 margin_right = 10.5702
 margin_bottom = -7.75391
+
+[node name="death_spawn" parent="." instance=ExtResource( 11 )]
+spawn_entity = "Chaser_Death"
 
 [node name="hit_spawn" parent="." instance=ExtResource( 12 )]
 spawn_entity = "hit_effect"
