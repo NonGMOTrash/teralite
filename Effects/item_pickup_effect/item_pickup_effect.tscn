@@ -3,6 +3,8 @@
 [ext_resource path="res://Effects/item_pickup_effect/item_pickup_effect.png" type="Texture" id=1]
 [ext_resource path="res://Effects/Effect.tscn" type="PackedScene" id=2]
 
+
+
 [sub_resource type="Animation" id=1]
 resource_name = "animation"
 length = 0.65

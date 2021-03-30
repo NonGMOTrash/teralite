@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Entities/knight/knight.gd" type="Script" id=1]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=2]
@@ -9,14 +9,15 @@
 [ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Components/death_spawn/death_spawn.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Components/hit_spawn/hit_spawn.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Effects/hit_effect/hit_effect.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Components/health_bar/healthBar.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Components/brain/movement_lobe/spring/spring.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Effects/right_fade/right_fade.tscn" type="PackedScene" id=18]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -122,12 +123,6 @@ wait_time = 0.8
 one_shot = true
 autostart = true
 
-[node name="hit_spawn" parent="." instance=ExtResource( 11 )]
-spawn_entity = "hit_effect"
-
-[node name="death_spawn" parent="." instance=ExtResource( 10 )]
-spawn_entity = "Knight_Death"
-
 [node name="brain" parent="." instance=ExtResource( 6 )]
 
 [node name="movement_lobe" parent="brain" instance=ExtResource( 9 )]
@@ -155,6 +150,17 @@ margin_left = -10.3945
 margin_top = -13.3911
 margin_right = 10.6055
 margin_bottom = -9.38938
+
+[node name="hit_effect_spawner" parent="." instance=ExtResource( 10 )]
+thing = ExtResource( 11 )
+spawn_on_free = false
+spawn_on_hurt = true
+effect_hframes = 3
+effect_vframes = 3
+
+[node name="death_effect_spawner" parent="." instance=ExtResource( 10 )]
+thing = ExtResource( 18 )
+effect_texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 4 )

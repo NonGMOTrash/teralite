@@ -1,11 +1,11 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Entities/archer/archer.gd" type="Script" id=1]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/archer/archer.png" type="Texture" id=3]
 [ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Components/hit_spawn/hit_spawn.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Components/death_spawn/death_spawn.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Effects/hit_effect/hit_effect.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=9]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Effects/right_fade/right_fade.tscn" type="PackedScene" id=18]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -74,6 +75,7 @@ DAMAGE = 2
 
 [node name="sprite" parent="." instance=ExtResource( 2 )]
 material = SubResource( 1 )
+scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 3 )
 offset = Vector2( 2, 0 )
 auto_flip_mode = 2
@@ -97,12 +99,6 @@ visible = false
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 shape = SubResource( 3 )
 
-[node name="hit_spawn" parent="." instance=ExtResource( 5 )]
-spawn_entity = "hit_effect"
-
-[node name="death_spawn" parent="." instance=ExtResource( 6 )]
-spawn_entity = "Archer_Death"
-
 [node name="sleeper" parent="." instance=ExtResource( 8 )]
 visible = false
 position = Vector2( 7.15256e-07, 0.5 )
@@ -114,10 +110,10 @@ one_shot = true
 autostart = true
 
 [node name="healthBar" parent="." instance=ExtResource( 10 )]
-margin_left = -10.4298
-margin_top = -13.3908
-margin_right = 10.5702
-margin_bottom = -9.3891
+margin_left = -10.2425
+margin_top = -13.2035
+margin_right = 10.7575
+margin_bottom = -9.20181
 
 [node name="brain" parent="." instance=ExtResource( 7 )]
 TOLERANCE = 1
@@ -154,6 +150,17 @@ distance_weight = 4
 health_weight = 1
 COOLDOWN = 1.0
 GLOBAL_COOLDOWN = true
+
+[node name="hit_effect_spawner" parent="." instance=ExtResource( 6 )]
+thing = ExtResource( 5 )
+spawn_on_free = false
+spawn_on_hurt = true
+effect_hframes = 3
+effect_vframes = 3
+
+[node name="death_effect_spawner" parent="." instance=ExtResource( 6 )]
+thing = ExtResource( 18 )
+effect_texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 4 )

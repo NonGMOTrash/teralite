@@ -26,6 +26,7 @@ func _ready() -> void:
 func add_memory(pos: Vector2, spring: Node, id: int):
 	if brain.get_parent().is_queued_for_deletion() == true: return
 	
+	# PROBLEM_NOTE: not sure why this is commented out, maybe make it work??
 	# removes previous memory with matching id
 #	for i in memory_id.size():
 #		if memory_id[i] == id: 
@@ -75,7 +76,7 @@ func _on_memory_timer_timeout() -> void:
 func got_hit(body, _type):
 	var source = body.get_parent()
 	if source == self or brain.targets.has(source): return
-	if source is Thing: source = source.SOURCE
+	if source is Attack: source = source.SOURCE
 	if source == null: return
 	if brain.targets.has(source) == true: return
 	

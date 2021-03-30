@@ -10,12 +10,13 @@
 [ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Entities/chaser/chaser.png" type="Texture" id=9]
 [ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Components/death_spawn/death_spawn.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Components/hit_spawn/hit_spawn.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Effects/hit_effect/hit_effect.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Entities/damage.wav" type="AudioStream" id=13]
 [ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Effects/squish_fade/squish_fade.tscn" type="PackedScene" id=17]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -70,14 +71,10 @@ tracks/2/keys = {
 radius = 2.99999
 height = 4.00002
 
-[sub_resource type="AudioStreamRandomPitch" id=4]
-audio_stream = ExtResource( 13 )
-random_pitch = 1.02
-
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=4]
 radius = 6.07457
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=5]
 radius = 8.71243
 
 [node name="Chaser" type="KinematicBody2D"]
@@ -88,7 +85,7 @@ SLOWDOWN = 200
 TOP_SPEED = 90
 FORCE_MULT = 1.25
 truName = "chaser"
-faction = "chasers"
+faction = "monster"
 
 [node name="stats" parent="." instance=ExtResource( 5 )]
 MAX_HEALTH = 2
@@ -96,7 +93,7 @@ HEALTH = 2
 
 [node name="sprite" parent="." instance=ExtResource( 3 )]
 material = SubResource( 1 )
-scale = Vector2( 1.02453, 0.975469 )
+scale = Vector2( 1.03, 0.97 )
 texture = ExtResource( 9 )
 hframes = 2
 frame = 1
@@ -115,18 +112,18 @@ visible = false
 COOLDOWN = 0.05
 iTime = 0.6
 TEAM_ATTACK = false
-TRIGGERED_SOUND = SubResource( 4 )
+TRIGGERED_SOUND = ExtResource( 13 )
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 position = Vector2( 0, 2.05111 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="hurtbox" parent="." instance=ExtResource( 8 )]
 visible = false
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 self_modulate = Color( 0.968627, 0.909804, 0.054902, 1 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="entityPush" parent="." instance=ExtResource( 6 )]
 visible = false
@@ -158,16 +155,21 @@ margin_top = -11.7557
 margin_right = 10.5702
 margin_bottom = -7.75391
 
-[node name="death_spawn" parent="." instance=ExtResource( 11 )]
-spawn_entity = "Chaser_Death"
+[node name="hit_effect_spawner" parent="." instance=ExtResource( 11 )]
+thing = ExtResource( 12 )
+spawn_on_free = false
+spawn_on_hurt = true
+effect_hframes = 3
+effect_vframes = 3
 
-[node name="hit_spawn" parent="." instance=ExtResource( 12 )]
-spawn_entity = "hit_effect"
+[node name="death_effect_spawner" parent="." instance=ExtResource( 11 )]
+thing = ExtResource( 17 )
+effect_texture = ExtResource( 9 )
+effect_hframes = 2
 
 [node name="foot_stepper" parent="." instance=ExtResource( 16 )]
 RATE = 0.0
 OFFSET = 0.0
-VOLUME_ADJUST = -2.0
 
 [editable path="hitbox"]
 

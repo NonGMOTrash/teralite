@@ -46,9 +46,11 @@ const MESSAGES = [
 	"5 merits lost :(",
 	"dumpy baby",
 	"spikes galore",
-	"women aren't real",
+	"women aren't real*",
 	"it really makes you feel orange",
 	"t posing allowed",
+	"3.0 coming in 2024",
+	"dont go to /r/dontgohere"
 ]
 
 # save icon preload
@@ -65,26 +67,29 @@ func _ready() -> void:
 	# load settings config
 	var settings_config = File.new()
 	
-	if settings_config.file_exists("user://settings_config"):
-		var error = settings_config.open("user://settings_config", File.READ)
+	if not settings_config.file_exists("user://settings_config"):
+		push_warning("could not find settings_config, creating new")
+		settings_config.open("user://settings_config", File.WRITE)
+		settings_config.store_var(global.settings)
+		settings_config.close()
 		
-		if error == OK:
-			# load works
-			var new_settings = settings_config.get_var()
-			if new_settings == null:
-				global.var_debug_msg(self, 0, new_settings)
-				return
-			
-			for i in global.settings.keys().size():
-				var key = global.settings.keys()[i]
-				if new_settings.has(key):
-					global.settings[key] = new_settings[key]
+	var error = settings_config.open("user://settings_config", File.READ)
+	
+	if error == OK:
+		# load works
+		var new_settings = settings_config.get_var()
+		if new_settings == null:
+			global.var_debug_msg(self, 0, new_settings)
+			return
+		
+		for i in global.settings.keys().size():
+			var key = global.settings.keys()[i]
+			if new_settings.has(key):
+				global.settings[key] = new_settings[key]
 
-		else:
-			# load failed
-			push_warning("could not load settings_config")
 	else:
-		push_warning("could not find settings_config")
+		# load failed
+		push_warning("could not load settings_config")
 	
 	OS.window_fullscreen = global.settings["fullscreen"]
 	AudioServer.set_bus_volume_db(0, global.settings["volume"])

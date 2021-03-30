@@ -8,7 +8,7 @@
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Components/entity_push/entityPush.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Components/death_spawn/death_spawn.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 7.07107
@@ -73,7 +73,7 @@ collision_layer = 2
 script = ExtResource( 1 )
 ACCELERATION = 400
 truName = "specter"
-faction = "dead"
+faction = "monster"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 5 )
@@ -125,11 +125,6 @@ position = Vector2( 0, -6 )
 shape = SubResource( 6 )
 
 [node name="brain" parent="." instance=ExtResource( 7 )]
-general_springs = {
-"friendly": -1,
-"hostile": 0,
-"neutral": -1
-}
 
 [node name="entityPush" parent="." instance=ExtResource( 8 )]
 
@@ -142,7 +137,12 @@ wait_time = 6.0
 autostart = true
 
 [node name="death_spawn" parent="." instance=ExtResource( 9 )]
-spawn_entity = "Hit_Effect"
+overwrite = {
+"Effect": {
+"frames": null,
+"texture": null
+}
+}
 [connection signal="timeout" from="dup_timer" to="." method="_on_dup_timer_timeout"]
 
 [editable path="sprite"]

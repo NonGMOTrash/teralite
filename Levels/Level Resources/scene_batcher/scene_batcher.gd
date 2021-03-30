@@ -23,7 +23,6 @@ func _ready(): # converts tiles to their respective scenes
 	for i in data.keys().size():
 		convertTile(data.values()[i], data.keys()[i])
 	
-	
 	clear() #remove all the tiles
 
 func convertTile(tiles, thingName): # deletes the tile and places the entity

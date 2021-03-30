@@ -140,6 +140,6 @@ custom_styles/focus = ExtResource( 7 )
 custom_styles/disabled = ExtResource( 7 )
 custom_styles/normal = ExtResource( 7 )
 text = "Exit"
-[connection signal="visibility_changed" from="tabs" to="tabs" method="_on_Options_visibility_changed"]
-[connection signal="value_changed" from="tabs/Audio/volume" to="tabs" method="_on_volume_value_changed"]
+[connection signal="visibility_changed" from="tabs" to="." method="_on_tabs_visibility_changed"]
+[connection signal="value_changed" from="tabs/Audio/volume" to="." method="_on_volume_value_changed"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

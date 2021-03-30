@@ -6,6 +6,7 @@
 [ext_resource path="res://HUD and Menus/Themes/Styles/stylebox_full.png" type="Texture" id=4]
 
 [node name="ItemInfo" type="VBoxContainer"]
+visible = false
 anchor_left = 0.95
 anchor_top = 0.99
 anchor_right = 0.99
@@ -58,8 +59,6 @@ margin_bottom = 32.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_vertical = 3
-max_value = 100.0
-step = 1.0
 value = 1.0
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 4 )

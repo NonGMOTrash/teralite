@@ -46,6 +46,8 @@ func _ready() -> void:
 	wander_timer.wait_time = WANDER_TIME
 	movement_timer.wait_time = 1.0 / MOVEMENT_EFFICIENCY
 	movement_timer.start()
+	# DEBUG
+	WANDER_RANGE = 10
 	
 	if brain.get_parent().components["sleeper"] != null:
 		brain.get_parent().components["sleeper"].connect("awoken", self, "awoken")
@@ -80,10 +82,14 @@ func _on_idle_timer_timeout() -> void:
 		#debug()
 		#yield(self, "debug")
 		
-		while wander_path.size() < 2:
-			wander_pos = global_position + (Vector2(rand_range(-1,1),rand_range(-1,1)).normalized()*100)
+		var tries = 0
+		while wander_path.size() < 2 and tries < MOVEMENT_EFFICIENCY:
+			wander_pos = global_position + (
+				Vector2( rand_range(-1,1),rand_range(-1,1)).normalized() * rand_range(50,150)
+			)
 			wander_path = []
 			wander_path = get_tree().current_scene.pathfind(global_position, wander_pos)
+			tries += 1
 			
 			# PROBLEM_NOTE: the game crashes with no error message without this. strangely, putting it
 			# anywhere in this function before this line will also stop the error, super weird
@@ -98,8 +104,11 @@ func _on_idle_timer_timeout() -> void:
 			# so i think this must be an error with the pathfinding.
 			# EDIT4: never fixed the error with the pathfinding (i think it might be on godot's end)
 			# however, i did fix the nav poly generation so that should pretty much fix this issue
+			# EDIT5: i am an idiot, it's because if there's no possible path it gets stuck in the while
+			# loop
 		
-		brain.get_parent().input_vector = global_position.direction_to(wander_path[1]).normalized()
+		if wander_path.size() > 1:
+			brain.get_parent().input_vector = global_position.direction_to(wander_path[1]).normalized()
 	
 	if global_position.distance_to(guard_pos) > WANDER_RANGE: 
 		# wander back to guard pos
@@ -111,7 +120,8 @@ func _on_idle_timer_timeout() -> void:
 				guard_path = get_tree().current_scene.pathfind(global_position, guard_pos)
 			elif brain.los_check(guard_path[0]) == false:
 				guard_path = get_tree().current_scene.pathfind(global_position, guard_pos)
-			if guard_path.size() < 2: guard_path = null
+			if guard_path.size() < 2: 
+				guard_path = null
 			if guard_path != null and global_position.distance_to(guard_path[0]) < 10:
 				guard_path.remove(0)
 			if guard_path != null and not guard_path.size() < 2:

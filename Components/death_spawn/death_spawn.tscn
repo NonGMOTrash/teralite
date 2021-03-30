@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://Components/death_spawn/death_spawn.gd" type="Script" id=1]
-
-[node name="death_spawn" type="Node"]
-script = ExtResource( 1 )
-[connection signal="tree_entered" from="." to="." method="_on_death_spawn_tree_entered"]

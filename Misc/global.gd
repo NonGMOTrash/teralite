@@ -83,10 +83,10 @@ var preloads = {
 	"bow": "res://Entities/Items Pickups/bow/bow.tscn",
 	
 	#things:
-	"bullet": "res://Entities/Things/Projectile/small_bullet/small_bullet.tscn",
-	"slash": "res://Entities/Things/Melee/slash/slash.tscn",
-	"stab": "res://Entities/Things/Melee/stab/stab.tscn",
-	"arrow": "res://Entities/Things/Projectile/arrow/arrow.tscn",
+	"bullet": "res://Entities/Attacks/Projectile/small_bullet/small_bullet.tscn",
+	"slash": "res://Entities/Attacks/Melee/slash/slash.tscn",
+	"stab": "res://Entities/Attacks/Melee/stab/stab.tscn",
+	"arrow": "res://Entities/Attacks/Projectile/arrow/arrow.tscn",
 	
 	#effects:
 	"hit_effect": "res://Effects/hit_effect/hit_effect.tscn",
@@ -115,32 +115,17 @@ var preloads = {
 var faction_relationships = {
 	"player": 
 		{"player": "friendly",
-		"chasers": "hostile", 
-		"dead": "hostile",
+		"monster": "hostile",
 		"blue_kingdom": "hostile",},
 	
-	"chasers":
+	"monster":
 		{"player": "hostile",
-		"chasers": "friendly", 
-		"dead": "hostile",
-		"blue_kingdom": "hostile",},
-	
-	"enviorment":
-		{"player": "hostile",
-		"chasers": "hostile", 
-		"dead": "hostile",
-		"blue_kingdom": "hostile",},
-	
-	"dead":
-		{"player": "hostile",
-		"chasers": "hostile", 
-		"dead": "friendly",
+		"monster": "friendly",
 		"blue_kingdom": "hostile",},
 	
 	"blue_kingdom":
 		{"player": "hostile",
-		"chasers": "hostile", 
-		"dead": "hostile",
+		"monster": "hostile",
 		"blue_kingdom": "friendly",},
 }
 
@@ -152,7 +137,7 @@ const CURSOR_PISTOL = preload("res://HUD and Menus/CURSOR_PISTOL.png")
 const CURSOR_BOW = preload("res://HUD and Menus/CURSOR_BOW.png")
 # PROBLEM_NOTE: not sure if i should do this ^
 
-func _ready(): 
+func _ready():
 	seed(the_seed.hash())
 	prints("seed:", the_seed)
 	prints("hashed seed:", the_seed.hash())
@@ -163,7 +148,7 @@ func _ready():
 	if hr > 12: hr -= 12
 	if hr==4 and OS.get_time()["minute"]==20:
 		print("you just got rickrolled!!!!1!")
-		OS.shell_open("https://www.youtube.com/watch?v=DLzxrzFCyOs")
+		OS.shell_open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 	
 	push_warning("quality_of_this_game == -999")
 	print("===============")
@@ -183,13 +168,13 @@ func get_relation(me:Entity, other:Entity):
 	
 	return relation
 
-func aquire(thing:String):
+func aquire(asset:String):
 	#overwrites paths with the packed scene
-	if typeof(preloads.get(thing.to_lower())) == TYPE_STRING:
-		preloads[thing.to_lower()] = load(preloads.get(thing.to_lower()))
+	if preloads.get(asset.to_lower()) is String:
+		preloads[asset.to_lower()] = load(preloads.get(asset.to_lower()))
 	
 	#finished
-	return preloads.get(thing.to_lower()).instance()
+	return preloads.get(asset.to_lower()).instance()
 
 func get_empty_save_data():
 	return {
@@ -242,10 +227,10 @@ func write_save(entered_save_name, data):
 	var dir = Directory.new()
 	if not dir.dir_exists(SAVE_DIR): dir.make_dir_recursive(SAVE_DIR)
 	
-	var save_path = SAVE_DIR + entered_save_name
+	var new_save_path = SAVE_DIR + entered_save_name
 	
 	var save_file = File.new()
-	var error = save_file.open(save_path, File.WRITE)
+	var error = save_file.open(new_save_path, File.WRITE)
 	if error == OK:
 		#load works
 		save_file.store_var(data)

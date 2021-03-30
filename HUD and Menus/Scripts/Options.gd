@@ -16,7 +16,7 @@ func multi_color_set(target:Control, color:Color):
 	target.set_deferred("custom_colors/font_color_pressed", color)
 	target.set_deferred("custom_colors/font_color_hover", color)
 
-func _on_Options_visibility_changed() -> void:
+func _on_tabs_visibility_changed() -> void:
 	smooth.pressed = global.settings["smooth_camera"]
 	hidebar.pressed = global.settings["hide_bar"]
 	fullscreen.pressed = global.settings["fullscreen"]
@@ -33,7 +33,7 @@ func _on_volume_value_changed(value: float) -> void:
 	# PROBLEM_NOTE: maybe make a smart_slider that does the above line automatically
 	# maybe it could also use a texture progress somehow to look a little nicer
 	AudioServer.set_bus_volume_db(0, linear2db(value/100))
-	
+
 func _on_exit_pressed() -> void:
 	global.settings["smooth_camera"] = smooth.pressed
 	global.settings["hide_bar"] = hidebar.pressed

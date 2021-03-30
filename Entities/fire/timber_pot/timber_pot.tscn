@@ -14,8 +14,9 @@ radius = 8.0
 script = ExtResource( 6 )
 
 [node name="stats" parent="." index="0" instance=ExtResource( 4 )]
-MAX_HEALTH = 4
-HEALTH = 4
+MAX_HEALTH = 2
+HEALTH = 2
+DEFENCE = 2
 DAMAGE = 0
 modifiers = {
 "bleeding": -999,

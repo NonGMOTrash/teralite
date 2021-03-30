@@ -37,6 +37,7 @@ onready var animation = $AnimationPlayer
 onready var dash_cooldown = $dash_cooldown
 onready var health_bar = $healthBar
 onready var sound_player = $foot_stepper
+onready var held_item = $held_item
 
 func _ready():
 	global.selection = 0
@@ -59,9 +60,19 @@ func _ready():
 	swapped_item(null)
 
 func _physics_process(_delta):
+	if get_global_mouse_position().x > global_position.x:
+		sprite.flip_h = false
+	else:
+		sprite.flip_h = true
+	
 	if not animation.current_animation == "dash":
 		if input_vector == Vector2.ZERO: animation.play("stand")
-		else: animation.play("run")
+		else:#if not animation.current_animation == "run": 
+			animation.play("run")
+#			if sprite.flip_h == false:
+#				animation.play("run")
+#			else:
+#				animation.play_backwards("run")
 	
 	if hurtbox.iTimer.time_left > 0:
 		sprite.get_material().set_shader_param("active", true)
@@ -117,6 +128,7 @@ func swapped_item(new_item):
 			null, # item bar value 
 			null # bar timer duration
 		)
+		held_item.sprite.texture = null
 
 func death():
 	yield(self, "updated_death_message")
@@ -200,7 +212,7 @@ func _on_stats_health_changed(type) -> void:
 	if type != "heal" and type != "blocked": 
 		if type == "hurt" and name == "player":
 			global.nodes["camera"].shake(5, 15, 0.2)
-			OS.delay_msec(10)
+			OS.delay_msec(34)
 		
 		perfect = false
 		if global.settings["auto_restart"] == true: 
@@ -216,7 +228,7 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 	var entity_name = entity.truName
 	var source
 	var source_name
-	if entity is Thing and get_node_or_null(entity.SOURCE_PATH) != null:
+	if entity is Attack and get_node_or_null(entity.SOURCE_PATH) != null:
 		source = entity.SOURCE
 		source_name = source.truName
 	
@@ -239,9 +251,5 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 			"stab": death_message = "Death by %s's dagger." % source_name
 			"arrow": death_message = "Death by %s's arrow." % source_name
 			_: death_message = "death message messed up, report pls ;-;"
-	
-	
-	if "Null" in death_message:
-		push_error("death message is bugged; '%s'" % death_message)
 	
 	emit_signal("updated_death_message")

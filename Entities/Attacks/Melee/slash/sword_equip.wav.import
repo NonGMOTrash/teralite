@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sword_equip.wav-e4d45088a4ebd82c045f575396767994.sample"
+
+[deps]
+
+source_file="res://Entities/Attacks/Melee/slash/sword_equip.wav"
+dest_files=[ "res://.import/sword_equip.wav-e4d45088a4ebd82c045f575396767994.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

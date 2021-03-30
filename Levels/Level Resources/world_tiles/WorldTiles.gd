@@ -2,14 +2,22 @@ extends TileMap
 # thanks LukeNaz
 # https://stackoverflow.com/questions/53685183/navigation-tilemaps-without-placing-walkable-tiles-manually
 
+export var generate_navigation = true
 export(PoolIntArray) var valid_ids = []
 
 # Empty/invisible tile marked as completely walkable. The ID of the tile should correspond
 # to the order in which it was created in the tileset editor.
-const _nav_tile_id = 10
+const _full_nav = 0
+const _half_nav = 1
+
+onready var nav = $nav
 
 func _ready() -> void:
 	global.nodes["world_tiles"] = self
+	
+	if generate_navigation == false: 
+		nav.queue_free()
+		return
 	
 	# for doing the entire level
 	#var bounds_min = Vector2(0, 0)
@@ -22,7 +30,9 @@ func _ready() -> void:
 	for x in range(bounds_min.x, bounds_max.x):
 		for y in range(bounds_min.y, bounds_max.y):
 			if not get_cell(x, y) in valid_ids:
-				set_cell(x, y, _nav_tile_id)
+				nav.set_cell(x, y, _full_nav)
+			elif not get_cell(x, y+1) in valid_ids:
+				nav.set_cell(x, y, _half_nav)
 	
 	# Force the navigation mesh to update immediately
-	update_dirty_quadrants()
+	nav.update_dirty_quadrants()

@@ -58,7 +58,7 @@ NonGMOTrash
 
 ### play testers:
 
-you!  
+you!    
 will add all the people later   
 (you'll be in the credits of the game itself to)    
 
@@ -155,8 +155,13 @@ good luck working with my terrible game architecture though
 ### Beta 2.12 (4/1/2021)
 
 - renamed the game from project epsilon to teralite
-- significantly toned down pitch shifting on sound effects
+- the player's held item is now visible (WIP, animations planned)
+- the player now faces toward the mouse
+- removed pitch shifting on most sound effects
 - improved options menu a bit
+- fixed settings config not saving
+- made the mouse cursor smaller
+- lots of behind the scenes improvements
 
 ### Beta 2.11 (3/14/2021)
 

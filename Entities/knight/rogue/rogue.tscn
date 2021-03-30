@@ -35,13 +35,10 @@ position = Vector2( 1, 0 )
 position = Vector2( 0.5, 1 )
 scale = Vector2( 0.85, 0.8 )
 
-[node name="death_spawn" parent="." index="8"]
-spawn_entity = "Rogue_Death"
-
-[node name="brain" parent="." index="9"]
+[node name="brain" parent="." index="7"]
 SIGHT_RANGE = 100.0
 
-[node name="movement_lobe" parent="brain" index="2"]
+[node name="movement_lobe" parent="brain" index="3"]
 IDLE_TIME = 0.4
 IDLE_OFFSET = 0.1
 WANDER_TIME = 0.6
@@ -57,15 +54,18 @@ general_springs = {
 [node name="spring" parent="brain/movement_lobe" index="4"]
 DISTANCE = 8
 
-[node name="memory_lobe" parent="brain" index="3"]
+[node name="memory_lobe" parent="brain" index="4"]
 MEMORY_TIME = 3.0
 
-[node name="action_lobe" parent="brain" index="4"]
+[node name="action_lobe" parent="brain" index="5"]
 PATIENCE = 0.2
 
 [node name="action" parent="brain/action_lobe" index="2"]
 best_distance = 8
 COOLDOWN = 0.95
+
+[node name="death_effect_spawner" parent="." index="10"]
+effect_texture = ExtResource( 2 )
 
 [editable path="sprite"]
 

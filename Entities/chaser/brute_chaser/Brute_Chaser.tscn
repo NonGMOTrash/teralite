@@ -31,15 +31,23 @@ KNOCKBACK = 140
 [node name="hurtbox" parent="." index="5"]
 position = Vector2( 0, 2.05111 )
 
-[node name="movement_lobe" parent="brain" index="2"]
+[node name="movement_lobe" parent="brain" index="3"]
 general_springs = {
 "friendly": "",
 "hostile": "default_spring",
 "neutral": ""
 }
 
-[node name="death_spawn" parent="." index="9"]
-spawn_entity = "Brute_Chaser_Death"
+[node name="hit_effect_spawner" parent="." index="10"]
+spawns_when = {
+"block": false,
+"heal": false,
+"hurt": true,
+"tree_exit": true
+}
+
+[node name="death_effect_spawner" parent="." index="11"]
+effect_texture = ExtResource( 1 )
 
 [editable path="hitbox"]
 

@@ -29,6 +29,11 @@ func selected():
 		null # bar timer duration
 		)
 	update_cursor()
+	_update_held_item()
+
+func unselected():
+	state = IDLE
+	charge.stop()
 
 func _process(_delta):
 	# PROBLEM_NOTE: this is bad for optimization
@@ -65,7 +70,7 @@ func primary():
 	# I can solve this if I have components add themselves to it at _init() 
 	arrow.find_node("stats").DAMAGE = damage
 	arrow.SPEED = charge_percent * 3.5
-	arrow.RANGE = arrow.SPEED / 2
+	arrow.RANGE = arrow.SPEED / 1.8
 	arrow.ACCELERATION = -((100 - charge_percent) * 1.8)
 	arrow.setup(get_parent(), get_parent().get_global_mouse_position())
 	get_parent().get_parent().add_child(arrow)

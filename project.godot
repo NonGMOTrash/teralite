@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Entity",
+"class": "Attack",
+"language": "GDScript",
+"path": "res://Entities/Attacks/Attack.gd"
+}, {
 "base": "Node2D",
 "class": "Effect",
 "language": "GDScript",
@@ -29,15 +34,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/Items Pickups/item.gd"
 }, {
-"base": "Thing",
+"base": "Attack",
 "class": "Melee",
 "language": "GDScript",
-"path": "res://Entities/Things/Melee/Melee.gd"
+"path": "res://Entities/Attacks/Melee/Melee.gd"
 }, {
-"base": "Thing",
+"base": "Attack",
 "class": "Projectile",
 "language": "GDScript",
-"path": "res://Entities/Things/Projectile/Projectile.gd"
+"path": "res://Entities/Attacks/Projectile/Projectile.gd"
 }, {
 "base": "Node2D",
 "class": "Prop",
@@ -54,17 +59,13 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Components/stats/status_effects/status_effect.gd"
 }, {
-"base": "Entity",
-"class": "Thing",
-"language": "GDScript",
-"path": "res://Entities/Things/Thing.gd"
-}, {
 "base": "Node",
 "class": "Thinker",
 "language": "GDScript",
 "path": "res://Entities/player/item_thinkers/thinker.gd"
 } ]
 _global_script_class_icons={
+"Attack": "",
 "Effect": "",
 "Entity": "",
 "Global_Sound": "",
@@ -74,7 +75,6 @@ _global_script_class_icons={
 "Prop": "",
 "Sound": "",
 "Status_Effect": "",
-"Thing": "",
 "Thinker": ""
 }
 
@@ -114,8 +114,8 @@ gdscript/warnings/deprecated_keyword=false
 
 window/size/width=384
 window/size/height=216
-window/size/test_width=1152
-window/size/test_height=648
+window/size/test_width=768
+window/size/test_height=432
 window/energy_saving/keep_screen_on=false
 window/handheld/orientation=false
 window/stretch/mode="2d"

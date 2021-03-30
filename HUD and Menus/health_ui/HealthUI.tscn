@@ -41,6 +41,7 @@ tracks/0/keys = {
 }
 
 [node name="HealthUI" type="Control"]
+visible = false
 self_modulate = Color( 1, 1, 1, 0.784314 )
 margin_right = 319.0
 margin_bottom = 32.0

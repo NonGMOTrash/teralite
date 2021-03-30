@@ -7,7 +7,12 @@ var death_message: String
 onready var label = $CanvasLayer/Label
 
 func _ready():
-	label.text = death_message + "\n" + "Press [E] to retry."
+	if simple_mode == true:
+		label.visible = false
+	else:
+		label.text = ""
+		OS.delay_msec(68)
+		label.text = death_message + "\n" + "Press [E] to retry."
 
 func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
 	waiting = true
@@ -24,3 +29,10 @@ func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
 		get_tree().reload_current_scene()
+
+func _process(_delta):
+	# PROBLEM_NOTE: this is kinda bad because it's checked every frame
+	if global.nodes["pause_menu"].visible == true:
+		label.visible = false
+	else:
+		label.visible = true

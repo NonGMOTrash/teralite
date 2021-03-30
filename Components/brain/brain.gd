@@ -16,7 +16,7 @@ export var DEBUG_DRAW = false
 
 export(int, 0, 20) var TOLERANCE = 3 # the amount of times it will tolerate friendly fire before infighting
 export(float, 0.01666, 3.0) var THINK_TIME = 0.1
-export(float, 0, 200) var SIGHT_RANGE = 100
+export(float, 0, 300) var SIGHT_RANGE = 100
 export(int, 1, 99) var MAX_TARGETS = 5
 export var COMMUNICATES = true
 export(float, 0.01, 10.0) var COMM_DELAY = 1.2
@@ -39,9 +39,9 @@ func _ready():
 
 func _draw():
 	if DEBUG_DRAW == false: return
-	
+
 	draw_line(position, position + get_parent().input_vector * 16, Color.orange, 2.5)
-	
+
 	if memory_lobe != null:
 		for i in memory_lobe.memory.size():
 			draw_circle(to_local(memory_lobe.memory[i]), 2, Color.blue)
@@ -53,7 +53,7 @@ func _draw():
 					if path.size() < 2: path = [position, Vector2.ZERO]
 					for x in path.size(): path[x] = to_local(path[x])
 					draw_multiline(path, Color.lightblue)
-	
+
 	if movement_lobe != null:
 		for i in targets.size():
 			var target = targets[i]
@@ -63,9 +63,6 @@ func _draw():
 				var best_position = Vector2.ZERO
 				var target_to_me = target.global_position.direction_to(global_position).normalized()
 				# Internal Script Error! - opcode #0 (report please).
-				
-				debug()
-				yield(self, "debug")
 				
 				best_position = target.global_position + target_to_me * spring.DISTANCE
 				
@@ -78,7 +75,7 @@ func _draw():
 					if path != null and path.size() > 1:
 						for x in path.size(): path[x] = to_local(path[x])
 						draw_multiline(path, Color.red, 1.5)
-		
+
 		if targets == [] and memory_lobe == null or memory_lobe.memory == []:
 			draw_circle(to_local(movement_lobe.guard_pos), movement_lobe.WANDER_RANGE, Color8(255, 255, 0, 50))
 			if movement_lobe.guard_path == null:
@@ -144,13 +141,28 @@ func los_check(target):
 		elif target is Vector2:
 			return true
 
-func add_target(tar: Node, force = false):
+# PROBLEM_NOTE: report about the game crashing without an error message
+# i tested with all brain.gd functions and memory.gd functions, and i found that add_target() is the
+# culpret. although strangly, the error always happens when the function returns. i checked everywhere
+# add_target() is used but i dont see any ramifications that could occur from it returning early.
+# this leads me to suspect it may be a completely different function in one of the other lobes.
+
+# EDIT: im starting to suspect it's a pathfinding bug. i finally got a level that can recreate the bug
+# consistantly. it has an enemy surrounded in the checker pattern, and the game crashes always at 1.9s
+# I think because that's when the enemy starts wandering
+
+# EDIT2: it's due to a infinitely running while loop. see the notes in movement_lobe.gd for details
+
+func add_target(tar: Entity, force = false) -> void:
+	# PROBLEM_NOTE: y tho?
 	if force == true:
 		breakpoint
 	
-	# PROBLEM_NOTE: im pretty sure i can just do    if not tar is Entity
-	if not tar is Entity or tar is Melee or tar is Projectile or tar is Item or tar == get_parent(): return
-	if movement_lobe != null and movement_lobe.get_spring(tar) == null: return
+	# PROBLEM_NOTE: im pretty sure i can just do 'if not tar is Entity' here
+	if not tar is Entity or tar is Melee or tar is Projectile or tar is Item or tar == get_parent():
+		return
+	if movement_lobe != null and movement_lobe.get_spring(tar) == null: 
+		return
 	
 	targets.append(tar)
 	target_paths.append(tar.get_path())
@@ -166,14 +178,13 @@ func add_target(tar: Node, force = false):
 		movement_lobe.wander_timer.stop()
 	
 	emit_signal("found_target")
+	#prints(get_parent().get_name(), "!", global.nodes["stopwatch"].time)
 	
-#	var effect = global.aquire("exclaimation")
-#	get_parent().get_parent().call_deferred("add_child", effect)
-#	effect.global_position = global_position.move_toward(tar.global_position, 32)
 	spawn_effect("exclaimation", global_position.move_toward(tar.global_position, 32))
 
 func remove_target(tar):
-	if targets == []: return
+	if targets == []: 
+		return
 	
 	var target = null
 	var target_id = 0
@@ -202,6 +213,7 @@ func remove_target(tar):
 	targets.remove(target_id)
 	target_paths.remove(target_id)
 	emit_signal("lost_target")
+	#prints(get_parent().get_name(), "?", global.nodes["stopwatch"].time)
 	
 	if targets == []: 
 		get_parent().input_vector = Vector2.ZERO

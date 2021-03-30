@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/arrow_hit.wav-7627c14c08aec6e88b0c0fb8e3106c40.sample"
+
+[deps]
+
+source_file="res://Entities/Attacks/Projectile/arrow/arrow_hit.wav"
+dest_files=[ "res://.import/arrow_hit.wav-7627c14c08aec6e88b0c0fb8e3106c40.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

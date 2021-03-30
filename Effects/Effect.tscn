@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Effects/Effect.gd" type="Script" id=1]
-
-[sub_resource type="Animation" id=1]
-resource_name = "New Anim"
 
 [node name="Effect" type="Node2D"]
 z_index = 1
@@ -15,5 +12,3 @@ animation_player = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite")
-autoplay = "New Anim"
-"anims/New Anim" = SubResource( 1 )

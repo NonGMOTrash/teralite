@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sword_kill.wav-0ad9883988f7431bef7fd824e5d267de.sample"
+
+[deps]
+
+source_file="res://Entities/Attacks/Melee/slash/sword_kill.wav"
+dest_files=[ "res://.import/sword_kill.wav-0ad9883988f7431bef7fd824e5d267de.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

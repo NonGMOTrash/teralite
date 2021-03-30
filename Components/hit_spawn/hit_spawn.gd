@@ -12,6 +12,8 @@ func _on_hit_spawn_tree_entered() -> void:
 	get_parent().components["hit_spawn"] = self
 
 func _ready() -> void:
+	push_error("there's a hit spawn!!!! replace with a spawner")
+	
 	percent_chance = clamp(percent_chance, 0, 100)
 	
 	if spawn_entity == "":

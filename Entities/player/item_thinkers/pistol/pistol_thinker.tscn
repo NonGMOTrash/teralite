@@ -3,21 +3,20 @@
 [ext_resource path="res://Entities/player/item_thinkers/pistol/pistol_thinker.gd" type="Script" id=1]
 [ext_resource path="res://HUD and Menus/CURSOR_PISTOL.png" type="Texture" id=2]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Entities/Things/Projectile/small_bullet/pistol_pickup.wav" type="AudioStream" id=4]
+[ext_resource path="res://Entities/Attacks/Projectile/small_bullet/pistol_pickup.wav" type="AudioStream" id=4]
 [ext_resource path="res://Entities/player/item_thinkers/pistol/pistol_reload.wav" type="AudioStream" id=5]
 [ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=6]
-
-[sub_resource type="AudioStreamRandomPitch" id=1]
-audio_stream = ExtResource( 4 )
-random_pitch = 1.05
+[ext_resource path="res://Entities/Items Pickups/pistol/pistol.png" type="Texture" id=7]
 
 [node name="pistol thinker" type="Node"]
 script = ExtResource( 1 )
 auto_ready_check = false
+HELD_ITEM_TEXTURE = ExtResource( 7 )
+HELD_ITEM_ANCHOR = Vector2( 11, 0 )
 my_item = "Pistol"
 CURSOR = ExtResource( 2 )
 CURSOR_MODE = 1
-EQUIP_SOUND = SubResource( 1 )
+EQUIP_SOUND = ExtResource( 4 )
 reload_time = 2.46
 
 [node name="cooldown" type="Timer" parent="."]

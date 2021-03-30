@@ -18,6 +18,7 @@ signal got_hit(by_area, type)
 func _on_hurtbox_tree_entered() -> void:
 	get_parent().components["hurtbox"] = self
 
+
 func _ready():
 	entity = get_parent()
 

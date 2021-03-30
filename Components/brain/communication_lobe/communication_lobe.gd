@@ -37,6 +37,7 @@ func _on_delay_timer_timeout() -> void:
 			and body.components["memory_lobe"] != null
 			and not body.components["memory_lobe"].memory_id.has(the_target.get_instance_id())
 			):
+				# PROBLEM_NOTE: im 90% sure this is never called
 				body.components["brain"].add_target(the_target, true)
 				
 #				if body.components["memory_lobe"] != null and body.components["movement_lobe"] != null:

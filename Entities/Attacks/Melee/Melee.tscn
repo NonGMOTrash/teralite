@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Entities/Attacks/Attack.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Attacks/Melee/Melee.gd" type="Script" id=2]
+
+
+
+[node name="Melee" instance=ExtResource( 1 )]
+rotation = 0.0
+script = ExtResource( 2 )
+truName = "(melee)"
+RANGE = 4
+auto_rotate = true
+
+[node name="Sprite" parent="." index="1"]
+rotation = 0.0
+
+[editable path="hurtbox"]
+
+[editable path="hitbox"]

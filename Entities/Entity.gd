@@ -23,10 +23,9 @@ var components = { # PROBLEM_NOTE, this doesn't support duplicate components but
 	"action_lobe": null,
 	"warning_lobe": null,
 	"communication_lobe": null,
-	"death_spawn": null,
+	"spawner": null,
 	"entity_push": null,
 	"health_bar": null,
-	"hit_spawn": null,
 	"hitbox": null,
 	"hurtbox": null,
 	"player_controlled": null,
@@ -34,6 +33,7 @@ var components = { # PROBLEM_NOTE, this doesn't support duplicate components but
 	"entity_sprite": null,
 	"stats": null,
 	"sound_player": null,
+	"held_item": null
 }
 
 signal death()
@@ -44,8 +44,11 @@ func _ready():
 	# i think the sorting is only triggered when the y position changes
 	
 	# PROBLEM_NOTE: maybe do global_position.y += 0.01, might break things though
+	
+	if faction != "" and global.faction_relationships.get(faction) == null:
+		push_error(get_name()+"'s faction '"+faction+"' is invalid")
 
-func _physics_process(delta): # physics logic
+func _process(delta): # physics logic
 	marked_enemies = []
 	if STATIC == true: return
 	

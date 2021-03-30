@@ -8,6 +8,8 @@ enum CURSOR_MODES { POINTER, CENTERED }
 export var auto_ready_check = true
 export(ACTION_MODES) var PRIMARY_ACTION_MODE = ACTION_MODES.SEMI
 export(ACTION_MODES) var SECONDARY_ACTION_MODE = ACTION_MODES.SEMI
+export(Texture) var HELD_ITEM_TEXTURE
+export(Vector2) var HELD_ITEM_ANCHOR = Vector2(8, 0)
 
 export var my_item = "" 
 
@@ -25,7 +27,6 @@ var bar_value = 0.0
 signal update_ui(bar_max, bar_value, info_string)
 
 func _ready():
-	
 	if my_item == "":
 		push_error("my_time was not set")
 		queue_free()
@@ -35,6 +36,8 @@ func _ready():
 		queue_free()
 	
 	get_parent().connect("swapped_item", self, "_check_if_selected")
+	
+	global.connect("unpaused", self,"_update_cursor_on_unpause")
 	
 	if get_parent().inventory[global.selection] == my_item: selected()
 	if get_parent().get_name() == "player":
@@ -136,6 +139,7 @@ func selected():
 		null # bar timer duration
 		)
 	update_cursor()
+	_update_held_item()
 	
 	if EQUIP_SOUND != null:
 		sound_player.create_sound(EQUIP_SOUND)
@@ -150,7 +154,15 @@ func secondary(): pass
 
 func reload(): pass
 
-func _quick_spawn(thing:String, type:String):
-	var new_thing = global.aquire(thing)
-	new_thing.setup(get_parent(), get_parent().get_global_mouse_position())
-	get_parent().get_parent().call_deferred("add_child", new_thing)
+func _quick_spawn(attack:String, type:String):
+	var new_attack = global.aquire(attack)
+	new_attack.setup(get_parent(), get_parent().get_global_mouse_position())
+	get_parent().get_parent().call_deferred("add_child", new_attack)
+
+func _update_held_item():
+	get_parent().components["held_item"].sprite.texture = HELD_ITEM_TEXTURE
+	get_parent().components["held_item"].anchor.position = HELD_ITEM_ANCHOR
+
+func _update_cursor_on_unpause():
+	if get_parent().inventory[global.selection] == my_item.to_lower():
+		update_cursor()

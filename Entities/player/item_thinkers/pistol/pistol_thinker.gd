@@ -38,6 +38,7 @@ func selected():
 		null # bar timer duration
 		)
 	update_cursor()
+	_update_held_item()
 	
 	# PROBLEM_NOTE: would be better if i could get this to inheireit \/
 	if EQUIP_SOUND != null:

@@ -52,7 +52,7 @@ anims/dash = SubResource( 2 )
 [node name="brain" parent="." index="7"]
 SIGHT_RANGE = 120.0
 
-[node name="movement_lobe" parent="brain" index="2"]
+[node name="movement_lobe" parent="brain" index="3"]
 general_springs = {
 "friendly": "",
 "hostile": "default_spring",
@@ -74,12 +74,24 @@ best_distance = 50
 COOLDOWN = 0.75
 GLOBAL_COOLDOWN = true
 
-[node name="death_spawn" parent="." index="9"]
-spawn_entity = "Ultra_Chaser_Death"
+[node name="healthBar" parent="." index="9"]
+margin_left = -10.2629
+margin_right = 10.7371
 
 [node name="dash_cooldown" type="Timer" parent="." index="10"]
 one_shot = true
 autostart = true
+
+[node name="hit_effect_spawner" parent="." index="11"]
+spawns_when = {
+"block": false,
+"heal": false,
+"hurt": true,
+"tree_exit": true
+}
+
+[node name="death_effect_spawner" parent="." index="12"]
+effect_texture = ExtResource( 3 )
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 
 [editable path="hitbox"]
