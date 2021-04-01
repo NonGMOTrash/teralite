@@ -21,7 +21,8 @@ const BOW = preload("res://Entities/Items Pickups/bow/bow.png")
 func _ready():
 	global.nodes["item_bar"] = self
 	global.connect("update_item_bar", self, "update_icons")
-	if global.settings["hide_bar"] == false: visible = true
+	if global.settings["hide_bar"] == false: bar.visible = true
+	visible = true
 
 func item_changed():
 	global.update_cursor()
@@ -44,10 +45,17 @@ func _input(_event: InputEvent):
 func update_icons(inventory):
 	for i in 6: match_icon(i, inventory[i])
 	global.update_cursor()
-	if global.settings["hide_bar"] == true and inventory[0]==null and inventory[1]==null and inventory[2]==null:
+	if (
+		global.settings["hide_bar"] == true and 
+		inventory[0] == null and 
+		inventory[1] == null and 
+		inventory[2] == null
+	):
 		bar.visible = false
+		print("set false")
 	else:
 		bar.visible = true
+		print("set true")
 
 func match_icon(slot, item):
 	match item:

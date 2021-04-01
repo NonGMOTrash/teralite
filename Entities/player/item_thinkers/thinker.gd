@@ -75,6 +75,7 @@ func _input(_event: InputEvent):
 		newItemEntity.velocity = velo
 		get_parent().get_parent().add_child(newItemEntity)
 		get_parent().inventory[global.selection] = null
+		get_parent().held_item.sprite.texture = null
 		
 		global.emit_signal("update_item_info", # set a condition to null to hide it
 			null, # current item

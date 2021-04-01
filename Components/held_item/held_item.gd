@@ -68,6 +68,6 @@ func _process(delta):
 		sprite.flip_v = false
 	
 	if rotation_degrees < 0:
-		z_index = -1
+		show_behind_parent = true
 	else:
-		z_index = 0
+		show_behind_parent = false

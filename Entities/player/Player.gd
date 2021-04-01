@@ -6,11 +6,7 @@ var perfect = true
 var death_message = ";-;"
 
 export var dash_strength = 300
-
-export var INPUT_BUFFER_FRAMES = 8
-var primary_bufferframes = 0
-var secondary_bufferframes = 0
-var dash_bufferframes = 0
+export var dash_buffer = 8
 
 var inventory = [
 	null, #slot 0 (right)
@@ -25,6 +21,7 @@ var item_name = ""
 var item_bar_max = 0.0
 var item_bar_value = 0.0
 var item_info_text = ""
+var buffered_dash: Vector2
 
 signal swapped_item(new_item)
 signal updated_death_message
@@ -40,6 +37,7 @@ onready var sound_player = $foot_stepper
 onready var held_item = $held_item
 
 func _ready():
+	dash_buffer *= (1.0/60.0)
 	global.selection = 0
 	iTimer.start()
 	if get_name() == "player":
@@ -78,21 +76,21 @@ func _physics_process(_delta):
 		sprite.get_material().set_shader_param("active", true)
 	else:
 		sprite.get_material().set_shader_param("active", false)
-	
-	primary_bufferframes = move_toward(primary_bufferframes, 0, 1)
-	secondary_bufferframes = move_toward(secondary_bufferframes, 0, 1)
-	dash_bufferframes = move_toward(dash_bufferframes, 0, 1)
+
+func dash(direction: Vector2 = input_vector) -> void:
+	if direction != Vector2.ZERO:
+		animation.play("dash")
+		apply_force(dash_strength * direction.normalized())
+		dash_cooldown.start()
+	buffered_dash = Vector2.ZERO
 
 func _input(_event: InputEvent) -> void: 
 	# dash
-	if Input.is_action_just_pressed("dash") && dash_cooldown.time_left == 0:
-		if input_vector != Vector2.ZERO:
-			animation.play("dash")
-			apply_force(dash_strength * input_vector.normalized())
-			dash_cooldown.start()
-		else:
-			pass
-			#forces.push_back({"direction": Vector2(rand_range(-1.0, 1.0), rand_range(-1.0, 1.0)), "power": 0})
+	if Input.is_action_just_pressed("dash"):
+		if dash_cooldown.time_left == 0:
+			dash()
+		elif dash_cooldown.time_left <= dash_buffer:
+			buffered_dash = input_vector
 	
 	# for item switching:
 	if get_name() == "player":
@@ -253,3 +251,7 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 			_: death_message = "death message messed up, report pls ;-;"
 	
 	emit_signal("updated_death_message")
+
+func _on_dash_cooldown_timeout() -> void:
+	if buffered_dash != Vector2.ZERO:
+		dash(buffered_dash)

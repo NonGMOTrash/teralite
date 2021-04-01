@@ -1,12 +1,13 @@
 extends Thinker
 
 export var max_charge_time = 1.2
-export var uncharge_time = 0.1
+export var min_charge_time = 0.5
 export var cooldown_time = 0.2
+export var buffer_frames = 12
 
 onready var cooldown = $cooldown
 onready var charge = $charge
-onready var uncharge = $uncharge
+onready var buffer = $buffer
 
 enum {
 	IDLE,
@@ -14,11 +15,12 @@ enum {
 }
 
 var state = IDLE
+var buffering_shot = false
+var buffer_time = buffer_frames * (1.0/60.0)
 
 func _ready():
 	cooldown.wait_time = cooldown_time
 	charge.wait_time = max_charge_time
-	uncharge.wait_time = uncharge_time
 
 func selected():
 	global.emit_signal("update_item_info", # set a condition to null to hide it
@@ -50,8 +52,6 @@ func pre_input_action():
 	if Input.is_action_just_pressed("primary_action") and cooldown.time_left == 0:
 		charge.start()
 		state = CHARGING
-	elif Input.is_action_just_released("primary_action"):
-		uncharge.start()
 
 func get_ready():
 	if cooldown.time_left > 0: return false
@@ -59,6 +59,34 @@ func get_ready():
 	else: return true
 
 func primary():
+	var charge_time = charge.wait_time - charge.time_left
+	print("")
+	prints("charge:", charge)
+	if charge_time < min_charge_time and buffering_shot == false:
+		if min_charge_time - charge_time > buffer_time:
+			print("cancelled")
+			charge.stop()
+			cooldown.start()
+			state = IDLE
+#			global.emit_signal("update_item_info", # set a condition to null to hide it
+#				my_item, # current item
+#				null, # extra info 
+#				null, # item bar max 
+#				null, # item bar value 
+#				null # bar timer duration
+#			)
+			return
+		
+		buffering_shot = true
+		buffer.wait_time = min_charge_time - charge_time
+		buffer.start()
+		print("cancelled, buffering shot")
+		return
+	
+	buffering_shot = false
+	buffer.stop()
+	
+	print("executed")
 	var arrow = global.aquire("Arrow")
 	var charge_percent =  abs(charge.time_left - max_charge_time) / max_charge_time * 100.0
 	var damage = 0
@@ -67,26 +95,15 @@ func primary():
 	if charge_percent == 100: damage += 1
 	
 	# PROBLEM_NOTE: I can't check the components dictionary here because that is only updated at _ready()
-	# I can solve this if I have components add themselves to it at _init() 
+	# I can solve this if I have components add themselves to it at _init(), or using pointers (<- works)
 	arrow.find_node("stats").DAMAGE = damage
-	arrow.SPEED = charge_percent * 3.5
+	arrow.SPEED = 50 + charge_percent * 3.5
 	arrow.RANGE = arrow.SPEED / 1.8
 	arrow.ACCELERATION = -((100 - charge_percent) * 1.8)
 	arrow.setup(get_parent(), get_parent().get_global_mouse_position())
 	get_parent().get_parent().add_child(arrow)
 	cooldown.start()
 	
-	state = IDLE
-	global.emit_signal("update_item_info", # set a condition to null to hide it
-		my_item, # current item
-		null, # extra info 
-		null, # item bar max 
-		null, # item bar value 
-		null # bar timer duration
-		)
-
-func _on_uncharge_timeout() -> void:
-	charge.stop()
 	state = IDLE
 	global.emit_signal("update_item_info", # set a condition to null to hide it
 		my_item, # current item
@@ -107,3 +124,6 @@ func _on_cooldown_timeout() -> void:
 	if Input.is_action_pressed("primary_action"):
 		charge.start()
 		state = CHARGING
+
+func _on_buffer_timeout() -> void:
+	primary()

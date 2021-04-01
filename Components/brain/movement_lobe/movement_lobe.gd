@@ -46,8 +46,6 @@ func _ready() -> void:
 	wander_timer.wait_time = WANDER_TIME
 	movement_timer.wait_time = 1.0 / MOVEMENT_EFFICIENCY
 	movement_timer.start()
-	# DEBUG
-	WANDER_RANGE = 10
 	
 	if brain.get_parent().components["sleeper"] != null:
 		brain.get_parent().components["sleeper"].connect("awoken", self, "awoken")

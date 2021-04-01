@@ -146,7 +146,7 @@ func _ready():
 	
 	var hr = OS.get_time()["hour"]
 	if hr > 12: hr -= 12
-	if hr==4 and OS.get_time()["minute"]==20:
+	if hr == 4 and OS.get_time()["minute"] == 20:
 		print("you just got rickrolled!!!!1!")
 		OS.shell_open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 	

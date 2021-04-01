@@ -156,11 +156,12 @@ good luck working with my terrible game architecture though
 
 - renamed the game from project epsilon to teralite
 - the player's held item is now visible (WIP, animations planned)
+- fixed pathfinding crash (finally)
 - the player now faces toward the mouse
 - removed pitch shifting on most sound effects
-- improved options menu a bit
 - fixed settings config not saving
 - made the mouse cursor smaller
+- added a minimum charge time to the bow
 - lots of behind the scenes improvements
 
 ### Beta 2.11 (3/14/2021)
