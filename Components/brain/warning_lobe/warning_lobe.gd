@@ -5,7 +5,7 @@ onready var warning_shape = $warning/CollisionShape2D
 
 export(float, 0, 200) var WARNING_RANGE = 50
 
-func _on_warning_lobe_tree_entered() -> void:
+func _on_warning_lobe_tree_entered():
 	get_parent().warning_lobe = self
 	if get_parent().get_parent() is Entity:
 		get_parent().get_parent().components["warning_lobe"] = self

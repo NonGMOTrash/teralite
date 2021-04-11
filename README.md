@@ -152,6 +152,10 @@ good luck working with my terrible game architecture though
 
 # Patchnotes
 
+### Beta 2.13
+
+- fixed ysort issues with spikes
+
 ### Beta 2.12 (4/1/2021)
 
 - renamed the game from project epsilon to teralite
@@ -196,7 +200,6 @@ good luck working with my terrible game architecture though
 
 ### Beta 2.8 (1/31/2021)
 
-- fixed the .exe icon
 - added an armor break mechanic (entities with defense now have a separate armor bar and they will become vulnerable once it's depleted)
 - knights now have less health, but 1 defense
 - improved entity health bars (now displays bonus health and armor)

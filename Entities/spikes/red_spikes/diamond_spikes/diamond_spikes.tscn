@@ -1,14 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Entities/spikes/red_spikes/red_spikes.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Entities/spikes/red_spikes/diamond_spikes/diamond_spike.png" type="Texture" id=2]
+[ext_resource path="res://Entities/spikes/red_spikes/diamond_spikes/diamond_spike_pokey.png" type="Texture" id=2]
+[ext_resource path="res://Entities/spikes/red_spikes/diamond_spikes/diamond_spike_base.png" type="Texture" id=3]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="CircleShape2D" id=1]
+radius = 8.0
+
+[sub_resource type="Animation" id=2]
 resource_local_to_scene = true
 length = 0.833335
 step = 0.0166667
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("hitbox/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -17,27 +21,15 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.833333 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 1, 2 ]
+"values": [ true, false ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("hitbox/CollisionShape2D:disabled")
+tracks/1/type = "method"
+tracks/1/path = NodePath("AnimationPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.833333 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("AnimationPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0.833333 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -45,13 +37,13 @@ tracks/2/keys = {
 "method": "queue_free"
 } ]
 }
-tracks/3/type = "method"
-tracks/3/path = NodePath("sound_player")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/2/type = "method"
+tracks/2/path = NodePath("sound_player")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0.833 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -59,9 +51,30 @@ tracks/3/keys = {
 "method": "play_sound"
 } ]
 }
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 8.0
+tracks/3/type = "value"
+tracks/3/path = NodePath("pokey:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("pokey:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.83 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
 
 [node name="diamond_spikes" instance=ExtResource( 1 )]
 truName = "diamond_spikes"
@@ -70,20 +83,23 @@ truName = "diamond_spikes"
 DAMAGE = 2
 TRUE_DAMAGE = 3
 
-[node name="Sprite" parent="." index="1"]
+[node name="base" parent="." index="1"]
+texture = ExtResource( 3 )
+
+[node name="pokey" parent="." index="2"]
 texture = ExtResource( 2 )
-frame = 1
+frame = 0
+
+[node name="hitbox" parent="." index="3"]
+visible = true
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 disabled = true
 
-[node name="AnimationPlayer" parent="." index="3"]
-anims/spikes = SubResource( 1 )
-
-[node name="activation" parent="." index="4"]
-visible = false
-
 [node name="CollisionShape2D" parent="activation" index="0"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" parent="." index="5"]
+anims/spikes = SubResource( 2 )
 
 [editable path="hitbox"]

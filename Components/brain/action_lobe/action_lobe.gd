@@ -28,7 +28,7 @@ var last_action_str = "idk lol"
 
 signal action(action, target)
 
-func _on_action_lobe_tree_entered() -> void:
+func _on_action_lobe_tree_entered():
 	get_parent().action_lobe = self
 	if get_parent().get_parent() is Entity:
 		get_parent().get_parent().components["action_lobe"] = self

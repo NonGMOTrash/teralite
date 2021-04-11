@@ -6,6 +6,7 @@ onready var play = $main/center/play
 onready var options = $main/center/options
 onready var quit = $main/center/quit
 onready var msg = $main/msg
+onready var version = $main/ver
 onready var title_menu = $main
 onready var saves_menu = $saves
 onready var new_save_menu = $new_save
@@ -60,6 +61,16 @@ func _ready() -> void:
 	play.grab_focus()
 	visible = true
 	load_saves_list_items()
+	
+	# set display version
+	version.text = global.ver_phase + " " + str(global.ver_num)
+	if global.ver_hotfix > 0:
+		if global.ver_hotfix == 1:
+			version.text = version.text + " Hotfix"
+		else:
+			print(version.text)
+			version.text = version.text + " Hotfix #" + str(global.ver_hotfix)
+			print(version.text)
 	
 	# set random msg
 	msg.text = MESSAGES[randi() % MESSAGES.size()]

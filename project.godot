@@ -87,7 +87,7 @@ config/use_custom_user_dir=true
 boot_splash/image="res://HUD and Menus/splashscreen.png"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
-config/icon="res://HUD and Menus/Icons/teralite_logo.png"
+config/icon="res://HUD and Menus/Icons/teralite_logo_big.png"
 config/windows_native_icon="res://HUD and Menus/Icons/teralite_ico.ico"
 
 [audio]

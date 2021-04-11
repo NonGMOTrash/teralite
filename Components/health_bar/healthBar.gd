@@ -9,8 +9,8 @@ export(Gradient) var PROGRESS_GRAD
 export(Gradient) var BONUS_GRAD
 export(Gradient) var ARMOR_GRAD
 
-func _on_healthBar_tree_entered() -> void:
-	get_parent().components["health_bar"] = self
+func _on_healthBar_tree_entered():
+	get_parent().components["entity_push"] = self
 
 func _ready(): 
 	if stats == null:

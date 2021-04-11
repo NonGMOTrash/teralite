@@ -4,7 +4,7 @@ export var strength = 14
 
 onready var timer = $Timer
 
-func _on_entity_push_tree_entered() -> void:
+func _on_entity_push_tree_entered():
 	get_parent().components["entity_push"] = self
 
 func _ready() -> void:

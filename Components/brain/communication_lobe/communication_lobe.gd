@@ -9,7 +9,7 @@ export(float, 0.0, 5.0) var DELAY_VARIANCE = 0.5
 
 var the_target
 
-func _on_communication_lobe_tree_entered() -> void:
+func _on_communication_lobe_tree_entered():
 	get_parent().communication_lobe = self
 	if get_parent().get_parent() is Entity:
 		get_parent().get_parent().components["communication_lobe"] = self

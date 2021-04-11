@@ -17,9 +17,8 @@ onready var sprite = $anchor/sprite
 onready var anchor = $anchor
 onready var animation = $AnimationPlayer
 
-func _on_held_item_tree_entered() -> void:
-	if get_parent() is Entity:
-		get_parent().components["held_item"] = self
+func _on_held_item_tree_entered():
+	get_parent().components["held_item"] = self
 
 func _ready():
 	if PARENT_BOND == false:

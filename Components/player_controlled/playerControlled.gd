@@ -1,3 +1,4 @@
+# PROBLEM_NOTE: this component should probably be deleted and made to be part of the player scene
 extends Node2D
 
 onready var parent = self.owner

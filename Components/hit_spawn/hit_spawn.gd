@@ -1,3 +1,4 @@
+# PROBLEM_NOTE: this whole component should be deleted
 extends Node
 
 export var spawn_entity = ""
@@ -8,8 +9,8 @@ export var use_whitelist = true
 
 var stats
 
-func _on_hit_spawn_tree_entered() -> void:
-	get_parent().components["hit_spawn"] = self
+func _on_hit_spawn_tree_entered():
+	get_parent().components["entity_push"] = self
 
 func _ready() -> void:
 	push_error("there's a hit spawn!!!! replace with a spawner")

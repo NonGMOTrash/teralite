@@ -2,13 +2,14 @@ extends Node
 
 enum MODES {ONESHOT, STANDBY, REPEATING}
 
+# PROBLEM_NOTE: would be better to have different free modes: MANUAL, WHEN_EMPTY, AFTER_USE
 export var FREE_WHEN_EMPTY = false # if true, queue_free() if all the sounds are gone
 
 var sounds = {
 	#"soundname": node
 }
 
-func _on_sound_player_tree_entered() -> void:
+func _on_sound_player_tree_entered():
 	if get_parent() is Entity:
 		get_parent().components["sound_player"] = self
 

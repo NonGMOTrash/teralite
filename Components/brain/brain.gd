@@ -29,9 +29,8 @@ signal found_target
 signal lost_target
 signal think
 
-func _on_brain_tree_entered() -> void:
-	if get_parent() is Entity:
-		get_parent().components["brain"] = self
+func _on_brain_tree_entered():
+	get_parent().components["brain"] = self
 
 func _ready():
 	sight_shape.shape.radius = SIGHT_RANGE

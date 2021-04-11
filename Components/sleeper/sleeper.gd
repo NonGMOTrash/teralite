@@ -12,7 +12,7 @@ var has_awoken = false
 signal slept # << PROBLEM_NOTE: never emitted
 signal awoken
 
-func _on_sleeper_tree_entered() -> void:
+func _on_sleeper_tree_entered():
 	get_parent().components["sleeper"] = self
 
 func _ready() -> void:

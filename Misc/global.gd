@@ -13,13 +13,17 @@ var previous_scene = null # PROBLEM_NOTE i don't think this is used
 var player_hub_pos = Vector2(0, 0)
 var last_ambiance = 0 # PROBLEM_NOTE: this isn't used
 
+# PROBLEM_NOTE: might be a bit better to have this be in a seperate "save" global?
 # data vars
 var stars = 0
 var last_hub = null
 var cleared_levels = []
 var perfected_levels = []
-var level_deaths = {} # not currently used
-var level_times = {} # not currently used
+var level_deaths = {}
+var level_times = {}
+var ver_phase = "Beta"
+var ver_num = 2.13
+var ver_hotfix = 0
 
 # for saving things
 const SAVE_DIR = "user://saves/"
@@ -185,7 +189,10 @@ func get_empty_save_data():
 		"cleared_levels": [],
 		"perfected_levels": [],
 		"level_deaths": {},
-		"level_times": {}
+		"level_times": {},
+		"ver_phase": global.ver_phase,
+		"ver_num": global.ver_num,
+		"ver_hotfix": global.ver_hotfix
 	}
 
 func get_save_data_dict():
@@ -197,7 +204,10 @@ func get_save_data_dict():
 		"cleared_levels": cleared_levels,
 		"perfected_levels": perfected_levels,
 		"level_deaths": level_deaths,
-		"level_times": level_times
+		"level_times": level_times,
+		"ver_phase": global.ver_phase,
+		"ver_num": global.ver_num,
+		"ver_hotfix": global.ver_hotfix
 	}
 
 func get_saves():
@@ -252,7 +262,7 @@ func load_save(entered_save_name):
 			var new_data = save_file.get_var()
 			
 			# PROBLEM_NOTE: this is kinda dumb because I have to add a new line here every time i add a new
-			# var to a save, but i shouldn't have to add anything else so i might be good
+			# var to a save, not sure there's exactly a better way (not a huge deal really)
 			if new_data.has("stars"): stars = new_data["stars"]
 			if new_data.has("save_name"): save_name = new_data["save_name"]
 			if new_data.has("last_hub"): last_hub = new_data["last_hub"]

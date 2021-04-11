@@ -245,6 +245,7 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 			"gold_chaser": death_message = "Death by golden chaser."
 			"ultra_chaser": death_message = "Death by ultra chaser."
 			"spikes", "red_spikes", "diamond_spikes": death_message = "Death by impalement."
+			"fire": death_message = "Death by burning."
 			"slash": death_message = "Death by %s's blade." % source_name
 			"stab": death_message = "Death by %s's dagger." % source_name
 			"arrow": death_message = "Death by %s's arrow." % source_name

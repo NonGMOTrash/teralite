@@ -31,7 +31,7 @@ onready var color_c_effect = $color_overlay_c/effects
 onready var texture_c = $texture_overlay_c
 onready var texture_c_effect = $texture_overlay_c/effects
 
-func _on_entity_sprite_tree_entered() -> void:
+func _on_entity_sprite_tree_entered():
 	get_parent().components["entity_sprite"] = self
 
 func _ready():

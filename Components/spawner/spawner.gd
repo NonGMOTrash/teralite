@@ -15,7 +15,7 @@ export(int) var effect_vframes = 1
 
 var stats
 
-func _on_death_spawn_tree_entered() -> void:
+func _on_spawner_tree_entered():
 	get_parent().components["spawner"] = self
 
 func _ready() -> void:

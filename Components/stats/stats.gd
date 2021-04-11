@@ -33,7 +33,7 @@ export var modifiers = {
 	"bleeding": 0, 
 }
 
-func _on_stats_tree_entered() -> void:
+func _on_stats_tree_entered():
 	get_parent().components["stats"] = self
 
 func _ready():

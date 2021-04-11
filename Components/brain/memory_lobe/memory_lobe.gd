@@ -11,7 +11,7 @@ var memory_springs = []
 var mem_times_queue = []
 var memory_paths = []
 
-func _on_memory_lobe_tree_entered() -> void:
+func _on_memory_lobe_tree_entered():
 	get_parent().memory_lobe = self
 	get_parent().connect("think", self, "remove_irrelevant_memories")
 	if get_parent().get_parent() is Entity:
