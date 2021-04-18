@@ -90,6 +90,9 @@ addtionally,
 
     Portions of this software are copyright ©2021 The FreeType Project (www.freetype.org). All rights reserved.
 
+### font credits:
+the font used is "Thintel" by Sam Keddy (http://samkeddy.com/fonts/) licensed under CC-BY 4.0		
+
 ### sound credits:
 
 - sound: "soundname" by creator ( link ) licensed under CC
@@ -146,9 +149,7 @@ note that this is not the license for the engine, but rather the game itself (al
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 
-this does mean you could create mods if you *really* like this dumb game  
-the github is here: (private for now until offical release) 
-good luck working with my terrible game architecture though 
+github is here: [private until full release]
 
 # Patchnotes
 

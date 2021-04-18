@@ -30,6 +30,7 @@ func get_ready():
 	else: return true
 
 func selected():
+	.selected()
 	global.emit_signal("update_item_info", # set a condition to null to hide it
 		my_item, # current item
 		str(ammo) + " / " + str(max_ammo), # extra info 
@@ -48,6 +49,7 @@ func unselected():
 	reload.stop()
 
 func primary():
+	.primary()
 	if get_ready() == false:
 		if ammo <= 0 && reload.time_left == 0: reload()
 		return
@@ -65,6 +67,7 @@ func primary():
 		)
 
 func reload():
+	.reload()
 	if reload.time_left > 0: return
 	reload.start()
 	global.emit_signal("update_item_info", # set a condition to null to hide it

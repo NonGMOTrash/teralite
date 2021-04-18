@@ -9,7 +9,13 @@ export var auto_ready_check = true
 export(ACTION_MODES) var PRIMARY_ACTION_MODE = ACTION_MODES.SEMI
 export(ACTION_MODES) var SECONDARY_ACTION_MODE = ACTION_MODES.SEMI
 export(Texture) var HELD_ITEM_TEXTURE
+export(Vector2) var HELD_ITEM_OFFSET
 export(Vector2) var HELD_ITEM_ANCHOR = Vector2(8, 0)
+
+export(String) var PRIMARY_ANIM
+export(String) var SECONDARY_ANIM
+export(String) var RELOAD_ANIM
+export(String) var EQUIP_ANIM
 
 export var my_item = "" 
 
@@ -46,6 +52,9 @@ func _ready():
 	if get_parent().inventory[global.selection] == my_item.to_lower(): selected()
 	elif EQUIP_SOUND != null:
 		sound_player.create_sound(EQUIP_SOUND)
+	
+	if get_parent().components["held_item"] != null:
+		get_parent().components["held_item"].original_offset = HELD_ITEM_OFFSET
 
 func _check_if_selected(swapped_item):
 	if swapped_item == my_item.to_lower():
@@ -120,7 +129,7 @@ func _input(_event: InputEvent):
 				secondary()
 				return
 
-func get_ready():
+func get_ready() -> bool:
 	return true
 
 func update_cursor(custom_img = CURSOR):
@@ -144,16 +153,26 @@ func selected():
 	
 	if EQUIP_SOUND != null:
 		sound_player.create_sound(EQUIP_SOUND)
+	if EQUIP_ANIM != "":
+		get_parent().components["held_item"].animation.play(EQUIP_ANIM)
 
-func unselected(): pass
+func unselected():
+	pass
 
-func pre_input_action(): pass
+func pre_input_action():
+	pass
 
-func primary(): pass
+func primary(): 
+	if PRIMARY_ANIM != "":
+		get_parent().components["held_item"].animation.play(PRIMARY_ANIM)
 
-func secondary(): pass
+func secondary():
+	if SECONDARY_ANIM != "":
+		get_parent().components["held_item"].animation.play(SECONDARY_ANIM)
 
-func reload(): pass
+func reload():
+	if RELOAD_ANIM != "":
+		get_parent().components["held_item"].animation.play(RELOAD_ANIM)
 
 func _quick_spawn(attack:String, type:String):
 	var new_attack = global.aquire(attack)

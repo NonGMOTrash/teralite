@@ -56,7 +56,6 @@ func sound_finished(sound_name):
 		queue_free()
 
 func add_sound(audioplayer:Node):
-	
 	if not audioplayer is Sound and not audioplayer is Global_Sound:
 		push_error("sound_player add_sound was given a node that wasn't a Sound or Global_Sound")
 	 

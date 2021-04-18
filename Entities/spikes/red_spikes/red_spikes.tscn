@@ -94,9 +94,6 @@ texture = ExtResource( 4 )
 [node name="hitbox" parent="." index="3"]
 visible = false
 
-[node name="CollisionShape2D" parent="hitbox" index="0"]
-disabled = false
-
 [node name="activation" type="Area2D" parent="." index="4"]
 visible = false
 position = Vector2( 0.5, 0 )

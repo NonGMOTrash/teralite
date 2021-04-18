@@ -33,7 +33,6 @@ func _init():
 	visible = false
 
 func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
-	# base Attack.gd setup
 	SOURCE = new_source
 	target_pos = new_target_pos
 	faction = SOURCE.faction

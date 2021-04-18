@@ -26,6 +26,7 @@ const MESSAGES = [
 	"the least bad game yet!",
 	"_",
 	"worse than school",
+	"worse than work",
 	"don't play project epsilon",
 	"downward spiral",
 	"no amogus allowed",
@@ -34,7 +35,7 @@ const MESSAGES = [
 	"pls enjoy",
 	"helo",
 	"0% political",
-	"a deep polticial statement!",
+	"a deep polticial statement",
 	"blebsome",
 	"has a little something for everyone",
 	"5/10",
@@ -51,7 +52,9 @@ const MESSAGES = [
 	"it really makes you feel orange",
 	"t posing allowed",
 	"3.0 coming in 2024",
-	"dont go to /r/dontgohere"
+	"dont go to /r/dontgohere",
+	"game of the year, fornever",
+	"based",
 ]
 
 # save icon preload
@@ -90,13 +93,14 @@ func _ready() -> void:
 		# load works
 		var new_settings = settings_config.get_var()
 		if new_settings == null:
-			global.var_debug_msg(self, 0, new_settings)
+			push_warning("settings_config was empty")
 			return
 		
 		for i in global.settings.keys().size():
 			var key = global.settings.keys()[i]
 			if new_settings.has(key):
 				global.settings[key] = new_settings[key]
+		global.update_settings()
 
 	else:
 		# load failed

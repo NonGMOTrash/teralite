@@ -78,9 +78,3 @@ position = Vector2( 200, 680 )
 
 [node name="death_spawn" parent="YSort/Crate" index="4" instance=ExtResource( 3 )]
 thing = ExtResource( 5 )
-overwrite = {
-"Effect": {
-"frames": null,
-"texture": null
-}
-}

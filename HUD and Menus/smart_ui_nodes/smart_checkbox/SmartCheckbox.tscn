@@ -5,8 +5,6 @@
 [ext_resource path="res://HUD and Menus/menu_click.wav" type="AudioStream" id=3]
 [ext_resource path="res://HUD and Menus/menu_hover.wav" type="AudioStream" id=4]
 
-
-
 [node name="SmartCheckbox" type="CheckBox"]
 margin_right = 24.0
 margin_bottom = 24.0
@@ -18,7 +16,6 @@ hover_sound = ExtResource( 4 )
 click_sound = ExtResource( 3 )
 
 [node name="sound_player" parent="." instance=ExtResource( 2 )]
-FREE_WHEN_EMPTY = false
 [connection signal="button_down" from="." to="." method="_on_SmartCheckbox_button_down"]
 [connection signal="focus_entered" from="." to="." method="_on_SmartCheckbox_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_SmartCheckbox_focus_exited"]

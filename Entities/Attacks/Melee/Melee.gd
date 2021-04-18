@@ -6,6 +6,12 @@ export(int, 0, 200) var RECOIL = 70
 
 var recoiled = false
 
+onready var animation: AnimationPlayer = $animation
+
+func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
+	.setup(new_source, new_target_pos)
+	
+
 func _ready():
 	global_position.move_toward(target_pos, abs(RANGE - 6))
 	
@@ -16,6 +22,21 @@ func _ready():
 		SOURCE.apply_force(SOURCE.global_position.direction_to(target_pos).normalized() * BOOST)
 	
 	RECOIL += BOOST # < so the boost doesn't cancel out the RECOIL
+	
+	var held_item = SOURCE.components["held_item"]
+	
+	# hide held item
+	if held_item != null:
+		held_item.visible = false
+	
+	if held_item != null and held_item.sprite.flip_v == true:
+		animation.play_backwards("animation")
+	else:
+		animation.play("animation")
+	
+	_physics_process(0.0)
+	
+	visible = true
 
 func _physics_process(_delta):
 	if get_node_or_null(SOURCE_PATH) != null and SOURCE.is_queued_for_deletion() == false:
@@ -28,7 +49,8 @@ func death():
 		recoiled = true
 	
 	if components["hitbox"] != null: 
-		hitbox.queue_free()
+		hitbox.set_deferred("monitoring", false)
+		hitbox.set_deferred("monitorable", false)
 	if death_free == true:
 		queue_free()
 
@@ -60,3 +82,21 @@ func _on_collision_body_entered(body: Node) -> void:
 		
 		death_free = true
 		death()
+
+func _on_Melee_tree_exiting() -> void:
+	animation.stop()
+	
+	# make held item visible agian
+	if get_node_or_null(SOURCE_PATH) != null and SOURCE.is_queued_for_deletion() == false:
+		var held_item = SOURCE.components["held_item"]
+		if held_item != null:
+			held_item.reversed = not held_item.reversed
+			
+			# fixes flashing due to the held_item updating a frame late
+			held_item.sprite.flip_v = not held_item.sprite.flip_v
+			held_item.sprite.offset *= -1
+			
+			held_item.visible = true
+
+func _on_animation_animation_finished(_anim_name: String) -> void:
+	queue_free()

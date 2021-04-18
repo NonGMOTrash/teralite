@@ -1,15 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://HUD and Menus/Scripts/Options.gd" type="Script" id=1]
 [ext_resource path="res://HUD and Menus/Themes/general_theme.tres" type="Theme" id=2]
 [ext_resource path="res://HUD and Menus/smart_ui_nodes/smart_checkbox/SmartCheckbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD and Menus/smart_ui_nodes/smart_button/SmartButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://HUD and Menus/Themes/Styles/stylebox_selected_box.tres" type="StyleBox" id=6]
 [ext_resource path="res://HUD and Menus/Themes/Styles/stylebox_box.tres" type="StyleBox" id=7]
 [ext_resource path="res://Levels/Level Resources/world_tiles/nothing.png" type="Texture" id=8]
 
 [node name="Options" type="Control"]
 visible = false
+modulate = Color( 1, 1, 1, 0.784314 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -18,7 +20,6 @@ __meta__ = {
 }
 
 [node name="tabs" type="TabContainer" parent="."]
-self_modulate = Color( 1, 1, 1, 0.784314 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -41,7 +42,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.37449
-margin_top = 22.2494
+margin_top = 24.2494
 margin_right = -2.12428
 margin_bottom = -2.24938
 alignment = 1
@@ -50,30 +51,30 @@ __meta__ = {
 }
 
 [node name="smooth" parent="tabs/Visual" instance=ExtResource( 3 )]
-margin_top = 24.0
+margin_top = 23.0
 margin_right = 359.0
-margin_bottom = 48.0
+margin_bottom = 47.0
 shortcut_in_tooltip = false
 text = "Smooth camera"
 
 [node name="hidebar" parent="tabs/Visual" instance=ExtResource( 3 )]
-margin_top = 52.0
+margin_top = 51.0
 margin_right = 359.0
-margin_bottom = 76.0
+margin_bottom = 75.0
 shortcut_in_tooltip = false
 text = "Hide item bar when empty"
 
 [node name="fullscreen" parent="tabs/Visual" instance=ExtResource( 3 )]
-margin_top = 80.0
+margin_top = 79.0
 margin_right = 359.0
-margin_bottom = 104.0
+margin_bottom = 103.0
 shortcut_in_tooltip = false
 text = "Fullscreen"
 
 [node name="pixel" parent="tabs/Visual" instance=ExtResource( 3 )]
-margin_top = 108.0
+margin_top = 107.0
 margin_right = 359.0
-margin_bottom = 132.0
+margin_bottom = 131.0
 text = "Pixel perfect filter (not recomended)"
 
 [node name="Audio" type="VBoxContainer" parent="tabs"]
@@ -81,7 +82,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.37449
-margin_top = 22.2494
+margin_top = 24.2494
 margin_right = -2.12428
 margin_bottom = -2.24938
 alignment = 1
@@ -108,22 +109,22 @@ allow_greater = true
 allow_lesser = true
 ticks_on_borders = true
 
-[node name="Control" type="VBoxContainer" parent="tabs"]
+[node name="Game" type="VBoxContainer" parent="tabs"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 2.37449
-margin_top = 22.2494
+margin_left = 2.0
+margin_top = 24.2494
 margin_right = -2.12428
 margin_bottom = -2.24938
 alignment = 1
 
-[node name="auto_restart" parent="tabs/Control" instance=ExtResource( 3 )]
+[node name="perfection" parent="tabs/Game" instance=ExtResource( 3 )]
 margin_top = 58.0
 margin_right = 359.0
 margin_bottom = 82.0
 shortcut_in_tooltip = false
-text = "Auto restart on hit"
+text = "Perfection Mode"
 
 [node name="exit" parent="." instance=ExtResource( 4 )]
 anchor_top = 1.0
@@ -140,6 +141,9 @@ custom_styles/focus = ExtResource( 7 )
 custom_styles/disabled = ExtResource( 7 )
 custom_styles/normal = ExtResource( 7 )
 text = "Exit"
+
+[node name="sound_player" parent="." instance=ExtResource( 5 )]
+[connection signal="tab_changed" from="tabs" to="." method="_on_tabs_tab_changed"]
 [connection signal="visibility_changed" from="tabs" to="." method="_on_tabs_visibility_changed"]
 [connection signal="value_changed" from="tabs/Audio/volume" to="." method="_on_volume_value_changed"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

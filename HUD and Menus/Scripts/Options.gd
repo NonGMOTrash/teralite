@@ -1,10 +1,11 @@
 extends Control
 
+onready var sound_player = $sound_player
 onready var tabs = $tabs
 onready var smooth = $tabs/Visual/smooth
 onready var hidebar = $tabs/Visual/hidebar
 onready var fullscreen = $tabs/Visual/fullscreen
-onready var perfection = $tabs/Control/auto_restart
+onready var perfection = $tabs/Game/perfection
 onready var pixel = $tabs/Visual/pixel
 onready var volume = $tabs/Audio/volume
 onready var volume_label = $tabs/Audio/volume_label
@@ -20,7 +21,7 @@ func _on_tabs_visibility_changed() -> void:
 	smooth.pressed = global.settings["smooth_camera"]
 	hidebar.pressed = global.settings["hide_bar"]
 	fullscreen.pressed = global.settings["fullscreen"]
-	perfection.pressed = global.settings["auto_restart"]
+	perfection.pressed = global.settings["perfection_mode"]
 	pixel.pressed = global.settings["pixel_perfect"]
 	volume.value = global.settings["volume"] * 100
 	
@@ -38,57 +39,60 @@ func _on_exit_pressed() -> void:
 	global.settings["smooth_camera"] = smooth.pressed
 	global.settings["hide_bar"] = hidebar.pressed
 	global.settings["fullscreen"] = fullscreen.pressed
-	global.settings["auto_restart"] = perfection.pressed
+	global.settings["perfection_mode"] = perfection.pressed
 	global.settings["pixel_perfect"] = pixel.pressed
 	global.settings["volume"] = volume.value / 100
 	
-	OS.window_fullscreen = fullscreen.pressed
-	
-	if global.settings["pixel_perfect"] == true:
-		# PROBLEM_NOTE: should use a screen_size var in global.gd instead of just having a vector2 
-			get_tree().set_screen_stretch(#                                                \/
-					SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_KEEP, Vector2(384, 216)
-				)
-	else:
-		get_tree().set_screen_stretch(
-					SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, Vector2(384, 216)
-				)
-	
-	var camera = global.nodes["camera"]
-	if camera == null: 
-		push_warning("could not find camera")
-	else:
-		camera.smoothing_enabled = global.settings["smooth_camera"]
-		camera.limit_smoothed = global.settings["smooth_camera"]
-	
-	var item_bar = global.nodes["item_bar"]
-	if item_bar == null: 
-		push_warning("could not find item_bar")
-	else:
-		if global.nodes["player"] == null: return
-		var player = get_node_or_null(global.nodes["player"])
-		if player == null: return
-		var inventory = player.inventory
-		if global.settings["hide_bar"]==true and inventory[0]==null and inventory[1]==null and inventory[2]==null:
-			item_bar.visible = false
-		else:
-			item_bar.visible = true
-	
-	AudioServer.set_bus_volume_db(0, linear2db(volume.value/100))
-	
-	
-	var settings_config = File.new()
-	
-	if settings_config.file_exists("user://settings_config"):
-		var error = settings_config.open("user://settings_config", File.WRITE)
-		
-		if error == OK:
-			# load works
-			settings_config.store_var(global.settings)
-			settings_config.close()
-		else:
-			# load failed
-			push_warning("could not find settings_config (on save)")
+	global.update_settings()
+#	OS.window_fullscreen = fullscreen.pressed
+#
+#	if global.settings["pixel_perfect"] == true:
+#		# PROBLEM_NOTE: should use a screen_size var in global.gd instead of just having a vector2 
+#			get_tree().set_screen_stretch(#                                                \/
+#					SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_KEEP, Vector2(384, 216)
+#				)
+#	else:
+#		get_tree().set_screen_stretch(
+#					SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, Vector2(384, 216)
+#				)
+#
+#	var camera = global.nodes["camera"]
+#	if camera == null: 
+#		push_warning("could not find camera")
+#	else:
+#		camera.smoothing_enabled = global.settings["smooth_camera"]
+#		camera.limit_smoothed = global.settings["smooth_camera"]
+#
+#	var item_bar = global.nodes["item_bar"]
+#	if item_bar == null: 
+#		push_warning("could not find item_bar")
+#	else:
+#		if global.nodes["player"] == null: return
+#		var player = get_node_or_null(global.nodes["player"])
+#		if player == null: return
+#		var inventory = player.inventory
+#		if global.settings["hide_bar"]==true and inventory[0]==null and inventory[1]==null and inventory[2]==null:
+#			item_bar.visible = false
+#		else:
+#			item_bar.visible = true
+#
+#	AudioServer.set_bus_volume_db(0, linear2db(volume.value/100))
+#
+#	var settings_config = File.new()
+#
+#	if settings_config.file_exists("user://settings_config"):
+#		var error = settings_config.open("user://settings_config", File.WRITE)
+#
+#		if error == OK:
+#			# load works
+#			settings_config.store_var(global.settings)
+#			settings_config.close()
+#		else:
+#			# load failed
+#			push_warning("could not find settings_config (on save)")
 	
 	visible = false
 	emit_signal("closed")
+
+func _on_tabs_tab_changed(tab: int) -> void:
+	sound_player.create_sound(smooth.click_sound, true, Sound.MODES.ONESHOT, true, true)

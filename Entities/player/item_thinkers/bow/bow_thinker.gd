@@ -23,6 +23,7 @@ func _ready():
 	charge.wait_time = max_charge_time
 
 func selected():
+	.selected()
 	global.emit_signal("update_item_info", # set a condition to null to hide it
 		my_item, # current item
 		null, # extra info 
@@ -59,12 +60,10 @@ func get_ready():
 	else: return true
 
 func primary():
+	.primary()
 	var charge_time = charge.wait_time - charge.time_left
-	print("")
-	prints("charge:", charge)
 	if charge_time < min_charge_time and buffering_shot == false:
 		if min_charge_time - charge_time > buffer_time:
-			print("cancelled")
 			charge.stop()
 			cooldown.start()
 			state = IDLE
@@ -80,13 +79,11 @@ func primary():
 		buffering_shot = true
 		buffer.wait_time = min_charge_time - charge_time
 		buffer.start()
-		print("cancelled, buffering shot")
 		return
 	
 	buffering_shot = false
 	buffer.stop()
 	
-	print("executed")
 	var arrow = global.aquire("Arrow")
 	var charge_percent =  abs(charge.time_left - max_charge_time) / max_charge_time * 100.0
 	var damage = 0

@@ -127,6 +127,7 @@ func swapped_item(new_item):
 			null # bar timer duration
 		)
 		held_item.sprite.texture = null
+		held_item.reversed = false
 
 func death():
 	yield(self, "updated_death_message")
@@ -213,7 +214,7 @@ func _on_stats_health_changed(type) -> void:
 			OS.delay_msec(34)
 		
 		perfect = false
-		if global.settings["auto_restart"] == true: 
+		if global.settings["perfection_mode"] == true: 
 			death()
 	
 	global.emit_signal("update_health")

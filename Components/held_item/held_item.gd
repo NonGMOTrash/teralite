@@ -12,6 +12,8 @@ export var PARENT_BOND = true # for testing only, should be true in 99% of cases
 
 var target_pos = Vector2.ZERO
 var source
+var reversed = false
+var original_offset: Vector2
 
 onready var sprite = $anchor/sprite
 onready var anchor = $anchor
@@ -21,6 +23,8 @@ func _on_held_item_tree_entered():
 	get_parent().components["held_item"] = self
 
 func _ready():
+	original_offset = sprite.offset
+	
 	if PARENT_BOND == false:
 		source = self
 	else:
@@ -37,7 +41,7 @@ func _ready():
 				source = self
 
 func _process(delta):
-	if TARGETING == TT.MANUAL:
+	if TARGETING == TT.MANUAL or visible == false:
 		return
 	
 	elif TARGETING == TT.INPUT_VECTOR:
@@ -63,8 +67,14 @@ func _process(delta):
 		not rotation_degrees < 90 and rotation_degrees > 0
 	):
 		sprite.flip_v = true
+		sprite.offset = original_offset * -1
 	else:
 		sprite.flip_v = false
+		sprite.offset = original_offset
+	
+	if reversed == true:
+		sprite.flip_v = not sprite.flip_v
+		sprite.offset *= -1
 	
 	if rotation_degrees < 0:
 		show_behind_parent = true

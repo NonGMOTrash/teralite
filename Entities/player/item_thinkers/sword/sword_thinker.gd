@@ -15,5 +15,6 @@ func get_ready():
 		return true
 
 func primary():
+	.primary()
 	_quick_spawn("slash", "melee")
 	cooldown.start()

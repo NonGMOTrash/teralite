@@ -9,6 +9,7 @@
 [node name="sword_thinker" type="Node"]
 script = ExtResource( 1 )
 HELD_ITEM_TEXTURE = ExtResource( 5 )
+HELD_ITEM_OFFSET = Vector2( 0, -4 )
 my_item = "Sword"
 CURSOR = ExtResource( 2 )
 CURSOR_MODE = 1
