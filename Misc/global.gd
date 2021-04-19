@@ -45,6 +45,7 @@ var nodes = {
 	"world_tiles": null,
 	"background_tiles": null,
 	"background": null,
+	"navigation": null
 }
 
 # PROBLEM_NOTE: rename settings to options
@@ -158,7 +159,6 @@ func _ready():
 	
 	push_warning("quality_of_this_game == -999")
 	print("===============")
-	
 	
 	# debug stuffz:
 	Engine.time_scale = 1

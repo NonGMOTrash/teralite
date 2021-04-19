@@ -14,6 +14,7 @@ onready var nav = $nav
 
 func _ready() -> void:
 	global.nodes["world_tiles"] = self
+	global.nodes["navigation"] = nav
 	
 	if generate_navigation == false: 
 		nav.queue_free()
