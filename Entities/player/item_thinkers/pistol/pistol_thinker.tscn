@@ -13,6 +13,7 @@ script = ExtResource( 1 )
 auto_ready_check = false
 HELD_ITEM_TEXTURE = ExtResource( 7 )
 HELD_ITEM_ANCHOR = Vector2( 11, 0 )
+RELOAD_ANIM = "spin"
 my_item = "Pistol"
 CURSOR = ExtResource( 2 )
 CURSOR_MODE = 1

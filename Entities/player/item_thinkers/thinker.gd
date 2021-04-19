@@ -182,6 +182,8 @@ func _quick_spawn(attack:String, type:String):
 func _update_held_item():
 	get_parent().components["held_item"].sprite.texture = HELD_ITEM_TEXTURE
 	get_parent().components["held_item"].anchor.position = HELD_ITEM_ANCHOR
+	if HELD_ITEM_TEXTURE == null:
+		push_error("HELD_ITEM_TEXTURE is null")
 
 func _update_cursor_on_unpause():
 	if get_parent().inventory[global.selection] == my_item.to_lower():

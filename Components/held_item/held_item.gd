@@ -14,6 +14,7 @@ var target_pos = Vector2.ZERO
 var source
 var reversed = false
 var original_offset: Vector2
+var original_texture: Texture
 
 onready var sprite = $anchor/sprite
 onready var anchor = $anchor
@@ -23,6 +24,7 @@ func _on_held_item_tree_entered():
 	get_parent().components["held_item"] = self
 
 func _ready():
+	sprite.hframes = 1
 	original_offset = sprite.offset
 	
 	if PARENT_BOND == false:
@@ -80,3 +82,6 @@ func _process(delta):
 		show_behind_parent = true
 	else:
 		show_behind_parent = false
+
+func _on_AnimationPlayer_animation_started(_anim_name: String) -> void:
+	original_texture = sprite.texture

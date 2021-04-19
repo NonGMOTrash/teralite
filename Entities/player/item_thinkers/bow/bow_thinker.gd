@@ -9,6 +9,8 @@ onready var cooldown = $cooldown
 onready var charge = $charge
 onready var buffer = $buffer
 
+export(String) var CHARGE_ANIM
+
 enum {
 	IDLE,
 	CHARGING
@@ -53,6 +55,8 @@ func pre_input_action():
 	if Input.is_action_just_pressed("primary_action") and cooldown.time_left == 0:
 		charge.start()
 		state = CHARGING
+		if get_parent().components["held_item"] != null:
+			get_parent().components["held_item"].animation.play(CHARGE_ANIM)
 
 func get_ready():
 	if cooldown.time_left > 0: return false
@@ -61,6 +65,14 @@ func get_ready():
 
 func primary():
 	.primary()
+	
+	var held_item = get_parent().components["held_item"]
+	if held_item != null:
+		held_item.animation.stop()
+		held_item.sprite.texture = held_item.original_texture
+		held_item.sprite.hframes = 1
+		held_item.sprite.frame = 0
+	
 	var charge_time = charge.wait_time - charge.time_left
 	if charge_time < min_charge_time and buffering_shot == false:
 		if min_charge_time - charge_time > buffer_time:
@@ -115,12 +127,14 @@ func _on_cooldown_timeout() -> void:
 		my_item, # current item
 		null, # extra info 
 		max_charge_time, # item bar max 
-		0.001, # item bar value 
+		0.001, # item bar value
 		null # bar timer duration
 		)
 	if Input.is_action_pressed("primary_action"):
 		charge.start()
 		state = CHARGING
+		if get_parent().components["held_item"] != null:
+			get_parent().components["held_item"].animation.play(CHARGE_ANIM)
 
 func _on_buffer_timeout() -> void:
 	primary()

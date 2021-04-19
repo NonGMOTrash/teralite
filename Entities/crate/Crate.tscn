@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Entities/Entity.gd" type="Script" id=3]
+[ext_resource path="res://Entities/crate/crate.gd" type="Script" id=3]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/crate/crate_destory.wav" type="AudioStream" id=5]
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=6]
@@ -25,8 +25,6 @@ extents = Vector2( 8, 6 )
 
 [node name="Crate" type="KinematicBody2D"]
 script = ExtResource( 3 )
-STATIC = true
-truName = "crate"
 
 [node name="entity_sprite" parent="." instance=ExtResource( 2 )]
 material = SubResource( 1 )
@@ -53,12 +51,6 @@ shape = SubResource( 4 )
 
 [node name="death_spawn" parent="." instance=ExtResource( 6 )]
 thing = ExtResource( 9 )
-spawns_when = {
-"block": false,
-"heal": false,
-"hurt": true,
-"tree_exit": true
-}
 effect_hframes = 3
 effect_vframes = 3
 

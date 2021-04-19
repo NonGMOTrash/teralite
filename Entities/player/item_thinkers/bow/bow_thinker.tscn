@@ -13,6 +13,7 @@ my_item = "Bow"
 CURSOR = ExtResource( 2 )
 CURSOR_MODE = 1
 cooldown_time = 0.45
+CHARGE_ANIM = "bow_charge"
 
 [node name="charge" type="Timer" parent="."]
 wait_time = 0.1

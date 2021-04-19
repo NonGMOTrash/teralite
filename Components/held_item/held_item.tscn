@@ -1,7 +1,61 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Components/held_item/held_item.gd" type="Script" id=1]
-[ext_resource path="res://Entities/Items Pickups/sword/sword.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Items Pickups/bow/bow_charging.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=2]
+resource_name = "bow_charge"
+tracks/0/type = "value"
+tracks/0/path = NodePath("anchor/sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("anchor/sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("anchor/sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "spin"
+tracks/0/type = "value"
+tracks/0/path = NodePath("anchor/sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.7, 2 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "test_slash"
@@ -38,8 +92,13 @@ script = ExtResource( 1 )
 position = Vector2( 8, 0 )
 
 [node name="sprite" type="Sprite" parent="anchor"]
+rotation = 6.28319
 texture = ExtResource( 2 )
+hframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/bow_charge = SubResource( 2 )
+anims/spin = SubResource( 3 )
 anims/test_slash = SubResource( 1 )
 [connection signal="tree_entered" from="." to="." method="_on_held_item_tree_entered"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
