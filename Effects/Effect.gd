@@ -40,6 +40,7 @@ func _ready():
 			sprite.flip_h = flip_h
 			sprite.flip_v = flip_v
 	
+	# PROBLEM_NOTE: would probably be better to do this with the GUI instead of code
 	animation_player.connect("animation_finished", self, "delete_self")
 
 # have to do this because animation_finished has 1 argument and queue_free() only takes 0 arguments

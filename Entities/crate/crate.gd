@@ -6,6 +6,10 @@ var cell_pos
 func _ready() -> void:
 	navigation = global.nodes["navigation"]
 	
+	if navigation == null:
+		push_error("global.nodes['navigation'] == null")
+		return
+	
 	cell_pos = navigation.world_to_map(global_position)
 	
 	navigation.set_cell(cell_pos.x, cell_pos.y, -1)

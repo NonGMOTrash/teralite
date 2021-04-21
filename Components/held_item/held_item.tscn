@@ -3,7 +3,7 @@
 [ext_resource path="res://Components/held_item/held_item.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Items Pickups/bow/bow_charging.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "bow_charge"
 tracks/0/type = "value"
 tracks/0/path = NodePath("anchor/sprite:texture")
@@ -42,7 +42,7 @@ tracks/2/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "spin"
 tracks/0/type = "value"
 tracks/0/path = NodePath("anchor/sprite:rotation_degrees")
@@ -57,8 +57,7 @@ tracks/0/keys = {
 "values": [ 0.0, 360.0 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "test_slash"
+[sub_resource type="Animation" id=3]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("anchor/sprite:position")
@@ -96,8 +95,8 @@ texture = ExtResource( 2 )
 hframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/bow_charge = SubResource( 2 )
-anims/spin = SubResource( 3 )
-anims/test_slash = SubResource( 1 )
+anims/bow_charge = SubResource( 1 )
+anims/spin = SubResource( 2 )
+anims/test_slash = SubResource( 3 )
 [connection signal="tree_entered" from="." to="." method="_on_held_item_tree_entered"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]

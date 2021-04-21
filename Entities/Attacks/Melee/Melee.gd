@@ -1,6 +1,8 @@
 extends Attack
 class_name Melee
 
+const BLOCK_SPARK = preload("res://Effects/blocked_spark/blocked_spark.tscn")
+
 export(int, 0, 200) var BOOST = 50
 export(int, 0, 200) var RECOIL = 70
 
@@ -75,6 +77,13 @@ func _on_collision_body_entered(body: Node) -> void:
 			var sfx = Sound.new()
 			sfx.stream = COLLIDE_SOUND
 			sound.add_sound(sfx)
+		
+		var spark: Effect = BLOCK_SPARK.instance()
+		spark.rotation_degrees = rad2deg(SOURCE.global_position.direction_to(global_position).angle())
+		global.nodes["ysort"].call_deferred("add_child", spark)
+		yield(spark, "ready")
+		spark.global_position = global_position
+		print(spark.global_position)
 		
 		# recoil
 		#if get_node_or_null(SOURCE_PATH) != null and SOURCE.is_queued_for_deletion() == false:

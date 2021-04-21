@@ -46,6 +46,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 1/z_index = 0
 
 [node name="WorldTiles" type="TileMap"]
+process_priority = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 cell_y_sort = true

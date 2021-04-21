@@ -91,7 +91,7 @@ addtionally,
     Portions of this software are copyright ©2021 The FreeType Project (www.freetype.org). All rights reserved.
 
 ### font credits:
-the font used is "Thintel" by Sam Keddy (http://samkeddy.com/fonts/) licensed under CC-BY 4.0		
+the font used is "m6x11" by Daniel Linssen (twitter: @managore)		
 
 ### sound credits:
 
@@ -155,7 +155,10 @@ github is here: [private until full release]
 
 ### Beta 2.13
 
-- fixed ysort issues with spikes
+- added animations for held items (the sword no longer looks poopoo)
+- changed slash hitboxes to better match the animation
+- fixed depth sorting issues with spikes (after like 5 months lolol)
+- fixed options not being saved or defaulting to weird things
 
 ### Beta 2.12 (4/1/2021)
 

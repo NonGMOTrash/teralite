@@ -71,9 +71,7 @@ func _ready() -> void:
 		if global.ver_hotfix == 1:
 			version.text = version.text + " Hotfix"
 		else:
-			print(version.text)
 			version.text = version.text + " Hotfix #" + str(global.ver_hotfix)
-			print(version.text)
 	
 	# set random msg
 	msg.text = MESSAGES[randi() % MESSAGES.size()]
