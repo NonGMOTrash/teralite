@@ -157,6 +157,7 @@ github is here: [private until full release]
 
 - added animations for held items (the sword no longer looks poopoo)
 - changed slash hitboxes to better match the animation
+- added a block spark effect
 - fixed depth sorting issues with spikes (after like 5 months lolol)
 - fixed options not being saved or defaulting to weird things
 

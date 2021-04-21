@@ -163,7 +163,7 @@ effect_vframes = 3
 thing = ExtResource( 18 )
 effect_texture = ExtResource( 3 )
 
-[node name="spawner" parent="." instance=ExtResource( 10 )]
+[node name="block_effect_spawner" parent="." instance=ExtResource( 10 )]
 thing = ExtResource( 19 )
 spawn_on_free = false
 spawn_on_block = true

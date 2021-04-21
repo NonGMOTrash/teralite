@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Entities/chaser/Chaser.gd" type="Script" id=1]
 [ext_resource path="res://Components/health_bar/healthBar.tscn" type="PackedScene" id=2]
@@ -10,13 +10,11 @@
 [ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Entities/chaser/chaser.png" type="Texture" id=9]
 [ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Effects/hit_effect/hit_effect.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Entities/damage.wav" type="AudioStream" id=13]
 [ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Effects/squish_fade/squish_fade.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=18]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -155,17 +153,9 @@ margin_top = -11.7557
 margin_right = 10.5702
 margin_bottom = -7.75391
 
-[node name="hit_effect_spawner" parent="." instance=ExtResource( 11 )]
-thing = ExtResource( 12 )
-spawn_on_free = false
-spawn_on_hurt = true
-effect_hframes = 3
-effect_vframes = 3
-
-[node name="death_effect_spawner" parent="." instance=ExtResource( 11 )]
-thing = ExtResource( 17 )
-effect_texture = ExtResource( 9 )
-effect_hframes = 2
+[node name="entity_effects" parent="." instance=ExtResource( 18 )]
+death_type = 5
+block_effect = false
 
 [node name="foot_stepper" parent="." instance=ExtResource( 16 )]
 RATE = 0.0

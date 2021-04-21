@@ -83,7 +83,6 @@ func _on_collision_body_entered(body: Node) -> void:
 		global.nodes["ysort"].call_deferred("add_child", spark)
 		yield(spark, "ready")
 		spark.global_position = global_position
-		print(spark.global_position)
 		
 		# recoil
 		#if get_node_or_null(SOURCE_PATH) != null and SOURCE.is_queued_for_deletion() == false:

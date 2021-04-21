@@ -84,6 +84,9 @@ func spawn():
 	
 	new_thing.global_position = get_parent().global_position
 	
+	if new_thing is Particles2D:
+		pass
+	
 	if use_modulate == true:
 		new_thing.modulate = modulate
 	
