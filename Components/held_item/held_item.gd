@@ -25,6 +25,8 @@ func _on_held_item_tree_entered():
 
 func _ready():
 	sprite.hframes = 1
+	sprite.frame = 0
+	sprite.frame_coords = Vector2.ZERO
 	original_offset = sprite.offset
 	
 	if PARENT_BOND == false:

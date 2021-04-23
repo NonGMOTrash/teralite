@@ -72,6 +72,7 @@ func primary():
 		held_item.sprite.texture = held_item.original_texture
 		held_item.sprite.hframes = 1
 		held_item.sprite.frame = 0
+		held_item.sprite.frame_coords = Vector2.ZERO
 	
 	var charge_time = charge.wait_time - charge.time_left
 	if charge_time < min_charge_time and buffering_shot == false:

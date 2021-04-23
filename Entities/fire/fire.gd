@@ -1,16 +1,27 @@
 extends Entity
 
+export(PackedScene) var smoke_particle
+
 onready var sprite = $Sprite
 onready var fuel = $fuel
 onready var spread = $spread
 onready var hitbox = $hitbox
 
+var smoke: Particles2D
+
 func _ready():
 	sprite.scale = Vector2(1, 1)
 	sprite.self_modulate.a = 1.0
 	$fire.playback_speed = rand_range(0.75, 1.25)
+	
+	smoke = smoke_particle.instance()
+	global.nodes["ysort"].call_deferred("add_child", smoke)
+	yield(smoke, "ready")
+	smoke.global_position = global_position
 
 func death():
+	if smoke != null:
+		smoke.stop()
 	$death.play("death")
 
 func _on_fuel_timeout() -> void:

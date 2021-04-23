@@ -1,5 +1,6 @@
 extends Entity
 
+export(PackedScene) var dust_particles
 export(PackedScene) var player_death
 
 var perfect = true
@@ -82,6 +83,13 @@ func dash(direction: Vector2 = input_vector) -> void:
 		animation.play("dash")
 		apply_force(dash_strength * direction.normalized())
 		dash_cooldown.start()
+		
+		# particle effect
+		var particles = dust_particles.instance()
+		particles.rotation_degrees = rad2deg(direction.angle())
+		global.nodes["ysort"].call_deferred("add_child", particles)
+		particles.global_position = global_position
+	
 	buffered_dash = Vector2.ZERO
 
 func _input(_event: InputEvent) -> void: 

@@ -8,7 +8,7 @@
 [node name="Background" parent="." index="0"]
 visible = false
 
-[node name="entity_spawns" parent="YSort" index="2"]
+[node name="entity_spawns" parent="YSort" index="1"]
 tile_data = PoolIntArray( 1769526, 2, 0, 1769540, 14, 0, 5242920, 11, 0, 5242922, 11, 0, 5242924, 11, 0, 5242926, 11, 0, 5242928, 11, 0, 5308456, 11, 0, 5308458, 11, 0, 5308460, 11, 0, 5308462, 11, 0, 5308464, 11, 0, 5373992, 11, 0, 5373994, 11, 0, 5373996, 11, 0, 5373998, 11, 0, 5374000, 11, 0, 5439528, 11, 0, 5439530, 11, 0, 5439532, 11, 0, 5439534, 11, 0, 5439536, 11, 0, 5439539, 6, 0, 5505064, 11, 0, 5505066, 11, 0, 5505068, 11, 0, 5505070, 11, 0, 5505072, 11, 0, 5570600, 11, 0, 5570602, 11, 0, 5570604, 11, 0, 5570606, 11, 0, 5570608, 11, 0, 5636136, 11, 0, 5636138, 11, 0, 5636140, 11, 0, 5636142, 11, 0, 5636144, 11, 0 )
 
 [node name="Control" type="Control" parent="." index="5"]
@@ -21,9 +21,9 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="Control" index="0"]
 margin_left = 384.0
-margin_top = 104.0
-margin_right = 616.0
-margin_bottom = 203.0
+margin_top = 109.249
+margin_right = 620.0
+margin_bottom = 208.249
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "you beat the game!
 thanks for playing
@@ -37,10 +37,10 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="Control" index="1"]
-margin_left = 328.0
-margin_top = 240.0
-margin_right = 671.0
-margin_bottom = 288.0
+margin_left = 379.8
+margin_top = 236.439
+margin_right = 629.8
+margin_bottom = 284.439
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "the star will return you to the hub"
 align = 1

@@ -1,7 +1,6 @@
 extends Attack
 class_name Projectile
 
-# vars -------------------------------------------------------------------------------------------
 export var SPEED = 250
 export var VELOCITY_ARMOR = 1
 export var ONHIT_SPEED_MULTIPLIER = 0.8

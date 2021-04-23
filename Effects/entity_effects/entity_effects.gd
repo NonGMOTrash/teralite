@@ -11,7 +11,7 @@ const SQUISH_FADE = preload("res://Effects/squish_fade/squish_fade.tscn")
 const TRIPLE_SHRINK = preload("res://Effects/triple_shrink/triple_shrink.tscn")
 const WIGGLE_FADE = preload("res://Effects/wiggle_fade/wiggle_fade.tscn")
 const BLOCK_SPARK = preload("res://Effects/blocked_spark/blocked_spark.tscn")
-const HIT_PARTICLES = preload("res://Effects/hit_particles/hit_particles.tscn")
+const HIT_PARTICLES = preload("res://Effects/Particles/hit_particles.tscn")
 
 enum DEATHS {
 	HIT_EFFECT = -1,

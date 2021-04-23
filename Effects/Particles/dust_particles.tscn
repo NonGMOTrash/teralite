@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Effects/Particles/particle_ctrl.gd" type="Script" id=1]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.49635, 1 )
+colors = PoolColorArray( 0.854902, 0.854902, 0.854902, 0.721569, 0.513726, 0.513726, 0.513726, 0.658824, 0.333333, 0.333333, 0.333333, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.99375, 0.247727 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+gravity = Vector3( 0, 2, 0 )
+initial_velocity = -30.0
+initial_velocity_random = 0.07
+angular_velocity = 100.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 30.68
+scale = 2.0
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+hue_variation_random = 0.02
+
+[node name="dust_particles" type="Particles2D"]
+emitting = false
+amount = 5
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 5 )
+script = ExtResource( 1 )

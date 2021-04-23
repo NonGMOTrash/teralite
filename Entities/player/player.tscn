@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/player/Player.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Entities/player/player_death/player_death.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Entities/player/player_death.wav" type="AudioStream" id=15]
 [ext_resource path="res://Components/held_item/held_item.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Effects/Particles/dust_particles.tscn" type="PackedScene" id=17]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -150,6 +151,7 @@ script = ExtResource( 2 )
 ACCELERATION = 600
 truName = "player"
 faction = "player"
+dust_particles = ExtResource( 17 )
 player_death = ExtResource( 14 )
 dash_strength = 170
 
@@ -160,7 +162,7 @@ DAMAGE = 0
 
 [node name="sprite" parent="." instance=ExtResource( 6 )]
 material = SubResource( 1 )
-scale = Vector2( 1.05, 0.95 )
+scale = Vector2( 1.03, 0.97 )
 texture = ExtResource( 10 )
 vframes = 2
 hframes = 4
@@ -210,7 +212,7 @@ one_shot = true
 TARGETING = 2
 
 [node name="sprite" parent="held_item/anchor" index="0"]
-texture = null
+frame = 2
 
 [node name="hit_effect_spawner" parent="." instance=ExtResource( 1 )]
 thing = ExtResource( 9 )

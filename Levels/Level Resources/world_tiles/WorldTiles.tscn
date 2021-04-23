@@ -63,3 +63,4 @@ tile_set = SubResource( 3 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 65541, 0, 0, 65542, 0, 0, 65543, 1, 0, 65544, 1, 0, 65545, 1, 0 )
+[connection signal="tree_entered" from="." to="." method="_on_WorldTiles_tree_entered"]

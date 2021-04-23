@@ -12,10 +12,11 @@ const _half_nav = 1
 
 onready var nav = $nav
 
-func _ready() -> void:
+func _on_WorldTiles_tree_entered() -> void:
 	global.nodes["world_tiles"] = self
-	global.nodes["navigation"] = nav
-	
+	global.nodes["navigation"] = $nav
+
+func _ready() -> void:
 	if generate_navigation == false: 
 		nav.queue_free()
 		return
@@ -37,3 +38,4 @@ func _ready() -> void:
 	
 	# Force the navigation mesh to update immediately
 	nav.update_dirty_quadrants()
+

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Entities/fire/fire.gd" type="Script" id=1]
 [ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/fire/fire.png" type="Texture" id=3]
+[ext_resource path="res://Effects/Particles/smoke_particles.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.0
@@ -73,6 +74,7 @@ collision_layer = 2
 script = ExtResource( 1 )
 ACCELERATION = 0
 truName = "fire"
+smoke_particle = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )

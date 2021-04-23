@@ -1,7 +1,7 @@
 extends Entity
 
 var navigation: TileMap
-var cell_pos
+var cell_pos: Vector2
 
 func _ready() -> void:
 	navigation = global.nodes["navigation"]
@@ -15,5 +15,6 @@ func _ready() -> void:
 	navigation.set_cell(cell_pos.x, cell_pos.y, -1)
 
 func death():
+# warning-ignore:narrowing_conversion
 	navigation.set_cell(cell_pos.x, cell_pos.y, 0)
 	.death()

@@ -14,6 +14,10 @@ export(Texture) var effect_texture
 export(int) var effect_hframes = 1
 export(int) var effect_vframes = 1
 
+export(bool) var particle_one_shot = true
+export(int, 1) var particle_amount = 5
+export(float, 0, 64) var particle_speed_scale = 1.0
+
 var stats
 var trigger_pos
 
@@ -84,8 +88,10 @@ func spawn():
 	
 	new_thing.global_position = get_parent().global_position
 	
-	if new_thing is Particles2D:
-		pass
+	if new_thing is Particles2D and "max_lifetime" in new_thing:
+		new_thing.one_shot = particle_one_shot
+		new_thing.amount = particle_amount
+		new_thing.speed_scale = particle_speed_scale
 	
 	if use_modulate == true:
 		new_thing.modulate = modulate

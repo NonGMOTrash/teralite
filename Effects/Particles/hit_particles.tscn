@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Effects/hit_particles/particle_ctrl.gd" type="Script" id=1]
+[ext_resource path="res://Effects/Particles/particle_ctrl.gd" type="Script" id=1]
 
-[sub_resource type="Curve" id=2]
+[sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.244898, 0.519318 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0204545 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=3]
-curve = SubResource( 2 )
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
 
-[sub_resource type="ParticlesMaterial" id=4]
+[sub_resource type="ParticlesMaterial" id=3]
 flag_disable_z = true
 direction = Vector3( 1, 1, 0 )
 spread = 180.0
@@ -21,7 +21,7 @@ angular_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 2.0
-scale_curve = SubResource( 3 )
+scale_curve = SubResource( 2 )
 color = Color( 0.984314, 0.984314, 0.74902, 1 )
 
 [node name="hit_particles" type="Particles2D"]
@@ -31,5 +31,5 @@ lifetime = 0.8
 one_shot = true
 speed_scale = 3.0
 explosiveness = 1.0
-process_material = SubResource( 4 )
+process_material = SubResource( 3 )
 script = ExtResource( 1 )
