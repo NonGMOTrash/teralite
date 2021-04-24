@@ -7,6 +7,7 @@ export var reload_time = 1.25
 
 onready var cooldown = $cooldown
 onready var reload = $reload
+onready var spawner = $spawner
 
 func _ready() -> void:
 	cooldown.wait_time = cooldown_time
@@ -65,6 +66,7 @@ func primary():
 		null, # item bar value 
 		null # bar timer duration
 		)
+	$spawner.spawn()
 
 func reload():
 	.reload()

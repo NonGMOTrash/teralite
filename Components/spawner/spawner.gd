@@ -1,11 +1,19 @@
 extends Node
 
+enum ROTATIONS {
+	KEEP = -1,
+	TOWARD_HITBOX,
+	TOWARD_CURSOR
+}
+
+export(bool) var standby_mode = false
+
 export(PackedScene) var thing
 export(bool) var spawn_on_free = true
 export(bool) var spawn_on_hurt = false
 export(bool) var spawn_on_block = false
 export(bool) var spawn_on_heal = false
-export(bool) var rotate_away_from_me = false
+export(ROTATIONS) var rotation_mode = ROTATIONS.KEEP
 
 export var use_modulate = false
 export(Color) var modulate
@@ -13,6 +21,7 @@ export(Color) var modulate
 export(Texture) var effect_texture
 export(int) var effect_hframes = 1
 export(int) var effect_vframes = 1
+export(bool) var effect_inherit_flipping = true
 
 export(bool) var particle_one_shot = true
 export(int, 1) var particle_amount = 5
@@ -20,16 +29,27 @@ export(float, 0, 64) var particle_speed_scale = 1.0
 
 var stats
 var trigger_pos
+var entity: Entity
 
 func _on_spawner_tree_entered():
-	get_parent().components["spawner"] = self
+	# finds owner entity
+	var test = get_parent()
+	while not test is Entity:
+		test = test.get_parent()
+		if test is YSort:
+			push_error("spawner could not find it's owner entity")
+			break
+	entity = test
+	
+	entity.components["spawner"] = self
 
 func _ready() -> void:
 	if (
 		spawn_on_free == false and
 		spawn_on_hurt == false and
 		spawn_on_block == false and
-		spawn_on_heal == false
+		spawn_on_heal == false and
+		standby_mode == false
 	):
 		push_error("spawner has no spawn conditions")
 		queue_free()
@@ -43,9 +63,9 @@ func _ready() -> void:
 #		thing = get_child(0)
 	
 	if spawn_on_free == true:
-		get_parent().connect("tree_exiting", self, "spawn")
+		entity.connect("tree_exiting", self, "spawn")
 	
-	stats = get_parent().components["stats"]
+	stats = entity.components["stats"]
 	
 	if stats == null:
 		push_warning("spawner could not find stats")
@@ -55,10 +75,12 @@ func _ready() -> void:
 	
 	stats.connect("health_changed", self, "on_health_changed")
 	
-	if rotate_away_from_me == true:
-		var hurtbox = get_parent().components["hurtbox"]
+	if rotation_mode == ROTATIONS.TOWARD_HITBOX:
+		var hurtbox = entity.components["hurtbox"]
 		if hurtbox != null:
 			hurtbox.connect("got_hit", self, "hurtbox_got_hit")
+		else:
+			push_error("spawner can't rotate_away_from_me because hurtbox was not found")
 
 func on_health_changed(type):
 	match type:
@@ -67,16 +89,16 @@ func on_health_changed(type):
 		"heal": if spawn_on_heal == true: spawn()
 
 func hurtbox_got_hit(by_area, type):
+	if get_parent() is Thinker: print("!!")
 	var src_entity = by_area.get_parent()
 	#if src_entity is Attack:
 	#	src_entity = src_entity.SOURCE
 	
 	trigger_pos = src_entity.global_position
-	prints(get_parent().get_name(), src_entity.get_name())
 
 func spawn():
-	if thing == null:
-		push_error(get_parent().get_name()+"'s spawners's 'thing' was not set")
+	if thing == null and standby_mode == false:
+		push_error(entity.get_name()+"'s spawners's 'thing' was not set")
 		queue_free()
 		return
 	
@@ -86,7 +108,7 @@ func spawn():
 	
 	var new_thing: Node2D = thing.instance()
 	
-	new_thing.global_position = get_parent().global_position
+	new_thing.global_position = entity.global_position
 	
 	if new_thing is Particles2D and "max_lifetime" in new_thing:
 		new_thing.one_shot = particle_one_shot
@@ -96,13 +118,18 @@ func spawn():
 	if use_modulate == true:
 		new_thing.modulate = modulate
 	
-	if rotate_away_from_me == true:
+	if rotation_mode == ROTATIONS.TOWARD_HITBOX:
 		if trigger_pos != null:
 			new_thing.rotation_degrees = rad2deg(
-					get_parent().global_position.direction_to(trigger_pos).angle())
+					entity.global_position.direction_to(trigger_pos).angle())
 			
 		else:
-			push_warning("spawner could not do rotate_away_from_me because last_hitbox_pos == null")
+			push_warning("spawner could not do rotate towards hitbox because trigger_pos == null")
+	
+	elif rotation_mode == ROTATIONS.TOWARD_CURSOR:
+		new_thing.rotation_degrees = rad2deg(
+				entity.global_position.direction_to(entity.get_global_mouse_position()).angle())
+		print(new_thing.rotation_degrees)
 	
 	if new_thing is Effect:
 		var sprite = new_thing.get_node(new_thing.sprite)
@@ -117,8 +144,8 @@ func spawn():
 		sprite.hframes = effect_hframes
 		sprite.vframes = effect_vframes
 		
-		var my_sprite = get_parent().components["entity_sprite"]
-		if my_sprite != null:
+		var my_sprite = entity.components["entity_sprite"]
+		if my_sprite != null and effect_inherit_flipping == true:
 			sprite.flip_h = my_sprite.flip_h
 			sprite.flip_v = my_sprite.flip_v
 	

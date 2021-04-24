@@ -4,3 +4,4 @@
 
 [node name="spawner" type="Node"]
 script = ExtResource( 1 )
+[connection signal="tree_entered" from="." to="." method="_on_spawner_tree_entered"]

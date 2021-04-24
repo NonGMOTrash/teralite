@@ -162,7 +162,6 @@ DAMAGE = 0
 
 [node name="sprite" parent="." instance=ExtResource( 6 )]
 material = SubResource( 1 )
-scale = Vector2( 1.03, 0.97 )
 texture = ExtResource( 10 )
 vframes = 2
 hframes = 4

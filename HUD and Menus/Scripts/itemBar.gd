@@ -52,10 +52,8 @@ func update_icons(inventory):
 		inventory[2] == null
 	):
 		bar.visible = false
-		print("set false")
 	else:
 		bar.visible = true
-		print("set true")
 
 func match_icon(slot, item):
 	match item:

@@ -39,7 +39,7 @@ var components = { # PROBLEM_NOTE, this doesn't support duplicate components but
 signal death()
 
 func _ready():
-	global_position.y -= 0.01
+	global_position.y -= 0.02
 	# this is to solve ysort issues. it's a little jank but it works
 	# i think the sorting is only triggered when the y position changes
 	

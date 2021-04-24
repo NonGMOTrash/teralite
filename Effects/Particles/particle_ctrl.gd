@@ -17,4 +17,5 @@ func stop():
 		return
 	
 	stopping = true
+	emitting = false
 	get_tree().create_timer(max_lifetime).connect("timeout", self, "queue_free")

@@ -21,10 +21,11 @@ random_pitch = 1.05
 extents = Vector2( 9, 9 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 8, 6 )
+extents = Vector2( 8, 5 )
 
 [node name="Crate" type="KinematicBody2D"]
 script = ExtResource( 3 )
+STATIC = true
 
 [node name="entity_sprite" parent="." instance=ExtResource( 2 )]
 material = SubResource( 1 )
@@ -44,9 +45,8 @@ position = Vector2( 0, -7 )
 shape = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 modulate = Color( 0.129412, 0.309804, 0.92549, 1 )
-position = Vector2( 0, -3 )
+position = Vector2( 0, -2 )
 shape = SubResource( 4 )
 
 [node name="death_spawn" parent="." instance=ExtResource( 6 )]

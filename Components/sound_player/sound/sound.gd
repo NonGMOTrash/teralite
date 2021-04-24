@@ -23,6 +23,9 @@ func _init():
 			attenuation = 2.5 * mult
 
 func _ready() -> void:
+	if stream == null:
+		push_error("sound has no stream")
+	
 	if MODE == MODES.ONESHOT:
 		connect("finished", self, "queue_free")
 	elif MODE == MODES.REPEATING:

@@ -160,6 +160,7 @@ github is here: [private until full release]
 - added a block spark effect
 - fixed depth sorting issues with spikes (after like 5 months lolol)
 - fixed options not being saved or defaulting to weird things
+- some behind the scenes improvements
 
 ### Beta 2.12 (4/1/2021)
 

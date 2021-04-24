@@ -55,6 +55,7 @@ const MESSAGES = [
 	"dont go to /r/dontgohere",
 	"game of the year, fornever",
 	"based",
+	"lessss goooooo"
 ]
 
 # save icon preload
