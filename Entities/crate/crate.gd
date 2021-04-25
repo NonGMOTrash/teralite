@@ -12,6 +12,7 @@ func _ready() -> void:
 	
 	cell_pos = navigation.world_to_map(global_position)
 	
+# warning-ignore:narrowing_conversion
 	navigation.set_cell(cell_pos.x, cell_pos.y, -1)
 
 func death():

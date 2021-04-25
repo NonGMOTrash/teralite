@@ -23,7 +23,7 @@ func _ready():
 	
 	bonus.max_value = max_value
 
-func update_bar(_type) -> void:
+func update_bar(_type, _result) -> void:
 	if get_parent().get_name() == "player":
 		visible = false
 		return

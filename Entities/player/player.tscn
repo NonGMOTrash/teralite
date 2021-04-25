@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/player/Player.gd" type="Script" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://Entities/damage.wav" type="AudioStream" id=12]
 [ext_resource path="res://Entities/Attacks/Melee/slash/sword_tint.wav" type="AudioStream" id=13]
 [ext_resource path="res://Entities/player/player_death/player_death.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Entities/player/player_death.wav" type="AudioStream" id=15]
 [ext_resource path="res://Components/held_item/held_item.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Effects/Particles/dust_particles.tscn" type="PackedScene" id=17]
 
@@ -174,7 +173,6 @@ auto_flip_mode = 0
 visible = false
 HURT_SOUND = ExtResource( 12 )
 BLOCK_SOUND = ExtResource( 13 )
-KILLED_SOUND = ExtResource( 15 )
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 position = Vector2( 0, 1 )

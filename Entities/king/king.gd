@@ -31,7 +31,7 @@ func summon():
 	guard.velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() * 90
 	cooldown.start()
 
-func _on_stats_health_changed(_type) -> void:
+func _on_stats_health_changed(_type, _result) -> void:
 	if stats.HEALTH < stats.MAX_HEALTH / 2:
 		# anger
 		cooldown.wait_time = cooldown_time / 1.5

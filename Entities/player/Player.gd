@@ -4,7 +4,7 @@ export(PackedScene) var dust_particles
 export(PackedScene) var player_death
 
 var perfect = true
-var death_message = ";-;"
+var death_message: String = ";-;"
 
 export var dash_strength = 300
 export var dash_buffer = 8
@@ -37,7 +37,11 @@ onready var health_bar = $healthBar
 onready var sound_player = $foot_stepper
 onready var held_item = $held_item
 
+var force_death_msg = false
+
 func _ready():
+	stats.add_status_effect("bleed", 60, 0.2)
+	
 	dash_buffer *= (1.0/60.0)
 	global.selection = 0
 	iTimer.start()
@@ -138,7 +142,8 @@ func swapped_item(new_item):
 		held_item.reversed = false
 
 func death():
-	yield(self, "updated_death_message")
+	if force_death_msg == false:
+		yield(self, "updated_death_message")
 	
 	for i in 6:
 		if inventory[i] != null:
@@ -215,9 +220,9 @@ func death():
 	
 	queue_free()
 
-func _on_stats_health_changed(type) -> void:
-	if type != "heal" and type != "blocked": 
-		if type == "hurt" and name == "player":
+func _on_stats_health_changed(_type, result) -> void:
+	if result != "heal" and result != "blocked": 
+		if result == "hurt" and name == "player":
 			global.nodes["camera"].shake(5, 15, 0.2)
 			OS.delay_msec(34)
 		
@@ -228,9 +233,7 @@ func _on_stats_health_changed(type) -> void:
 	global.emit_signal("update_health")
 
 func _on_hurtbox_got_hit(by_area, _type) -> void:
-	# this only half works, but it doesn't update for the source of the killing blow.
-	# only the last hit BEFORE the killing blow.
-	
+	force_death_msg = false
 	var entity = by_area.get_parent()
 	var entity_name = entity.truName
 	var source

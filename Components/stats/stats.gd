@@ -8,7 +8,7 @@ const bleed = preload("res://Components/stats/status_effects/bleed/bleed.tscn")
 var duration_timers = []
 var effect_timers = []
 
-signal health_changed(type)
+signal health_changed(type, result)
 signal status_recieved(status)
 
 #stats
@@ -46,15 +46,15 @@ func change_health(value, true_value, type: String = "hurt") -> String:
 	var amount = value
 	var true_amount = true_value
 	var sum = amount + true_amount
-	var final_type = type
+	var result_type = type
 	
 	# PROBLEM_NOTE: i can probably do this same calculation with a lot less loops. try it maybe
 	
 	if sum < 0: 
 		# if is an attack:
 		# amount = move_toward(amount, 0, DEFENCE) # account for defence here OLD
-		# NEW defence calculation
 		
+		# NEW defence calculation
 		while amount != 0 and armor > 0:
 			armor -= 1
 			amount += 1
@@ -63,15 +63,15 @@ func change_health(value, true_value, type: String = "hurt") -> String:
 			armor = DEFENCE
 			reset_armor = false
 		
-		if armor == 0: 
+		if armor <= 0: 
 			reset_armor = true
 		
 		sum = amount + true_amount
 		
 		if sum == 0: 
 			match type:
-				"hurt": final_type = "block"
-				_: final_type = ""
+				"hurt": result_type = "block"
+				_: result_type = ""
 		
 		for _i in range (abs(sum)):
 			if BONUS_HEALTH > 0:
@@ -80,16 +80,25 @@ func change_health(value, true_value, type: String = "hurt") -> String:
 				HEALTH -= 1
 			sum -= 1
 	elif sum == 0: # hit by a 0 damage attack
-		final_type = ""
+		result_type = ""
 		# PROBLEM_NOTE, maybe i should make the type here block
 	else:
 		# not an attack
 		HEALTH += value
 		HEALTH = clamp(HEALTH, 0, MAX_HEALTH)
 		BONUS_HEALTH += true_value
-		final_type = "heal"
+		result_type = "heal"
 	
 	if HEALTH <= 0:
+		if get_parent().truName == "player" and type != "hurt":
+			var msg: String
+			match type:
+				"burn": msg = "Death by fire."
+				"poison": msg = "Death by poison."
+				"bleed": msg = "Death by bleeding."
+			get_parent().death_message = msg
+			get_parent().force_death_msg = true
+		
 		get_parent().death()
 		return "killed"
 	
@@ -97,15 +106,14 @@ func change_health(value, true_value, type: String = "hurt") -> String:
 	if get_parent().truName == "player": 
 		global.emit_signal("update_health")
 	
-	if final_type != "":
-		emit_signal("health_changed", final_type)
-		return final_type
+	if result_type != "":
+		emit_signal("health_changed", type, result_type)
+		return result_type
 	else:
 		return ""
 		# PROBLEM_NOTE: should change "" -> "null"
 
 func add_status_effect(new_status_effect:String, duration=2.5, level=1.0):
-	print("!!!!!")
 	var status_effect = new_status_effect
 	match status_effect:
 		"burning": status_effect = burning.instance()

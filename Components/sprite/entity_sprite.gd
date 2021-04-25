@@ -116,7 +116,7 @@ func animate_overlay():
 	color_c.flip_h = flip_h
 	color_c.frame = frame
 
-func play_effect(type):
+func play_effect(_type, result):
 	var color_effect = color_a_effect
 	var texture_effect = texture_a_effect
 	if color_a_effect.is_playing() == true or texture_a_effect.is_playing() == true: 
@@ -126,7 +126,7 @@ func play_effect(type):
 			color_effect = color_c_effect
 			texture_effect = texture_c_effect
 	
-	match type:
+	match result:
 		"hurt": color_effect.play("hurt")
 		"block": color_effect.play("block")
 		"heal": color_effect.play("heal")

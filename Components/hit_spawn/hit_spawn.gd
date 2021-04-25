@@ -31,11 +31,11 @@ func _ready() -> void:
 	
 	stats.connect("health_changed", self, "spawn")
 
-func spawn(type):
+func spawn(_type, result):
 	if use_whitelist == false:
-		if types_list.has(type): return
+		if types_list.has(result): return
 	else:
-		if not types_list.has(type): return
+		if not types_list.has(result): return
 	
 	if rand_range(1, 100) <= percent_chance: #spawn entity
 		
