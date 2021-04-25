@@ -42,7 +42,7 @@ const MESSAGES = [
 	"don't play at 4:20 PM",
 	"all lowercase",
 	"now with 50% more bugs",
-	"play friday night funkin!",
+	"play FnF!",
 	"play 20xx.io!",
 	"it's okay",
 	"5 merits lost :(",

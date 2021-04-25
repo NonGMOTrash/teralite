@@ -105,12 +105,16 @@ func change_health(value, true_value, type: String = "hurt") -> String:
 		# PROBLEM_NOTE: should change "" -> "null"
 
 func add_status_effect(new_status_effect:String, duration=2.5, level=1.0):
+	print("!!!!!")
 	var status_effect = new_status_effect
 	match status_effect:
 		"burning": status_effect = burning.instance()
 		"poison": status_effect = poison.instance()
 		"bleed": status_effect = bleed.instance()
-		_: return
+		_: 
+			push_error("status effect '%s' does not exist" % status_effect)
+			return
+	
 	var status_name = status_effect.get_name()
 	
 	emit_signal("status_recieved", status_name)

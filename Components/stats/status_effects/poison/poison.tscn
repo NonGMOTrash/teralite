@@ -1,7 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Components/stats/status_effects/status_effect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Components/stats/status_effects/poison/poison.gd" type="Script" id=2]
+[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Effects/poison_bubble/poison_bubbles.tscn" type="PackedScene" id=4]
 
 [node name="poison" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+
+[node name="spawner" parent="." index="2" instance=ExtResource( 3 )]
+standby_mode = true
+thing = ExtResource( 4 )
+spawn_on_free = false
+random_position_offset = 10
+effect_hframes = 5
+effect_inherit_flipping = false
+
+[node name="spawn_timer" type="Timer" parent="." index="3"]
+wait_time = 0.5
+autostart = true

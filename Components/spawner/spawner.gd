@@ -17,6 +17,7 @@ export(ROTATIONS) var rotation_mode = ROTATIONS.KEEP
 
 export var use_modulate = false
 export(Color) var modulate
+export(int) var random_position_offset = 0
 
 export(Texture) var effect_texture
 export(int) var effect_hframes = 1
@@ -108,7 +109,10 @@ func spawn():
 	
 	var new_thing: Node2D = thing.instance()
 	
-	new_thing.global_position = entity.global_position
+	new_thing.global_position = entity.global_position + Vector2(
+			rand_range(-random_position_offset, random_position_offset), 
+			rand_range(-random_position_offset, random_position_offset)
+	)
 	
 	if new_thing is Particles2D and "max_lifetime" in new_thing:
 		new_thing.one_shot = particle_one_shot
