@@ -18,17 +18,19 @@ func _physics_process(delta):
 	velocity = velocity.move_toward(Vector2.ZERO, SLOWDOWN * delta) # applys slowdown
 
 func summon():
-	var guard
+	for _i in range(0, 3):
+		var guard
+		
+		match stored_input:
+			"knight": guard = global.aquire("Knight")
+			"archer": guard = global.aquire("Archer")
+			"rogue": guard = global.aquire("Rogue")
+		
+		guard.marked_enemies = marked_enemies
+		get_parent().call_deferred("add_child", guard)
+		guard.global_position = global_position #+ Vector2(rand_range(-16, 16), rand_range(-16, 16))
+		guard.velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() * 90
 	
-	match stored_input:
-		"knight": guard = global.aquire("Knight")
-		"archer": guard = global.aquire("Archer")
-		"rogue": guard = global.aquire("Rogue")
-	
-	guard.marked_enemies = marked_enemies
-	get_parent().call_deferred("add_child", guard)
-	guard.global_position = global_position #+ Vector2(rand_range(-16, 16), rand_range(-16, 16))
-	guard.velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() * 90
 	cooldown.start()
 
 func _on_stats_health_changed(_type, _result) -> void:

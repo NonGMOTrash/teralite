@@ -159,10 +159,11 @@ github is here: [private until full release]
 - added many particle effects (impacts, smoke, blood, more)
 - added a level completed screen (WIP)
 - changed slash hitboxes to better match the animation
+- changed king summoning: it summons groups of 3 now, but at 1/3rd the speed
 - fixed depth sorting issues with spikes (after like 5 months lolol)
 - fixed options not being saved or defaulting to weird things
 - fixed a bug where you couldn't die from bleeding
-- lots of behind the scenes improvements (ported to godot 3.3)
+- lots of behind the scenes improvements
 
 ### Beta 2.12 (4/1/2021)
 

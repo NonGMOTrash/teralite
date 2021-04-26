@@ -64,7 +64,7 @@ TOP_SPEED = 0
 FORCE_MULT = 0.45
 truName = "king"
 faction = "blue_kingdom"
-cooldown_time = 2.5
+cooldown_time = 7.5
 
 [node name="stats" parent="." instance=ExtResource( 6 )]
 MAX_HEALTH = 24

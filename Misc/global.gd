@@ -22,7 +22,7 @@ var perfected_levels = []
 var level_deaths = {}
 var level_times = {}
 var ver_phase = "Beta"
-var ver_num = 2.14
+var ver_num = 2.13
 var ver_hotfix = 0
 
 # for saving things

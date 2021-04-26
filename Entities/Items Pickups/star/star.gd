@@ -30,14 +30,13 @@ func on_pickup(player):
 	
 	if lvl == "A-14":
 		destination = load("res://Levels/thx.tscn")
-		return
-	
-	match get_tree().current_scene.WORLD:
-		"A":
-			destination = load("res://Levels/A/A_hub.tscn")
-		_:
-			push_error("level has invalid WORLD: '%s'" % get_tree().current_scene.WORLD)
-			destination = load("res://Levels/A/A_hub.tscn")
+	else:
+		match get_tree().current_scene.WORLD:
+			"A":
+				destination = load("res://Levels/A/A_hub.tscn")
+			_:
+				push_error("level has invalid WORLD: '%s'" % get_tree().current_scene.WORLD)
+				destination = load("res://Levels/A/A_hub.tscn")
 	
 	var level_completed = LEVEL_COMPLETED.instance()
 	
