@@ -10,12 +10,13 @@ func _ready():
 		emitting = true
 	
 	if auto_free == true:
-		stop()
+		stop(false)
 
-func stop():
+func stop(cancel_emit:bool = true):
 	if stopping == true:
 		return
 	
 	stopping = true
-	emitting = false
+	if cancel_emit == true:
+		emitting = false
 	get_tree().create_timer(max_lifetime).connect("timeout", self, "queue_free")

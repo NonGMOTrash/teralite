@@ -90,6 +90,7 @@ func dash(direction: Vector2 = input_vector) -> void:
 		var particles = dust_particles.instance()
 		particles.rotation_degrees = rad2deg(direction.angle())
 		global.nodes["ysort"].call_deferred("add_child", particles)
+		yield(particles, "ready")
 		particles.global_position = global_position
 	
 	buffered_dash = Vector2.ZERO
