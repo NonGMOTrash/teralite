@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Entities/player/item_thinkers/pistol/pistol_thinker.gd" type="Script" id=1]
-[ext_resource path="res://HUD and Menus/CURSOR_PISTOL.png" type="Texture" id=2]
+[ext_resource path="res://UI/cursors/cursor_pistol.png" type="Texture" id=2]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Attacks/Projectile/small_bullet/pistol_pickup.wav" type="AudioStream" id=4]
 [ext_resource path="res://Entities/player/item_thinkers/pistol/pistol_reload.wav" type="AudioStream" id=5]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Entities/Items Pickups/pistol/pistol.png" type="Texture" id=7]
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Effects/muzzle_flash/muzzle_flash.tscn" type="PackedScene" id=9]
+
+
+
 
 [node name="pistol thinker" type="Node"]
 script = ExtResource( 1 )

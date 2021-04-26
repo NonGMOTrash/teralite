@@ -153,15 +153,16 @@ github is here: [private until full release]
 
 # Patchnotes
 
-### Beta 2.13
+### Beta 2.13 (4/25/2021)
 
 - added animations for held items (the sword no longer looks poopoo)
 - added many particle effects (impacts, smoke, blood, more)
+- added a level completed screen (WIP)
 - changed slash hitboxes to better match the animation
 - fixed depth sorting issues with spikes (after like 5 months lolol)
 - fixed options not being saved or defaulting to weird things
 - fixed a bug where you couldn't die from bleeding
-- lots of behind the scenes improvements
+- lots of behind the scenes improvements (ported to godot 3.3)
 
 ### Beta 2.12 (4/1/2021)
 

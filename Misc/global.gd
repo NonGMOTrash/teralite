@@ -137,11 +137,11 @@ var faction_relationships = {
 }
 
 # cursor sprites preloaded:
-const CURSOR_NORMAL = preload("res://HUD and Menus/CURSOR_NORMAL.png")
-const CURSOR_EMPTY = preload("res://HUD and Menus/CURSOR_EMPTY.png")
-const CURSOR_SWORD = preload("res://HUD and Menus/CURSOR_SWORD.png")
-const CURSOR_PISTOL = preload("res://HUD and Menus/CURSOR_PISTOL.png")
-const CURSOR_BOW = preload("res://HUD and Menus/CURSOR_BOW.png")
+const CURSOR_NORMAL = preload("res://UI/cursors/cursor_normal.png")
+const CURSOR_EMPTY = preload("res://UI/cursors/cursor_empty.png")
+const CURSOR_SWORD = preload("res://UI/cursors/cursor_sword.png")
+const CURSOR_PISTOL = preload("res://UI/cursors/cursor_pistol.png")
+const CURSOR_BOW = preload("res://UI/cursors/cursor_bow.png")
 # PROBLEM_NOTE: not sure if i should do this ^
 
 func _ready():

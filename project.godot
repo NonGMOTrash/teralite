@@ -82,13 +82,13 @@ _global_script_class_icons={
 
 config/name="Teralite"
 config/description="an okay game."
-run/main_scene="res://HUD and Menus/intro/intro.tscn"
+run/main_scene="res://UI/intro/intro.tscn"
 config/use_custom_user_dir=true
-boot_splash/image="res://HUD and Menus/splashscreen.png"
+boot_splash/image="res://UI/splashscreen.png"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
-config/icon="res://HUD and Menus/Icons/teralite_logo_big.png"
-config/windows_native_icon="res://HUD and Menus/Icons/teralite_ico.ico"
+config/icon="res://UI/Icons/teralite_logo_big.png"
+config/windows_native_icon="res://UI/Icons/teralite_ico.ico"
 
 [audio]
 

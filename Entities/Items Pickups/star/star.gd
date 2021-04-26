@@ -1,6 +1,6 @@
 extends "res://Entities/Items Pickups/item.gd"
 
-const LEVEL_COMPLETED = preload("res://HUD and Menus/level_completed/level_completed.tscn")
+const LEVEL_COMPLETED = preload("res://UI/level_completed/level_completed.tscn")
 
 func on_pickup(player):
 	var destination: PackedScene

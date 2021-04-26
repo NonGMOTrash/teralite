@@ -3,15 +3,19 @@
 [ext_resource path="res://Levels/Level Resources/scene_batcher/entity_spawns/entity_spawns.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level Resources/world_tiles/WorldTiles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/Level Resources/background/Background.tscn" type="PackedScene" id=4]
-[ext_resource path="res://HUD and Menus/health_ui/HealthUI.tscn" type="PackedScene" id=5]
-[ext_resource path="res://HUD and Menus/item_bar/itemBar.tscn" type="PackedScene" id=6]
-[ext_resource path="res://HUD and Menus/item_info/ItemInfo.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/health_ui/health_ui.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/item_bar/item_bar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/item_info/item_info.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/Level Resources/camera/Camera.tscn" type="PackedScene" id=8]
-[ext_resource path="res://HUD and Menus/pause_menu/Pause_Menu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://UI/pause_menu/Pause_Menu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/Level Resources/scene_batcher/prop_placer/prop_placer.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/Level Resources/background_tiles/background_tiles.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/level/level.gd" type="Script" id=12]
-[ext_resource path="res://HUD and Menus/stopwatch/stopwatch.tscn" type="PackedScene" id=13]
+[ext_resource path="res://UI/stopwatch/stopwatch.tscn" type="PackedScene" id=13]
+
+
+
+
 
 [node name="level" type="Navigation2D"]
 z_index = 5

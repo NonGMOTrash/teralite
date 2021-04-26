@@ -1,0 +1,92 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Entities/crate/crate.png" type="Texture" id=1]
+[ext_resource path="res://Entities/player/player.png" type="Texture" id=2]
+[ext_resource path="res://UI/Themes/Fonts/m6x11.tres" type="DynamicFont" id=3]
+[ext_resource path="res://UI/intro/intro.gd" type="Script" id=4]
+
+
+
+
+[sub_resource type="Animation" id=1]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 3, 4, 5, 6, 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "New Anim"
+step = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 104 ), Vector2( 500, 104 ) ]
+}
+
+[node name="intro" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -10.0
+margin_right = 160.0
+custom_fonts/font = ExtResource( 3 )
+text = "created by NonGMOTrash"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player" type="Sprite" parent="."]
+position = Vector2( 0, 104 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 4
+frame = 2
+
+[node name="black" type="Sprite" parent="player"]
+modulate = Color( 0, 0, 0, 1 )
+show_behind_parent = true
+scale = Vector2( 17, 1 )
+texture = ExtResource( 1 )
+offset = Vector2( 8, 0 )
+
+[node name="walk" type="AnimationPlayer" parent="player"]
+autoplay = "Pasted Animation"
+"anims/Pasted Animation" = SubResource( 1 )
+
+[node name="movement" type="AnimationPlayer" parent="player"]
+autoplay = "New Anim"
+playback_speed = 0.25
+"anims/New Anim" = SubResource( 2 )
+[connection signal="animation_finished" from="player/movement" to="." method="_on_movement_animation_finished"]
