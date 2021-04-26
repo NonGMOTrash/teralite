@@ -177,7 +177,6 @@ func add_target(tar: Entity, force = false) -> void:
 		movement_lobe.wander_timer.stop()
 	
 	emit_signal("found_target")
-	#prints(get_parent().get_name(), "!", global.nodes["stopwatch"].time)
 	
 	spawn_effect("exclaimation", global_position.move_toward(tar.global_position, 32))
 
@@ -212,7 +211,6 @@ func remove_target(tar):
 	targets.remove(target_id)
 	target_paths.remove(target_id)
 	emit_signal("lost_target")
-	#prints(get_parent().get_name(), "?", global.nodes["stopwatch"].time)
 	
 	if targets == []: 
 		get_parent().input_vector = Vector2.ZERO

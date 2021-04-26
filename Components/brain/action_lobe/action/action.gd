@@ -125,7 +125,6 @@ func get_score(warned = false):
 			final_score = scores[i]
 			final_target = targets[i]
 	
-	#prints(get_name(), "->", final_target.get_name(), "score:"+str(final_score), "(weight:"+str(weight)+")")
 	return [final_score, final_target]
 
 func score_modification(score): # for custom score modification
@@ -135,7 +134,6 @@ func score_modification(score): # for custom score modification
 #func _process(_delta):
 #	if get_name() != "archer": return
 #	if w > 15:
-#		print(weight)
 #		w = 1
 #	else:
 #		w += 1

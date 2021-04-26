@@ -8,6 +8,7 @@ export(PARTICLE_TYPES) var GLOBAL_PARTICLES = PARTICLE_TYPES.FOREST
 
 export var FORCE_SLEEP_UNTIL_VISIBLE = false
 
+export(String) var WORLD = "A"
 const LEVEL_TYPE = 0
 
 func _ready() -> void:

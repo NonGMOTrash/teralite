@@ -133,7 +133,6 @@ func spawn():
 	elif rotation_mode == ROTATIONS.TOWARD_CURSOR:
 		new_thing.rotation_degrees = rad2deg(
 				entity.global_position.direction_to(entity.get_global_mouse_position()).angle())
-		print(new_thing.rotation_degrees)
 	
 	if new_thing is Effect:
 		var sprite = new_thing.get_node(new_thing.sprite)

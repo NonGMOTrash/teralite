@@ -9,6 +9,7 @@ export var LEVEL_LOAD = preload("res://Levels/A/A-1.tscn")
 export var STAR_REQUIREMENT = 0
 
 var player = null
+var pressed = false
 
 func _ready() -> void:
 	var txt
@@ -72,7 +73,12 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if player == null: return
 	if global.stars < STAR_REQUIREMENT: return
-	if (Input.is_action_just_released("interact")):
+	
+	if Input.is_action_just_pressed("interact"):
+		pressed = true
+		return
+	
+	if Input.is_action_just_released("interact") and pressed == true:
 		global.player_hub_pos = global_position
 		get_tree().change_scene_to(LEVEL_LOAD)
 

@@ -70,7 +70,10 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 					"heal": sfx.stream = HEAL_SOUND
 					"killed": sfx.stream = KILLED_SOUND
 				
-				get_parent().components["sound_player"].add_sound(sfx)
+				if sfx.stream != null:
+					get_parent().components["sound_player"].add_sound(sfx)
+				else:
+					sfx.queue_free()
 			
 			else:
 				push_warning("hurtbox can not play sounds because "+get_parent().truName+" has no sound_player")

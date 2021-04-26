@@ -156,11 +156,12 @@ github is here: [private until full release]
 ### Beta 2.13
 
 - added animations for held items (the sword no longer looks poopoo)
+- added many particle effects (impacts, smoke, blood, more)
 - changed slash hitboxes to better match the animation
-- added a block spark effect
 - fixed depth sorting issues with spikes (after like 5 months lolol)
 - fixed options not being saved or defaulting to weird things
-- some behind the scenes improvements
+- fixed a bug where you couldn't die from bleeding
+- lots of behind the scenes improvements
 
 ### Beta 2.12 (4/1/2021)
 
