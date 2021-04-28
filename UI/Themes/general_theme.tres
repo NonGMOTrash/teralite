@@ -1,14 +1,11 @@
-[gd_resource type="Theme" load_steps=12 format=2]
+[gd_resource type="Theme" load_steps=11 format=2]
 
 [ext_resource path="res://UI/Themes/Fonts/m6x11.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Themes/Styles/stylebox_full.tres" type="StyleBox" id=2]
 [ext_resource path="res://UI/Themes/Styles/stylebox_empty.tres" type="StyleBox" id=3]
 [ext_resource path="res://UI/Themes/Styles/stylebox_box.tres" type="StyleBox" id=4]
-[ext_resource path="res://UI/Themes/Styles/stylebox_selected_box.tres" type="StyleBox" id=5]
 [ext_resource path="res://UI/Icons/checked.png" type="Texture" id=6]
 [ext_resource path="res://UI/Icons/unchecked.png" type="Texture" id=7]
-
-
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -76,8 +73,8 @@ ProgressBar/fonts/font = null
 ProgressBar/styles/bg = ExtResource( 3 )
 ProgressBar/styles/fg = ExtResource( 2 )
 TabContainer/colors/font_color_bg = Color( 1, 1, 1, 1 )
-TabContainer/colors/font_color_disabled = Color( 1, 0, 0, 0.45098 )
-TabContainer/colors/font_color_fg = Color( 1, 1, 1, 0.752941 )
+TabContainer/colors/font_color_disabled = Color( 0.568627, 0.541176, 0.541176, 0.45098 )
+TabContainer/colors/font_color_fg = Color( 0.980392, 0.603922, 0.160784, 1 )
 TabContainer/constants/hseparation = 0
 TabContainer/constants/label_valign_bg = 0
 TabContainer/constants/label_valign_fg = 0
@@ -92,8 +89,8 @@ TabContainer/icons/menu = null
 TabContainer/icons/menu_highlight = null
 TabContainer/styles/panel = ExtResource( 4 )
 TabContainer/styles/tab_bg = ExtResource( 4 )
-TabContainer/styles/tab_disabled = ExtResource( 3 )
-TabContainer/styles/tab_fg = ExtResource( 5 )
+TabContainer/styles/tab_disabled = ExtResource( 4 )
+TabContainer/styles/tab_fg = ExtResource( 4 )
 TooltipLabel/colors/font_color = Color( 1, 1, 1, 1 )
 TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.1 )
 TooltipLabel/constants/shadow_offset_x = 1

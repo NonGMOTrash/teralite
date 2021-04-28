@@ -153,6 +153,10 @@ github is here: [private until full release]
 
 # Patchnotes
 
+#### Beta 2.13 Hotfix (4/27/2021)
+
+- fixed various issues with UI assets not loading and thus being broken
+
 ### Beta 2.13 (4/25/2021)
 
 - added animations for held items (the sword no longer looks poopoo)

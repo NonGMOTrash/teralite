@@ -6,7 +6,7 @@
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Components/player_controlled/playerControlled.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Components/health_bar/healthBar.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Components/entity_push/entityPush.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Effects/hit_effect/hit_effect.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/player/player.png" type="Texture" id=10]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Entities/player/player_death/player_death.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Components/held_item/held_item.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Effects/Particles/dust_particles.tscn" type="PackedScene" id=17]
+
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true

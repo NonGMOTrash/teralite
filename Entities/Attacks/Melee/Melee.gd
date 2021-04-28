@@ -1,7 +1,7 @@
 extends Attack
 class_name Melee
 
-const BLOCK_SPARK = preload("res://Effects/blocked_spark/blocked_spark.tscn")
+const BLOCK_SPARK = preload("res://Effects/block_spark/block_spark.tscn")
 
 export(int, 0, 200) var BOOST = 50
 export(int, 0, 200) var RECOIL = 70

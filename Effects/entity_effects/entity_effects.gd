@@ -10,7 +10,7 @@ const SPIN_FADE = preload("res://Effects/spin_fade/spin_fade.tscn")
 const SQUISH_FADE = preload("res://Effects/squish_fade/squish_fade.tscn")
 const TRIPLE_SHRINK = preload("res://Effects/triple_shrink/triple_shrink.tscn")
 const WIGGLE_FADE = preload("res://Effects/wiggle_fade/wiggle_fade.tscn")
-const BLOCK_SPARK = preload("res://Effects/blocked_spark/blocked_spark.tscn")
+const BLOCK_SPARK = preload("res://Effects/block_spark/block_spark.tscn")
 const HIT_PARTICLES = preload("res://Effects/Particles/hit_particles.tscn")
 
 enum DEATHS {
@@ -70,7 +70,9 @@ func _ready():
 		spawner.spawn_on_free = false
 		spawner.spawn_on_block = true
 		spawner.thing = BLOCK_SPARK
-		spawner.rotate_away_from_me = true
+		spawner.rotation_mode = spawner.ROTATIONS.TOWARD_HITBOX
+		spawner.effect_hframes = 2
+		spawner.effect_vframes = 2
 		get_parent().call_deferred("add_child", spawner)
 	
 	if impact_particles == true:

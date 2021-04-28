@@ -7,11 +7,12 @@
 [ext_resource path="res://UI/item_bar/item_bar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/item_info/item_info.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/Level Resources/camera/Camera.tscn" type="PackedScene" id=8]
-[ext_resource path="res://UI/pause_menu/Pause_Menu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://UI/pause_menu/pause_menu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/Level Resources/scene_batcher/prop_placer/prop_placer.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/Level Resources/background_tiles/background_tiles.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/level/level.gd" type="Script" id=12]
 [ext_resource path="res://UI/stopwatch/stopwatch.tscn" type="PackedScene" id=13]
+
 
 
 

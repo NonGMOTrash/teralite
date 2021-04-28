@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Entities/chaser/Chaser.gd" type="Script" id=1]
-[ext_resource path="res://Components/health_bar/healthBar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=5]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=18]
+
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true

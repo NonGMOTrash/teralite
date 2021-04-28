@@ -49,7 +49,7 @@ func _ready():
 		# instead of paths. it is a bit nessesarly for the player though, because the path is needed to check
 		# if the player still exists with get_node_or_null(). really glad is_instance_valid() doesn't work '-'
 	else:
-		health_bar.update_bar("hurt")
+		health_bar.update_bar("", "")
 		health_bar.visible = true
 	
 	if get_parent().owner == null: return

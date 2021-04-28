@@ -1,21 +1,20 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/king/king.gd" type="Script" id=2]
 [ext_resource path="res://Entities/king/king.png" type="Texture" id=3]
-[ext_resource path="res://Components/health_bar/healthBar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Effects/hit_effect/hit_effect.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Entities/knight/rogue/rogue.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Entities/knight/knight.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Entities/Items Pickups/star/star.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Entities/archer/archer.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Effects/triple_shrink/triple_shrink.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -88,16 +87,6 @@ margin_top = -12.9489
 margin_right = 10.7028
 margin_bottom = -8.94715
 
-[node name="hit_effect_spawner" parent="." instance=ExtResource( 8 )]
-thing = ExtResource( 9 )
-spawn_on_hurt = true
-effect_hframes = 3
-effect_vframes = 3
-
-[node name="death_effect" parent="." instance=ExtResource( 8 )]
-thing = ExtResource( 16 )
-effect_texture = ExtResource( 3 )
-
 [node name="death_spawn" parent="." instance=ExtResource( 8 )]
 thing = ExtResource( 13 )
 
@@ -147,6 +136,10 @@ shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/summon = SubResource( 4 )
+
+[node name="entity_effects" parent="." instance=ExtResource( 9 )]
+death_type = 6
+block_effect = false
 [connection signal="health_changed" from="stats" to="." method="_on_stats_health_changed"]
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 

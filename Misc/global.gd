@@ -23,7 +23,7 @@ var level_deaths = {}
 var level_times = {}
 var ver_phase = "Beta"
 var ver_num = 2.13
-var ver_hotfix = 0
+var ver_hotfix = 1
 
 # for saving things
 const SAVE_DIR = "user://saves/"

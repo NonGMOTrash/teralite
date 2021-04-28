@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Entities/knight/knight.gd" type="Script" id=1]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=2]
@@ -9,16 +9,14 @@
 [ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Effects/hit_effect/hit_effect.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Components/health_bar/healthBar.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Components/brain/movement_lobe/spring/spring.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Effects/right_fade/right_fade.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Effects/blocked_spark/blocked_spark.tscn" type="PackedScene" id=19]
+
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -152,30 +150,14 @@ margin_top = -13.3911
 margin_right = 10.6055
 margin_bottom = -9.38938
 
-[node name="hit_effect_spawner" parent="." instance=ExtResource( 10 )]
-thing = ExtResource( 11 )
-spawn_on_free = false
-spawn_on_hurt = true
-effect_hframes = 3
-effect_vframes = 3
-
-[node name="death_effect_spawner" parent="." instance=ExtResource( 10 )]
-thing = ExtResource( 18 )
-effect_texture = ExtResource( 3 )
-
-[node name="block_effect_spawner" parent="." instance=ExtResource( 10 )]
-thing = ExtResource( 19 )
-spawn_on_free = false
-spawn_on_block = true
-rotate_away_from_me = true
-effect_hframes = 2
-effect_vframes = 2
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 4 )
 anims/warning = SubResource( 5 )
 
 [node name="foot_stepper" parent="." instance=ExtResource( 17 )]
+
+[node name="entity_effects" parent="." instance=ExtResource( 10 )]
+death_type = 3
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 
 [editable path="entityPush"]

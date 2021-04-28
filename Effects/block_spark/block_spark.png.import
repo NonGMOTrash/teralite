@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/unecked.png-a159fe9e72b4e6344b9a19ac024f5efd.stex"
+path="res://.import/block_spark.png-953b14869c2074463ba3a342433feef7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Icons/unecked.png"
-dest_files=[ "res://.import/unecked.png-a159fe9e72b4e6344b9a19ac024f5efd.stex" ]
+source_file="res://Effects/block_spark/block_spark.png"
+dest_files=[ "res://.import/block_spark.png-953b14869c2074463ba3a342433feef7.stex" ]
 
 [params]
 
