@@ -49,14 +49,13 @@ func _ready():
 	if get_parent().get_name() == "player":
 		global.emit_signal("update_item_bar", get_parent().inventory)
 	
-	if get_parent().inventory[global.selection] == my_item.to_lower(): selected()
+	if get_parent().inventory[global.selection] == my_item.to_lower(): 
+		selected()
 	elif EQUIP_SOUND != null:
 		sound_player.create_sound(EQUIP_SOUND)
-	
-	if get_parent().components["held_item"] != null:
-		get_parent().components["held_item"].original_offset = HELD_ITEM_OFFSET
 
-func _check_if_selected(swapped_item):
+# PROBLEM_NOTE: this is kinda bad because the name implies a return value
+func _check_if_selected(swapped_item) -> void:
 	if swapped_item == my_item.to_lower():
 		selected()
 	else:
@@ -148,8 +147,10 @@ func selected():
 		null, # item bar value 
 		null # bar timer duration
 		)
-	update_cursor()
-	_update_held_item()
+	
+	if get_parent().inventory[global.selection] == my_item.to_lower():
+		update_cursor()
+		_update_held_item()
 	
 	if EQUIP_SOUND != null:
 		sound_player.create_sound(EQUIP_SOUND)

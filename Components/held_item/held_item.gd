@@ -44,7 +44,13 @@ func _ready():
 				push_error("held_item could not be bound to parent because it has no brain")
 				source = self
 
+onready var old_sprite_position = sprite.position
 func _process(delta):
+	if get_parent().truName == "player":
+		if sprite.position != old_sprite_position:
+			breakpoint
+		old_sprite_position = sprite.position
+	
 	if TARGETING == TT.MANUAL or visible == false:
 		return
 	

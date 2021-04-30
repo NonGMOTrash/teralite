@@ -33,8 +33,6 @@ func selected():
 		0.001, # item bar value 
 		null # bar timer duration
 		)
-	update_cursor()
-	_update_held_item()
 
 func unselected():
 	state = IDLE

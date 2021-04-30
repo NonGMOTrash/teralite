@@ -9,7 +9,7 @@ onready var effect_cooldown = $effect_cooldown
 var movement_lobe
 var action_lobe
 var memory_lobe
-var warning_lobe 
+var warning_lobe
 var communication_lobe
 
 export var DEBUG_DRAW = false

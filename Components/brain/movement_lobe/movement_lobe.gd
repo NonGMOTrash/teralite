@@ -104,6 +104,7 @@ func _on_idle_timer_timeout() -> void:
 			# however, i did fix the nav poly generation so that should pretty much fix this issue
 			# EDIT5: i am an idiot, it's because if there's no possible path it gets stuck in the while
 			# loop
+			# EDIT6: fixed the navpoyl generation btw
 		
 		if wander_path.size() > 1:
 			brain.get_parent().input_vector = global_position.direction_to(wander_path[1]).normalized()
