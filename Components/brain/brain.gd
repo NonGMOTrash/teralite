@@ -22,8 +22,8 @@ export var COMMUNICATES = true
 export(float, 0.01, 10.0) var COMM_DELAY = 1.2
 export(float, 0.0, 5.0) var COMM_DELAY_VARIANCE = 0.5
 
-var targets = []
-var target_paths = []
+var targets: Array = []
+var target_paths: Array = []
 
 signal found_target
 signal lost_target
@@ -121,9 +121,11 @@ func los_check(target):
 	var ss = get_world_2d().direct_space_state
 	
 	var vision = ss.intersect_ray(target_pos, global_position, [get_parent()], LOS_MASK)
-	if vision == null: return null
-	else: vision = ss.intersect_ray(global_position.move_toward(target_pos, 2.5),
-	target_pos, [get_parent()], LOS_MASK)
+	if vision == null: 
+		return null
+	else: 
+		vision = ss.intersect_ray(global_position.move_toward(target_pos, 2.5),
+				target_pos, [get_parent()], LOS_MASK)
 	
 	if vision:
 		if vision.collider is TileMap: 
@@ -168,8 +170,10 @@ func add_target(tar: Entity, force = false) -> void:
 	if movement_lobe != null: movement_lobe.best_position_paths.append(null)
 	
 	if is_target_valid(targets.size()-1) == false and force == false:
-		if targets.size() != 0: targets.remove(targets.size()-1)
-		if target_paths.size() != 0: target_paths.remove(target_paths.size()-1)
+		targets.pop_back()
+		target_paths.pop_back()
+		if movement_lobe != null:
+			movement_lobe.best_position_paths.pop_back()
 		return
 	
 	if movement_lobe != null:
@@ -181,8 +185,7 @@ func add_target(tar: Entity, force = false) -> void:
 	spawn_effect("exclaimation", global_position.move_toward(tar.global_position, 32))
 
 func remove_target(tar):
-	if targets == []: 
-		return
+	if targets == []: return
 	
 	var target = null
 	var target_id = 0
@@ -199,16 +202,15 @@ func remove_target(tar):
 		if movement_lobe.get_spring(targets[target_id]) != null and memory_lobe.MEMORY_TIME > 0:
 			if get_node_or_null(target_paths[target_id]) == null: return
 			if get_parent().is_queued_for_deletion() == true: return
+			
 			movement_lobe.best_position_paths.remove(target_id)
 			memory_lobe.add_memory(targets[target_id].global_position, 
-			movement_lobe.get_spring(targets[target_id]), targets[target_id].get_instance_id())
+					movement_lobe.get_spring(targets[target_id]), 
+					targets[target_id].get_instance_id())
 			
-#			var effect = global.aquire("question")
-#			get_parent().get_parent().call_deferred("add_child", effect)
-#			effect.global_position = global_position.move_toward(targets[target_id].global_position, 32)
 			spawn_effect("question", global_position.move_toward(targets[target_id].global_position, 32))
-		
-	targets.remove(target_id)
+	
+	targets.remove(target_id) 
 	target_paths.remove(target_id)
 	emit_signal("lost_target")
 	
@@ -243,8 +245,6 @@ func _on_think_timer_timeout() -> void:
 	
 	if DEBUG_DRAW == true:
 		update()
-	
-	#if targets != []: print(is_target_valid(0))
 
 # PROBLEM_NOTE: this is a bad way to prevent effect spam, better to have entities be able to see through
 # eachother. couldn't get it working though
@@ -261,6 +261,6 @@ func spawn_effect(effect: String, pos: Vector2):
 	
 	effect_cooldown.start()
 
-func debug(): 
+func debug():
 	if get_parent().is_queued_for_deletion() == false:
 		emit_signal("debug")

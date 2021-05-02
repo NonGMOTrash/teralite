@@ -48,6 +48,7 @@ func _physics_process(delta):
 
 func death():
 	velocity = velocity * ONHIT_SPEED_MULTIPLIER
+	emit_signal("death")
 	
 	if components["hitbox"] != null: 
 		hitbox.queue_free()

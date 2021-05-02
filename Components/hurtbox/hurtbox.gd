@@ -10,8 +10,9 @@ onready var iTimer = $Timer
 
 var entity
 
-var the_area = null
-var the_area_used = false
+var the_area: Area2D
+var the_area_path: NodePath
+var the_area_used := false
 
 signal got_hit(by_area, type)
 
@@ -22,7 +23,11 @@ func _ready():
 	entity = get_parent()
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	if get_parent() == area.get_parent(): return
+	if (
+		get_parent() == area.get_parent() or
+		area.is_queued_for_deletion() == true
+	): 
+		return
 	
 	var area_entity = area.get_parent()
 	
@@ -36,7 +41,12 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		if area_entity.get_speed() < area_entity.MIN_DAM_SPEED:
 			return
 	
-	if the_area == null: the_area = area
+	if (
+		the_area == null or 
+		the_area_path != null and get_node_or_null(the_area_path) != null
+	): 
+		the_area = area
+		the_area_path = area.get_path()
 	
 	if area != the_area: return
 	if the_area_used == true: return

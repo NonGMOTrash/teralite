@@ -49,7 +49,11 @@ func _ready():
 		push_error(get_name()+"'s faction '"+faction+"' is invalid")
 
 func _process(delta): # physics logic
+	# PROBLEM_NOTE: \/ not sure why i did this
 	marked_enemies = []
+	if marked_enemies.size() > 0:
+		breakpoint
+	
 	if STATIC == true: return
 	
 	input_vector = input_vector.normalized() # diagonally is same speed as straight
@@ -65,7 +69,6 @@ func _process(delta): # physics logic
 func apply_force(force:Vector2):
 	velocity += force * FORCE_MULT
 
-# maybe should rename this to die()
 func death():
 	emit_signal("death")
 	queue_free()

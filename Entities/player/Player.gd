@@ -48,6 +48,7 @@ func _ready():
 		# PROBLEM_NOTE: this is inconsistant with other things in global.nodes, most are direct references
 		# instead of paths. it is a bit nessesarly for the player though, because the path is needed to check
 		# if the player still exists with get_node_or_null(). really glad is_instance_valid() doesn't work '-'
+		# i should use weakrefs
 	else:
 		health_bar.update_bar("", "")
 		health_bar.visible = true
@@ -141,6 +142,8 @@ func swapped_item(new_item):
 		held_item.reversed = false
 
 func death():
+	emit_signal("death")
+	
 	if force_death_msg == false:
 		yield(self, "updated_death_message")
 	
@@ -151,8 +154,6 @@ func death():
 			item.global_position = global_position
 			item.velocity = Vector2(rand_range(-1.0, 1.0), rand_range(-1.0, 1.0)).normalized() * 100
 			get_parent().call_deferred("add_child", item)
-	
-	emit_signal("death")
 	
 	if name == "player": 
 		var found_replacement = false

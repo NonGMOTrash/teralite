@@ -23,7 +23,7 @@ var level_deaths = {}
 var level_times = {}
 var ver_phase = "Beta"
 var ver_num = 2.13
-var ver_hotfix = 1
+var ver_hotfix = 2
 
 # for saving things
 const SAVE_DIR = "user://saves/"
@@ -144,8 +144,23 @@ const CURSOR_PISTOL = preload("res://UI/cursors/cursor_pistol.png")
 const CURSOR_BOW = preload("res://UI/cursors/cursor_bow.png")
 # PROBLEM_NOTE: not sure if i should do this ^
 
+signal update_item_info(current_item, extra_info, item_bar_max, item_bar_value, bar_timer_duration)
+signal update_item_bar(inventory)
+signal update_health()
+signal update_camera()
+signal paused()
+signal unpaused()
+
 func _ready():
 	seed(the_seed.hash())
+	var v: String
+	v = global.ver_phase + " " + str(global.ver_num)
+	if global.ver_hotfix > 0:
+		if global.ver_hotfix == 1:
+			v = v + " Hotfix"
+		else:
+			v = v + " Hotfix #" + str(global.ver_hotfix)
+	prints("teralite", v)
 	prints("seed:", the_seed)
 	prints("hashed seed:", the_seed.hash())
 	
@@ -162,6 +177,13 @@ func _ready():
 	
 	# debug stuffz:
 	Engine.time_scale = 1
+	if get_tree().current_scene.get_name() != "test_level":
+		get_tree().change_scene("res://Levels/test_level.tscn")
+
+func _process(_delta):
+	print("useless")
+	if randi() % 10 == 1:
+		set_process(false)
 
 # global functions
 func get_relation(me:Entity, other:Entity):
@@ -421,12 +443,3 @@ func update_cursor():
 			"Sword": Input.set_custom_mouse_cursor(CURSOR_SWORD, Input.CURSOR_ARROW, centered)
 			"Pistol": Input.set_custom_mouse_cursor(CURSOR_PISTOL, Input.CURSOR_ARROW, centered)
 			"Bow": Input.set_custom_mouse_cursor(CURSOR_BOW, Input.CURSOR_ARROW, centered)
-
-#all the global signals
-
-signal update_item_info(current_item, extra_info, item_bar_max, item_bar_value, bar_timer_duration)
-signal update_item_bar(inventory)
-signal update_health()
-signal update_camera()
-signal paused()
-signal unpaused()

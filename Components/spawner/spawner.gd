@@ -135,7 +135,7 @@ func spawn():
 				entity.global_position.direction_to(entity.get_global_mouse_position()).angle())
 	
 	if new_thing is Effect:
-		var sprite = new_thing.get_node(new_thing.sprite)
+		var sprite = new_thing.get_node(new_thing.sprite) as Sprite
 		
 		if sprite == null:
 			push_error("effect sprite could not be found")
@@ -147,7 +147,7 @@ func spawn():
 		sprite.hframes = effect_hframes
 		sprite.vframes = effect_vframes
 		
-		var my_sprite = entity.components["entity_sprite"]
+		var my_sprite = entity.components["entity_sprite"] as Sprite
 		if my_sprite != null and effect_inherit_flipping == true:
 			sprite.flip_h = my_sprite.flip_h
 			sprite.flip_v = my_sprite.flip_v

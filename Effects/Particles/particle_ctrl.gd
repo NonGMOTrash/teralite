@@ -2,7 +2,7 @@ extends Particles2D
 
 export var auto_start = true
 export var auto_free = true
-var max_lifetime = lifetime + lifetime * process_material.lifetime_randomness
+var max_lifetime = (lifetime + lifetime * process_material.lifetime_randomness) / speed_scale
 var stopping = false
 
 func _ready():

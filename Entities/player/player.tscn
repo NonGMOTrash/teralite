@@ -17,7 +17,6 @@
 [ext_resource path="res://Components/held_item/held_item.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Effects/Particles/dust_particles.tscn" type="PackedScene" id=17]
 
-
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 

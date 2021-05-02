@@ -104,7 +104,7 @@ func _on_idle_timer_timeout() -> void:
 			# however, i did fix the nav poly generation so that should pretty much fix this issue
 			# EDIT5: i am an idiot, it's because if there's no possible path it gets stuck in the while
 			# loop
-			# EDIT6: fixed the navpoyl generation btw
+			# EDIT6: fixed the navpoly generation btw
 		
 		if wander_path.size() > 1:
 			brain.get_parent().input_vector = global_position.direction_to(wander_path[1]).normalized()
@@ -138,7 +138,7 @@ func _on_wander_timer_timeout() -> void:
 	idle_timer.start()
 
 func awoken():
-	match int(rand_range(0, 1)):
+	match randi() % 2:
 		0:
 			idle_timer.start()
 			wander_timer.stop()
@@ -302,3 +302,9 @@ func _on_movement_timer_timeout() -> void:
 func debug(): 
 	if brain.get_parent().is_queued_for_deletion() == false:
 		emit_signal("debug")
+
+#var old_array = best_position_paths
+#func _process(_delta):
+#	if best_position_paths != old_array:
+#		prints("[%s]" % global.nodes["stopwatch"].time, old_array, "->", best_position_paths)
+#	old_array = best_position_paths

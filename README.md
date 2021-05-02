@@ -153,6 +153,10 @@ github is here: [private until full release]
 
 # Patchnotes
 
+#### Beta 2.13 Hotfix #2
+
+- fixed a common crash that sometimes happens when you are killed by a projectile
+
 #### Beta 2.13 Hotfix (4/27/2021)
 
 - fixed various issues with UI assets not loading and thus being broken

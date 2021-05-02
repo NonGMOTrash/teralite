@@ -45,6 +45,8 @@ func _physics_process(_delta):
 		global_position = SOURCE.global_position + RANGE * DIRECTION
 
 func death():
+	emit_signal("death")
+	
 	# recoil
 	if get_node_or_null(SOURCE_PATH) != null and SOURCE.is_queued_for_deletion() == false and recoiled == false:
 		SOURCE.apply_force(target_pos.direction_to(SOURCE.global_position).normalized() * RECOIL)

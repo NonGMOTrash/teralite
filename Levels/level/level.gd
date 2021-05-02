@@ -50,6 +50,7 @@ func _ready() -> void:
 func pathfind(start:Vector2, end:Vector2) -> PoolVector2Array:
 	#if start != get_closest_point(start):
 	#	return PoolVector2Array([])
+	
 	var true_end = get_closest_point(end)
 	
 	var path = get_simple_path(start, get_closest_point(end), true)
