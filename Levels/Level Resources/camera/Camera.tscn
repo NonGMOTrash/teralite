@@ -24,5 +24,6 @@ __meta__ = {
 
 [node name="duration" type="Timer" parent="."]
 one_shot = true
+
 [connection signal="timeout" from="frequency" to="." method="_on_frequency_timeout"]
 [connection signal="timeout" from="duration" to="." method="_on_duration_timeout"]

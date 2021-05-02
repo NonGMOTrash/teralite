@@ -77,7 +77,7 @@ func got_hit(body, _type):
 	var source = body.get_parent()
 	if source == self or brain.targets.has(source): return
 	if source is Attack: source = source.SOURCE
-	if source == null: return
+	if not source is Entity: return
 	if brain.targets.has(source) == true: return
 	
 	match global.get_relation(brain.get_parent(), source):

@@ -155,7 +155,10 @@ github is here: [private until full release]
 
 #### Beta 2.13 Hotfix #2
 
+- ported to godot 3.3
 - fixed a common crash that sometimes happens when you are killed by a projectile
+- disabled pixel snap, giving a smoother look (experimental)
+- enabled fallback to OpenGL 2.0 for older CPUs (experimental) 
 
 #### Beta 2.13 Hotfix (4/27/2021)
 

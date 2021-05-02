@@ -176,9 +176,9 @@ func _ready():
 	print("===============")
 	
 	# debug stuffz:
-	Engine.time_scale = 1
-	if get_tree().current_scene.get_name() != "test_level":
-		get_tree().change_scene("res://Levels/test_level.tscn")
+	#Engine.time_scale = 1
+	#if get_tree().current_scene.get_name() != "test_level":
+	#	get_tree().change_scene("res://Levels/test_level.tscn")
 
 func _process(_delta):
 	print("useless")

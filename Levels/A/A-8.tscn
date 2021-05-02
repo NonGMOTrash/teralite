@@ -30,7 +30,7 @@ position = Vector2( 246.909, 518.965 )
 thing = ExtResource( 5 )
 
 [node name="knight" parent="YSort" index="4" instance=ExtResource( 4 )]
-position = Vector2( 525.681, 426.787 )
+position = Vector2( 521.713, 421.231 )
 
 [node name="death_spawn2" parent="YSort/knight" index="12" instance=ExtResource( 3 )]
 thing = ExtResource( 6 )
