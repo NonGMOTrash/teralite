@@ -1,22 +1,3 @@
-# teralite
-
-helo thanks for downloading
-
-please don't share these files, i wanna keep this game sorta secret for now. if you violate this policy, i will do nothing except be very very sad.
-
-you can use an old save from a 1.X version, but levels have been changed and reordered so I recomend you just start over with a new save (besides, you'll only lose like 5 minutes of progress lol)
-
-also, you have to keep the .exe has to be in the same folder as the .pck or it won't work. if you want to have access to it somewhere else, just make a shortcut of the .exe file
-
-### restoring saves from pre-2.12 versions:
-due to the name change from project epsilon to teralite in beta 2.12, the game won't be able to find the folder where old save data is stored.    
-it's pretty easy to fix tho, just follow these steps:    
-#1: go to the search bar on windows and search %APPDATA% (should take you to a file folder)      
-#2: find the folder named "Project Epsilon" and rename it to "Teralite"   
-#3: if it asks you if you want to replace the folder that's already named Teralite, click Yes    
-#4: reopen teralite, and you should see your saves   
-(you can also just cut and paste the actual save files from Project Epsilon into Teralite)
-
                                                                                 
                                                                                 
                                    ###########                                  
@@ -49,6 +30,35 @@ it's pretty easy to fix tho, just follow these steps:
                                               ....                              
                                               ....                              
                                                                                 
+
+helo, thanks for downloading
+
+# info
+
+## can i share this game with other people?
+please don't, i wanna keep this game sorta secret for now. if you violate this policy, i will do nothing except be very very sad. however when the game is out, please share this game with EVERYONE. just constantly
+
+## can i use an old save from an old version?
+- all polish updates (+0.1 updates) should never break older saves		
+- using an old save from a 1.X version is possible, but i recomend you just start over with a new save
+- it will probably be a similar deal once 3.0 comes out but who knows
+
+(in the future, i'll add an ingame warning for versions that aren't compatiable with eachother)
+
+## when i try to open the game it says the .pck is missing
+the .exe has to be in the same folder as the .pck or it won't work. if you want to have access to the game somewhere else, just make a shortcut of the .exe file
+
+## i don't see particle effects
+if you're using a cpu with integrated graphics that doesn't support OpenGL 3, the game will fallback to OpenGL 2. this mostly works okay, although it is slower and particle effects won't work, sorry! (i might make a seperate version on the game that uses cpu-based particles, i'd be a hassle tho)
+
+## my saves list is empty even though i had a save from awhile ago
+due to the name change from project epsilon to teralite in beta 2.12, the game won't be able to find the folder where old save data is stored.    
+it's pretty easy to fix tho, just follow these steps:    
+#1: go to the search bar on windows and search %APPDATA% (should take you to a file folder)      
+#2: find the folder named "Project Epsilon" and rename it to "Teralite"   
+#3: if it asks you if you want to replace the folder that's already named Teralite, click Yes    
+#4: reopen teralite, and you should see your saves   
+(you can also just cut and paste the actual save files from Project Epsilon into Teralite)
 
 # credits
 
@@ -91,7 +101,12 @@ addtionally,
     Portions of this software are copyright ©2021 The FreeType Project (www.freetype.org). All rights reserved.
 
 ### font credits:
-the font used is "m6x11" by Daniel Linssen (twitter: @managore)		
+the font used is "m6x11" by Daniel Linssen			
+check out his stuff here:		
+- itch: https://managore.itch.io/	
+- twitter: https://twitter.com/Managore		
+- website: http://daniellinssen.net/
+- artwork: https://managore.tumblr.com/
 
 ### sound credits:
 
@@ -152,6 +167,11 @@ note that this is not the license for the engine, but rather the game itself (al
 github is here: [private until full release]
 
 # Patchnotes
+
+#### Beta 2.13 Hotfix #3
+
+- made the 2nd level easier (ur welcome nathan)
+- (half) fixed a hitbox bug with arrows
 
 #### Beta 2.13 Hotfix #2
 
@@ -303,7 +323,7 @@ github is here: [private until full release]
 
 - fixed the crash on the level Entrance
 
-## Beta 2.0: *Kings & Castles* (11/11/2020)
+## Beta 2.0 (11/11/2020)
 
 - added a new kingdom faction (knights, archers, rogues, and kings)
 - added the dash
@@ -322,7 +342,7 @@ github is here: [private until full release]
 - pistol does 2 damage again
 - a few sprite improvements
 
-### Beta 1.6 (originally posted on 10/4/2020)
+### Beta 1.6 (10/4/2020)
 
 - graphics overhaul, almost every sprite and tile has been redone
 - gold chasers work differently, they now have more health, no damage, and run away
@@ -373,7 +393,7 @@ github is here: [private until full release]
 - improved item pickup system
 - lots of miscellaneous fixes and improvements
 
-### Beta 1.1  (8/23/2020)
+### Beta 1.1 (8/23/2020)
 
 - major improvements to the sword, it is much less janky now
 - fixed a bug with the enemy AI that would severely stunt their reaction time
@@ -384,7 +404,7 @@ github is here: [private until full release]
 - gold chasers now drop gold hearts
 - other small miscellaneous fixes and improvements
 
-## Beta 1.0: (8/16/2020)
+## Beta 1.0 (8/16/2020)
 
 - initial soft release
 - 3 enemies (normal, brute, and gold chasers)

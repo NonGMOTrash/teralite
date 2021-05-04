@@ -32,16 +32,15 @@ visible = false
 position = Vector2( 0, 2.05111 )
 
 [node name="hitbox" parent="." index="4"]
+visible = true
 KNOCKBACK = 190
 
 [node name="hurtbox" parent="." index="5"]
+visible = true
 position = Vector2( 0, 2.05111 )
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 position = Vector2( 0, -2.05111 )
-
-[node name="entityPush" parent="." index="6"]
-visible = true
 
 [node name="CollisionShape2D" parent="entityPush" index="0"]
 position = Vector2( 0, 2.05111 )
@@ -53,8 +52,8 @@ general_springs = {
 "neutral": ""
 }
 
-[node name="death_effect_spawner" parent="." index="11"]
-effect_texture = ExtResource( 2 )
+[node name="healthBar" parent="." index="9"]
+visible = false
 
 [node name="gheart_drop" parent="." index="12" instance=ExtResource( 3 )]
 thing = ExtResource( 4 )

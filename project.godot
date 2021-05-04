@@ -335,4 +335,3 @@ file_logging/max_log_files=1
 
 quality/driver/fallback_to_gles2=true
 quality/dynamic_fonts/use_oversampling=false
-quality/2d/use_pixel_snap=false

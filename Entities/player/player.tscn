@@ -162,8 +162,8 @@ DAMAGE = 0
 [node name="sprite" parent="." instance=ExtResource( 6 )]
 material = SubResource( 1 )
 texture = ExtResource( 10 )
-hframes = 4
 vframes = 2
+hframes = 4
 frame = 2
 auto_flip_mode = 0
 
@@ -220,11 +220,12 @@ effect_vframes = 3
 [node name="foot_stepper" parent="." instance=ExtResource( 11 )]
 RATE = 0.0
 OFFSET = 0.0
-
 [connection signal="health_changed" from="stats" to="." method="_on_stats_health_changed"]
 [connection signal="got_hit" from="hurtbox" to="." method="_on_hurtbox_got_hit"]
 [connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown_timeout"]
 
 [editable path="hurtbox"]
+
 [editable path="entityPush"]
+
 [editable path="held_item"]
