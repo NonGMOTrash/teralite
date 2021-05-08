@@ -83,7 +83,7 @@ func _ready() -> void:
 		else:
 			push_error("spawner can't rotate_away_from_me because hurtbox was not found")
 
-func on_health_changed(_type, result):
+func on_health_changed(_type, result, _net):
 	match result:
 		"hurt": if spawn_on_hurt == true: spawn()
 		"block": if spawn_on_block == true: spawn()

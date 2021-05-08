@@ -116,7 +116,7 @@ func animate_overlay():
 	color_c.flip_h = flip_h
 	color_c.frame = frame
 
-func play_effect(_type, result):
+func play_effect(_type, result, _net):
 	var color_effect = color_a_effect
 	var texture_effect = texture_a_effect
 	if color_a_effect.is_playing() == true or texture_a_effect.is_playing() == true: 

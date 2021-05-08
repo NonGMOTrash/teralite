@@ -31,7 +31,7 @@ func _ready() -> void:
 	
 	stats.connect("health_changed", self, "spawn")
 
-func spawn(_type, result):
+func spawn(_type, result, _net):
 	if use_whitelist == false:
 		if types_list.has(result): return
 	else:

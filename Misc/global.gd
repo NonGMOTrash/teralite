@@ -340,7 +340,7 @@ func update_settings():
 				)
 	
 	var camera = global.nodes["camera"]
-	if camera == null: 
+	if not camera is Camera2D: 
 		push_warning("could not find camera")
 	else:
 		camera.smoothing_enabled = global.settings["smooth_camera"]
@@ -432,7 +432,7 @@ func update_cursor():
 	var pointer = Vector2.ZERO
 	var centered = Vector2(22.5, 22.5)
 	
-	if get_tree().paused == true or get_tree().current_scene.get_name() == "TitleScreen":
+	if get_tree().paused == true or get_tree().current_scene.get_name() == "title_screen":
 		Input.set_custom_mouse_cursor(CURSOR_NORMAL, Input.CURSOR_ARROW, pointer)
 	else:
 		match player.inventory[selection]:

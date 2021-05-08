@@ -8,7 +8,7 @@ const bleed = preload("res://Components/stats/status_effects/bleed/bleed.tscn")
 var duration_timers = []
 var effect_timers = []
 
-signal health_changed(type, result)
+signal health_changed(type, result, net)
 signal status_recieved(status)
 
 #stats
@@ -47,6 +47,7 @@ func change_health(value, true_value, type: String = "hurt") -> String:
 	var true_amount = true_value
 	var sum = amount + true_amount
 	var result_type = type
+	var net: int
 	
 	# PROBLEM_NOTE: i can probably do this same calculation with a lot less loops. try it maybe
 	
@@ -67,6 +68,7 @@ func change_health(value, true_value, type: String = "hurt") -> String:
 			reset_armor = true
 		
 		sum = amount + true_amount
+		net = sum
 		
 		if sum == 0: 
 			match type:
@@ -107,7 +109,7 @@ func change_health(value, true_value, type: String = "hurt") -> String:
 		global.emit_signal("update_health")
 	
 	if result_type != "":
-		emit_signal("health_changed", type, result_type)
+		emit_signal("health_changed", type, result_type, net)
 		return result_type
 	else:
 		return ""

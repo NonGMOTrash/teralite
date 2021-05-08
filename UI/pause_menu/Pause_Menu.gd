@@ -64,7 +64,7 @@ func _on_return_to_pressed() -> void:
 				sound.free()
 				break
 		
-		get_tree().change_scene_to(load("res://UI/title_screen/TitleScreen.tscn"))
+		get_tree().change_scene_to(load("res://UI/title_screen/title_screen.tscn"))
 	else: 
 		get_tree().change_scene_to(load("res://Levels/A/A_hub.tscn")) 
 		# PROBLEM_NOTE: this ^^ won't work with multiple hubs

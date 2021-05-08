@@ -19,7 +19,6 @@ tracks/0/keys = {
 }
 
 [node name="level_completed" type="ColorRect"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
@@ -109,7 +108,7 @@ margin_bottom = 16.0
 size_flags_horizontal = 3
 text = "1:23.4"
 
-[node name="health" type="HBoxContainer" parent="area/stats"]
+[node name="damage" type="HBoxContainer" parent="area/stats"]
 margin_top = 32.0
 margin_right = 230.0
 margin_bottom = 48.0
@@ -120,22 +119,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="label" type="Label" parent="area/stats/health"]
+[node name="label" type="Label" parent="area/stats/damage"]
 margin_right = 110.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
-text = "Health"
+text = "Damage"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VSeparator" type="VSeparator" parent="area/stats/health"]
+[node name="VSeparator" type="VSeparator" parent="area/stats/damage"]
 margin_left = 114.0
 margin_right = 115.0
 margin_bottom = 16.0
 
-[node name="value" type="Label" parent="area/stats/health"]
+[node name="value" type="Label" parent="area/stats/damage"]
 margin_left = 119.0
 margin_right = 230.0
 margin_bottom = 16.0

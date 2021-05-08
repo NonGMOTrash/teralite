@@ -3,7 +3,7 @@ extends Entity
 export(PackedScene) var dust_particles
 export(PackedScene) var player_death
 
-var perfect = true
+var damage_taken = 0
 var death_message: String = ";-;"
 
 export var dash_strength = 300
@@ -220,13 +220,15 @@ func death():
 	
 	queue_free()
 
-func _on_stats_health_changed(_type, result) -> void:
+func _on_stats_health_changed(_type, result, net) -> void:
 	if result != "heal" and result != "blocked": 
 		if result == "hurt" and name == "player":
 			global.nodes["camera"].shake(5, 15, 0.2)
 			OS.delay_msec(34)
 		
-		perfect = false
+		if net < 0:
+			damage_taken += abs(net)
+		
 		if global.settings["perfection_mode"] == true: 
 			death()
 	

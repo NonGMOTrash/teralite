@@ -4,7 +4,7 @@ const A_HUB = "res://Levels/A/A_hub.tscn"
 
 onready var header = $area/header/label
 onready var time = $area/stats/time/value
-onready var health = $area/stats/health/value
+onready var damage = $area/stats/damage/value
 
 onready var lvl = get_tree().current_scene.name
 
@@ -48,12 +48,15 @@ func start():
 	header.text = "%s Completed" % level_name
 	
 	if get_player() == null:
-		health.text = "0"
+		damage.text = "? (this is a bug, pls report)"
 	else:
-		var p_stats = get_player().components["stats"]
-		health.text = str(
-			((p_stats.HEALTH + p_stats.BONUS_HEALTH) / (p_stats.MAX_HEALTH + 0.0)) * 100
-		) + "%"
+		#var p_stats = get_player().components["stats"]
+		#damage.text = str(
+		#	((p_stats.HEALTH + p_stats.BONUS_HEALTH) / (p_stats.MAX_HEALTH + 0.0)) * 100
+		#) + "%"
+		damage.text = str(get_player().damage_taken)
+		if damage.text == "0":
+			damage.set("custom_colors/font_color", Color8(242, 211, 53))
 	
 	var time_value = global.nodes["stopwatch"].time
 	var minute = int(floor(time_value / 60))
@@ -70,6 +73,9 @@ func start():
 		"." +
 		str(tenth)
 		)
+	if global.level_times.has(lvl):
+		if time_value < global.level_times[lvl]:
+			time.set("custom_colors/font_color", Color8(242, 211, 53))
 
 func _input(_event):
 	if Input.is_action_just_pressed("interact") and visible == true:
@@ -83,7 +89,7 @@ func _input(_event):
 		if (
 			not global.perfected_levels.has(lvl) 
 			and get_player() != null
-			and get_player().perfect == true
+			and get_player().damage_taken == 0
 			): 
 				global.perfected_levels.push_back(str(lvl))
 		

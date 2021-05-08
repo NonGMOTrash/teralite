@@ -28,4 +28,3 @@ func set_data():
 		"red_spikes": get_used_cells_by_id(31),
 		"diamond_spikes": get_used_cells_by_id(32)
 	}
-

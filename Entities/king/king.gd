@@ -33,7 +33,7 @@ func summon():
 	
 	cooldown.start()
 
-func _on_stats_health_changed(_type, _result) -> void:
+func _on_stats_health_changed(_type, _result, _net) -> void:
 	if stats.HEALTH < stats.MAX_HEALTH / 2:
 		# anger
 		cooldown.wait_time = cooldown_time / 1.5

@@ -21,7 +21,8 @@ func _ready(): # converts tiles to their respective scenes
 			data[data.keys()[i]] = get_used_cells_by_id(data.values()[i])
 	
 	for i in data.keys().size():
-		convertTile(data.values()[i], data.keys()[i])
+		if data.values()[i].size() > 0:
+			convertTile(data.values()[i], data.keys()[i])
 	
 	clear() #remove all the tiles
 

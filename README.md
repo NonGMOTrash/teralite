@@ -31,18 +31,17 @@
                                               ....                              
                                                                                 
 
-helo, thanks for downloading
+helo, thanks for downloading	
 
 # info
 
 ## can i share this game with other people?
-please don't, i wanna keep this game sorta secret for now. if you violate this policy, i will do nothing except be very very sad. however when the game is out, please share this game with EVERYONE. just constantly
+please don't, i wanna keep this game sorta secret for now. if you violate this policy, i will do abesolutely nothing except be very very sad. however when the game is out, please share this game with EVERYONE. just constantly
 
-## can i use an old save from an old version?
-- all polish updates (+0.1 updates) should never break older saves		
+## can i use a save from an old version?
+- all polish updates (+0.1 updates) should work fine with old saves		
 - using an old save from a 1.X version is possible, but i recomend you just start over with a new save
 - it will probably be a similar deal once 3.0 comes out but who knows
-
 (in the future, i'll add an ingame warning for versions that aren't compatiable with eachother)
 
 ## when i try to open the game it says the .pck is missing
@@ -52,12 +51,12 @@ the .exe has to be in the same folder as the .pck or it won't work. if you want 
 if you're using a cpu with integrated graphics that doesn't support OpenGL ES 3, the game will fallback to OpenGL ES 2. this mostly works okay, although the game will run slower and particle effects won't work, sorry! (i might make a seperate version on the game that uses cpu-based particles, i'd be a hassle tho so won't happen til the full release if at all)
 
 ## my saves list is empty even though i had a save from awhile ago
-due to the name change from project epsilon to teralite in beta 2.12, the game won't be able to find the folder where old save data is stored.    
+due to the name change from project epsilon to teralite in beta 2.12, the game won't be able to find the folder where old game data was stored.    
 it's pretty easy to fix tho, just follow these steps:    
-#1: go to the search bar on windows and search %APPDATA% (should take you to a file folder)      
-#2: find the folder named "Project Epsilon" and rename it to "Teralite"   
-#3: if it asks you if you want to replace the folder that's already named Teralite, click Yes    
-#4: reopen teralite, and you should see your saves   
+1. go to the search bar on windows and search %APPDATA% (should take you to a file folder)      
+2. find the folder named "Project Epsilon" and rename it to "Teralite"   
+3. if it asks you if you want to replace the folder that's already named Teralite, click Yes    
+4. reopen teralite, and you should see your saves   
 (you can also just cut and paste the actual save files from Project Epsilon into Teralite)
 
 # credits
@@ -169,6 +168,8 @@ github is here: [private until full release]
 ### Beta 2.14
 
 - much better level completion screen
+- added weapons to the level Caged making it much easier
+- fixed sword hitboxes (it didn't even go to the tip of the blade before lel)
 - fixed death messages being a little broken with multiple players
 
 #### Beta 2.13 Hotfix #3 (5/2/2021)
