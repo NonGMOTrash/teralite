@@ -233,7 +233,7 @@ func _on_think_timer_timeout() -> void:
 	
 	# search get_overlapping_bodies() for new targets
 	for body in sight.get_overlapping_bodies():
-		if body is Entity and body.get_name() != "WorldTiles" and not targets.has(body):
+		if body is Entity and body.get_name() != "world_tiles" and not targets.has(body):
 			# original was if (body) == true:
 			if body.is_queued_for_deletion() == false:
 				add_target(body)

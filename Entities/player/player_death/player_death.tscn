@@ -66,8 +66,8 @@ tracks/1/keys = {
 [node name="player_death" type="Sprite"]
 pause_mode = 2
 texture = ExtResource( 1 )
-vframes = 2
 hframes = 4
+vframes = 2
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -101,4 +101,5 @@ __meta__ = {
 
 [node name="sound" parent="." instance=ExtResource( 5 )]
 stream = ExtResource( 4 )
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

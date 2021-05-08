@@ -48,8 +48,8 @@ please don't, i wanna keep this game sorta secret for now. if you violate this p
 ## when i try to open the game it says the .pck is missing
 the .exe has to be in the same folder as the .pck or it won't work. if you want to have access to the game somewhere else, just make a shortcut of the .exe file
 
-## i don't see particle effects
-if you're using a cpu with integrated graphics that doesn't support OpenGL 3, the game will fallback to OpenGL 2. this mostly works okay, although it is slower and particle effects won't work, sorry! (i might make a seperate version on the game that uses cpu-based particles, i'd be a hassle tho)
+## i don't see some particle effects
+if you're using a cpu with integrated graphics that doesn't support OpenGL ES 3, the game will fallback to OpenGL ES 2. this mostly works okay, although the game will run slower and particle effects won't work, sorry! (i might make a seperate version on the game that uses cpu-based particles, i'd be a hassle tho so won't happen til the full release if at all)
 
 ## my saves list is empty even though i had a save from awhile ago
 due to the name change from project epsilon to teralite in beta 2.12, the game won't be able to find the folder where old save data is stored.    
@@ -65,18 +65,21 @@ it's pretty easy to fix tho, just follow these steps:
 ### developer:
 
 NonGMOTrash
+- itch: nongmotrash.itch.io
+- email: nongmotrash@gmail.com
+- discord: NonGMOTrash#9437
 
 ### play testers:
 
 you!    
 will add all the people later   
-(you'll be in the credits of the game itself to)    
+(you'll be in the credits of the game itself aswell)    
 
 ### engine:
 
 teralite was created with the Godot Engine, it's license reads as follows:
 
-    Copyright (c) 2007-2020 Juan Linietsky, Ariel Manzur. Copyright (c) 2014-2020 Godot Engine contributors.
+    Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur. Copyright (c) 2014-2021 Godot Engine contributors.
     
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -140,45 +143,45 @@ check out his stuff here:
 
 thank you all for letting me legally steal your hard work to use in my game <3
 
-# license information
+# license info
 
-note that this is not the license for the engine, but rather the game itself (although they both use the MIT license)
+note that this is not the license for the engine, but rather the game itself
 
     Copyright (c) 2021 NonGMOTrash
     
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-    
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-    
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
+        This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 github is here: [private until full release]
 
 # Patchnotes
 
-#### Beta 2.13 Hotfix #3
+### Beta 2.14
+
+- much better level completion screen
+- fixed death messages being a little broken with multiple players
+
+#### Beta 2.13 Hotfix #3 (5/2/2021)
 
 - made the 2nd level easier (ur welcome nathan)
 - (half) fixed a hitbox bug with arrows
 
-#### Beta 2.13 Hotfix #2
+#### Beta 2.13 Hotfix #2 (5/2/2021)
 
 - ported to godot 3.3
 - fixed a common crash that sometimes happens when you are killed by a projectile
-- disabled pixel snap, giving a smoother look (experimental)
-- enabled fallback to OpenGL 2.0 for older CPUs (experimental) 
+- disabled pixel and GPU snap, intended to reduce jitter (experimental)
+- enabled fallback to OpenGL ES 2.0 for older systems (experimental) 
 
 #### Beta 2.13 Hotfix (4/27/2021)
 

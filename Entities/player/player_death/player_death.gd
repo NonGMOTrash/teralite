@@ -23,8 +23,8 @@ func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
 		$AnimationPlayer.play("dissappear")
 		label.visible = false
 		return
-	
-	label.visible = true
+	else:
+		label.visible = true
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
@@ -34,5 +34,5 @@ func _process(_delta):
 	# PROBLEM_NOTE: this is kinda bad because it's checked every frame
 	if global.nodes["pause_menu"].visible == true:
 		label.visible = false
-	else:
+	elif simple_mode == false:
 		label.visible = true

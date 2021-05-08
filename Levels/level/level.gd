@@ -18,7 +18,7 @@ func _ready() -> void:
 	global.nodes["level"] = self
 	global.nodes["canvaslayer"] = $CanvasLayer
 	global.nodes["ysort"] = $YSort
-	global.nodes["background"] = $Background
+	global.nodes["background"] = $background
 	global.nodes["background_tiles"] = $YSort/background_tiles
 	
 	if global.last_ambiance == AMBIANCE: return

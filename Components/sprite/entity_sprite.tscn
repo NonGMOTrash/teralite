@@ -37,4 +37,5 @@ visible = false
 
 [node name="texture_overlay_c" parent="." instance=ExtResource( 4 )]
 visible = false
+
 [connection signal="tree_entered" from="." to="." method="_on_entity_sprite_tree_entered"]

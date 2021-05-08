@@ -1,13 +1,29 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://UI/Themes/general_theme.tres" type="Theme" id=1]
 [ext_resource path="res://UI/level_completed/level_completed.gd" type="Script" id=2]
 
+[sub_resource type="Animation" id=1]
+resource_name = "animation"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="level_completed" type="ColorRect"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
-color = Color( 0, 0, 0, 1 )
+color = Color( 0, 0, 0, 0.705882 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -146,3 +162,6 @@ margin_right = 230.0
 margin_bottom = 21.0
 text = "Press [E] to proceed."
 align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/animation = SubResource( 1 )

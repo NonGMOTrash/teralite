@@ -211,7 +211,7 @@ func death():
 				element.visible = false
 	
 	var my_death = player_death.instance()
-	if name == "player":
+	if name == "player" and global.nodes["level_completed"].visible == false:
 		my_death.simple_mode = false
 	my_death.flip_h = sprite.flip_h
 	my_death.death_message = death_message

@@ -26,11 +26,12 @@ var ver_num = 2.13
 var ver_hotfix = 3
 
 # for saving things
-const SAVE_DIR = "user://saves/"
-var save_name = "untitled save"
+const SAVE_DIR := "user://saves/"
+var save_name: String = "untitled save"
 var save_path = SAVE_DIR + save_name
 var saves = []
 
+# PROBLEM_NOTE: make this a class for better autocomplete
 var nodes = {
 	"level": null,
 	"player": null,
@@ -45,7 +46,8 @@ var nodes = {
 	"world_tiles": null,
 	"background_tiles": null,
 	"background": null,
-	"navigation": null
+	"navigation": null,
+	"level_completed": null,
 }
 
 # PROBLEM_NOTE: rename settings to options
@@ -179,11 +181,6 @@ func _ready():
 	#Engine.time_scale = 1
 	#if get_tree().current_scene.get_name() != "test_level":
 	#	get_tree().change_scene("res://Levels/test_level.tscn")
-
-func _process(_delta):
-	print("useless")
-	if randi() % 10 == 1:
-		set_process(false)
 
 # global functions
 func get_relation(me:Entity, other:Entity):

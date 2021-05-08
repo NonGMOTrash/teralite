@@ -74,7 +74,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 # i really need to figure out how function inheiritance works
 func _on_collision_body_entered(body: Node) -> void:
 	if visible == false: return
-	if body.get_name() == "WorldTiles":
+	if body.get_name() == "world_tiles":
 		if COLLIDE_SOUND != null:
 			var sfx = Sound.new()
 			sfx.stream = COLLIDE_SOUND

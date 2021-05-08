@@ -45,7 +45,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 1/shapes = [  ]
 1/z_index = 0
 
-[node name="WorldTiles" type="TileMap"]
+[node name="world_tiles" type="TileMap"]
 process_priority = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
@@ -63,4 +63,5 @@ tile_set = SubResource( 3 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 65541, 0, 0, 65542, 0, 0, 65543, 1, 0, 65544, 1, 0, 65545, 1, 0 )
+
 [connection signal="tree_entered" from="." to="." method="_on_WorldTiles_tree_entered"]

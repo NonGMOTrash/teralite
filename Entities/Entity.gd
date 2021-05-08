@@ -14,7 +14,7 @@ var input_vector = Vector2.ZERO
 export var truName = ""
 export var faction = ""
 
-var marked_enemies = []
+var marked_enemies: Array = []
 
 var components = { # PROBLEM_NOTE, this doesn't support duplicate components but whatever
 	"brain": null,
@@ -37,6 +37,9 @@ var components = { # PROBLEM_NOTE, this doesn't support duplicate components but
 }
 
 signal death()
+
+func _init():
+	add_to_group("entity", true)
 
 func _ready():
 	global_position.y -= 0.02
