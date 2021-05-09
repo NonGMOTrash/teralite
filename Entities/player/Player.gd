@@ -149,7 +149,7 @@ func death():
 	
 	for i in 6:
 		if inventory[i] != null:
-			var item = global.aquire(inventory[i])
+			var item = res.aquire(inventory[i]).instance()
 			item.SOURCE = self
 			item.global_position = global_position
 			item.velocity = Vector2(rand_range(-1.0, 1.0), rand_range(-1.0, 1.0)).normalized() * 100

@@ -1,5 +1,7 @@
 extends Thinker
 
+const ARROW = preload("res://Entities/Attacks/Projectile/arrow/arrow.tscn")
+
 export var max_charge_time = 1.2
 export var min_charge_time = 0.5
 export var cooldown_time = 0.2
@@ -95,7 +97,7 @@ func primary():
 	buffering_shot = false
 	buffer.stop()
 	
-	var arrow = global.aquire("Arrow")
+	var arrow = ARROW.instance()
 	var charge_percent =  abs(charge.time_left - max_charge_time) / max_charge_time * 100.0
 	var damage = 0
 	if charge_percent > 15: damage += 1

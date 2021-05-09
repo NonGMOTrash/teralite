@@ -1,5 +1,7 @@
 extends Entity
 
+const GHEART = preload("res://Entities/Item_Pickups/gold_heart/gold_heart.tscn")
+
 onready var sprite = $sprite
 
 func death():
@@ -8,7 +10,7 @@ func death():
 	# PROBLEM_NOTE: only gold chaser should have this, the brute and normal chaser should just have Entity.gd
 	# also i should probably just use a death_spawn component instead of a script
 	if sprite.texture.get_path() == "res://Graphics/Sprites/Entities/gold chaser.png":
-		var gheart = global.aquire("Gold_Heart")
+		var gheart = res.aquire("Gold_Heart")
 		gheart.global_position = global_position
 		
 		get_parent().call_deferred("add_child", gheart)

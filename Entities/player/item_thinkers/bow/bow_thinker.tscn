@@ -3,7 +3,7 @@
 [ext_resource path="res://Entities/player/item_thinkers/bow/bow_thinker.gd" type="Script" id=1]
 [ext_resource path="res://UI/cursors/cursor_bow.png" type="Texture" id=2]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Entities/Items Pickups/bow/bow.png" type="Texture" id=4]
+[ext_resource path="res://Entities/Item_Pickups/bow/bow.png" type="Texture" id=4]
 
 [node name="bow_thinker" type="Node"]
 script = ExtResource( 1 )

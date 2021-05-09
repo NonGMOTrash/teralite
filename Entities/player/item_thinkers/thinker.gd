@@ -28,6 +28,7 @@ onready var sound_player = $sound_player
 
 var bar_max = 0.0
 var bar_value = 0.0
+var item_scene = res.aquire(my_item)
 
 # maybe make this a global signal??
 signal update_ui(bar_max, bar_value, info_string)
@@ -72,7 +73,7 @@ func _input(_event: InputEvent):
 	
 	if Input.is_action_pressed("drop_item"):
 		if get_parent().inventory[global.selection] == null: return
-		var newItemEntity = global.aquire(my_item)
+		var newItemEntity = res.aquire(my_item)
 		
 		if newItemEntity == null: return
 		var dir_vector = get_parent().global_position.direction_to(get_parent().get_global_mouse_position())
@@ -176,7 +177,7 @@ func reload():
 		get_parent().components["held_item"].animation.play(RELOAD_ANIM)
 
 func _quick_spawn(attack:String, type:String):
-	var new_attack = global.aquire(attack)
+	var new_attack = res.aquire(attack).instance()
 	new_attack.setup(get_parent(), get_parent().get_global_mouse_position())
 	get_parent().get_parent().call_deferred("add_child", new_attack)
 

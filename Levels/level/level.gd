@@ -47,7 +47,6 @@ func _ready() -> void:
 	global.add_child(ambiance)
 	global.nodes["ambiance"] = ambiance
 
-
 func pathfind(start:Vector2, end:Vector2) -> PoolVector2Array:
 	#if start != get_closest_point(start):
 	#	return PoolVector2Array([])

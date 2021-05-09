@@ -11,6 +11,9 @@ var old_player_pos = null
 var power = 0
 var priority = -99
 
+func _on_camera_tree_entered() -> void:
+	global.nodes["camera"] = self
+
 func _ready():
 	global.nodes["camera"] = self
 	

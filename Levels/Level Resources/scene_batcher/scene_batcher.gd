@@ -29,7 +29,7 @@ func _ready(): # converts tiles to their respective scenes
 func convertTile(tiles, thingName): # deletes the tile and places the entity
 	var tilePos
 	for i in range(0, tiles.size()):
-		var newEntity = global.aquire(thingName)
+		var newEntity = res.aquire(thingName).instance()
 		tilePos = map_to_world(tiles[i])
 		newEntity.set_position(Vector2(tilePos.x + 8, tilePos.y + 8))
 		ysort.call_deferred("add_child", newEntity)

@@ -251,7 +251,7 @@ func _on_think_timer_timeout() -> void:
 func spawn_effect(effect: String, pos: Vector2):
 	if effect_cooldown.time_left != 0: return
 	
-	var new_effect = global.aquire(effect)
+	var new_effect = res.aquire_effect(effect)
 	if not new_effect is Effect:
 		push_warning("effect was invalid")
 		return

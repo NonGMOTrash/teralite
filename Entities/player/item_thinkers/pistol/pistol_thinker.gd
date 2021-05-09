@@ -13,6 +13,7 @@ func _ready() -> void:
 	cooldown.wait_time = cooldown_time
 	reload.wait_time = reload_time
 	#cooldown.start()
+	res.allocate("bullet")
 
 func _on_reload_timeout() -> void:
 	ammo = max_ammo
@@ -55,7 +56,7 @@ func primary():
 		if ammo <= 0 && reload.time_left == 0: reload()
 		return
 	
-	_quick_spawn("Bullet", "projectile")
+	_quick_spawn("bullet", "projectile")
 	ammo -= 1
 	cooldown.start()
 	reload.stop()

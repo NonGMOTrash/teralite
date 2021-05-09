@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Levels/Level Resources/world_tiles/WorldTiles.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Levels/Level Resources/background/Background.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Levels/Level Resources/camera/Camera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/Level Resources/background/background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/Level Resources/camera/camera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/star_counter/star_counter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/pause_menu/pause_menu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/hub/hub.gd" type="Script" id=6]

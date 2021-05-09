@@ -1,5 +1,9 @@
 extends Entity
 
+const KNIGHT = preload("res://Entities/knight/knight.tscn")
+const ARCHER = preload("res://Entities/archer/archer.tscn")
+const ROGUE = preload("res://Entities/knight/rogue/rogue.tscn")
+
 onready var stats = $stats
 onready var cooldown = $cooldown
 onready var animation = $AnimationPlayer
@@ -22,9 +26,9 @@ func summon():
 		var guard
 		
 		match stored_input:
-			"knight": guard = global.aquire("Knight")
-			"archer": guard = global.aquire("Archer")
-			"rogue": guard = global.aquire("Rogue")
+			"knight": guard = KNIGHT.instance()
+			"archer": guard = ARCHER.instance()
+			"rogue": guard = ROGUE.instance()
 		
 		guard.marked_enemies = marked_enemies
 		get_parent().call_deferred("add_child", guard)

@@ -60,66 +60,6 @@ var settings = {
 	"volume": 0.50,
 }
 
-var preloads = {
-	#entities:
-	"player": "res://Entities/player/player.tscn",
-	"spikes": "res://Entities/spikes/spikes.tscn",
-	"spikes_offset": "res://Entities/spikes/spikes_offest/spikes_offset.tscn",
-	"chaser": "res://Entities/chaser/chaser.tscn",
-	"brute_chaser": "res://Entities/chaser/brute_chaser/Brute_Chaser.tscn",
-	"gold_chaser": "res://Entities/chaser/gold_chaser/Gold_Chaser.tscn",
-	"crate": "res://Entities/crate/Crate.tscn",
-	"fire": "res://Entities/fire/fire.tscn",
-	"timber_box": "res://Entities/fire/timber_pot/timber_pot.tscn",
-	"unlite_timber_box": "res://Entities/fire/timber_pot/unlite_timber_pot/unlite_timber_pot.tscn",
-	"specter": "res://Entities/specter/specter.tscn",
-	"knight": "res://Entities/knight/knight.tscn",
-	"archer": "res://Entities/archer/archer.tscn",
-	"rogue": "res://Entities/knight/rogue/rogue.tscn",
-	"king": "res://Entities/king/king.tscn",
-	"ultra_chaser": "res://Entities/chaser/ultra_chaser/ultra_chaser.tscn",
-	"red_spikes": "res://Entities/spikes/red_spikes/red_spikes.tscn",
-	"diamond_spikes": "res://Entities/spikes/red_spikes/diamond_spikes/diamond_spikes.tscn",
-	
-	#items:
-	"pistol": "res://Entities/Items Pickups/pistol/pistol.tscn",
-	"white_armor": "res://Entities/Items Pickups/white_armor/white armor.tscn",
-	"sword": "res://Entities/Items Pickups/sword/sword.tscn",
-	"gold_heart": "res://Entities/Items Pickups/gold_heart/gold heart.tscn",
-	"heart": "res://Entities/Items Pickups/heart/heart.tscn",
-	"star": "res://Entities/Items Pickups/star/star.tscn",
-	"bow": "res://Entities/Items Pickups/bow/bow.tscn",
-	
-	#things:
-	"bullet": "res://Entities/Attacks/Projectile/small_bullet/small_bullet.tscn",
-	"slash": "res://Entities/Attacks/Melee/slash/slash.tscn",
-	"stab": "res://Entities/Attacks/Melee/stab/stab.tscn",
-	"arrow": "res://Entities/Attacks/Projectile/arrow/arrow.tscn",
-	
-	#effects:
-	"hit_effect": "res://Effects/hit_effect/hit_effect.tscn",
-	"item_pickup_effect": "res://Effects/item_pickup_effect/item_pickup_effect.tscn",
-	"exclaimation": "res://Effects/exclaimation/exclaimation.tscn",
-	"question": "res://Effects/question/question.tscn",
-	"chaser_death": "res://Effects/death_effects/chaser_death_effect.tscn",
-	"brute_chaser_death": "res://Effects/death_effects/brute_chaser_death_effect.tscn",
-	"gold_chaser_death": "res://Effects/death_effects/gold_chaser_death_effect.tscn",
-	"ultra_chaser_death": "res://Effects/death_effects/ultra_chaser_death_effect.tscn",
-	"knight_death":"res://Effects/death_effects/knight_death_effect.tscn",
-	"archer_death": "res://Effects/death_effects/archer_death_effect.tscn",
-	"rogue_death": "res://Effects/death_effects/rogue_death_effect.tscn",
-	"king_death": "res://Effects/death_effects/king_death_effect.tscn",
-	
-	#props
-	"maple_tree1": "res://Props/maple_tree1/maple_tree1.tscn",
-	"maple_tree2": "res://Props/maple_tree2/maple_tree2.tscn",
-	"maple_tree3": "res://Props/maple_tree3/maple_tree3.tscn",
-	"tree_stump": "res://Props/tree_stump/tree_stump.tscn",
-	"banner": "res://Props/banner/banner.tscn",
-	"flag": "res://Props/flag/flag.tscn",
-	"torch": "res://Props/torch/torch.tscn",
-}
-
 # should move this and get_relation to Entity.gd probably
 var faction_relationships = {
 	"player": 
@@ -196,14 +136,6 @@ func get_relation(me:Entity, other:Entity):
 	if me.marked_enemies.has(other): relation = "hostile"
 	
 	return relation
-
-func aquire(asset:String):
-	#overwrites paths with the packed scene
-	if preloads.get(asset.to_lower()) is String:
-		preloads[asset.to_lower()] = load(preloads.get(asset.to_lower()))
-	
-	#finished
-	return preloads.get(asset.to_lower()).instance()
 
 func get_empty_save_data():
 	return {

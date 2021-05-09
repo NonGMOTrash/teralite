@@ -13,10 +13,10 @@ const ITEM_BAR_0 = preload("res://UI/item_bar/item_bar_0.png")
 const ITEM_BAR_1 = preload("res://UI/item_bar/item_bar_1.png")
 const ITEM_BAR_2 = preload("res://UI/item_bar/item_bar_2.png")
 
-const PISTOL = preload("res://Entities/Items Pickups/pistol/pistol.png")
-const WHITE_ARMOR = preload("res://Entities/Items Pickups/white_armor/white_armor.png")
-const SWORD = preload("res://Entities/Items Pickups/sword/sword.png")
-const BOW = preload("res://Entities/Items Pickups/bow/bow.png")
+const PISTOL = preload("res://Entities/Item_Pickups/pistol/pistol.png")
+const WHITE_ARMOR = preload("res://Entities/Item_Pickups/white_armor/white_armor.png")
+const SWORD = preload("res://Entities/Item_Pickups/sword/sword.png")
+const BOW = preload("res://Entities/Item_Pickups/bow/bow.png")
 
 func _ready():
 	global.nodes["item_bar"] = self

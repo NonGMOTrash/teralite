@@ -1,5 +1,7 @@
 extends Entity
 
+const ARROW = preload("res://Entities/Attacks/Projectile/arrow/arrow.tscn")
+
 onready var attack_cooldown = $attack_cooldown
 onready var sprite = $sprite
 onready var brain = $brain
@@ -23,7 +25,7 @@ func attack():
 	else: 
 		pos = global_position + (input_vector * 5) + Vector2(rand_range(-0.1, 0.1), rand_range(-0.1, 0.1))
 	
-	var arrow = global.aquire("Arrow")
+	var arrow = ARROW.instance()
 	arrow.setup(self, pos)
 	get_parent().add_child(arrow)
 	attack_cooldown.start()

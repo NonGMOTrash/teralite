@@ -13,7 +13,7 @@
 [ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Entities/knight/rogue/rogue.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Entities/knight/knight.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Entities/Items Pickups/star/star.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Entities/Item_Pickups/star/star.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Entities/archer/archer.tscn" type="PackedScene" id=15]
 
 [sub_resource type="ShaderMaterial" id=1]

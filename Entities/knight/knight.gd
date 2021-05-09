@@ -1,5 +1,7 @@
 extends Entity
 
+const SLASH = preload("res://Entities/Attacks/Melee/slash/slash.tscn")
+
 onready var attack_cooldown = $attack_cooldown
 onready var brain = $brain
 onready var animation = $AnimationPlayer
@@ -15,7 +17,7 @@ func attack():
 	if not closest_target is String: 
 		target_pos = closest_target.global_position
 	
-	var slash = global.aquire("Slash")
+	var slash = SLASH.instance()
 	slash.setup(self, target_pos)
 	add_child(slash) 
 	slash.SOURCE_PATH = self.get_path()

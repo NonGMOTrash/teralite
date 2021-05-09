@@ -50,7 +50,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 func _on_spread_timeout() -> void:
 	if fuel.time_left < 4: return
 	
-	var new_fire = global.aquire("Fire")
+	var new_fire = self.duplicate()
 	new_fire.global_position = global_position
 	new_fire.velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() * 125
 	

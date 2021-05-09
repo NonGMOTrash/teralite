@@ -39,7 +39,7 @@ func spawn(_type, result, _net):
 	
 	if rand_range(1, 100) <= percent_chance: #spawn entity
 		
-		var new_entity = global.aquire(spawn_entity)
+		var new_entity = res.aquire(spawn_entity).instance()
 		
 		new_entity.global_position = get_parent().global_position
 		

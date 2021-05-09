@@ -6,6 +6,7 @@ onready var cooldown = $cooldown
 
 func _ready() -> void:
 	cooldown.wait_time = cooldown_time
+	res.allocate("slash")
 
 func get_ready():
 	if cooldown.time_left > 0:

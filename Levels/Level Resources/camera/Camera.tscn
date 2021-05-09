@@ -2,9 +2,8 @@
 
 [ext_resource path="res://Levels/Level Resources/camera/camera.gd" type="Script" id=1]
 
-[node name="Camera" type="Camera2D"]
+[node name="camera" type="Camera2D"]
 current = true
-process_mode = 0
 limit_left = 0
 limit_top = 0
 limit_right = 1000
@@ -25,5 +24,6 @@ __meta__ = {
 [node name="duration" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="tree_entered" from="." to="." method="_on_camera_tree_entered"]
 [connection signal="timeout" from="frequency" to="." method="_on_frequency_timeout"]
 [connection signal="timeout" from="duration" to="." method="_on_duration_timeout"]

@@ -1,18 +1,14 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Levels/Level Resources/world_tiles/maple_bg.png" type="Texture" id=1]
-[ext_resource path="res://Levels/Level Resources/background/Background.gd" type="Script" id=2]
+[ext_resource path="res://Levels/Level Resources/background/background.gd" type="Script" id=2]
 
-[node name="Background" type="TextureRect"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 1024.0
-margin_bottom = 1024.0
+[node name="background" type="Sprite"]
+position = Vector2( 500, 500 )
 texture = ExtResource( 1 )
-expand = true
-stretch_mode = 2
+region_enabled = true
+region_rect = Rect2( 0, 0, 1000, 1000 )
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
+"_edit_lock_": true
 }

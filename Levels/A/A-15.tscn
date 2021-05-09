@@ -4,7 +4,7 @@
 [ext_resource path="res://Entities/chaser/ultra_chaser/ultra_chaser.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Props/banner/banner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Entities/Items Pickups/star/star.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Item_Pickups/star/star.tscn" type="PackedScene" id=5]
 
 [node name="A-15" instance=ExtResource( 1 )]
 

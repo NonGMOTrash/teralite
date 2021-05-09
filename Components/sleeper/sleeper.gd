@@ -22,9 +22,13 @@ func _ready() -> void:
 	
 	sleep_timer.wait_time = sleep_delay
 	
-	if brain == null: return
-	brain.connect("found_target", self, "target_found")
-	brain.connect("lost_target", self, "target_lost")
+	if brain != null:
+		brain.connect("found_target", self, "target_found")
+		brain.connect("lost_target", self, "target_lost")
+	
+	var stats = get_parent().components["stats"]
+	if stats != null:
+		stats.connect("health_changed", self, "health_changed")
 
 func set_activation(activation: bool, force:=false):
 	if sleep_timer.is_inside_tree() == false: return
@@ -65,6 +69,9 @@ func target_found():
 func target_lost():
 	if is_on_screen() == false:
 		set_activation(false)
+
+func health_changed(_type, _result, _net):
+	set_activation(true)
 
 func _on_sleep_timer_timeout() -> void:
 	active = false

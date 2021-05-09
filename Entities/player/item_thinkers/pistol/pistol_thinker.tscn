@@ -6,7 +6,7 @@
 [ext_resource path="res://Entities/Attacks/Projectile/small_bullet/pistol_pickup.wav" type="AudioStream" id=4]
 [ext_resource path="res://Entities/player/item_thinkers/pistol/pistol_reload.wav" type="AudioStream" id=5]
 [ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Entities/Items Pickups/pistol/pistol.png" type="Texture" id=7]
+[ext_resource path="res://Entities/Item_Pickups/pistol/pistol.png" type="Texture" id=7]
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Effects/muzzle_flash/muzzle_flash.tscn" type="PackedScene" id=9]
 

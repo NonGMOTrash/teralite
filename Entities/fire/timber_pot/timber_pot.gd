@@ -1,5 +1,7 @@
 extends Entity
 
+const FIRE = preload("res://Entities/fire/fire.tscn")
+
 onready var fire_sprite = $Sprite
 onready var fuel = $fuel
 onready var spread = $spread
@@ -13,19 +15,19 @@ func death():
 		queue_free()
 		return
 	
-	var new_fire = global.aquire("Fire")
+	var new_fire = FIRE.instance()
 	new_fire.global_position = global_position
 	get_parent().call_deferred("add_child", new_fire)
 	
 	for i in 5:
-		var newer_fire = global.aquire("Fire")
+		var newer_fire = FIRE.instance()
 		newer_fire.global_position = global_position
 		newer_fire.velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() * 150
 		get_parent().call_deferred("add_child", newer_fire)
 	queue_free()
 
 func _on_spread_timeout() -> void:
-	var new_fire = global.aquire("Fire")
+	var new_fire = FIRE.instance()
 	new_fire.global_position = global_position
 	new_fire.velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() * 100
 	new_fire.find_node("fuel").wait_time = 2.0

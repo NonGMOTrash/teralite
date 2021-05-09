@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Entities/Items Pickups/sword/sword.png" type="Texture" id=1]
+[ext_resource path="res://Entities/Item_Pickups/sword/sword.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Attacks/Melee/Melee.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/Attacks/Melee/slash/sword_clang.wav" type="AudioStream" id=3]
 [ext_resource path="res://Entities/Attacks/Melee/slash/sword_hit.wav" type="AudioStream" id=4]
