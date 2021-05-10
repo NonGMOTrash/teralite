@@ -56,9 +56,12 @@ func change_health(value, true_value, type: String = "hurt") -> String:
 		# amount = move_toward(amount, 0, DEFENCE) # account for defence here OLD
 		
 		# NEW defence calculation
-		while amount != 0 and armor > 0:
-			armor -= 1
-			amount += 1
+		if armor < 0 and amount < 0:
+			amount += armor
+		else:
+			while amount != 0 and armor > 0:
+				armor -= 1
+				amount += 1
 		
 		if reset_armor == true:
 			armor = DEFENCE

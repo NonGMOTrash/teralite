@@ -173,6 +173,7 @@ github is here: [private until full release]
 - changed the star requirements for some levels to better match the difficulty
 - fixed death messages being a little broken with multiple players
 - slightly improved improved memory management for better load times and reduced lag spikes
+- some behind the scenes improvements
 
 #### Beta 2.13 Hotfix #3 (5/2/2021)
 

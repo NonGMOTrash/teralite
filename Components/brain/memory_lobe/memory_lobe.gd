@@ -90,7 +90,7 @@ func got_hit(body, _type):
 					add_memory(source.global_position, 
 						brain.movement_lobe.get_spring(source), source.get_instance_id())
 				
-				var effect = res.aquire("question")
+				var effect = res.aquire("question").instance()
 				get_parent().get_parent().call_deferred("add_child", effect)
 				effect.global_position = brain.global_position.move_toward(source.global_position, 32)
 		
