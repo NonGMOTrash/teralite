@@ -1,7 +1,7 @@
 extends Node
 class_name Thinker
 
-enum ACTION_MODES { SEMI, AUTOMATIC, RELEASE }
+enum ACTION_MODES { SEMI, AUTOMATIC, RELEASE, HOLD }
 
 enum CURSOR_MODES { POINTER, CENTERED }
 
@@ -114,6 +114,13 @@ func _input(_event: InputEvent):
 			if Input.is_action_just_released("primary_action"): 
 				primary()
 				return
+		ACTION_MODES.HOLD:
+			if (
+				Input.is_action_just_pressed("primary_action") or
+				Input.is_action_just_released("primary_action")
+			):
+				primary()
+				return
 	
 	match SECONDARY_ACTION_MODE:
 		ACTION_MODES.SEMI:
@@ -126,6 +133,13 @@ func _input(_event: InputEvent):
 				return
 		ACTION_MODES.RELEASE:
 			if Input.is_action_just_released("secondary_action"): 
+				secondary()
+				return
+		ACTION_MODES.HOLD:
+			if (
+				Input.is_action_just_pressed("secondary_action") or
+				Input.is_action_just_released("secondary_action")
+			):
 				secondary()
 				return
 

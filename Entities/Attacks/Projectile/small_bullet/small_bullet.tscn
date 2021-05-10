@@ -55,5 +55,4 @@ particle_amount = 1
 particle_speed_scale = 4.0
 
 [editable path="hurtbox"]
-
 [editable path="hitbox"]

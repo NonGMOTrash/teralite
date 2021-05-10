@@ -4,6 +4,7 @@ export var max_ammo = 10
 var ammo = max_ammo
 export var cooldown_time = 0.175
 export var reload_time = 1.25
+export var zoom = 1.8
 
 onready var cooldown = $cooldown
 onready var reload = $reload
@@ -68,6 +69,12 @@ func primary():
 		null # bar timer duration
 		)
 	$spawner.spawn()
+
+func secondary():
+	if Input.is_action_pressed("secondary_action"):
+		global.cam_zoom = Vector2(zoom, 1)
+	else:
+		global.cam_zoom = global.cam_zoom_default
 
 func reload():
 	.reload()

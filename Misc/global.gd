@@ -7,7 +7,7 @@ var the_seed = "downwardspiral"
 # PROBLEM_NOTE: this should probably be in the player
 var selection = 0 # <-- for the item bar (0 1 2)
 var FOV = Vector2(1, 1)
-var cam_zoom_default = Vector2(3, 1) # PROBLEM_NOTE: maybe this should be in the camera
+const cam_zoom_default = Vector2(3, 1) # PROBLEM_NOTE: maybe this should be in the camera
 var cam_zoom = cam_zoom_default #X = favors player, Y = favors mouse
 var previous_scene = null # PROBLEM_NOTE i don't think this is used
 var player_hub_pos = Vector2(0, 0)

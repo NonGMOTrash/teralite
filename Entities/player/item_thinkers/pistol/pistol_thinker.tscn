@@ -10,12 +10,10 @@
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Effects/muzzle_flash/muzzle_flash.tscn" type="PackedScene" id=9]
 
-
-
-
 [node name="pistol thinker" type="Node"]
 script = ExtResource( 1 )
 auto_ready_check = false
+SECONDARY_ACTION_MODE = 3
 HELD_ITEM_TEXTURE = ExtResource( 7 )
 HELD_ITEM_ANCHOR = Vector2( 11, 0 )
 RELOAD_ANIM = "spin"
@@ -45,4 +43,5 @@ spawn_on_free = false
 rotation_mode = 1
 effect_hframes = 5
 effect_inherit_flipping = false
+
 [connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]
