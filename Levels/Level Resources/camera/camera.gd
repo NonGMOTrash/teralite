@@ -2,21 +2,26 @@ extends Camera2D
 
 const DEFAULT_TRANS = Tween.TRANS_ELASTIC
 const DEFAULT_EASE = Tween.EASE_OUT_IN
+const DEFAULT_DISTANCE_RATIO := 0.25
+const DEFAULT_DISTANCE_MAX := 40
 
 onready var tween = $tween 
 onready var frequency_timer = $frequency
 onready var duration_timer = $duration
+onready var zoom_tween = $zoom_tween
+
+var distance_ratio := DEFAULT_DISTANCE_RATIO
+var distance_max := DEFAULT_DISTANCE_MAX
 
 var old_player_pos = null
-var power = 0
-var priority = -99
+var set_mouse_pos := Vector2.ZERO
+var _power = 0
+var _priority = -99
 
 func _on_camera_tree_entered() -> void:
 	global.nodes["camera"] = self
 
 func _ready():
-	global.nodes["camera"] = self
-	
 	smoothing_enabled = global.settings["smooth_camera"]
 	limit_smoothed = global.settings["smooth_camera"]
 	
@@ -30,8 +35,11 @@ func _ready():
 func update_fov():
 	zoom = global.FOV
 
+func _input(event: InputEvent):
+	if event is InputEventMouseMotion:
+		set_mouse_pos = get_global_mouse_position()
+
 func _physics_process(_delta: float) -> void:
-	var array = []
 	var player
 	if global.nodes["player"] == null: return
 	player = get_node_or_null(global.nodes["player"])
@@ -45,27 +53,20 @@ func _physics_process(_delta: float) -> void:
 		set_physics_process(false)
 		return
 	
+	player = player as Entity
+	
 	old_player_pos = player.global_position
 	
-	# PROBLEM_NOTE: i can do this faster by using a weighted average calculation
-	for i in global.cam_zoom.x:
-		array.append(player.global_position)
-	for i in global.cam_zoom.y:
-		array.append(get_global_mouse_position())
-	
-	var sum = Vector2.ZERO
-	for element in array:
-		sum += element
-	sum /= array.size()
-	
-	global_position = sum
+	global_position = player.global_position + (player.get_local_mouse_position() * distance_ratio)
+	if global_position.distance_to(player.global_position) > distance_max:
+		global_position = player.global_position.move_toward(global_position, distance_max)
 
 func shake(power=10, frequency=10, duration=0.2):
-	if not (power * frequency * duration) > priority: 
+	if not (power * frequency * duration) > _priority: 
 		return
 	
-	priority = power * frequency * duration
-	self.power = power
+	_priority = power * frequency * duration
+	_power = power
 	
 	duration_timer.wait_time = duration
 	frequency_timer.wait_time = 1.0 / frequency
@@ -73,7 +74,7 @@ func shake(power=10, frequency=10, duration=0.2):
 	frequency_timer.start()
 
 func single_shake(TRANS = DEFAULT_TRANS, EASE = DEFAULT_EASE):
-	var final_offset = Vector2( rand_range(-power,power) , rand_range(-power,power) )
+	var final_offset = Vector2( rand_range(-_power,_power) , rand_range(-_power,_power) )
 	tween.interpolate_property(self, "offset", offset, final_offset, frequency_timer.wait_time, 
 			TRANS, EASE)
 	tween.start()
@@ -82,7 +83,7 @@ func stop_shaking(TRANS = DEFAULT_TRANS, EASE = DEFAULT_EASE):
 	tween.interpolate_property(self, "offset", offset, Vector2.ZERO, frequency_timer.wait_time, 
 			TRANS, EASE)
 	tween.start()
-	priority = -99
+	_priority = -99
 
 func _on_frequency_timeout() -> void:
 	single_shake()
@@ -90,3 +91,7 @@ func _on_frequency_timeout() -> void:
 func _on_duration_timeout() -> void:
 	frequency_timer.stop()
 	stop_shaking()
+#                                                                               \/ ease is taken lel
+func zoom_to(new_zoom: Vector2, time: float = 0.2, trans:int = DEFAULT_TRANS, eaze: = DEFAULT_EASE):
+	zoom_tween.interpolate_property(self, "zoom", zoom, new_zoom, time, trans, eaze)
+	zoom_tween.start()

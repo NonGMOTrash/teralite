@@ -168,11 +168,13 @@ github is here: [private until full release]
 ### Beta 2.14
 
 - much better level completion screen
+- added zooming to the pistol (with right click)
 - added weapons to the level Caged making it much easier
 - fixed sword hitboxes (it didn't even go to the tip of the blade before lel)
 - changed the star requirements for some levels to better match the difficulty
 - fixed death messages being a little broken with multiple players
 - slightly improved improved memory management for better load times and reduced lag spikes
+- changed the camera system a bit so you can't see quite as far if you put your mouse to the edge of the screen
 - some behind the scenes improvements
 
 #### Beta 2.13 Hotfix #3 (5/2/2021)

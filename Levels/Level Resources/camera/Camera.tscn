@@ -24,6 +24,8 @@ __meta__ = {
 [node name="duration" type="Timer" parent="."]
 one_shot = true
 
+[node name="zoom_tween" type="Tween" parent="."]
+
 [connection signal="tree_entered" from="." to="." method="_on_camera_tree_entered"]
 [connection signal="timeout" from="frequency" to="." method="_on_frequency_timeout"]
 [connection signal="timeout" from="duration" to="." method="_on_duration_timeout"]

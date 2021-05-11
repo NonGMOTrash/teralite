@@ -4,7 +4,10 @@ export var max_ammo = 10
 var ammo = max_ammo
 export var cooldown_time = 0.175
 export var reload_time = 1.25
-export var zoom = 1.8
+export var ads_dist_ratio = 0.6
+export var ads_dist_max = 70
+export var ads_zoom = 0.92
+export var ads_zoom_speed = 0.2
 
 onready var cooldown = $cooldown
 onready var reload = $reload
@@ -71,10 +74,16 @@ func primary():
 	$spawner.spawn()
 
 func secondary():
+	var camera = global.nodes["camera"] as Camera2D
+	
 	if Input.is_action_pressed("secondary_action"):
-		global.cam_zoom = Vector2(zoom, 1)
+		camera.distance_ratio = ads_dist_ratio
+		camera.distance_max = ads_dist_max
+		camera.zoom_to(Vector2(ads_zoom, ads_zoom), ads_zoom_speed)
 	else:
-		global.cam_zoom = global.cam_zoom_default
+		camera.distance_ratio = camera.DEFAULT_DISTANCE_RATIO
+		camera.distance_max = camera.DEFAULT_DISTANCE_MAX
+		camera.zoom_to(Vector2(1, 1), ads_zoom_speed)
 
 func reload():
 	.reload()
