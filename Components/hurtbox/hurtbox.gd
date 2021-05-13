@@ -29,7 +29,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	): 
 		return
 	
-	var area_entity = area.get_parent()
+	var area_entity = area.get_parent() as Entity
 	
 	if global.get_relation(get_parent(), area_entity) == "friendly":
 		if area.TEAM_ATTACK == false: return
@@ -57,7 +57,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	
 	var type = "hurt"
 	if area.DAMAGE + area.TRUE_DAMAGE < 0: type = "heal"
-	if area.DAM_TYPE != "null": 
+	if area.DAM_TYPE != "null":
 		type = area.DAM_TYPE
 	
 	var result_type = entity.components["stats"].change_health(-(area.DAMAGE), -(area.TRUE_DAMAGE), type)
@@ -100,12 +100,17 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		)
 	
 	if area.KNOCKBACK > 0:
-		var source_pos = area.global_position
+		var source_pos = area.global_position - area_entity.velocity
 		if area.get_parent() is Melee and get_node_or_null(area.get_parent().SOURCE_PATH) != null: 
 			source_pos = area.get_parent().SOURCE.global_position
 		
 		# knockback
 		entity.apply_force((source_pos.direction_to(global_position) * area.KNOCKBACK))
+		if area_entity.truName == "bullet":
+			prints(
+				"source_pos:", source_pos ,
+				"area_pos:", area.global_position
+			)
 	
 	if (
 		area.get_name() == "hitbox" and

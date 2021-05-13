@@ -1,7 +1,6 @@
 extends Entity
 class_name Attack
 
-# vars -------------------------------------------------------------------------------------------
 export var ONHIT_SELF_DAMAGE = 99
 export var RANGE = 100
 
@@ -22,13 +21,11 @@ export(AudioStream) var DEATH_SOUND
 var SOURCE = null
 var SOURCE_PATH = "string"
 
-# get access to other components -----------------------------------------------------------------------------
 onready var hitbox = $hitbox
 onready var collision = $collision
 onready var stats = $stats
 onready var sound = $sound
 
-# funcions -------------------------------------------------------------------------------------------
 func _init():
 	visible = false
 
@@ -63,8 +60,8 @@ func _ready():
 			sfx.stream = SPAWN_SOUND
 		sound.add_sound(sfx)
 		
-		if HIT_SOUND != null or KILL_SOUND != null  or BLOCKED_SOUND != null:
-			hitbox.connect("hit", self, "hitbox_hit")
+		#if HIT_SOUND != null or KILL_SOUND != null  or BLOCKED_SOUND != null:
+		#	hitbox.connect("hit", self, "hitbox_hit")
 	
 	if auto_rotate == true: rotation += get_angle_to(target_pos)
 	visible = true
@@ -80,7 +77,10 @@ func _on_collision_body_entered(body: Node) -> void:
 		death_free = true
 		death()
 
-func hitbox_hit(area: Area2D, type: String):
+func _on_hitbox_hit(area, type) -> void:
+	if HIT_SOUND == null and BLOCKED_SOUND == null and DEATH_SOUND == null:
+		return
+	
 	# PROBLEM_NOTE: maybe find some way to put this in the player script or something
 	if get_node_or_null(SOURCE_PATH) != null and SOURCE.truName == "player":
 		OS.delay_msec(17)
@@ -99,5 +99,9 @@ func hitbox_hit(area: Area2D, type: String):
 			sfx.stream = BLOCKED_SOUND
 		_:
 			return
+	
+	if sfx.stream == null:
+		sfx.queue_free()
+		return
 	
 	sound.add_sound(sfx)

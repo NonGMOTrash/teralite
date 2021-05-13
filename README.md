@@ -169,8 +169,10 @@ github is here: [private until full release]
 
 - much better level completion screen
 - added zooming to the pistol (with right click)
+- fixed return to title screen not working
 - added weapons to the level Caged making it much easier
 - fixed sword hitboxes (it didn't even go to the tip of the blade before lel)
+- fixed bullets having reversed knockback
 - changed the star requirements for some levels to better match the difficulty
 - fixed death messages being a little broken with multiple players
 - slightly improved improved memory management for better load times and reduced lag spikes

@@ -6,7 +6,7 @@
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=5]
 
-[node name="Thing" type="KinematicBody2D"]
+[node name="Attack" type="KinematicBody2D"]
 rotation = 1.5708
 collision_layer = 0
 collision_mask = 0
@@ -36,9 +36,9 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collision"]
 
 [node name="sound" parent="." instance=ExtResource( 5 )]
-[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+
+[connection signal="hit" from="hitbox" to="." method="_on_hitbox_hit"]
 [connection signal="body_entered" from="collision" to="." method="_on_collision_body_entered"]
 
 [editable path="hurtbox"]
-
 [editable path="hitbox"]
