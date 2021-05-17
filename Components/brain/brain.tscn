@@ -25,6 +25,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sight"]
 shape = SubResource( 1 )
+
 [connection signal="tree_entered" from="." to="." method="_on_brain_tree_entered"]
 [connection signal="timeout" from="think_timer" to="." method="_on_think_timer_timeout"]
 [connection signal="body_entered" from="sight" to="." method="_on_sight_body_entered"]

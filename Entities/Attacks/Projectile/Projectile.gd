@@ -57,14 +57,17 @@ func death():
 		queue_free()
 		
 
-func _on_hitbox_area_entered(area: Area2D) -> void:
+func _on_hitbox_hit(area: Area2D, type: String) -> void:
+	._on_hitbox_hit(area, type)
+	
 	if visible == false: return
 	if global.get_relation(self, area.get_parent()) == "friendly": return
 	#if get_speed() < MIN_DAM_SPEED: return
 	if "ONHIT_SELF_DAMAGE" in area.get_parent(): return
 	
 	# PROBLEM_NOTE: can do this better but it works
-	yield(get_tree().create_timer(0.016), "timeout")
+	# EDIT: NO IT DOESNT MAKES AN ERROR SOMETIMES
+	#yield(get_tree().create_timer(0.016), "timeout")
 	stats.change_health(0, -(ONHIT_SELF_DAMAGE))
 	
 	VELOCITY_ARMOR -= ONHIT_SELF_DAMAGE

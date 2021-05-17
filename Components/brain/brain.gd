@@ -155,9 +155,8 @@ func los_check(target):
 # EDIT2: it's due to a infinitely running while loop. see the notes in movement_lobe.gd for details
 
 func add_target(tar: Entity, force = false) -> void:
-	# PROBLEM_NOTE: y tho?
-	if force == true:
-		breakpoint
+	#if targets.size() >= MAX_TARGETS and force == false:
+	#	return
 	
 	# PROBLEM_NOTE: im pretty sure i can just do 'if not tar is Entity' here
 	if not tar is Entity or tar is Melee or tar is Projectile or tar is Item or tar == get_parent():

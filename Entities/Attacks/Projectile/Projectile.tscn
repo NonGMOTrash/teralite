@@ -31,7 +31,6 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="7"]
 shape = SubResource( 2 )
 
-[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_exited" from="src_collision" to="." method="_on_src_collision_body_exited"]
 
 [editable path="hurtbox"]
