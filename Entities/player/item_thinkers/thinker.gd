@@ -73,7 +73,7 @@ func _input(_event: InputEvent):
 	
 	if Input.is_action_pressed("drop_item"):
 		if get_parent().inventory[global.selection] == null: return
-		var newItemEntity = res.aquire(my_item)
+		var newItemEntity = res.aquire(my_item).instance()
 		
 		if newItemEntity == null: return
 		var dir_vector = get_parent().global_position.direction_to(get_parent().get_global_mouse_position())

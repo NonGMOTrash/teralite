@@ -1,5 +1,7 @@
 extends TileMap
 
+export var placement_offset: Vector2 = Vector2.ZERO
+
 #onready var ysort = $YSort
 
 onready var ysort = get_parent()
@@ -22,14 +24,14 @@ func _ready(): # converts tiles to their respective scenes
 	
 	for i in data.keys().size():
 		if data.values()[i].size() > 0:
-			convertTile(data.values()[i], data.keys()[i])
+			convert_tile(data.values()[i], data.keys()[i])
 	
 	clear() #remove all the tiles
 
-func convertTile(tiles, thingName): # deletes the tile and places the entity
+func convert_tile(tiles, thingName): # deletes the tile and places the entity
 	var tilePos
 	for i in range(0, tiles.size()):
 		var newEntity = res.aquire(thingName).instance()
-		tilePos = map_to_world(tiles[i])
+		tilePos = map_to_world(tiles[i]) + placement_offset
 		newEntity.set_position(Vector2(tilePos.x + 8, tilePos.y + 8))
 		ysort.call_deferred("add_child", newEntity)

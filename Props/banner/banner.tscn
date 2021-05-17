@@ -5,6 +5,7 @@
 [ext_resource path="res://Props/banner/banner.png" type="Texture" id=3]
 
 [node name="banner" type="Node2D"]
+position = Vector2( 0, -2 )
 script = ExtResource( 1 )
 
 [node name="shadow" type="Sprite" parent="."]

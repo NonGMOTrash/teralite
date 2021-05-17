@@ -63,6 +63,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	#if get_speed() < MIN_DAM_SPEED: return
 	if "ONHIT_SELF_DAMAGE" in area.get_parent(): return
 	
+	# PROBLEM_NOTE: can do this better but it works
 	yield(get_tree().create_timer(0.016), "timeout")
 	stats.change_health(0, -(ONHIT_SELF_DAMAGE))
 	

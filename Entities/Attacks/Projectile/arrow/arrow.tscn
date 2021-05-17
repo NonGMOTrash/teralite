@@ -74,5 +74,4 @@ position = Vector2( 4, 0 )
 shape = SubResource( 3 )
 
 [editable path="hurtbox"]
-
 [editable path="hitbox"]

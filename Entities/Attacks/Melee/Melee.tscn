@@ -22,8 +22,9 @@ rotation = 3.14159
 
 [node name="animation" type="AnimationPlayer" parent="." index="6"]
 anims/animation = SubResource( 1 )
+
 [connection signal="tree_exiting" from="." to="." method="_on_Melee_tree_exiting"]
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 
 [editable path="hurtbox"]
-
 [editable path="hitbox"]

@@ -75,6 +75,7 @@ func apply_force(force:Vector2):
 func death():
 	emit_signal("death")
 	queue_free()
+	visible = false
 
 func get_speed():
 	var velo = velocity

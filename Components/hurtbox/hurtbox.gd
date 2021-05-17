@@ -106,11 +106,6 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		
 		# knockback
 		entity.apply_force((source_pos.direction_to(global_position) * area.KNOCKBACK))
-		if area_entity.truName == "bullet":
-			prints(
-				"source_pos:", source_pos ,
-				"area_pos:", area.global_position
-			)
 	
 	if (
 		area.get_name() == "hitbox" and
