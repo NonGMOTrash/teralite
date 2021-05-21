@@ -104,8 +104,7 @@ func primary():
 	if charge_percent > 45: damage += 1
 	if charge_percent == 100: damage += 1
 	
-	# PROBLEM_NOTE: I can't check the components dictionary here because that is only updated at _ready()
-	# I can solve this if I have components add themselves to it at _init(), or using pointers (<- works)
+	#       \/ can't check components because arrow isn't in the scene tree yet
 	arrow.find_node("stats").DAMAGE = damage
 	arrow.SPEED = 50 + charge_percent * 3.5
 	arrow.RANGE = arrow.SPEED / 1.8

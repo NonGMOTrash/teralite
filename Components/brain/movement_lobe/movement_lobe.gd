@@ -105,6 +105,7 @@ func _on_idle_timer_timeout() -> void:
 			# EDIT5: i am an idiot, it's because if there's no possible path it gets stuck in the while
 			# loop
 			# EDIT6: fixed the navpoly generation btw
+			# EDIT7: i think this was an error with archers can i can remove this now? (PROBLEM_NOTE)
 		
 		if wander_path.size() > 1:
 			brain.get_parent().input_vector = global_position.direction_to(wander_path[1]).normalized()
@@ -163,7 +164,7 @@ func get_spring(target:Entity):
 	
 	return springs.get(spring)
 
-func early_slowdown(destination: Vector2): # PROBLEM_NOTE: clean this up
+func early_slowdown(destination: Vector2):
 	if SMART_SLOWDOWN == false:
 		return false
 	else:
@@ -175,7 +176,7 @@ func early_slowdown(destination: Vector2): # PROBLEM_NOTE: clean this up
 # PROBLEM_NOTE: i think this is the single most intensive function in the whole game so maybe optimize it
 func _on_movement_timer_timeout() -> void:
 	var intention = Vector2.ZERO
-	var trigger_anti_stuck = true
+	var trigger_anti_stuck: bool = true
 	
 	if brain.targets == []: # no targets
 		
@@ -302,9 +303,3 @@ func _on_movement_timer_timeout() -> void:
 func debug(): 
 	if brain.get_parent().is_queued_for_deletion() == false:
 		emit_signal("debug")
-
-#var old_array = best_position_paths
-#func _process(_delta):
-#	if best_position_paths != old_array:
-#		prints("[%s]" % global.nodes["stopwatch"].time, old_array, "->", best_position_paths)
-#	old_array = best_position_paths

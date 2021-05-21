@@ -9,7 +9,7 @@ var active = true
 var brain
 var has_awoken = false
 
-signal slept # << PROBLEM_NOTE: never emitted
+signal slept
 signal awoken
 
 func _on_sleeper_tree_entered():
@@ -83,3 +83,4 @@ func _on_sleep_timer_timeout() -> void:
 			child.set_physics_process(false)
 			child.set_process(false)
 			if child is Sprite: visible = false
+	emit_signal("slept")

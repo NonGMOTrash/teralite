@@ -13,6 +13,9 @@ onready var pause_menu = $items
 onready var options_menu = $Options
 onready var sound_player = $sound_player
 
+signal paused
+signal unpaused
+
 func _ready():
 	global.nodes["pause_menu"] = self
 	if get_tree().current_scene.LEVEL_TYPE == 1: 

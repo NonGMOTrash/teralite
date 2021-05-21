@@ -70,8 +70,6 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		SOURCE.apply_force(global_position.direction_to(SOURCE.global_position).normalized() * RECOIL)
 		recoiled = true
 
-# PROBLEM_NOTE: this is really bad (overwriting function from Attack.gd)
-# i really need to figure out how function inheiritance works
 func _on_collision_body_entered(body: Node) -> void:
 	if visible == false: return
 	if body.get_name() == "world_tiles":

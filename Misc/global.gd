@@ -109,6 +109,7 @@ func _ready():
 	var hr = OS.get_time()["hour"]
 	if hr > 12: hr -= 12
 	if hr == 4 and OS.get_time()["minute"] == 20:
+		OS.alert("something terrible is going to happen. do you want to proceed?", "IMPORTANT")
 		print("you just got rickrolled!!!!1!")
 		OS.shell_open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 	
@@ -268,6 +269,9 @@ func update_settings():
 		get_tree().set_screen_stretch(
 					SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, Vector2(384, 216)
 				)
+	
+	if not get_tree().current_scene is Navigation2D:
+		return
 	
 	var camera = global.nodes["camera"]
 	if not camera is Camera2D: 

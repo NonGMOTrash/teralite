@@ -16,7 +16,7 @@ func _process(_delta):
 	var minute = int(floor(time / 60))
 	var second = int(floor(time - (minute * 60)))
 	var tenth = stepify(time - ((minute*60) + second), 0.1) * 10
-	if tenth == 10: tenth = 0 # PROBLEM_NOTE: might be the wrong way to display it but im not sure
+	if tenth == 10: tenth = 0
 	
 	if second < 10: 
 		second = str(second)

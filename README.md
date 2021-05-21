@@ -132,6 +132,7 @@ check out his stuff here:
 - arrow_collide: "Arrow strike" by plantmonkey ( https://freesound.org/people/plantmonkey/sounds/410751/ ) licensed under CC0
 - arrow_hit: "arrow_damage" by braqoon ( https://freesound.org/people/braqoon/sounds/161098/ ) licensed under CC0
 - bow_drawn: "Regular Arrow Shot with rattle slow draw" by brendan89 ( https://freesound.org/people/brendan89/sounds/321554/ ) licensed under CC BY 3.0
+- bow_equip: "Wooden Creak" by Mafon2 ( https://freesound.org/people/Mafon2/sounds/377552/ )  licensed under CC0
 - menu_hover: "CLICK_143" by Jaszunio15 ( https://freesound.org/people/Jaszunio15/sounds/421475/ ) licensed under CC0
 - menu_click: "Wooden Hover" by BenjaminNelan ( https://freesound.org/people/BenjaminNelan/sounds/321082/ ) licensed under CC0
 - menu_pause + menu_unpause: "Access Denied" by suntemple ( https://freesound.org/people/suntemple/sounds/249300/ ) licensed under CC0
@@ -139,6 +140,7 @@ check out his stuff here:
 - crate_destory: "Wood Crate Destory 3" by Bertsz ( https://freesound.org/people/Bertsz/sounds/500900/ ) licensed under CC0
 - player_death: "Retro Video Game Death" by SRJA_Gaming ( https://freesound.org/people/SRJA_Gaming/sounds/543255/ ) licensed under CC0
 - heal: "Healing 2 (Tranquillity)" by SilverIllusionist ( https://freesound.org/people/SilverIllusionist/sounds/518800/ ) licensed under CC BY 3.0
+- os_error: "Error" by Isaac200000 ( https://freesound.org/people/Isaac200000/sounds/188013/ ) licensed under CC0
 
 thank you all for letting me legally steal your hard work to use in my game <3
 
@@ -167,7 +169,8 @@ github is here: [private until full release]
 
 ### Beta 2.14
 
-- much better level completion screen
+- much better intro
+- better level completion screen
 - added zooming to the pistol (with right click)
 - fixed return to title screen not working
 - added weapons to the level Caged making it much easier
@@ -175,6 +178,7 @@ github is here: [private until full release]
 - fixed bullets having reversed knockback
 - changed the star requirements for some levels to better match the difficulty
 - fixed death messages being a little broken with multiple players
+- added bow equip sound
 - slightly improved improved memory management for better load times and reduced lag spikes
 - changed the camera system a bit so you can't see quite as far if you put your mouse to the edge of the screen
 - some big behind the scenes improvements

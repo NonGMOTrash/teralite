@@ -46,7 +46,6 @@ func _ready() -> void:
 		var second = int(floor(time - (minute * 60)))
 		var tenth = stepify(time - ((minute*60) + second), 0.1) * 10
 		if tenth == 10: 
-			# PROBLEM_NOTE: I think this is the wrong way to display it but whatever
 			tenth = 0
 		if second < 10: 
 			second = str(second)

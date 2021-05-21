@@ -6,7 +6,7 @@
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 
-[node name="Brute_Chaser" instance=ExtResource( 2 )]
+[node name="brute_chaser" instance=ExtResource( 2 )]
 ACCELERATION = 125
 SLOWDOWN = 300
 TOP_SPEED = 65
@@ -38,21 +38,7 @@ general_springs = {
 "neutral": ""
 }
 
-[node name="hit_effect_spawner" parent="." index="10"]
-spawns_when = {
-"block": false,
-"heal": false,
-"hurt": true,
-"tree_exit": true
-}
-
-[node name="death_effect_spawner" parent="." index="11"]
-effect_texture = ExtResource( 1 )
-
 [editable path="hitbox"]
-
 [editable path="hurtbox"]
-
 [editable path="entityPush"]
-
 [editable path="brain"]

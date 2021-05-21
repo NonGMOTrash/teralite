@@ -116,7 +116,6 @@ func change_health(value, true_value, type: String = "hurt") -> String:
 		return result_type
 	else:
 		return ""
-		# PROBLEM_NOTE: should change "" -> "null"
 
 func add_status_effect(new_status_effect:String, duration=2.5, level=1.0):
 	var status_effect = new_status_effect
