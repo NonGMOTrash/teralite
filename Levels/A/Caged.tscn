@@ -5,7 +5,7 @@
 [ext_resource path="res://Entities/crate/Crate.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Item_Pickups/gold_heart/gold_heart.tscn" type="PackedScene" id=4]
 
-[node name="A-13" instance=ExtResource( 1 )]
+[node name="Caged" instance=ExtResource( 1 )]
 
 [node name="prop_placer" parent="." index="3"]
 tile_data = PoolIntArray( 3670093, 4, 0, 3670105, 4, 0, 4718702, 6, 0, 4718761, 5, 0, 5898290, 6, 0, 6750351, 6, 0, 6815824, 6, 0, 7995475, 6, 0, 7995494, 6, 0, 10289298, 6, 0, 10354834, 6, 0, 10616910, 5, 0, 11272244, 6, 0, 12583014, 6, 0, 13172883, 6, 0, 13893815, 6, 0, 14876770, 6, 0 )

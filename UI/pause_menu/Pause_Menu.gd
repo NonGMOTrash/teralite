@@ -69,7 +69,7 @@ func _on_return_to_pressed() -> void:
 		
 		get_tree().change_scene_to(load("res://UI/title_screen/title_screen.tscn"))
 	else: 
-		get_tree().change_scene_to(load("res://Levels/A/A_hub.tscn")) 
+		get_tree().change_scene_to(load("res://Levels/A/A-Hub.tscn")) 
 		# PROBLEM_NOTE: this ^^ won't work with multiple hubs
 
 func _on_quit_pressed() -> void:

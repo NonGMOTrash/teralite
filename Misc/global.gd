@@ -1,5 +1,8 @@
 extends Node
 
+const OLD_LEVEL_CODES := ["A-1", "A-2", "A-3", "A-4", "A-5", "A-6", "A-7", "A-8", "A-9", "A-10", "A-11", 
+		"A-12", "A-13", "A-14", "A-15", "A-secret"]
+
 #all the global variables
 var quality_of_this_game = -999 # = very bad game
 var the_seed = "downwardspiral"
@@ -19,9 +22,10 @@ var cleared_levels = []
 var perfected_levels = []
 var level_deaths = {}
 var level_times = {}
-var ver_phase = "Beta"
-var ver_num = 2.14
-var ver_hotfix = 0
+
+const ver_phase = "Beta"
+const ver_num = 2.14
+const ver_hotfix = 0
 
 # for saving things
 const SAVE_DIR := "user://saves/"
@@ -230,10 +234,29 @@ func load_save(entered_save_name):
 			
 			save_file.close()
 			
+			# compatiability for old A-X level names
+			for i in cleared_levels:
+				if i in OLD_LEVEL_CODES:
+					cleared_levels.append(level_code_to_name(i))
+			
+			for i in perfected_levels:
+				if i in OLD_LEVEL_CODES:
+					perfected_levels.append(level_code_to_name(i))
+			
+			for key in level_deaths.keys():
+				for value in level_deaths.values():
+					if key in OLD_LEVEL_CODES:
+						level_deaths[level_code_to_name(key)] = level_deaths[key]
+			
+			for key in level_times.keys():
+				for value in level_times.values():
+					if key in OLD_LEVEL_CODES:
+						level_times[level_code_to_name(key)] = level_times[key]
+			
 			# changes scene to the correct hub
 			match last_hub:
-				null: get_tree().change_scene_to(load("res://Levels/A/A-1.tscn"))
-				"A_hub": get_tree().change_scene_to(load("res://Levels/A/A_hub.tscn"))
+				null: get_tree().change_scene_to(load("res://Levels/A/Redwood.tscn"))
+				"A_hub": get_tree().change_scene_to(load("res://Levels/A/A-Hub.tscn"))
 				"B_hub": pass #ext ext
 			
 		else:
@@ -242,6 +265,26 @@ func load_save(entered_save_name):
 	else:
 		#file didn't exist
 		push_warning("could not find save on load")
+
+func level_code_to_name(lvl:String) -> String:
+	match lvl:
+		"A-1": return "Redwood"
+		"A-2": return "Midpoint"
+		"A-3": return "Spiral"
+		"A-4": return "Brick"
+		"A-5": return "Barricade"
+		"A-6": return "Sprint"
+		"A-7": return "Quickstep"
+		"A-8": return "Entrance"
+		"A-9": return "Timber"
+		"A-10": return "Gauntlet"
+		"A-11": return "Army"
+		"A-12": return "Ambushed"
+		"A-13": return "Caged"
+		"A-14": return "Monarch"
+		"A-15": return "Duo"
+		"A-secret": return "Shadow"
+		_: return "ERROR; INVALID LEVEL CODE"
 
 func delete_save(entered_save_name):
 	var save_file = File.new()

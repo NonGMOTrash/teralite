@@ -5,7 +5,7 @@
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Item_Pickups/star/star.tscn" type="PackedScene" id=5]
 
-[node name="A-15" instance=ExtResource( 1 )]
+[node name="Duo" instance=ExtResource( 1 )]
 
 [node name="prop_placer" parent="." index="3"]
 tile_data = PoolIntArray( 3276935, 0, 0, 3539033, 2, 0, 4063407, 1, 0, 5570634, 0, 0, 5963961, 0, 0, 7012435, 1, 0, 7798879, 4, 0, 7798901, 4, 0, 7798923, 4, 0, 8126625, 2, 0, 8257633, 6, 0, 9175157, 6, 0, 10354805, 4, 0, 10616928, 6, 0, 10616973, 6, 0, 12648542, 6, 0, 13041806, 6, 0, 15728752, 6, 0, 15794269, 4, 0, 15794293, 4, 0, 15794317, 4, 0 )

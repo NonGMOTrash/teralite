@@ -30,114 +30,89 @@ position = Vector2( 576, 517 )
 material = SubResource( 1 )
 flip_h = true
 
+[node name="healthBar" parent="YSort/player" index="5"]
+visible = false
+
+[node name="held_item" parent="YSort/player" index="9"]
+visible = false
+
 [node name="1" parent="YSort" index="2" instance=ExtResource( 3 )]
 position = Vector2( 640, 509 )
-LEVEL_LABEL = "Redwood"
-LOAD_NAME = "A-1"
+LEVEL = "Redwood"
 
 [node name="2" parent="YSort" index="3" instance=ExtResource( 3 )]
 position = Vector2( 496, 517 )
-LEVEL_LABEL = "Midpoint"
-LOAD_NAME = "A-2"
-LEVEL_LOAD = "res://Levels/A/A-2.tscn"
+LEVEL = "Midpoint"
 STAR_REQUIREMENT = 1
 
 [node name="3" parent="YSort" index="4" instance=ExtResource( 3 )]
-position = Vector2( 521.104, 367.694 )
-LEVEL_LABEL = "Spiral"
-LOAD_NAME = "A-3"
-LEVEL_LOAD = "res://Levels/A/A-3.tscn"
+position = Vector2( 521.104, 368.468 )
+LEVEL = "Spiral"
 STAR_REQUIREMENT = 5
 
 [node name="4" parent="YSort" index="5" instance=ExtResource( 3 )]
 position = Vector2( 303.556, 476.778 )
-LEVEL_LABEL = "Brick"
-LOAD_NAME = "A-4"
-LEVEL_LOAD = "res://Levels/A/A-4.tscn"
+LEVEL = "Brick"
 STAR_REQUIREMENT = 2
 
 [node name="5" parent="YSort" index="6" instance=ExtResource( 3 )]
 position = Vector2( 356.491, 556.206 )
-LEVEL_LABEL = "Barricade"
-LOAD_NAME = "A-5"
-LEVEL_LOAD = "res://Levels/A/A-5.tscn"
+LEVEL = "Barricade"
 STAR_REQUIREMENT = 3
 
 [node name="6" parent="YSort" index="7" instance=ExtResource( 3 )]
 position = Vector2( 160, 389 )
-LEVEL_LABEL = "Sprint"
-LOAD_NAME = "A-6"
-LEVEL_LOAD = "res://Levels/A/A-6.tscn"
+LEVEL = "Sprint"
 STAR_REQUIREMENT = 4
 
 [node name="7" parent="YSort" index="8" instance=ExtResource( 3 )]
 position = Vector2( 464.392, 411.445 )
-LEVEL_LABEL = "Quickstep"
-LOAD_NAME = "A-7"
-LEVEL_LOAD = "res://Levels/A/A-7.tscn"
+LEVEL = "Quickstep"
 STAR_REQUIREMENT = 2
 
 [node name="8" parent="YSort" index="9" instance=ExtResource( 3 )]
 position = Vector2( 216, 269 )
-LEVEL_LABEL = "Enterance"
-LOAD_NAME = "A-8"
-LEVEL_LOAD = "res://Levels/A/A-8.tscn"
+LEVEL = "Entrance"
 STAR_REQUIREMENT = 6
 
 [node name="9" parent="YSort" index="10" instance=ExtResource( 3 )]
 position = Vector2( 278.74, 365 )
-LEVEL_LABEL = "Timber"
-LOAD_NAME = "A-9"
-LEVEL_LOAD = "res://Levels/A/A-9.tscn"
+LEVEL = "Timber"
 STAR_REQUIREMENT = 7
 
 [node name="10" parent="YSort" index="11" instance=ExtResource( 3 )]
 position = Vector2( 120, 525 )
-LEVEL_LABEL = "Gauntlet"
-LOAD_NAME = "A-10"
-LEVEL_LOAD = "res://Levels/A/A-10.tscn"
+LEVEL = "Gauntlet"
 STAR_REQUIREMENT = 8
 
 [node name="11" parent="YSort" index="12" instance=ExtResource( 3 )]
 position = Vector2( 72, 405 )
-LEVEL_LABEL = "Army"
-LOAD_NAME = "A-11"
-LEVEL_LOAD = "res://Levels/A/A-11.tscn"
+LEVEL = "Army"
 STAR_REQUIREMENT = 6
 
 [node name="12" parent="YSort" index="13" instance=ExtResource( 3 )]
 position = Vector2( 248, 205 )
-LEVEL_LABEL = "Ambushed"
-LOAD_NAME = "A-12"
-LEVEL_LOAD = "res://Levels/A/A-12.tscn"
+LEVEL = "Ambushed"
 STAR_REQUIREMENT = 7
 
 [node name="13" parent="YSort" index="14" instance=ExtResource( 3 )]
 position = Vector2( 336, 205 )
-LEVEL_LABEL = "Caged"
-LOAD_NAME = "A-13"
-LEVEL_LOAD = "res://Levels/A/A-13.tscn"
+LEVEL = "Caged"
 STAR_REQUIREMENT = 8
 
 [node name="14" parent="YSort" index="15" instance=ExtResource( 3 )]
 position = Vector2( 424, 205 )
-LEVEL_LABEL = "Monarch"
-LOAD_NAME = "A-14"
-LEVEL_LOAD = "res://Levels/A/A-14.tscn"
+LEVEL = "Monarch"
 STAR_REQUIREMENT = 9
 
 [node name="15" parent="YSort" index="16" instance=ExtResource( 3 )]
 position = Vector2( 433.835, 311.016 )
-LEVEL_LABEL = "Duo"
-LOAD_NAME = "A-15"
-LEVEL_LOAD = "res://Levels/A/A-15.tscn"
+LEVEL = "Duo"
 STAR_REQUIREMENT = 9
 
 [node name="secret" parent="YSort" index="17" instance=ExtResource( 3 )]
 position = Vector2( 153, 973 )
-LEVEL_LABEL = "Shadow"
-LOAD_NAME = "A-secret"
-LEVEL_LOAD = "res://Levels/A/A-secret.tscn"
+LEVEL = "Shadow"
 
 [node name="background_tiles" parent="YSort" index="18"]
 tile_data = PoolIntArray( 655371, 1, 0, 655372, 1, 0, 655373, 1, 0, 655374, 1, 0, 655375, 1, 0, 655376, 1, 0, 655377, 1, 0, 655378, 1, 0, 655379, 1, 0, 655380, 1, 0, 655381, 1, 0, 655382, 1, 0, 655383, 1, 0, 655384, 1, 0, 655385, 1, 0, 655386, 1, 0, 655387, 1, 0, 655388, 1, 0, 655389, 1, 0, 720907, 1, 0, 720908, 1, 0, 720909, 1, 0, 720910, 1, 0, 720911, 1, 0, 720912, 1, 0, 720913, 1, 0, 720914, 1, 0, 720915, 1, 0, 720916, 1, 0, 720917, 1, 0, 720918, 1, 0, 720919, 1, 0, 720920, 1, 0, 720921, 1, 0, 720922, 1, 0, 720923, 1, 0, 720924, 1, 0, 720925, 1, 0, 786443, 1, 0, 786444, 1, 0, 786445, 1, 0, 786446, 1, 0, 786447, 1, 0, 786448, 1, 0, 786449, 1, 0, 786450, 1, 0, 786451, 1, 0, 786452, 1, 0, 786453, 1, 0, 786454, 1, 0, 786455, 1, 0, 786456, 1, 0, 786457, 1, 0, 786458, 1, 0, 786459, 1, 0, 786460, 1, 0, 786461, 1, 0, 851979, 1, 0, 851980, 1, 0, 851981, 1, 0, 851982, 1, 0, 851983, 1, 0, 851984, 1, 0, 851985, 1, 0, 851986, 1, 0, 851987, 1, 0, 851988, 1, 0, 851989, 1, 0, 851990, 1, 0, 851991, 1, 0, 851992, 1, 0, 851993, 1, 0, 851994, 1, 0, 851995, 1, 0, 851996, 1, 0, 851997, 1, 0, 917515, 1, 0, 917516, 1, 0, 917517, 1, 0, 917518, 1, 0, 917519, 1, 0, 917520, 1, 0, 917521, 1, 0, 917522, 1, 0, 917523, 1, 0, 917524, 1, 0, 917525, 1, 0, 917526, 1, 0, 917527, 1, 0, 917528, 1, 0, 917529, 1, 0, 917530, 1, 0, 917531, 1, 0, 917532, 1, 0, 917533, 1, 0, 983051, 1, 0, 983052, 1, 0, 983053, 1, 0, 983054, 1, 0, 983055, 1, 0, 983056, 1, 0, 983057, 1, 0, 983058, 1, 0, 983059, 1, 0, 983060, 1, 0, 983061, 1, 0, 983062, 1, 0, 983063, 1, 0, 983064, 1, 0, 983065, 1, 0, 983066, 1, 0, 983067, 1, 0, 983068, 1, 0, 983069, 1, 0, 1048587, 1, 0, 1048588, 1, 0, 1048589, 1, 0, 1048590, 1, 0, 1048591, 1, 0, 1048592, 1, 0, 1048593, 1, 0, 1048594, 1, 0, 1048595, 1, 0, 1048596, 1, 0, 1048597, 1, 0, 1048598, 1, 0, 1048599, 1, 0, 1048600, 1, 0, 1048601, 1, 0, 1048602, 1, 0, 1048603, 1, 0, 1048604, 1, 0, 1048605, 1, 0, 1114124, 1, 0, 1114125, 1, 0, 1114126, 1, 0, 1179660, 0, 1, 1245194, 0, 1, 1376273, 1, 0, 1376274, 1, 0, 1441801, 0, 1, 1441803, 0, 1, 1441808, 1, 0, 1441809, 1, 0, 1441810, 1, 0, 1507344, 1, 0, 1507345, 1, 0, 1507346, 1, 0, 1572872, 0, 1, 1572880, 1, 0, 1572881, 1, 0, 1572882, 1, 0, 1638410, 0, 196609, 1703946, 0, 131079, 1769482, 0, 196608, 1769485, 0, 1, 1835022, 0, 1, 1900564, 0, 1, 1966099, 0, 1, 2031640, 0, 131080, 2031641, 0, 131081, 2031648, 0, 131080, 2031649, 0, 65536, 2031650, 0, 131081, 2097180, 0, 1, 3538958, 0, 131073, 3538959, 0, 65543, 3538960, 0, 65543, 3538961, 0, 65543, 3538962, 0, 65543, 3538963, 0, 65543, 3538964, 0, 65543, 3538965, 0, 65543, 3538966, 0, 65541, 3604494, 0, 131075, 3604495, 0, 196611, 3604496, 0, 4, 3604497, 0, 196610, 3604498, 0, 0, 3604499, 0, 196611, 3604500, 0, 4, 3604501, 0, 196610, 3604502, 0, 65537, 3670030, 0, 131075, 3670031, 0, 65537, 3670033, 0, 131075, 3670034, 0, 0, 3670035, 0, 65537, 3670037, 0, 131075, 3670038, 0, 65537, 3735566, 0, 131075, 3735567, 0, 65537, 3735569, 0, 2, 3735570, 0, 4, 3735571, 0, 262148, 3735572, 0, 65536, 3735573, 0, 196617, 3735574, 0, 65537, 3801102, 0, 131075, 3801103, 0, 65537, 3801107, 0, 131079, 3801109, 0, 131075, 3801110, 0, 65537, 3866638, 0, 131075, 3866639, 0, 65537, 3866641, 0, 196609, 3866643, 0, 131079, 3866645, 0, 131075, 3866646, 0, 65537, 3932174, 0, 131075, 3932175, 0, 196613, 3932176, 0, 65543, 3932177, 0, 196615, 3932178, 0, 65543, 3932179, 0, 196615, 3932180, 0, 65543, 3932181, 0, 196614, 3932182, 0, 65537, 3997710, 0, 2, 3997711, 0, 4, 3997712, 0, 4, 3997713, 0, 4, 3997714, 0, 4, 3997715, 0, 4, 3997716, 0, 4, 3997717, 0, 4, 3997718, 0, 5 )

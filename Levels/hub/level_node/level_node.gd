@@ -3,9 +3,7 @@ extends Node2D
 onready var label = $Node2D/Label
 onready var sprite = $Area2D/Sprite
 
-export var LEVEL_LABEL = "level"
-export var LOAD_NAME = "null-null"
-export(String) var LEVEL_LOAD: String = "res://Levels/A/A-1.tscn"
+export var LEVEL := "level"
 export var STAR_REQUIREMENT = 0
 
 var player = null
@@ -17,8 +15,8 @@ func _ready() -> void:
 	if global.stars < STAR_REQUIREMENT: 
 		sprite.frame = 0
 	elif global.stars >= STAR_REQUIREMENT: 
-		if global.cleared_levels.has(LOAD_NAME):
-			if global.perfected_levels.has(LOAD_NAME):
+		if global.cleared_levels.has(LEVEL):
+			if global.perfected_levels.has(LEVEL):
 				sprite.frame = 3
 			else:
 				sprite.frame = 2
@@ -36,12 +34,12 @@ func _ready() -> void:
 		1, 2, 3: txt = "Press [E] to enter"
 	
 	var death_txt = "Deaths: NA"
-	if LOAD_NAME in global.level_deaths:
-		death_txt = "Deaths: %s" % global.level_deaths[LOAD_NAME]
+	if LEVEL in global.level_deaths:
+		death_txt = "Deaths: %s" % global.level_deaths[LEVEL]
 	
 	var time_txt = "Best Time: NA"
-	if LOAD_NAME in global.level_times:
-		var time = global.level_times[LOAD_NAME]
+	if LEVEL in global.level_times:
+		var time = global.level_times[LEVEL]
 		var minute = int(floor(time / 60))
 		var second = int(floor(time - (minute * 60)))
 		var tenth = stepify(time - ((minute*60) + second), 0.1) * 10
@@ -61,7 +59,7 @@ func _ready() -> void:
 		time_txt = "Best Time: %s" % final_time
 	
 	label.text = (
-		LEVEL_LABEL + "\n" +
+		LEVEL + "\n" +
 		txt + "\n" +
 		death_txt + "\n" +
 		time_txt
@@ -79,7 +77,7 @@ func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_released("interact") and pressed == true:
 		global.player_hub_pos = global_position
-		get_tree().change_scene(LEVEL_LOAD)
+		get_tree().change_scene("res://Levels/%s/%s.tscn/" % [get_tree().current_scene.LETTER, LEVEL])
 
 func _on_Area2D_body_entered(body: Node) -> void:
 	if global.nodes["player"] == null: return

@@ -36,7 +36,7 @@ helo, thanks for downloading
 # info
 
 ## can i share this game with other people?
-please don't, i wanna keep this game sorta secret for now. if you violate this policy, i will do abesolutely nothing except be very very sad. however when the game is out, please share this game with EVERYONE. just constantly
+please don't, i wanna keep this game sorta secret for now. if you violate this policy, i will do absolutely nothing except be very very sad. however when the game is out, please share this game with EVERYONE. just like, constantly
 
 ## can i use a save from an old version?
 - all polish updates (+0.1 updates) should work fine with old saves		
@@ -48,7 +48,7 @@ please don't, i wanna keep this game sorta secret for now. if you violate this p
 the .exe has to be in the same folder as the .pck or it won't work. if you want to have access to the game somewhere else, just make a shortcut of the .exe file
 
 ## i don't see some particle effects
-if you're using a cpu with integrated graphics that doesn't support OpenGL ES 3, the game will fallback to OpenGL ES 2. this mostly works okay, although the game will run slower and particle effects won't work, sorry! (i might make a seperate version on the game that uses cpu-based particles, i'd be a hassle tho so won't happen til the full release if at all)
+if you're using a cpu with integrated graphics that doesn't support OpenGL ES 3, the game will fallback to OpenGL ES 2. this mostly works okay, but the game will run slower and particle effects won't work. sorry! i might make a seperate version that uses cpu-based particles, i'd be a hassle tho so won't happen til the full release if at all
 
 ## my saves list is empty even though i had a save from awhile ago
 due to the name change from project epsilon to teralite in beta 2.12, the game won't be able to find the folder where old game data was stored.    
@@ -64,9 +64,8 @@ it's pretty easy to fix tho, just follow these steps:
 ### developer:
 
 NonGMOTrash
-- itch: nongmotrash.itch.io
-- email: nongmotrash@gmail.com
-- discord: NonGMOTrash#9437
+- itch: https://nongmotrash.itch.io
+- email: nongmotrash@gmail.com (send me dumb stuff just no nsfw)
 
 ### play testers:
 
@@ -112,7 +111,6 @@ check out his stuff here:
 
 ### sound credits:
 
-- sound: "soundname" by creator ( link ) licensed under CC
 - sword_hit: "slashkut" by Abyssmal ( https://freesound.org/people/Abyssmal/sounds/35213/ ) licensed under CC0
 - sword_clank: "sword slash" by ethanchase7744 ( https://freesound.org/people/ethanchase7744/sounds/441666/ ) licensed under CC0
 - sword_miss: "Sword Swipe11" by LukeSharples ( https://freesound.org/people/LukeSharples/sounds/209121/ ) licensed under CC BY 3.0
@@ -144,7 +142,7 @@ check out his stuff here:
 
 thank you all for letting me legally steal your hard work to use in my game <3
 
-# license info
+# license
 
 note that this is not the license for the engine, but rather the game itself
 
@@ -167,21 +165,21 @@ github is here: [private until full release]
 
 # Patchnotes
 
-### Beta 2.14
+### Beta 2.14 (5/20/2021)
 
-- much better intro
+- completely remade intro
 - better level completion screen
 - added zooming to the pistol (with right click)
 - fixed return to title screen not working
 - added weapons to the level Caged making it much easier
 - fixed sword hitboxes (it didn't even go to the tip of the blade before lel)
-- fixed bullets having reversed knockback
+- fixed bullets often having reversed knockback
 - changed the star requirements for some levels to better match the difficulty
 - fixed death messages being a little broken with multiple players
 - added bow equip sound
 - slightly improved improved memory management for better load times and reduced lag spikes
 - changed the camera system a bit so you can't see quite as far if you put your mouse to the edge of the screen
-- some big behind the scenes improvements
+- some behind the scenes improvements
 
 #### Beta 2.13 Hotfix #3 (5/2/2021)
 

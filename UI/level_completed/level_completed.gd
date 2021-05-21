@@ -1,14 +1,12 @@
 extends Control
 
-const A_HUB = "res://Levels/A/A_hub.tscn"
+const A_HUB = "res://Levels/A/A-Hub.tscn"
 
 onready var header = $area/header/label
 onready var time = $area/stats/time/value
 onready var damage = $area/stats/damage/value
 
 onready var lvl = get_tree().current_scene.name
-
-var level_name: String = "Level"
 
 func _init():
 	visible = false
@@ -28,24 +26,7 @@ func start():
 	global.nodes["item_bar"].visible = false
 	global.nodes["health_ui"].visible = false
 	
-	match lvl:
-		"A-1": level_name = "Redwood"
-		"A-2": level_name = "Midpoint"
-		"A-3": level_name = "Spiral"
-		"A-4": level_name = "Brick"
-		"A-5": level_name = "Barricade"
-		"A-6": level_name = "Sprint"
-		"A-7": level_name = "Quickstep"
-		"A-8": level_name = "Enterance"
-		"A-9": level_name = "Timber"
-		"A-10": level_name = "Gauntlet"
-		"A-11": level_name = "Army"
-		"A-12": level_name = "Ambushed"
-		"A-13": level_name = "Caged"
-		"A-14": level_name = "Monarch"
-		"A-15": level_name = "Duo"
-		"A-secret": level_name = "Shadow"
-	header.text = "%s Completed" % level_name
+	header.text = "%s Completed" % lvl
 	
 	if get_player() == null:
 		damage.text = "? (this is a bug, pls report)"
@@ -80,7 +61,7 @@ func start():
 func _input(_event):
 	if Input.is_action_just_pressed("interact") and visible == true:
 		if lvl == "thx":
-			get_tree().change_scene_to(load("res://Levels/A/A_hub.tscn"))
+			get_tree().change_scene_to(load("res://Levels/A/A-Hub.tscn"))
 			return
 		
 		if not global.cleared_levels.has(lvl): 
@@ -102,12 +83,12 @@ func _input(_event):
 		if not lvl in global.level_deaths:
 			global.level_deaths[lvl] = 0
 		
-		if lvl == "A-14":
+		if lvl == "Monarch":
 			get_tree().change_scene_to_(load("res://Levels/thx.tscn"))
 		else:
 			match get_tree().current_scene.WORLD:
 				"A":
-					get_tree().change_scene_to(load("res://Levels/A/A_hub.tscn"))
+					get_tree().change_scene_to(load("res://Levels/A/A-Hub.tscn"))
 				_:
 					push_error("level has invalid WORLD: '%s'" % get_tree().current_scene.WORLD)
-					get_tree().change_scene_to(load("res://Levels/A/A_hub.tscn"))
+					get_tree().change_scene_to(load("res://Levels/A/A-Hub.tscn"))

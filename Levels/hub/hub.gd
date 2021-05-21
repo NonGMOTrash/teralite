@@ -2,6 +2,7 @@ extends Node2D
 
 enum AMBIANCE_TYPES {NONE, FOREST}
 export(AMBIANCE_TYPES) var AMBIANCE = AMBIANCE_TYPES.FOREST
+export(String) var LETTER := "A" 
 
 const LEVEL_TYPE = 1
 
