@@ -47,9 +47,8 @@ func hit():
 	var target
 	while not target is Sprite:
 		target = wtf.get_children()[randi() % wtf.get_child_count()-1]
-	prints(target.get_name(), target.global_position)
 	
-	for i in range(1, 5):
+	for _i in range(1, 5):
 		var hit = HIT_EFFECT.instance()
 		wtf.add_child(hit)
 		hit.global_position = target.global_position + Vector2(

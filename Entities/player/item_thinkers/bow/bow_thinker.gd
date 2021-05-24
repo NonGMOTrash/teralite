@@ -99,8 +99,7 @@ func primary():
 	
 	var arrow = ARROW.instance()
 	var charge_percent =  abs(charge.time_left - max_charge_time) / max_charge_time * 100.0
-	var damage = 0
-	if charge_percent > 15: damage += 1
+	var damage = 1
 	if charge_percent > 45: damage += 1
 	if charge_percent == 100: damage += 1
 	

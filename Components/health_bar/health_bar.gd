@@ -16,7 +16,7 @@ func _ready():
 	if stats == null:
 		queue_free()
 		return
-	update()
+	update_bar(0, 0, 0)
 	stats.connect("health_changed", self, "update_bar")
 	
 	visible = false

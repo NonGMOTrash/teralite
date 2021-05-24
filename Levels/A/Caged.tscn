@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Levels/level/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Entities/crate/Crate.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/crate/crate.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Item_Pickups/gold_heart/gold_heart.tscn" type="PackedScene" id=4]
 
 [node name="Caged" instance=ExtResource( 1 )]

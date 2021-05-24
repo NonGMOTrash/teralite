@@ -15,7 +15,14 @@ func _init():
 	original_force_mult = FORCE_MULT
 	FORCE_MULT = 0.0
 
+func debug():
+	print("ded")
+	print("")
+	#breakpoint
+
 func _ready():
+	connect("tree_exited", self, "debug")
+	
 	if SOURCE != null:
 		SOURCE.apply_force(target_pos.direction_to(SOURCE.global_position).normalized() * RECOIL)
 
@@ -51,6 +58,7 @@ func death():
 	emit_signal("death")
 	
 	if components["hitbox"] != null: 
+		print("hitbox queue_free'd")
 		hitbox.queue_free()
 	
 	if death_free == true:
@@ -65,9 +73,6 @@ func _on_hitbox_hit(area: Area2D, type: String) -> void:
 	#if get_speed() < MIN_DAM_SPEED: return
 	if "ONHIT_SELF_DAMAGE" in area.get_parent(): return
 	
-	# PROBLEM_NOTE: can do this better but it works
-	# EDIT: NO IT DOESNT MAKES AN ERROR SOMETIMES
-	#yield(get_tree().create_timer(0.016), "timeout")
 	stats.change_health(0, -(ONHIT_SELF_DAMAGE))
 	
 	VELOCITY_ARMOR -= ONHIT_SELF_DAMAGE

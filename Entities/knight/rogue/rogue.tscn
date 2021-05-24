@@ -64,11 +64,6 @@ PATIENCE = 0.2
 best_distance = 8
 COOLDOWN = 0.95
 
-[node name="death_effect_spawner" parent="." index="10"]
-effect_texture = ExtResource( 2 )
-
 [editable path="sprite"]
-
 [editable path="entityPush"]
-
 [editable path="hurtbox"]

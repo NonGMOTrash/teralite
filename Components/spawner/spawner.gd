@@ -90,7 +90,6 @@ func on_health_changed(_type, result, _net):
 		"heal": if spawn_on_heal == true: spawn()
 
 func hurtbox_got_hit(by_area, type):
-	if get_parent() is Thinker: print("!!")
 	var src_entity = by_area.get_parent()
 	#if src_entity is Attack:
 	#	src_entity = src_entity.SOURCE

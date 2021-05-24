@@ -56,6 +56,8 @@ func remove_memory(i: int):
 	if mem_times_queue != []:
 		memory_timer.wait_time = mem_times_queue[0] + 0.01
 		mem_times_queue.pop_front()
+		if memory_timer.is_inside_tree() == false:
+			yield(memory_timer, "tree_entered")
 		memory_timer.start()
 	else:
 		memory_timer.wait_time = MEMORY_TIME

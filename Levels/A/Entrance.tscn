@@ -6,7 +6,7 @@
 [ext_resource path="res://Entities/Item_Pickups/heart/heart.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/knight/rogue/rogue.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/level/level.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Entities/crate/Crate.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/crate/crate.tscn" type="PackedScene" id=7]
 
 [node name="Entrance" instance=ExtResource( 6 )]
 FORCE_SLEEP_UNTIL_VISIBLE = true

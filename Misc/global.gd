@@ -25,7 +25,7 @@ var level_times = {}
 
 const ver_phase = "Beta"
 const ver_num = 2.14
-const ver_hotfix = 0
+const ver_hotfix = 2
 
 # for saving things
 const SAVE_DIR := "user://saves/"
@@ -119,6 +119,7 @@ func _ready():
 	
 	push_warning("quality_of_this_game == -999")
 	print("===============")
+	print("")
 	
 	# debug stuffz:
 	#Engine.time_scale = 1
@@ -313,28 +314,28 @@ func update_settings():
 					SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, Vector2(384, 216)
 				)
 	
-	if not get_tree().current_scene is Navigation2D:
-		return
-	
-	var camera = global.nodes["camera"]
-	if not camera is Camera2D: 
-		push_warning("could not find camera")
-	else:
-		camera.smoothing_enabled = global.settings["smooth_camera"]
-		camera.limit_smoothed = global.settings["smooth_camera"]
-	
-	var item_bar = global.nodes["item_bar"]
-	if item_bar == null: 
-		push_warning("could not find item_bar")
-	else:
-		if global.nodes["player"] == null: return
-		var player = get_node_or_null(global.nodes["player"])
-		if player == null: return
-		var inventory = player.inventory
-		if global.settings["hide_bar"]==true and inventory[0]==null and inventory[1]==null and inventory[2]==null:
-			item_bar.visible = false
+	if get_tree().current_scene is Navigation2D:
+		# is level
+		
+		var camera = global.nodes["camera"]
+		if not camera is Camera2D: 
+			push_warning("could not find camera")
 		else:
-			item_bar.visible = true
+			camera.smoothing_enabled = global.settings["smooth_camera"]
+			camera.limit_smoothed = global.settings["smooth_camera"]
+		
+		var item_bar = global.nodes["item_bar"]
+		if item_bar == null: 
+			push_warning("could not find item_bar")
+		else:
+			if global.nodes["player"] == null: return
+			var player = get_node_or_null(global.nodes["player"])
+			if player == null: return
+			var inventory = player.inventory
+			if global.settings["hide_bar"]==true and inventory[0]==null and inventory[1]==null and inventory[2]==null:
+				item_bar.visible = false
+			else:
+				item_bar.visible = true
 	
 	AudioServer.set_bus_volume_db(0, linear2db(settings["volume"]))
 	
@@ -347,9 +348,12 @@ func update_settings():
 			# load works
 			settings_config.store_var(global.settings)
 			settings_config.close()
+			print("updated settings_config")
 		else:
 			# load failed
-			push_warning("could not find settings_config (on save)")
+			push_warning("could not load settings_config (on save)")
+	else:
+		push_warning("could not find settings_config")
 
 func physics_logic(delta, entity):
 	# PROBLEM NOTE:

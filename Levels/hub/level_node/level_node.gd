@@ -77,7 +77,7 @@ func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_released("interact") and pressed == true:
 		global.player_hub_pos = global_position
-		get_tree().change_scene("res://Levels/%s/%s.tscn/" % [get_tree().current_scene.LETTER, LEVEL])
+		get_tree().change_scene("res://Levels/%s/%s.tscn" % [get_tree().current_scene.LETTER, LEVEL])
 
 func _on_Area2D_body_entered(body: Node) -> void:
 	if global.nodes["player"] == null: return

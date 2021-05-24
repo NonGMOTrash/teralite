@@ -142,7 +142,7 @@ check out his stuff here:
 
 thank you all for letting me legally steal your hard work to use in my game <3
 
-# license
+### license
 
 note that this is not the license for the engine, but rather the game itself
 
@@ -164,6 +164,17 @@ note that this is not the license for the engine, but rather the game itself
 github is here: [private until full release]
 
 # Patchnotes
+
+### Beta 2.14 Hotfix #2 (5/23/2021)
+
+- fixed the hitbox bug
+- fixed weird damage scaling with arrows that caused them to sometimes deal 0 damage
+- fixed healthbar issue on Duo
+
+### Beta 2.14 Hotfix (5/22/2021)
+
+- fixed levels not loading (so the game is actually playable)
+- fixed options sometimes not saving
 
 ### Beta 2.14 (5/20/2021)
 

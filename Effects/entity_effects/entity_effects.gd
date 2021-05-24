@@ -63,6 +63,13 @@ func _ready():
 		spawner.effect_hframes = sprite.hframes
 		spawner.effect_vframes = sprite.vframes
 		
+		if sprite.modulate != Color8(255, 255, 255, 255):
+			spawner.use_modulate = true
+			spawner.modulate = sprite.modulate
+		elif sprite.self_modulate != Color8(255, 255, 255, 255):
+			spawner.use_modulate = true
+			spawner.modulate = sprite.self_modulate
+		
 		get_parent().call_deferred("add_child", spawner)
 	
 	if block_effect == true:

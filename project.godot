@@ -80,7 +80,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Teralite"
+config/name="teralite"
 config/description="an okay game."
 run/main_scene="res://UI/intro/intro.tscn"
 config/use_custom_user_dir=true
@@ -102,7 +102,6 @@ res="*res://Misc/res.gd"
 [debug]
 
 gdscript/warnings/unassigned_variable=false
-gdscript/warnings/unused_variable=false
 gdscript/warnings/unused_argument=false
 gdscript/warnings/function_may_yield=false
 gdscript/warnings/variable_conflicts_function=false

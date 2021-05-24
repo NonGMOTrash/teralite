@@ -23,13 +23,10 @@ func _ready():
 	entity = get_parent()
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	if (
-		get_parent() == area.get_parent() or
-		area.is_queued_for_deletion() == true
-	): 
-		return
-	
 	var area_entity = area.get_parent() as Entity
+	
+	if get_parent() == area_entity:
+		return
 	
 	if global.get_relation(get_parent(), area_entity) == "friendly":
 		if area.TEAM_ATTACK == false: return
@@ -61,6 +58,9 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		type = area.DAM_TYPE
 	
 	var result_type = entity.components["stats"].change_health(-(area.DAMAGE), -(area.TRUE_DAMAGE), type)
+	
+	if area.get_parent() is Projectile:
+		print("damage dealt")
 	
 	# signals
 	

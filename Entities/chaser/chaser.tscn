@@ -16,7 +16,6 @@
 [ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=18]
 
-
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 
@@ -163,7 +162,5 @@ RATE = 0.0
 OFFSET = 0.0
 
 [editable path="hitbox"]
-
 [editable path="hurtbox"]
-
 [editable path="entityPush"]

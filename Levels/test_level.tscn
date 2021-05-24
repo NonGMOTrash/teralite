@@ -1,10 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Levels/level/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level Resources/background_tiles/background_tiles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/knight/knight.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/player/player.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
 
 [node name="test_level" instance=ExtResource( 1 )]
@@ -14,7 +18,7 @@ AMBIANCE = 0
 visible = false
 
 [node name="entity_spawns" parent="YSort" index="1"]
-tile_data = PoolIntArray( 1179672, 31, 0, 1966120, 12, 0, 2031656, 12, 0, 2097192, 12, 0, 2162728, 12, 0, 2359334, 13, 0, 2359335, 13, 0, 2359336, 13, 0, 3080242, 2, 0, 3145778, 21, 0, 3211314, 6, 0, 3670050, 31, 0 )
+tile_data = PoolIntArray( 1179672, 31, 0, 1966120, 12, 0, 2031656, 12, 0, 2097192, 12, 0, 2162728, 12, 0, 2359334, 13, 0, 2359335, 13, 0, 2359336, 13, 0, 3014690, 3, 0, 3014691, 3, 0, 3014692, 3, 0, 3014693, 3, 0, 3014694, 3, 0, 3014695, 3, 0, 3080226, 3, 0, 3080227, 3, 0, 3080228, 3, 0, 3080229, 3, 0, 3080230, 3, 0, 3080231, 3, 0, 3145762, 3, 0, 3145763, 3, 0, 3145764, 3, 0, 3145765, 3, 0, 3145766, 3, 0, 3145767, 3, 0, 3145778, 21, 0, 3211298, 3, 0, 3211299, 3, 0, 3211300, 3, 0, 3211301, 3, 0, 3211302, 3, 0, 3211303, 3, 0, 3211314, 6, 0, 3276834, 3, 0, 3276835, 3, 0, 3276836, 3, 0, 3276837, 3, 0, 3276838, 3, 0, 3276839, 3, 0, 3342370, 3, 0, 3342371, 3, 0, 3342372, 3, 0, 3342373, 3, 0, 3342374, 3, 0, 3342375, 3, 0, 3670050, 31, 0 )
 
 [node name="background_tiles" parent="YSort/entity_spawns" index="0" instance=ExtResource( 2 )]
 position = Vector2( -4, -4 )
@@ -27,8 +31,8 @@ tile_data = PoolIntArray( -1, 2, 131074, -65536, 2, 65536, -65535, 2, 65536, -65
 position = Vector2( 514.794, 250.224 )
 
 [node name="stats" parent="YSort/knight" index="0"]
-MAX_HEALTH = 50
-HEALTH = 50
+MAX_HEALTH = 99
+HEALTH = 99
 
 [node name="sprite" parent="YSort/knight" index="1"]
 material = SubResource( 1 )
@@ -40,6 +44,19 @@ general_springs = {
 "neutral": ""
 }
 
+[node name="player" parent="YSort" index="4" instance=ExtResource( 4 )]
+position = Vector2( 407.453, 383.32 )
+
+[node name="sprite" parent="YSort/player" index="1"]
+material = SubResource( 2 )
+
+[node name="CollisionShape2D" parent="YSort/player/hurtbox" index="0"]
+disabled = true
+
 [editable path="YSort/knight"]
 [editable path="YSort/knight/entityPush"]
 [editable path="YSort/knight/hurtbox"]
+[editable path="YSort/player"]
+[editable path="YSort/player/hurtbox"]
+[editable path="YSort/player/entityPush"]
+[editable path="YSort/player/held_item"]

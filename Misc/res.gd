@@ -6,9 +6,9 @@ var data = {
 	"spikes": "res://Entities/spikes/spikes.tscn",
 	"spikes_offset": "res://Entities/spikes/spikes_offest/spikes_offset.tscn",
 	"chaser": "res://Entities/chaser/chaser.tscn",
-	"brute_chaser": "res://Entities/chaser/brute_chaser/Brute_Chaser.tscn",
+	"brute_chaser": "res://Entities/chaser/brute_chaser/brute_chaser.tscn",
 	"gold_chaser": "res://Entities/chaser/gold_chaser/Gold_Chaser.tscn",
-	"crate": "res://Entities/crate/Crate.tscn",
+	"crate": "res://Entities/crate/crate.tscn",
 	"fire": "res://Entities/fire/fire.tscn",
 	"timber_box": "res://Entities/fire/timber_pot/timber_pot.tscn",
 	"unlite_timber_box": "res://Entities/fire/timber_pot/unlite_timber_pot/unlite_timber_pot.tscn",
@@ -20,6 +20,7 @@ var data = {
 	"ultra_chaser": "res://Entities/chaser/ultra_chaser/ultra_chaser.tscn",
 	"red_spikes": "res://Entities/spikes/red_spikes/red_spikes.tscn",
 	"diamond_spikes": "res://Entities/spikes/red_spikes/diamond_spikes/diamond_spikes.tscn",
+	"arrow_turret": "res://Entities/arrow_turret/arrow_turret.tscn",
 	
 	# items
 	"pistol": "res://Entities/Item_Pickups/pistol/pistol.tscn",

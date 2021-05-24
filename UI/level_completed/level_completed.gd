@@ -84,7 +84,7 @@ func _input(_event):
 			global.level_deaths[lvl] = 0
 		
 		if lvl == "Monarch":
-			get_tree().change_scene_to_(load("res://Levels/thx.tscn"))
+			get_tree().change_scene_to(load("res://Levels/thx.tscn"))
 		else:
 			match get_tree().current_scene.WORLD:
 				"A":
