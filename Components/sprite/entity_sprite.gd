@@ -63,7 +63,7 @@ func _ready():
 	color_c.hframes = hframes
 	color_c.vframes = vframes
 	
-	self.connect("frame_changed", self, "animate_overlay")
+	connect("frame_changed", self, "animate_overlay")
 	
 	var stats = get_parent().components["stats"]
 	if stats == null: return
@@ -107,18 +107,24 @@ func unflip():
 	offset = stored_offset
 
 func animate_overlay():
+	color_a.hframes = hframes
+	color_a.vframes = vframes
 	color_a.flip_h = flip_h
 	color_a.frame = frame
-	
+
+	color_b.hframes = hframes
+	color_b.vframes = vframes
 	color_b.flip_h = flip_h
 	color_b.frame = frame
-	
+
+	color_c.hframes = hframes
+	color_c.vframes = vframes
 	color_c.flip_h = flip_h
 	color_c.frame = frame
 
 func play_effect(_type, result, _net):
-	var color_effect = color_a_effect
-	var texture_effect = texture_a_effect
+	var color_effect: AnimationPlayer = color_a_effect
+	var texture_effect: AnimationPlayer = texture_a_effect
 	if color_a_effect.is_playing() == true or texture_a_effect.is_playing() == true: 
 		color_effect = color_b_effect
 		texture_effect = texture_b_effect

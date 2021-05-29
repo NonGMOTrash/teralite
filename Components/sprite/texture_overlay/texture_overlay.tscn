@@ -70,8 +70,8 @@ tracks/4/keys = {
 [node name="texture_overlay" type="Sprite"]
 self_modulate = Color( 1, 1, 1, 0.784314 )
 texture = ExtResource( 1 )
-vframes = 2
 hframes = 3
+vframes = 2
 
 [node name="effects" type="AnimationPlayer" parent="."]
 anims/fire = SubResource( 1 )

@@ -24,8 +24,8 @@ var level_deaths = {}
 var level_times = {}
 
 const ver_phase = "Beta"
-const ver_num = 2.14
-const ver_hotfix = 2
+const ver_num = 3.0
+const ver_hotfix = 0
 
 # for saving things
 const SAVE_DIR := "user://saves/"
@@ -98,9 +98,11 @@ signal unpaused()
 func _ready():
 	seed(the_seed.hash())
 	var v: String
-	v = global.ver_phase + " " + str(global.ver_num)
-	if global.ver_hotfix > 0:
-		if global.ver_hotfix == 1:
+	v = ver_phase + " " + str(ver_num)
+	if ver_num == round(ver_num):
+		v = v + ".0"
+	if ver_hotfix > 0:
+		if ver_hotfix == 1:
 			v = v + " Hotfix"
 		else:
 			v = v + " Hotfix #" + str(global.ver_hotfix)
@@ -348,7 +350,6 @@ func update_settings():
 			# load works
 			settings_config.store_var(global.settings)
 			settings_config.close()
-			print("updated settings_config")
 		else:
 			# load failed
 			push_warning("could not load settings_config (on save)")

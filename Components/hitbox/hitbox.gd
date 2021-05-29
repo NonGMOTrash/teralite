@@ -38,8 +38,6 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		TEAM_ATTACK == false and global.get_relation(get_parent(), area_entity) == "friendly"
 		): return
 	
-	if get_parent() is Projectile:
-		print("monitorable set false")
 	set_deferred("monitorable", false)
 	timer.start()
 	

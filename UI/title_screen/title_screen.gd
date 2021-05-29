@@ -68,13 +68,13 @@ func _ready() -> void:
 	
 	# set display version
 	version.text = global.ver_phase + " " + str(global.ver_num)
+	if global.ver_num == round(global.ver_num):
+		version.text = version.text + ".0"
 	if global.ver_hotfix > 0:
 		if global.ver_hotfix == 1:
 			version.text = version.text + " Hotfix"
 		else:
-			version.text = version.text + " Hotfix #" + str(global.ver_hotfix)
-	
-	# set random msg
+			version.texe
 	msg.text = MESSAGES[randi() % MESSAGES.size()]
 
 	# load settings config

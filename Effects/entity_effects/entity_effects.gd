@@ -58,17 +58,19 @@ func _ready():
 			DEATHS.TRIPLE_SHRINK: spawner.thing = TRIPLE_SHRINK
 			DEATHS.WIGGLE_FADE: spawner.thing = WIGGLE_FADE
 		
-		var sprite: Sprite = get_parent().components["entity_sprite"]
-		spawner.effect_texture = sprite.texture
-		spawner.effect_hframes = sprite.hframes
-		spawner.effect_vframes = sprite.vframes
-		
-		if sprite.modulate != Color8(255, 255, 255, 255):
-			spawner.use_modulate = true
-			spawner.modulate = sprite.modulate
-		elif sprite.self_modulate != Color8(255, 255, 255, 255):
-			spawner.use_modulate = true
-			spawner.modulate = sprite.self_modulate
+		if death_type != DEATHS.HIT_EFFECT:
+			
+			var sprite: Sprite = get_parent().components["entity_sprite"]
+			spawner.effect_texture = sprite.texture
+			spawner.effect_hframes = sprite.hframes
+			spawner.effect_vframes = sprite.vframes
+			
+			if sprite.modulate != Color8(255, 255, 255, 255):
+				spawner.use_modulate = true
+				spawner.modulate = sprite.modulate
+			elif sprite.self_modulate != Color8(255, 255, 255, 255):
+				spawner.use_modulate = true
+				spawner.modulate = sprite.self_modulate
 		
 		get_parent().call_deferred("add_child", spawner)
 	

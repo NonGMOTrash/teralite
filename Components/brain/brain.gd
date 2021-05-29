@@ -22,6 +22,10 @@ export var COMMUNICATES = true
 export(float, 0.01, 10.0) var COMM_DELAY = 1.2
 export(float, 0.0, 5.0) var COMM_DELAY_VARIANCE = 0.5
 
+export var IGNORE_ATTACKS := true
+export var IGNORE_UNFACTIONED := true
+export var IGNORE_ALLIES := false
+
 var targets: Array = []
 var target_paths: Array = []
 
@@ -128,7 +132,7 @@ func los_check(target):
 				target_pos, [get_parent()], LOS_MASK)
 	
 	if vision:
-		if vision.collider is TileMap: 
+		if vision.collider is TileMap:
 			return false
 		elif target is Entity and vision.collider == target:
 			return true
@@ -155,18 +159,26 @@ func los_check(target):
 # EDIT2: it's due to a infinitely running while loop. see the notes in movement_lobe.gd for details
 
 func add_target(tar: Entity, force = false) -> void:
-	#if targets.size() >= MAX_TARGETS and force == false:
-	#	return
-	
 	# PROBLEM_NOTE: im pretty sure i can just do 'if not tar is Entity' here
-	if not tar is Entity or tar is Melee or tar is Projectile or tar is Item or tar == get_parent():
+	if tar == get_parent():
 		return
-	if movement_lobe != null and movement_lobe.get_spring(tar) == null: 
+	elif movement_lobe != null and movement_lobe.get_spring(tar) == null: 
 		return
+	
+	if force == false:
+		if tar is Attack and IGNORE_ATTACKS == true:
+			return
+		elif tar.faction == "" and IGNORE_UNFACTIONED == true:
+			return
+		elif global.get_relation(get_parent(), tar) == "friendly":
+			return
+		elif targets.size() >= MAX_TARGETS:
+			return
 	
 	targets.append(tar)
 	target_paths.append(tar.get_path())
-	if movement_lobe != null: movement_lobe.best_position_paths.append(null)
+	if movement_lobe != null:
+		movement_lobe.best_position_paths.append(null)
 	
 	if is_target_valid(targets.size()-1) == false and force == false:
 		targets.pop_back()
@@ -227,7 +239,8 @@ func _on_sight_body_exited(body: Node) -> void:
 
 func _on_think_timer_timeout() -> void:
 	think_timer.wait_time = THINK_TIME + rand_range(-0.1, 0.1)
-	if get_parent().is_physics_processing() == false: return
+	# wonder why this was here? \/
+	#if get_parent().is_physics_processing() == false: return
 	emit_signal("think")
 	
 	# search get_overlapping_bodies() for new targets

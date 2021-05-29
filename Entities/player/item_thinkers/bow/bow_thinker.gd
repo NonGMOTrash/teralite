@@ -101,7 +101,7 @@ func primary():
 	var charge_percent =  abs(charge.time_left - max_charge_time) / max_charge_time * 100.0
 	var damage = 1
 	if charge_percent > 45: damage += 1
-	if charge_percent == 100: damage += 1
+	if charge_percent > 98: damage += 1
 	
 	#       \/ can't check components because arrow isn't in the scene tree yet
 	arrow.find_node("stats").DAMAGE = damage

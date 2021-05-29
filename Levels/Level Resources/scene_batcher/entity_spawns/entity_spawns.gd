@@ -26,5 +26,6 @@ func set_data():
 		"king": get_used_cells_by_id(25),
 		"ultra_chaser": get_used_cells_by_id(26),
 		"red_spikes": get_used_cells_by_id(31),
-		"diamond_spikes": get_used_cells_by_id(32)
+		"diamond_spikes": get_used_cells_by_id(32),
+		"arrow_turret": get_used_cells_by_id(33),
 	}

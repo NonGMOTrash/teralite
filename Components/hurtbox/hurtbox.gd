@@ -59,9 +59,6 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	
 	var result_type = entity.components["stats"].change_health(-(area.DAMAGE), -(area.TRUE_DAMAGE), type)
 	
-	if area.get_parent() is Projectile:
-		print("damage dealt")
-	
 	# signals
 	
 	if result_type != "":

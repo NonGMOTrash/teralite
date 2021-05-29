@@ -1,8 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://UI/Themes/Shaders and Materials/overlay.shader" type="Shader" id=1]
-[ext_resource path="res://Entities/crate/crate.png" type="Texture" id=2]
-
+[ext_resource path="res://Misc/generic.png" type="Texture" id=2]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -85,7 +84,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.025, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0.0784314 ), Color( 0, 0.0705882, 0.564706, 0.705882 ), Color( 0, 0.0705882, 0.564706, 0 ) ]
+"values": [ Color( 1, 1, 1, 0.0784314 ), Color( 0, 0.0705882, 0.564706, 1 ), Color( 0, 0.0705882, 0.564706, 0 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -205,7 +204,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.025, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0.0784314 ), Color( 0.964706, 0.0941176, 0.0941176, 0.784314 ), Color( 0.964706, 0.0941176, 0.0941176, 0 ) ]
+"values": [ Color( 1, 1, 1, 0.0784314 ), Color( 0.964706, 0.0941176, 0.0941176, 1 ), Color( 0.964706, 0.0941176, 0.0941176, 0 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -304,7 +303,8 @@ tracks/2/keys = {
 }
 
 [node name="color_overlay" type="Sprite"]
-self_modulate = Color( 0.490196, 0.0392157, 0.0392157, 0 )
+visible = false
+self_modulate = Color( 0.113725, 0.286275, 0.12549, 0 )
 material = SubResource( 1 )
 texture = ExtResource( 2 )
 

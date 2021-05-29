@@ -5,7 +5,7 @@
 
 [node name="thx" instance=ExtResource( 1 )]
 
-[node name="Background" parent="." index="0"]
+[node name="background" parent="." index="0"]
 visible = false
 
 [node name="entity_spawns" parent="YSort" index="1"]

@@ -9,6 +9,8 @@ enum TT {
 
 export(TT) var TARGETING = TT.INPUT_VECTOR
 export var PARENT_BOND = true # for testing only, should be true in 99% of cases
+export var DEFAULT_HFRAMES = 1
+export var DEFAULT_VFRAMES = 1
 
 var target_pos = Vector2.ZERO
 var source
@@ -20,11 +22,14 @@ onready var sprite = $anchor/sprite
 onready var anchor = $anchor
 onready var animation = $AnimationPlayer
 
+signal cant_rotate
+
 func _on_held_item_tree_entered():
 	get_parent().components["held_item"] = self
 
 func _ready():
-	sprite.hframes = 1
+	sprite.hframes = DEFAULT_HFRAMES
+	sprite.vframes = DEFAULT_VFRAMES
 	sprite.frame = 0
 	sprite.frame_coords = Vector2.ZERO
 	original_offset = sprite.offset
@@ -44,32 +49,27 @@ func _ready():
 				push_error("held_item could not be bound to parent because it has no brain")
 				source = self
 
-onready var old_sprite_position = sprite.position
 func _process(delta):
-	if get_parent().truName == "player":
-		if sprite.position != old_sprite_position:
-			breakpoint
-		old_sprite_position = sprite.position
+	if TARGETING != TT.MANUAL and visible == true:
 	
-	if TARGETING == TT.MANUAL or visible == false:
-		return
-	
-	elif TARGETING == TT.INPUT_VECTOR:
-		target_pos = source.global_position + source.input_vector * 10
-	
-	elif TARGETING == TT.BRAIN_TARGET:
-		if TARGETING == TT.BRAIN_TARGET and get_parent().components["brain"] == null:
-			push_error("can't use BRAIN_TARGET targetting because brain couldn't be found, switching to INPUT_VECTOR")
-			TARGETING = TT.INPUT_VECTOR
-		else:
-			var closet_target = get_parent().components["brain"].closest_target().global_position
-			if not closet_target is String:
-				target_pos = closet_target.global_position
-	
-	elif TARGETING == TT.CURSOR:
-		target_pos = get_global_mouse_position()
-	
-	rotation_degrees = rad2deg(global_position.direction_to(target_pos).angle())
+		if TARGETING == TT.INPUT_VECTOR:
+			target_pos = source.global_position + source.input_vector * 10
+		
+		elif TARGETING == TT.BRAIN_TARGET:
+			if TARGETING == TT.BRAIN_TARGET and get_parent().components["brain"] == null:
+				push_error("can't use BRAIN_TARGET targetting because brain couldn't be found, switching to INPUT_VECTOR")
+				TARGETING = TT.INPUT_VECTOR
+			else:
+				var closet_target = get_parent().components["brain"].closest_target()
+				if closet_target is Entity:
+					target_pos = closet_target.global_position
+				else:
+					emit_signal("cant_rotate")
+		
+		elif TARGETING == TT.CURSOR:
+			target_pos = get_global_mouse_position()
+		
+		rotation_degrees = rad2deg(global_position.direction_to(target_pos).angle())
 	
 	if (
 		rotation_degrees < -90 or 

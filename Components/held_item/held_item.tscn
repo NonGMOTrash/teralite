@@ -36,7 +36,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6 ),
+"times": PoolRealArray( 0, 0.45, 0.98 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2 ]
@@ -98,5 +98,6 @@ hframes = 3
 anims/bow_charge = SubResource( 1 )
 anims/spin = SubResource( 2 )
 anims/test_slash = SubResource( 3 )
+
 [connection signal="tree_entered" from="." to="." method="_on_held_item_tree_entered"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]

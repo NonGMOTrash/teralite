@@ -165,6 +165,12 @@ github is here: [private until full release]
 
 # Patchnotes
 
+## Beta 3.0
+
+- added arrow turrets
+- fixed weird visual artifacts with tilemaps
+- fixed the bow being capped at 2 damage instead of 3
+
 ### Beta 2.14 Hotfix #2 (5/23/2021)
 
 - fixed the hitbox bug

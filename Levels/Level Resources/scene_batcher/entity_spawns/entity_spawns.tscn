@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Levels/Level Resources/scene_batcher/scene_batcher.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/pistol/pistol.png" type="Texture" id=2]
@@ -26,7 +26,7 @@
 [ext_resource path="res://Entities/chaser/ultra_chaser/ultra chaser.png" type="Texture" id=24]
 [ext_resource path="res://Entities/spikes/red_spikes/diamond_spikes/diamond_spike.png" type="Texture" id=25]
 [ext_resource path="res://Entities/spikes/red_spikes/red_spike.png" type="Texture" id=26]
-
+[ext_resource path="res://Entities/arrow_turret/arrow_turret_complete.png" type="Texture" id=27]
 
 [sub_resource type="TileSet" id=1]
 2/name = "player.png 2"
@@ -379,6 +379,20 @@
 32/shape_one_way_margin = 0.0
 32/shapes = [  ]
 32/z_index = 0
+33/name = "arrow_turret_complete.png 33"
+33/texture = ExtResource( 27 )
+33/tex_offset = Vector2( 0, 0 )
+33/modulate = Color( 1, 1, 1, 1 )
+33/region = Rect2( 0, 0, 11, 12 )
+33/tile_mode = 0
+33/occluder_offset = Vector2( 0, 0 )
+33/navigation_offset = Vector2( 0, 0 )
+33/shape_offset = Vector2( 0, 0 )
+33/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+33/shape_one_way = false
+33/shape_one_way_margin = 0.0
+33/shapes = [  ]
+33/z_index = 0
 
 [node name="entity_spawns" instance=ExtResource( 1 )]
 position = Vector2( 4, 4 )

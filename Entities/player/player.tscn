@@ -7,7 +7,7 @@
 [ext_resource path="res://Components/player_controlled/playerControlled.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Components/entity_push/entityPush.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/entity_push/entity_push.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Effects/hit_effect/hit_effect.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/player/player.png" type="Texture" id=10]
 [ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=11]
@@ -164,7 +164,6 @@ material = SubResource( 1 )
 texture = ExtResource( 10 )
 hframes = 4
 vframes = 2
-frame = 2
 auto_flip_mode = 0
 
 [node name="playerControlled" parent="." instance=ExtResource( 5 )]
@@ -207,9 +206,6 @@ one_shot = true
 
 [node name="held_item" parent="." instance=ExtResource( 16 )]
 TARGETING = 2
-
-[node name="sprite" parent="held_item/anchor" index="0"]
-frame = 2
 
 [node name="hit_effect_spawner" parent="." instance=ExtResource( 1 )]
 thing = ExtResource( 9 )

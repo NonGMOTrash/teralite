@@ -15,14 +15,7 @@ func _init():
 	original_force_mult = FORCE_MULT
 	FORCE_MULT = 0.0
 
-func debug():
-	print("ded")
-	print("")
-	#breakpoint
-
 func _ready():
-	connect("tree_exited", self, "debug")
-	
 	if SOURCE != null:
 		SOURCE.apply_force(target_pos.direction_to(SOURCE.global_position).normalized() * RECOIL)
 
@@ -58,13 +51,11 @@ func death():
 	emit_signal("death")
 	
 	if components["hitbox"] != null: 
-		print("hitbox queue_free'd")
 		hitbox.queue_free()
 	
 	if death_free == true:
 		queue_free()
 		
-
 func _on_hitbox_hit(area: Area2D, type: String) -> void:
 	._on_hitbox_hit(area, type)
 	

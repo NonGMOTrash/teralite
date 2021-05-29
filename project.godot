@@ -337,4 +337,5 @@ file_logging/enable_file_logging=true
 [rendering]
 
 quality/driver/fallback_to_gles2=true
+batching/precision/uv_contract=true
 quality/dynamic_fonts/use_oversampling=false
