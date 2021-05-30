@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Components/stats/status_effects/speed/speed.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Components/stats/status_effects/speed/slowness/slowness.gd" type="Script" id=2]
+
+[node name="slowness" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+USE_TRIGGER = true

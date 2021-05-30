@@ -4,9 +4,10 @@ class_name Status_Effect
 onready var duration = $duration
 onready var trigger = $trigger
 
-export(float, 0.01, 999) var level = 1
-export(float, 0.01, 999) var INIT_DURATION = 0.01
-export(float, 0.01, 999) var TRIGGER_TIME = 2.5
+export(float, 0.01, 999) var level := 1
+export(float, 0.01, 999) var INIT_DURATION := 0.01
+export(bool) var USE_TRIGGER := true
+export(float, 0.01, 999) var TRIGGER_TIME := 2.5
 
 func _ready() -> void:
 	get_parent().status_effects[get_name()] = self
@@ -17,13 +18,18 @@ func _ready() -> void:
 	trigger.wait_time = TRIGGER_TIME / x
 	duration.wait_time = INIT_DURATION
 	duration.start()
-	trigger.start()
+	
+	if USE_TRIGGER == true:
+		trigger.start()
+	else:
+		trigger.queue_free()
 
 func change_duration(amount: float):
 	duration.wait_time = clamp(duration.wait_time + amount, 0.01, 999)
 	duration.start()
 
 func change_level(amount: float):
+# warning-ignore:narrowing_conversion
 	level = level + amount
 	if level <= 0: _on_duration_timeout()
 	var x = floor(level)

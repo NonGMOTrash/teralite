@@ -4,6 +4,9 @@ extends Node
 const burning = preload("res://Components/stats/status_effects/burning/burning.tscn")
 const poison = preload("res://Components/stats/status_effects/poison/poison.tscn")
 const bleed = preload("res://Components/stats/status_effects/bleed/bleed.tscn")
+const speed = preload("res://Components/stats/status_effects/speed/speed.tscn")
+const slowness = preload("res://Components/stats/status_effects/speed/slowness/slowness.tscn")
+const regen = preload("res://Components/stats/status_effects/regeneration/regeneration.tscn")
 
 var duration_timers = []
 var effect_timers = []
@@ -24,13 +27,19 @@ export var TRUE_DAMAGE = 0
 var status_effects = {
 	"poison": null,
 	"bleed": null,
-	"burning": null
+	"burning": null,
+	"speed": null,
+	"slowness": null,
+	"regeneration": null,
 }
 
 export var modifiers = {
 	"poison": 0, # changes the level of a given status effect by the value
 	"burning": 0, 
 	"bleeding": 0, 
+	"speed": 0,
+	"slowness": 0,
+	"regeneration": 0,
 }
 
 func _on_stats_tree_entered():
@@ -123,6 +132,9 @@ func add_status_effect(new_status_effect:String, duration=2.5, level=1.0):
 		"burning": status_effect = burning.instance()
 		"poison": status_effect = poison.instance()
 		"bleed": status_effect = bleed.instance()
+		"speed": status_effect = speed.instance()
+		"slowness": status_effect = slowness.instance()
+		"regeneration": status_effect = regen.instance()
 		_: 
 			push_error("status effect '%s' does not exist" % status_effect)
 			return

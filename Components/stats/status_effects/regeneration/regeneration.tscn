@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Components/stats/status_effects/status_effect.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Components/stats/status_effects/regeneration/regeneration.gd" type="Script" id=2]
+
+[node name="regeneration" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+USE_TRIGGER = true
+TRIGGER_TIME = 2.0

@@ -265,9 +265,7 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 			"arrow": death_message = "Death by %s's arrow." % source_name
 			_: death_message = "death message messed up, report pls ;-;"
 	
-	prints("before:", death_message)
 	death_message = death_message.replace("_", " ")
-	prints("after:", death_message)
 	
 	emit_signal("updated_death_message")
 
