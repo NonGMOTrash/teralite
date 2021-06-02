@@ -35,7 +35,7 @@ signal update_ui(bar_max, bar_value, info_string)
 
 func _ready():
 	if my_item == "":
-		push_error("my_time was not set")
+		push_error("my_item was not set")
 		queue_free()
 	
 	if get_parent().truName != "player":
@@ -62,7 +62,10 @@ func _check_if_selected(swapped_item) -> void:
 	else:
 		unselected()
 
-func _input(_event: InputEvent):
+# PROBLEM_NOTE: i have to have this be _process() instead of _input() because automatic weapons won't
+# work otherwise. i guess godot doesn't count holding a mouse button as an input. i tried fixing this
+# by having a holding_primary variable but i couldn't get it to work.
+func _process(_delta: float):
 	if get_parent().inventory[global.selection] != my_item.to_lower(): return
 	
 	pre_input_action()
@@ -99,7 +102,7 @@ func _input(_event: InputEvent):
 		queue_free()
 		return
 	
-	if get_ready() == false && auto_ready_check == true: return
+	if get_ready() == false and auto_ready_check == true: return
 	
 	match PRIMARY_ACTION_MODE:
 		ACTION_MODES.SEMI:
@@ -190,10 +193,13 @@ func reload():
 	if RELOAD_ANIM != "":
 		get_parent().components["held_item"].animation.play(RELOAD_ANIM)
 
-func _quick_spawn(attack:String, type:String):
-	var new_attack = res.aquire(attack).instance()
+func quick_spawn(attack:String, deferred:=true) -> void:
+	var new_attack = res.aquire_attack(attack)#.instance()
 	new_attack.setup(get_parent(), get_parent().get_global_mouse_position())
-	get_parent().get_parent().call_deferred("add_child", new_attack)
+	if deferred == true:
+		get_parent().get_parent().call_deferred("add_child", new_attack)
+	else:
+		get_parent().get_parent().add_child(new_attack)
 
 func _update_held_item():
 	get_parent().components["held_item"].sprite.texture = HELD_ITEM_TEXTURE

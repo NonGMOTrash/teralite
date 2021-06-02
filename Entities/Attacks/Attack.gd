@@ -67,6 +67,7 @@ func _ready():
 	visible = true
 
 func _on_collision_body_entered(body: Node) -> void:
+	print("collision!!!1!")
 	if visible == false: return
 	if body.get_name() == "world_tiles":
 		if COLLIDE_SOUND != null:
@@ -76,6 +77,8 @@ func _on_collision_body_entered(body: Node) -> void:
 		
 		death_free = true
 		death()
+	prints(randi() % 100, is_queued_for_deletion())
+	print("")
 
 func _on_hitbox_hit(area, type) -> void:
 	if HIT_SOUND == null and BLOCKED_SOUND == null and DEATH_SOUND == null:

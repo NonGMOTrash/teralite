@@ -92,7 +92,9 @@ position = Vector2( 8, 0 )
 
 [node name="sprite" type="Sprite" parent="anchor"]
 texture = ExtResource( 2 )
+flip_v = true
 hframes = 3
+frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/bow_charge = SubResource( 1 )

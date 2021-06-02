@@ -33,6 +33,11 @@
 
 helo, thanks for downloading	
 
+# table of contents
+1. [info](#info)
+2. [credits](#credits)
+3. [patchnotes](#patchnotes)
+
 # info
 
 ## can i share this game with other people?
@@ -139,6 +144,10 @@ check out his stuff here:
 - player_death: "Retro Video Game Death" by SRJA_Gaming ( https://freesound.org/people/SRJA_Gaming/sounds/543255/ ) licensed under CC0
 - heal: "Healing 2 (Tranquillity)" by SilverIllusionist ( https://freesound.org/people/SilverIllusionist/sounds/518800/ ) licensed under CC BY 3.0
 - os_error: "Error" by Isaac200000 ( https://freesound.org/people/Isaac200000/sounds/188013/ ) licensed under CC0
+- shine: "FX111" from "Audiopack #012" by jalastram ( https://opengameart.org/content/sound-effects-fx012 ) licesned under CC BY 3.0
+- magic_shoot: "Enchant" by qubodup ( https://freesound.org/people/qubodup/sounds/202147/ ) licensed under CC BY 3.0
+- magic_collide: "Menu FX 03" (normal) by NightFlame ( https://freesound.org/people/Nightflame/sounds/422514/ ) licensed under CC0
+- bow_equip: "Wooden Object Take" by Kostas17 ( https://freesound.org/people/Kostas17/sounds/537765/ ) licensed under CC BY 3.0
 
 thank you all for letting me legally steal your hard work to use in my game <3
 
@@ -168,8 +177,10 @@ github is here: [private until full release]
 ## Beta 3.0
 
 - added arrow turrets
+- added speed, slowness, and regeneration status effects
 - fixed weird visual artifacts with tilemaps
 - fixed the bow being capped at 2 damage instead of 3
+- improved a few of the sound effects
 
 ### Beta 2.14 Hotfix #2 (5/23/2021)
 

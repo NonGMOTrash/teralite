@@ -12,7 +12,6 @@ onready var animation: AnimationPlayer = $animation
 
 func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	.setup(new_source, new_target_pos)
-	
 
 func _ready():
 	global_position.move_toward(target_pos, abs(RANGE - 6))
@@ -52,7 +51,7 @@ func death():
 		SOURCE.apply_force(target_pos.direction_to(SOURCE.global_position).normalized() * RECOIL)
 		recoiled = true
 	
-	if components["hitbox"] != null: 
+	if components["hitbox"] != null:
 		hitbox.set_deferred("monitoring", false)
 		hitbox.set_deferred("monitorable", false)
 	if death_free == true:

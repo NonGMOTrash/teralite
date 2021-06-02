@@ -8,11 +8,12 @@ export(float, 0.01, 999) var level := 1
 export(float, 0.01, 999) var INIT_DURATION := 0.01
 export(bool) var USE_TRIGGER := true
 export(float, 0.01, 999) var TRIGGER_TIME := 2.5
+export(float, 0.01, 999) var DEFAULT_DURATION = 5
 
 func _ready() -> void:
 	get_parent().status_effects[get_name()] = self
 	
-	duration.wait_time = 5 # generic default, should never be used
+	duration.wait_time = DEFAULT_DURATION # generic default, should never be used
 	var x = floor(level)
 	if x < 1: x = 1
 	trigger.wait_time = TRIGGER_TIME / x

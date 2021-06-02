@@ -71,7 +71,7 @@ func _process(delta):
 		
 		rotation_degrees = rad2deg(global_position.direction_to(target_pos).angle())
 	
-	if (
+	if ( # PROBLEM_NOTE: maybe i can do this simplier, but it works
 		rotation_degrees < -90 or 
 		rotation_degrees > 0 and rotation_degrees < 180 and 
 		not rotation_degrees < 90 and rotation_degrees > 0

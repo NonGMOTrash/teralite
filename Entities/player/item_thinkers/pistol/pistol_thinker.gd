@@ -60,7 +60,7 @@ func primary():
 		if ammo <= 0 && reload.time_left == 0: reload()
 		return
 	
-	_quick_spawn("bullet", "projectile")
+	quick_spawn("bullet")
 	ammo -= 1
 	cooldown.start()
 	reload.stop()

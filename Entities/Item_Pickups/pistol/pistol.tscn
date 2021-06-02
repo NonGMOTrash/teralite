@@ -4,10 +4,9 @@
 [ext_resource path="res://Entities/Item_Pickups/item.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/player/item_thinkers/pistol/pistol_thinker.tscn" type="PackedScene" id=3]
 
-
 [node name="pistol" instance=ExtResource( 2 )]
 ACCELERATION = 0
-SLOWDOWN = 220
+SLOWDOWN = 330
 FORCE_MULT = 1.05
 truName = "pistol"
 thinker = ExtResource( 3 )

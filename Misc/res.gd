@@ -30,6 +30,7 @@ var data = {
 	"heart": "res://Entities/Item_Pickups/heart/heart.tscn",
 	"star": "res://Entities/Item_Pickups/star/star.tscn",
 	"bow": "res://Entities/Item_Pickups/bow/bow.tscn",
+	"staff": "res://Entities/Item_Pickups/staff/staff.tscn",
 	
 	# melees
 	"slash": "res://Entities/Attacks/Melee/slash/slash.tscn",
@@ -38,6 +39,7 @@ var data = {
 	# projectiles
 	"arrow": "res://Entities/Attacks/Projectile/arrow/arrow.tscn",
 	"bullet": "res://Entities/Attacks/Projectile/small_bullet/small_bullet.tscn",
+	"magic": "res://Entities/Attacks/Projectile/magic/magic.tscn",
 	
 	# effects
 	"hit_effect": "res://Effects/hit_effect/hit_effect.tscn",
@@ -90,6 +92,13 @@ var data = {
 	"menu_unpause": "res://UI/pause_menu/menu_unpause.wav",
 	"menu_click": "res://UI/menu_click.wav",
 	"menu_hover": "res://UI/menu_hover.wav",
+	
+	# textures
+	"sword_texture": "res://Entities/Item_Pickups/sword/sword.png",
+	"bow_texture": "res://Entities/Item_Pickups/bow/bow.png",
+	"pistol_texture": "res://Entities/Item_Pickups/pistol/pistol.png",
+	"staff_texture": "res://Entities/Item_Pickups/staff/staff.png",
+	"white_armor_texture": "res://Entities/Item_Pickups/white_armor/white_armor.png",
 }
 
 func allocate(asset:String) -> void:
@@ -109,6 +118,10 @@ func aquire_entity(asset:String) -> Entity:
 	allocate(asset)
 	return data.get(asset.to_lower()).instance() as Entity
 
+func aquire_attack(asset:String) -> Attack:
+	allocate(asset)
+	return data.get(asset.to_lower()).instance() as Attack
+
 func aquire_melee(asset:String) -> Melee:
 	allocate(asset)
 	return data.get(asset.to_lower()).instance() as Melee
@@ -125,6 +138,10 @@ func aquire_particle(asset:String) -> Particles2D:
 	allocate(asset)
 	return data.get(asset.to_lower()).instance() as Particles2D
 
-func aquire_wav(asset:String) -> AudioStream:
+func aquire_audio(asset:String) -> AudioStream:
 	allocate(asset)
 	return data.get(asset.to_lower()) as AudioStream
+
+func aquire_texture(asset:String) -> Texture:
+	allocate(asset)
+	return data.get(asset.to_lower()) as Texture

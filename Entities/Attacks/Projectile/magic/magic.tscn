@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Entities/Attacks/Projectile/Projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Attacks/Projectile/magic/magic.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Attacks/Projectile/magic/magic_shoot.wav" type="AudioStream" id=3]
+[ext_resource path="res://Entities/Attacks/Projectile/magic/magic_collide.wav" type="AudioStream" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 1.85369
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 2.27152
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 2.24665
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 1.0
+
+[node name="magic" instance=ExtResource( 1 )]
+collision_mask = 0
+FORCE_MULT = 0.2
+truName = "magic"
+ONHIT_SELF_DAMAGE = 1
+RANGE = 180
+death_free = true
+SPAWN_SOUND = ExtResource( 3 )
+COLLIDE_SOUND = ExtResource( 4 )
+DEATH_SOUND = ExtResource( 4 )
+SPEED = 180
+VELOCITY_ARMOR = 3
+ONHIT_SPEED_MULTIPLIER = 1.0
+RECOIL = 10
+
+[node name="stats" parent="." index="0"]
+MAX_HEALTH = 2
+HEALTH = 2
+DEFENCE = 99
+DAMAGE = 0
+TRUE_DAMAGE = 1
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 2 )
+
+[node name="hurtbox" parent="." index="2"]
+visible = false
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+shape = SubResource( 1 )
+
+[node name="hitbox" parent="." index="3"]
+visible = false
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+shape = SubResource( 2 )
+
+[node name="collision" parent="." index="4"]
+visible = false
+
+[node name="CollisionShape2D" parent="collision" index="0"]
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="7"]
+visible = false
+shape = SubResource( 4 )
+
+[editable path="hurtbox"]
+[editable path="hitbox"]

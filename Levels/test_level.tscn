@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Levels/level/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level Resources/background_tiles/background_tiles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/knight/knight.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/player/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Item_Pickups/staff/staff.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -18,7 +19,7 @@ AMBIANCE = 0
 visible = false
 
 [node name="entity_spawns" parent="YSort" index="1"]
-tile_data = PoolIntArray( 1179672, 31, 0, 1966120, 12, 0, 2031656, 12, 0, 2097192, 12, 0, 2162728, 12, 0, 2359334, 13, 0, 2359335, 13, 0, 2359336, 13, 0, 2949182, 33, 0, 3145778, 21, 0, 3211314, 6, 0 )
+tile_data = PoolIntArray( 1179672, 31, 0, 1966120, 12, 0, 2031656, 12, 0, 2097192, 12, 0, 2162728, 12, 0, 2359334, 13, 0, 2359335, 13, 0, 2359336, 13, 0, 3145778, 21, 0, 3211314, 6, 0 )
 
 [node name="background_tiles" parent="YSort/entity_spawns" index="0" instance=ExtResource( 2 )]
 position = Vector2( -4, -4 )
@@ -52,6 +53,9 @@ material = SubResource( 2 )
 
 [node name="healthBar" parent="YSort/player" index="5"]
 visible = false
+
+[node name="wand" parent="YSort" index="5" instance=ExtResource( 5 )]
+position = Vector2( 477.082, 375.842 )
 
 [editable path="YSort/knight"]
 [editable path="YSort/knight/entityPush"]

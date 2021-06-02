@@ -13,10 +13,10 @@ const ITEM_BAR_0 = preload("res://UI/item_bar/item_bar_0.png")
 const ITEM_BAR_1 = preload("res://UI/item_bar/item_bar_1.png")
 const ITEM_BAR_2 = preload("res://UI/item_bar/item_bar_2.png")
 
-const PISTOL = preload("res://Entities/Item_Pickups/pistol/pistol.png")
-const WHITE_ARMOR = preload("res://Entities/Item_Pickups/white_armor/white_armor.png")
-const SWORD = preload("res://Entities/Item_Pickups/sword/sword.png")
-const BOW = preload("res://Entities/Item_Pickups/bow/bow.png")
+#const PISTOL = preload("res://Entities/Item_Pickups/pistol/pistol.png")
+#const WHITE_ARMOR = preload("res://Entities/Item_Pickups/white_armor/white_armor.png")
+#const SWORD = preload("res://Entities/Item_Pickups/sword/sword.png")
+#const BOW = preload("res://Entities/Item_Pickups/bow/bow.png")
 
 func _ready():
 	global.nodes["item_bar"] = self
@@ -56,19 +56,23 @@ func update_icons(inventory):
 		bar.visible = true
 
 func match_icon(slot, item):
-	match item:
-		null:
-			replace_icon(slot, null)
-		"pistol":
-			replace_icon(slot, PISTOL)
-		"white_armor":
-			replace_icon(slot, WHITE_ARMOR)
-		"sword":
-			replace_icon(slot, SWORD)
-		"bow":
-			replace_icon(slot, BOW)
+	if item == null:
+		replace_icon(slot, null)
+	else:
+		replace_icon(slot, res.aquire_texture(item+"_texture"))
+#	match item:
+#		null:
+#			replace_icon(slot, null)
+#		"pistol":
+#			replace_icon(slot, PISTOL)
+#		"white_armor":
+#			replace_icon(slot, WHITE_ARMOR)
+#		"sword":
+#			replace_icon(slot, SWORD)
+#		"bow":
+#			replace_icon(slot, BOW)
 
-func replace_icon(slot, texture):
+func replace_icon(slot, texture: Texture):
 	if slot == 0:
 		left_icon.texture = texture
 	elif slot == 1:

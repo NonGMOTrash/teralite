@@ -47,15 +47,16 @@ func _physics_process(delta):
 		rotation += get_angle_to(global_position + velocity)
 
 func death():
+	if death_free == true:
+		queue_free()
+		return
+	
 	velocity = velocity * ONHIT_SPEED_MULTIPLIER
 	emit_signal("death")
 	
 	if components["hitbox"] != null: 
 		hitbox.queue_free()
-	
-	if death_free == true:
-		queue_free()
-		
+
 func _on_hitbox_hit(area: Area2D, type: String) -> void:
 	._on_hitbox_hit(area, type)
 	
