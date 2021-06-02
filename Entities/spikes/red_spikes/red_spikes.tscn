@@ -80,6 +80,7 @@ tracks/4/keys = {
 [node name="red_spikes" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 ACCELERATION = 300
+INANIMATE = true
 truName = "red_spikes"
 
 [node name="stats" parent="." index="0"]
@@ -106,6 +107,7 @@ shape = SubResource( 1 )
 [node name="AnimationPlayer" parent="." index="5"]
 autoplay = ""
 anims/spikes = SubResource( 2 )
+
 [connection signal="area_entered" from="activation" to="." method="_on_activation_area_entered"]
 
 [editable path="hitbox"]

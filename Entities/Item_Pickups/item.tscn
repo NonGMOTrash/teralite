@@ -12,6 +12,7 @@ radius = 4.0
 [node name="item" type="KinematicBody2D"]
 collision_layer = 16
 script = ExtResource( 3 )
+INANIMATE = true
 truName = "(item)"
 faction = "player"
 

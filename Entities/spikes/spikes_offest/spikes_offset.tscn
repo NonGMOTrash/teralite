@@ -76,6 +76,7 @@ audio_stream = ExtResource( 7 )
 process_priority = 100
 script = ExtResource( 2 )
 STATIC = true
+INANIMATE = true
 truName = "spikes"
 
 [node name="stats" parent="." instance=ExtResource( 1 )]
@@ -118,6 +119,7 @@ stream = SubResource( 3 )
 volume_db = -0.2
 MODE = 1
 AUTO_PLAY = false
+
 [connection signal="timeout" from="delay_timer" to="." method="_on_delay_timer_timeout"]
 
 [editable path="hitbox"]

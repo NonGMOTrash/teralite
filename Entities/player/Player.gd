@@ -4,6 +4,7 @@ export(PackedScene) var dust_particles
 export(PackedScene) var player_death
 
 var damage_taken = 0
+var kills = 0
 var death_message: String = ";-;"
 
 export var dash_strength = 300

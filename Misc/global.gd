@@ -1,7 +1,8 @@
 extends Node
 
 const OLD_LEVEL_CODES := ["A-1", "A-2", "A-3", "A-4", "A-5", "A-6", "A-7", "A-8", "A-9", "A-10", "A-11", 
-		"A-12", "A-13", "A-14", "A-15", "A-secret"]
+		"A-12", "A-13", "A-14", "A-15", "A-secret"
+]
 
 #all the global variables
 var quality_of_this_game = -999 # = very bad game
@@ -120,7 +121,6 @@ func _ready():
 		OS.shell_open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 	
 	push_warning("quality_of_this_game == -999")
-	print("===============")
 	print("")
 	
 	# debug stuffz:

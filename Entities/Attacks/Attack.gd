@@ -81,12 +81,15 @@ func _on_collision_body_entered(body: Node) -> void:
 	print("")
 
 func _on_hitbox_hit(area, type) -> void:
-	if HIT_SOUND == null and BLOCKED_SOUND == null and DEATH_SOUND == null:
-		return
-	
 	# PROBLEM_NOTE: maybe find some way to put this in the player script or something
 	if get_node_or_null(SOURCE_PATH) != null and SOURCE.truName == "player":
 		OS.delay_msec(17)
+		
+		if type == "killed" and area.get_parent().INANIMATE == false:
+			SOURCE.kills += 1
+	
+	if HIT_SOUND == null and BLOCKED_SOUND == null and DEATH_SOUND == null:
+		return
 	
 	var sfx = Sound.new()
 	

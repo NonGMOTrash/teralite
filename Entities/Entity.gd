@@ -7,6 +7,7 @@ export var SLOWDOWN = 500
 export var TOP_SPEED = 80
 #export var FRICTION = 50
 export(float, 0.0, 10.0) var FORCE_MULT = 1.0
+export(bool) var INANIMATE := false
 
 var velocity = Vector2.ZERO
 var input_vector = Vector2.ZERO
@@ -50,6 +51,9 @@ func _ready():
 	
 	if faction != "" and global.faction_relationships.get(faction) == null:
 		push_error(get_name()+"'s faction '"+faction+"' is invalid")
+	
+	if INANIMATE == false and get_tree().current_scene.LEVEL_TYPE == 0 and truName != "player":
+		get_tree().current_scene.max_kills += 1
 
 func _process(delta): # physics logic
 	# PROBLEM_NOTE: \/ not sure why i did this

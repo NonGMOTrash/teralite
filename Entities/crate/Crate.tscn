@@ -27,6 +27,8 @@ extents = Vector2( 8, 5 )
 [node name="Crate" type="KinematicBody2D"]
 script = ExtResource( 3 )
 STATIC = true
+INANIMATE = true
+truName = "crate"
 
 [node name="entity_sprite" parent="." instance=ExtResource( 2 )]
 material = SubResource( 1 )

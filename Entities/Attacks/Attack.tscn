@@ -14,7 +14,8 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_vertical_guides_": [ -573.0 ]
 }
-truName = "(thing)"
+INANIMATE = true
+truName = "(attack)"
 
 [node name="stats" parent="." instance=ExtResource( 4 )]
 

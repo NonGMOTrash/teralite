@@ -11,6 +11,8 @@ export var FORCE_SLEEP_UNTIL_VISIBLE = false
 export(String) var WORLD = "A"
 const LEVEL_TYPE = 0
 
+var max_kills: int = 0
+
 func _ready() -> void:
 	if name != "test_level":
 		global.write_save(global.save_name, global.get_save_data_dict())

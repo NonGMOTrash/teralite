@@ -5,6 +5,7 @@ const A_HUB = "res://Levels/A/A-Hub.tscn"
 onready var header = $area/header/label
 onready var time = $area/stats/time/value
 onready var damage = $area/stats/damage/value
+onready var kills = $area/stats/kills/value
 
 onready var lvl = get_tree().current_scene.name
 
@@ -57,6 +58,8 @@ func start():
 	if global.level_times.has(lvl):
 		if time_value < global.level_times[lvl]:
 			time.set("custom_colors/font_color", Color8(242, 211, 53))
+	
+	kills.text = "%s / %s" % [get_player().kills, get_tree().current_scene.max_kills]
 
 func _input(_event):
 	if Input.is_action_just_pressed("interact") and visible == true:
