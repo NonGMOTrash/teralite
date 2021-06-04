@@ -55,7 +55,7 @@ func _ready():
 	if INANIMATE == false and get_tree().current_scene.LEVEL_TYPE == 0 and truName != "player":
 		get_tree().current_scene.max_kills += 1
 
-func _process(delta): # physics logic
+func _physics_process(delta: float): # physics logic
 	# PROBLEM_NOTE: \/ not sure why i did this
 	marked_enemies = []
 	if marked_enemies.size() > 0:

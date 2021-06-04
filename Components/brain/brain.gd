@@ -6,11 +6,11 @@ onready var think_timer = $think_timer
 onready var sight = $sight
 onready var sight_shape = $sight/CollisionShape2D
 onready var effect_cooldown = $effect_cooldown
-var movement_lobe
-var action_lobe
-var memory_lobe
-var warning_lobe
-var communication_lobe
+var movement_lobe: Node
+var action_lobe: Node
+var memory_lobe: Node
+var warning_lobe: Node
+var communication_lobe: Node
 
 export var DEBUG_DRAW = false
 
@@ -24,10 +24,13 @@ export(float, 0.0, 5.0) var COMM_DELAY_VARIANCE = 0.5
 
 export var IGNORE_ATTACKS := true
 export var IGNORE_UNFACTIONED := true
-export var IGNORE_ALLIES := false
+export var IGNORE_ALLIES := true
 
-var targets: Array = []
-var target_paths: Array = []
+# PROBLEM_NOTE: it would be better to use a dictionary for targets and target_paths because the targets
+# are not accesed or removed in a set order. same goes for some stuff in movement_lobe.gd i think 
+var targets := []
+var target_paths := []
+var entities := []
 
 signal found_target
 signal lost_target
@@ -231,26 +234,40 @@ func remove_target(tar):
 			movement_lobe.wander_timer.start()
 
 func _on_sight_body_entered(body: Node) -> void:
+	if (
+		body is Entity and
+		not (body is Attack and IGNORE_ATTACKS == true) and
+		not (body.faction == "" and IGNORE_UNFACTIONED == true) and
+		not (global.get_relation(get_parent(), body) == "friendly" and IGNORE_ALLIES == true)
+	):
+		entities.append(body)
+	
 	if body.is_queued_for_deletion() == false and los_check(body) == true:
 		add_target(body)
 
 func _on_sight_body_exited(body: Node) -> void:
+	var body_id = entities.find(body)
+	if body_id != -1:
+		entities.remove(body_id)
+	
 	remove_target(body)
 
 func _on_think_timer_timeout() -> void:
 	think_timer.wait_time = THINK_TIME + rand_range(-0.1, 0.1)
-	# wonder why this was here? \/
-	#if get_parent().is_physics_processing() == false: return
+	
+	if get_parent().components["sleeper"] != null:
+		if get_parent().components["sleeper"].active == false:
+			return
+	
 	emit_signal("think")
 	
-	# search get_overlapping_bodies() for new targets
-	for body in sight.get_overlapping_bodies():
-		if body is Entity and body.get_name() != "world_tiles" and not targets.has(body):
-			# original was if (body) == true:
-			if body.is_queued_for_deletion() == false:
-				add_target(body)
+	# search entities (array of all entities in range) for new targets
+	for body in entities:
+		if not targets.has(body) and body.is_queued_for_deletion() == false:
+			add_target(body)
 	
 	#if movement_lobe == null:
+	
 	for i in targets.size():
 		if is_target_valid(i) == false:
 			remove_target(i)

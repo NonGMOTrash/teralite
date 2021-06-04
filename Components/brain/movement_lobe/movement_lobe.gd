@@ -9,6 +9,7 @@ export var IDLE_TIME = 0.8
 export var IDLE_OFFSET = 0.4
 export var WANDER_TIME = 0.8
 export var WANDER_OFFSET = 0.4
+export(float, 0.0, 1.0) var WANDER_SPEED := 0.6
 export(float, 0, 999) var WANDER_RANGE = 80 # max range from starting pos it can wander from
 export var SMART_SLOWDOWN = true # starts slowing down before reaching distination to avoid overshooting
 export var EIGHT_WAY_MOVEMENT = false # can only move in eight directions like wasd controls
@@ -108,7 +109,9 @@ func _on_idle_timer_timeout() -> void:
 			# EDIT7: i think this was an error with archers can i can remove this now? (PROBLEM_NOTE)
 		
 		if wander_path.size() > 1:
-			brain.get_parent().input_vector = global_position.direction_to(wander_path[1]).normalized()
+			brain.get_parent().input_vector = (
+				global_position.direction_to(wander_path[1]).normalized() * WANDER_SPEED
+			)
 	
 	if global_position.distance_to(guard_pos) > WANDER_RANGE: 
 		# wander back to guard pos

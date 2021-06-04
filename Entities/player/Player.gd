@@ -41,6 +41,11 @@ onready var held_item = $held_item
 var force_death_msg = false
 
 func _ready():
+	var staff = res.aquire_entity("staff")
+	get_parent().call_deferred("add_child", staff)
+	yield(staff, "ready")
+	staff.global_position = global_position
+	
 	dash_buffer *= (1.0/60.0)
 	global.selection = 0
 	iTimer.start()

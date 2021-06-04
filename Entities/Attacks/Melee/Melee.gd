@@ -3,12 +3,16 @@ class_name Melee
 
 const BLOCK_SPARK = preload("res://Effects/block_spark/block_spark.tscn")
 
+export(bool) var HOLDS := false
 export(int, 0, 200) var BOOST = 50
 export(int, 0, 200) var RECOIL = 70
+export(bool) var ANIMATION_NEVER_BACKWARDS := false
+export(bool) var HIDE_HELD_ITEM := true
+export(bool) var REVERSE_HELD_ITEM := true
 
 var recoiled = false
 
-onready var animation: AnimationPlayer = $animation
+onready var animation := $animation as AnimationPlayer
 
 func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	.setup(new_source, new_target_pos)
@@ -27,10 +31,10 @@ func _ready():
 	var held_item = SOURCE.components["held_item"]
 	
 	# hide held item
-	if held_item != null:
+	if held_item != null and HIDE_HELD_ITEM == true:
 		held_item.visible = false
 	
-	if held_item != null and held_item.sprite.flip_v == true:
+	if held_item != null and held_item.sprite.flip_v == true and ANIMATION_NEVER_BACKWARDS == false:
 		animation.play_backwards("animation")
 	else:
 		animation.play("animation")
@@ -97,13 +101,16 @@ func _on_Melee_tree_exiting() -> void:
 	if get_node_or_null(SOURCE_PATH) != null and SOURCE.is_queued_for_deletion() == false:
 		var held_item = SOURCE.components["held_item"]
 		if held_item != null:
-			held_item.reversed = not held_item.reversed
-			
-			# fixes flashing due to the held_item updating a frame late
-			held_item.sprite.flip_v = not held_item.sprite.flip_v
-			held_item.sprite.offset *= -1
+			if REVERSE_HELD_ITEM == true:
+				held_item.reversed = not held_item.reversed
+				# fixes flashing due to the held_item updating a frame late
+				held_item.sprite.flip_v = not held_item.sprite.flip_v
+				held_item.sprite.offset *= -1
 			
 			held_item.visible = true
 
-func _on_animation_animation_finished(_anim_name: String) -> void:
-	queue_free()
+func _on_animation_animation_finished(anim_name: String) -> void:
+	if HOLDS == false:
+		queue_free()
+	else:
+		animation.play("hold")

@@ -1,5 +1,6 @@
 extends Control
 
+const YELLOW := Color8(242, 211, 53) 
 const A_HUB = "res://Levels/A/A-Hub.tscn"
 
 onready var header = $area/header/label
@@ -38,7 +39,7 @@ func start():
 		#) + "%"
 		damage.text = str(get_player().damage_taken)
 		if damage.text == "0":
-			damage.set("custom_colors/font_color", Color8(242, 211, 53))
+			damage.set("custom_colors/font_color", YELLOW)
 	
 	var time_value = global.nodes["stopwatch"].time
 	var minute = int(floor(time_value / 60))
@@ -54,12 +55,14 @@ func start():
 		str(second) +
 		"." +
 		str(tenth)
-		)
+	)
 	if global.level_times.has(lvl):
 		if time_value < global.level_times[lvl]:
-			time.set("custom_colors/font_color", Color8(242, 211, 53))
+			time.set("custom_colors/font_color", YELLOW)
 	
 	kills.text = "%s / %s" % [get_player().kills, get_tree().current_scene.max_kills]
+	if get_player().kills == get_tree().current_scene.max_kills:
+		kills.set("custom_colors/font_color", YELLOW)
 
 func _input(_event):
 	if Input.is_action_just_pressed("interact") and visible == true:

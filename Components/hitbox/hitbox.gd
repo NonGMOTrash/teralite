@@ -36,7 +36,8 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		area_entity is Attack or
 		area.entity == get_parent() or
 		TEAM_ATTACK == false and global.get_relation(get_parent(), area_entity) == "friendly"
-		): return
+	): 
+		return
 	
 	set_deferred("monitorable", false)
 	timer.start()

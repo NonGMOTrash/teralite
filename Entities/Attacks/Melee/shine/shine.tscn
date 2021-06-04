@@ -1,0 +1,120 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Entities/Attacks/Melee/Melee.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Attacks/Melee/shine/shine.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Attacks/Melee/shine/shine.png" type="Texture" id=3]
+[ext_resource path="res://Entities/Attacks/Melee/shine/shine.wav" type="AudioStream" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 0.5
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 6.0
+
+[sub_resource type="Animation" id=5]
+resource_local_to_scene = true
+resource_name = "animation"
+length = 0.3
+step = 0.075
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.075, 0.15, 0.225, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hurtbox/CollisionShape2D:shape")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.075, 0.15, 0.225 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ SubResource( 1 ), SubResource( 4 ), SubResource( 2 ), SubResource( 2 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.15
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 3, 4 ]
+}
+
+[node name="shine" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+ACCELERATION = 0
+TOP_SPEED = 0
+FORCE_MULT = 0.02
+truName = "shine"
+ONHIT_SELF_DAMAGE = 999
+RANGE = 0
+auto_rotate = false
+SPAWN_SOUND = ExtResource( 4 )
+BOOST = 0
+RECOIL = 0
+ANIMATION_NEVER_BACKWARDS = true
+HIDE_HELD_ITEM = false
+REVERSE_HELD_ITEM = false
+REFLECTION_MULT = 0.9
+
+[node name="stats" parent="." index="0"]
+MAX_HEALTH = 99
+HEALTH = 99
+DEFENCE = 99
+DAMAGE = 0
+TRUE_DAMAGE = 1
+
+[node name="Sprite" parent="." index="1"]
+position = Vector2( 0, 0 )
+texture = ExtResource( 3 )
+hframes = 5
+
+[node name="hurtbox" parent="." index="2"]
+visible = false
+iTime_multiplier = 0.0
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="hitbox" parent="." index="3"]
+COOLDOWN = 0.22
+iTime = 0.0
+KNOCKBACK = 160
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" parent="collision" index="0"]
+shape = SubResource( 3 )
+
+[node name="animation" parent="." index="6"]
+anims/animation = SubResource( 5 )
+anims/hold = SubResource( 6 )
+
+[editable path="hurtbox"]
+[editable path="hitbox"]

@@ -36,7 +36,14 @@ helo, thanks for downloading
 # table of contents
 1. [info](#info)
 2. [credits](#credits)
+	1. [developer](#developer)
+	2. [play testers](#play-testers:)
+	3. [engine](#engine:)
+	4. [font](#font-credits:)
 3. [patchnotes](#patchnotes)
+	1. [beta 3.0](#beta-30)
+	2. [beta 2.0](#beta-20-11112020)
+	3. [beta 1.0](#beta-10-8162020)
 
 # info
 
@@ -176,11 +183,13 @@ github is here: [private until full release]
 
 ## Beta 3.0
 
+- added the staff
 - added arrow turrets
+- added kills counter to level completion screen
 - added speed, slowness, and regeneration status effects
 - fixed weird visual artifacts with tilemaps
 - fixed the bow being capped at 2 damage instead of 3
-- improved a few of the sound effects
+- replaced a few of the sound effects
 
 ### Beta 2.14 Hotfix #2 (5/23/2021)
 

@@ -1,5 +1,6 @@
 extends Node
 
+# PROBLEM_NOTE: it would be better to only preload the ones i need
 const SPAWNER = preload("res://Components/spawner/spawner.tscn")
 const HIT_EFFECT = preload("res://Effects/hit_effect/hit_effect.tscn")
 const DISSOLVE_FADE = preload("res://Effects/dissolve_fade/dissolve_fade.tscn")

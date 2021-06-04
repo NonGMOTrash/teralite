@@ -35,6 +35,7 @@ var data = {
 	# melees
 	"slash": "res://Entities/Attacks/Melee/slash/slash.tscn",
 	"stab": "res://Entities/Attacks/Melee/stab/stab.tscn",
+	"shine": "res://Entities/Attacks/Melee/shine/shine.tscn",
 	
 	# projectiles
 	"arrow": "res://Entities/Attacks/Projectile/arrow/arrow.tscn",

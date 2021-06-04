@@ -120,7 +120,5 @@ shape = SubResource( 3 )
 [node name="animation" parent="." index="6"]
 anims/animation = SubResource( 4 )
 
-[connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
-
 [editable path="hurtbox"]
 [editable path="hitbox"]

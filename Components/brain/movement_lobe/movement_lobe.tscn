@@ -17,6 +17,7 @@ one_shot = true
 wait_time = 0.05
 
 [node name="default_spring" parent="." instance=ExtResource( 2 )]
+
 [connection signal="tree_entered" from="." to="." method="_on_movement_lobe_tree_entered"]
 [connection signal="timeout" from="idle_timer" to="." method="_on_idle_timer_timeout"]
 [connection signal="timeout" from="wander_timer" to="." method="_on_wander_timer_timeout"]
