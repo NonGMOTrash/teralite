@@ -60,7 +60,7 @@ func _process(delta):
 				push_error("can't use BRAIN_TARGET targetting because brain couldn't be found, switching to INPUT_VECTOR")
 				TARGETING = TT.INPUT_VECTOR
 			else:
-				var closet_target = get_parent().components["brain"].closest_target()
+				var closet_target = get_parent().components["brain"].get_closest_target()
 				if closet_target is Entity:
 					target_pos = closet_target.global_position
 				else:

@@ -193,7 +193,7 @@ github repo is here: (private until full release)
 ## Beta 3.0
 
 - added the staff
-- added arrow turrets
+- added arrow turrets and pylons
 - added kills counter to level completion screen
 - fixed hitboxes and spike activation going through walls
 - added speed, slowness, and regeneration status effects

@@ -79,7 +79,7 @@ func _physics_process(_delta):
 	if auto_flip_mode == AFM.TARGET:
 		var brain = entity.components["brain"]
 		if brain == null: return
-		var closest_target = brain.closest_target()
+		var closest_target = brain.get_closest_target()
 		if brain != null and not closest_target is String:
 			if global_position.direction_to(closest_target.global_position).x > 0:
 				if invert_flipping == true: flip()

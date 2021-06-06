@@ -8,6 +8,9 @@ func _on_entity_push_tree_entered():
 	get_parent().components["entity_push"] = self
 
 func _ready() -> void:
+	if $CollisionShape2D.shape == null:
+		push_error("entity_push has no shape")
+	
 	if get_parent().get_name() == "YSort": 
 		queue_free()
 		return

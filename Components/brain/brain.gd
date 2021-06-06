@@ -96,9 +96,9 @@ func _draw():
 				draw_multiline(path, Color.yellow, 1, false)
 				draw_circle(path[0], 1.5, Color.yellow)
 
-func closest_target():
+func get_closest_target():
 	# PROBLEM_NOTE: make \/ this string more simple so it's easier to check for it (probably just use null or "")
-	var target = "no target found from closest_target()"
+	var target = "no target found from get_closest_target()"
 	var dist = 999
 	for i in targets.size():
 		if is_target_valid(i):

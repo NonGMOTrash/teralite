@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Levels/Level Resources/scene_batcher/scene_batcher.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/pistol/pistol.png" type="Texture" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://Entities/arrow_turret/arrow_turret_complete.png" type="Texture" id=27]
 [ext_resource path="res://Entities/spikes/red_spikes/royal_spikes/royal_spike.png" type="Texture" id=28]
 [ext_resource path="res://Entities/Item_Pickups/staff/staff.png" type="Texture" id=29]
+[ext_resource path="res://Entities/pylon/pylon.png" type="Texture" id=30]
 
 [sub_resource type="TileSet" id=1]
 2/name = "player.png 2"
@@ -423,6 +424,20 @@
 35/shape_one_way_margin = 0.0
 35/shapes = [  ]
 35/z_index = 0
+36/name = "pylon.png 36"
+36/texture = ExtResource( 30 )
+36/tex_offset = Vector2( 0, 0 )
+36/modulate = Color( 1, 1, 1, 1 )
+36/region = Rect2( 0, 0, 9, 10 )
+36/tile_mode = 0
+36/occluder_offset = Vector2( 0, 0 )
+36/navigation_offset = Vector2( 0, 0 )
+36/shape_offset = Vector2( 0, 0 )
+36/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+36/shape_one_way = false
+36/shape_one_way_margin = 0.0
+36/shapes = [  ]
+36/z_index = 0
 
 [node name="entity_spawns" instance=ExtResource( 1 )]
 position = Vector2( 4, 4 )

@@ -15,7 +15,7 @@ colors = PoolColorArray( 0.94902, 0.92549, 0.588235, 0.705882, 0.976563, 0.96547
 [sub_resource type="Gradient" id=3]
 colors = PoolColorArray( 0.328476, 0.53051, 0.816406, 1, 0.179596, 0.297532, 0.835938, 1 )
 
-[node name="healthBar" type="TextureProgress"]
+[node name="health_bar" type="TextureProgress"]
 margin_right = 11.0
 margin_bottom = 4.00174
 max_value = 5.0
@@ -58,5 +58,6 @@ __meta__ = {
 [node name="Timer" type="Timer" parent="."]
 wait_time = 25.0
 one_shot = true
+
 [connection signal="tree_entered" from="." to="." method="_on_healthBar_tree_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

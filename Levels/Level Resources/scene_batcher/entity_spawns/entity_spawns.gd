@@ -30,4 +30,5 @@ func set_data():
 		"arrow_turret": get_used_cells_by_id(33),
 		"royal_spikes": get_used_cells_by_id(34),
 		"staff": get_used_cells_by_id(35),
+		"pylon": get_used_cells_by_id(36),
 	}
