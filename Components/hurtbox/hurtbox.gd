@@ -28,6 +28,12 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if get_parent() == area_entity:
 		return
 	
+	# los check
+	var ss = get_world_2d().direct_space_state
+	var raycast = ss.intersect_ray(global_position, area.global_position, [], 1)
+	if raycast and raycast.collider == global.nodes["world_tiles"]:
+		return
+	
 	if global.get_relation(get_parent(), area_entity) == "friendly":
 		if area.TEAM_ATTACK == false: return
 		elif area_entity is Melee and area_entity.SOURCE == get_parent(): return

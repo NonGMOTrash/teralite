@@ -35,34 +35,33 @@ helo, thanks for downloading
 
 # table of contents
 1. [info](#info)
+	- [can i share this game with other people?](#can-i-share-this-game-with-other-people)
+	- [.pck is missing error](#pck-is-missing-error)
+	- [particles not working](#particles-not-working)
+	- [old saves dissappeared](#old-saves-dissappeared)
+	- [compatiability with older saves](#compatiability-with-older-saves)
 2. [credits](#credits)
-	1. [developer](#developer)
-	2. [play testers](#play-testers)
-	3. [engine](#engine)
-	4. [font](#font-credits)
+	- [developer](#developer)
+	- [play testers](#play-testers)
+	- [engine](#engine)
+	- [font](#font-credits)
 3. [patchnotes](#patchnotes)
-	1. [beta 3.0](#beta-30)
-	2. [beta 2.0](#beta-20-11112020)
-	3. [beta 1.0](#beta-10-8162020)
+	- [beta 3.0 (latest)](#beta-30)
+	- [beta 2.0](#beta-20-11112020)
+	- [beta 1.0](#beta-10-8162020)
 
 # info
 
 ## can i share this game with other people?
 please don't, i wanna keep this game sorta secret for now. if you violate this policy, i will do absolutely nothing except be very very sad. however when the game is out, please share this game with EVERYONE. just like, constantly
 
-## can i use a save from an old version?
-- all polish updates (+0.1 updates) should work fine with old saves		
-- using an old save from a 1.X version is possible, but i recomend you just start over with a new save
-- it will probably be a similar deal once 3.0 comes out but who knows
-(in the future, i'll add an ingame warning for versions that aren't compatiable with eachother)
-
-## when i try to open the game it says the .pck is missing
+## .pck is missing error
 the .exe has to be in the same folder as the .pck or it won't work. if you want to have access to the game somewhere else, just make a shortcut of the .exe file
 
-## i don't see some particle effects
+## particles not working
 if you're using a cpu with integrated graphics that doesn't support OpenGL ES 3, the game will fallback to OpenGL ES 2. this mostly works okay, but the game will run slower and particle effects won't work. sorry! i might make a seperate version that uses cpu-based particles, i'd be a hassle tho so won't happen til the full release if at all
 
-## my saves list is empty even though i had a save from awhile ago
+## old saves dissappeared
 due to the name change from project epsilon to teralite in beta 2.12, the game won't be able to find the folder where old game data was stored.    
 it's pretty easy to fix tho, just follow these steps:    
 1. go to the search bar on windows and search %APPDATA% (should take you to a file folder)      
@@ -71,13 +70,22 @@ it's pretty easy to fix tho, just follow these steps:
 4. reopen teralite, and you should see your saves   
 (you can also just cut and paste the actual save files from Project Epsilon into Teralite)
 
+## compatiability with older saves
+- all polish updates (+0.1 updates) should work fine with old saves		
+- using an old save from a 1.X version is possible, but i recomend you just start over with a new save
+- it will probably be a similar deal once 3.0 comes out but who knows
+(in the future, i'll add an ingame warning for versions that aren't compatiable with eachother)
+
 # credits
 
 ### developer:
 
 NonGMOTrash
 - itch: https://nongmotrash.itch.io
+- youtube: soon™
+- discord: NonGMOTrash#9437
 - email: nongmotrash@gmail.com (send me dumb stuff just no nsfw)
+- github: https://github.com/NonGMOTrash
 
 ### play testers:
 
@@ -115,11 +123,12 @@ addtionally,
 
 ### font credits:
 the font used is "m6x11" by Daniel Linssen			
-check out his stuff here:		
+check out his stuff here:
+- m6x11: https://managore.itch.io/m6x11		
 - itch: https://managore.itch.io/	
 - twitter: https://twitter.com/Managore		
 - website: http://daniellinssen.net/
-- artwork: https://managore.tumblr.com/
+- tumblr: https://managore.tumblr.com/
 
 ### sound credits:
 
@@ -177,7 +186,7 @@ note that this is not the license for the engine, but rather the game itself
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-github is here: [private until full release]
+github repo is here: (private until full release)
 
 # Patchnotes
 
@@ -186,8 +195,9 @@ github is here: [private until full release]
 - added the staff
 - added arrow turrets
 - added kills counter to level completion screen
+- fixed hitboxes and spike activation going through walls
 - added speed, slowness, and regeneration status effects
-- fixed weird visual artifacts with tilemaps
+- renabled gpu snap to fix weird visual artifacts with tilemaps
 - fixed the bow being capped at 2 damage instead of 3
 - replaced a few of the sound effects
 
