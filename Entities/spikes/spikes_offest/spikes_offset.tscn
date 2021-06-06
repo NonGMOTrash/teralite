@@ -83,12 +83,10 @@ truName = "spikes"
 TRUE_DAMAGE = 2
 
 [node name="base" type="Sprite" parent="."]
-position = Vector2( 0.5, 0 )
 texture = ExtResource( 3 )
 
 [node name="pokey" type="Sprite" parent="."]
 visible = false
-position = Vector2( 0.5, 0 )
 texture = ExtResource( 8 )
 hframes = 2
 frame = 1

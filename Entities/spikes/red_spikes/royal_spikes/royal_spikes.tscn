@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Entities/spikes/red_spikes/red_spikes.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/spikes/red_spikes/royal_spikes/royal_spikes.gd" type="Script" id=2]
+[ext_resource path="res://Entities/spikes/red_spikes/royal_spikes/royal_spike_base.png" type="Texture" id=3]
+[ext_resource path="res://Entities/spikes/red_spikes/royal_spikes/royal_spike_pokey.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_local_to_scene = true
+resource_name = "spikes"
+length = 0.0500001
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("hitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("sound_player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "sound" ],
+"method": "play_sound"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("pokey:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.001, 0.05 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("pokey:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.01, 0.03 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 1 ]
+}
+
+[node name="royal_spikes" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+truName = "royal_spikes"
+
+[node name="stats" parent="." index="0"]
+DAMAGE = 3
+TRUE_DAMAGE = 2
+
+[node name="base" parent="." index="1"]
+texture = ExtResource( 3 )
+
+[node name="pokey" parent="." index="2"]
+position = Vector2( 0, -3 )
+texture = ExtResource( 4 )
+offset = Vector2( 0, 3 )
+frame = 1
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+disabled = false
+
+[node name="AnimationPlayer" parent="." index="5"]
+anims/spikes = SubResource( 1 )
+
+[connection signal="area_exited" from="activation" to="." method="_on_activation_area_exited"]
+
+[editable path="hitbox"]

@@ -6,7 +6,7 @@
 [ext_resource path="res://Entities/spikes/red_spikes/red_spike_pokey.png" type="Texture" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 26.8208
+radius = 32.0
 
 [sub_resource type="Animation" id=2]
 resource_local_to_scene = true
@@ -71,7 +71,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.04 ),
+"times": PoolRealArray( 0, 0.03 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 1 ]
@@ -80,7 +80,6 @@ tracks/4/keys = {
 [node name="red_spikes" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 ACCELERATION = 300
-INANIMATE = true
 truName = "red_spikes"
 
 [node name="stats" parent="." index="0"]
@@ -91,9 +90,13 @@ texture = ExtResource( 2 )
 
 [node name="pokey" parent="." index="2"]
 texture = ExtResource( 4 )
+frame = 0
 
 [node name="hitbox" parent="." index="3"]
 visible = false
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+disabled = true
 
 [node name="activation" type="Area2D" parent="." index="4"]
 visible = false

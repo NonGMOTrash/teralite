@@ -1,6 +1,7 @@
 extends Node
 
-onready var brain = get_parent()
+onready var brain := get_parent() as Node2D
+onready var entity := brain.get_parent() as Entity
 onready var action_timer = $action_timer
 onready var energy_timer = $energy_timer
 
@@ -30,8 +31,8 @@ signal action(action, target)
 
 func _on_action_lobe_tree_entered():
 	get_parent().action_lobe = self
-	if get_parent().get_parent() is Entity:
-		get_parent().get_parent().components["action_lobe"] = self
+	#if entity is Entity:
+	get_parent().get_parent().components["action_lobe"] = self
 
 func _ready() -> void:
 	for action in actions:

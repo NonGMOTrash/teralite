@@ -1,7 +1,7 @@
 extends Entity
 
-onready var activation = $activation
-onready var animation = $AnimationPlayer
+onready var activation := $activation as Area2D
+onready var animation := $AnimationPlayer as AnimationPlayer
 
 func _ready():
 	$pokey.visible = false

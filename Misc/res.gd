@@ -21,6 +21,7 @@ var data = {
 	"red_spikes": "res://Entities/spikes/red_spikes/red_spikes.tscn",
 	"diamond_spikes": "res://Entities/spikes/red_spikes/diamond_spikes/diamond_spikes.tscn",
 	"arrow_turret": "res://Entities/arrow_turret/arrow_turret.tscn",
+	"royal_spikes": "res://Entities/spikes/red_spikes/royal_spikes/royal_spikes.tscn",
 	
 	# items
 	"pistol": "res://Entities/Item_Pickups/pistol/pistol.tscn",

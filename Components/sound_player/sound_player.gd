@@ -32,13 +32,15 @@ func _ready():
 			if child.SCENE_PERSIST == true:
 				global.add_child(child)
 			else:
-				get_tree().current_scene.add_child(child)
+				get_tree().current_scene.call_deferred("add_child", child)
 			
 			if child is Sound:
 				child.global_position = get_position_for(child)
 			
 			if child.autoplay == true:
 				child.play()
+			
+			yield(child, "tree_entered")
 			
 			if child is Sound and child.global_position == Vector2.ZERO:
 				push_warning("sound '"+get_name()+"' created at (0, 0), probably a mistake.")

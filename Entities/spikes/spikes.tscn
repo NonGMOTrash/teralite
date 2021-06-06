@@ -72,7 +72,7 @@ tracks/3/keys = {
 [sub_resource type="AudioStreamRandomPitch" id=3]
 audio_stream = ExtResource( 7 )
 
-[node name="Spikes" type="KinematicBody2D"]
+[node name="spikes" type="KinematicBody2D"]
 process_priority = 100
 script = ExtResource( 1 )
 STATIC = true
@@ -84,14 +84,13 @@ truName = "spikes"
 TRUE_DAMAGE = 2
 
 [node name="base" type="Sprite" parent="."]
-position = Vector2( 0.5, 0 )
 z_index = -1
 texture = ExtResource( 3 )
 
 [node name="pokey" type="Sprite" parent="."]
 position = Vector2( 0.5, -3 )
 texture = ExtResource( 8 )
-offset = Vector2( 0, 3 )
+offset = Vector2( -0.5, 3 )
 hframes = 2
 frame = 1
 

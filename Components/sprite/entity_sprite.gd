@@ -31,6 +31,8 @@ onready var color_c_effect = $color_overlay_c/effects
 onready var texture_c = $texture_overlay_c
 onready var texture_c_effect = $texture_overlay_c/effects
 
+onready var entity := get_parent() as Entity
+
 func _on_entity_sprite_tree_entered():
 	get_parent().components["entity_sprite"] = self
 
@@ -72,11 +74,10 @@ func _ready():
 func _physics_process(_delta):
 	# off
 	if auto_flip_mode == AFM.OFF: return
-	var parent = get_parent()
 	
 	# target
 	if auto_flip_mode == AFM.TARGET:
-		var brain = get_parent().components["brain"]
+		var brain = entity.components["brain"]
 		if brain == null: return
 		var closest_target = brain.closest_target()
 		if brain != null and not closest_target is String:
@@ -89,8 +90,8 @@ func _physics_process(_delta):
 			return
 	
 	# movement
-	if not "input_vector" in parent: return
-	var input_vector = parent.input_vector
+	if not "input_vector" in entity: return
+	var input_vector = entity.input_vector
 	if input_vector.x > 0:
 		if invert_flipping == true: flip()
 		else: unflip()

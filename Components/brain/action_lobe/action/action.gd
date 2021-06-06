@@ -1,6 +1,7 @@
 extends Node
 
-onready var brain = get_parent().get_parent()
+onready var brain = get_parent().get_parent() as Node2D
+onready var action_lobe := get_parent() as Node
 onready var cooldown_timer = $cooldown_timer
 
 enum relations { hostile, friendly }
@@ -44,9 +45,9 @@ func _ready():
 		relations.hostile: target_type = "hostile"
 		relations.friendly: target_type = "friendly"
 	
-	get_parent().actions.append(self)
+	action_lobe.actions.append(self)
 	
-	if get_parent().actions.size() == 1:
+	if action_lobe.actions.size() == 1:
 		weight = 0
 	
 	if COOLDOWN == 0.0:
@@ -65,7 +66,7 @@ func get_score(warned = false):
 	for i in brain.targets.size():
 		var target = brain.targets[i]
 		
-		if global.get_relation(brain.get_parent(), target) == target_type:
+		if global.get_relation(brain.entity, target) == target_type:
 			
 			var stats = target.components["stats"]
 			var score = []
@@ -98,7 +99,7 @@ func get_score(warned = false):
 			# adjusting for tag
 			var my_tag = custom_tag
 			if my_tag == "": my_tag = tag
-			if get_parent().tag_weight != 0 and get_parent().tag_modifiers.has(my_tag) == true:
+			if action_lobe.tag_weight != 0 and action_lobe.tag_modifiers.has(my_tag) == true:
 				for x in get_parent().tag_weight: score.append(get_parent().tag_modifiers[my_tag])
 			
 			# adjusting for custom score modification

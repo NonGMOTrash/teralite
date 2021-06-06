@@ -12,7 +12,7 @@ var memory_lobe: Node
 var warning_lobe: Node
 var communication_lobe: Node
 
-export var DEBUG_DRAW = false
+export var DEBUG_DRAW := false
 
 export(int, 0, 20) var TOLERANCE = 3 # the amount of times it will tolerate friendly fire before infighting
 export(float, 0.01666, 3.0) var THINK_TIME = 0.1
@@ -32,12 +32,15 @@ var targets := []
 var target_paths := []
 var entities := []
 
+var entity: Entity
+
 signal found_target
 signal lost_target
 signal think
 
 func _on_brain_tree_entered():
-	get_parent().components["brain"] = self
+	entity = get_parent()
+	entity.components["brain"] = self
 
 func _ready():
 	sight_shape.shape.radius = SIGHT_RANGE
@@ -46,7 +49,7 @@ func _ready():
 func _draw():
 	if DEBUG_DRAW == false: return
 
-	draw_line(position, position + get_parent().input_vector * 16, Color.orange, 2.5)
+	draw_line(position, position + entity.input_vector * 16, Color.orange, 2.5)
 
 	if memory_lobe != null:
 		for i in memory_lobe.memory.size():
@@ -127,12 +130,12 @@ func los_check(target):
 	
 	var ss = get_world_2d().direct_space_state
 	
-	var vision = ss.intersect_ray(target_pos, global_position, [get_parent()], LOS_MASK)
+	var vision = ss.intersect_ray(target_pos, global_position, [entity], LOS_MASK)
 	if vision == null: 
 		return null
 	else: 
 		vision = ss.intersect_ray(global_position.move_toward(target_pos, 2.5),
-				target_pos, [get_parent()], LOS_MASK)
+				target_pos, [entity], LOS_MASK)
 	
 	if vision:
 		if vision.collider is TileMap:
@@ -163,7 +166,7 @@ func los_check(target):
 
 func add_target(tar: Entity, force = false) -> void:
 	# PROBLEM_NOTE: im pretty sure i can just do 'if not tar is Entity' here
-	if tar == get_parent():
+	if tar == entity:
 		return
 	elif movement_lobe != null and movement_lobe.get_spring(tar) == null: 
 		return
@@ -173,7 +176,7 @@ func add_target(tar: Entity, force = false) -> void:
 			return
 		elif tar.faction == "" and IGNORE_UNFACTIONED == true:
 			return
-		elif global.get_relation(get_parent(), tar) == "friendly":
+		elif global.get_relation(entity, tar) == "friendly":
 			return
 		elif targets.size() >= MAX_TARGETS:
 			return
@@ -215,7 +218,7 @@ func remove_target(tar):
 	if movement_lobe != null and memory_lobe != null:
 		if movement_lobe.get_spring(targets[target_id]) != null and memory_lobe.MEMORY_TIME > 0:
 			if get_node_or_null(target_paths[target_id]) == null: return
-			if get_parent().is_queued_for_deletion() == true: return
+			if entity.is_queued_for_deletion() == true: return
 			
 			movement_lobe.best_position_paths.remove(target_id)
 			memory_lobe.add_memory(targets[target_id].global_position, 
@@ -229,7 +232,7 @@ func remove_target(tar):
 	emit_signal("lost_target")
 	
 	if targets == []: 
-		get_parent().input_vector = Vector2.ZERO
+		entity.input_vector = Vector2.ZERO
 		if movement_lobe != null and movement_lobe.wander_timer.is_inside_tree() == true:
 			movement_lobe.wander_timer.start()
 
@@ -238,7 +241,7 @@ func _on_sight_body_entered(body: Node) -> void:
 		body is Entity and
 		not (body is Attack and IGNORE_ATTACKS == true) and
 		not (body.faction == "" and IGNORE_UNFACTIONED == true) and
-		not (global.get_relation(get_parent(), body) == "friendly" and IGNORE_ALLIES == true)
+		not (global.get_relation(entity, body) == "friendly" and IGNORE_ALLIES == true)
 	):
 		entities.append(body)
 	
@@ -255,8 +258,8 @@ func _on_sight_body_exited(body: Node) -> void:
 func _on_think_timer_timeout() -> void:
 	think_timer.wait_time = THINK_TIME + rand_range(-0.1, 0.1)
 	
-	if get_parent().components["sleeper"] != null:
-		if get_parent().components["sleeper"].active == false:
+	if entity.components["sleeper"] != null:
+		if entity.components["sleeper"].active == false:
 			return
 	
 	emit_signal("think")
@@ -285,11 +288,11 @@ func spawn_effect(effect: String, pos: Vector2):
 		push_warning("effect was invalid")
 		return
 	
-	get_parent().get_parent().call_deferred("add_child", new_effect)
+	entity.get_parent().call_deferred("add_child", new_effect)
 	new_effect.global_position = pos
 	
 	effect_cooldown.start()
 
 func debug():
-	if get_parent().is_queued_for_deletion() == false:
+	if entity.is_queued_for_deletion() == false:
 		emit_signal("debug")

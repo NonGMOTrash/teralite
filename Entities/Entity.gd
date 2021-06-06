@@ -56,12 +56,14 @@ func _ready():
 		get_tree().current_scene.max_kills += 1
 
 func _physics_process(delta: float): # physics logic
-	# PROBLEM_NOTE: \/ not sure why i did this
-	marked_enemies = []
-	if marked_enemies.size() > 0:
-		breakpoint
+#	# PROBLEM_NOTE: \/ not sure why i did this
+#	marked_enemies = []
+#	if marked_enemies.size() > 0:
+#		breakpoint
 	
-	if STATIC == true: return
+	if STATIC == true: 
+		set_physics_process(false)
+		return
 	
 	input_vector = input_vector.normalized() # diagonally is same speed as straight
 	

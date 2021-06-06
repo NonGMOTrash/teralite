@@ -258,13 +258,13 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 		death_message = "Death by betrayal."
 	else:
 		match entity_name:
-			#"player": death_message = "Death by betrayal."
 			"crate": death_message = "Death by... a crate? what??"
 			"chaser": death_message = "Death by chaser."
 			"brute_chaser": death_message = "Death by brute chaser."
 			"gold_chaser": death_message = "Death by golden chaser."
 			"ultra_chaser": death_message = "Death by ultra chaser."
-			"spikes", "red_spikes", "diamond_spikes": death_message = "Death by impalement."
+			"spikes", "red_spikes", "diamond_spikes", "royal_spikes": 
+					death_message = "Death by impalement."
 			"fire": death_message = "Death by burning."
 			"slash": death_message = "Death by %s's blade." % source_name
 			"stab": death_message = "Death by %s's dagger." % source_name
