@@ -23,6 +23,7 @@ var data = {
 	"arrow_turret": "res://Entities/arrow_turret/arrow_turret.tscn",
 	"royal_spikes": "res://Entities/spikes/red_spikes/royal_spikes/royal_spikes.tscn",
 	"pylon": "res://Entities/pylon/pylon.tscn",
+	"mage": "res://Entities/archer/mage/mage.tscn",
 	
 	# items
 	"pistol": "res://Entities/Item_Pickups/pistol/pistol.tscn",

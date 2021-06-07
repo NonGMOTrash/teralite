@@ -124,7 +124,7 @@ __meta__ = {
 margin_right = 110.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
-text = "Damage"
+text = "Damage Taken"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false

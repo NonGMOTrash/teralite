@@ -7,6 +7,7 @@
 
 [node name="poison" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+USE_TRIGGER = true
 
 [node name="spawner" parent="." index="2" instance=ExtResource( 3 )]
 standby_mode = true

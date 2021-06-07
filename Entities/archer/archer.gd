@@ -1,12 +1,11 @@
 extends Entity
 
-const ARROW = preload("res://Entities/Attacks/Projectile/arrow/arrow.tscn")
-
 onready var attack_cooldown = $attack_cooldown
 onready var sprite = $sprite
 onready var brain = $brain
 onready var animation = $AnimationPlayer
 
+export(PackedScene) var PROJECTILE
 export(float, 0.01, 5.0) var attack_cooldown_time = 0.85
 
 var targit: Entity
@@ -25,9 +24,9 @@ func attack():
 	else: 
 		pos = global_position + (input_vector * 5) + Vector2(rand_range(-0.1, 0.1), rand_range(-0.1, 0.1))
 	
-	var arrow = ARROW.instance()
-	arrow.setup(self, pos)
-	get_parent().add_child(arrow)
+	var projectile = PROJECTILE.instance()
+	projectile.setup(self, pos)
+	get_parent().add_child(projectile)
 	attack_cooldown.start()
 
 func _on_action_lobe_action(action, target: Entity) -> void:

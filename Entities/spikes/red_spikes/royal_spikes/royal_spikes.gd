@@ -18,6 +18,9 @@ func _on_activation_area_entered(area: Area2D) -> void:
 	else:
 		if active == false:
 			if active == false:
+				for entity in entities:
+					if entity.faction == "blue_kingdom":
+						return
 				animation.play("spikes")
 				active = true
 

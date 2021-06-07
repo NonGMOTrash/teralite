@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Entities/archer/archer.gd" type="Script" id=1]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/archer/archer.png" type="Texture" id=3]
 [ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Attacks/Projectile/arrow/arrow.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=9]
@@ -17,13 +18,12 @@
 [ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=17]
 
-
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 2.0
-height = 6.0
+radius = 4.25761
+height = 2.46986
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 7.07107
@@ -65,6 +65,7 @@ script = ExtResource( 1 )
 ACCELERATION = 200
 truName = "archer"
 faction = "blue_kingdom"
+PROJECTILE = ExtResource( 6 )
 attack_cooldown_time = 1.2
 
 [node name="stats" parent="." instance=ExtResource( 9 )]
@@ -158,10 +159,9 @@ anims/attack = SubResource( 4 )
 [node name="entity_effects" parent="." instance=ExtResource( 5 )]
 death_type = 3
 block_effect = false
+
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 
 [editable path="sprite"]
-
 [editable path="entityPush"]
-
 [editable path="hurtbox"]

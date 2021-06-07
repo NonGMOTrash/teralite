@@ -5,4 +5,5 @@
 
 [node name="burning" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+USE_TRIGGER = true
 TRIGGER_TIME = 0.7

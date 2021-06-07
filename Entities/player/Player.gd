@@ -38,13 +38,10 @@ onready var health_bar = $healthBar
 onready var sound_player = $foot_stepper
 onready var held_item = $held_item
 
-var force_death_msg = false
+var force_death_msg := false
 
 func _ready():
-	var staff = res.aquire_entity("staff")
-	get_parent().call_deferred("add_child", staff)
-	yield(staff, "ready")
-	staff.global_position = global_position
+#	stats.add_status_effect("poison", 60, 1)
 	
 	dash_buffer *= (1.0/60.0)
 	global.selection = 0
@@ -207,10 +204,14 @@ func death():
 		# hide ui
 		global.nodes["stopwatch"].pause(true)
 		
-		var elements = []
-		elements.append(global.nodes["health_ui"])
-		elements.append(global.nodes["item_bar"])
-		elements.append(global.nodes["item_info"])
+		var elements = [
+			global.nodes["health_ui"],
+			global.nodes["item_bar"],
+			global.nodes["item_info"],
+		]
+#		elements.append(global.nodes["health_ui"])
+#		elements.append(global.nodes["item_bar"])
+#		elements.append(global.nodes["item_info"])
 		
 		for element in elements:
 			if element != null:
@@ -242,10 +243,10 @@ func _on_stats_health_changed(_type, result, net) -> void:
 
 func _on_hurtbox_got_hit(by_area, _type) -> void:
 	force_death_msg = false
-	var entity = by_area.get_parent()
-	var entity_name = entity.truName
-	var source
-	var source_name
+	var entity: Entity = by_area.get_parent()
+	var entity_name: String = entity.truName
+	var source: Entity
+	var source_name: String
 	if entity is Attack and get_node_or_null(entity.SOURCE_PATH) != null:
 		source = entity.SOURCE
 		source_name = source.truName
@@ -256,6 +257,8 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 		death_message = "Death by betrayal."
 	elif source != null and source.truName == "player":
 		death_message = "Death by betrayal."
+	elif "spikes" in entity_name:
+		death_message = "Death by impalement."
 	else:
 		match entity_name:
 			"crate": death_message = "Death by... a crate? what??"
@@ -263,12 +266,11 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 			"brute_chaser": death_message = "Death by brute chaser."
 			"gold_chaser": death_message = "Death by golden chaser."
 			"ultra_chaser": death_message = "Death by ultra chaser."
-			"spikes", "red_spikes", "diamond_spikes", "royal_spikes": 
-					death_message = "Death by impalement."
 			"fire": death_message = "Death by burning."
 			"slash": death_message = "Death by %s's blade." % source_name
 			"stab": death_message = "Death by %s's dagger." % source_name
 			"arrow": death_message = "Death by %s's arrow." % source_name
+			"magic": death_message = "Death by %s's magic." % source_name
 			_: death_message = "death message messed up, report pls ;-;"
 	
 	death_message = death_message.replace("_", " ")
