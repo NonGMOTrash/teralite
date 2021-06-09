@@ -1,6 +1,7 @@
 extends Area2D
 
 export var COOLDOWN = 0.5
+export var COOLDOWN_ON_START := true
 export var iTime = 0.1
 export var DAMAGE = 0
 export var TRUE_DAMAGE = 0
@@ -10,7 +11,7 @@ export(String) var STATUS_EFFECT = ""
 export var STATUS_DURATION = 5.0
 export var STATUS_LEVEL = 1.0
 export var TEAM_ATTACK = true
-export(AudioStream) var TRIGGERED_SOUND 
+export(AudioStream) var TRIGGERED_SOUND
 
 onready var timer = $Timer
 var stats
@@ -45,8 +46,9 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	if raycast and raycast.collider == global.nodes["world_tiles"]:
 		return
 	
-	set_deferred("monitorable", false)
-	timer.start()
+	if COOLDOWN_ON_START == true:
+		set_deferred("monitorable", false)
+		timer.start()
 	
 	if get_parent().components["sound_player"] != null and TRIGGERED_SOUND != null:
 		var sfx = Sound.new()

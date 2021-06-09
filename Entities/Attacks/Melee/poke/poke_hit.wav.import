@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/poke_hit.wav-83f17d30cc0223b137e4307b77ad0192.sample"
+
+[deps]
+
+source_file="res://Entities/Attacks/Melee/poke/poke_hit.wav"
+dest_files=[ "res://.import/poke_hit.wav-83f17d30cc0223b137e4307b77ad0192.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

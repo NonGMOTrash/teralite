@@ -34,16 +34,19 @@ var data = {
 	"star": "res://Entities/Item_Pickups/star/star.tscn",
 	"bow": "res://Entities/Item_Pickups/bow/bow.tscn",
 	"staff": "res://Entities/Item_Pickups/staff/staff.tscn",
+	"spear": "res://Entities/Item_Pickups/spear/spear.tscn",
 	
 	# melees
 	"slash": "res://Entities/Attacks/Melee/slash/slash.tscn",
 	"stab": "res://Entities/Attacks/Melee/stab/stab.tscn",
 	"shine": "res://Entities/Attacks/Melee/shine/shine.tscn",
+	"poke": "res://Entities/Attacks/Melee/poke/poke.tscn",
 	
 	# projectiles
 	"arrow": "res://Entities/Attacks/Projectile/arrow/arrow.tscn",
 	"bullet": "res://Entities/Attacks/Projectile/small_bullet/small_bullet.tscn",
 	"magic": "res://Entities/Attacks/Projectile/magic/magic.tscn",
+	"thrown_spear": "res://Entities/Attacks/Projectile/thrown_spear/thrown_spear.tscn",
 	
 	# effects
 	"hit_effect": "res://Effects/hit_effect/hit_effect.tscn",
@@ -103,6 +106,7 @@ var data = {
 	"pistol_texture": "res://Entities/Item_Pickups/pistol/pistol.png",
 	"staff_texture": "res://Entities/Item_Pickups/staff/staff.png",
 	"white_armor_texture": "res://Entities/Item_Pickups/white_armor/white_armor.png",
+	"spear_texture": "res://Entities/Item_Pickups/spear/spear.png",
 }
 
 func allocate(asset:String) -> void:

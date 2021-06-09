@@ -11,13 +11,14 @@ export(ACTION_MODES) var SECONDARY_ACTION_MODE = ACTION_MODES.SEMI
 export(Texture) var HELD_ITEM_TEXTURE
 export(Vector2) var HELD_ITEM_OFFSET
 export(Vector2) var HELD_ITEM_ANCHOR = Vector2(8, 0)
+export(float, -360.0, 360.0) var HELD_ITEM_ROTATION := 0.0
 
 export(String) var PRIMARY_ANIM
 export(String) var SECONDARY_ANIM
 export(String) var RELOAD_ANIM
 export(String) var EQUIP_ANIM
 
-export var my_item = "" 
+export var my_item = ""
 
 export(Texture) var CURSOR
 export(CURSOR_MODES) var CURSOR_MODE
@@ -88,6 +89,7 @@ func _process(_delta: float):
 		get_parent().get_parent().add_child(newItemEntity)
 		get_parent().inventory[global.selection] = null
 		get_parent().held_item.sprite.texture = null
+		get_parent().held_item.sprite.rotation_degrees = 0
 		
 		global.emit_signal("update_item_info", # set a condition to null to hide it
 			null, # current item
@@ -203,6 +205,7 @@ func quick_spawn(attack:String, deferred:=true) -> void:
 
 func _update_held_item():
 	get_parent().components["held_item"].sprite.texture = HELD_ITEM_TEXTURE
+	get_parent().components["held_item"].sprite.rotation_degrees = HELD_ITEM_ROTATION
 	get_parent().components["held_item"].anchor.position = HELD_ITEM_ANCHOR
 	if HELD_ITEM_TEXTURE == null:
 		push_error("HELD_ITEM_TEXTURE is null")

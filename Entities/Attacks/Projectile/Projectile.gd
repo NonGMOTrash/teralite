@@ -6,6 +6,7 @@ export var VELOCITY_ARMOR = 1
 export var ONHIT_SPEED_MULTIPLIER = 0.8
 export var MIN_DAM_SPEED = 30
 export var RECOIL = 50
+export(float, -360, 360) var ROTATION_OFFSET := rotation_degrees
 
 var has_left_src = false
 var original_force_mult
@@ -16,6 +17,7 @@ func _init():
 	FORCE_MULT = 0.0
 
 func _ready():
+	# recoil
 	if SOURCE != null:
 		SOURCE.apply_force(target_pos.direction_to(SOURCE.global_position).normalized() * RECOIL)
 
@@ -27,7 +29,7 @@ func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	start_pos = SOURCE.global_position
 	DIRECTION = start_pos.direction_to(target_pos).normalized()
 	SOURCE_PATH = SOURCE.get_path()
-	# PROBLEM_NOTE: might be better to try .setup(new_source, new_target_pos) (also applies to Melee.gd)
+	# PROBLEM_NOTE: probably better to try .setup(new_source, new_target_pos) (also applies to Melee.gd)
 	# Projectile.gd setup
 	velocity = Vector2(SPEED, SPEED) * DIRECTION
 	visible = true
@@ -44,7 +46,8 @@ func _physics_process(delta):
 		queue_free()
 	
 	if auto_rotate == true:
-		rotation += get_angle_to(global_position + velocity)
+		rotation += get_angle_to(global_position + velocity) + deg2rad(ROTATION_OFFSET)
+		#prints(DIRECTION.angle(), get_angle_to(global_position + velocity) + ROTATION_OFFSET)
 
 func death():
 	if death_free == true:

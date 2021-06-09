@@ -164,8 +164,16 @@ check out his stuff here:
 - magic_shoot: "Enchant" by qubodup ( https://freesound.org/people/qubodup/sounds/202147/ ) licensed under CC BY 3.0
 - magic_collide: "Menu FX 03" (normal) by NightFlame ( https://freesound.org/people/Nightflame/sounds/422514/ ) licensed under CC0
 - bow_equip: "Wooden Object Take" by Kostas17 ( https://freesound.org/people/Kostas17/sounds/537765/ ) licensed under CC BY 3.0
+- spear_throw: "Medieval spear swing 2" by Still North Media ( https://www.zapsplat.com/music/medieval-spear-swing-2/ ) licesned under CC0 
+- spear_kill: "Gore, beheading, chopping off head" by 344 Audio ( https://www.zapsplat.com/music/gore-beheading-chopping-off-head/ ) licensed under ZapSplat standard license
+- thrown_spear_hit: "Spear thrown and stick into ground with slight vibration of the wooden spear pole on impact. Version 1" by ZapSplat ( https://www.zapsplat.com/music/spear-thrown-and-stick-into-ground-with-slight-vibration-of-the-wooden-spear-pole-on-impact-version-1/ ) licensed under ZapSplat standard license
+- thrown_spear_collide: "Sharp wooden post, stake, dig into soil, ground 4" by ZapSplat ( https://www.zapsplat.com/music/sharp-wooden-post-stake-dig-into-soil-ground-4/ ) licensed under ZapSplat standard license
+- thrown_spear_blocked: "Axe swing, hit body against wood, metal clang, impact squelch 3" by ZapSplat ( https://www.zapsplat.com/music/axe-swing-hit-body-against-wood-metal-clang-impact-squelch-3/ ) licensed under ZapSplat standard license
+- poke_miss + poke_collide: "Spear thrown and stick into ground with slight vibration of the wooden spear pole on impact. Version 5" by ZapSplat ( https://www.zapsplat.com/music/spear-thrown-and-stick-into-ground-with-slight-vibration-of-the-wooden-spear-pole-on-impact-version-5/ ) licensed under ZapSplat standard license
+- poke_hit: "Sword, stab through chain mail into flesh, sharp, metallic scrape followed by a quick, crunchy slash / impact, close perspective" by Audio Hero ( https://www.zapsplat.com/music/sword-stab-through-chain-mail-into-flesh-sharp-metallic-scrape-followed-by-a-quick-crunchy-slash-impact-close-perspective/ ) licensed under ZapSplat standard license
+- poke_blocked: "2 x swords hit, impact 1" by ZapSplat ( https://www.zapsplat.com/music/2-x-swords-hit-impact-1/ ) licensed under ZapSplat standard license
 
-thank you all for letting me legally steal your hard work to use in my game <3
+a big thanks to all the sound authors for letting me legally steal your hard work to use in my game <3
 
 ### license
 
@@ -193,6 +201,7 @@ github repo is here: (private until full release)
 ## Beta 3.0
 
 - added the staff
+- added the spear
 - added mages
 - added arrow turrets and pylons
 - added kills counter to level completion screen
@@ -201,6 +210,7 @@ github repo is here: (private until full release)
 - renabled gpu snap to fix weird visual artifacts with tilemaps
 - fixed the bow being capped at 2 damage instead of 3
 - replaced a few of the sound effects
+- made the readme into a .html file
 
 ### Beta 2.14 Hotfix #2 (5/23/2021)
 

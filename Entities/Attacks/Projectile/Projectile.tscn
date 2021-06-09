@@ -19,6 +19,9 @@ MIN_DAM_SPEED = 0
 [node name="Sprite" parent="." index="1"]
 rotation = 0.0
 
+[node name="hitbox" parent="." index="3"]
+COOLDOWN_ON_START = false
+
 [node name="collision" parent="." index="4"]
 input_pickable = false
 

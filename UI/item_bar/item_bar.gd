@@ -59,7 +59,10 @@ func match_icon(slot, item):
 	if item == null:
 		replace_icon(slot, null)
 	else:
-		replace_icon(slot, res.aquire_texture(item+"_texture"))
+		if not res.data.has(item+"_texture"):
+			push_error("res.gd does not have %s_texture" % item)
+		else:
+			replace_icon(slot, res.aquire_texture(item+"_texture"))
 #	match item:
 #		null:
 #			replace_icon(slot, null)

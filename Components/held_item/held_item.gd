@@ -33,6 +33,7 @@ func _ready():
 	sprite.frame = 0
 	sprite.frame_coords = Vector2.ZERO
 	original_offset = sprite.offset
+	#original_rotation 
 	
 	if PARENT_BOND == false:
 		source = self
@@ -68,12 +69,12 @@ func _process(delta):
 		
 		elif TARGETING == TT.CURSOR:
 			target_pos = get_global_mouse_position()
-		
-		rotation_degrees = rad2deg(global_position.direction_to(target_pos).angle())
+	
+	rotation_degrees = rad2deg(global_position.direction_to(target_pos).angle())
 	
 	if ( # PROBLEM_NOTE: maybe i can do this simplier, but it works
-		rotation_degrees < -90 or 
-		rotation_degrees > 0 and rotation_degrees < 180 and 
+		rotation_degrees < -90 or
+		rotation_degrees > 0 and rotation_degrees < 180 and
 		not rotation_degrees < 90 and rotation_degrees > 0
 	):
 		sprite.flip_v = true

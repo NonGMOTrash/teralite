@@ -51,6 +51,7 @@ func _ready():
 	armor = DEFENCE
 
 func change_health(value, true_value, type: String = "hurt") -> String:
+	#if get_parent().truName == "knight": print("before: ")
 	BONUS_HEALTH = clamp(BONUS_HEALTH, 0, 99)
 	var amount = value
 	var true_amount = true_value
@@ -61,10 +62,7 @@ func change_health(value, true_value, type: String = "hurt") -> String:
 	# PROBLEM_NOTE: i can probably do this same calculation with a lot less loops. try it maybe
 	
 	if sum < 0: 
-		# if is an attack:
-		# amount = move_toward(amount, 0, DEFENCE) # account for defence here OLD
-		
-		# NEW defence calculation
+		# defence calculation
 		if armor < 0 and amount < 0:
 			amount += armor
 		else:

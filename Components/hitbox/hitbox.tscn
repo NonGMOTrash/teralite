@@ -16,6 +16,7 @@ __meta__ = {
 process_mode = 0
 wait_time = 0.1
 one_shot = true
+
 [connection signal="area_entered" from="." to="." method="_on_hitbox_area_entered"]
 [connection signal="body_exited" from="." to="." method="_on_hitbox_body_exited"]
 [connection signal="tree_entered" from="." to="." method="_on_hitbox_tree_entered"]

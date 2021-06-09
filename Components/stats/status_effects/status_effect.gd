@@ -4,14 +4,14 @@ class_name Status_Effect
 onready var duration = $duration
 onready var trigger = $trigger
 
-export(float, 0.01, 999) var level := 1
+export(float, 0.01, 999) var level := 1.0
 export(float, 0.01, 999) var INIT_DURATION := 0.01
 export(bool) var USE_TRIGGER := true
 export(float, 0.01, 999) var TRIGGER_TIME := 2.5
-export(float, 0.01, 999) var DEFAULT_DURATION = 5
+export(float, 0.01, 999) var DEFAULT_DURATION := 5.0
 
 func _ready() -> void:
-	get_parent().status_effects[get_name()] = self
+	get_parent().status_effects[name] = self
 	
 	duration.wait_time = DEFAULT_DURATION # generic default, should never be used
 	var x = floor(level)
@@ -24,6 +24,7 @@ func _ready() -> void:
 		trigger.start()
 	else:
 		trigger.queue_free()
+
 
 func change_duration(amount: float):
 	duration.wait_time = clamp(duration.wait_time + amount, 0.01, 999)

@@ -1,7 +1,8 @@
 extends Node
 
-const OLD_LEVEL_CODES := ["A-1", "A-2", "A-3", "A-4", "A-5", "A-6", "A-7", "A-8", "A-9", "A-10", "A-11", 
-		"A-12", "A-13", "A-14", "A-15", "A-secret"
+const OLD_LEVEL_CODES := [
+	"A-1", "A-2", "A-3", "A-4", "A-5", "A-6", "A-7", "A-8", "A-9", "A-10", "A-11", 
+	"A-12", "A-13", "A-14", "A-15", "A-secret"
 ]
 
 #all the global variables

@@ -5,7 +5,7 @@ export(PackedScene) var blood_particles
 var particles: Particles2D
 
 func _ready():
-	trigger.wait_time *= 1 / level
+	trigger.wait_time *= 1.0 / level
 	
 	particles = blood_particles.instance()
 	particles.amount *= level

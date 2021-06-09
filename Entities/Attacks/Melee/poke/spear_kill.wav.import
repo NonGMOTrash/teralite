@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/spear_kill.wav-17c9726491559a571d901f6cda9fd369.sample"
+
+[deps]
+
+source_file="res://Entities/Attacks/Melee/poke/spear_kill.wav"
+dest_files=[ "res://.import/spear_kill.wav-17c9726491559a571d901f6cda9fd369.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

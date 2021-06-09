@@ -28,6 +28,8 @@ export(bool) var particle_one_shot = true
 export(int, 1) var particle_amount = 5
 export(float, 0, 64) var particle_speed_scale = 1.0
 
+export(bool) var entity_inherit_velocity := false
+
 var stats
 var trigger_pos
 var entity: Entity
@@ -150,5 +152,9 @@ func spawn():
 		if my_sprite != null and effect_inherit_flipping == true:
 			sprite.flip_h = my_sprite.flip_h
 			sprite.flip_v = my_sprite.flip_v
+	
+	if new_thing is Entity:
+		if entity_inherit_velocity == true:
+			new_thing.velocity = entity.velocity
 	
 	global.nodes["ysort"].call_deferred("add_child", new_thing)

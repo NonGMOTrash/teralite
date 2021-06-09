@@ -92,6 +92,6 @@ func _on_duration_timeout() -> void:
 	frequency_timer.stop()
 	stop_shaking()
 #                                                                               \/ ease is taken lel
-func zoom_to(new_zoom: Vector2, time: float = 0.2, trans:int = DEFAULT_TRANS, eaze: = DEFAULT_EASE):
+func zoom_to(new_zoom: Vector2, time: float = 0.2, trans:int = DEFAULT_TRANS, eaze:int = DEFAULT_EASE):
 	zoom_tween.interpolate_property(self, "zoom", zoom, new_zoom, time, trans, eaze)
 	zoom_tween.start()
