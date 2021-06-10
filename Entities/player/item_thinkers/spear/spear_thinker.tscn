@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Entities/player/item_thinkers/spear/spear_thinker.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Item_Pickups/spear/spear.png" type="Texture" id=2]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/cursors/cursor_spear.png" type="Texture" id=4]
 
 [node name="spear_thinker" type="Node"]
 script = ExtResource( 1 )
@@ -10,6 +11,7 @@ HELD_ITEM_TEXTURE = ExtResource( 2 )
 HELD_ITEM_ROTATION = -45.0
 EQUIP_ANIM = "spin"
 my_item = "Spear"
+CURSOR = ExtResource( 4 )
 cooldown_time = 1.08
 
 [node name="cooldown" type="Timer" parent="."]

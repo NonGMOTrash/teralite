@@ -10,6 +10,7 @@ func _init():
 
 func _ready() -> void:
 	cooldown.wait_time = cooldown_time
+	cooldown.start()
 
 func get_ready():
 	if cooldown.time_left > 0:
