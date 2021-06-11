@@ -1,13 +1,48 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Entities/player/item_thinkers/sword/sword_thinker.gd" type="Script" id=1]
 [ext_resource path="res://UI/cursors/cursor_sword.png" type="Texture" id=2]
 [ext_resource path="res://Entities/Attacks/Melee/slash/sword_equip.wav" type="AudioStream" id=3]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/Item_Pickups/sword/sword.png" type="Texture" id=5]
+[ext_resource path="res://Entities/player/item_thinkers/sword/counter_ready.wav" type="AudioStream" id=6]
+[ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/player/item_thinkers/sword/counter_success.wav" type="AudioStream" id=8]
 
+[sub_resource type="CircleShape2D" id=1]
+radius = 14.0
 
-
+[sub_resource type="Animation" id=2]
+resource_name = "counter"
+tracks/0/type = "value"
+tracks/0/path = NodePath("counter/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_counter_window"
+}, {
+"args": [ false ],
+"method": "set_counter_window"
+} ]
+}
 
 [node name="sword_thinker" type="Node"]
 script = ExtResource( 1 )
@@ -17,10 +52,34 @@ my_item = "Sword"
 CURSOR = ExtResource( 2 )
 CURSOR_MODE = 1
 EQUIP_SOUND = ExtResource( 3 )
-cooldown_time = 0.55
+counter_slowness_lvl = 3.0
 
 [node name="cooldown" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
 
 [node name="sound_player" parent="." instance=ExtResource( 4 )]
+
+[node name="counter_ready" parent="sound_player" instance=ExtResource( 7 )]
+stream = ExtResource( 6 )
+volume_db = 16.0
+MODE = 1
+AUTO_PLAY = false
+
+[node name="counter_success" parent="sound_player" instance=ExtResource( 7 )]
+stream = ExtResource( 8 )
+MODE = 1
+AUTO_PLAY = false
+
+[node name="counter" type="Area2D" parent="."]
+monitorable = false
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="counter"]
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/counter = SubResource( 2 )
+
+[connection signal="area_entered" from="counter" to="." method="_on_counter_area_entered"]

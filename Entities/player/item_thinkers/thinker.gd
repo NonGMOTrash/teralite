@@ -26,6 +26,7 @@ export(CURSOR_MODES) var CURSOR_MODE
 export(AudioStream) var EQUIP_SOUND
 
 onready var sound_player = $sound_player
+onready var player := get_parent() as Entity
 
 var bar_max = 0.0
 var bar_value = 0.0

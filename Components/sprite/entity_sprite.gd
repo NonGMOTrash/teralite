@@ -69,7 +69,7 @@ func _ready():
 	
 	var stats = get_parent().components["stats"]
 	if stats == null: return
-	stats.connect("health_changed", self, "play_effect")
+	stats.connect("health_changed", self, "_on_health_changed")
 
 func _physics_process(_delta):
 	# off
@@ -123,7 +123,12 @@ func animate_overlay():
 	color_c.flip_h = flip_h
 	color_c.frame = frame
 
-func play_effect(_type, result, _net):
+func _on_health_changed(_type, result, _net):
+	play_effect(result)
+
+func play_effect(effect: String, speed:=1.0):
+	animate_overlay()
+	
 	var color_effect: AnimationPlayer = color_a_effect
 	var texture_effect: AnimationPlayer = texture_a_effect
 	if color_a_effect.is_playing() == true or texture_a_effect.is_playing() == true: 
@@ -133,12 +138,14 @@ func play_effect(_type, result, _net):
 			color_effect = color_c_effect
 			texture_effect = texture_c_effect
 	
-	match result:
-		"hurt": color_effect.play("hurt")
-		"block": color_effect.play("block")
-		"heal": color_effect.play("heal")
-		"poison": color_effect.play("poison")
-		"bleed": color_effect.play("bleed")
+	match effect:
+		"hurt": color_effect.play("hurt", -1, speed)
+		"block": color_effect.play("block", -1, speed)
+		"heal": color_effect.play("heal", -1, speed)
+		"poison": color_effect.play("poison", -1, speed)
+		"bleed": color_effect.play("bleed", -1, speed)
 		"burn": 
-			color_effect.play("burn")
-			texture_effect.play("fire")
+			color_effect.play("burn", -1, speed)
+			texture_effect.play("fire", -1, speed)
+		"invincibility": color_a_effect.play("invincibility", -1, speed)
+		_: push_error("'%s' is not a valid effect (entity_sprite.gd)" % effect)

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/counter_ready.wav-b975fecc5c6eeb22d20c928ae2da2664.sample"
+
+[deps]
+
+source_file="res://Entities/player/item_thinkers/sword/counter_ready.wav"
+dest_files=[ "res://.import/counter_ready.wav-b975fecc5c6eeb22d20c928ae2da2664.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

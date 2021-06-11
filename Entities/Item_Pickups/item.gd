@@ -32,14 +32,13 @@ func _on_Area2D_body_entered(body: Node) -> void:
 	if pickup_sound != null:
 		$sound_player.create_sound(pickup_sound, true, Sound.MODES.ONESHOT, true, true)
 	
-	on_pickup(body)
-	
 	var effect = ITEM_PICKUP_EFFECT.instance()
 	effect.global_position = global_position
 	get_parent().call_deferred("add_child", effect)
 	
 	match type:
 		item_types.POWERUP:
+			on_pickup(body)
 			return
 		
 		item_types.ACTIVE:
@@ -81,6 +80,8 @@ func _on_Area2D_body_entered(body: Node) -> void:
 			if thinker != null: body.call_deferred("add_child", thinker.instance())
 			if body.get_name() == "player":
 				global.emit_signal("update_item_bar", body.inventory)
+	
+	on_pickup(body)
 	
 	queue_free()
 

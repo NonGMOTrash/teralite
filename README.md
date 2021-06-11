@@ -138,6 +138,8 @@ check out his stuff here:
 - sword_equip: "Drawing sword from scabbard" by giddster ( https://freesound.org/people/giddster/sounds/484298/ ) licensed under CC0
 - sword_kill: "Sword Attack" by Saviraz ( https://freesound.org/people/Saviraz/sounds/547600/ ) licensed under CC BY 3.0
 - sword_tint: "sword04" by Erdie ( https://freesound.org/people/Erdie/sounds/27858/ ) licensed under CC BY 3.0
+- counter_ready: ripped from 20xx.io (great game btw), thanks InfernoPlus for letting me use it!
+- counter_success: "Heavy metal bar impact, with a clang, cluck, thump 3" by ZapSplat ( https://www.zapsplat.com/music/heavy-metal-bar-impact-with-a-clang-cluck-thump-3/ ) licensed under ZapSplat standard license
 - footstep_grass: "Rustling Grass 2" by morganpurkis ( https://freesound.org/people/morganpurkis/sounds/396013/ ) licensed under CC0
 - footstep_wood: "Footstep_Wood_Heel" by GiocoSound ( https://freesound.org/people/GiocoSound/sounds/421150/ ) licensed under CC0
 - star_pickup: "Get Item 4 8 Bit" by Mrthenoronha ( https://freesound.org/people/Mrthenoronha/sounds/516824/ ) licensed under CC BY-NC 3.0
@@ -160,7 +162,7 @@ check out his stuff here:
 - player_death: "Retro Video Game Death" by SRJA_Gaming ( https://freesound.org/people/SRJA_Gaming/sounds/543255/ ) licensed under CC0
 - heal: "Healing 2 (Tranquillity)" by SilverIllusionist ( https://freesound.org/people/SilverIllusionist/sounds/518800/ ) licensed under CC BY 3.0
 - os_error: "Error" by Isaac200000 ( https://freesound.org/people/Isaac200000/sounds/188013/ ) licensed under CC0
-- shine: "FX111" from "Audiopack #012" by jalastram ( https://opengameart.org/content/sound-effects-fx012 ) licesned under CC BY 3.0
+- shine: ripped from 20xx.io (great game btw), thanks InfernoPlus for letting me use it!
 - magic_shoot: "Enchant" by qubodup ( https://freesound.org/people/qubodup/sounds/202147/ ) licensed under CC BY 3.0
 - magic_collide: "Menu FX 03" (normal) by NightFlame ( https://freesound.org/people/Nightflame/sounds/422514/ ) licensed under CC0
 - bow_equip: "Wooden Object Take" by Kostas17 ( https://freesound.org/people/Kostas17/sounds/537765/ ) licensed under CC BY 3.0
