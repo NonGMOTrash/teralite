@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Levels/Level Resources/scene_batcher/scene_batcher.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/pistol/pistol.png" type="Texture" id=2]
@@ -31,6 +31,8 @@
 [ext_resource path="res://Entities/Item_Pickups/staff/staff.png" type="Texture" id=29]
 [ext_resource path="res://Entities/pylon/pylon.png" type="Texture" id=30]
 [ext_resource path="res://Entities/archer/mage/mage.png" type="Texture" id=31]
+[ext_resource path="res://Entities/Item_Pickups/spear/spear.png" type="Texture" id=32]
+[ext_resource path="res://Entities/knight/warden/warden.png" type="Texture" id=33]
 
 [sub_resource type="TileSet" id=1]
 2/name = "player.png 2"
@@ -453,6 +455,34 @@
 37/shape_one_way_margin = 0.0
 37/shapes = [  ]
 37/z_index = 0
+38/name = "spear.png 38"
+38/texture = ExtResource( 32 )
+38/tex_offset = Vector2( 0, 0 )
+38/modulate = Color( 1, 1, 1, 1 )
+38/region = Rect2( 1, 1, 14, 14 )
+38/tile_mode = 0
+38/occluder_offset = Vector2( 0, 0 )
+38/navigation_offset = Vector2( 0, 0 )
+38/shape_offset = Vector2( 0, 0 )
+38/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+38/shape_one_way = false
+38/shape_one_way_margin = 0.0
+38/shapes = [  ]
+38/z_index = 0
+39/name = "warden.png 39"
+39/texture = ExtResource( 33 )
+39/tex_offset = Vector2( 0, 0 )
+39/modulate = Color( 1, 1, 1, 1 )
+39/region = Rect2( 0, 0, 17, 18 )
+39/tile_mode = 0
+39/occluder_offset = Vector2( 0, 0 )
+39/navigation_offset = Vector2( 0, 0 )
+39/shape_offset = Vector2( 0, 0 )
+39/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+39/shape_one_way = false
+39/shape_one_way_margin = 0.0
+39/shapes = [  ]
+39/z_index = 0
 
 [node name="entity_spawns" instance=ExtResource( 1 )]
 position = Vector2( 4, 4 )

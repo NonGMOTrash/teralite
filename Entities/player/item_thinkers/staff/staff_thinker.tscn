@@ -14,7 +14,7 @@ HELD_ITEM_ANCHOR = Vector2( 10, 0 )
 my_item = "staff"
 CURSOR = ExtResource( 4 )
 SHOOT_COOLDOWN = 0.35
-SHINE_COOLDOWN = 0.4
+SHINE_COOLDOWN = 0.3
 
 [node name="cooldown" type="Timer" parent="."]
 wait_time = 0.42

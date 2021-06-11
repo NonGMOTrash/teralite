@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Entities/knight/knight.gd" type="Script" id=1]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=2]
@@ -10,13 +10,13 @@
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Entities/Attacks/Melee/slash/slash.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Components/brain/movement_lobe/spring/spring.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=17]
-
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -83,6 +83,7 @@ TOP_SPEED = 55
 FORCE_MULT = 0.65
 truName = "knight"
 faction = "blue_kingdom"
+MELEE = ExtResource( 11 )
 attack_cooldown_time = 1.7
 
 [node name="stats" parent="." instance=ExtResource( 8 )]
@@ -141,7 +142,7 @@ MEMORY_TIME = 6.5
 
 [node name="action" parent="brain/action_lobe" instance=ExtResource( 15 )]
 best_distance = 16
-COOLDOWN = 1.05
+COOLDOWN = 1.7
 GLOBAL_COOLDOWN = true
 
 [node name="healthBar" parent="." instance=ExtResource( 12 )]
@@ -158,8 +159,8 @@ anims/warning = SubResource( 5 )
 
 [node name="entity_effects" parent="." instance=ExtResource( 10 )]
 death_type = 3
+
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 
 [editable path="entityPush"]
-
 [editable path="hurtbox"]

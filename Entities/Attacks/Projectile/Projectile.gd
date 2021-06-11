@@ -6,7 +6,7 @@ export var VELOCITY_ARMOR = 1
 export var ONHIT_SPEED_MULTIPLIER = 0.8
 export var MIN_DAM_SPEED = 30
 export var RECOIL = 50
-export(float, -360, 360) var ROTATION_OFFSET := rotation_degrees
+export(float, -360, 360) var ROTATION_OFFSET := 0.0
 
 var has_left_src = false
 var original_force_mult

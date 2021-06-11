@@ -68,6 +68,7 @@ tracks/4/keys = {
 }
 
 [node name="texture_overlay" type="Sprite"]
+visible = false
 self_modulate = Color( 1, 1, 1, 0.784314 )
 texture = ExtResource( 1 )
 hframes = 3

@@ -24,6 +24,7 @@ var data = {
 	"royal_spikes": "res://Entities/spikes/red_spikes/royal_spikes/royal_spikes.tscn",
 	"pylon": "res://Entities/pylon/pylon.tscn",
 	"mage": "res://Entities/archer/mage/mage.tscn",
+	"warden": "res://Entities/knight/warden/warden.tscn",
 	
 	# items
 	"pistol": "res://Entities/Item_Pickups/pistol/pistol.tscn",

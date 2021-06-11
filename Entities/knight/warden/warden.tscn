@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Entities/knight/knight.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Attacks/Melee/poke/poke.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/knight/warden/warden.png" type="Texture" id=3]
+[ext_resource path="res://Components/sprite/shadow2.png" type="Texture" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 5.73367
+height = 7.98572
+
+[node name="warden" instance=ExtResource( 1 )]
+ACCELERATION = 150
+SLOWDOWN = 700
+TOP_SPEED = 43
+FORCE_MULT = 0.5
+truName = "warden"
+MELEE = ExtResource( 2 )
+attack_cooldown_time = 2.0
+
+[node name="stats" parent="." index="0"]
+MAX_HEALTH = 4
+HEALTH = 4
+
+[node name="sprite" parent="." index="1"]
+material = SubResource( 1 )
+position = Vector2( 0.5, 0 )
+texture = ExtResource( 3 )
+
+[node name="shadow" parent="sprite" index="0"]
+position = Vector2( -0.5, 3 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" parent="entityPush" index="0"]
+position = Vector2( 0, 0 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+position = Vector2( 0, 0 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="5"]
+visible = false
+position = Vector2( 0, 4 )
+
+[node name="brain" parent="." index="7"]
+TOLERANCE = 5
+SIGHT_RANGE = 142.0
+
+[node name="movement_lobe" parent="brain" index="3"]
+general_springs = {
+"friendly": "",
+"hostile": "spring",
+"neutral": ""
+}
+
+[node name="spring" parent="brain/movement_lobe" index="4"]
+DISTANCE = 40
+
+[node name="memory_lobe" parent="brain" index="4"]
+MEMORY_TIME = 8.0
+
+[node name="action" parent="brain/action_lobe" index="2"]
+best_distance = 20
+COOLDOWN = 2.2
+
+[node name="healthBar" parent="." index="8"]
+margin_left = -10.5
+margin_top = -14.0
+margin_right = 10.5
+margin_bottom = -9.99828
+
+[node name="foot_stepper" parent="." index="10"]
+RATE = 4.0
+OFFSET = -4.0
+
+[node name="entity_effects" parent="." index="11"]
+death_type = 2
+
+[editable path="sprite"]
+[editable path="entityPush"]
+[editable path="hurtbox"]

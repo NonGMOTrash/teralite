@@ -203,9 +203,11 @@ github repo is here: (private until full release)
 ## Beta 3.0
 
 - added the staff
-- added the spear
 - added mages
+- added the spear
+- added the warden
 - added arrow turrets and pylons
+- the sword now as a counter (right click)
 - added kills counter to level completion screen
 - fixed hitboxes and spike activation going through walls
 - added speed, slowness, and regeneration status effects

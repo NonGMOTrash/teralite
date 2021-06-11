@@ -32,4 +32,6 @@ func set_data():
 		"staff": get_used_cells_by_id(35),
 		"pylon": get_used_cells_by_id(36),
 		"mage": get_used_cells_by_id(37),
+		"spear": get_used_cells_by_id(38),
+		"warden": get_used_cells_by_id(39),
 	}
