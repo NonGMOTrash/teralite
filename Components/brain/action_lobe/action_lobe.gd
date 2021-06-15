@@ -26,6 +26,7 @@ var on_cooldown = false
 var energy = 50
 var actions = []
 var last_action_str = "idk lol"
+var acts_on_self := false
 
 signal action(action, target)
 
@@ -59,7 +60,7 @@ func _on_action_timer_timeout() -> void:
 	
 	if actions == []:
 		action_timer.stop()
-	elif brain.targets != []: # PROBLEM_NOTE: may cause issues with actions used on self
+	elif brain.targets != [] or acts_on_self == true:
 		act()
 		yield(self, "action")
 		

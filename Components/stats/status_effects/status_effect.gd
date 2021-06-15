@@ -25,7 +25,6 @@ func _ready() -> void:
 	else:
 		trigger.queue_free()
 
-
 func change_duration(amount: float):
 	duration.wait_time = clamp(duration.wait_time + amount, 0.01, 999)
 	duration.start()

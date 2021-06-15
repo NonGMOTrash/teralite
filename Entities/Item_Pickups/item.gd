@@ -12,13 +12,24 @@ enum item_types {
 export(item_types) var type = item_types.ACTIVE
 export(PackedScene) var thinker
 export(AudioStream) var pickup_sound
+export(bool) var player_only := true
 var SOURCE
 
 var the_body = null
 var the_body_used = false
 
+func _init():
+	if type != item_types.POWERUP:
+		assert(player_only == true)
+
 func _on_Area2D_body_entered(body: Node) -> void:
-	if body == SOURCE or body == self or body.truName != "player": return
+	if (
+		body == SOURCE or
+		body == self or
+		body is Attack or
+		body.truName != "player" and player_only == true
+	): 
+		return
 	
 	if the_body == null: the_body = body
 	
@@ -26,8 +37,6 @@ func _on_Area2D_body_entered(body: Node) -> void:
 	if the_body_used == true: return
 	
 	the_body_used = true
-	
-	if body.truName != "player": return
 	
 	if pickup_sound != null:
 		$sound_player.create_sound(pickup_sound, true, Sound.MODES.ONESHOT, true, true)

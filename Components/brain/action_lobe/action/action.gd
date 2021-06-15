@@ -4,12 +4,11 @@ onready var brain = get_parent().get_parent() as Node2D
 onready var action_lobe := get_parent() as Node
 onready var cooldown_timer = $cooldown_timer
 
-enum relations { hostile, friendly }
+enum relations { hostile, friendly, myself }
 
 enum tags { attack, defend, support }
 
 export(relations) var target_type = relations.hostile
-# export var use_on_self = false
 export(tags) var tag = tags.attack
 export var custom_tag = ""
 export(int, 0, 200) var best_distance = -1
@@ -28,6 +27,8 @@ export(int, 0, 100) var ENERGY_COST = 0
 
 var weight = stepify(rand_range(0, 1), 0.1)
 
+var target_relation: String
+
 func return_score(current: float, best: float, max_difference: float):
 	var difference = abs(current-best)
 	return range_lerp(difference, 0, max_difference, 1, 0)
@@ -42,8 +43,8 @@ func _ready():
 			tags.support: tag = "support"
 	
 	match target_type:
-		relations.hostile: target_type = "hostile"
-		relations.friendly: target_type = "friendly"
+		relations.hostile: target_relation = "hostile"
+		relations.friendly, relations.myself: target_relation = "friendly"
 	
 	action_lobe.actions.append(self)
 	
@@ -55,18 +56,33 @@ func _ready():
 	else:
 		cooldown_timer.wait_time = COOLDOWN
 		cooldown_timer.start()
+	
+	if target_type == relations.myself:
+		action_lobe.acts_on_self = true
 
-func get_score(warned = false):
+func get_score(warned = false) -> Array: #-> [score, target]
 	if COOLDOWN > 0 and cooldown_timer.time_left > 0:
-		return [0, brain.targets[0]]
+		if target_type != relations.myself and brain.targets.size() > 0:
+			return [0, brain.targets[0]]
+		else:
+			return [0, brain.get_parent()]
 	
 	var scores = []
 	var targets = []
 	
-	for i in brain.targets.size():
-		var target = brain.targets[i]
+	var targets_to_check: Array
+	if target_type == relations.myself:
+		targets_to_check.append(brain.get_parent())
+	else:
+		targets_to_check = brain.targets
+	
+	for i in targets_to_check.size():
+		var target: Entity = targets_to_check[i]
 		
-		if global.get_relation(brain.entity, target) == target_type:
+		if (
+			target_type == relations.myself and target == self or
+			global.get_relation(brain.entity, target) == target_relation
+		):
 			
 			var stats = target.components["stats"]
 			var score = []
@@ -84,10 +100,13 @@ func get_score(warned = false):
 				for x in health_weight: score.append(health_score)
 			
 			# adjusting for status effect
-			if status_weight != 0 and stats != null:
+			if status_weight != 0 and stats != null and status_effect in stats.status_effects:
 				var status_score = 0
-				if stats.status_effects.has(status_effect) and stats.status_effects[status_effect][0] != 0:
+				
+				var the_status_effect = stats.status_effects[status_effect]
+				if the_status_effect != null and the_status_effect.level != 0:
 					status_score = 1
+				
 				for x in status_weight: score.append(status_score)
 			
 			# adjusting for warning

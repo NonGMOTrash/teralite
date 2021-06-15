@@ -10,4 +10,5 @@ autostart = true
 
 [node name="cooldown_timer" type="Timer" parent="."]
 one_shot = true
+
 [connection signal="timeout" from="deweight_timer" to="." method="_on_deweight_timer_timeout"]

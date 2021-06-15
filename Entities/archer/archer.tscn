@@ -75,7 +75,6 @@ DAMAGE = 2
 
 [node name="sprite" parent="." instance=ExtResource( 2 )]
 material = SubResource( 1 )
-scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 3 )
 offset = Vector2( 2, 0 )
 auto_flip_mode = 2
@@ -109,7 +108,7 @@ wait_time = 1.7
 one_shot = true
 autostart = true
 
-[node name="healthBar" parent="." instance=ExtResource( 10 )]
+[node name="health_bar" parent="." instance=ExtResource( 10 )]
 margin_left = -10.2425
 margin_top = -13.2035
 margin_right = 10.7575

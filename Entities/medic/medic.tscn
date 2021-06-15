@@ -1,0 +1,142 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Entities/medic/medic.gd" type="Script" id=1]
+[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/entity_push/entity_push.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Components/brain/movement_lobe/spring/spring.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Entities/medic/medic.png" type="Texture" id=14]
+[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Entities/Item_Pickups/heart/heart.tscn" type="PackedScene" id=16]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 2.87307
+height = 3.1355
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 5.92042
+height = 3.1355
+
+[node name="medic" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 1 )
+ACCELERATION = 400
+SLOWDOWN = 400
+TOP_SPEED = 90
+FORCE_MULT = 1.03
+truName = "medic"
+faction = "blue_kingdom"
+throw_strength = 190.0
+
+[node name="stats" parent="." instance=ExtResource( 4 )]
+MAX_HEALTH = 2
+HEALTH = 2
+DAMAGE = -1
+
+[node name="entity_sprite" parent="." instance=ExtResource( 2 )]
+material = SubResource( 1 )
+texture = ExtResource( 14 )
+auto_flip_mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 3 )
+shape = SubResource( 2 )
+
+[node name="entity_push" parent="." instance=ExtResource( 3 )]
+visible = false
+strength = 9
+
+[node name="CollisionShape2D" parent="entity_push" index="0"]
+shape = SubResource( 4 )
+
+[node name="hurtbox" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+shape = SubResource( 4 )
+
+[node name="sleeper" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="health_bar" parent="." instance=ExtResource( 7 )]
+margin_left = -10.5
+margin_top = -12.9166
+margin_right = 10.5
+margin_bottom = -8.91483
+
+[node name="brain" parent="." instance=ExtResource( 8 )]
+TOLERANCE = 1
+SIGHT_RANGE = 190.0
+COMM_DELAY = 0.2
+COMM_DELAY_VARIANCE = 0.3
+IGNORE_ALLIES = false
+
+[node name="movement_lobe" parent="brain" instance=ExtResource( 9 )]
+IDLE_TIME = 0.4
+IDLE_OFFSET = 0.15
+WANDER_TIME = 0.9
+WANDER_OFFSET = 0.3
+WANDER_SPEED = 0.7
+WANDER_RANGE = 150.0
+general_springs = {
+"friendly": "follow",
+"hostile": "flee",
+"neutral": ""
+}
+
+[node name="follow" parent="brain/movement_lobe" instance=ExtResource( 10 )]
+DEADZONE = 50
+USE_DEADZONE = true
+
+[node name="flee" parent="brain/movement_lobe" instance=ExtResource( 10 )]
+INVERT_DISTANCE = true
+
+[node name="action_lobe" parent="brain" instance=ExtResource( 11 )]
+PATIENCE = 0.0
+
+[node name="heal" parent="brain/action_lobe" instance=ExtResource( 12 )]
+target_type = 1
+tag = 2
+best_distance = 16
+health_weight = 4
+status_effect = "burning"
+status_weight = 1
+COOLDOWN = 1.35
+GLOBAL_COOLDOWN = true
+
+[node name="heal_self" parent="brain/action_lobe" instance=ExtResource( 12 )]
+target_type = 2
+tag = 2
+distance_weight = 0
+health_weight = 1
+status_effect = "burning"
+status_weight = 1
+COOLDOWN = 1.35
+GLOBAL_COOLDOWN = true
+
+[node name="entity_effects" parent="." instance=ExtResource( 13 )]
+death_type = 4
+block_effect = false
+
+[node name="spawner" parent="." instance=ExtResource( 15 )]
+standby_mode = true
+thing = ExtResource( 16 )
+entity_inherit_velocity = true
+
+[connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
+
+[editable path="entity_push"]
+[editable path="hurtbox"]
+[editable path="brain"]

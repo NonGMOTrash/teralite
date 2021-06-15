@@ -58,14 +58,14 @@ general_springs = {
 }
 
 [node name="spring" parent="brain/movement_lobe" index="4"]
-DISTANCE = 40
+DISTANCE = 32
 
 [node name="memory_lobe" parent="brain" index="4"]
 MEMORY_TIME = 8.0
 
 [node name="action" parent="brain/action_lobe" index="2"]
 best_distance = 20
-COOLDOWN = 2.2
+COOLDOWN = 2.0
 
 [node name="healthBar" parent="." index="8"]
 margin_left = -10.5

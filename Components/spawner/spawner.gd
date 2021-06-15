@@ -6,7 +6,7 @@ enum ROTATIONS {
 	TOWARD_CURSOR
 }
 
-export(bool) var standby_mode = false
+export(bool) var standby_mode = false # requires 'thing' to be set
 
 export(PackedScene) var thing
 export(bool) var spawn_on_free = true

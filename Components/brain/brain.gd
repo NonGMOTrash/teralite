@@ -176,7 +176,7 @@ func add_target(tar: Entity, force = false) -> void:
 			return
 		elif tar.faction == "" and IGNORE_UNFACTIONED == true:
 			return
-		elif global.get_relation(entity, tar) == "friendly":
+		elif global.get_relation(entity, tar) == "friendly" and IGNORE_ALLIES == true:
 			return
 		elif targets.size() >= MAX_TARGETS:
 			return

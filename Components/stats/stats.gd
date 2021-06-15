@@ -150,5 +150,6 @@ func add_status_effect(new_status_effect:String, duration=2.5, level=1.0):
 	elif status_effects[status_name] != null:
 		status_effect = status_effects[status_name]
 		status_effect.duration.wait_time = max(status_effect.duration.wait_time + duration, 0.01)
+		status_effect.duration.start()
 		status_effect.level += level
 	

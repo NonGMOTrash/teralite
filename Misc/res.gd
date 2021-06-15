@@ -25,6 +25,7 @@ var data = {
 	"pylon": "res://Entities/pylon/pylon.tscn",
 	"mage": "res://Entities/archer/mage/mage.tscn",
 	"warden": "res://Entities/knight/warden/warden.tscn",
+	"medic": "res://Entities/medic/medic.tscn",
 	
 	# items
 	"pistol": "res://Entities/Item_Pickups/pistol/pistol.tscn",

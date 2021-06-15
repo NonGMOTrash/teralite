@@ -212,6 +212,7 @@ github repo is here: (private until full release)
 - fixed hitboxes and spike activation going through walls
 - added speed, slowness, and regeneration status effects
 - renabled gpu snap to fix weird visual artifacts with tilemaps
+- other enemies can now pick up hearts
 - fixed the bow being capped at 2 damage instead of 3
 - replaced a few of the sound effects
 - made the readme into a .html file
