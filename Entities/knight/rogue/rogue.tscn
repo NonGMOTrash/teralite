@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Entities/knight/knight.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/knight/rogue/rogue.png" type="Texture" id=2]
-[ext_resource path="res://Entities/Attacks/Melee/stab/stab.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Attacks/Melee/swipe/swipe.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true

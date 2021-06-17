@@ -11,6 +11,7 @@ export(bool) var INANIMATE := false
 
 var velocity = Vector2.ZERO
 var input_vector = Vector2.ZERO
+var rooted := false
 
 export var truName = ""
 export var faction = ""
@@ -68,7 +69,7 @@ func _physics_process(delta: float): # physics logic
 	input_vector = input_vector.normalized() # diagonally is same speed as straight
 	
 	# movement w/ input vector
-	if input_vector != Vector2.ZERO:
+	if input_vector != Vector2.ZERO and rooted == false:
 		velocity = velocity.move_toward(input_vector * TOP_SPEED, ACCELERATION * delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, SLOWDOWN * delta)

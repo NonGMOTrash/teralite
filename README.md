@@ -138,7 +138,7 @@ check out his stuff here:
 - sword_equip: "Drawing sword from scabbard" by giddster ( https://freesound.org/people/giddster/sounds/484298/ ) licensed under CC0
 - sword_kill: "Sword Attack" by Saviraz ( https://freesound.org/people/Saviraz/sounds/547600/ ) licensed under CC BY 3.0
 - sword_tint: "sword04" by Erdie ( https://freesound.org/people/Erdie/sounds/27858/ ) licensed under CC BY 3.0
-- counter_ready: ripped from 20xx.io (great game btw), thanks InfernoPlus for letting me use it!
+- counter_ready: ripped from https://20xx.io (great game btw), thanks InfernoPlus for letting me use it!
 - counter_success: "Heavy metal bar impact, with a clang, cluck, thump 3" by ZapSplat ( https://www.zapsplat.com/music/heavy-metal-bar-impact-with-a-clang-cluck-thump-3/ ) licensed under ZapSplat standard license
 - footstep_grass: "Rustling Grass 2" by morganpurkis ( https://freesound.org/people/morganpurkis/sounds/396013/ ) licensed under CC0
 - footstep_wood: "Footstep_Wood_Heel" by GiocoSound ( https://freesound.org/people/GiocoSound/sounds/421150/ ) licensed under CC0
@@ -162,7 +162,7 @@ check out his stuff here:
 - player_death: "Retro Video Game Death" by SRJA_Gaming ( https://freesound.org/people/SRJA_Gaming/sounds/543255/ ) licensed under CC0
 - heal: "Healing 2 (Tranquillity)" by SilverIllusionist ( https://freesound.org/people/SilverIllusionist/sounds/518800/ ) licensed under CC BY 3.0
 - os_error: "Error" by Isaac200000 ( https://freesound.org/people/Isaac200000/sounds/188013/ ) licensed under CC0
-- shine: ripped from 20xx.io (great game btw), thanks InfernoPlus for letting me use it!
+- shine: ripped from https://20xx.io (great game btw), thanks InfernoPlus for letting me use it!
 - magic_shoot: "Enchant" by qubodup ( https://freesound.org/people/qubodup/sounds/202147/ ) licensed under CC BY 3.0
 - magic_collide: "Menu FX 03" (normal) by NightFlame ( https://freesound.org/people/Nightflame/sounds/422514/ ) licensed under CC0
 - bow_equip: "Wooden Object Take" by Kostas17 ( https://freesound.org/people/Kostas17/sounds/537765/ ) licensed under CC BY 3.0
@@ -174,6 +174,12 @@ check out his stuff here:
 - poke_miss + poke_collide: "Spear thrown and stick into ground with slight vibration of the wooden spear pole on impact. Version 5" by ZapSplat ( https://www.zapsplat.com/music/spear-thrown-and-stick-into-ground-with-slight-vibration-of-the-wooden-spear-pole-on-impact-version-5/ ) licensed under ZapSplat standard license
 - poke_hit: "Sword, stab through chain mail into flesh, sharp, metallic scrape followed by a quick, crunchy slash / impact, close perspective" by Audio Hero ( https://www.zapsplat.com/music/sword-stab-through-chain-mail-into-flesh-sharp-metallic-scrape-followed-by-a-quick-crunchy-slash-impact-close-perspective/ ) licensed under ZapSplat standard license
 - poke_blocked: "2 x swords hit, impact 1" by ZapSplat ( https://www.zapsplat.com/music/2-x-swords-hit-impact-1/ ) licensed under ZapSplat standard license
+- swipe_miss: "Knife, swish, swipe through air, slashing movements 3" by ZapSplat ( https://www.zapsplat.com/music/knife-swish-swipe-through-air-slashing-movements-3/ ) licensed under ZapSplat standard license
+- swipe_collide: "Large knife hit, strike another with a clunk 1" by ZapSplat ( https://www.zapsplat.com/music/large-knife-hit-strike-another-with-a-clunk-1/ ) licensed under ZapSplat standard license
+- dagger_equip: "Knife, dagger blade draw, pull from sheath 7" by ZapSplat ( https://www.zapsplat.com/music/knife-dagger-blade-draw-pull-from-sheath-7/ ) licensed under ZapSplat standard license
+- swipe_blocked: "Metal hit, impact, sharp flick, tinny 1" by ZapSplat ( https://www.zapsplat.com/music/metal-hit-impact-sharp-flick-tinny-1/ ) licensed under ZapSplat standard license
+- swipe_hit: "Horror, knife stab into flesh then pull out, very squelchy 3" by ZapSplat ( https://www.zapsplat.com/music/horror-knife-stab-into-flesh-then-pull-out-very-squelchy-3/ ) licensed under ZapSplat standard license
+- dagger_dash: "Bullet pass, whizz by 2" by ZapSplat ( https://www.zapsplat.com/music/bullet-pass-whizz-by-2/ ) licensed under ZapSplat standard license
 
 a big thanks to all the sound authors for letting me legally steal your hard work to use in my game <3
 
@@ -205,14 +211,16 @@ github repo is here: (private until full release)
 - added the staff
 - added mages
 - added the spear
-- added the warden
+- added wardens
+- added the dagger (rogues now use this)
+- added medics
 - added arrow turrets and pylons
 - the sword now as a counter (right click)
-- added kills counter to level completion screen
+- added a kills counter to level completion screen
 - fixed hitboxes and spike activation going through walls
 - added speed, slowness, and regeneration status effects
 - renabled gpu snap to fix weird visual artifacts with tilemaps
-- other enemies can now pick up hearts
+- fixed status effect stacking not working
 - fixed the bow being capped at 2 damage instead of 3
 - replaced a few of the sound effects
 - made the readme into a .html file

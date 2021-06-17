@@ -34,5 +34,6 @@ func set_data():
 		"mage": get_used_cells_by_id(37),
 		"spear": get_used_cells_by_id(38),
 		"warden": get_used_cells_by_id(39),
-		"medic": get_used_cells_by_id(40)
+		"medic": get_used_cells_by_id(40),
+		"dagger": get_used_cells_by_id(41),
 	}

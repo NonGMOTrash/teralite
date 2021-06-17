@@ -1,6 +1,6 @@
 extends Node
 
-var data = {
+const data := {
 	# entities
 	"player": "res://Entities/player/player.tscn",
 	"spikes": "res://Entities/spikes/spikes.tscn",
@@ -37,10 +37,11 @@ var data = {
 	"bow": "res://Entities/Item_Pickups/bow/bow.tscn",
 	"staff": "res://Entities/Item_Pickups/staff/staff.tscn",
 	"spear": "res://Entities/Item_Pickups/spear/spear.tscn",
+	"dagger": "res://Entities/Item_Pickups/dagger/dagger.tscn",
 	
 	# melees
 	"slash": "res://Entities/Attacks/Melee/slash/slash.tscn",
-	"stab": "res://Entities/Attacks/Melee/stab/stab.tscn",
+	"swipe": "res://Entities/Attacks/Melee/swipe/swipe.tscn",
 	"shine": "res://Entities/Attacks/Melee/shine/shine.tscn",
 	"poke": "res://Entities/Attacks/Melee/poke/poke.tscn",
 	
@@ -109,6 +110,7 @@ var data = {
 	"staff_texture": "res://Entities/Item_Pickups/staff/staff.png",
 	"white_armor_texture": "res://Entities/Item_Pickups/white_armor/white_armor.png",
 	"spear_texture": "res://Entities/Item_Pickups/spear/spear.png",
+	"dagger_texture": "res://Entities/Item_Pickups/dagger/dagger.png",
 }
 
 func allocate(asset:String) -> void:

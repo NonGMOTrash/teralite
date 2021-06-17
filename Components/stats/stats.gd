@@ -64,13 +64,13 @@ func change_health(value, true_value, type: String = "hurt") -> String:
 	if sum < 0: 
 		# defence calculation
 		if armor < 0 and amount < 0:
-			amount += armor
+			amount += armor # << for negative defence
 		else:
 			while amount != 0 and armor > 0:
 				armor -= 1
 				amount += 1
 		
-		if reset_armor == true:
+		if reset_armor == true and value < 0:
 			armor = DEFENCE
 			reset_armor = false
 		

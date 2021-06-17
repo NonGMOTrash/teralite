@@ -1,0 +1,89 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Entities/player/item_thinkers/dagger/dagger_thinker.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Item_Pickups/dagger/dagger.png" type="Texture" id=2]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/cursors/cursor_dagger.png" type="Texture" id=4]
+[ext_resource path="res://Entities/player/player_flat.png" type="Texture" id=5]
+[ext_resource path="res://Entities/player/item_thinkers/dagger/dagger_equip.wav" type="AudioStream" id=6]
+[ext_resource path="res://Entities/player/item_thinkers/dagger/dagger_dash.wav" type="AudioStream" id=7]
+[ext_resource path="res://Components/sound_player/sound/sound.gd" type="Script" id=8]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 8, 8, 1 )
+flag_disable_z = true
+spread = 15.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -2.0
+angle_random = 1.0
+scale_curve = SubResource( 2 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0.00724638, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+flag_disable_z = true
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 5 )
+
+[node name="dagger_thinker" type="Node"]
+script = ExtResource( 1 )
+HELD_ITEM_TEXTURE = ExtResource( 2 )
+HELD_ITEM_ANCHOR = Vector2( 6, 0 )
+my_item = "Dagger"
+CURSOR = ExtResource( 4 )
+CURSOR_MODE = 1
+EQUIP_SOUND = ExtResource( 6 )
+dash_sound = ExtResource( 7 )
+
+[node name="sound_player" parent="." instance=ExtResource( 3 )]
+
+[node name="dash" type="AudioStreamPlayer2D" parent="sound_player"]
+stream = ExtResource( 7 )
+script = ExtResource( 8 )
+MODE = 1
+AUTO_PLAY = false
+
+[node name="cooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="particles" type="Particles2D" parent="."]
+emitting = false
+lifetime = 0.8
+one_shot = true
+speed_scale = 2.2
+explosiveness = 1.0
+process_material = SubResource( 3 )
+
+[node name="after_image" type="Particles2D" parent="."]
+emitting = false
+amount = 1
+lifetime = 1.2
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 6 )
+texture = ExtResource( 5 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="tree_exiting" from="." to="." method="_on_dagger_thinker_tree_exiting"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -28,6 +28,7 @@ export(AudioStream) var EQUIP_SOUND
 onready var sound_player = $sound_player
 onready var player := get_parent() as Entity
 
+var slot := 0
 var bar_max = 0.0
 var bar_value = 0.0
 var item_scene = res.aquire(my_item)
@@ -68,13 +69,16 @@ func _check_if_selected(swapped_item) -> void:
 # work otherwise. i guess godot doesn't count holding a mouse button as an input. i tried fixing this
 # by having a holding_primary variable but i couldn't get it to work.
 func _process(_delta: float):
-	if get_parent().inventory[global.selection] != my_item.to_lower(): return
-	
+	if global.selection != slot: 
+		return
+	print(slot)
 	pre_input_action()
 	
 	if Input.is_action_just_pressed("reload_item"):
 		reload()
 		return
+	
+	if get_ready() == false and auto_ready_check == true: return
 	
 	if Input.is_action_pressed("drop_item"):
 		if get_parent().inventory[global.selection] == null: return
@@ -104,8 +108,6 @@ func _process(_delta: float):
 		
 		queue_free()
 		return
-	
-	if get_ready() == false and auto_ready_check == true: return
 	
 	match PRIMARY_ACTION_MODE:
 		ACTION_MODES.SEMI:

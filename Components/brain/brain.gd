@@ -107,7 +107,7 @@ func get_closest_target():
 				dist = global_position.distance_to(targets[i].global_position)
 	return target
 
-func is_target_valid(index: int): # maybe make this work with the target node OR target index
+func is_target_valid(index: int) -> bool: # maybe make this work with the target node OR target index
 	if index > targets.size() - 1 or index > target_paths.size() -1: 
 		return false
 		
@@ -165,7 +165,6 @@ func los_check(target):
 # EDIT2: it's due to a infinitely running while loop. see the notes in movement_lobe.gd for details
 
 func add_target(tar: Entity, force = false) -> void:
-	# PROBLEM_NOTE: im pretty sure i can just do 'if not tar is Entity' here
 	if tar == entity:
 		return
 	elif movement_lobe != null and movement_lobe.get_spring(tar) == null: 
@@ -296,3 +295,9 @@ func spawn_effect(effect: String, pos: Vector2):
 func debug():
 	if entity.is_queued_for_deletion() == false:
 		emit_signal("debug")
+
+func get_target_names() -> Array:
+	var names := []
+	for target in targets:
+		names.append(target.get_name())
+	return names

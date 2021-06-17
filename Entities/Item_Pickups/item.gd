@@ -65,10 +65,13 @@ func _on_Area2D_body_entered(body: Node) -> void:
 			else:
 				body.inventory[x] = truName
 				global.update_cursor()
-				if thinker == null && type != item_types.POWERUP:
+				if thinker == null and type != item_types.POWERUP:
 					push_warning("item was not given a thinker")
 				else:
-					body.call_deferred("add_child", thinker.instance())
+					print("added to %s" % x)
+					var new_thinker: Thinker = thinker.instance()
+					new_thinker.slot = x
+					body.call_deferred("add_child", new_thinker)
 			
 		item_types.PASSIVE:
 			var x = 3
@@ -86,7 +89,10 @@ func _on_Area2D_body_entered(body: Node) -> void:
 				return
 			
 			body.inventory[x] = truName
-			if thinker != null: body.call_deferred("add_child", thinker.instance())
+			if thinker != null: 
+				var new_thinker: Thinker = thinker.instance()
+				new_thinker.slot = x
+				body.call_deferred("add_child", new_thinker)
 			if body.get_name() == "player":
 				global.emit_signal("update_item_bar", body.inventory)
 	

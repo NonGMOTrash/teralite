@@ -5,7 +5,7 @@
 [ext_resource path="res://Entities/spikes/red_spikes/diamond_spikes/diamond_spike_base.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 8.0
+radius = 6.0
 
 [sub_resource type="Animation" id=2]
 resource_local_to_scene = true
@@ -88,13 +88,9 @@ texture = ExtResource( 3 )
 
 [node name="pokey" parent="." index="2"]
 texture = ExtResource( 2 )
-frame = 0
 
 [node name="hitbox" parent="." index="3"]
 visible = true
-
-[node name="CollisionShape2D" parent="hitbox" index="0"]
-disabled = true
 
 [node name="CollisionShape2D" parent="activation" index="0"]
 shape = SubResource( 1 )

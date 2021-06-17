@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/swipe_clunk.wav-e33f12bf8461bd5a35d219d97f85bf7e.sample"
+
+[deps]
+
+source_file="res://Entities/Attacks/Melee/swipe/swipe_clunk.wav"
+dest_files=[ "res://.import/swipe_clunk.wav-e33f12bf8461bd5a35d219d97f85bf7e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

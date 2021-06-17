@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/swipe_miss.wav-7826ab62f98a5c5b275ab5d0df37e1a6.sample"
+
+[deps]
+
+source_file="res://Entities/Attacks/Melee/swipe/swipe_miss.wav"
+dest_files=[ "res://.import/swipe_miss.wav-7826ab62f98a5c5b275ab5d0df37e1a6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

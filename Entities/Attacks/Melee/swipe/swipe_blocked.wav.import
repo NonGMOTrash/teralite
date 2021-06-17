@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/swipe_blocked.wav-23140f8c745d33fea5f1fd2f875ba869.sample"
+
+[deps]
+
+source_file="res://Entities/Attacks/Melee/swipe/swipe_blocked.wav"
+dest_files=[ "res://.import/swipe_blocked.wav-23140f8c745d33fea5f1fd2f875ba869.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

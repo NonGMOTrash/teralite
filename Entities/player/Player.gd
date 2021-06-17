@@ -75,13 +75,10 @@ func _physics_process(_delta):
 		sprite.flip_h = true
 	
 	if not animation.current_animation == "dash":
-		if input_vector == Vector2.ZERO: animation.play("stand")
-		else:#if not animation.current_animation == "run": 
+		if input_vector == Vector2.ZERO:
+			animation.play("stand")
+		elif rooted == false:
 			animation.play("run")
-#			if sprite.flip_h == false:
-#				animation.play("run")
-#			else:
-#				animation.play_backwards("run")
 	
 	if hurtbox.iTimer.time_left > 0:
 		sprite.get_material().set_shader_param("active", true)
@@ -272,7 +269,7 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 			"ultra_chaser": death_message = "Death by ultra chaser."
 			"fire": death_message = "Death by burning."
 			"slash": death_message = "Death by %s's blade." % source_name
-			"stab": death_message = "Death by %s's dagger." % source_name
+			"swipe": death_message = "Death by %s's dagger." % source_name
 			"arrow": death_message = "Death by %s's arrow." % source_name
 			"magic": death_message = "Death by %s's magic." % source_name
 			_: death_message = "death message messed up, report pls ;-;"
