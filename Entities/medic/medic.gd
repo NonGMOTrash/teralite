@@ -8,6 +8,9 @@ func _init():
 	res.allocate("heart")
 
 func _on_action_lobe_action(action, target) -> void:
+	if target.components["stats"].HEALTH == target.components["stats"].MAX_HEALTH:
+		return
+	
 	var heart = res.aquire_entity("heart")
 	heart.player_only = false
 	heart.healing = stats.DAMAGE * -1

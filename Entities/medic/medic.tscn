@@ -24,7 +24,7 @@ resource_local_to_scene = true
 radius = 2.87307
 height = 3.1355
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 5.92042
 height = 3.1355
 
@@ -59,13 +59,13 @@ visible = false
 strength = 9
 
 [node name="CollisionShape2D" parent="entity_push" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="hurtbox" parent="." instance=ExtResource( 5 )]
 visible = false
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="sleeper" parent="." instance=ExtResource( 6 )]
 visible = false

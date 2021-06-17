@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://UI/options/options.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/smart_ui_nodes/smart_button/smart_button.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://UI/pause_menu/menu_pause.wav" type="AudioStream" id=9]
 [ext_resource path="res://UI/pause_menu/menu_unpause.wav" type="AudioStream" id=10]
 [ext_resource path="res://UI/pause_menu/pause_menu.gd" type="Script" id=11]
+[ext_resource path="res://UI/Icons/restart.png" type="Texture" id=12]
 
 [node name="pause_menu" type="ColorRect"]
 pause_mode = 2
@@ -43,46 +44,54 @@ __meta__ = {
 }
 
 [node name="title" type="Label" parent="items"]
-margin_top = 35.0
+margin_top = 22.0
 margin_right = 119.0
-margin_bottom = 51.0
+margin_bottom = 38.0
 text = "Paused"
 align = 1
 valign = 1
 
 [node name="HSeparator" type="HSeparator" parent="items"]
-margin_top = 55.0
+margin_top = 42.0
 margin_right = 119.0
-margin_bottom = 56.0
+margin_bottom = 43.0
 
 [node name="resume" parent="items" instance=ExtResource( 2 )]
-margin_top = 60.0
+margin_top = 47.0
 margin_right = 119.0
-margin_bottom = 82.0
+margin_bottom = 69.0
 text = "Resume"
 icon = ExtResource( 7 )
 flat = true
 
 [node name="options" parent="items" instance=ExtResource( 2 )]
-margin_top = 86.0
+margin_top = 73.0
 margin_right = 119.0
-margin_bottom = 108.0
+margin_bottom = 95.0
 text = "Options"
 icon = ExtResource( 5 )
 flat = true
 
-[node name="return_to" parent="items" instance=ExtResource( 2 )]
-margin_top = 112.0
+[node name="restart" parent="items" instance=ExtResource( 2 )]
+margin_top = 99.0
 margin_right = 119.0
-margin_bottom = 134.0
+margin_bottom = 121.0
+text = "Quick Restart"
+icon = ExtResource( 12 )
+flat = true
+
+[node name="return_to" parent="items" instance=ExtResource( 2 )]
+margin_top = 125.0
+margin_right = 119.0
+margin_bottom = 147.0
 text = "Return to Hub"
 icon = ExtResource( 8 )
 flat = true
 
 [node name="quit" parent="items" instance=ExtResource( 2 )]
-margin_top = 138.0
+margin_top = 151.0
 margin_right = 119.0
-margin_bottom = 160.0
+margin_bottom = 173.0
 text = "Quit"
 icon = ExtResource( 6 )
 flat = true
@@ -93,6 +102,7 @@ flat = true
 
 [connection signal="pressed" from="items/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="items/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="items/restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="items/return_to" to="." method="_on_return_to_pressed"]
 [connection signal="pressed" from="items/quit" to="." method="_on_quit_pressed"]
 [connection signal="closed" from="Options" to="." method="_on_Options_closed"]

@@ -7,6 +7,7 @@ export(AudioStream) var UNPAUSE_SOUND
 
 onready var resume = $items/resume
 onready var options = $items/options
+onready var restart = $items/restart
 onready var return_to = $items/return_to
 onready var quit = $items/quit
 onready var pause_menu = $items
@@ -20,6 +21,7 @@ func _ready():
 	global.nodes["pause_menu"] = self
 	if get_tree().current_scene.LEVEL_TYPE == 1: 
 		return_to.text = "Return to Titlescreen"
+		restart.visible = false
 	
 	visible = false
 	pause_menu.visible = false
@@ -55,6 +57,10 @@ func _on_resume_pressed() -> void:
 func _on_options_pressed() -> void:
 	pause_menu.visible = false
 	options_menu.visible = true
+
+func _on_restart_pressed() -> void:
+	get_tree().reload_current_scene()
+	get_tree().paused = false
 
 func _on_return_to_pressed() -> void:
 	get_tree().paused = false
