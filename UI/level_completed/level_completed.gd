@@ -8,7 +8,9 @@ onready var time = $area/stats/time/value
 onready var damage = $area/stats/damage/value
 onready var kills = $area/stats/kills/value
 
-onready var lvl = get_tree().current_scene.name
+onready var lvl: String = get_tree().current_scene.name
+
+var perfected := false
 
 func _init():
 	visible = false
@@ -24,6 +26,7 @@ func start():
 	visible = true
 	
 	global.nodes["stopwatch"].visible = false
+	global.nodes["stopwatch"].set_pause(true)
 	global.nodes["item_info"].visible = false
 	global.nodes["item_bar"].visible = false
 	global.nodes["health_ui"].visible = false
@@ -40,6 +43,7 @@ func start():
 		damage.text = str(get_player().damage_taken)
 		if damage.text == "0":
 			damage.set("custom_colors/font_color", YELLOW)
+			perfected = true
 	
 	var time_value = global.nodes["stopwatch"].time
 	var minute = int(floor(time_value / 60))
@@ -66,35 +70,37 @@ func start():
 
 func _input(_event):
 	if Input.is_action_just_pressed("interact") and visible == true:
+#		prints("%s completed with a time of: %s" % [lvl, global.nodes["stopwatch"].time])
+#		prints("times:", global.level_times)
+#		prints("deaths:", global.level_deaths)
+#		prints("perfects:", global.perfected_levels)
 		if lvl == "thx":
-			get_tree().change_scene_to(load("res://Levels/A/A-Hub.tscn"))
+			get_tree().change_scene_to(load(A_HUB))
 			return
 		
 		if not global.cleared_levels.has(lvl): 
 			global.stars += 1
-			global.cleared_levels.push_back(str(lvl))
-		if (
-			not global.perfected_levels.has(lvl) 
-			and get_player() != null
-			and get_player().damage_taken == 0
-			): 
-				global.perfected_levels.push_back(str(lvl))
+			global.cleared_levels.push_back(lvl)
+		if perfected == true:
+			global.perfected_levels.push_back(lvl)
 		
 		var stopwatch = global.nodes["stopwatch"]
 		if stopwatch == null: 
 			push_warning("could not find stopwatch")
-		else:
+		elif global.level_times[lvl] > stopwatch.time:
 			global.level_times[lvl] = stopwatch.time
 		
 		if not lvl in global.level_deaths:
 			global.level_deaths[lvl] = 0
+		else:
+			global.level_deaths[lvl] += 1
 		
 		if lvl == "Monarch":
 			get_tree().change_scene_to(load("res://Levels/thx.tscn"))
 		else:
 			match get_tree().current_scene.WORLD:
 				"A":
-					get_tree().change_scene_to(load("res://Levels/A/A-Hub.tscn"))
+					get_tree().change_scene_to(load(A_HUB))
 				_:
 					push_error("level has invalid WORLD: '%s'" % get_tree().current_scene.WORLD)
-					get_tree().change_scene_to(load("res://Levels/A/A-Hub.tscn"))
+					get_tree().change_scene_to(load(A_HUB))

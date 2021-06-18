@@ -30,8 +30,5 @@ func _process(_delta):
 		str(tenth)
 		)
 
-func pause(force: bool):
-	if force != null:
-		paused = force
-	else:
-		paused = not paused
+func set_pause(to: bool):
+	paused = to

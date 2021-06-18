@@ -28,6 +28,14 @@ MAX_HEALTH = 2
 HEALTH = 2
 DAMAGE = 0
 TRUE_DAMAGE = 1
+modifiers = {
+"bleeding": -99,
+"burning": -99,
+"poison": -99,
+"regeneration": -99,
+"slowness": -99,
+"speed": -99
+}
 
 [node name="delay" type="Timer" parent="."]
 wait_time = 0.7

@@ -80,6 +80,14 @@ faction = "blue_kingdom"
 MAX_HEALTH = 3
 HEALTH = 3
 DAMAGE = 2
+modifiers = {
+"bleeding": -99,
+"burning": -99,
+"poison": -99,
+"regeneration": -99,
+"slowness": -99,
+"speed": -99
+}
 
 [node name="entity_sprite" parent="." instance=ExtResource( 2 )]
 show_behind_parent = true

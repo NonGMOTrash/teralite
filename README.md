@@ -220,7 +220,7 @@ github repo is here: (private until full release)
 - added mages
 - added the spear
 - added wardens
-- added the dagger (rogues now use this)
+- added the dagger (rogues use it)
 - added medics
 - added the crossbow
 - added arrow turrets and pylons
@@ -228,6 +228,7 @@ github repo is here: (private until full release)
 - added a kills counter to level completion screen
 - fixed hitboxes and spike activation going through walls
 - added speed, slowness, and regeneration status effects
+- fixed level times and perfections not saving properly
 - renabled gpu snap to fix weird visual artifacts with tilemaps
 - fixed status effect stacking not working
 - fixed the bow being capped at 2 damage instead of 3

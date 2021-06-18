@@ -41,9 +41,9 @@ onready var held_item = $held_item
 var force_death_msg := false
 
 func _ready():
-	var item = res.aquire_entity("xbow")
-	item.global_position = global_position
-	get_parent().call_deferred("add_child", item)
+#	var item = res.aquire_entity("xbow")
+#	item.global_position = global_position
+#	get_parent().call_deferred("add_child", item)
 	
 #	stats.add_status_effect("poison", 60, 1)
 	
@@ -203,7 +203,7 @@ func death():
 		global.level_deaths[get_tree().current_scene.get_name()] += 1
 		
 		# hide ui
-		global.nodes["stopwatch"].pause(true)
+		global.nodes["stopwatch"].set_pause(true)
 		
 		var elements = [
 			global.nodes["health_ui"],

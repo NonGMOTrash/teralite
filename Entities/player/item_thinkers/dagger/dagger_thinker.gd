@@ -7,7 +7,6 @@ export(float) var dash_cooldown := 1.2
 export(float) var dash_startup := 0.2
 export(float) var dash_distance := 100.0
 export(float) var dash_damage := 1
-export(AudioStream) var dash_sound
 
 onready var cooldown: Timer = $cooldown
 onready var tween: Tween = $Tween
@@ -92,6 +91,7 @@ func _on_Timer_timeout() -> void:
 					elif collider.components["hurtbox"] != null:
 						# damage entity
 						collider.components["hurtbox"]._on_hurtbox_area_entered(hitbox)
+						sound_player.play_sound("dash_hit")
 				
 				excludes.append(collider)
 				
