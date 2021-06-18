@@ -1,0 +1,160 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Entities/slime/slime.gd" type="Script" id=1]
+[ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/entity_push/entity_push.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Entities/slime/slime.png" type="Texture" id=13]
+[ext_resource path="res://Components/sprite/shadow2.png" type="Texture" id=14]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 6.27512
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 9.00087
+
+[sub_resource type="Animation" id=4]
+resource_name = "squish"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("entity_sprite/shadow:scale")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.1 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("entity_sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.05, 0.95 ), Vector2( 1, 1 ) ]
+}
+
+[node name="slime" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 1 )
+ACCELERATION = 150
+SLOWDOWN = 800
+TOP_SPEED = 15
+FORCE_MULT = 0.72
+truName = "slime"
+faction = "monster"
+lunge_delay = 0.8
+lunge_speed = 80.0
+lunge_delay_scaling = 0.8
+
+[node name="stats" parent="." instance=ExtResource( 2 )]
+MAX_HEALTH = 5
+HEALTH = 5
+
+[node name="entity_sprite" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0.843137 )
+material = SubResource( 1 )
+texture = ExtResource( 13 )
+hframes = 2
+
+[node name="shadow" parent="entity_sprite" index="0"]
+self_modulate = Color( 1, 1, 1, 0.196078 )
+position = Vector2( 0, -2 )
+texture = ExtResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 2 )
+
+[node name="hitbox" parent="." instance=ExtResource( 4 )]
+visible = false
+KNOCKBACK = 80
+TEAM_ATTACK = false
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+shape = SubResource( 3 )
+
+[node name="hurtbox" parent="." instance=ExtResource( 5 )]
+visible = false
+SPAWN_INVINCIBILITY = 0.016
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+shape = SubResource( 3 )
+
+[node name="entity_push" parent="." instance=ExtResource( 6 )]
+visible = false
+strength = 18
+
+[node name="CollisionShape2D" parent="entity_push" index="0"]
+shape = SubResource( 3 )
+
+[node name="brain" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="movement_lobe" parent="brain" instance=ExtResource( 7 )]
+IDLE_OFFSET = 0.1
+WANDER_TIME = 0.2
+WANDER_OFFSET = 0.04
+WANDER_SPEED = 0.35
+WANDER_RANGE = 300.0
+SMART_SLOWDOWN = false
+MOVEMENT_EFFICIENCY = 8
+
+[node name="memory_lobe" parent="brain" instance=ExtResource( 9 )]
+MEMORY_TIME = 2.0
+
+[node name="sleeper" parent="." instance=ExtResource( 10 )]
+visible = false
+
+[node name="health_bar" parent="." instance=ExtResource( 11 )]
+margin_left = -10.375
+margin_top = -13.75
+margin_right = 10.625
+margin_bottom = -9.74826
+
+[node name="entity_effects" parent="." instance=ExtResource( 12 )]
+death_type = 5
+block_effect = false
+
+[node name="lunge_timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/squish = SubResource( 4 )
+
+[connection signal="got_hit" from="hurtbox" to="." method="_on_hurtbox_got_hit"]
+[connection signal="timeout" from="lunge_timer" to="." method="_on_lunge_timer_timeout"]
+
+[editable path="entity_sprite"]
+[editable path="hitbox"]
+[editable path="hurtbox"]
+[editable path="entity_push"]

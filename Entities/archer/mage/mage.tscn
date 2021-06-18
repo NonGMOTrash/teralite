@@ -55,9 +55,6 @@ general_springs = {
 "neutral": ""
 }
 
-[node name="space" parent="brain/movement_lobe" index="4"]
-DISTANCE = 28
-
 [editable path="sprite"]
 [editable path="entityPush"]
 [editable path="hurtbox"]

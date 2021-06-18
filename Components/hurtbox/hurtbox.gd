@@ -5,6 +5,7 @@ export(AudioStream) var HURT_SOUND
 export(AudioStream) var BLOCK_SOUND
 export(AudioStream) var HEAL_SOUND
 export(AudioStream) var KILLED_SOUND
+export(float) var SPAWN_INVINCIBILITY := 0.0
 
 onready var iTimer = $Timer
 
@@ -19,8 +20,18 @@ signal got_hit(by_area, type)
 func _on_hurtbox_tree_entered() -> void:
 	get_parent().components["hurtbox"] = self
 
+func _init() -> void:
+	if SPAWN_INVINCIBILITY > 0.0:
+		monitorable = false
+
 func _ready():
 	entity = get_parent()
+	
+	if SPAWN_INVINCIBILITY > 0.0:
+		# triggers invincibility
+		iTimer.wait_time = SPAWN_INVINCIBILITY
+		iTimer.start()
+		#set_deferred("monitorable", false)
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	var area_entity = area.get_parent() as Entity
@@ -69,9 +80,6 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	
 	if result_type != "":
 		emit_signal("got_hit", area, result_type)
-		if area.get_parent().truName == "spikes":
-			#breakpoint
-			pass
 		
 		# for sfx
 		if HURT_SOUND != null or BLOCK_SOUND != null or HEAL_SOUND != null or KILLED_SOUND != null:

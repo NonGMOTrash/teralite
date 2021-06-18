@@ -20,6 +20,7 @@ func _ready():
 	smoke.global_position = global_position
 
 func death():
+	print("!")
 	if smoke != null:
 		smoke.stop()
 	$death.play("death")
@@ -28,24 +29,13 @@ func _on_fuel_timeout() -> void:
 	death()
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-#	match area.get_parent().truName:
-#		"Timber_Pot": 
-#			# this is a dumb way of having the timber_pot relite, it should be done in it's script
-#			# instead so it can detect from any fire source, but idk how to find if a status effect 
-#			# is added. i might need to make some new signals or something
-#			area.get_parent().find_node("fuel").wait_time += 15.0
-#			area.get_parent().find_node("fuel").start()
-#			area.get_parent().find_node("spread").start()
-#			area.get_parent().find_node("Sprite").visible = true
-#			return
-#		"Bullet": return
-#		"Slash": return
 	if area.get_parent() is Melee or area.get_parent().components["stats"] == null: return
 	var modifier = area.get_parent().components["stats"].modifiers["burning"]
 	if modifier < 0 and abs(modifier) > hitbox.STATUS_LEVEL: return
 	
 	fuel.wait_time = fuel.time_left + 6.5
 	fuel.start()
+	print(fuel.wait_time)
 
 func _on_spread_timeout() -> void:
 	if fuel.time_left < 4: return

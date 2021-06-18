@@ -37,4 +37,5 @@ func set_data():
 		"medic": get_used_cells_by_id(40),
 		"dagger": get_used_cells_by_id(41),
 		"xbow": get_used_cells_by_id(42),
+		"slime": get_used_cells_by_id(43),
 	}

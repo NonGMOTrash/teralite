@@ -223,6 +223,7 @@ github repo is here: (private until full release)
 - added the dagger (rogues use it)
 - added medics
 - added the crossbow
+- added slimes
 - added arrow turrets and pylons
 - the sword now as a counter (right click)
 - added a kills counter to level completion screen

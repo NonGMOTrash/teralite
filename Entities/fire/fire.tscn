@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Entities/fire/fire.gd" type="Script" id=1]
 [ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/fire/fire.png" type="Texture" id=3]
 [ext_resource path="res://Effects/Particles/smoke_particles.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/entity_push/entity_push.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.0
@@ -116,8 +117,15 @@ anims/death = SubResource( 4 )
 wait_time = 2.0
 autostart = true
 
+[node name="entity_push" parent="." instance=ExtResource( 5 )]
+strength = 30
+
+[node name="CollisionShape2D" parent="entity_push" index="0"]
+shape = SubResource( 1 )
+
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="fuel" to="." method="_on_fuel_timeout"]
 [connection signal="timeout" from="spread" to="." method="_on_spread_timeout"]
 
 [editable path="hitbox"]
+[editable path="entity_push"]

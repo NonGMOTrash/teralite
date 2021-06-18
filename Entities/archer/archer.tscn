@@ -129,7 +129,7 @@ general_springs = {
 }
 
 [node name="space" parent="brain/movement_lobe" instance=ExtResource( 14 )]
-DISTANCE = 40
+DISTANCE = 45
 
 [node name="follow" parent="brain/movement_lobe" instance=ExtResource( 14 )]
 DEADZONE = 32

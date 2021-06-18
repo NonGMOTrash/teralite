@@ -14,12 +14,16 @@ func _on_healthBar_tree_entered():
 
 func _ready(): 
 	if stats == null:
+		push_error("health_bar could not find stats")
 		queue_free()
 		return
 	update_bar(0, 0, 0)
 	stats.connect("health_changed", self, "update_bar")
 	
-	visible = false
+	if stats.HEALTH + stats.BONUS_HEALTH != stats.MAX_HEALTH:
+		visible = true
+	else:
+		visible = false
 	
 	bonus.max_value = max_value
 
