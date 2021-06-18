@@ -8,7 +8,7 @@ func _ready():
 	trigger.wait_time *= 1.0 / level
 	
 	particles = blood_particles.instance()
-	particles.amount *= level
+	particles.amount *= round(level)
 	get_parent().get_parent().add_child(particles)
 
 func triggered():

@@ -31,6 +31,7 @@ func _ready(): # converts tiles to their respective scenes
 func convert_tile(tiles, thingName): # deletes the tile and places the entity
 	var tilePos
 	for i in range(0, tiles.size()):
+		#push_warning("spawned %s" % thingName)
 		var newEntity = res.aquire(thingName).instance()
 		tilePos = map_to_world(tiles[i]) + placement_offset
 		newEntity.set_position(Vector2(tilePos.x + 8, tilePos.y + 8))

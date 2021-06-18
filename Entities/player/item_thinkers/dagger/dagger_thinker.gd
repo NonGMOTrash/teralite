@@ -59,20 +59,24 @@ func secondary():
 func _on_Timer_timeout() -> void:
 	if dash_recovering == false:
 		dash_recovering = true
+		
 		player.components["entity_sprite"].scale = Vector2(1, 1)
+		
 		var start := player.global_position
 		player.move_and_slide(
 				player.global_position.direction_to(player.get_global_mouse_position()).normalized() 
 				* dash_distance / get_physics_process_delta_time()
 		)
+		
 		after_image.global_position = start
-		after_image.emitting = false
 		after_image.emitting = true
+		
 		particles.global_position = player.global_position
 		particles.rotation = player.global_position.direction_to(start).angle()
-		particles.emitting = false
 		particles.emitting = true
+		
 		sound_player.play_sound("dash")
+		
 		var fin := false
 		var ss := player.get_world_2d().direct_space_state
 		var excludes := []

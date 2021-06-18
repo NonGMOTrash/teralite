@@ -48,12 +48,6 @@ position = Vector2( 2, 4 )
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 shape = SubResource( 2 )
 
-[node name="healthBar" parent="." index="7"]
-margin_left = -10.1259
-margin_top = -13.0984
-margin_right = 10.8741
-margin_bottom = -9.0967
-
 [node name="movement_lobe" parent="brain" index="3"]
 general_springs = {
 "friendly": "",

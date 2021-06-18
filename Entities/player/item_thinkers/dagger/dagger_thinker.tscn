@@ -77,7 +77,7 @@ process_material = SubResource( 3 )
 [node name="after_image" type="Particles2D" parent="."]
 emitting = false
 amount = 1
-lifetime = 1.2
+lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource( 6 )

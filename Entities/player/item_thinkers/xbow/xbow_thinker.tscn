@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Entities/player/item_thinkers/xbow/xbow_thinker.gd" type="Script" id=1]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Entities/player/item_thinkers/xbow/xbow_equip.wav" type="AudioStream" id=4]
 [ext_resource path="res://Entities/player/item_thinkers/xbow/xbow_reload.wav" type="AudioStream" id=5]
 [ext_resource path="res://Components/sound_player/sound/sound.gd" type="Script" id=6]
+[ext_resource path="res://UI/cursors/cursor_xbow.png" type="Texture" id=7]
 
 [node name="xbow_thinker" type="Node"]
 script = ExtResource( 1 )
@@ -14,6 +15,8 @@ HELD_ITEM_TEXTURE = ExtResource( 3 )
 HELD_ITEM_ANCHOR = Vector2( 10.5, 0 )
 HELD_ITEM_FRAMES = Vector2( 2, 1 )
 my_item = "Xbow"
+CURSOR = ExtResource( 7 )
+CURSOR_MODE = 1
 EQUIP_SOUND = ExtResource( 4 )
 reload_time = 1.55
 reload_sound = ExtResource( 5 )

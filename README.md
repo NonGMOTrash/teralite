@@ -163,6 +163,8 @@ check out his stuff here:
 - heal: "Healing 2 (Tranquillity)" by SilverIllusionist ( https://freesound.org/people/SilverIllusionist/sounds/518800/ ) licensed under CC BY 3.0
 - os_error: "Error" by Isaac200000 ( https://freesound.org/people/Isaac200000/sounds/188013/ ) licensed under CC0
 - shine: ripped from https://20xx.io (great game btw), thanks InfernoPlus for letting me use it!
+- shine_reflect: "hvyelec" by inferno ( https://freesound.org/people/inferno/sounds/18381/ ) licensed under CC Sampling+
+- shine_hit: "Electricity spark (sound design) 2" by ZapSplat  ( https://www.zapsplat.com/music/electricity-spark-sound-design-2/ ) licensed under ZapSplat standard license
 - magic_shoot: "Enchant" by qubodup ( https://freesound.org/people/qubodup/sounds/202147/ ) licensed under CC BY 3.0
 - magic_collide: "Menu FX 03" (normal) by NightFlame ( https://freesound.org/people/Nightflame/sounds/422514/ ) licensed under CC0
 - bow_equip: "Wooden Object Take" by Kostas17 ( https://freesound.org/people/Kostas17/sounds/537765/ ) licensed under CC BY 3.0
@@ -177,9 +179,10 @@ check out his stuff here:
 - swipe_miss: "Knife, swish, swipe through air, slashing movements 3" by ZapSplat ( https://www.zapsplat.com/music/knife-swish-swipe-through-air-slashing-movements-3/ ) licensed under ZapSplat standard license
 - swipe_collide: "Large knife hit, strike another with a clunk 1" by ZapSplat ( https://www.zapsplat.com/music/large-knife-hit-strike-another-with-a-clunk-1/ ) licensed under ZapSplat standard license
 - dagger_equip: "Knife, dagger blade draw, pull from sheath 7" by ZapSplat ( https://www.zapsplat.com/music/knife-dagger-blade-draw-pull-from-sheath-7/ ) licensed under ZapSplat standard license
+- dagger_dash: "Bullet pass, whizz by 2" by ZapSplat ( https://www.zapsplat.com/music/bullet-pass-whizz-by-2/ ) licensed under ZapSplat standard license
+- dagger_dash_hit: "Bullet whizz into person, body with an impact and light splat. Version 1" by ZapSplat ( https://www.zapsplat.com/music/bullet-whizz-into-person-body-with-an-impact-and-light-splat-version-1/ ) licensed under ZapSplat standard license
 - swipe_blocked: "Metal hit, impact, sharp flick, tinny 1" by ZapSplat ( https://www.zapsplat.com/music/metal-hit-impact-sharp-flick-tinny-1/ ) licensed under ZapSplat standard license
 - swipe_hit: "Horror, knife stab into flesh then pull out, very squelchy 3" by ZapSplat ( https://www.zapsplat.com/music/horror-knife-stab-into-flesh-then-pull-out-very-squelchy-3/ ) licensed under ZapSplat standard license
-- dagger_dash: "Bullet pass, whizz by 2" by ZapSplat ( https://www.zapsplat.com/music/bullet-pass-whizz-by-2/ ) licensed under ZapSplat standard license
 - xbow_equip: "Bolt Cutter" by jameswrowles ( https://freesound.org/people/jameswrowles/sounds/516590/ ) licensed under CC0
 - xbow_reload: "mini crossbow foley" by nettimato ( https://freesound.org/people/nettimato/sounds/350345/ ) licensed under CC0
 - bolt_shoot: "bow02" by Erdie ( https://freesound.org/people/Erdie/sounds/65734/ ) licensed under CC-BY 3.0
@@ -231,13 +234,13 @@ github repo is here: (private until full release)
 - replaced a few of the sound effects
 - made the readme into a .html file
 
-### Beta 2.14 Hotfix #2 (5/23/2021)
+#### Beta 2.14 Hotfix #2 (5/23/2021)
 
 - fixed the hitbox bug
 - fixed weird damage scaling with arrows that caused them to sometimes deal 0 damage
 - fixed healthbar issue on Duo
 
-### Beta 2.14 Hotfix (5/22/2021)
+#### Beta 2.14 Hotfix (5/22/2021)
 
 - fixed levels not loading (so the game is actually playable)
 - fixed options sometimes not saving

@@ -82,18 +82,6 @@ margin_right = 10.7371
 one_shot = true
 autostart = true
 
-[node name="hit_effect_spawner" parent="." index="11"]
-spawns_when = {
-"block": false,
-"heal": false,
-"hurt": true,
-"tree_exit": true
-}
-
-[node name="death_effect_spawner" parent="." index="12"]
-effect_texture = ExtResource( 3 )
-[connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
-
 [editable path="hitbox"]
 
 [editable path="hurtbox"]
