@@ -38,6 +38,7 @@ const data := {
 	"staff": "res://Entities/Item_Pickups/staff/staff.tscn",
 	"spear": "res://Entities/Item_Pickups/spear/spear.tscn",
 	"dagger": "res://Entities/Item_Pickups/dagger/dagger.tscn",
+	"xbow": "res://Entities/Item_Pickups/xbow/xbow.tscn",
 	
 	# melees
 	"slash": "res://Entities/Attacks/Melee/slash/slash.tscn",
@@ -50,6 +51,7 @@ const data := {
 	"bullet": "res://Entities/Attacks/Projectile/small_bullet/small_bullet.tscn",
 	"magic": "res://Entities/Attacks/Projectile/magic/magic.tscn",
 	"thrown_spear": "res://Entities/Attacks/Projectile/thrown_spear/thrown_spear.tscn",
+	"bolt": "res://Entities/Attacks/Projectile/bolt/bolt.tscn",
 	
 	# effects
 	"hit_effect": "res://Effects/hit_effect/hit_effect.tscn",
@@ -111,6 +113,7 @@ const data := {
 	"white_armor_texture": "res://Entities/Item_Pickups/white_armor/white_armor.png",
 	"spear_texture": "res://Entities/Item_Pickups/spear/spear.png",
 	"dagger_texture": "res://Entities/Item_Pickups/dagger/dagger.png",
+	"xbow_texture": "res://Entities/Item_Pickups/xbow/xbow_flat.png",
 }
 
 func allocate(asset:String) -> void:

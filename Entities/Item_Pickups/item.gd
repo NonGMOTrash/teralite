@@ -68,7 +68,6 @@ func _on_Area2D_body_entered(body: Node) -> void:
 				if thinker == null and type != item_types.POWERUP:
 					push_warning("item was not given a thinker")
 				else:
-					print("added to %s" % x)
 					var new_thinker: Thinker = thinker.instance()
 					new_thinker.slot = x
 					body.call_deferred("add_child", new_thinker)

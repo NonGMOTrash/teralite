@@ -13,11 +13,13 @@ onready var cooldown = $cooldown
 onready var reload = $reload
 onready var spawner = $spawner
 
+func _init() -> void:
+	res.allocate("bullet")
+
 func _ready() -> void:
 	cooldown.wait_time = cooldown_time
 	reload.wait_time = reload_time
 	#cooldown.start()
-	res.allocate("bullet")
 
 func _on_reload_timeout() -> void:
 	ammo = max_ammo
@@ -95,6 +97,6 @@ func reload():
 		reload.wait_time, # item bar max 
 		reload.time_left, # item bar value 
 		reload.wait_time # bar timer duration
-		)
+	)
 	
 	sound_player.play_sound("reload")

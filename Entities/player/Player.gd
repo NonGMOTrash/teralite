@@ -41,9 +41,9 @@ onready var held_item = $held_item
 var force_death_msg := false
 
 func _ready():
-#	var item = res.aquire_entity("spear")
-#	item.global_position = global_position
-#	get_parent().call_deferred("add_child", item)
+	var item = res.aquire_entity("dagger")
+	item.global_position = global_position
+	get_parent().call_deferred("add_child", item)
 	
 #	stats.add_status_effect("poison", 60, 1)
 	

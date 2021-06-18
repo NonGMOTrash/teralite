@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Levels/Level Resources/scene_batcher/scene_batcher.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/pistol/pistol.png" type="Texture" id=2]
@@ -35,6 +35,7 @@
 [ext_resource path="res://Entities/knight/warden/warden.png" type="Texture" id=33]
 [ext_resource path="res://Entities/medic/medic.png" type="Texture" id=34]
 [ext_resource path="res://Entities/Item_Pickups/dagger/dagger.png" type="Texture" id=35]
+[ext_resource path="res://Entities/Item_Pickups/xbow/xbow_flat.png" type="Texture" id=36]
 
 [sub_resource type="TileSet" id=1]
 2/name = "player.png 2"
@@ -513,6 +514,20 @@
 41/shape_one_way_margin = 0.0
 41/shapes = [  ]
 41/z_index = 0
+42/name = "xbow_flat.png 42"
+42/texture = ExtResource( 36 )
+42/tex_offset = Vector2( 0, 0 )
+42/modulate = Color( 1, 1, 1, 1 )
+42/region = Rect2( 1, 4, 14, 6 )
+42/tile_mode = 0
+42/occluder_offset = Vector2( 0, 0 )
+42/navigation_offset = Vector2( 0, 0 )
+42/shape_offset = Vector2( 0, 0 )
+42/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+42/shape_one_way = false
+42/shape_one_way_margin = 0.0
+42/shapes = [  ]
+42/z_index = 0
 
 [node name="entity_spawns" instance=ExtResource( 1 )]
 position = Vector2( 4, 4 )

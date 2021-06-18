@@ -149,7 +149,7 @@ check out his stuff here:
 - pistol_pickup: "Pistol Cock" by nebulasnails ( https://freesound.org/people/nebulasnails/sounds/405538/ ) licensed under CC0
 - pistol_reload: "AR15 pistol load and chamber" by michorvath ( https://freesound.org/people/michorvath/sounds/427599/ ) licensed under CC0
 - damage: "Hit 4 8 Bit" by Mrthenoronha ( https://freesound.org/people/Mrthenoronha/sounds/507702/ ) licensed under CC BY-NC 3.0
-- bow_shoot: "bow01" by Erdie ( https://freesound.org/people/Erdie/sounds/65733/ ) licensed under CC BY 3.0
+- arrow_shoot: "bow01" by Erdie ( https://freesound.org/people/Erdie/sounds/65733/ ) licensed under CC BY 3.0
 - arrow_collide: "Arrow strike" by plantmonkey ( https://freesound.org/people/plantmonkey/sounds/410751/ ) licensed under CC0
 - arrow_hit: "arrow_damage" by braqoon ( https://freesound.org/people/braqoon/sounds/161098/ ) licensed under CC0
 - bow_drawn: "Regular Arrow Shot with rattle slow draw" by brendan89 ( https://freesound.org/people/brendan89/sounds/321554/ ) licensed under CC BY 3.0
@@ -180,6 +180,11 @@ check out his stuff here:
 - swipe_blocked: "Metal hit, impact, sharp flick, tinny 1" by ZapSplat ( https://www.zapsplat.com/music/metal-hit-impact-sharp-flick-tinny-1/ ) licensed under ZapSplat standard license
 - swipe_hit: "Horror, knife stab into flesh then pull out, very squelchy 3" by ZapSplat ( https://www.zapsplat.com/music/horror-knife-stab-into-flesh-then-pull-out-very-squelchy-3/ ) licensed under ZapSplat standard license
 - dagger_dash: "Bullet pass, whizz by 2" by ZapSplat ( https://www.zapsplat.com/music/bullet-pass-whizz-by-2/ ) licensed under ZapSplat standard license
+- xbow_equip: "Bolt Cutter" by jameswrowles ( https://freesound.org/people/jameswrowles/sounds/516590/ ) licensed under CC0
+- xbow_reload: "mini crossbow foley" by nettimato ( https://freesound.org/people/nettimato/sounds/350345/ ) licensed under CC0
+- bolt_shoot: "bow02" by Erdie ( https://freesound.org/people/Erdie/sounds/65734/ ) licensed under CC-BY 3.0
+- bolt_hit: "Medieval crossbow bolt pass by 1" by Still North Media ( https://www.zapsplat.com/music/medieval-crossbow-bolt-pass-by-1/ ) licensed under CC0
+- bolt_blocked: "Fast swing, whoosh into a metal hit, thud or clunk, could be sword hitting shield or armor. Version 1" by ZapSplat ( https://www.zapsplat.com/music/fast-swing-whoosh-into-a-metal-hit-thud-or-clunk-could-be-sword-hitting-shield-or-armor-version-1/ ) licensed under ZapSplat standard license
 
 a big thanks to all the sound authors for letting me legally steal your hard work to use in my game <3
 
@@ -214,6 +219,7 @@ github repo is here: (private until full release)
 - added wardens
 - added the dagger (rogues now use this)
 - added medics
+- added the crossbow
 - added arrow turrets and pylons
 - the sword now as a counter (right click)
 - added a kills counter to level completion screen

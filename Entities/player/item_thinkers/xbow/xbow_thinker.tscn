@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Entities/player/item_thinkers/xbow/xbow_thinker.gd" type="Script" id=1]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Item_Pickups/xbow/xbow.png" type="Texture" id=3]
+[ext_resource path="res://Entities/player/item_thinkers/xbow/xbow_equip.wav" type="AudioStream" id=4]
+[ext_resource path="res://Entities/player/item_thinkers/xbow/xbow_reload.wav" type="AudioStream" id=5]
+[ext_resource path="res://Components/sound_player/sound/sound.gd" type="Script" id=6]
+
+[node name="xbow_thinker" type="Node"]
+script = ExtResource( 1 )
+auto_ready_check = false
+HELD_ITEM_TEXTURE = ExtResource( 3 )
+HELD_ITEM_ANCHOR = Vector2( 10.5, 0 )
+HELD_ITEM_FRAMES = Vector2( 2, 1 )
+my_item = "Xbow"
+EQUIP_SOUND = ExtResource( 4 )
+reload_time = 1.55
+reload_sound = ExtResource( 5 )
+
+[node name="sound_player" parent="." instance=ExtResource( 2 )]
+
+[node name="reload" type="AudioStreamPlayer2D" parent="sound_player"]
+stream = ExtResource( 5 )
+script = ExtResource( 6 )
+MODE = 1
+AUTO_PLAY = false
+
+[node name="reload" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]

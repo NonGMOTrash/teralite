@@ -12,6 +12,7 @@ export(Texture) var HELD_ITEM_TEXTURE
 export(Vector2) var HELD_ITEM_OFFSET
 export(Vector2) var HELD_ITEM_ANCHOR = Vector2(8, 0)
 export(float, -360.0, 360.0) var HELD_ITEM_ROTATION := 0.0
+export(Vector2) var HELD_ITEM_FRAMES := Vector2(1, 1)
 
 export(String) var PRIMARY_ANIM
 export(String) var SECONDARY_ANIM
@@ -32,6 +33,7 @@ var slot := 0
 var bar_max = 0.0
 var bar_value = 0.0
 var item_scene = res.aquire(my_item)
+var max_frame := HELD_ITEM_FRAMES.x * HELD_ITEM_FRAMES.y - 1
 
 # maybe make this a global signal??
 signal update_ui(bar_max, bar_value, info_string)
@@ -71,7 +73,7 @@ func _check_if_selected(swapped_item) -> void:
 func _process(_delta: float):
 	if global.selection != slot: 
 		return
-	print(slot)
+	
 	pre_input_action()
 	
 	if Input.is_action_just_pressed("reload_item"):
@@ -178,7 +180,12 @@ func selected():
 	if EQUIP_SOUND != null:
 		sound_player.create_sound(EQUIP_SOUND)
 	if EQUIP_ANIM != "":
-		get_parent().components["held_item"].animation.play(EQUIP_ANIM)
+		player.components["held_item"].animation.play(EQUIP_ANIM)
+	
+	if player.components["held_item"].sprite.frame > max_frame:
+		player.components["held_item"].sprite.frame = max_frame
+	player.components["held_item"].sprite.hframes = HELD_ITEM_FRAMES.x
+	player.components["held_item"].sprite.vframes = HELD_ITEM_FRAMES.y
 
 func unselected():
 	pass
