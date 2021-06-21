@@ -10,6 +10,7 @@ wait_time = 0.2
 autostart = true
 
 [node name="energy_timer" type="Timer" parent="."]
+
 [connection signal="tree_entered" from="." to="." method="_on_action_lobe_tree_entered"]
 [connection signal="timeout" from="action_timer" to="." method="_on_action_timer_timeout"]
 [connection signal="timeout" from="energy_timer" to="." method="_on_energy_timer_timeout"]

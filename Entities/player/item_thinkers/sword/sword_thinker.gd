@@ -71,8 +71,21 @@ func _on_counter_area_entered(area: Area2D) -> void:
 	
 	can_counter = false
 	
+	var area_entity: Entity = area.get_parent()
+	if area_entity is Attack:
+		area_entity.death()
+	
 	var slash = res.aquire_melee("slash")
 	slash.setup(player, area.global_position)
 	global.nodes["ysort"].call_deferred("add_child", slash)
 	
 	sound_player.play_sound("counter_success")
+	
+	cooldown.wait_time = 0.1
+	cooldown.start()
+	
+	player.components["stats"].add_status_effect(
+		"slowness", # effect
+		-animation.get_animation("counter").length, # duration
+		-counter_slowness_lvl # level
+	)

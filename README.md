@@ -223,6 +223,7 @@ github repo is here: (private until full release)
 - added the dagger (rogues use it)
 - added medics
 - added the crossbow
+- added the queen
 - added slimes
 - added arrow turrets and pylons
 - the sword now as a counter (right click)
@@ -233,6 +234,7 @@ github repo is here: (private until full release)
 - renabled gpu snap to fix weird visual artifacts with tilemaps
 - fixed status effect stacking not working
 - fixed the bow being capped at 2 damage instead of 3
+- fixed some death effects not playing
 - replaced a few of the sound effects
 - made the readme into a .html file
 
@@ -420,10 +422,13 @@ github repo is here: (private until full release)
 
 ## Beta 2.0 (11/11/2020)
 
-- added a new kingdom faction (knights, archers, rogues, and kings)
 - added the dash
 - added the bow
 - added castle tiles and props
+- added knights
+- added archers
+- added rogues
+- added the king
 - added status effects (bleeding, poison, and burning)
 - added fire and timber pots
 - added blue ultra chasers

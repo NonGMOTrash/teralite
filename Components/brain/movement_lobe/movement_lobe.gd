@@ -251,13 +251,22 @@ func _on_movement_timer_timeout() -> void:
 					
 				var best_position = target.global_position + target_to_me * spring.DISTANCE
 				
+				# accounting for DISTANCE_RANGE
+				if spring.USE_DISTANCE_RANGE == true:
+					var dist: float = global_position.distance_to(target.global_position)
+					if abs(dist - spring.DISTANCE_MIN) <= abs(dist - spring.DISTANCE_MAX):
+						best_position = target.global_position + target_to_me * spring.DISTANCE_MIN
+					else:
+						best_position = target.global_position + target_to_me * spring.DISTANCE_MAX
+				
 				var strength = 0
 				if global_position.distance_to(best_position) != 0: 
 					strength = brain.SIGHT_RANGE / global_position.distance_to(best_position)
 				else:
-					strength = brain.SIGHT_RANGE / (global_position.distance_to(best_position)+0.1) 
+					strength = brain.SIGHT_RANGE / (global_position.distance_to(best_position)+0.01) 
 				
 				if early_slowdown(best_position) == true: strength = 0 # PROBLEM_NOTE: this causes flicker
+				
 				if spring.USE_DEADZONE == true:
 					if spring.DEADZONE >= global_position.distance_to(best_position):
 						strength = 0

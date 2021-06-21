@@ -61,11 +61,12 @@ tracks/3/keys = {
 [node name="ultra_chaser_death_effect" instance=ExtResource( 1 )]
 
 [node name="Sprite" parent="." index="0"]
-self_modulate = Color( 1, 1, 1, 0 )
-rotation = 4.71239
-scale = Vector2( 1e-05, 1e-05 )
+self_modulate = Color( 1, 1, 1, 0.111111 )
+rotation = 4.18879
+scale = Vector2( 0.209876, 0.209876 )
 texture = ExtResource( 2 )
 hframes = 2
 
 [node name="AnimationPlayer" parent="." index="1"]
+autoplay = "New Anim"
 "anims/New Anim" = SubResource( 1 )

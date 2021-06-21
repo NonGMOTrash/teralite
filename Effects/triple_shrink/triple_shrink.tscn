@@ -49,10 +49,9 @@ tracks/2/keys = {
 [node name="triple_shrink" instance=ExtResource( 2 )]
 
 [node name="Sprite" parent="." index="0"]
-self_modulate = Color( 0.952941, 0.952941, 0.952941, 0.552941 )
-scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 1 )
 
 [node name="AnimationPlayer" parent="." index="1"]
+autoplay = "New Anim"
 playback_speed = 0.3
 "anims/New Anim" = SubResource( 1 )

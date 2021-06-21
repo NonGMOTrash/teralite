@@ -48,7 +48,7 @@ func _ready():
 	
 	action_lobe.actions.append(self)
 	
-	if action_lobe.actions.size() == 1:
+	if action_lobe.AUTO_ACTION_WEIGHTING == false or action_lobe.actions.size() == 1:
 		weight = 0
 	
 	if COOLDOWN == 0.0:
@@ -60,7 +60,7 @@ func _ready():
 	if target_type == relations.myself:
 		action_lobe.acts_on_self = true
 
-func get_score(warned = false) -> Array: #-> [score, target]
+func evaluate(warned = false) -> Array: #-> [score, target]
 	if COOLDOWN > 0 and cooldown_timer.time_left > 0:
 		if target_type != relations.myself and brain.targets.size() > 0:
 			return [0, brain.targets[0]]
@@ -150,13 +150,9 @@ func get_score(warned = false) -> Array: #-> [score, target]
 func score_modification(score): # for custom score modification
 	return score
 
-#var w = 1
-#func _process(_delta):
-#	if get_name() != "archer": return
-#	if w > 15:
-#		w = 1
-#	else:
-#		w += 1
-
 func _on_deweight_timer_timeout() -> void:
 	weight *= 0.8
+
+func _on_cooldown_timer_timeout() -> void:
+	if GLOBAL_COOLDOWN == true:
+		action_lobe.on_global_cooldown = false

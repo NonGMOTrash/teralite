@@ -65,4 +65,5 @@ texture = ExtResource( 1 )
 hframes = 2
 
 [node name="AnimationPlayer" parent="." index="1"]
+autoplay = "New Anim"
 "anims/New Anim" = SubResource( 1 )

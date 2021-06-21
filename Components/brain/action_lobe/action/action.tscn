@@ -12,3 +12,4 @@ autostart = true
 one_shot = true
 
 [connection signal="timeout" from="deweight_timer" to="." method="_on_deweight_timer_timeout"]
+[connection signal="timeout" from="cooldown_timer" to="." method="_on_cooldown_timer_timeout"]

@@ -59,18 +59,15 @@ tracks/3/keys = {
 }
 
 [node name="dissolve_fade" instance=ExtResource( 2 )]
-flip_h = false
-random_flip_h = false
-flip_v = false
-random_flip_v = false
 animation_player = NodePath("../dissolve_fade/AnimationPlayer")
-effect_speed = 1.0
-effect_speed_randomness = 0.02
 
 [node name="Sprite" parent="." index="0"]
-scale = Vector2( 1.6, 0.4 )
+self_modulate = Color( 3, 3, 3, 0 )
+scale = Vector2( 2, 1e-05 )
 texture = ExtResource( 1 )
+offset = Vector2( 0, -4 )
 hframes = 2
 
 [node name="AnimationPlayer" parent="." index="1"]
+autoplay = "New Anim"
 "anims/New Anim" = SubResource( 1 )

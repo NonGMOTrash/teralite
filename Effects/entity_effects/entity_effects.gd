@@ -58,6 +58,7 @@ func _ready():
 			DEATHS.SQUISH_FADE: spawner.thing = SQUISH_FADE
 			DEATHS.TRIPLE_SHRINK: spawner.thing = TRIPLE_SHRINK
 			DEATHS.WIGGLE_FADE: spawner.thing = WIGGLE_FADE
+			_: push_error("%s is not a valid death_type" % death_type)
 		
 		if death_type != DEATHS.HIT_EFFECT:
 			

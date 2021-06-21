@@ -27,6 +27,7 @@ const data := {
 	"warden": "res://Entities/knight/warden/warden.tscn",
 	"medic": "res://Entities/medic/medic.tscn",
 	"slime": "res://Entities/slime/slime.tscn",
+	"queen": "res://Entities/queen/queen.tscn",
 	
 	# items
 	"pistol": "res://Entities/Item_Pickups/pistol/pistol.tscn",

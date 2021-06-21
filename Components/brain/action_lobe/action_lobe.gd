@@ -22,7 +22,7 @@ export(int, 0, 10) var tag_weight = 0
 
 var ACT_ON_WARNING = false
 
-var on_cooldown = false
+var on_global_cooldown := false
 var energy = 50
 var actions = []
 var last_action_str = "idk lol"
@@ -52,8 +52,6 @@ func _on_energy_timer_timeout() -> void:
 	energy = clamp(energy+1, 0, MAX_ENERGY)
 
 func _on_action_timer_timeout() -> void:
-	on_cooldown = false
-	
 	if AUTO_ACT == false:
 		action_timer.stop()
 		return
@@ -88,32 +86,39 @@ func _on_action_timer_timeout() -> void:
 			action_timer.wait_time = lowest_cooldown
 			return
 		
-		action_timer.wait_time = 1
+		action_timer.wait_time = 1.0 # default
 
 func act(warned = false):
-	if on_cooldown == true: return
+	if on_global_cooldown == true: return
 	
-	var chosen_action = null
-	var target = null
-	var highscore = -1
+	var chosen_action: Node
+	var chosen_action_name: String
+	var target: Entity
+	var highscore := -1.0
 	
 	for i in actions.size():
 		var action = actions[i]
-		var action_score = action.get_score(warned)
+		var action_score: Array = action.evaluate(warned)
 		
 		if action_score[0] > highscore:
-			chosen_action = action.get_name()
+			chosen_action = action
+			chosen_action_name = action.get_name()
 			highscore = action_score[0]
 			target = action_score[1]
 	
-	if highscore <= PATIENCE: return
+	if highscore < PATIENCE: return
 	
-	if AUTO_ACTION_WEIGHTING == true: weight_actions(chosen_action)
+	if AUTO_ACTION_WEIGHTING == true: weigh_actions(chosen_action_name)
 	
-	last_action_str = chosen_action
-	emit_signal("action", chosen_action, target)
+	last_action_str = chosen_action_name
+	emit_signal("action", chosen_action_name, target)
+	
+	if chosen_action.COOLDOWN > 0:
+		chosen_action.cooldown_timer.start()
+		if chosen_action.GLOBAL_COOLDOWN == true:
+			on_global_cooldown = true
 
-func weight_actions(chosen_action: String):
+func weigh_actions(chosen_action: String):
 	for i in actions.size():
 		var action = actions[i]
 		if action.get_name() == chosen_action:

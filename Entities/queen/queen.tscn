@@ -1,0 +1,148 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Entities/queen/queen.gd" type="Script" id=1]
+[ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Components/brain/movement_lobe/spring/spring.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Components/entity_push/entity_push.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Entities/queen/queen.png" type="Texture" id=15]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 4.8955
+
+[sub_resource type="Animation" id=3]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack"
+} ]
+}
+
+[node name="queen" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 1 )
+ACCELERATION = 450
+TOP_SPEED = 75
+FORCE_MULT = 0.86
+truName = "queen"
+faction = "blue_kingdom"
+shoot_speed = 215.0
+
+[node name="stats" parent="." instance=ExtResource( 2 )]
+MAX_HEALTH = 9
+HEALTH = 9
+DEFENCE = 1
+DAMAGE = 2
+
+[node name="entity_sprite" parent="." instance=ExtResource( 3 )]
+material = SubResource( 1 )
+texture = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="entity_push" parent="." instance=ExtResource( 10 )]
+visible = false
+
+[node name="CollisionShape2D" parent="entity_push" index="0"]
+shape = SubResource( 2 )
+
+[node name="hurtbox" parent="." instance=ExtResource( 4 )]
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+shape = SubResource( 2 )
+
+[node name="sleeper" parent="." instance=ExtResource( 5 )]
+
+[node name="brain" parent="." instance=ExtResource( 6 )]
+TOLERANCE = 2
+SIGHT_RANGE = 180.0
+
+[node name="movement_lobe" parent="brain" instance=ExtResource( 8 )]
+general_springs = {
+"friendly": "",
+"hostile": "spring",
+"neutral": ""
+}
+entity_springs = {
+"king": "guard"
+}
+
+[node name="spring" parent="brain/movement_lobe" instance=ExtResource( 7 )]
+DISTANCE_MIN = 22
+DISTANCE_MAX = 50
+USE_DISTANCE_RANGE = true
+
+[node name="guard" parent="brain/movement_lobe" instance=ExtResource( 7 )]
+DEADZONE = 45
+USE_DEADZONE = true
+
+[node name="action_lobe" parent="brain" instance=ExtResource( 14 )]
+PATIENCE = 0.0
+
+[node name="slash" parent="brain/action_lobe" instance=ExtResource( 13 )]
+best_distance = 16
+COOLDOWN = 0.75
+GLOBAL_COOLDOWN = true
+
+[node name="shoot" parent="brain/action_lobe" instance=ExtResource( 13 )]
+best_distance = 60
+COOLDOWN = 1.32
+GLOBAL_COOLDOWN = true
+
+[node name="health_bar" parent="." instance=ExtResource( 9 )]
+margin_left = -10.4056
+margin_top = -12.784
+margin_right = 10.5944
+margin_bottom = -8.78223
+
+[node name="foot_stepper" parent="." instance=ExtResource( 11 )]
+
+[node name="entity_effects" parent="." instance=ExtResource( 12 )]
+death_type = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 999.0
+autostart = true
+
+[connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
+
+[editable path="entity_push"]
+[editable path="hurtbox"]

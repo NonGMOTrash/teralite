@@ -61,7 +61,11 @@ tracks/3/keys = {
 [node name="flip_fade" instance=ExtResource( 2 )]
 
 [node name="Sprite" parent="." index="0"]
+self_modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 1e-05, 2 )
 texture = ExtResource( 1 )
+flip_h = true
 
 [node name="AnimationPlayer" parent="." index="1"]
+autoplay = "New Anim"
 "anims/New Anim" = SubResource( 1 )
