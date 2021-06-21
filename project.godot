@@ -325,6 +325,8 @@ pause={
 2d_physics/layer_3="hurtbox"
 2d_physics/layer_4="hitbox"
 2d_physics/layer_5="item_pickup"
+2d_physics/layer_6="low_barrier"
+2d_physics/layer_7="attack"
 
 [locale]
 

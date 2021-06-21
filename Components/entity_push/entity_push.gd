@@ -19,7 +19,7 @@ func _ready() -> void:
 func push():
 	if get_overlapping_bodies() == []: return
 	var body = get_overlapping_bodies()[rand_range(0, get_overlapping_bodies().size()-1)]
-	if body == get_parent(): return
+	if body == get_parent() or not body is Entity: return
 	if body.components["sleeper"] != null and body.components["sleeper"].active == false: return
 	var force = Vector2.ZERO
 	var dir = global_position.direction_to(body.global_position).normalized()

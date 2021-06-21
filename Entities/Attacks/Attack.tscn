@@ -8,7 +8,7 @@
 
 [node name="Attack" type="KinematicBody2D"]
 rotation = 1.5708
-collision_layer = 0
+collision_layer = 64
 collision_mask = 0
 script = ExtResource( 3 )
 __meta__ = {

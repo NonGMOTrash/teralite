@@ -216,6 +216,7 @@ github repo is here: (private until full release)
 
 ## Beta 3.0
 
+- added water tiles
 - added the staff
 - added mages
 - added the spear
