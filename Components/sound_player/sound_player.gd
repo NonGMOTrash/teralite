@@ -19,31 +19,30 @@ func _ready():
 		return
 	
 	for child in get_children():
-		if child is Sound or child is Global_Sound:
-			sounds[child.get_name()] = child
-			
-			child.stop()
-			
-			if child.MODE != MODES.STANDBY:
-				child.connect("finished", self, "sound_finished", [child.name])
-			
-			remove_child(child)
-			
-			if child.SCENE_PERSIST == true:
-				global.add_child(child)
-			else:
-				get_tree().current_scene.call_deferred("add_child", child)
-			
-			if child is Sound:
-				child.global_position = get_position_for(child)
-			
-			if child.autoplay == true:
-				child.play()
-			
-			yield(child, "tree_entered")
-			
-			if child is Sound and child.global_position == Vector2.ZERO:
-				push_warning("sound '"+get_name()+"' created at (0, 0), probably a mistake.")
+		if not child is Sound and not child is Global_Sound:
+			continue
+		
+		sounds[child.get_name()] = child
+		
+		child.stop()
+		
+		if child.MODE != MODES.STANDBY:
+			child.connect("finished", self, "sound_finished", [child.name])
+		
+		remove_child(child)
+		
+		if child.SCENE_PERSIST == true:
+			global.add_child(child)
+		else:
+			get_tree().current_scene.call_deferred("add_child", child)
+		
+		if child.autoplay == true:
+			child.play()
+		
+		yield(child, "tree_entered")
+		
+		if child is Sound:
+			child.global_position = get_position_for(child)
 
 func sound_finished(sound_name):
 	var sound = sounds[sound_name]
@@ -73,7 +72,7 @@ func add_sound(audioplayer:Node):
 	if audioplayer.autoplay == true:
 		audioplayer.play()
 	
-	if audioplayer is Sound:
+	if audioplayer is Sound and not audioplayer is Global_Sound:
 		audioplayer.global_position = get_position_for(audioplayer)
 
 func create_sound(

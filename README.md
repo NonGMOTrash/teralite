@@ -231,10 +231,11 @@ github repo is here: (private until full release)
 - added slimes
 - added arrow turrets and pylons
 - added health potions
+- added iron-infused potions
 - the sword now as a counter (right click)
 - added a kills counter to level completion screen
 - fixed hitboxes and spike activation going through walls
-- added speed, slowness, and regeneration status effects
+- added speed, slowness, regeneration, and resistance status effects
 - fixed level times and perfections not saving properly
 - renabled gpu snap to fix weird visual artifacts with tilemaps
 - fixed status effect stacking not working

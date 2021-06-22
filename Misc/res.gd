@@ -42,6 +42,7 @@ const data := {
 	"dagger": "res://Entities/Item_Pickups/dagger/dagger.tscn",
 	"xbow": "res://Entities/Item_Pickups/xbow/xbow.tscn",
 	"health_potion": "res://Entities/Item_Pickups/health_potion/health_potion.tscn",
+	"iron_potion": "res://Entities/Item_Pickups/iron_potion/iron_potion.tscn",
 	
 	# melees
 	"slash": "res://Entities/Attacks/Melee/slash/slash.tscn",
@@ -56,6 +57,7 @@ const data := {
 	"thrown_spear": "res://Entities/Attacks/Projectile/thrown_spear/thrown_spear.tscn",
 	"bolt": "res://Entities/Attacks/Projectile/bolt/bolt.tscn",
 	"thrown_health_potion": "res://Entities/Attacks/Projectile/thrown_health_potion/thrown_health_potion.tscn",
+	"thrown_iron_potion": "res://Entities/Attacks/Projectile/thrown_iron_potion/thrown_iron_potion.tscn",
 	
 	# effects
 	"hit_effect": "res://Effects/hit_effect/hit_effect.tscn",
@@ -119,6 +121,7 @@ const data := {
 	"dagger_texture": "res://Entities/Item_Pickups/dagger/dagger.png",
 	"xbow_texture": "res://Entities/Item_Pickups/xbow/xbow_flat.png",
 	"health_potion_texture": "res://Entities/Item_Pickups/health_potion/health_potion.png",
+	"iron_potion_texture": "res://Entities/Item_Pickups/iron_potion/iron_potion.png",
 }
 
 func allocate(asset:String) -> void:

@@ -55,9 +55,8 @@ func _ready():
 			components["sound_player"] = null
 	elif SPAWN_SOUND != null:
 		var sfx = Sound.new()
-		if SPAWN_SOUND != null:
-			sfx.name = truName+"_spawn"
-			sfx.stream = SPAWN_SOUND
+		sfx.name = truName+"_spawn"
+		sfx.stream = SPAWN_SOUND
 		sound.add_sound(sfx)
 		
 		#if HIT_SOUND != null or KILL_SOUND != null  or BLOCKED_SOUND != null:
@@ -103,17 +102,16 @@ func _on_hitbox_hit(area, type) -> void:
 			sfx.name = truName+"_blocked"
 			sfx.stream = BLOCKED_SOUND
 		_:
+			sfx.name == truName+"_invalid_type"
 			return
 	
 	if sfx.stream == null:
 		sfx.queue_free()
-		return
-	
-	sound.add_sound(sfx)
+	else:
+		sound.add_sound(sfx)
 
 func death():
 	if DEATH_SOUND != null:
-		print("!")
 		var sfx = Sound.new()
 		sfx.name = truName+"_death"
 		sfx.stream = DEATH_SOUND

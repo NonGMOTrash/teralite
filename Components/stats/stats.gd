@@ -7,6 +7,7 @@ const bleed = preload("res://Components/stats/status_effects/bleed/bleed.tscn")
 const speed = preload("res://Components/stats/status_effects/speed/speed.tscn")
 const slowness = preload("res://Components/stats/status_effects/speed/slowness/slowness.tscn")
 const regen = preload("res://Components/stats/status_effects/regeneration/regeneration.tscn")
+const resistance = preload("res://Components/stats/status_effects/resistance/resistance.tscn")
 
 var duration_timers = []
 var effect_timers = []
@@ -31,8 +32,11 @@ var status_effects = {
 	"speed": null,
 	"slowness": null,
 	"regeneration": null,
+	"resistance": null,
 }
 
+# PROBLEM_NOTE: should add a 'ALL' modifier
+# PROBLEM_NOTE: this should not be a dictionary (bad exporting)
 export var modifiers = {
 	"poison": 0, # changes the level of a given status effect by the value
 	"burning": 0, 
@@ -40,6 +44,7 @@ export var modifiers = {
 	"speed": 0,
 	"slowness": 0,
 	"regeneration": 0,
+	"resistance": 0,
 }
 
 func _on_stats_tree_entered():
@@ -133,11 +138,12 @@ func add_status_effect(new_status_effect:String, duration=2.5, level=1.0):
 		"speed": status_effect = speed.instance()
 		"slowness": status_effect = slowness.instance()
 		"regeneration": status_effect = regen.instance()
+		"resistance": status_effect = resistance.instance()
 		_: 
 			push_error("status effect '%s' does not exist" % status_effect)
 			return
 	
-	var status_name = status_effect.get_name()
+	var status_name: String = status_effect.get_name()
 	
 	emit_signal("status_recieved", status_name)
 	

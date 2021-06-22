@@ -1,0 +1,23 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Entities/player/item_thinkers/iron_potion_thinker/iron_potion_thinker.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Item_Pickups/iron_potion/iron_potion.png" type="Texture" id=2]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/player/item_thinkers/health_potion/potion_equip.wav" type="AudioStream" id=5]
+[ext_resource path="res://Entities/player/item_thinkers/health_potion/potion_drink.wav" type="AudioStream" id=6]
+
+[node name="iron_potion_thinker" type="Node"]
+script = ExtResource( 1 )
+HELD_ITEM_TEXTURE = ExtResource( 2 )
+my_item = "iron_potion"
+display_name = "Iron-Infused Potion"
+EQUIP_SOUND = ExtResource( 5 )
+resistance_level = 2
+slowness_level = 1.0
+duration = 30.0
+
+[node name="sound_player" parent="." instance=ExtResource( 3 )]
+
+[node name="drink" parent="sound_player" instance=ExtResource( 4 )]
+stream = ExtResource( 6 )

@@ -81,7 +81,6 @@ SPAWN_SOUND = ExtResource( 6 )
 HIT_SOUND = ExtResource( 7 )
 KILL_SOUND = ExtResource( 4 )
 BLOCKED_SOUND = ExtResource( 5 )
-COLLIDE_SOUND = ExtResource( 8 )
 DEATH_SOUND = ExtResource( 8 )
 
 [node name="stats" parent="." index="0"]

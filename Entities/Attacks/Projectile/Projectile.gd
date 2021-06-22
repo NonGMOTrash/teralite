@@ -43,7 +43,8 @@ func _physics_process(delta):
 	#STATIC = false
 	
 	if global_position.distance_to(start_pos) > RANGE || velocity == Vector2.ZERO:
-		queue_free()
+		death_free = true
+		death()
 	
 	if auto_rotate == true:
 		rotation += get_angle_to(global_position + velocity) + deg2rad(ROTATION_OFFSET)

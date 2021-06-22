@@ -1,12 +1,13 @@
 extends Thinker
 
-export(int, 0, 99) var healing: int
-
-func _init() -> void:
-	res.allocate("thrown_health_potion")
+export var resistance_level: int
+export var slowness_level: float
+export var duration: float
 
 func primary():
-	player.components["stats"].change_health(healing, 0, "heal")
+	player.components["stats"].add_status_effect("resistance", duration, resistance_level)
+	player.components["stats"].add_status_effect("slowness", duration, slowness_level)
+	
 	queue_free()
 	get_parent().inventory[global.selection] = null
 	get_parent().held_item.sprite.texture = null
@@ -24,7 +25,7 @@ func primary():
 	sound_player.play_sound("drink")
 
 func secondary():
-	quick_spawn("thrown_health_potion")
+	quick_spawn("thrown_iron_potion")
 	
 	queue_free()
 	get_parent().inventory[global.selection] = null
