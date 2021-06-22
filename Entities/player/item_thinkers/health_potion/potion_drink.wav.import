@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/potion_drink.wav-64bdb33f056788019ea5ca9a1690de14.sample"
+
+[deps]
+
+source_file="res://Entities/player/item_thinkers/health_potion/potion_drink.wav"
+dest_files=[ "res://.import/potion_drink.wav-64bdb33f056788019ea5ca9a1690de14.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

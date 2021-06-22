@@ -82,7 +82,7 @@ _global_script_class_icons={
 
 config/name="teralite"
 config/description="an okay game."
-run/main_scene="res://UI/intro/intro.tscn"
+run/main_scene="res://Entities/Attacks/Projectile/Projectile.tscn"
 config/use_custom_user_dir=true
 boot_splash/image="res://UI/splashscreen.png"
 boot_splash/use_filter=false

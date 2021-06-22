@@ -14,6 +14,7 @@ export(bool) var spawn_on_hurt = false
 export(bool) var spawn_on_block = false
 export(bool) var spawn_on_heal = false
 export(ROTATIONS) var rotation_mode = ROTATIONS.KEEP
+export(int, 1, 99) var spawns := 1
 
 export var use_modulate = false
 export(Color) var modulate
@@ -29,6 +30,11 @@ export(int, 1) var particle_amount = 5
 export(float, 0, 64) var particle_speed_scale = 1.0
 
 export(bool) var entity_inherit_velocity := false
+export(float, 0, 1000) var entity_random_velocity := 0 
+
+export(Dictionary) var custom_properties := {
+	#property: value
+}
 
 var stats
 var trigger_pos
@@ -156,5 +162,20 @@ func spawn():
 	if new_thing is Entity:
 		if entity_inherit_velocity == true:
 			new_thing.velocity = entity.velocity
+		
+		if entity_random_velocity > 0:
+			var direction := Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized()
+			new_thing.velocity += Vector2(
+				rand_range(-entity_random_velocity, entity_random_velocity),
+				rand_range(-entity_random_velocity, entity_random_velocity)
+			) * direction
+	
+	for property in custom_properties.keys():
+		new_thing.set(property, custom_properties[property])
 	
 	global.nodes["ysort"].call_deferred("add_child", new_thing)
+	
+	spawns -= 1
+	
+	if spawns > 0:
+		spawn()

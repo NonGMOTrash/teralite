@@ -25,7 +25,7 @@ func _on_reload_timeout() -> void:
 	ammo = max_ammo
 	
 	global.emit_signal("update_item_info", # set a condition to null to hide it
-		my_item, # current item
+		display_name, # current item
 		str(ammo) + " / " + str(max_ammo), # extra info 
 		null, # item bar max 
 		null, # item bar value 
@@ -40,7 +40,7 @@ func get_ready():
 func selected():
 	.selected()
 	global.emit_signal("update_item_info", # set a condition to null to hide it
-		my_item, # current item
+		display_name, # current item
 		str(ammo) + " / " + str(max_ammo), # extra info 
 		null, # item bar max 
 		null, # item bar value 
@@ -67,7 +67,7 @@ func primary():
 	cooldown.start()
 	reload.stop()
 	global.emit_signal("update_item_info", # set a condition to null to hide it
-		my_item, # current item
+		display_name, # current item
 		str(ammo) + " / " + str(max_ammo), # extra info 
 		null, # item bar max 
 		null, # item bar value 
@@ -92,7 +92,7 @@ func reload():
 	if reload.time_left > 0: return
 	reload.start()
 	global.emit_signal("update_item_info", # set a condition to null to hide it
-		my_item, # current item
+		display_name, # current item
 		null, # extra info 
 		reload.wait_time, # item bar max 
 		reload.time_left, # item bar value 

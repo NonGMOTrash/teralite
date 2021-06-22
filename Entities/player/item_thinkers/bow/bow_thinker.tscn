@@ -10,7 +10,8 @@
 script = ExtResource( 1 )
 PRIMARY_ACTION_MODE = 2
 HELD_ITEM_TEXTURE = ExtResource( 4 )
-my_item = "Bow"
+my_item = "bow"
+display_name = "Bow"
 CURSOR = ExtResource( 2 )
 CURSOR_MODE = 1
 EQUIP_SOUND = ExtResource( 5 )

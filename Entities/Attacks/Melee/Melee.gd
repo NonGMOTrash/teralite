@@ -48,6 +48,7 @@ func _physics_process(_delta):
 		global_position = SOURCE.global_position + RANGE * DIRECTION
 
 func death():
+	.death()
 	emit_signal("death")
 	
 	# recoil

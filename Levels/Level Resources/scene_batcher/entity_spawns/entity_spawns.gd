@@ -39,4 +39,5 @@ func set_data():
 		"xbow": get_used_cells_by_id(42),
 		"slime": get_used_cells_by_id(43),
 		"queen": get_used_cells_by_id(44),
+		"health_potion": get_used_cells_by_id(45),
 	}

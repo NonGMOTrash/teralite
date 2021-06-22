@@ -32,7 +32,7 @@ func primary():
 	quick_spawn("bolt")
 	loaded = false
 	global.emit_signal("update_item_info", # set a condition to null to hide it
-		my_item, # current item
+		display_name, # current item
 		str(int(loaded)) + " / " + str(1), # extra info 
 		null, # item bar max 
 		null, # item bar value 
@@ -46,7 +46,7 @@ func reload():
 	sound_player.play_sound("reload")
 	reload.start()
 	global.emit_signal("update_item_info", # set a condition to null to hide it
-		my_item, # current item
+		display_name, # current item
 		null, # extra info 
 		reload.wait_time, # item bar max 
 		reload.time_left, # item bar value 
@@ -58,7 +58,7 @@ func reload():
 func _on_reload_timeout() -> void:
 	loaded = true
 	global.emit_signal("update_item_info", # set a condition to null to hide it
-		my_item, # current item
+		display_name, # current item
 		str(int(loaded)) + " / " + str(1), # extra info 
 		null, # item bar max 
 		null, # item bar value 
@@ -69,7 +69,7 @@ func _on_reload_timeout() -> void:
 func selected():
 	.selected()
 	global.emit_signal("update_item_info", # set a condition to null to hide it
-		my_item, # current item
+		display_name, # current item
 		str(int(loaded)) + " / " + str(1), # extra info 
 		null, # item bar max 
 		null, # item bar value 

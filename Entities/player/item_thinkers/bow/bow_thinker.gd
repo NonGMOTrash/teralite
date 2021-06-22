@@ -29,7 +29,7 @@ func _ready():
 func selected():
 	.selected()
 	global.emit_signal("update_item_info", # set a condition to null to hide it
-		my_item, # current item
+		display_name, # current item
 		null, # extra info 
 		max_charge_time, # item bar max 
 		0.001, # item bar value 
@@ -44,7 +44,7 @@ func _process(_delta):
 	# PROBLEM_NOTE: this is bad for optimization
 	if state == IDLE: return
 	global.emit_signal("update_item_info", # set a condition to null to hide it
-		my_item, # current item
+		display_name, # current item
 		null, # extra info 
 		max_charge_time, # item bar max 
 		abs(charge.time_left - max_charge_time), # item bar value 
@@ -81,7 +81,7 @@ func primary():
 			cooldown.start()
 			state = IDLE
 #			global.emit_signal("update_item_info", # set a condition to null to hide it
-#				my_item, # current item
+#				display_name, # current item
 #				null, # extra info 
 #				null, # item bar max 
 #				null, # item bar value 
@@ -114,7 +114,7 @@ func primary():
 	
 	state = IDLE
 	global.emit_signal("update_item_info", # set a condition to null to hide it
-		my_item, # current item
+		display_name, # current item
 		null, # extra info 
 		null, # item bar max 
 		null, # item bar value 
@@ -123,7 +123,7 @@ func primary():
 
 func _on_cooldown_timeout() -> void:
 	global.emit_signal("update_item_info", # set a condition to null to hide it
-		my_item, # current item
+		display_name, # current item
 		null, # extra info 
 		max_charge_time, # item bar max 
 		0.001, # item bar value

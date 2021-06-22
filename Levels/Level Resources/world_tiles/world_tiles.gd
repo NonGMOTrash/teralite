@@ -11,6 +11,7 @@ const _full_nav = 0
 const _half_nav = 1
 
 onready var nav = $nav
+onready var low_walls = $low_walls
 
 func _on_WorldTiles_tree_entered() -> void:
 	global.nodes["world_tiles"] = self
@@ -31,6 +32,9 @@ func _ready() -> void:
 	# Replace all empty tiles with the provided navigation tile
 	for x in range(bounds_min.x, bounds_max.x):
 		for y in range(bounds_min.y, bounds_max.y):
+			if low_walls.get_cell(x, y) != -1:
+				continue
+			
 			if not get_cell(x, y) in valid_ids:
 				nav.set_cell(x, y, _full_nav)
 			elif not get_cell(x, y+1) in valid_ids:

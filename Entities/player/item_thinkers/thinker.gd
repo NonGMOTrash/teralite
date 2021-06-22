@@ -19,7 +19,8 @@ export(String) var SECONDARY_ANIM
 export(String) var RELOAD_ANIM
 export(String) var EQUIP_ANIM
 
-export var my_item = ""
+export var my_item := ""
+export var display_name := "NAME_MISSING"
 
 export(Texture) var CURSOR
 export(CURSOR_MODES) var CURSOR_MODE
@@ -93,11 +94,11 @@ func _process(_delta: float):
 		var velo = dir_vector * 150
 		velo += get_parent().velocity / 1.5
 		newItemEntity.velocity = velo
+		
 		get_parent().get_parent().add_child(newItemEntity)
 		get_parent().inventory[global.selection] = null
 		get_parent().held_item.sprite.texture = null
 		get_parent().held_item.sprite.rotation_degrees = 0
-		
 		global.emit_signal("update_item_info", # set a condition to null to hide it
 			null, # current item
 			null, # extra info 
@@ -105,6 +106,7 @@ func _process(_delta: float):
 			null, # item bar value 
 			null # bar timer duration
 		)
+		
 		if get_parent().get_name() == "player":
 			global.emit_signal("update_item_bar", get_parent().inventory)
 		
@@ -166,7 +168,7 @@ func update_cursor(custom_img = CURSOR):
 
 func selected(): 
 	global.emit_signal("update_item_info", # set a condition to null to hide it
-		my_item, # current item
+		display_name, # current item
 		null, # extra info 
 		null, # item bar max 
 		null, # item bar value 

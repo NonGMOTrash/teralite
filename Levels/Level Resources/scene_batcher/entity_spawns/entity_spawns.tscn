@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Levels/Level Resources/scene_batcher/scene_batcher.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/pistol/pistol.png" type="Texture" id=2]
@@ -38,6 +38,7 @@
 [ext_resource path="res://Entities/Item_Pickups/xbow/xbow_flat.png" type="Texture" id=36]
 [ext_resource path="res://Entities/slime/slime.png" type="Texture" id=37]
 [ext_resource path="res://Entities/queen/queen.png" type="Texture" id=38]
+[ext_resource path="res://Entities/Item_Pickups/health_potion/health_potion.png" type="Texture" id=39]
 
 [sub_resource type="TileSet" id=1]
 2/name = "player.png 2"
@@ -558,6 +559,20 @@
 44/shape_one_way_margin = 0.0
 44/shapes = [  ]
 44/z_index = 0
+45/name = "health_potion.png 45"
+45/texture = ExtResource( 39 )
+45/tex_offset = Vector2( 0, 0 )
+45/modulate = Color( 1, 1, 1, 1 )
+45/region = Rect2( 3, 2, 10, 13 )
+45/tile_mode = 0
+45/occluder_offset = Vector2( 0, 0 )
+45/navigation_offset = Vector2( 0, 0 )
+45/shape_offset = Vector2( 0, 0 )
+45/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+45/shape_one_way = false
+45/shape_one_way_margin = 0.0
+45/shapes = [  ]
+45/z_index = 0
 
 [node name="entity_spawns" instance=ExtResource( 1 )]
 position = Vector2( 4, 4 )

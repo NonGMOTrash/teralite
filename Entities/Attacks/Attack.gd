@@ -53,7 +53,7 @@ func _ready():
 		):
 			sound.queue_free()
 			components["sound_player"] = null
-	else:
+	elif SPAWN_SOUND != null:
 		var sfx = Sound.new()
 		if SPAWN_SOUND != null:
 			sfx.name = truName+"_spawn"
@@ -72,6 +72,7 @@ func _on_collision_body_entered(body: Node) -> void:
 	if body.get_name() == "world_tiles":
 		if COLLIDE_SOUND != null:
 			var sfx = Sound.new()
+			sfx.name = truName+"_collide"
 			sfx.stream = COLLIDE_SOUND
 			sound.add_sound(sfx)
 		
@@ -109,3 +110,11 @@ func _on_hitbox_hit(area, type) -> void:
 		return
 	
 	sound.add_sound(sfx)
+
+func death():
+	if DEATH_SOUND != null:
+		print("!")
+		var sfx = Sound.new()
+		sfx.name = truName+"_death"
+		sfx.stream = DEATH_SOUND
+		sound.add_sound(sfx)

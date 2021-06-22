@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/potion_break.wav-90c15c8a6b4dfa4594c80cf152487cbc.sample"
+
+[deps]
+
+source_file="res://Entities/Attacks/Projectile/thrown_health_potion/potion_break.wav"
+dest_files=[ "res://.import/potion_break.wav-90c15c8a6b4dfa4594c80cf152487cbc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

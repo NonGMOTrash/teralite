@@ -10,7 +10,8 @@ script = ExtResource( 1 )
 HELD_ITEM_TEXTURE = ExtResource( 2 )
 HELD_ITEM_ROTATION = -45.0
 EQUIP_ANIM = "spin"
-my_item = "Spear"
+my_item = "spear"
+display_name = "Spear"
 CURSOR = ExtResource( 4 )
 cooldown_time = 1.08
 

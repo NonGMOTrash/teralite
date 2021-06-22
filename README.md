@@ -188,6 +188,9 @@ check out his stuff here:
 - bolt_shoot: "bow02" by Erdie ( https://freesound.org/people/Erdie/sounds/65734/ ) licensed under CC-BY 3.0
 - bolt_hit: "Medieval crossbow bolt pass by 1" by Still North Media ( https://www.zapsplat.com/music/medieval-crossbow-bolt-pass-by-1/ ) licensed under CC0
 - bolt_blocked: "Fast swing, whoosh into a metal hit, thud or clunk, could be sword hitting shield or armor. Version 1" by ZapSplat ( https://www.zapsplat.com/music/fast-swing-whoosh-into-a-metal-hit-thud-or-clunk-could-be-sword-hitting-shield-or-armor-version-1/ ) licensed under ZapSplat standard license
+- potion_equip: "PotionDrinkLONG" by Jamius ( https://freesound.org/people/Jamius/sounds/41529/ ) licensed under CC-BY 3.0
+- potion_drink: "Potion - drink - swallow" by vlnpetiteau ( https://freesound.org/people/vlnpetiteau/sounds/574077/#comments ) licensed under CC0
+- potion_break: "Bottle Shattering" by spookymodem ( https://freesound.org/people/spookymodem/sounds/202093/ ) licensed under CC0
 
 a big thanks to all the sound authors for letting me legally steal your hard work to use in my game <3
 
@@ -227,6 +230,7 @@ github repo is here: (private until full release)
 - added the queen
 - added slimes
 - added arrow turrets and pylons
+- added health potions
 - the sword now as a counter (right click)
 - added a kills counter to level completion screen
 - fixed hitboxes and spike activation going through walls
@@ -236,7 +240,6 @@ github repo is here: (private until full release)
 - fixed status effect stacking not working
 - fixed the bow being capped at 2 damage instead of 3
 - fixed some death effects not playing
-- replaced a few of the sound effects
 - made the readme into a .html file
 
 #### Beta 2.14 Hotfix #2 (5/23/2021)

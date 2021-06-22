@@ -50,6 +50,7 @@ func _physics_process(delta):
 		#prints(DIRECTION.angle(), get_angle_to(global_position + velocity) + ROTATION_OFFSET)
 
 func death():
+	.death()
 	if death_free == true:
 		queue_free()
 		return

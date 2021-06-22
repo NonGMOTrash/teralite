@@ -6,7 +6,6 @@
 [ext_resource path="res://UI/Themes/Styles/stylebox_empty.png" type="Texture" id=4]
 
 [node name="ItemInfo" type="VBoxContainer"]
-visible = false
 anchor_left = 0.95
 anchor_top = 0.99
 anchor_right = 0.99
@@ -37,7 +36,6 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Pistol"
 align = 2
 valign = 2
-clip_text = true
 
 [node name="ItemInfo" type="Label" parent="."]
 visible = false
