@@ -10,6 +10,8 @@ export(float, -360, 360) var ROTATION_OFFSET := 0.0
 
 var has_left_src = false
 var original_force_mult
+var distance_traveled := 0.0
+var old_pos: Vector2
 
 func _init():
 	visible = false
@@ -17,6 +19,8 @@ func _init():
 	FORCE_MULT = 0.0
 
 func _ready():
+	old_pos = global_position
+	
 	# recoil
 	if SOURCE != null:
 		SOURCE.apply_force(target_pos.direction_to(SOURCE.global_position).normalized() * RECOIL)
@@ -42,7 +46,10 @@ func _physics_process(delta):
 	
 	#STATIC = false
 	
-	if global_position.distance_to(start_pos) > RANGE || velocity == Vector2.ZERO:
+	distance_traveled += global_position.distance_to(old_pos)
+	old_pos = global_position
+	print(distance_traveled)
+	if distance_traveled >= RANGE or velocity == Vector2.ZERO:
 		death_free = true
 		death()
 	

@@ -87,7 +87,7 @@ func _input(_event):
 		var stopwatch = global.nodes["stopwatch"]
 		if stopwatch == null: 
 			push_warning("could not find stopwatch")
-		elif global.level_times[lvl] > stopwatch.time:
+		elif not lvl in global.level_times or global.level_times[lvl] > stopwatch.time:
 			global.level_times[lvl] = stopwatch.time
 		
 		if not lvl in global.level_deaths:

@@ -66,7 +66,7 @@ LEVEL = "Sprint"
 STAR_REQUIREMENT = 4
 
 [node name="7" parent="YSort" index="8" instance=ExtResource( 3 )]
-position = Vector2( 464.392, 411.445 )
+position = Vector2( 464.392, 411 )
 LEVEL = "Quickstep"
 STAR_REQUIREMENT = 2
 
@@ -81,14 +81,14 @@ LEVEL = "Timber"
 STAR_REQUIREMENT = 7
 
 [node name="10" parent="YSort" index="11" instance=ExtResource( 3 )]
-position = Vector2( 120, 525 )
+position = Vector2( 120, 528 )
 LEVEL = "Gauntlet"
-STAR_REQUIREMENT = 8
+STAR_REQUIREMENT = 5
 
 [node name="11" parent="YSort" index="12" instance=ExtResource( 3 )]
 position = Vector2( 72, 405 )
 LEVEL = "Army"
-STAR_REQUIREMENT = 6
+STAR_REQUIREMENT = 8
 
 [node name="12" parent="YSort" index="13" instance=ExtResource( 3 )]
 position = Vector2( 248, 205 )

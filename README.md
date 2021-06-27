@@ -219,7 +219,6 @@ github repo is here: (private until full release)
 
 ## Beta 3.0
 
-- added water tiles
 - added the staff
 - added mages
 - added the spear
@@ -228,10 +227,12 @@ github repo is here: (private until full release)
 - added medics
 - added the crossbow
 - added the queen
+- added water tiles
 - added slimes
 - added arrow turrets and pylons
 - added health potions
 - added iron-infused potions
+- added portals
 - the sword now as a counter (right click)
 - added a kills counter to level completion screen
 - fixed hitboxes and spike activation going through walls
@@ -240,6 +241,7 @@ github repo is here: (private until full release)
 - renabled gpu snap to fix weird visual artifacts with tilemaps
 - fixed status effect stacking not working
 - fixed the bow being capped at 2 damage instead of 3
+- remade the level Timber
 - fixed some death effects not playing
 - made the readme into a .html file
 

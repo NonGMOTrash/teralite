@@ -57,3 +57,5 @@ __meta__ = {
 [node name="entity_spawns" parent="YSort" instance=ExtResource( 1 )]
 
 [node name="world_tiles" parent="YSort" instance=ExtResource( 2 )]
+
+[editable path="YSort/world_tiles"]
