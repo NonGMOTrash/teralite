@@ -41,4 +41,5 @@ func set_data():
 		"queen": get_used_cells_by_id(44),
 		"health_potion": get_used_cells_by_id(45),
 		"iron_potion": get_used_cells_by_id(46),
+		"speed_feather": get_used_cells_by_id(47),
 	}

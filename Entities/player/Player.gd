@@ -270,6 +270,7 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 			"fire": death_message = "Death by burning."
 			"slash": death_message = "Death by %s's blade." % source_name
 			"swipe": death_message = "Death by %s's dagger." % source_name
+			"stab": death_message = "Death by %s's spear." % source_name
 			"arrow": death_message = "Death by %s's arrow." % source_name
 			"magic": death_message = "Death by %s's magic." % source_name
 			_: death_message = "death message messed up, report pls ;-;"

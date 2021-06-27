@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Entities/player/item_thinkers/speed_feather_thinker/speed_feather_thinker.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Item_Pickups/speed_feather/speed_feather.png" type="Texture" id=2]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/sound_player/sound/sound.gd" type="Script" id=4]
+[ext_resource path="res://Entities/player/item_thinkers/speed_feather_thinker/speed_feather_use.wav" type="AudioStream" id=5]
+
+[node name="speed_feather_thinker" type="Node"]
+script = ExtResource( 1 )
+HELD_ITEM_TEXTURE = ExtResource( 2 )
+my_item = "speed_feather"
+display_name = "Speed Feather"
+
+[node name="sound_player" parent="." instance=ExtResource( 3 )]
+
+[node name="use" type="AudioStreamPlayer2D" parent="sound_player"]
+stream = ExtResource( 5 )
+script = ExtResource( 4 )
+AUTO_PLAY = false

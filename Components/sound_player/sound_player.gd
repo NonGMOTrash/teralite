@@ -103,12 +103,11 @@ func play_sound(sound_name:String) -> void:
 		if sfx is Sound:
 			sfx.global_position = get_position_for(sfx)
 	else:
-		push_warning("could not find sound effect '"+sound_name+"' in sound_player")
-		breakpoint
+		push_error("could not find sound effect '"+sound_name+"' in sound_player")
 
 func get_position_for(sound:Sound) -> Vector2:
 	var src = get_parent()
-	if src is Thinker: src = src.get_parent()
+	if not src is Entity: src = src.get_parent()
 	if src is Entity:
 		return src.global_position
 	else:

@@ -96,22 +96,7 @@ func _process(_delta: float):
 		velo += get_parent().velocity / 1.5
 		newItemEntity.velocity = velo
 		
-		get_parent().get_parent().add_child(newItemEntity)
-		get_parent().inventory[global.selection] = null
-		get_parent().held_item.sprite.texture = null
-		get_parent().held_item.sprite.rotation_degrees = 0
-		global.emit_signal("update_item_info", # set a condition to null to hide it
-			null, # current item
-			null, # extra info 
-			null, # item bar max 
-			null, # item bar value 
-			null # bar timer duration
-		)
-		
-		if get_parent().get_name() == "player":
-			global.emit_signal("update_item_bar", get_parent().inventory)
-		
-		queue_free()
+		delete()
 		return
 	
 	match PRIMARY_ACTION_MODE:
@@ -193,7 +178,6 @@ func selected():
 	if RESET_HELD_ITEM_FLIPPING == true:
 		player.components["held_item"].reversed = false
 		player.components["held_item"].reversed = false
-		print("!")
 
 func unselected():
 	pass
@@ -231,3 +215,20 @@ func _update_held_item():
 func _update_cursor_on_unpause():
 	if get_parent().inventory[global.selection] == my_item.to_lower():
 		update_cursor()
+
+func delete():
+	get_parent().inventory[global.selection] = null
+	get_parent().held_item.sprite.texture = null
+	get_parent().held_item.sprite.rotation_degrees = 0
+	global.emit_signal("update_item_info", # set a condition to null to hide it
+		null, # current item
+		null, # extra info 
+		null, # item bar max 
+		null, # item bar value 
+		null # bar timer duration
+	)
+	
+	if get_parent().get_name() == "player":
+		global.emit_signal("update_item_bar", get_parent().inventory)
+	
+	queue_free()

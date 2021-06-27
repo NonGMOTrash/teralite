@@ -55,11 +55,11 @@ helo, thanks for downloading
 ## can i share this game with other people?
 please don't, i wanna keep this game sorta secret for now. if you violate this policy, i will do absolutely nothing except be very very sad. however when the game is out, please share this game with EVERYONE. just like, constantly
 
-## .pck is missing error
-the .exe has to be in the same folder as the .pck or it won't work. if you want to have access to the game somewhere else, just make a shortcut of the .exe file
+## .pck not found at path '.' error
+teralite.exe has to be in the same folder as the teralite.pck or it won't work. if you want to have access to the game somewhere else, just make a shortcut of teralite.exe
 
 ## particles not working
-if you're using a cpu with integrated graphics that doesn't support OpenGL ES 3, the game will fallback to OpenGL ES 2. this mostly works okay, but the game will run slower and particle effects won't work. sorry! i might make a seperate version that uses cpu-based particles, i'd be a hassle tho so won't happen til the full release if at all
+if you're using a CPU with integrated graphics that doesn't support OpenGL ES 3, the game will fallback to OpenGL ES 2. this mostly works okay, but the game will run slower and particle effects won't work. sorry! i might make a "CPU particles" option in the future, but it would be a hassle because i would have to make a 2nd version of every particle effect
 
 ## old saves dissappeared
 due to the name change from project epsilon to teralite in beta 2.12, the game won't be able to find the folder where old game data was stored.    
@@ -191,6 +191,8 @@ check out his stuff here:
 - potion_equip: "PotionDrinkLONG" by Jamius ( https://freesound.org/people/Jamius/sounds/41529/ ) licensed under CC-BY 3.0
 - potion_drink: "Potion - drink - swallow" by vlnpetiteau ( https://freesound.org/people/vlnpetiteau/sounds/574077/#comments ) licensed under CC0
 - potion_break: "Bottle Shattering" by spookymodem ( https://freesound.org/people/spookymodem/sounds/202093/ ) licensed under CC0
+- speed_feather_use: "Soft Wind" by Animate_42 ( https://freesound.org/people/Animate_42/sounds/502883/ ) licensed under CC0
+- teleport: "teleport" by Leszek_Szary ( https://freesound.org/people/Leszek_Szary/sounds/172206/ ) licensed under CC0
 
 a big thanks to all the sound authors for letting me legally steal your hard work to use in my game <3
 
@@ -232,13 +234,14 @@ github repo is here: (private until full release)
 - added arrow turrets and pylons
 - added health potions
 - added iron-infused potions
+- added speed feathers
 - added portals
 - the sword now as a counter (right click)
 - added a kills counter to level completion screen
 - fixed hitboxes and spike activation going through walls
 - added speed, slowness, regeneration, and resistance status effects
 - fixed level times and perfections not saving properly
-- renabled gpu snap to fix weird visual artifacts with tilemaps
+- renabled GPU snap to fix weird visual artifacts with tilemaps
 - fixed status effect stacking not working
 - fixed the bow being capped at 2 damage instead of 3
 - remade the level Timber

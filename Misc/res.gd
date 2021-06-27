@@ -43,6 +43,7 @@ const data := {
 	"xbow": "res://Entities/Item_Pickups/xbow/xbow.tscn",
 	"health_potion": "res://Entities/Item_Pickups/health_potion/health_potion.tscn",
 	"iron_potion": "res://Entities/Item_Pickups/iron_potion/iron_potion.tscn",
+	"speed_feather": "res://Entities/Item_Pickups/speed_feather/speed_feather.tscn",
 	
 	# melees
 	"slash": "res://Entities/Attacks/Melee/slash/slash.tscn",
@@ -122,6 +123,7 @@ const data := {
 	"xbow_texture": "res://Entities/Item_Pickups/xbow/xbow_flat.png",
 	"health_potion_texture": "res://Entities/Item_Pickups/health_potion/health_potion.png",
 	"iron_potion_texture": "res://Entities/Item_Pickups/iron_potion/iron_potion.png",
+	"speed_feather_texture": "res://Entities/Item_Pickups/speed_feather/speed_feather.png",
 }
 
 func allocate(asset:String) -> void:

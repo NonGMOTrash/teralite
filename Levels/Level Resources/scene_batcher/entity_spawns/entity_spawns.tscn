@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Levels/Level Resources/scene_batcher/scene_batcher.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/pistol/pistol.png" type="Texture" id=2]
@@ -40,6 +40,7 @@
 [ext_resource path="res://Entities/queen/queen.png" type="Texture" id=38]
 [ext_resource path="res://Entities/Item_Pickups/health_potion/health_potion.png" type="Texture" id=39]
 [ext_resource path="res://Entities/Item_Pickups/iron_potion/iron_potion.png" type="Texture" id=40]
+[ext_resource path="res://Entities/Item_Pickups/speed_feather/speed_feather.png" type="Texture" id=41]
 
 [sub_resource type="TileSet" id=1]
 2/name = "player.png 2"
@@ -588,6 +589,20 @@
 46/shape_one_way_margin = 0.0
 46/shapes = [  ]
 46/z_index = 0
+47/name = "speed_feather.png 47"
+47/texture = ExtResource( 41 )
+47/tex_offset = Vector2( 0, 0 )
+47/modulate = Color( 1, 1, 1, 1 )
+47/region = Rect2( 6, 3, 5, 11 )
+47/tile_mode = 0
+47/occluder_offset = Vector2( 0, 0 )
+47/navigation_offset = Vector2( 0, 0 )
+47/shape_offset = Vector2( 0, 0 )
+47/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+47/shape_one_way = false
+47/shape_one_way_margin = 0.0
+47/shapes = [  ]
+47/z_index = 0
 
 [node name="entity_spawns" instance=ExtResource( 1 )]
 position = Vector2( 4, 4 )
