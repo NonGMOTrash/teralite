@@ -13,6 +13,7 @@ export(Vector2) var HELD_ITEM_OFFSET
 export(Vector2) var HELD_ITEM_ANCHOR = Vector2(8, 0)
 export(float, -360.0, 360.0) var HELD_ITEM_ROTATION := 0.0
 export(Vector2) var HELD_ITEM_FRAMES := Vector2(1, 1)
+export(bool) var RESET_HELD_ITEM_FLIPPING := true
 
 export(String) var PRIMARY_ANIM
 export(String) var SECONDARY_ANIM
@@ -188,6 +189,11 @@ func selected():
 		player.components["held_item"].sprite.frame = max_frame
 	player.components["held_item"].sprite.hframes = HELD_ITEM_FRAMES.x
 	player.components["held_item"].sprite.vframes = HELD_ITEM_FRAMES.y
+	player.components["held_item"].animation.stop()
+	if RESET_HELD_ITEM_FLIPPING == true:
+		player.components["held_item"].reversed = false
+		player.components["held_item"].reversed = false
+		print("!")
 
 func unselected():
 	pass

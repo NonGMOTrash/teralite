@@ -39,12 +39,18 @@ tracks/1/keys = {
 z_index = 5
 collision_mask = 0
 script = ExtResource( 2 )
+STATIC = true
+TOP_SPEED = 0
+FORCE_MULT = 0.0
+INANIMATE = true
+truName = "portal"
 
 [node name="blue_portal" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 82
 
 [node name="Sprite" type="Sprite" parent="blue_portal"]
+rotation = 1.5708
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="blue_portal"]
@@ -55,6 +61,7 @@ collision_layer = 0
 collision_mask = 82
 
 [node name="Sprite" type="Sprite" parent="orange_portal"]
+rotation = 1.5708
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="orange_portal"]

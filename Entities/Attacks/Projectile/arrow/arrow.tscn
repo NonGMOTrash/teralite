@@ -30,7 +30,6 @@ HIT_SOUND = ExtResource( 5 )
 KILL_SOUND = ExtResource( 5 )
 BLOCKED_SOUND = SubResource( 1 )
 COLLIDE_SOUND = ExtResource( 3 )
-DEATH_SOUND = ExtResource( 3 )
 SPEED = 180
 ONHIT_SPEED_MULTIPLIER = 0.45
 MIN_DAM_SPEED = 15
