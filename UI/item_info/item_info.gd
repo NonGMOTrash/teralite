@@ -17,13 +17,13 @@ func update_item_info(current_item, extra_info, item_bar_max, item_bar_value, ba
 		item_name.text = current_item
 	else:
 		item_name.visible = false
-		
+
 	if extra_info != null:
 		info.visible = true
 		info.text = extra_info
 	else:
 		info.visible = false
-	
+
 	if item_bar_max != null && item_bar_max > 0 && item_bar_value != null && item_bar_value > 0:
 		bar_container.visible = true
 		bar.max_value = item_bar_max
@@ -31,7 +31,7 @@ func update_item_info(current_item, extra_info, item_bar_max, item_bar_value, ba
 		bar.step = item_bar_max / 100
 	else:
 		bar_container.visible = false
-	
+
 	if bar_timer_duration != null && bar_timer_duration > 0:
 		timer.wait_time = bar_timer_duration
 		timer.start()

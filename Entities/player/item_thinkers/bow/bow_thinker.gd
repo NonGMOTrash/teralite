@@ -30,9 +30,9 @@ func selected():
 	.selected()
 	global.emit_signal("update_item_info", # set a condition to null to hide it
 		display_name, # current item
-		null, # extra info 
-		max_charge_time, # item bar max 
-		0.001, # item bar value 
+		null, # extra info
+		max_charge_time, # item bar max
+		0.001, # item bar value
 		null # bar timer duration
 		)
 
@@ -45,9 +45,9 @@ func _process(_delta):
 	if state == IDLE: return
 	global.emit_signal("update_item_info", # set a condition to null to hide it
 		display_name, # current item
-		null, # extra info 
-		max_charge_time, # item bar max 
-		abs(charge.time_left - max_charge_time), # item bar value 
+		null, # extra info
+		max_charge_time, # item bar max
+		abs(charge.time_left - max_charge_time), # item bar value
 		null # bar timer duration
 	)
 
@@ -82,9 +82,9 @@ func primary():
 			state = IDLE
 #			global.emit_signal("update_item_info", # set a condition to null to hide it
 #				display_name, # current item
-#				null, # extra info 
-#				null, # item bar max 
-#				null, # item bar value 
+#				null, # extra info
+#				null, # item bar max
+#				null, # item bar value
 #				null # bar timer duration
 #			)
 			return
@@ -115,17 +115,17 @@ func primary():
 	state = IDLE
 	global.emit_signal("update_item_info", # set a condition to null to hide it
 		display_name, # current item
-		null, # extra info 
-		null, # item bar max 
-		null, # item bar value 
+		null, # extra info
+		null, # item bar max
+		null, # item bar value
 		null # bar timer duration
 	)
 
 func _on_cooldown_timeout() -> void:
 	global.emit_signal("update_item_info", # set a condition to null to hide it
 		display_name, # current item
-		null, # extra info 
-		max_charge_time, # item bar max 
+		null, # extra info
+		max_charge_time, # item bar max
 		0.001, # item bar value
 		null # bar timer duration
 		)

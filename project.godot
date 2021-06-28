@@ -336,6 +336,10 @@ locale_filter=[ 0, [  ] ]
 
 file_logging/enable_file_logging=true
 
+[node]
+
+name_num_separator=2
+
 [rendering]
 
 quality/driver/fallback_to_gles2=true

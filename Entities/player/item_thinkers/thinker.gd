@@ -46,23 +46,23 @@ func _ready():
 	if my_item == "":
 		push_error("my_item was not set")
 		queue_free()
-	
+
 	if not my_item in res.data:
 		push_error("%s is not in res.gd" % my_item)
-	
+
 	if get_parent().truName != "player":
 		push_error("thinker's parent was not a player")
 		queue_free()
-	
+
 	get_parent().connect("swapped_item", self, "_check_if_selected")
-	
+
 	global.connect("unpaused", self,"_update_cursor_on_unpause")
-	
+
 	if get_parent().inventory[global.selection] == my_item: selected()
 	if get_parent().get_name() == "player":
 		global.emit_signal("update_item_bar", get_parent().inventory)
-	
-	if get_parent().inventory[global.selection] == my_item.to_lower(): 
+
+	if get_parent().inventory[global.selection] == my_item.to_lower():
 		selected()
 	elif EQUIP_SOUND != null:
 		sound_player.create_sound(EQUIP_SOUND)
@@ -78,21 +78,21 @@ func _check_if_selected(swapped_item) -> void:
 # work otherwise. i guess godot doesn't count holding a mouse button as an input. i tried fixing this
 # by having a holding_primary variable but i couldn't get it to work.
 func _process(_delta: float):
-	if global.selection != slot: 
+	if global.selection != slot:
 		return
-	
+
 	pre_input_action()
-	
+
 	if Input.is_action_just_pressed("reload_item"):
 		reload()
 		return
-	
+
 	if get_ready() == false and auto_ready_check == true: return
-	
+
 	if Input.is_action_pressed("drop_item"):
 		if get_parent().inventory[global.selection] == null: return
 		var new_item_entity = res.aquire_entity(my_item)
-		
+
 		if new_item_entity == null: return
 		var dir_vector = get_parent().global_position.direction_to(get_parent().get_global_mouse_position())
 		new_item_entity.global_position = get_parent().global_position #+ dir_vector * 16
@@ -101,21 +101,21 @@ func _process(_delta: float):
 		velo += get_parent().velocity / 1.5
 		new_item_entity.velocity = velo
 		global.nodes["ysort"].add_child(new_item_entity)
-		
+
 		delete()
 		return
-	
+
 	match PRIMARY_ACTION_MODE:
 		ACTION_MODES.SEMI:
-			if Input.is_action_just_pressed("primary_action"): 
+			if Input.is_action_just_pressed("primary_action"):
 				primary()
 				return
 		ACTION_MODES.AUTOMATIC:
-			if Input.is_action_pressed("primary_action"): 
+			if Input.is_action_pressed("primary_action"):
 				primary()
 				return
 		ACTION_MODES.RELEASE:
-			if Input.is_action_just_released("primary_action"): 
+			if Input.is_action_just_released("primary_action"):
 				primary()
 				return
 		ACTION_MODES.HOLD:
@@ -125,18 +125,18 @@ func _process(_delta: float):
 			):
 				primary()
 				return
-	
+
 	match SECONDARY_ACTION_MODE:
 		ACTION_MODES.SEMI:
-			if Input.is_action_just_pressed("secondary_action"): 
+			if Input.is_action_just_pressed("secondary_action"):
 				secondary()
 				return
 		ACTION_MODES.AUTOMATIC:
-			if Input.is_action_pressed("secondary_action"): 
+			if Input.is_action_pressed("secondary_action"):
 				secondary()
 				return
 		ACTION_MODES.RELEASE:
-			if Input.is_action_just_released("secondary_action"): 
+			if Input.is_action_just_released("secondary_action"):
 				secondary()
 				return
 		ACTION_MODES.HOLD:
@@ -158,24 +158,24 @@ func update_cursor(custom_img = CURSOR):
 		CURSOR_MODES.POINTER: hotspot = Vector2.ZERO
 	Input.set_custom_mouse_cursor(img, Input.CURSOR_ARROW, hotspot)
 
-func selected(): 
+func selected():
 	global.emit_signal("update_item_info", # set a condition to null to hide it
 		display_name, # current item
-		null, # extra info 
-		null, # item bar max 
-		null, # item bar value 
+		null, # extra info
+		null, # item bar max
+		null, # item bar value
 		null # bar timer duration
 		)
-	
+
 	if get_parent().inventory[global.selection] == my_item.to_lower():
 		update_cursor()
 		_update_held_item()
-	
+
 	if EQUIP_SOUND != null:
 		sound_player.create_sound(EQUIP_SOUND)
 	if EQUIP_ANIM != "":
 		player.components["held_item"].animation.play(EQUIP_ANIM)
-	
+
 	if player.components["held_item"].sprite.frame > max_frame:
 		player.components["held_item"].sprite.frame = max_frame
 	player.components["held_item"].sprite.hframes = HELD_ITEM_FRAMES.x
@@ -191,7 +191,7 @@ func unselected():
 func pre_input_action():
 	pass
 
-func primary(): 
+func primary():
 	if PRIMARY_ANIM != "":
 		get_parent().components["held_item"].animation.play(PRIMARY_ANIM)
 
@@ -215,7 +215,7 @@ func _update_held_item():
 	if HELD_ITEM_TEXTURE == null:
 		push_error("HELD_ITEM_TEXTURE is null")
 		HELD_ITEM_TEXTURE = load("res://Misc/generic.png")
-	
+
 	get_parent().components["held_item"].sprite.texture = HELD_ITEM_TEXTURE
 	get_parent().components["held_item"].sprite.rotation_degrees = HELD_ITEM_ROTATION
 	get_parent().components["held_item"].anchor.position = HELD_ITEM_ANCHOR
@@ -230,13 +230,13 @@ func delete():
 	get_parent().held_item.sprite.rotation_degrees = 0
 	global.emit_signal("update_item_info", # set a condition to null to hide it
 		null, # current item
-		null, # extra info 
-		null, # item bar max 
-		null, # item bar value 
+		null, # extra info
+		null, # item bar max
+		null, # item bar value
 		null # bar timer duration
 	)
-	
+
 	if get_parent().get_name() == "player":
 		global.emit_signal("update_item_bar", get_parent().inventory)
-	
+
 	queue_free()

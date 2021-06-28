@@ -14,77 +14,77 @@ func _on_sound_player_tree_entered():
 		get_parent().components["sound_player"] = self
 
 func _ready():
-	if get_child_count() == 0 and FREE_WHEN_EMPTY == true: 
+	if get_child_count() == 0 and FREE_WHEN_EMPTY == true:
 		queue_free()
 		return
-	
+
 	for child in get_children():
 		if not child is Sound and not child is Global_Sound:
 			continue
-		
+
 		sounds[child.get_name()] = child
-		
+
 		child.stop()
-		
+
 		if child.MODE != MODES.STANDBY:
 			child.connect("finished", self, "sound_finished", [child.name])
-		
+
 		remove_child(child)
-		
+
 		if child.SCENE_PERSIST == true:
 			global.add_child(child)
 		else:
 			get_tree().current_scene.call_deferred("add_child", child)
-		
+
 		if child.autoplay == true:
 			child.play()
-		
+
 		yield(child, "tree_entered")
-		
+
 		if child is Sound:
 			child.global_position = get_position_for(child)
 
 func sound_finished(sound_name):
 	var sound = sounds[sound_name]
-	
+
 	if sound.MODE == MODES.ONESHOT:
 		sound.queue_free()
 		sounds.erase(sound_name)
 	elif sound.MODE == MODES.REPEAT:
 		sound.play()
-	
+
 	if FREE_WHEN_EMPTY == true and sounds.size() == 0:
 		queue_free()
 
 func add_sound(audioplayer:Node):
 	if not audioplayer is Sound and not audioplayer is Global_Sound:
 		push_error("sound_player add_sound was given a node that wasn't a Sound or Global_Sound")
-	 
+
 	if audioplayer.stream == null:
 		push_error("a Sound / Global_Sound added to sound_player did not have a AudioStream")
 		return
-	
+
 	if audioplayer.SCENE_PERSIST == true:
 		global.add_child(audioplayer)
 	else:
 		get_tree().current_scene.add_child(audioplayer)
-	
+
 	if audioplayer.autoplay == true:
 		audioplayer.play()
-	
+
 	if audioplayer is Sound and not audioplayer is Global_Sound:
 		audioplayer.global_position = get_position_for(audioplayer)
 
 func create_sound(
-	stream: AudioStream, 
+	stream: AudioStream,
 	global_sound = false,
-	mode = Sound.MODES.ONESHOT, 
-	auto_play = true, 
-	scene_persist = false, 
+	mode = Sound.MODES.ONESHOT,
+	auto_play = true,
+	scene_persist = false,
 	auto_set_physical = true,
 	volume = 0.0
 	):
-		var sfx 
+		var sfx
 		if global_sound == false: sfx = Sound.new()
 		else: sfx = Global_Sound.new()
 		sfx.stream = stream
@@ -120,7 +120,7 @@ func _on_sound_player_tree_exiting() -> void:
 		if sound.is_inside_tree() == false:
 			sound.queue_free()
 			continue
-		
+
 		if not sound.is_connected("finished", sound, "queue_free") and not sound.MODE == sound.MODES.REPEATING:
 			sound.connect("finished", sound, "queue_free")
 		elif sound.MODE == sound.MODES.STANDBY and sound.playing == false:

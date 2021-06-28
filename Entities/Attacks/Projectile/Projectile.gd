@@ -20,7 +20,7 @@ func _init():
 
 func _ready():
 	old_pos = global_position
-	
+
 	# recoil
 	if SOURCE != null:
 		SOURCE.apply_force(target_pos.direction_to(SOURCE.global_position).normalized() * RECOIL)
@@ -39,20 +39,21 @@ func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	visible = true
 
 func _physics_process(delta):
+	prints(get_name(), input_vector)
 	if visible == false: return
-	
+
 	# acceleration
 	velocity = velocity.move_toward(Vector2.ZERO, -(ACCELERATION) * delta)
-	
+
 	#STATIC = false
-	
+
 	distance_traveled += global_position.distance_to(old_pos)
 	old_pos = global_position
 	print(distance_traveled)
 	if distance_traveled >= RANGE or velocity == Vector2.ZERO:
 		death_free = true
 		death()
-	
+
 	if auto_rotate == true:
 		rotation += get_angle_to(global_position + velocity) + deg2rad(ROTATION_OFFSET)
 		#prints(DIRECTION.angle(), get_angle_to(global_position + velocity) + ROTATION_OFFSET)
@@ -62,23 +63,23 @@ func death():
 	if death_free == true:
 		queue_free()
 		return
-	
+
 	velocity = velocity * ONHIT_SPEED_MULTIPLIER
 	emit_signal("death")
-	
-	if components["hitbox"] != null: 
+
+	if components["hitbox"] != null:
 		hitbox.queue_free()
 
 func _on_hitbox_hit(area: Area2D, type: String) -> void:
 	._on_hitbox_hit(area, type)
-	
+
 	if visible == false: return
 	if global.get_relation(self, area.get_parent()) == "friendly": return
 	#if get_speed() < MIN_DAM_SPEED: return
 	if "ONHIT_SELF_DAMAGE" in area.get_parent(): return
-	
+
 	stats.change_health(0, -(ONHIT_SELF_DAMAGE))
-	
+
 	VELOCITY_ARMOR -= ONHIT_SELF_DAMAGE
 	if VELOCITY_ARMOR < 1:
 		FORCE_MULT = original_force_mult

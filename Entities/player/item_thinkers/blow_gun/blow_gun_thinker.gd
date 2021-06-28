@@ -16,7 +16,7 @@ func get_ready():
 func primary():
 	cooldown.start()
 	quick_spawn("blow_dart")
-	
+
 	global.emit_signal("update_item_info", # set a condition to null to hide it
 		display_name, # current item
 		null, # extra info
@@ -28,8 +28,8 @@ func primary():
 func _on_cooldown_timeout() -> void:
 	global.emit_signal("update_item_info", # set a condition to null to hide it
 		display_name, # current item
-		null, # extra info 
-		null, # item bar max 
-		null, # item bar value 
+		null, # extra info
+		null, # item bar max
+		null, # item bar value
 		null # bar timer duration
 	)

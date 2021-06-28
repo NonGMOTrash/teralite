@@ -33,16 +33,16 @@ func primary():
 
 func secondary():
 	.secondary()
-	
+
 	cooldown.wait_time = animation.get_animation("counter").length + counter_cooldown
 	cooldown.start()
-	
+
 	player.components["stats"].add_status_effect(
 		"slowness", # effect
 		animation.get_animation("counter").length, # duration
 		counter_slowness_lvl # level
 	)
-	
+
 	var hitboxes = counter.get_overlapping_areas()
 	if hitboxes.size() == 0:
 		animation.play("counter")
@@ -53,10 +53,10 @@ func secondary():
 			if counter.global_position.distance_to(hitbox.global_position) < distance:
 				closest_hitbox = hitbox
 				distance = counter.global_position.distance_to(hitbox.global_position)
-		
+
 		can_counter = true
 		_on_counter_area_entered(closest_hitbox)
-	
+
 	sound_player.play_sound("counter_ready")
 	player_sprite.play_effect("invincibility", 0.25/0.4)
 
@@ -68,22 +68,22 @@ func set_counter_window(to: bool):
 func _on_counter_area_entered(area: Area2D) -> void:
 	if can_counter == false:
 		return
-	
+
 	can_counter = false
-	
+
 	var area_entity: Entity = area.get_parent()
 	if area_entity is Attack:
 		area_entity.death()
-	
+
 	var slash = res.aquire_melee("slash")
 	slash.setup(player, area.global_position)
 	global.nodes["ysort"].call_deferred("add_child", slash)
-	
+
 	sound_player.play_sound("counter_success")
-	
+
 	cooldown.wait_time = 0.1
 	cooldown.start()
-	
+
 	player.components["stats"].add_status_effect(
 		"slowness", # effect
 		-animation.get_animation("counter").length, # duration

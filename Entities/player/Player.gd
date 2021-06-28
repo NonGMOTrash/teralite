@@ -44,9 +44,9 @@ func _ready():
 #	var item = res.aquire_entity("xbow")
 #	item.global_position = global_position
 #	get_parent().call_deferred("add_child", item)
-	
+
 #	stats.add_status_effect("poison", 60, 1)
-	
+
 	dash_buffer *= (1.0/60.0)
 	global.selection = 0
 	iTimer.start()
@@ -59,12 +59,12 @@ func _ready():
 	else:
 		health_bar.update_bar(0, 0, 0)
 		health_bar.visible = true
-	
+
 	if get_parent().owner == null: return
-	
+
 	global.emit_signal("update_health")
 	global.update_cursor()
-	
+
 	connect("swapped_item", self, "swapped_item")
 	swapped_item(null)
 
@@ -73,13 +73,13 @@ func _physics_process(_delta):
 		sprite.flip_h = false
 	else:
 		sprite.flip_h = true
-	
+
 	if not animation.current_animation == "dash":
 		if input_vector == Vector2.ZERO:
 			animation.play("stand")
 		elif rooted == false:
 			animation.play("run")
-	
+
 	if hurtbox.iTimer.time_left > 0:
 		sprite.get_material().set_shader_param("active", true)
 	else:
@@ -90,45 +90,45 @@ func dash(direction: Vector2 = input_vector) -> void:
 		animation.play("dash")
 		apply_force(dash_strength * direction.normalized())
 		dash_cooldown.start()
-		
+
 		# particle effect
 		var particles = dust_particles.instance()
 		particles.rotation_degrees = rad2deg(direction.angle())
 		global.nodes["ysort"].call_deferred("add_child", particles)
 		yield(particles, "ready")
 		particles.global_position = global_position
-	
+
 	buffered_dash = Vector2.ZERO
 
-func _input(_event: InputEvent) -> void: 
+func _input(_event: InputEvent) -> void:
 	# dash
 	if Input.is_action_just_pressed("dash"):
 		if dash_cooldown.time_left == 0:
 			dash()
 		elif dash_cooldown.time_left <= dash_buffer:
 			buffered_dash = input_vector
-	
+
 	# for item switching:
 	if get_name() == "player":
-		if Input.is_action_just_pressed("swap_right"): 
+		if Input.is_action_just_pressed("swap_right"):
 			global.selection += 1
 			if global.selection > 2: global.selection = 0
 			emit_signal("swapped_item", inventory[global.selection])
 			global.update_cursor()
-		if Input.is_action_just_pressed("swap_left"): 
+		if Input.is_action_just_pressed("swap_left"):
 			global.selection -= 1
 			if global.selection < 0: global.selection = 2
 			emit_signal("swapped_item", inventory[global.selection])
 			global.update_cursor()
-		if Input.is_action_just_pressed("hotkey_left"): 
+		if Input.is_action_just_pressed("hotkey_left"):
 			global.selection = 0
 			emit_signal("swapped_item", inventory[global.selection])
 			global.update_cursor()
-		if Input.is_action_just_pressed("hotkey_mid"): 
+		if Input.is_action_just_pressed("hotkey_mid"):
 			global.selection = 1
 			emit_signal("swapped_item", inventory[global.selection])
 			global.update_cursor()
-		if Input.is_action_just_pressed("hotkey_right"): 
+		if Input.is_action_just_pressed("hotkey_right"):
 			global.selection = 2
 			emit_signal("swapped_item", inventory[global.selection])
 			global.update_cursor()
@@ -137,9 +137,9 @@ func swapped_item(new_item):
 	if new_item == null:
 		global.emit_signal("update_item_info", # set a condition to null to hide it
 			null, # current item
-			null, # extra info 
-			null, # item bar max 
-			null, # item bar value 
+			null, # extra info
+			null, # item bar max
+			null, # item bar value
 			null # bar timer duration
 		)
 		held_item.sprite.texture = null
@@ -147,10 +147,10 @@ func swapped_item(new_item):
 
 func death():
 	emit_signal("death")
-	
+
 	if force_death_msg == false:
 		yield(self, "updated_death_message")
-	
+
 	for i in 6:
 		if inventory[i] != null:
 			var item = res.aquire(inventory[i]).instance()
@@ -158,18 +158,18 @@ func death():
 			item.global_position = global_position
 			item.velocity = Vector2(rand_range(-1.0, 1.0), rand_range(-1.0, 1.0)).normalized() * 100
 			get_parent().call_deferred("add_child", item)
-	
-	if name == "player": 
+
+	if name == "player":
 		var found_replacement = false
-		
+
 		for child in get_parent().get_children(): # PROBLEM_NOTE: kinda bad way to do this, use a group
 			if child is Entity and not child == self and child.is_queued_for_deletion() == false:
 				if child.truName == "player":
-					
+
 					if global.settings["auto_restart"] == true:
 						child.death()
 						continue
-					
+
 					name = "dedplayer"
 					child.name = "player"
 					child.components["health_bar"].visible = false
@@ -178,12 +178,12 @@ func death():
 					global.emit_signal("update_item_bar", child.inventory)
 					global.emit_signal("update_item_info", # set a condition to null to hide it
 						child.inventory[global.selection], # current item
-						null, # extra info 
-						null, # item bar max 
-						null, # item bar value 
+						null, # extra info
+						null, # item bar max
+						null, # item bar value
 						null # bar timer duration
 					)
-					
+
 					var my_death = player_death.instance()
 					if name == "player":
 						my_death.simple_mode = false
@@ -191,20 +191,20 @@ func death():
 					my_death.death_message = death_message
 					get_parent().add_child(my_death)
 					my_death.global_position = global_position
-					
+
 					found_replacement = true
 					queue_free()
 					return
-		
+
 		if found_replacement == true: return
-		
+
 		if not global.level_deaths.has(get_tree().current_scene.get_name()):
 			global.level_deaths[get_tree().current_scene.get_name()] = 0
 		global.level_deaths[get_tree().current_scene.get_name()] += 1
-		
+
 		# hide ui
 		global.nodes["stopwatch"].set_pause(true)
-		
+
 		var elements = [
 			global.nodes["health_ui"],
 			global.nodes["item_bar"],
@@ -213,11 +213,11 @@ func death():
 #		elements.append(global.nodes["health_ui"])
 #		elements.append(global.nodes["item_bar"])
 #		elements.append(global.nodes["item_info"])
-		
+
 		for element in elements:
 			if element != null:
 				element.visible = false
-	
+
 	var my_death = player_death.instance()
 	if name == "player" and global.nodes["level_completed"].visible == false:
 		my_death.simple_mode = false
@@ -225,21 +225,21 @@ func death():
 	my_death.death_message = death_message
 	get_parent().add_child(my_death)
 	my_death.global_position = global_position
-	
+
 	queue_free()
 
 func _on_stats_health_changed(_type, result, net) -> void:
-	if result != "heal" and result != "blocked": 
+	if result != "heal" and result != "blocked":
 		if result == "hurt" and name == "player":
 			global.nodes["camera"].shake(5, 15, 0.2)
 			OS.delay_msec(34)
-		
+
 		if net < 0:
 			damage_taken += abs(net)
-		
-		if global.settings["perfection_mode"] == true: 
+
+		if global.settings["perfection_mode"] == true:
 			death()
-	
+
 	global.emit_signal("update_health")
 
 func _on_hurtbox_got_hit(by_area, _type) -> void:
@@ -251,7 +251,7 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 	if entity is Attack and get_node_or_null(entity.SOURCE_PATH) != null:
 		source = entity.SOURCE
 		source_name = source.truName
-	
+
 	if entity_name == "player" or source_name == "player":
 		death_message = "Death by stupidity."
 	elif entity.truName == "player":
@@ -274,9 +274,9 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 			"arrow": death_message = "Death by %s's arrow." % source_name
 			"magic": death_message = "Death by %s's magic." % source_name
 			_: death_message = "death message messed up, report pls ;-;"
-	
+
 	death_message = death_message.replace("_", " ")
-	
+
 	emit_signal("updated_death_message")
 
 func _on_dash_cooldown_timeout() -> void:

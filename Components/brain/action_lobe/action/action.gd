@@ -56,6 +56,8 @@ func _ready():
 	else:
 		cooldown_timer.wait_time = COOLDOWN
 		cooldown_timer.start()
+		if GLOBAL_COOLDOWN == true:
+			action_lobe.on_global_cooldown = true
 	
 	if target_type == relations.myself:
 		action_lobe.acts_on_self = true

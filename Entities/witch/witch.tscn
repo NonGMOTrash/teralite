@@ -1,11 +1,144 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Entities/witch/witch.gd" type="Script" id=1]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/entity_push/entity_push.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Components/brain/movement_lobe/spring/spring.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Entities/witch/witch.png" type="Texture" id=14]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 6.97983
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 8.97593
+
+[sub_resource type="Animation" id=4]
+resource_name = "attack"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 0.25, 4, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.15, 1.15 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack"
+} ]
+}
 
 [node name="witch" type="KinematicBody2D"]
+collision_layer = 2
 script = ExtResource( 1 )
+ACCELERATION = 350
+SLOWDOWN = 800
+TOP_SPEED = 50
+FORCE_MULT = 1.1
+truName = "witch"
+faction = "blue_kingdom"
+attack_cooldown = 1.75
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
-MAX_HEALTH = 2
-HEALTH = 2
+
+[node name="entity_sprite" parent="." instance=ExtResource( 4 )]
+material = SubResource( 1 )
+texture = ExtResource( 14 )
+auto_flip_mode = 2
+
+[node name="shadow" parent="entity_sprite" index="0"]
+position = Vector2( 0, 1 )
+
+[node name="entity_push" parent="." instance=ExtResource( 3 )]
+visible = false
+strength = 7
+
+[node name="CollisionShape2D" parent="entity_push" index="0"]
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 2 )
+
+[node name="hurtbox" parent="." instance=ExtResource( 7 )]
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+shape = SubResource( 3 )
+
+[node name="sleeper" parent="." instance=ExtResource( 5 )]
+
+[node name="attack_cooldown" type="Timer" parent="."]
+
+[node name="brain" parent="." instance=ExtResource( 6 )]
+TOLERANCE = 0
+THINK_TIME = 0.22
+SIGHT_RANGE = 120.0
+COMMUNICATES = false
+
+[node name="movement_lobe" parent="brain" instance=ExtResource( 9 )]
+IDLE_TIME = 2.2
+WANDER_TIME = 0.5
+WANDER_OFFSET = 0.2
+WANDER_SPEED = 0.3
+WANDER_RANGE = 45.0
+MOVEMENT_EFFICIENCY = 10
+general_springs = {
+"friendly": "",
+"hostile": "spring",
+"neutral": ""
+}
+
+[node name="spring" parent="brain/movement_lobe" instance=ExtResource( 11 )]
+DISTANCE = 70
+
+[node name="action_lobe" parent="brain" instance=ExtResource( 10 )]
+PATIENCE = 0.0
+
+[node name="attack" parent="brain/action_lobe" instance=ExtResource( 8 )]
+best_health_percent = 100
+health_weight = 2
+COOLDOWN = 1.75
+GLOBAL_COOLDOWN = true
+
+[node name="foot_stepper" parent="." instance=ExtResource( 12 )]
+RATE = 2.0
+OFFSET = -2.0
+
+[node name="entity_effects" parent="." instance=ExtResource( 13 )]
+hit_effect = false
+death_type = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack = SubResource( 4 )
+
+[connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
+
+[editable path="entity_sprite"]
+[editable path="entity_push"]
+[editable path="hurtbox"]

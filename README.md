@@ -240,6 +240,7 @@ github repo is here: (private until full release)
 - added speed feathers
 - added portals
 - added blow gun
+- added witchs
 - the sword now as a counter (right click)
 - added a kills counter to level completion screen
 - fixed hitboxes and spike activation going through walls

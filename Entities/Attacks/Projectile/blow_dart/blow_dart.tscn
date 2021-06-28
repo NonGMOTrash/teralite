@@ -22,6 +22,9 @@ radius = 1.0
 
 [node name="blow_dart" instance=ExtResource( 1 )]
 rotation = 0.0
+ACCELERATION = 0
+SLOWDOWN = 0
+TOP_SPEED = 0
 truName = "blow_dart"
 RANGE = 125
 auto_rotate = true
@@ -31,7 +34,9 @@ HIT_SOUND = ExtResource( 3 )
 KILL_SOUND = ExtResource( 3 )
 BLOCKED_SOUND = ExtResource( 5 )
 COLLIDE_SOUND = ExtResource( 5 )
-SPEED = 200
+SPEED = 150
+VELOCITY_ARMOR = 0
+ONHIT_SPEED_MULTIPLIER = 0.2
 RECOIL = 0
 
 [node name="Sprite" parent="." index="1"]
