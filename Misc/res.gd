@@ -44,6 +44,7 @@ const data := {
 	"health_potion": "res://Entities/Item_Pickups/health_potion/health_potion.tscn",
 	"iron_potion": "res://Entities/Item_Pickups/iron_potion/iron_potion.tscn",
 	"speed_feather": "res://Entities/Item_Pickups/speed_feather/speed_feather.tscn",
+	"blow_gun": "res://Entities/Item_Pickups/blow_gun/blow_gun.tscn",
 	
 	# melees
 	"slash": "res://Entities/Attacks/Melee/slash/slash.tscn",
@@ -59,6 +60,7 @@ const data := {
 	"bolt": "res://Entities/Attacks/Projectile/bolt/bolt.tscn",
 	"thrown_health_potion": "res://Entities/Attacks/Projectile/thrown_health_potion/thrown_health_potion.tscn",
 	"thrown_iron_potion": "res://Entities/Attacks/Projectile/thrown_iron_potion/thrown_iron_potion.tscn",
+	"blow_dart": "res://Entities/Attacks/Projectile/blow_dart/blow_dart.tscn",
 	
 	# effects
 	"hit_effect": "res://Effects/hit_effect/hit_effect.tscn",
@@ -124,6 +126,7 @@ const data := {
 	"health_potion_texture": "res://Entities/Item_Pickups/health_potion/health_potion.png",
 	"iron_potion_texture": "res://Entities/Item_Pickups/iron_potion/iron_potion.png",
 	"speed_feather_texture": "res://Entities/Item_Pickups/speed_feather/speed_feather.png",
+	"blow_gun_texture": "res://Entities/Item_Pickups/blow_gun/blow_gun.png",
 }
 
 func allocate(asset:String) -> void:

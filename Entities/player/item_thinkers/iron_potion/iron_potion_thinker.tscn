@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Entities/player/item_thinkers/iron_potion_thinker/iron_potion_thinker.gd" type="Script" id=1]
+[ext_resource path="res://Entities/player/item_thinkers/iron_potion/iron_potion_thinker.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Item_Pickups/iron_potion/iron_potion.png" type="Texture" id=2]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=4]

@@ -1,10 +1,10 @@
 [gd_resource type="ParticlesMaterial" load_steps=3 format=2]
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.952941, 0.580392, 0.215686, 1, 0.952941, 0.580392, 0.215686, 0 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 
 [resource]
 flag_disable_z = true
@@ -13,4 +13,4 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 50.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-color_ramp = SubResource( 3 )
+color_ramp = SubResource( 2 )

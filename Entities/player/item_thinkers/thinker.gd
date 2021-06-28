@@ -40,10 +40,15 @@ var max_frame := HELD_ITEM_FRAMES.x * HELD_ITEM_FRAMES.y - 1
 # maybe make this a global signal??
 signal update_ui(bar_max, bar_value, info_string)
 
+
 func _ready():
+	# error checking stuff
 	if my_item == "":
 		push_error("my_item was not set")
 		queue_free()
+	
+	if not my_item in res.data:
+		push_error("%s is not in res.gd" % my_item)
 	
 	if get_parent().truName != "player":
 		push_error("thinker's parent was not a player")
@@ -86,15 +91,16 @@ func _process(_delta: float):
 	
 	if Input.is_action_pressed("drop_item"):
 		if get_parent().inventory[global.selection] == null: return
-		var newItemEntity = res.aquire(my_item).instance()
+		var new_item_entity = res.aquire_entity(my_item)
 		
-		if newItemEntity == null: return
+		if new_item_entity == null: return
 		var dir_vector = get_parent().global_position.direction_to(get_parent().get_global_mouse_position())
-		newItemEntity.global_position = get_parent().global_position #+ dir_vector * 16
-		newItemEntity.SOURCE = get_parent()
+		new_item_entity.global_position = get_parent().global_position #+ dir_vector * 16
+		new_item_entity.SOURCE = get_parent()
 		var velo = dir_vector * 150
 		velo += get_parent().velocity / 1.5
-		newItemEntity.velocity = velo
+		new_item_entity.velocity = velo
+		global.nodes["ysort"].add_child(new_item_entity)
 		
 		delete()
 		return
@@ -206,11 +212,13 @@ func quick_spawn(attack:String, deferred:=true) -> void:
 		get_parent().get_parent().add_child(new_attack)
 
 func _update_held_item():
+	if HELD_ITEM_TEXTURE == null:
+		push_error("HELD_ITEM_TEXTURE is null")
+		HELD_ITEM_TEXTURE = load("res://Misc/generic.png")
+	
 	get_parent().components["held_item"].sprite.texture = HELD_ITEM_TEXTURE
 	get_parent().components["held_item"].sprite.rotation_degrees = HELD_ITEM_ROTATION
 	get_parent().components["held_item"].anchor.position = HELD_ITEM_ANCHOR
-	if HELD_ITEM_TEXTURE == null:
-		push_error("HELD_ITEM_TEXTURE is null")
 
 func _update_cursor_on_unpause():
 	if get_parent().inventory[global.selection] == my_item.to_lower():

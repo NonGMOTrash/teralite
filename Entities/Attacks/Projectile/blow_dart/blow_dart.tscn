@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Entities/Attacks/Projectile/Projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Attacks/Projectile/blow_dart/blow_dart.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Attacks/Projectile/blow_dart/blow_dart_hit.wav" type="AudioStream" id=3]
+[ext_resource path="res://Entities/Attacks/Projectile/blow_dart/blow_dart_shoot.wav" type="AudioStream" id=4]
+[ext_resource path="res://Entities/Attacks/Projectile/blow_dart/blow_dart_collide.wav" type="AudioStream" id=5]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 1.33752
+height = 6.05196
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 1.5326
+height = 10.4509
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 2.34024
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 1.0
+
+[node name="blow_dart" instance=ExtResource( 1 )]
+rotation = 0.0
+truName = "blow_dart"
+RANGE = 125
+auto_rotate = true
+death_free = true
+SPAWN_SOUND = ExtResource( 4 )
+HIT_SOUND = ExtResource( 3 )
+KILL_SOUND = ExtResource( 3 )
+BLOCKED_SOUND = ExtResource( 5 )
+COLLIDE_SOUND = ExtResource( 5 )
+SPEED = 200
+RECOIL = 0
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="hitbox" parent="." index="3"]
+COOLDOWN = 1.0
+KNOCKBACK = 15
+STATUS_EFFECT = "poison"
+STATUS_DURATION = 12.0
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" parent="collision" index="0"]
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="7"]
+shape = SubResource( 4 )
+
+[editable path="hurtbox"]
+[editable path="hitbox"]

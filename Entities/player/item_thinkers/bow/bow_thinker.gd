@@ -41,7 +41,7 @@ func unselected():
 	charge.stop()
 
 func _process(_delta):
-	# PROBLEM_NOTE: this is bad for optimization
+	# PROBLEM_NOTE: not ideal to check this every frame in _process()
 	if state == IDLE: return
 	global.emit_signal("update_item_info", # set a condition to null to hide it
 		display_name, # current item
@@ -49,7 +49,7 @@ func _process(_delta):
 		max_charge_time, # item bar max 
 		abs(charge.time_left - max_charge_time), # item bar value 
 		null # bar timer duration
-		)
+	)
 
 func pre_input_action():
 	if Input.is_action_just_pressed("primary_action") and cooldown.time_left == 0:
@@ -119,7 +119,7 @@ func primary():
 		null, # item bar max 
 		null, # item bar value 
 		null # bar timer duration
-		)
+	)
 
 func _on_cooldown_timeout() -> void:
 	global.emit_signal("update_item_info", # set a condition to null to hide it

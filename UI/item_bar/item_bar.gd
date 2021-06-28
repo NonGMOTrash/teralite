@@ -8,10 +8,10 @@ onready var passive1 = $HBoxContainer/passive1
 onready var passive2 = $HBoxContainer/passive2
 onready var passive3 = $HBoxContainer/passive3
 
-# all icons preloaded:
 const ITEM_BAR_0 = preload("res://UI/item_bar/item_bar_0.png")
 const ITEM_BAR_1 = preload("res://UI/item_bar/item_bar_1.png")
 const ITEM_BAR_2 = preload("res://UI/item_bar/item_bar_2.png")
+const GENERIC = preload("res://Misc/generic.png")
 
 #const PISTOL = preload("res://Entities/Item_Pickups/pistol/pistol.png")
 #const WHITE_ARMOR = preload("res://Entities/Item_Pickups/white_armor/white_armor.png")
@@ -60,7 +60,8 @@ func match_icon(slot, item):
 		replace_icon(slot, null)
 	else:
 		if not res.data.has(item+"_texture"):
-			push_error("res.gd does not have %s_texture" % item)
+			push_warning("res.gd does not have %s_texture" % item)
+			replace_icon(slot, GENERIC)
 		else:
 			replace_icon(slot, res.aquire_texture(item+"_texture"))
 #	match item:

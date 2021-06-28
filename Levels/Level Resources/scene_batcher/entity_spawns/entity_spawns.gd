@@ -42,4 +42,5 @@ func set_data():
 		"health_potion": get_used_cells_by_id(45),
 		"iron_potion": get_used_cells_by_id(46),
 		"speed_feather": get_used_cells_by_id(47),
+		"blow_gun": get_used_cells_by_id(48),
 	}

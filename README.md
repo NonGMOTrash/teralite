@@ -188,11 +188,14 @@ check out his stuff here:
 - bolt_shoot: "bow02" by Erdie ( https://freesound.org/people/Erdie/sounds/65734/ ) licensed under CC-BY 3.0
 - bolt_hit: "Medieval crossbow bolt pass by 1" by Still North Media ( https://www.zapsplat.com/music/medieval-crossbow-bolt-pass-by-1/ ) licensed under CC0
 - bolt_blocked: "Fast swing, whoosh into a metal hit, thud or clunk, could be sword hitting shield or armor. Version 1" by ZapSplat ( https://www.zapsplat.com/music/fast-swing-whoosh-into-a-metal-hit-thud-or-clunk-could-be-sword-hitting-shield-or-armor-version-1/ ) licensed under ZapSplat standard license
-- potion_equip: "PotionDrinkLONG" by Jamius ( https://freesound.org/people/Jamius/sounds/41529/ ) licensed under CC-BY 3.0
+- potion_equip: "PotionDrinkLONG" by Jamius ( https://freesound.org/people/Jamius/sounds/41529/ ) licensed under CC BY 3.0
 - potion_drink: "Potion - drink - swallow" by vlnpetiteau ( https://freesound.org/people/vlnpetiteau/sounds/574077/#comments ) licensed under CC0
 - potion_break: "Bottle Shattering" by spookymodem ( https://freesound.org/people/spookymodem/sounds/202093/ ) licensed under CC0
 - speed_feather_use: "Soft Wind" by Animate_42 ( https://freesound.org/people/Animate_42/sounds/502883/ ) licensed under CC0
 - teleport: "teleport" by Leszek_Szary ( https://freesound.org/people/Leszek_Szary/sounds/172206/ ) licensed under CC0
+- blow_dart_shoot: "Blowpipe" by loudernoises ( https://freesound.org/people/loudernoises/sounds/334168/ ) licensed under CC0
+- blow_dart_collide: "Dart strikes dartboard 5" by ZapSplat ( https://www.zapsplat.com/music/dart-strikes-dartboard-5/ ) licensed under ZapSplat standard license
+- blow_dart_hit: "Blood Impact" by EminYILDIRIM ( https://freesound.org/people/EminYILDIRIM/sounds/554284/ ) licensed under CC BY 3.0
 
 a big thanks to all the sound authors for letting me legally steal your hard work to use in my game <3
 
@@ -236,6 +239,7 @@ github repo is here: (private until full release)
 - added iron-infused potions
 - added speed feathers
 - added portals
+- added blow gun
 - the sword now as a counter (right click)
 - added a kills counter to level completion screen
 - fixed hitboxes and spike activation going through walls
