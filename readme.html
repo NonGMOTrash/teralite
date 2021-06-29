@@ -1,205 +1,449 @@
-<html><head><style>body {
-   background-color: black;
-   color: white;
+<html>
+<head>
+<style>
+
+body {
+	color: white;
+	background-color: black;
+    margin: 100px;
 }
-</style></head><body><pre><code>                               ###########                                  
-                               ###########                                  
-                               ###,   ,###                                  
-                               ###,   ,###                                  
-                               ###,   ,###                                  
-                   *##############,   ,##############*                      
-                   *###                           ###/....                  
-                   *###                           ###/....                  
-                   *###                           ###/....                  
-                   *#################################/....                  
-                   *#################################/....                  
-                               ###########................                  
-                               ###########....                              
-                               ###########....                              
-                               ###########....                              
-                               ###########....                              
-                               ###########....                              
-                               ###########....                              
-                               ###########....                              
-                               ###########....                              
-                               ###########....                              
-                               ###########....                              
-                               ###########....                              
-                               ###########....                              
-                                  *#######....                              
-                                  *#######....                              
-                                      ,###....                              
-                                          ....                              
-                                          ....                              
-</code></pre><p>helo, thanks for downloading    </p>
+
+a {
+	color: orange;
+}
+a:hover {
+	font-weight: bolder;
+}
+
+code {
+	font-size: 14px;
+    color: lightgray;
+}
+
+.ascii-art {
+	font: monospace;
+	font-weight: bolder;
+    text-align: center;
+    color: orange;
+}
+
+.navbar {
+	position: fixed;
+    background-color: darkblue;
+    top: 0;
+    width: 100%;
+    margin: 0px;
+}
+
+.navbar ul {
+  	list-style-type: none;
+ 	margin: 0;
+ 	padding: 0;
+ 	overflow: hidden;
+	background-color: #333;
+}
+
+.navbar li {
+	float: left;
+	display: block;
+    text-align: center;
+    text-decoration: none;
+    margin: 10px;
+}
+
+.navbar li a {
+	color: white;
+    padding: 10px;
+}
+
+.navbar li a:hover {
+	background-color: blue;
+    font-weight: normal;
+}
+
+</style>
+
+</head>
+<body>
+<pre><code class="ascii-art">
+            ###########     
+            ########### 
+            ###,   ,### 
+            ###,   ,###   
+            ###,   ,###   
+*##############,   ,##############*
+*###                           ###/....   
+*###                           ###/.... 
+*###                           ###/....  
+*#################################/.... 
+*#################################/.... 
+            ###########................  
+            ###########....    
+            ###########....   
+            ###########....   
+            ###########....   
+            ###########....  
+            ###########....  
+            ###########....   
+            ###########....  
+            ###########....  
+            ###########....  
+            ###########.... 
+            ###########.... 
+               *#######.... 
+               *#######.... 
+                   ,###.... 
+                       ....  
+                       ....                              
+</code></pre>
+<br>
+<p>helo, thanks for downloading</p>
+
 <h1 id="table-of-contents">table of contents</h1>
-<ol>
-<li><a href="#info">info</a><ul>
-<li><a href="#can-i-share-this-game-with-other-people">can i share this game with other people?</a></li>
-<li><a href="#pck-is-missing-error">.pck is missing error</a></li>
-<li><a href="#particles-not-working">particles not working</a></li>
-<li><a href="#old-saves-dissappeared">old saves dissappeared</a></li>
-<li><a href="#compatiability-with-older-saves">compatiability with older saves</a></li>
+
+<ul class="navbar">
+    <li> <a href="#info">info</a> </li>
+    <li> <a href="#credits">credits</a> </li>
+    <li> <a href="#patchnotes">patchnotes</a> </li>
 </ul>
-</li>
-<li><a href="#credits">credits</a><ul>
-<li><a href="#developer">developer</a></li>
-<li><a href="#play-testers">play testers</a></li>
-<li><a href="#engine">engine</a></li>
-<li><a href="#font-credits">font</a></li>
-</ul>
-</li>
-<li><a href="#patchnotes">patchnotes</a><ul>
-<li><a href="#beta-30">beta 3.0 (latest)</a></li>
-<li><a href="#beta-20-11112020">beta 2.0</a></li>
-<li><a href="#beta-10-8162020">beta 1.0</a></li>
-</ul>
-</li>
+
+<ol id="tableofcontents">
+	<li>
+    	<a href="#info">info</a>
+    	<ul>
+			<li><a href="#can-i-share-this-game-with-other-people">can i share this game with other people?</a></li>
+			<li><a href="#-pck-not-found-at-path-error">.pck not found</a></li>
+			<li><a href="#particles-not-working">particles not working</a></li>
+			<li><a href="#old-saves-dissappeared">old saves dissappeared</a></li>
+			<li><a href="#compatiability-with-older-saves">compatiability with older saves</a></li>
+		</ul>
+	</li>
+	<li>
+    	<a href="#credits">credits</a>
+    	<ul>
+			<li><a href="#developer-">developer</a></li>
+    		<li><a href="#play-testers-">play testers</a></li>
+			<li><a href="#engine-">engine</a></li>
+			<li><a href="#font-credits-">font</a></li>
+            <li><a href="#sound-credits-">sound credits</a></li>
+   			<li><a href="#license">license</a></li>
+		</ul>
+	</li>
+	<li>
+    	<a href="#patchnotes">patchnotes</a>
+        <ul>
+			<li><a href="#beta-30">beta 3.0 (latest)</a></li>
+			<li><a href="#beta-20-11112020">beta 2.0</a></li>
+			<li><a href="#beta-10-8162020">beta 1.0</a></li>
+		</ul>
+	</li>
 </ol>
+
 <h1 id="info">info</h1>
+
 <h2 id="can-i-share-this-game-with-other-people-">can i share this game with other people?</h2>
 <p>please don&#39;t, i wanna keep this game sorta secret for now. if you violate this policy, i will do absolutely nothing except be very very sad. however when the game is out, please share this game with EVERYONE. just like, constantly</p>
-<h2 id="-pck-is-missing-error">.pck is missing error</h2>
-<p>the .exe has to be in the same folder as the .pck or it won&#39;t work. if you want to have access to the game somewhere else, just make a shortcut of the .exe file</p>
+
+<h2 id="-pck-not-found-at-path-error">.pck not found at path &#39;.&#39; error</h2>
+
+<p>teralite.exe has to be in the same folder as the teralite.pck or it won&#39;t work. if you want to have access to the game somewhere else, just make a shortcut of teralite.exe</p>
+
 <h2 id="particles-not-working">particles not working</h2>
-<p>if you&#39;re using a cpu with integrated graphics that doesn&#39;t support OpenGL ES 3, the game will fallback to OpenGL ES 2. this mostly works okay, but the game will run slower and particle effects won&#39;t work. sorry! i might make a seperate version that uses cpu-based particles, i&#39;d be a hassle tho so won&#39;t happen til the full release if at all</p>
+
+<p>if you&#39;re using a CPU with integrated graphics that doesn&#39;t support OpenGL ES 3, the game will fallback to OpenGL ES 2. this mostly works okay, but the game will run slower and particle effects won&#39;t work. sorry! i might make a &quot;CPU particles&quot; option in the future, but it would be a hassle because i would have to make a 2nd version of every particle effect</p>
+
 <h2 id="old-saves-dissappeared">old saves dissappeared</h2>
-<p>due to the name change from project epsilon to teralite in beta 2.12, the game won&#39;t be able to find the folder where old game data was stored.<br>it&#39;s pretty easy to fix tho, just follow these steps:    </p>
+
+<p>due to the name change from project epsilon to teralite in beta 2.12, the game won&#39;t be able to find the folder where old game data was stored.
+<br>it&#39;s pretty easy to fix tho, just follow these steps:</p>
 <ol>
-<li>go to the search bar on windows and search %APPDATA% (should take you to a file folder)      </li>
-<li>find the folder named &quot;Project Epsilon&quot; and rename it to &quot;Teralite&quot;   </li>
-<li>if it asks you if you want to replace the folder that&#39;s already named Teralite, click Yes    </li>
-<li>reopen teralite, and you should see your saves<br>(you can also just cut and paste the actual save files from Project Epsilon into Teralite)</li>
+	<li>go to the search bar on windows and search <code>%APPDATA%</code> (should take you to a file folder)</li>
+	<li>find the folder named &quot;Project Epsilon&quot; and rename it to &quot;Teralite&quot;</li>
+	<li>if it asks you if you want to replace the folder that&#39;s already named Teralite, click Yes</li>
+	<li>reopen teralite, and you should see your saves<br>(you can also just cut and paste the actual save files from Project Epsilon into Teralite)</li>
 </ol>
+
 <h2 id="compatiability-with-older-saves">compatiability with older saves</h2>
+
 <ul>
-<li>all polish updates (+0.1 updates) should work fine with old saves        </li>
-<li>using an old save from a 1.X version is possible, but i recomend you just start over with a new save</li>
-<li>it will probably be a similar deal once 3.0 comes out but who knows
-(in the future, i&#39;ll add an ingame warning for versions that aren&#39;t compatiable with eachother)</li>
+	<li>all polish updates (+0.1 updates) should work fine with old saves</li>
+	<li>using an old save from a 1.X version is possible, but i recomend you just start over with a new save</li>
+	<li>it will probably be a similar deal once 3.0 comes out but who knows 
+    <br> (in the future, i&#39;ll add an ingame warning for versions that aren&#39;t compatiable with eachother)</li>
 </ul>
+
 <h1 id="credits">credits</h1>
+
+
 <h3 id="developer-">developer:</h3>
+
 <p>NonGMOTrash</p>
 <ul>
 <li>itch: <a href="https://nongmotrash.itch.io">https://nongmotrash.itch.io</a></li>
-<li>youtube: soon™</li>
-<li>discord: NonGMOTrash#9437</li>
-<li>email: nongmotrash@gmail.com (send me dumb stuff just no nsfw)</li>
+<li>youtube: <a href="https://www.youtube.com/channel/UCeM_Vg53GAkVPdgEmPfPAsw">https://www.youtube.com/channel/UCeM_Vg53GAkVPdgEmPfPAsw</a></li>
+<li>discord: <strong>NonGMOTrash#9437</strong></li>
+<li>email: <strong>nongmotrash@gmail.com</strong> (send me dumb stuff just no nsfw)</li>
 <li>github: <a href="https://github.com/NonGMOTrash">https://github.com/NonGMOTrash</a></li>
 </ul>
+
 <h3 id="play-testers-">play testers:</h3>
-<p>you!<br>will add all the people later<br>(you&#39;ll be in the credits of the game itself aswell)    </p>
+<p>
+you!<br>
+will add all the people later<br>
+(you&#39;ll be in the credits of the game itself aswell)
+</p>
+
+
 <h3 id="engine-">engine:</h3>
+
 <p>teralite was created with the Godot Engine, it&#39;s license reads as follows:</p>
-<pre><code>Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur. Copyright (c) 2014-2021 Godot Engine contributors.
+
+<code>
+<pre>Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur. Copyright (c) 2014-2021 Godot Engine contributors.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
-to <span class="hljs-keyword">use</span>, copy, <span class="hljs-keyword">modify</span>, <span class="hljs-keyword">merge</span>, publish, <span class="hljs-keyword">distribute</span>, sublicense, <span class="hljs-keyword">and</span>/<span class="hljs-keyword">or</span> sell
-copies <span class="hljs-keyword">of</span> the Software, <span class="hljs-keyword">and</span> <span class="hljs-keyword">to</span> permit persons <span class="hljs-keyword">to</span> whom the Software <span class="hljs-keyword">is</span>
-furnished <span class="hljs-keyword">to</span> <span class="hljs-keyword">do</span> so, subject <span class="hljs-keyword">to</span> the <span class="hljs-keyword">following</span> conditions:
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-The above copyright <span class="hljs-keyword">notice</span> <span class="hljs-keyword">and</span> this permission <span class="hljs-keyword">notice</span> shall be included <span class="hljs-keyword">in</span> all
-copies <span class="hljs-keyword">or</span> substantial portions <span class="hljs-keyword">of</span> the Software.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-THE SOFTWARE <span class="hljs-keyword">IS</span> PROVIDED <span class="hljs-string">"AS IS"</span>, <span class="hljs-keyword">WITHOUT</span> WARRANTY <span class="hljs-keyword">OF</span> <span class="hljs-keyword">ANY</span> KIND, EXPRESS <span class="hljs-keyword">OR</span>
-IMPLIED, <span class="hljs-keyword">INCLUDING</span> BUT <span class="hljs-keyword">NOT</span> LIMITED <span class="hljs-keyword">TO</span> THE WARRANTIES <span class="hljs-keyword">OF</span> MERCHANTABILITY,
-FITNESS <span class="hljs-keyword">FOR</span> A PARTICULAR PURPOSE <span class="hljs-keyword">AND</span> NONINFRINGEMENT. <span class="hljs-keyword">IN</span> <span class="hljs-keyword">NO</span> <span class="hljs-keyword">EVENT</span> SHALL THE
-<span class="hljs-keyword">AUTHORS</span> <span class="hljs-keyword">OR</span> COPYRIGHT HOLDERS BE LIABLE <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">ANY</span> CLAIM, DAMAGES <span class="hljs-keyword">OR</span> OTHER
-LIABILITY, WHETHER <span class="hljs-keyword">IN</span> AN <span class="hljs-keyword">ACTION</span> <span class="hljs-keyword">OF</span> CONTRACT, TORT <span class="hljs-keyword">OR</span> OTHERWISE, ARISING <span class="hljs-keyword">FROM</span>,
-<span class="hljs-keyword">OUT</span> <span class="hljs-keyword">OF</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">IN</span> <span class="hljs-keyword">CONNECTION</span> <span class="hljs-keyword">WITH</span> THE SOFTWARE <span class="hljs-keyword">OR</span> THE <span class="hljs-keyword">USE</span> <span class="hljs-keyword">OR</span> OTHER DEALINGS <span class="hljs-keyword">IN</span> THE
-SOFTWARE.
-</code></pre><p>addtionally,</p>
-<pre><code><span class="hljs-type">Portions</span> <span class="hljs-keyword">of</span> this software are copyright ©<span class="hljs-number">2021</span> <span class="hljs-type">The</span> <span class="hljs-type">FreeType</span> <span class="hljs-type">Project</span> (www.free<span class="hljs-keyword">type</span>.org). <span class="hljs-type">All</span> rights reserved.
-</code></pre><h3 id="font-credits-">font credits:</h3>
-<p>the font used is &quot;m6x11&quot; by Daniel Linssen<br>check out his stuff here:</p>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</pre>
+</code>
+<p>addtionally,</p>
+<code>
+<pre>Portions of this software are copyright ©2021 The FreeType Project (www.freetype.org). All rights reserved.</pre>
+</code>
+
+<h3 id="font-credits-">font credits:</h3>
+
+<p>the font used is &quot;m6x11&quot; by Daniel Linssen</p>
+<p>check out his stuff here:</p>
 <ul>
-<li>m6x11: <a href="https://managore.itch.io/m6x11">https://managore.itch.io/m6x11</a>        </li>
+<li>m6x11: <a href="https://managore.itch.io/m6x11">https://managore.itch.io/m6x11</a></li>
 <li>itch: <a href="https://managore.itch.io/">https://managore.itch.io/</a>    </li>
-<li>twitter: <a href="https://twitter.com/Managore">https://twitter.com/Managore</a>        </li>
+<li>twitter: <a href="https://twitter.com/Managore">https://twitter.com/Managore</a>   </li>
 <li>website: <a href="http://daniellinssen.net/">http://daniellinssen.net/</a></li>
 <li>tumblr: <a href="https://managore.tumblr.com/">https://managore.tumblr.com/</a></li>
 </ul>
+
 <h3 id="sound-credits-">sound credits:</h3>
+
 <ul>
-<li>sword_hit: &quot;slashkut&quot; by Abyssmal ( <a href="https://freesound.org/people/Abyssmal/sounds/35213/">https://freesound.org/people/Abyssmal/sounds/35213/</a> ) licensed under CC0</li>
-<li>sword_clank: &quot;sword slash&quot; by ethanchase7744 ( <a href="https://freesound.org/people/ethanchase7744/sounds/441666/">https://freesound.org/people/ethanchase7744/sounds/441666/</a> ) licensed under CC0</li>
-<li>sword_miss: &quot;Sword Swipe11&quot; by LukeSharples ( <a href="https://freesound.org/people/LukeSharples/sounds/209121/">https://freesound.org/people/LukeSharples/sounds/209121/</a> ) licensed under CC BY 3.0</li>
-<li>sword_equip: &quot;Drawing sword from scabbard&quot; by giddster ( <a href="https://freesound.org/people/giddster/sounds/484298/">https://freesound.org/people/giddster/sounds/484298/</a> ) licensed under CC0</li>
-<li>sword_kill: &quot;Sword Attack&quot; by Saviraz ( <a href="https://freesound.org/people/Saviraz/sounds/547600/">https://freesound.org/people/Saviraz/sounds/547600/</a> ) licensed under CC BY 3.0</li>
-<li>sword_tint: &quot;sword04&quot; by Erdie ( <a href="https://freesound.org/people/Erdie/sounds/27858/">https://freesound.org/people/Erdie/sounds/27858/</a> ) licensed under CC BY 3.0</li>
-<li>footstep_grass: &quot;Rustling Grass 2&quot; by morganpurkis ( <a href="https://freesound.org/people/morganpurkis/sounds/396013/">https://freesound.org/people/morganpurkis/sounds/396013/</a> ) licensed under CC0</li>
-<li>footstep_wood: &quot;Footstep_Wood_Heel&quot; by GiocoSound ( <a href="https://freesound.org/people/GiocoSound/sounds/421150/">https://freesound.org/people/GiocoSound/sounds/421150/</a> ) licensed under CC0</li>
-<li>star_pickup: &quot;Get Item 4 8 Bit&quot; by Mrthenoronha ( <a href="https://freesound.org/people/Mrthenoronha/sounds/516824/">https://freesound.org/people/Mrthenoronha/sounds/516824/</a> ) licensed under CC BY-NC 3.0</li>
-<li>armor_pickup: &quot;armor10&quot; by pepingrillin ( <a href="https://freesound.org/people/pepingrillin/sounds/252144/">https://freesound.org/people/pepingrillin/sounds/252144/</a> ) licensed under CC0</li>
-<li>forest_ambiance: &quot;Ambiance_Wind_Forest_Calm_Loop&quot; by Nox_Sound ( <a href="https://freesound.org/people/Nox_Sound/sounds/506910/">https://freesound.org/people/Nox_Sound/sounds/506910/</a> ) licensed under CC0</li>
-<li>pistol_fire: &quot;9mm gunside&quot; by cedarstudios ( <a href="https://freesound.org/people/cedarstudios/sounds/148839/">https://freesound.org/people/cedarstudios/sounds/148839/</a> ) licensed under CC0</li>
-<li>pistol_pickup: &quot;Pistol Cock&quot; by nebulasnails ( <a href="https://freesound.org/people/nebulasnails/sounds/405538/">https://freesound.org/people/nebulasnails/sounds/405538/</a> ) licensed under CC0</li>
-<li>pistol_reload: &quot;AR15 pistol load and chamber&quot; by michorvath ( <a href="https://freesound.org/people/michorvath/sounds/427599/">https://freesound.org/people/michorvath/sounds/427599/</a> ) licensed under CC0</li>
-<li>damage: &quot;Hit 4 8 Bit&quot; by Mrthenoronha ( <a href="https://freesound.org/people/Mrthenoronha/sounds/507702/">https://freesound.org/people/Mrthenoronha/sounds/507702/</a> ) licensed under CC BY-NC 3.0</li>
-<li>bow_shoot: &quot;bow01&quot; by Erdie ( <a href="https://freesound.org/people/Erdie/sounds/65733/">https://freesound.org/people/Erdie/sounds/65733/</a> ) licensed under CC BY 3.0</li>
-<li>arrow_collide: &quot;Arrow strike&quot; by plantmonkey ( <a href="https://freesound.org/people/plantmonkey/sounds/410751/">https://freesound.org/people/plantmonkey/sounds/410751/</a> ) licensed under CC0</li>
-<li>arrow_hit: &quot;arrow_damage&quot; by braqoon ( <a href="https://freesound.org/people/braqoon/sounds/161098/">https://freesound.org/people/braqoon/sounds/161098/</a> ) licensed under CC0</li>
-<li>bow_drawn: &quot;Regular Arrow Shot with rattle slow draw&quot; by brendan89 ( <a href="https://freesound.org/people/brendan89/sounds/321554/">https://freesound.org/people/brendan89/sounds/321554/</a> ) licensed under CC BY 3.0</li>
-<li>bow_equip: &quot;Wooden Creak&quot; by Mafon2 ( <a href="https://freesound.org/people/Mafon2/sounds/377552/">https://freesound.org/people/Mafon2/sounds/377552/</a> )  licensed under CC0</li>
-<li>menu_hover: &quot;CLICK_143&quot; by Jaszunio15 ( <a href="https://freesound.org/people/Jaszunio15/sounds/421475/">https://freesound.org/people/Jaszunio15/sounds/421475/</a> ) licensed under CC0</li>
-<li>menu_click: &quot;Wooden Hover&quot; by BenjaminNelan ( <a href="https://freesound.org/people/BenjaminNelan/sounds/321082/">https://freesound.org/people/BenjaminNelan/sounds/321082/</a> ) licensed under CC0</li>
-<li>menu_pause + menu_unpause: &quot;Access Denied&quot; by suntemple ( <a href="https://freesound.org/people/suntemple/sounds/249300/">https://freesound.org/people/suntemple/sounds/249300/</a> ) licensed under CC0</li>
-<li>spike_rise: &quot;Spiketrap&quot; by Deathscyp ( <a href="https://freesound.org/people/Deathscyp/sounds/443806/">https://freesound.org/people/Deathscyp/sounds/443806/</a> ) licensed under CC0</li>
-<li>crate_destory: &quot;Wood Crate Destory 3&quot; by Bertsz ( <a href="https://freesound.org/people/Bertsz/sounds/500900/">https://freesound.org/people/Bertsz/sounds/500900/</a> ) licensed under CC0</li>
-<li>player_death: &quot;Retro Video Game Death&quot; by SRJA_Gaming ( <a href="https://freesound.org/people/SRJA_Gaming/sounds/543255/">https://freesound.org/people/SRJA_Gaming/sounds/543255/</a> ) licensed under CC0</li>
-<li>heal: &quot;Healing 2 (Tranquillity)&quot; by SilverIllusionist ( <a href="https://freesound.org/people/SilverIllusionist/sounds/518800/">https://freesound.org/people/SilverIllusionist/sounds/518800/</a> ) licensed under CC BY 3.0</li>
-<li>os_error: &quot;Error&quot; by Isaac200000 ( <a href="https://freesound.org/people/Isaac200000/sounds/188013/">https://freesound.org/people/Isaac200000/sounds/188013/</a> ) licensed under CC0</li>
-<li>shine: &quot;FX111&quot; from &quot;Audiopack #012&quot; by jalastram ( <a href="https://opengameart.org/content/sound-effects-fx012">https://opengameart.org/content/sound-effects-fx012</a> ) licesned under CC BY 3.0</li>
-<li>magic_shoot: &quot;Enchant&quot; by qubodup ( <a href="https://freesound.org/people/qubodup/sounds/202147/">https://freesound.org/people/qubodup/sounds/202147/</a> ) licensed under CC BY 3.0</li>
-<li>magic_collide: &quot;Menu FX 03&quot; (normal) by NightFlame ( <a href="https://freesound.org/people/Nightflame/sounds/422514/">https://freesound.org/people/Nightflame/sounds/422514/</a> ) licensed under CC0</li>
-<li>bow_equip: &quot;Wooden Object Take&quot; by Kostas17 ( <a href="https://freesound.org/people/Kostas17/sounds/537765/">https://freesound.org/people/Kostas17/sounds/537765/</a> ) licensed under CC BY 3.0</li>
+<li>sword_hit: &quot;slashkut&quot; by Abyssmal (<a href="https://freesound.org/people/Abyssmal/sounds/35213/">freesound.org link</a>) licensed under CC0</li>
+
+<li>sword_clank: &quot;sword slash&quot; by ethanchase7744 (<a href="https://freesound.org/people/ethanchase7744/sounds/441666/">freesound.org link</a>) licensed under CC0</li>
+
+<li>sword_miss: &quot;Sword Swipe11&quot; by LukeSharples (<a href="https://freesound.org/people/LukeSharples/sounds/209121/">freesound.org link</a>) licensed under CC BY 3.0</li>
+
+<li>sword_equip: &quot;Drawing sword from scabbard&quot; by giddster (<a href="https://freesound.org/people/giddster/sounds/484298/">freesound.org link</a>) licensed under CC0</li>
+
+<li>sword_kill: &quot;Sword Attack&quot; by Saviraz (<a href="https://freesound.org/people/Saviraz/sounds/547600/">freesound.org link</a>) licensed under CC BY 3.0</li>
+
+<li>sword_tint: &quot;sword04&quot; by Erdie (<a href="https://freesound.org/people/Erdie/sounds/27858/">freesound.org link</a>) licensed under CC BY 3.0</li>
+
+<li>counter_ready: ripped from <a href="https://20xx.io">20xx.io</a> (great game btw), i technically didn't get permission from InfernoPlus for this one speciffically, i'll replace it later lol</li>
+
+<li>counter_success: &quot;Heavy metal bar impact, with a clang, cluck, thump 3&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/heavy-metal-bar-impact-with-a-clang-cluck-thump-3/">zapslat.com link</a>) licensed under ZapSplat standard license</li>
+
+<li>footstep_grass: &quot;Rustling Grass 2&quot; by morganpurkis (<a href="https://freesound.org/people/morganpurkis/sounds/396013/">freesound.org link</a>) licensed under CC0</li>
+
+<li>footstep_wood: &quot;Footstep_Wood_Heel&quot; by GiocoSound (<a href="https://freesound.org/people/GiocoSound/sounds/421150/">freesound.org link</a>) licensed under CC0</li>
+
+<li>star_pickup: &quot;Get Item 4 8 Bit&quot; by Mrthenoronha (<a href="https://freesound.org/people/Mrthenoronha/sounds/516824/">freesound.org link</a>) licensed under CC BY-NC 3.0</li>
+
+<li>armor_pickup: &quot;armor10&quot; by pepingrillin (<a href="https://freesound.org/people/pepingrillin/sounds/252144/">freesound.org link</a>) licensed under CC0</li>
+
+<li>forest_ambiance: &quot;Ambiance_Wind_Forest_Calm_Loop&quot; by Nox_Sound (<a href="https://freesound.org/people/Nox_Sound/sounds/506910/">freesound.org link</a>) licensed under CC0</li>
+
+<li>pistol_fire: &quot;9mm gunside&quot; by cedarstudios (<a href="https://freesound.org/people/cedarstudios/sounds/148839/">freesound.org link</a>) licensed under CC0</li>
+
+<li>pistol_pickup: &quot;Pistol Cock&quot; by nebulasnails (<a href="https://freesound.org/people/nebulasnails/sounds/405538/">freesound.org link</a>) licensed under CC0</li>
+
+<li>pistol_reload: &quot;AR15 pistol load and chamber&quot; by michorvath (<a href="https://freesound.org/people/michorvath/sounds/427599/">freesound.org link</a>) licensed under CC0</li>
+
+<li>damage: &quot;Hit 4 8 Bit&quot; by Mrthenoronha (<a href="https://freesound.org/people/Mrthenoronha/sounds/507702/">freesound.org link</a>) licensed under CC BY-NC 3.0</li>
+
+<li>arrow_shoot: &quot;bow01&quot; by Erdie (<a href="https://freesound.org/people/Erdie/sounds/65733/">freesound.org link</a>) licensed under CC BY 3.0</li>
+
+<li>arrow_collide: &quot;Arrow strike&quot; by plantmonkey (<a href="https://freesound.org/people/plantmonkey/sounds/410751/">freesound.org link</a>) licensed under CC0</li>
+
+<li>arrow_hit: &quot;arrow_damage&quot; by braqoon (<a href="https://freesound.org/people/braqoon/sounds/161098/">freesound.org link</a>) licensed under CC0</li>
+
+<li>bow_drawn: &quot;Regular Arrow Shot with rattle slow draw&quot; by brendan89 (<a href="https://freesound.org/people/brendan89/sounds/321554/">freesound.org link</a>) licensed under CC BY 3.0</li>
+
+<li>bow_equip: &quot;Wooden Creak&quot; by Mafon2 (<a href="https://freesound.org/people/Mafon2/sounds/377552/">freesound.org link</a>)  licensed under CC0</li>
+
+<li>menu_hover: &quot;CLICK_143&quot; by Jaszunio15 ( <a href="https://freesound.org/people/Jaszunio15/sounds/421475/">freesound.org link</a> ) licensed under CC0</li>
+
+<li>menu_click: &quot;Wooden Hover&quot; by BenjaminNelan (<a href="https://freesound.org/people/BenjaminNelan/sounds/321082/">freesound.org link</a>) licensed under CC0</li>
+
+<li>menu_pause + menu_unpause: &quot;Access Denied&quot; by suntemple (<a href="https://freesound.org/people/suntemple/sounds/249300/">freesound.org link</a>) licensed under CC0</li>
+
+<li>spike_rise: &quot;Spiketrap&quot; by Deathscyp (<a href="https://freesound.org/people/Deathscyp/sounds/443806/">freesound.org link</a>) licensed under CC0</li>
+
+<li>crate_destory: &quot;Wood Crate Destory 3&quot; by Bertsz (<a href="https://freesound.org/people/Bertsz/sounds/500900/">freesound.org link</a>) licensed under CC0</li>
+
+<li>player_death: &quot;Retro Video Game Death&quot; by SRJA_Gaming ( <a href="https://freesound.org/people/SRJA_Gaming/sounds/543255/">freesound.org link</a> ) licensed under CC0</li>
+
+<li>heal: &quot;Healing 2 (Tranquillity)&quot; by SilverIllusionist (<a href="https://freesound.org/people/SilverIllusionist/sounds/518800/">freesound.org link</a>) licensed under CC BY 3.0</li>
+
+<li>os_error: &quot;Error&quot; by Isaac200000 (<a href="https://freesound.org/people/Isaac200000/sounds/188013/">freesound.org link</a>) licensed under CC0</li>
+
+<li>shine: ripped from <a href="https://20xx.io">20xx.io</a> (great game btw), thanks InfernoPlus for letting me use it!</li>
+
+<li>shine_reflect: &quot;hvyelec&quot; by inferno (<a href="https://freesound.org/people/inferno/sounds/18381/">freesound.org link</a>) licensed under CC Sampling+</li>
+
+<li>shine_hit: &quot;Electricity spark (sound design) 2&quot; by ZapSplat  (<a href="https://www.zapsplat.com/music/electricity-spark-sound-design-2/">zapslat.com link</a>) licensed under ZapSplat standard license</li>
+
+<li>magic_shoot: &quot;Enchant&quot; by qubodup (<a href="https://freesound.org/people/qubodup/sounds/202147/">freesound.org link</a>) licensed under CC BY 3.0</li>
+
+<li>magic_collide: &quot;Menu FX 03&quot; (normal) by NightFlame (<a href="https://freesound.org/people/Nightflame/sounds/422514/">freesound.org link</a>) licensed under CC0</li>
+
+<li>bow_equip: &quot;Wooden Object Take&quot; by Kostas17 (<a href="https://freesound.org/people/Kostas17/sounds/537765/">freesound.org link</a>) licensed under CC BY 3.0</li>
+
+<li>spear_throw: &quot;Medieval spear swing 2&quot; by Still North Media (<a href="https://www.zapsplat.com/music/medieval-spear-swing-2/">zapslat.com link</a>) licesned under CC0 </li>
+
+<li>spear_kill: &quot;Gore, beheading, chopping off head&quot; by 344 Audio (<a href="https://www.zapsplat.com/music/gore-beheading-chopping-off-head/">zapslat.com link</a>) licensed under ZapSplat standard license</li>
+
+<li>thrown_spear_hit: &quot;Spear thrown and stick into ground with slight vibration of the wooden spear pole on impact. Version 1&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/spear-thrown-and-stick-into-ground-with-slight-vibration-of-the-wooden-spear-pole-on-impact-version-1/">zapslat.com link</a>) licensed under ZapSplat standard license</li>
+
+<li>thrown_spear_collide: &quot;Sharp wooden post, stake, dig into soil, ground 4&quot; by ZapSplat ( <a href="https://www.zapsplat.com/music/sharp-wooden-post-stake-dig-into-soil-ground-4/">zapslat.com link</a> ) licensed under ZapSplat standard license</li>
+
+<li>thrown_spear_blocked: &quot;Axe swing, hit body against wood, metal clang, impact squelch 3&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/axe-swing-hit-body-against-wood-metal-clang-impact-squelch-3/">zapslat.com link</a>) licensed under ZapSplat standard license</li>
+
+<li>poke_miss + poke_collide: &quot;Spear thrown and stick into ground with slight vibration of the wooden spear pole on impact. Version 5&quot; by ZapSplat ( <a href="https://www.zapsplat.com/music/spear-thrown-and-stick-into-ground-with-slight-vibration-of-the-wooden-spear-pole-on-impact-version-5/">zapslat.com link</a> ) licensed under ZapSplat standard license</li>
+
+<li>poke_hit: &quot;Sword, stab through chain mail into flesh, sharp, metallic scrape followed by a quick, crunchy slash / impact, close perspective&quot; by Audio Hero ( <a href="https://www.zapsplat.com/music/sword-stab-through-chain-mail-into-flesh-sharp-metallic-scrape-followed-by-a-quick-crunchy-slash-impact-close-perspective/">zapslat.com link</a> ) licensed under ZapSplat standard license</li>
+
+<li>poke_blocked: &quot;2 x swords hit, impact 1&quot; by ZapSplat ( <a href="https://www.zapsplat.com/music/2-x-swords-hit-impact-1/">zapslat.com link</a> ) licensed under ZapSplat standard license</li>
+
+<li>swipe_miss: &quot;Knife, swish, swipe through air, slashing movements 3&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/knife-swish-swipe-through-air-slashing-movements-3/">zapslat.com link</a>) licensed under ZapSplat standard license</li>
+
+<li>swipe_collide: &quot;Large knife hit, strike another with a clunk 1&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/large-knife-hit-strike-another-with-a-clunk-1/">zapslat.com link</a>) licensed under ZapSplat standard license</li>
+
+<li>dagger_equip: &quot;Knife, dagger blade draw, pull from sheath 7&quot; by ZapSplat ( <a href="https://www.zapsplat.com/music/knife-dagger-blade-draw-pull-from-sheath-7/">zapslat.com link</a> ) licensed under ZapSplat standard license</li>
+
+<li>dagger_dash: &quot;Bullet pass, whizz by 2&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/bullet-pass-whizz-by-2/">zapslat.com link</a>) licensed under ZapSplat standard license</li>
+
+<li>dagger_dash_hit: &quot;Bullet whizz into person, body with an impact and light splat. Version 1&quot; by ZapSplat ( <a href="https://www.zapsplat.com/music/bullet-whizz-into-person-body-with-an-impact-and-light-splat-version-1/">zapslat.com link</a> ) licensed under ZapSplat standard license</li>
+
+<li>swipe_blocked: &quot;Metal hit, impact, sharp flick, tinny 1&quot; by ZapSplat ( <a href="https://www.zapsplat.com/music/metal-hit-impact-sharp-flick-tinny-1/">zapslat.com link</a> ) licensed under ZapSplat standard license</li>
+
+<li>swipe_hit: &quot;Horror, knife stab into flesh then pull out, very squelchy 3&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/horror-knife-stab-into-flesh-then-pull-out-very-squelchy-3/">zapslat.com link</a>) licensed under ZapSplat standard license</li>
+
+<li>xbow_equip: &quot;Bolt Cutter&quot; by jameswrowles (<a href="https://freesound.org/people/jameswrowles/sounds/516590/">freesound.org link</a>) licensed under CC0</li>
+
+<li>xbow_reload: &quot;mini crossbow foley&quot; by nettimato (<a href="https://freesound.org/people/nettimato/sounds/350345/">freesound.org link</a>) licensed under CC0</li>
+
+<li>bolt_shoot: &quot;bow02&quot; by Erdie (<a href="https://freesound.org/people/Erdie/sounds/65734/">freesound.org link</a>) licensed under CC-BY 3.0</li>
+
+<li>bolt_hit: &quot;Medieval crossbow bolt pass by 1&quot; by Still North Media (<a href="https://www.zapsplat.com/music/medieval-crossbow-bolt-pass-by-1/">zapslat.com link</a>) licensed under CC0</li>
+
+<li>bolt_blocked: &quot;Fast swing, whoosh into a metal hit, thud or clunk, could be sword hitting shield or armor. Version 1&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/fast-swing-whoosh-into-a-metal-hit-thud-or-clunk-could-be-sword-hitting-shield-or-armor-version-1/">zapslat.com link</a>) licensed under ZapSplat standard license</li>
+
+<li>potion_equip: &quot;PotionDrinkLONG&quot; by Jamius (<a href="https://freesound.org/people/Jamius/sounds/41529/">freesound.org link</a>) licensed under CC BY 3.0</li>
+
+<li>potion_drink: &quot;Potion - drink - swallow&quot; by vlnpetiteau (<a href="https://freesound.org/people/vlnpetiteau/sounds/574077/#comments">freesound.org link</a>) licensed under CC0</li>
+
+<li>potion_break: &quot;Bottle Shattering&quot; by spookymodem (<a href="https://freesound.org/people/spookymodem/sounds/202093/">freesound.org link</a>) licensed under CC0</li>
+
+<li>speed_feather_use: &quot;Soft Wind&quot; by Animate_42 (<a href="https://freesound.org/people/Animate_42/sounds/502883/">freesound.org link</a>) licensed under CC0</li>
+
+<li>teleport: &quot;teleport&quot; by Leszek_Szary (<a href="https://freesound.org/people/Leszek_Szary/sounds/172206/">freesound.org link</a>) licensed under CC0</li>
+
+<li>blow_dart_shoot: &quot;Blowpipe&quot; by loudernoises (<a href="https://freesound.org/people/loudernoises/sounds/334168/">freesound.org link</a>) licensed under CC0</li>
+
+<li>blow_dart_collide: &quot;Dart strikes dartboard 5&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/dart-strikes-dartboard-5/">h</a>) licensed under ZapSplat standard license</li>
+
+<li>blow_dart_hit: &quot;Blood Impact&quot; by EminYILDIRIM (<a href="https://freesound.org/people/EminYILDIRIM/sounds/554284/">freesound.org link</a>) licensed under CC BY 3.0</li>
+
 </ul>
-<p>thank you all for letting me legally steal your hard work to use in my game &lt;3</p>
+
+<p>a big thanks to all the sound authors for letting me legally steal your hard work to use in my game &lt;3</p>
+
+
 <h3 id="license">license</h3>
+
 <p>note that this is not the license for the engine, but rather the game itself</p>
-<pre><code>Copyright (c) <span class="hljs-number">2021</span> NonGMOTrash
 
-    This program is free software: you can redistribute <span class="hljs-keyword">it</span> <span class="hljs-keyword">and</span>/<span class="hljs-keyword">or</span> modify
-<span class="hljs-keyword">it</span> under <span class="hljs-keyword">the</span> terms <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> GNU General Public License <span class="hljs-keyword">as</span> published <span class="hljs-keyword">by</span>
-<span class="hljs-keyword">the</span> Free Software Foundation, either <span class="hljs-built_in">version</span> <span class="hljs-number">3</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> License, <span class="hljs-keyword">or</span>
-(<span class="hljs-keyword">at</span> your option) <span class="hljs-keyword">any</span> later <span class="hljs-built_in">version</span>.
+<code>
+<pre>Copyright (c) 2021 NonGMOTrash
 
-This program is distributed <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> hope that <span class="hljs-keyword">it</span> will be useful,
-but WITHOUT ANY WARRANTY; <span class="hljs-keyword">without</span> even <span class="hljs-keyword">the</span> implied warranty <span class="hljs-keyword">of</span>
-MERCHANTABILITY <span class="hljs-keyword">or</span> FITNESS FOR A PARTICULAR PURPOSE.  See <span class="hljs-keyword">the</span>
-GNU General Public License <span class="hljs-keyword">for</span> more details.
+    This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-You should have received <span class="hljs-keyword">a</span> copy <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> GNU General Public License
-along <span class="hljs-keyword">with</span> this program.  If <span class="hljs-keyword">not</span>, see &lt;<span class="hljs-keyword">https</span>://www.gnu.org/licenses/&gt;.
-</code></pre><p>github repo is here: (private until full release)</p>
-<h1 id="patchnotes">Patchnotes</h1>
-<h2 id="beta-3-0">Beta 3.0</h2>
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</pre>
+</code>
+
+<p>github repo is here: <em>(private until full release)</em></p>
+
+
+<h1 id="patchnotes">patchnotes</h1>
+
+<h2 id="beta-3-0">beta 3.0</h2>
 <ul>
 <li>added the staff</li>
 <li>added mages</li>
+<li>added the spear</li>
+<li>added wardens</li>
+<li>added the dagger (rogues use it)</li>
+<li>added medics</li>
+<li>added the crossbow</li>
+<li>added the queen</li>
+<li>added water tiles</li>
+<li>added slimes</li>
 <li>added arrow turrets and pylons</li>
-<li>added kills counter to level completion screen</li>
+<li>added health potions</li>
+<li>added iron-infused potions</li>
+<li>added speed feathers</li>
+<li>added portals</li>
+<li>added blow gun</li>
+<li>added witchs</li>
+<li>the sword now as a counter (right click)</li>
+<li>added a kills counter to level completion screen</li>
 <li>fixed hitboxes and spike activation going through walls</li>
-<li>added speed, slowness, and regeneration status effects</li>
-<li>renabled gpu snap to fix weird visual artifacts with tilemaps</li>
+<li>added speed, slowness, regeneration, and resistance status effects</li>
+<li>fixed level times and perfections not saving properly</li>
+<li>renabled GPU snap to fix weird visual artifacts with tilemaps</li>
+<li>fixed status effect stacking not working</li>
 <li>fixed the bow being capped at 2 damage instead of 3</li>
-<li>replaced a few of the sound effects</li>
+<li>remade the level Timber</li>
+<li>fixed some death effects not playing</li>
+<li>made the readme into a .html file</li>
 </ul>
-<h3 id="beta-2-14-hotfix-2-5-23-2021-">Beta 2.14 Hotfix #2 (5/23/2021)</h3>
+
+<h4 id="beta-2-14-hotfix-2-5-23-2021-">beta 2.14 hotfix #2 (5/23/2021)</h4>
 <ul>
 <li>fixed the hitbox bug</li>
 <li>fixed weird damage scaling with arrows that caused them to sometimes deal 0 damage</li>
 <li>fixed healthbar issue on Duo</li>
 </ul>
-<h3 id="beta-2-14-hotfix-5-22-2021-">Beta 2.14 Hotfix (5/22/2021)</h3>
+
+<h4 id="beta-2-14-hotfix-5-22-2021-">beta 2.14 hotfix (5/22/2021)</h4>
 <ul>
 <li>fixed levels not loading (so the game is actually playable)</li>
 <li>fixed options sometimes not saving</li>
 </ul>
-<h3 id="beta-2-14-5-20-2021-">Beta 2.14 (5/20/2021)</h3>
+
+<h3 id="beta-2-14-5-20-2021-">beta 2.14 (5/20/2021)</h3>
 <ul>
 <li>completely remade intro</li>
 <li>better level completion screen</li>
@@ -215,23 +459,26 @@ along <span class="hljs-keyword">with</span> this program.  If <span class="hljs
 <li>changed the camera system a bit so you can&#39;t see quite as far if you put your mouse to the edge of the screen</li>
 <li>some behind the scenes improvements</li>
 </ul>
-<h4 id="beta-2-13-hotfix-3-5-2-2021-">Beta 2.13 Hotfix #3 (5/2/2021)</h4>
+
+<h4 id="beta-2-13-hotfix-3-5-2-2021-">beta 2.13 hotfix #3 (5/2/2021)</h4>
 <ul>
 <li>made the 2nd level easier (ur welcome nathan)</li>
 <li>(half) fixed a hitbox bug with arrows</li>
 </ul>
-<h4 id="beta-2-13-hotfix-2-5-2-2021-">Beta 2.13 Hotfix #2 (5/2/2021)</h4>
+
+<h4 id="beta-2-13-hotfix-2-5-2-2021-">beta 2.13 hotfix #2 (5/2/2021)</h4>
 <ul>
 <li>ported to godot 3.3</li>
 <li>fixed a common crash that sometimes happens when you are killed by a projectile</li>
 <li>disabled pixel and GPU snap, intended to reduce jitter (experimental)</li>
 <li>enabled fallback to OpenGL ES 2.0 for older systems (experimental) </li>
 </ul>
-<h4 id="beta-2-13-hotfix-4-27-2021-">Beta 2.13 Hotfix (4/27/2021)</h4>
+<h4 id="beta-2-13-hotfix-4-27-2021-">beta 2.13 hotfix (4/27/2021)</h4>
 <ul>
 <li>fixed various issues with UI assets not loading and thus being broken</li>
 </ul>
-<h3 id="beta-2-13-4-25-2021-">Beta 2.13 (4/25/2021)</h3>
+
+<h3 id="beta-2-13-4-25-2021-">beta 2.13 (4/25/2021)</h3>
 <ul>
 <li>added animations for held items (the sword no longer looks poopoo)</li>
 <li>added many particle effects (impacts, smoke, blood, more)</li>
@@ -243,7 +490,8 @@ along <span class="hljs-keyword">with</span> this program.  If <span class="hljs
 <li>fixed a bug where you couldn&#39;t die from bleeding</li>
 <li>lots of behind the scenes improvements</li>
 </ul>
-<h3 id="beta-2-12-4-1-2021-">Beta 2.12 (4/1/2021)</h3>
+
+<h3 id="beta-2-12-4-1-2021-">beta 2.12 (4/1/2021)</h3>
 <ul>
 <li>renamed the game from project epsilon to teralite</li>
 <li>the player&#39;s held item is now visible (WIP, animations planned)</li>
@@ -255,14 +503,16 @@ along <span class="hljs-keyword">with</span> this program.  If <span class="hljs
 <li>added a minimum charge time to the bow</li>
 <li>lots of behind the scenes improvements</li>
 </ul>
-<h3 id="beta-2-11-3-14-2021-">Beta 2.11 (3/14/2021)</h3>
+
+<h3 id="beta-2-11-3-14-2021-">beta 2.11 (3/14/2021)</h3>
 <ul>
 <li>added more sound effects (death, spikes, crates, +more)</li>
 <li>added pitch shifting to sound effects</li>
 <li>half fixed issues with ! and ? spam from groups of AIs (still WIP)</li>
 <li>the pistol now has a much longer cooldown (temporary)</li>
 </ul>
-<h3 id="beta-2-10-3-7-2021-">Beta 2.10 (3/7/2021)</h3>
+
+<h3 id="beta-2-10-3-7-2021-">beta 2.10 (3/7/2021)</h3>
 <ul>
 <li>added player death animation</li>
 <li>added volume slider</li>
@@ -275,7 +525,8 @@ along <span class="hljs-keyword">with</span> this program.  If <span class="hljs
 <li>other enemies now also emit footstep sounds</li>
 <li>a few behind the scenes improvements</li>
 </ul>
-<h3 id="beta-2-9-2-21-2021-">Beta 2.9 (2/21/2021)</h3>
+
+<h3 id="beta-2-9-2-21-2021-">beta 2.9 (2/21/2021)</h3>
 <ul>
 <li>added sound effects (very WIP)</li>
 <li>melee and projectile attacks now have recoil</li>
@@ -285,7 +536,8 @@ along <span class="hljs-keyword">with</span> this program.  If <span class="hljs
 <li>greatly updated README</li>
 <li>a few behind the scenes improvements</li>
 </ul>
-<h3 id="beta-2-8-1-31-2021-">Beta 2.8 (1/31/2021)</h3>
+
+<h3 id="beta-2-8-1-31-2021-">beta 2.8 (1/31/2021)</h3>
 <ul>
 <li>added an armor break mechanic (entities with defense now have a separate armor bar and they will become vulnerable once it&#39;s depleted)</li>
 <li>knights now have less health, but 1 defense</li>
@@ -294,7 +546,8 @@ along <span class="hljs-keyword">with</span> this program.  If <span class="hljs
 <li>projectiles now have a minimum speed they need to deal damage (WIP, feels a little wrong on arrows)</li>
 <li>some behind the scenes improvements</li>
 </ul>
-<h3 id="beta-2-7-1-17-2021-">Beta 2.7 (1/17/2021)</h3>
+
+<h3 id="beta-2-7-1-17-2021-">beta 2.7 (1/17/2021)</h3>
 <ul>
 <li>fixed the .exe icon</li>
 <li>added an armor break mechanic (entities with defense now have a separate armor bar and they will become vulnerable once it&#39;s depleted)</li>
@@ -304,7 +557,8 @@ along <span class="hljs-keyword">with</span> this program.  If <span class="hljs
 <li>projectiles now have a minimum speed they need to deal damage (WIP, feels a little wrong on arrows)</li>
 <li>some behind the scenes improvements</li>
 </ul>
-<h3 id="beta-2-6-1-11-2021-">Beta 2.6 (1/11/2021)</h3>
+
+<h3 id="beta-2-6-1-11-2021-">beta 2.6 (1/11/2021)</h3>
 <ul>
 <li>chaser sprite improvements</li>
 <li>minor-ish level design improvements</li>
@@ -314,7 +568,9 @@ along <span class="hljs-keyword">with</span> this program.  If <span class="hljs
 <li>bleeding now works differently: the duration is increased each time you take any physical damage while bleeding</li>
 <li>a big behind the scenes improvement (singular)</li>
 </ul>
-<h3 id="beta-2-5-1-30-2020-">Beta 2.5 (1/30/2020)</h3>
+
+
+<h3 id="beta-2-5-1-30-2020-">beta 2.5 (1/30/2020)</h3>
 <ul>
 <li>entities can now kill their target without crashing the game (this also fixed all known crashes previously in the game)</li>
 <li>added entity pathfinding</li>
@@ -328,7 +584,8 @@ along <span class="hljs-keyword">with</span> this program.  If <span class="hljs
 <li>fixed item duplication on Duo</li>
 <li>a ton of behind the scenes improvements</li>
 </ul>
-<h3 id="beta-2-4-11-29-2020-">Beta 2.4 (11/29/2020)</h3>
+
+<h3 id="beta-2-4-11-29-2020-">beta 2.4 (11/29/2020)</h3>
 <ul>
 <li>remade the level Brick</li>
 <li>tutorial and HUD text now has a shadow for better clarity</li>
@@ -336,14 +593,16 @@ along <span class="hljs-keyword">with</span> this program.  If <span class="hljs
 <li>fixed issues with collisions</li>
 <li>a bunch of miscellaneous improvements</li>
 </ul>
-<h3 id="beta-2-3-11-25-2020-">Beta 2.3 (11/25/2020)</h3>
+
+<h3 id="beta-2-3-11-25-2020-">beta 2.3 (11/25/2020)</h3>
 <ul>
 <li>levels now track your best time</li>
 <li>added a stopwatch timer</li>
 <li>adjusted entity collisions</li>
 <li>some miscellaneous improvements</li>
 </ul>
-<h3 id="beta-2-2-11-23-2020-">Beta 2.2 (11/23/2020)</h3>
+
+<h3 id="beta-2-2-11-23-2020-">beta 2.2 (11/23/2020)</h3>
 <ul>
 <li>added a new level (Duo)</li>
 <li>added an intro (WIP)</li>
@@ -353,7 +612,8 @@ along <span class="hljs-keyword">with</span> this program.  If <span class="hljs
 <li>some changes to physics (should feel about the same)</li>
 <li>changed the look of the health bar (similar to how it was pre 1.6)</li>
 </ul>
-<h3 id="beta-2-1-11-17-2020-">Beta 2.1 (11/17/2020)</h3>
+
+<h3 id="beta-2-1-11-17-2020-">beta 2.1 (11/17/2020)</h3>
 <ul>
 <li>options are now saved automatically (so they don&#39;t reset every time you play)</li>
 <li>levels now track your deaths</li>
@@ -366,16 +626,22 @@ along <span class="hljs-keyword">with</span> this program.  If <span class="hljs
 <li>fixed aNOTHER potential crash on Entrance (can&#39;t have 2 enemies that fight i guess)</li>
 <li>some small fixes and improvements</li>
 </ul>
-<h4 id="beta-2-0-hotfix-11-11-2020-">Beta 2.0 Hotfix (11/11/2020)</h4>
+
+<h4 id="beta-2-0-hotfix-11-11-2020-">beta 2.0 Hotfix (11/11/2020)</h4>
 <ul>
 <li>fixed the crash on the level Entrance</li>
 </ul>
-<h2 id="beta-2-0-11-11-2020-">Beta 2.0 (11/11/2020)</h2>
+
+
+<h2 id="beta-2-0-11-11-2020-">beta 2.0 (11/11/2020)</h2>
 <ul>
-<li>added a new kingdom faction (knights, archers, rogues, and kings)</li>
 <li>added the dash</li>
 <li>added the bow</li>
 <li>added castle tiles and props</li>
+<li>added knights</li>
+<li>added archers</li>
+<li>added rogues</li>
+<li>added the king</li>
 <li>added status effects (bleeding, poison, and burning)</li>
 <li>added fire and timber pots</li>
 <li>added blue ultra chasers</li>
@@ -389,17 +655,21 @@ along <span class="hljs-keyword">with</span> this program.  If <span class="hljs
 <li>pistol does 2 damage again</li>
 <li>a few sprite improvements</li>
 </ul>
-<h3 id="beta-1-6-10-4-2020-">Beta 1.6 (10/4/2020)</h3>
+
+
+<h3 id="beta-1-6-10-4-2020-">beta 1.6 (10/4/2020)</h3>
 <ul>
 <li>graphics overhaul, almost every sprite and tile has been redone</li>
 <li>gold chasers work differently, they now have more health, no damage, and run away</li>
 <li>some miscellaneous fixes and improvements</li>
 </ul>
-<h4 id="beta-1-5-hotfix-9-28-2020-">Beta 1.5 Hotfix (9/28/2020)</h4>
+
+<h4 id="beta-1-5-hotfix-9-28-2020-">beta 1.5 hotfix (9/28/2020)</h4>
 <ul>
 <li>fixed a bug very minor bug where levels wouldn&#39;t load</li>
 </ul>
-<h3 id="beta-1-5-9-27-2020-">Beta 1.5 (9/27/2020)</h3>
+
+<h3 id="beta-1-5-9-27-2020-">beta 1.5 (9/27/2020)</h3>
 <ul>
 <li>added saving and loading</li>
 <li>menus now work with the mouse and are much less janky overall</li>
@@ -413,7 +683,8 @@ along <span class="hljs-keyword">with</span> this program.  If <span class="hljs
 <li>pistol bullets now only do 1 damage (this is temporary until 2.0) </li>
 <li>a few miscellaneous fixes and improvements</li>
 </ul>
-<h3 id="beta-1-4-9-20-2020-">Beta 1.4 (9/20/2020)</h3>
+
+<h3 id="beta-1-4-9-20-2020-">beta 1.4 (9/20/2020)</h3>
 <ul>
 <li>added knockback</li>
 <li>fixed a bug where you could get double hit if you were damaged twice on the same frame</li>
@@ -422,7 +693,8 @@ along <span class="hljs-keyword">with</span> this program.  If <span class="hljs
 <li>improvements to the UI and progress bar</li>
 <li>some miscellaneous fixes and improvements</li>
 </ul>
-<h3 id="beta-1-3-9-7-2020-">Beta 1.3 (9/7/2020)</h3>
+
+<h3 id="beta-1-3-9-7-2020-">beta 1.3 (9/7/2020)</h3>
 <ul>
 <li>added a hub world</li>
 <li>added a title screen</li>
@@ -432,7 +704,8 @@ along <span class="hljs-keyword">with</span> this program.  If <span class="hljs
 <li>fixes for depth sorting with spikes (still not perfect, im working on it)</li>
 <li>a few miscellaneous fixes</li>
 </ul>
-<h3 id="beta-1-2-8-30-2020-">Beta 1.2 (8/30/2020)</h3>
+
+<h3 id="beta-1-2-8-30-2020-">beta 1.2 (8/30/2020)</h3>
 <ul>
 <li>settings menu overhaul (UI aesthetic will be overhauled soon as well</li>
 <li>reload bar is the right size now</li>
@@ -440,7 +713,8 @@ along <span class="hljs-keyword">with</span> this program.  If <span class="hljs
 <li>improved item pickup system</li>
 <li>lots of miscellaneous fixes and improvements</li>
 </ul>
-<h3 id="beta-1-1-8-23-2020-">Beta 1.1 (8/23/2020)</h3>
+
+<h3 id="beta-1-1-8-23-2020-">beta 1.1 (8/23/2020)</h3>
 <ul>
 <li>major improvements to the sword, it is much less janky now</li>
 <li>fixed a bug with the enemy AI that would severely stunt their reaction time</li>
@@ -451,15 +725,21 @@ along <span class="hljs-keyword">with</span> this program.  If <span class="hljs
 <li>gold chasers now drop gold hearts</li>
 <li>other small miscellaneous fixes and improvements</li>
 </ul>
-<h2 id="beta-1-0-8-16-2020-">Beta 1.0 (8/16/2020)</h2>
+
+
+<h2 id="beta-1-0-8-16-2020-">beta 1.0 (8/16/2020)</h2>
 <ul>
 <li>initial soft release</li>
 <li>3 enemies (normal, brute, and gold chasers)</li>
 <li>3 levels</li>
 <li>3 items (sword, pistol, white armor)</li>
 </ul>
+
 <h3 id="how-the-version-numbering-works">how the version numbering works</h3>
-<p>i don&#39;t use semantic versioning because i suck<br>instead, its: </p>
+<p>i don&#39;t use semantic versioning because i suck</p>
+<p>instead, its:</p>
+
 <p><em>Phase</em> <strong>content</strong>.<strong>patch</strong> <em>Hotfix</em>  </p>
+
 <p><em>Phase</em> is Alpha or Beta. if the version is after the official release, <em>Phase</em> is ommited<br><strong>content</strong> is only incremented for big content updates (although it starts at 1)<br><strong>patch</strong> is incremented for minor polish updates<br><em>Hotfix</em> isn&#39;t displayed unless there&#39;s a hotfix for that version. if there&#39;s multiple hotfixes for a version, a counter is added (i.e. Hotfix #2)</p>
 </body></html>
