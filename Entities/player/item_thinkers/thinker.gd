@@ -80,19 +80,19 @@ func _check_if_selected(swapped_item) -> void:
 func _process(_delta: float):
 	if global.selection != slot:
 		return
-
+	
 	pre_input_action()
-
+	
 	if Input.is_action_just_pressed("reload_item"):
 		reload()
 		return
-
+	
 	if get_ready() == false and auto_ready_check == true: return
-
+	
 	if Input.is_action_pressed("drop_item"):
 		if get_parent().inventory[global.selection] == null: return
 		var new_item_entity = res.aquire_entity(my_item)
-
+	
 		if new_item_entity == null: return
 		var dir_vector = get_parent().global_position.direction_to(get_parent().get_global_mouse_position())
 		new_item_entity.global_position = get_parent().global_position #+ dir_vector * 16
@@ -101,7 +101,7 @@ func _process(_delta: float):
 		velo += get_parent().velocity / 1.5
 		new_item_entity.velocity = velo
 		global.nodes["ysort"].add_child(new_item_entity)
-
+		
 		delete()
 		return
 
@@ -178,11 +178,13 @@ func selected():
 
 	if player.components["held_item"].sprite.frame > max_frame:
 		player.components["held_item"].sprite.frame = max_frame
+	
 	player.components["held_item"].sprite.hframes = HELD_ITEM_FRAMES.x
 	player.components["held_item"].sprite.vframes = HELD_ITEM_FRAMES.y
-	player.components["held_item"].animation.stop()
+	if EQUIP_ANIM == null:
+		player.components["held_item"].animation.stop()
+	
 	if RESET_HELD_ITEM_FLIPPING == true:
-		player.components["held_item"].reversed = false
 		player.components["held_item"].reversed = false
 
 func unselected():

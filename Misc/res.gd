@@ -29,7 +29,7 @@ const data := {
 	"slime": "res://Entities/slime/slime.tscn",
 	"queen": "res://Entities/queen/queen.tscn",
 	"witch": "res://Entities/witch/witch.tscn",
-
+	
 	# items
 	"pistol": "res://Entities/Item_Pickups/pistol/pistol.tscn",
 	"white_armor": "res://Entities/Item_Pickups/white_armor/white_armor.tscn",
@@ -46,13 +46,14 @@ const data := {
 	"iron_potion": "res://Entities/Item_Pickups/iron_potion/iron_potion.tscn",
 	"speed_feather": "res://Entities/Item_Pickups/speed_feather/speed_feather.tscn",
 	"blow_gun": "res://Entities/Item_Pickups/blow_gun/blow_gun.tscn",
-
+	"gold_apple": "res://Entities/Item_Pickups/gold_apple/gold_apple.tscn",
+	
 	# melees
 	"slash": "res://Entities/Attacks/Melee/slash/slash.tscn",
 	"swipe": "res://Entities/Attacks/Melee/swipe/swipe.tscn",
 	"shine": "res://Entities/Attacks/Melee/shine/shine.tscn",
 	"poke": "res://Entities/Attacks/Melee/poke/poke.tscn",
-
+	
 	# projectiles
 	"arrow": "res://Entities/Attacks/Projectile/arrow/arrow.tscn",
 	"bullet": "res://Entities/Attacks/Projectile/small_bullet/small_bullet.tscn",
@@ -62,7 +63,7 @@ const data := {
 	"thrown_health_potion": "res://Entities/Attacks/Projectile/thrown_health_potion/thrown_health_potion.tscn",
 	"thrown_iron_potion": "res://Entities/Attacks/Projectile/thrown_iron_potion/thrown_iron_potion.tscn",
 	"blow_dart": "res://Entities/Attacks/Projectile/blow_dart/blow_dart.tscn",
-
+	
 	# effects
 	"hit_effect": "res://Effects/hit_effect/hit_effect.tscn",
 	"item_pickup_effect": "res://Effects/item_pickup_effect/item_pickup_effect.tscn",
@@ -76,7 +77,7 @@ const data := {
 	"archer_death": "res://Effects/death_effects/archer_death_effect.tscn",
 	"rogue_death": "res://Effects/death_effects/rogue_death_effect.tscn",
 	"king_death": "res://Effects/death_effects/king_death_effect.tscn",
-
+	
 	# props
 	"maple_tree1": "res://Props/maple_tree1/maple_tree1.tscn",
 	"maple_tree2": "res://Props/maple_tree2/maple_tree2.tscn",
@@ -85,7 +86,7 @@ const data := {
 	"banner": "res://Props/banner/banner.tscn",
 	"flag": "res://Props/flag/flag.tscn",
 	"torch": "res://Props/torch/torch.tscn",
-
+	
 	# audio
 	"sword_clang": "res://Entities/Attacks/Melee/slash/sword_clang.wav",
 	"sword_equip": "res://Entities/Attacks/Melee/slash/sword_equip.wav",
@@ -114,7 +115,7 @@ const data := {
 	"menu_unpause": "res://UI/pause_menu/menu_unpause.wav",
 	"menu_click": "res://UI/menu_click.wav",
 	"menu_hover": "res://UI/menu_hover.wav",
-
+	
 	# textures
 	"sword_texture": "res://Entities/Item_Pickups/sword/sword.png",
 	"bow_texture": "res://Entities/Item_Pickups/bow/bow.png",
@@ -128,6 +129,7 @@ const data := {
 	"iron_potion_texture": "res://Entities/Item_Pickups/iron_potion/iron_potion.png",
 	"speed_feather_texture": "res://Entities/Item_Pickups/speed_feather/speed_feather.png",
 	"blow_gun_texture": "res://Entities/Item_Pickups/blow_gun/blow_gun.png",
+	"gold_apple_texture": "res://Entities/Item_Pickups/gold_apple/gold_apple.png",
 }
 
 func allocate(asset:String) -> void:

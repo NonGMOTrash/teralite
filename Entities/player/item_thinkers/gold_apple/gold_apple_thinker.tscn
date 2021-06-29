@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Entities/player/item_thinkers/gold_apple/gold_apple_thinker.gd" type="Script" id=1]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Item_Pickups/gold_apple/gold_apple.png" type="Texture" id=3]
+[ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/player/item_thinkers/gold_apple/gold_apple_eat.wav" type="AudioStream" id=5]
+
+[node name="gold_apple_thinker" type="Node"]
+script = ExtResource( 1 )
+HELD_ITEM_TEXTURE = ExtResource( 3 )
+my_item = "gold_apple"
+display_name = "Golden Apple"
+CURSOR_MODE = 1
+bonus_healing = 2
+regen_duration = 6.0
+regen_lvl = 0.35
+
+[node name="sound_player" parent="." instance=ExtResource( 2 )]
+
+[node name="eat" parent="sound_player" instance=ExtResource( 4 )]
+stream = ExtResource( 5 )
+AUTO_PLAY = false
+
+[connection signal="finished" from="sound_player/eat" to="." method="_on_eat_finished"]
