@@ -22,7 +22,7 @@ display_name = "Pistol"
 CURSOR = ExtResource( 2 )
 CURSOR_MODE = 1
 EQUIP_SOUND = ExtResource( 4 )
-reload_time = 2.46
+reload_time = 1.1
 
 [node name="cooldown" type="Timer" parent="."]
 one_shot = true
