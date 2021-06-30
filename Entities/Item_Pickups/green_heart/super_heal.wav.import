@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/super_heal.wav-0ad326b1a5aad5c14a376baed30b5153.sample"
+
+[deps]
+
+source_file="res://Entities/Item_Pickups/green_heart/super_heal.wav"
+dest_files=[ "res://.import/super_heal.wav-0ad326b1a5aad5c14a376baed30b5153.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
