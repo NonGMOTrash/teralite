@@ -50,6 +50,9 @@ func _ready():
 	
 	# PROBLEM_NOTE: maybe do global_position.y += 0.01, might break things though
 	
+	if truName == "":
+		push_error("%s's truName was not set" % get_name())
+	
 	if faction != "" and global.faction_relationships.get(faction) == null:
 		push_error(get_name()+"'s faction '"+faction+"' is invalid")
 	

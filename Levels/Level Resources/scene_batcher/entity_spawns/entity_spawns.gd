@@ -44,5 +44,7 @@ func set_data():
 		"speed_feather": get_used_cells_by_id(47),
 		"blow_gun": get_used_cells_by_id(48),
 		"witch": get_used_cells_by_id(49),
-		"gold_apple": get_used_cells_by_id(50)
+		"gold_apple": get_used_cells_by_id(50),
+		"lock": get_used_cells_by_id(51),
+		"key": get_used_cells_by_id(52),
 	}

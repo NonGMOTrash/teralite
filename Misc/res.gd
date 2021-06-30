@@ -29,6 +29,7 @@ const data := {
 	"slime": "res://Entities/slime/slime.tscn",
 	"queen": "res://Entities/queen/queen.tscn",
 	"witch": "res://Entities/witch/witch.tscn",
+	"lock": "res://Entities/lock/lock.tscn",
 	
 	# items
 	"pistol": "res://Entities/Item_Pickups/pistol/pistol.tscn",
@@ -47,6 +48,7 @@ const data := {
 	"speed_feather": "res://Entities/Item_Pickups/speed_feather/speed_feather.tscn",
 	"blow_gun": "res://Entities/Item_Pickups/blow_gun/blow_gun.tscn",
 	"gold_apple": "res://Entities/Item_Pickups/gold_apple/gold_apple.tscn",
+	"key": "res://Entities/Item_Pickups/key/key.tscn",
 	
 	# melees
 	"slash": "res://Entities/Attacks/Melee/slash/slash.tscn",
@@ -130,6 +132,7 @@ const data := {
 	"speed_feather_texture": "res://Entities/Item_Pickups/speed_feather/speed_feather.png",
 	"blow_gun_texture": "res://Entities/Item_Pickups/blow_gun/blow_gun.png",
 	"gold_apple_texture": "res://Entities/Item_Pickups/gold_apple/gold_apple.png",
+	"key_texture": "res://Entities/Item_Pickups/key/key.png",
 }
 
 func allocate(asset:String) -> void:

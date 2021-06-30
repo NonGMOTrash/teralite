@@ -39,7 +39,6 @@ func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	visible = true
 
 func _physics_process(delta):
-	prints(get_name(), input_vector)
 	if visible == false: return
 
 	# acceleration
@@ -49,7 +48,7 @@ func _physics_process(delta):
 
 	distance_traveled += global_position.distance_to(old_pos)
 	old_pos = global_position
-	print(distance_traveled)
+	
 	if distance_traveled >= RANGE or velocity == Vector2.ZERO:
 		death_free = true
 		death()

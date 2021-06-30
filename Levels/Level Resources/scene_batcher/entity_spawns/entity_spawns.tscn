@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Levels/Level Resources/scene_batcher/scene_batcher.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/pistol/pistol.png" type="Texture" id=2]
@@ -44,6 +44,8 @@
 [ext_resource path="res://Entities/Item_Pickups/blow_gun/blow_gun.png" type="Texture" id=42]
 [ext_resource path="res://Entities/witch/witch.png" type="Texture" id=43]
 [ext_resource path="res://Entities/Item_Pickups/gold_apple/gold_apple.png" type="Texture" id=44]
+[ext_resource path="res://Entities/lock/lock.png" type="Texture" id=45]
+[ext_resource path="res://Entities/Item_Pickups/key/key.png" type="Texture" id=46]
 
 [sub_resource type="TileSet" id=1]
 2/name = "player.png 2"
@@ -648,6 +650,34 @@
 50/shape_one_way_margin = 0.0
 50/shapes = [  ]
 50/z_index = 0
+51/name = "lock.png 51"
+51/texture = ExtResource( 45 )
+51/tex_offset = Vector2( 0, 0 )
+51/modulate = Color( 1, 1, 1, 1 )
+51/region = Rect2( 0, 0, 16, 16 )
+51/tile_mode = 0
+51/occluder_offset = Vector2( 0, 0 )
+51/navigation_offset = Vector2( 0, 0 )
+51/shape_offset = Vector2( 0, 0 )
+51/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+51/shape_one_way = false
+51/shape_one_way_margin = 0.0
+51/shapes = [  ]
+51/z_index = 0
+52/name = "key.png 52"
+52/texture = ExtResource( 46 )
+52/tex_offset = Vector2( 0, 0 )
+52/modulate = Color( 1, 1, 1, 1 )
+52/region = Rect2( 1, 4, 14, 8 )
+52/tile_mode = 0
+52/occluder_offset = Vector2( 0, 0 )
+52/navigation_offset = Vector2( 0, 0 )
+52/shape_offset = Vector2( 0, 0 )
+52/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+52/shape_one_way = false
+52/shape_one_way_margin = 0.0
+52/shapes = [  ]
+52/z_index = 0
 
 [node name="entity_spawns" instance=ExtResource( 1 )]
 position = Vector2( 4, 4 )

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/key_equip.wav-241e8c6fe8f5792baf71eee2116ef5fd.sample"
+
+[deps]
+
+source_file="res://Entities/player/item_thinkers/key/key_equip.wav"
+dest_files=[ "res://.import/key_equip.wav-241e8c6fe8f5792baf71eee2116ef5fd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

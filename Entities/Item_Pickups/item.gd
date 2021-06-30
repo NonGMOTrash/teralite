@@ -18,9 +18,13 @@ var SOURCE
 var the_body = null
 var the_body_used = false
 
-func _init():
+func _ready():
+	# error checking
 	if type != item_types.POWERUP:
-		assert(player_only == true)
+		if player_only != true:
+			push_error("(%s) non-powerups items must be player_only!" % get_name())
+		if type == item_types.ACTIVE and thinker == null:
+			push_error("%s's thinker was not set" % get_name())
 
 func _on_Area2D_body_entered(body: Node) -> void:
 	if (
