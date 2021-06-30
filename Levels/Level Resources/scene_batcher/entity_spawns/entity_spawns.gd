@@ -47,4 +47,5 @@ func set_data():
 		"gold_apple": get_used_cells_by_id(50),
 		"lock": get_used_cells_by_id(51),
 		"key": get_used_cells_by_id(52),
+		"watcher_lock": get_used_cells_by_id(53),
 	}

@@ -30,6 +30,7 @@ const data := {
 	"queen": "res://Entities/queen/queen.tscn",
 	"witch": "res://Entities/witch/witch.tscn",
 	"lock": "res://Entities/lock/lock.tscn",
+	"watcher_lock": "res://Entities/watcher_lock/watcher_lock.tscn",
 	
 	# items
 	"pistol": "res://Entities/Item_Pickups/pistol/pistol.tscn",

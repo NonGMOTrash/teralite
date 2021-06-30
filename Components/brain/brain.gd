@@ -23,8 +23,10 @@ export(float, 0.01, 10.0) var COMM_DELAY = 1.2
 export(float, 0.0, 5.0) var COMM_DELAY_VARIANCE = 0.5
 
 export var IGNORE_ATTACKS := true
+export var IGNORE_INANIMATE := true
 export var IGNORE_UNFACTIONED := true
 export var IGNORE_ALLIES := true
+export var EXCLUDES := []
 
 # PROBLEM_NOTE: it would be better to use a dictionary for targets and target_paths because the targets
 # are not accesed or removed in a set order. same goes for some stuff in movement_lobe.gd i think 
@@ -175,6 +177,10 @@ func add_target(tar: Entity, force = false) -> void:
 			return
 		elif tar.faction == "" and IGNORE_UNFACTIONED == true:
 			return
+		elif tar.INANIMATE == true and IGNORE_INANIMATE == true:
+			return
+		elif tar.truName in EXCLUDES or tar.faction in EXCLUDES:
+			return
 		elif global.get_relation(entity, tar) == "friendly" and IGNORE_ALLIES == true:
 			return
 		elif targets.size() >= MAX_TARGETS:
@@ -240,6 +246,8 @@ func _on_sight_body_entered(body: Node) -> void:
 		body is Entity and
 		not (body is Attack and IGNORE_ATTACKS == true) and
 		not (body.faction == "" and IGNORE_UNFACTIONED == true) and
+		not (body.INANIMATE == true and IGNORE_INANIMATE == true) and
+		not (body.truName in EXCLUDES or body.faction in EXCLUDES) and
 		not (global.get_relation(entity, body) == "friendly" and IGNORE_ALLIES == true)
 	):
 		entities.append(body)

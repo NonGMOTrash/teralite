@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Levels/Level Resources/scene_batcher/scene_batcher.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/pistol/pistol.png" type="Texture" id=2]
@@ -46,6 +46,7 @@
 [ext_resource path="res://Entities/Item_Pickups/gold_apple/gold_apple.png" type="Texture" id=44]
 [ext_resource path="res://Entities/lock/lock.png" type="Texture" id=45]
 [ext_resource path="res://Entities/Item_Pickups/key/key.png" type="Texture" id=46]
+[ext_resource path="res://Entities/watcher_lock/watcher_lock.png" type="Texture" id=47]
 
 [sub_resource type="TileSet" id=1]
 2/name = "player.png 2"
@@ -678,6 +679,20 @@
 52/shape_one_way_margin = 0.0
 52/shapes = [  ]
 52/z_index = 0
+53/name = "watcher_lock.png 53"
+53/texture = ExtResource( 47 )
+53/tex_offset = Vector2( 0, 0 )
+53/modulate = Color( 1, 1, 1, 1 )
+53/region = Rect2( 0, 0, 16, 16 )
+53/tile_mode = 0
+53/occluder_offset = Vector2( 0, 0 )
+53/navigation_offset = Vector2( 0, 0 )
+53/shape_offset = Vector2( 0, 0 )
+53/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+53/shape_one_way = false
+53/shape_one_way_margin = 0.0
+53/shapes = [  ]
+53/z_index = 0
 
 [node name="entity_spawns" instance=ExtResource( 1 )]
 position = Vector2( 4, 4 )

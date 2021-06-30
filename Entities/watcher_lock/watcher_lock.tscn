@@ -1,0 +1,123 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Entities/watcher_lock/watcher_lock.gd" type="Script" id=1]
+[ext_resource path="res://Entities/watcher_lock/watcher_lock.png" type="Texture" id=2]
+[ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/sound_player/sound/sound.gd" type="Script" id=4]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/watcher_lock/watcher_lock_rise.wav" type="AudioStream" id=7]
+[ext_resource path="res://Entities/watcher_lock/watcher_lock_lower.wav" type="AudioStream" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 4 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "rise"
+length = 0.3
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.14 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.08, 0.14, 0.3 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 0.9 ), Vector2( 0.9, 1.1 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.14 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:state")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.14 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.14 ),
+"transitions": PoolRealArray( 1e+06, 1 ),
+"update": 1,
+"values": [ -100, 0 ]
+}
+
+[node name="watcher_lock" type="KinematicBody2D"]
+script = ExtResource( 1 )
+STATIC = true
+ACCELERATION = 0
+SLOWDOWN = 0
+TOP_SPEED = 0
+FORCE_MULT = 0.0
+INANIMATE = true
+truName = "watcher_lock"
+
+[node name="Sprite" type="Sprite" parent="."]
+z_index = -100
+texture = ExtResource( 2 )
+hframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/rise = SubResource( 2 )
+
+[node name="brain" parent="." instance=ExtResource( 3 )]
+TOLERANCE = 20
+SIGHT_RANGE = 300.0
+MAX_TARGETS = 1
+COMMUNICATES = false
+EXCLUDES = [ "player" ]
+
+[node name="sound_player" parent="." instance=ExtResource( 5 )]
+
+[node name="rise" parent="sound_player" instance=ExtResource( 6 )]
+stream = ExtResource( 7 )
+MODE = 1
+AUTO_PLAY = false
+
+[node name="lower" type="AudioStreamPlayer2D" parent="sound_player"]
+stream = ExtResource( 8 )
+script = ExtResource( 4 )
+MODE = 1
+AUTO_PLAY = false
+
+[connection signal="think" from="brain" to="." method="_on_brain_think"]
