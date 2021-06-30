@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/player/item_thinkers/key/key_thinker.gd" type="Script" id=2]
 [ext_resource path="res://Entities/Item_Pickups/key/key.png" type="Texture" id=3]
 [ext_resource path="res://Entities/player/item_thinkers/key/key_equip.wav" type="AudioStream" id=4]
+[ext_resource path="res://UI/cursors/cursor_key.png" type="Texture" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 16.0
@@ -13,6 +14,7 @@ script = ExtResource( 2 )
 HELD_ITEM_TEXTURE = ExtResource( 3 )
 my_item = "key"
 display_name = "Key"
+CURSOR = ExtResource( 5 )
 EQUIP_SOUND = ExtResource( 4 )
 activation_radius = 6.0
 

@@ -46,22 +46,25 @@ func _ready():
 	if my_item == "":
 		push_error("my_item was not set")
 		queue_free()
-
+	
 	if not my_item in res.data:
 		push_error("%s is not in res.gd" % my_item)
-
+	
 	if get_parent().truName != "player":
 		push_error("thinker's parent was not a player")
 		queue_free()
-
+	
+	if CURSOR == null:
+		push_warning("%s does not have a cursor" % get_name())
+	
 	get_parent().connect("swapped_item", self, "_check_if_selected")
-
+	
 	global.connect("unpaused", self,"_update_cursor_on_unpause")
-
+	
 	if get_parent().inventory[global.selection] == my_item: selected()
 	if get_parent().get_name() == "player":
 		global.emit_signal("update_item_bar", get_parent().inventory)
-
+	
 	if get_parent().inventory[global.selection] == my_item.to_lower():
 		selected()
 	elif EQUIP_SOUND != null:
