@@ -1,4 +1,4 @@
-extends "res://Entities/Item_Pickups/item.gd"
+extends Item
 
 func on_pickup(player):
 	player.components["stats"].DEFENCE += 1

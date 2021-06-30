@@ -5,7 +5,6 @@
 [ext_resource path="res://Entities/Item_Pickups/white_armor/white_armor.gd" type="Script" id=3]
 [ext_resource path="res://Entities/Item_Pickups/white_armor/armor_pickup.wav" type="AudioStream" id=4]
 
-
 [sub_resource type="AudioStreamRandomPitch" id=1]
 audio_stream = ExtResource( 4 )
 random_pitch = 1.05

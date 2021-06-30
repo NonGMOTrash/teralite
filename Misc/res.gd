@@ -51,6 +51,7 @@ const data := {
 	"blow_gun": "res://Entities/Item_Pickups/blow_gun/blow_gun.tscn",
 	"gold_apple": "res://Entities/Item_Pickups/gold_apple/gold_apple.tscn",
 	"key": "res://Entities/Item_Pickups/key/key.tscn",
+	"boots": "res://Entities/Item_Pickups/boots/boots.tscn",
 	
 	# melees
 	"slash": "res://Entities/Attacks/Melee/slash/slash.tscn",
@@ -135,6 +136,7 @@ const data := {
 	"blow_gun_texture": "res://Entities/Item_Pickups/blow_gun/blow_gun.png",
 	"gold_apple_texture": "res://Entities/Item_Pickups/gold_apple/gold_apple.png",
 	"key_texture": "res://Entities/Item_Pickups/key/key.png",
+	"boots_texture": "res://Entities/Item_Pickups/boots/boots.png",
 }
 
 func allocate(asset:String) -> void:

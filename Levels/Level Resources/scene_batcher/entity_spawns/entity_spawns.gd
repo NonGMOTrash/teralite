@@ -49,4 +49,5 @@ func set_data():
 		"key": get_used_cells_by_id(52),
 		"watcher_lock": get_used_cells_by_id(53),
 		"green_heart": get_used_cells_by_id(54),
+		"boots": get_used_cells_by_id(55),
 	}
