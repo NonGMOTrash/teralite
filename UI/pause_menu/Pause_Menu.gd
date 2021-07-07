@@ -64,8 +64,9 @@ func _on_restart_pressed() -> void:
 
 func _on_return_to_pressed() -> void:
 	get_tree().paused = false
-	if get_tree().current_scene.LEVEL_TYPE == 1: 
-		global.player_hub_pos = global.get_node(global.nodes["player"]).global_position
+	if get_tree().current_scene.LEVEL_TYPE == 1:
+		var letter: String = get_tree().current_scene.LETTER
+		global.player_hub_pos[letter] = global.get_node(global.nodes["player"]).global_position
 		global.write_save(global.save_name, global.get_save_data_dict())
 		
 		for sound in global.get_children():
@@ -73,14 +74,15 @@ func _on_return_to_pressed() -> void:
 				sound.free()
 				break
 		
-		get_tree().change_scene_to(load("res://UI/title_screen/title_screen.tscn"))
-	else: 
-		get_tree().change_scene_to(load("res://Levels/A/A-Hub.tscn")) 
-		# PROBLEM_NOTE: this ^^ won't work with multiple hubs
+		get_tree().change_scene("res://UI/title_screen/title_screen.tscn")
+	else:
+		var letter: String = get_tree().current_scene.WORLD
+		get_tree().change_scene("res://Levels/%s/%s-Hub.tscn" % [letter, letter])
 
 func _on_quit_pressed() -> void:
 	if get_tree().current_scene.LEVEL_TYPE == 1: 
-		global.player_hub_pos = global.get_node(global.nodes["player"]).global_position
+		var letter: String = get_tree().current_scene.LETTER
+		global.player_hub_pos[letter] = global.get_node(global.nodes["player"]).global_position
 		global.write_save(global.save_name, global.get_save_data_dict())
 	get_tree().quit()
 

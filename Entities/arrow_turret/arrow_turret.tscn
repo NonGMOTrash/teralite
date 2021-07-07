@@ -75,6 +75,7 @@ SLOWDOWN = 200
 FORCE_MULT = 0.3
 truName = "arrow_turret"
 faction = "blue_kingdom"
+charge_speed = 0.6
 
 [node name="stats" parent="." instance=ExtResource( 9 )]
 MAX_HEALTH = 3
@@ -110,6 +111,7 @@ position = Vector2( 0, 0 )
 [node name="sprite" parent="held_item/anchor" index="0"]
 texture = ExtResource( 5 )
 hframes = 4
+frame = 0
 
 [node name="AnimationPlayer" parent="held_item" index="1"]
 anims/custom = SubResource( 2 )
@@ -129,11 +131,9 @@ KILLED_SOUND = ExtResource( 8 )
 shape = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 4.7247 )
 rotation = 1.5708
 shape = SubResource( 4 )
-disabled = true
 
 [node name="entity_push" parent="." instance=ExtResource( 10 )]
 strength = 25

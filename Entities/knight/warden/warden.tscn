@@ -48,7 +48,7 @@ position = Vector2( 0, 4 )
 
 [node name="brain" parent="." index="7"]
 TOLERANCE = 5
-SIGHT_RANGE = 142.0
+SIGHT_RANGE = 100.0
 
 [node name="movement_lobe" parent="brain" index="3"]
 general_springs = {

@@ -9,9 +9,6 @@
 [ext_resource path="res://Levels/Level Resources/scene_batcher/prop_placer/prop_placer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/Level Resources/background_tiles/background_tiles.tscn" type="PackedScene" id=8]
 
-
-
-
 [node name="hub" type="Node2D"]
 script = ExtResource( 6 )
 
@@ -25,8 +22,10 @@ visible = false
 [node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource( 5 )]
 
 [node name="prop_placer" parent="." instance=ExtResource( 7 )]
+z_index = 201
 
 [node name="YSort" type="YSort" parent="."]
+z_index = 99
 
 [node name="WorldTiles" parent="YSort" instance=ExtResource( 1 )]
 

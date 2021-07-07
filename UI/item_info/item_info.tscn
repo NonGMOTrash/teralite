@@ -6,6 +6,7 @@
 [ext_resource path="res://UI/Themes/Styles/stylebox_empty.png" type="Texture" id=4]
 
 [node name="ItemInfo" type="VBoxContainer"]
+visible = false
 anchor_left = 0.85
 anchor_top = 0.99
 anchor_right = 0.99

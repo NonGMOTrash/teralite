@@ -139,7 +139,7 @@ func add_status_effect(new_status_effect:String, duration=2.5, level=1.0):
 		"slowness": status_effect = slowness.instance()
 		"regeneration": status_effect = regen.instance()
 		"resistance": status_effect = resistance.instance()
-		_: 
+		_:
 			push_error("status effect '%s' does not exist" % status_effect)
 			return
 	

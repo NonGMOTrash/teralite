@@ -2,6 +2,9 @@ extends "res://Components/sound_player/sound_player.gd"
 
 const FOOTSTEP_GRASS = preload("res://Entities/footstep_grass.wav")
 const FOOTSTEP_WOOD = preload("res://Entities/footstep_wood.wav")
+const FOOTSTEP_STONE = preload("res://Entities/footstep_stone.wav")
+const FOOTSTEP_CARPET = preload("res://Entities/footstep_carpet.wav")
+const FOOTSTEP_DIRT = preload("res://Entities/footstep_dirt.wav")
 
 export(float, 0.0, 9.9) var RATE = 0.33
 export(float, -9.9, 9.9) var OFFSET = -0.33
@@ -68,9 +71,11 @@ func footstep():
 			# no tile; use the background TextureRect's id instead
 			match global.nodes["background"].ID:
 				-1: pass # nothing
-				0: audio = FOOTSTEP_GRASS # maple
-		0: audio = FOOTSTEP_GRASS # dirt
-		1: audio = FOOTSTEP_WOOD # wood
+				0: audio = FOOTSTEP_GRASS # autumn
+				1: audio = FOOTSTEP_STONE # underground
+		0: audio = FOOTSTEP_DIRT
+		1: audio = FOOTSTEP_WOOD
+		2: audio = FOOTSTEP_CARPET
 	
 	if audio == null: return
 	

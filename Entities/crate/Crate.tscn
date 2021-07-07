@@ -24,7 +24,7 @@ extents = Vector2( 9, 9 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 8, 5 )
 
-[node name="Crate" type="KinematicBody2D"]
+[node name="crate" type="KinematicBody2D"]
 script = ExtResource( 3 )
 STATIC = true
 INANIMATE = true

@@ -14,7 +14,7 @@ export var TEAM_ATTACK = true
 export(AudioStream) var TRIGGERED_SOUND
 
 onready var timer = $Timer
-var stats
+var stats: Node
 
 signal hit(area, type)
 

@@ -1,22 +1,27 @@
 extends Node2D
 
-enum AMBIANCE_TYPES {NONE, FOREST}
-export(AMBIANCE_TYPES) var AMBIANCE = AMBIANCE_TYPES.FOREST
+enum TYPES {NONE, AUTUMN, UNDERGROUND}
+
+export(TYPES) var AMBIANCE = TYPES.AUTUMN
+export(TYPES) var GLOBAL_PARTICLES = TYPES.AUTUMN
 export(String) var LETTER := "A" 
 
 const LEVEL_TYPE = 1
 
 func _ready() -> void:
-	global.last_hub = get_tree().current_scene.get_name()
-	global.write_save(global.save_name, global.get_save_data_dict())
+	global.last_hub = get_tree().current_scene.LETTER
+	if not (global.save_name == "untitled_save" and global.stars == 0):
+		global.write_save(global.save_name, global.get_save_data_dict())
 	global.emit_signal("update_health")
 	global.update_cursor()
+	
 	var player = $YSort.find_node("player")
 	if player == null: 
 		push_warning("could not find player")
 	else:
-		if not global.player_hub_pos == null and not global.player_hub_pos == Vector2.ZERO:
-			player.global_position = global.player_hub_pos
+		var pos = global.player_hub_pos.get(LETTER)
+		if pos != null and pos != Vector2.ZERO:
+			player.global_position = global.player_hub_pos[LETTER]
 	
 	global.nodes["level"] = self
 	global.nodes["canvaslayer"] = $CanvasLayer
@@ -46,7 +51,8 @@ func _ready() -> void:
 	ambiance.MODE = Sound.MODES.REPEATING
 	
 	match AMBIANCE:
-		AMBIANCE_TYPES.FOREST: ambiance.stream = load("res://Levels/level/forest_ambiance.wav")
+		TYPES.AUTUMN: ambiance.stream = load("res://Levels/level/forest_ambiance.wav")
+		TYPES.UNDERGROUND: ambiance.stream = load("res://Levels/level/cave_ambiance.ogg")
 		_: return
 	
 	global.add_child(ambiance)

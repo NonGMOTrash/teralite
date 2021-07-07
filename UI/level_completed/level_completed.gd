@@ -1,7 +1,6 @@
 extends Control
 
 const YELLOW := Color8(242, 211, 53) 
-const A_HUB = "res://Levels/A/A-Hub.tscn"
 
 onready var header = $area/header/label
 onready var time = $area/stats/time/value
@@ -75,7 +74,8 @@ func _input(_event):
 #		prints("deaths:", global.level_deaths)
 #		prints("perfects:", global.perfected_levels)
 		if lvl == "thx":
-			get_tree().change_scene_to(load(A_HUB))
+			if global.last_hub == null: global.last_hub = "A"
+			get_tree().change_scene("res://Levels/%s/%s-Hub.tscn" % [global.last_hub, global.last_hub])
 			return
 		
 		if not global.cleared_levels.has(lvl): 
@@ -95,12 +95,11 @@ func _input(_event):
 		else:
 			global.level_deaths[lvl] += 1
 		
-		if lvl == "Monarch":
-			get_tree().change_scene_to(load("res://Levels/thx.tscn"))
+		var last_hub = global.last_hub
+		
+		if lvl == "Duel":
+			get_tree().change_scene("res://Levels/thx.tscn")
+		elif last_hub == null or last_hub.length() != 1:
+				get_tree().change_scene("res://Levels/A/A-Hub.tscn")
 		else:
-			match get_tree().current_scene.WORLD:
-				"A":
-					get_tree().change_scene_to(load(A_HUB))
-				_:
-					push_error("level has invalid WORLD: '%s'" % get_tree().current_scene.WORLD)
-					get_tree().change_scene_to(load(A_HUB))
+			get_tree().change_scene("res://Levels/%s/%s-Hub.tscn" % [last_hub, last_hub])

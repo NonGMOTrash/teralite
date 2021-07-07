@@ -5,12 +5,24 @@ onready var sprite = $Area2D/Sprite
 
 export var LEVEL := "level"
 export var STAR_REQUIREMENT = 0
+export var WORLD_ENTRANCE := false
+export var CUSTOM_SCENE_PATH := ""
 
 var player = null
 var pressed = false
 
 func _ready() -> void:
-	var txt
+	label.visible = false
+	var txt: String
+	
+	if WORLD_ENTRANCE == true:
+		var missing_stars: int = STAR_REQUIREMENT - global.stars
+		if missing_stars < 1 : txt = "Press [E] to enter"
+		elif missing_stars == 1: txt = "You need 1 more star"
+		elif missing_stars > 1: txt = "You need %s more stars" % missing_stars
+		
+		label.text = LEVEL + "\n" + txt
+		return
 	
 	if global.stars < STAR_REQUIREMENT: 
 		sprite.frame = 0
@@ -64,8 +76,6 @@ func _ready() -> void:
 		death_txt + "\n" +
 		time_txt
 	)
-	
-	label.visible = false
 
 func _input(event: InputEvent) -> void:
 	if player == null: return
@@ -76,8 +86,11 @@ func _input(event: InputEvent) -> void:
 		return
 	
 	if Input.is_action_just_released("interact") and pressed == true:
-		global.player_hub_pos = global_position
-		get_tree().change_scene("res://Levels/%s/%s.tscn" % [get_tree().current_scene.LETTER, LEVEL])
+		global.player_hub_pos[get_tree().current_scene.LETTER] = global_position
+		if CUSTOM_SCENE_PATH == "":
+			get_tree().change_scene("res://Levels/%s/%s.tscn" % [get_tree().current_scene.LETTER, LEVEL])
+		else:
+			get_tree().change_scene(CUSTOM_SCENE_PATH)
 
 func _on_Area2D_body_entered(body: Node) -> void:
 	if global.nodes["player"] == null: return

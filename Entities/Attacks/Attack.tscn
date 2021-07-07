@@ -38,6 +38,7 @@ collision_layer = 2
 
 [node name="sound" parent="." instance=ExtResource( 5 )]
 
+[connection signal="health_changed" from="stats" to="." method="_on_stats_health_changed"]
 [connection signal="hit" from="hitbox" to="." method="_on_hitbox_hit"]
 [connection signal="body_entered" from="collision" to="." method="_on_collision_body_entered"]
 

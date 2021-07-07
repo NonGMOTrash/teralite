@@ -21,10 +21,10 @@ var locked_input = true
 const yellow = Color8(242, 211, 53)
 const white = Color8(255, 255, 255)
 const MESSAGES = [
-	"idk lol",
+	"idk",
 	"now with big floppa",
 	"the least bad game yet!",
-	"_",
+	"less bugs than something something 76!",
 	"worse than school",
 	"worse than work",
 	"don't play project epsilon",
@@ -42,7 +42,7 @@ const MESSAGES = [
 	"don't play at 4:20 PM",
 	"all lowercase",
 	"now with 50% more bugs",
-	"play FnF!",
+	"play f- friday night f- f-unkin'..!",
 	"play 20xx.io!",
 	"it's okay",
 	"5 merits lost :(",
@@ -51,11 +51,14 @@ const MESSAGES = [
 	"women aren't real*",
 	"it really makes you feel orange",
 	"t posing allowed",
-	"3.0 coming in 2024",
 	"dont go to /r/dontgohere",
 	"game of the year, fornever",
-	"based",
-	"lessss goooooo"
+	"100% based",
+	"100% cringe",
+	"i visit newgrounds.com everyday",
+	"a quircky new earthbound inspired RPG",
+	"straight down to heck",
+	"worst mistake of my life",
 ]
 
 # save icon preload
@@ -74,9 +77,11 @@ func _ready() -> void:
 		if global.ver_hotfix == 1:
 			version.text = version.text + " Hotfix"
 		else:
-			version.texe
-	msg.text = MESSAGES[randi() % MESSAGES.size()]
-
+			version.text = version.text + " Hotfix #" + str(global.ver_hotfix)
+	
+	prints(OS.get_system_time_msecs(), OS.get_system_time_msecs() % MESSAGES.size())
+	msg.text = MESSAGES[OS.get_system_time_msecs() % MESSAGES.size()]
+	
 	# load settings config
 	var settings_config = File.new()
 	

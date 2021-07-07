@@ -37,7 +37,7 @@ TOP_SPEED = 90
 FORCE_MULT = 1.03
 truName = "medic"
 faction = "blue_kingdom"
-throw_strength = 190.0
+throw_strength = 250.0
 
 [node name="stats" parent="." instance=ExtResource( 4 )]
 MAX_HEALTH = 2
@@ -109,11 +109,11 @@ PATIENCE = 0.0
 [node name="heal" parent="brain/action_lobe" instance=ExtResource( 12 )]
 target_type = 1
 tag = 2
-best_distance = 16
+best_distance = 24
 health_weight = 4
 status_effect = "burning"
 status_weight = 1
-COOLDOWN = 1.35
+COOLDOWN = 1.0
 GLOBAL_COOLDOWN = true
 
 [node name="heal_self" parent="brain/action_lobe" instance=ExtResource( 12 )]
@@ -123,7 +123,7 @@ distance_weight = 0
 health_weight = 1
 status_effect = "burning"
 status_weight = 1
-COOLDOWN = 1.35
+COOLDOWN = 1.0
 GLOBAL_COOLDOWN = true
 
 [node name="entity_effects" parent="." instance=ExtResource( 13 )]

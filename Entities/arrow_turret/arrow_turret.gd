@@ -2,13 +2,15 @@ extends Entity
 
 const ARROW = preload("res://Entities/Attacks/Projectile/arrow/arrow.tscn")
 
+export var charge_speed := 1.0
+
 onready var held_item = $held_item
 onready var held_item_animation = $held_item/AnimationPlayer
 onready var brain = $brain
 onready var stats = $stats
 
 func _on_brain_found_target() -> void:
-	held_item_animation.play("custom")
+	held_item_animation.play("custom", -1, charge_speed)
 
 func shoot():
 	var pos
@@ -28,4 +30,4 @@ func shoot():
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if brain.get_closest_target() is Entity:
-		held_item_animation.play("custom")
+		held_item_animation.play("custom", -1, charge_speed)

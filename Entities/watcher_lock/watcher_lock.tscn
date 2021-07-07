@@ -74,7 +74,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.14 ),
 "transitions": PoolRealArray( 1e+06, 1 ),
 "update": 1,
-"values": [ -100, 0 ]
+"values": [ -1, 0 ]
 }
 
 [node name="watcher_lock" type="KinematicBody2D"]
@@ -88,7 +88,7 @@ INANIMATE = true
 truName = "watcher_lock"
 
 [node name="Sprite" type="Sprite" parent="."]
-z_index = -100
+z_index = -1
 texture = ExtResource( 2 )
 hframes = 2
 frame = 1
@@ -119,5 +119,8 @@ stream = ExtResource( 8 )
 script = ExtResource( 4 )
 MODE = 1
 AUTO_PLAY = false
+
+[node name="cooldown" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="think" from="brain" to="." method="_on_brain_think"]

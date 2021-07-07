@@ -20,7 +20,6 @@ func _ready():
 	smoke.global_position = global_position
 
 func death():
-	print("!")
 	if smoke != null:
 		smoke.stop()
 	$death.play("death")
@@ -35,7 +34,6 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	
 	fuel.wait_time = fuel.time_left + 6.5
 	fuel.start()
-	print(fuel.wait_time)
 
 func _on_spread_timeout() -> void:
 	if fuel.time_left < 4: return

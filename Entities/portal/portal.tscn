@@ -56,10 +56,16 @@ collision_mask = 82
 [node name="Sprite" type="Sprite" parent="blue_portal"]
 rotation = 1.5708
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="blue_portal"]
 visible = false
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="sound_player" parent="blue_portal" instance=ExtResource( 4 )]
 
@@ -75,6 +81,9 @@ lifetime = 0.7
 one_shot = true
 explosiveness = 1.0
 process_material = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="orange_portal" type="Area2D" parent="."]
 collision_layer = 0
@@ -83,10 +92,16 @@ collision_mask = 82
 [node name="Sprite" type="Sprite" parent="orange_portal"]
 rotation = 1.5708
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="orange_portal"]
 visible = false
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="sound_player" parent="orange_portal" instance=ExtResource( 4 )]
 
@@ -102,6 +117,9 @@ lifetime = 0.7
 one_shot = true
 explosiveness = 1.0
 process_material = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "New Anim"

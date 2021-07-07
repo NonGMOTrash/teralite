@@ -16,7 +16,7 @@ export(AudioStream) var HIT_SOUND
 export(AudioStream) var KILL_SOUND
 export(AudioStream) var BLOCKED_SOUND
 export(AudioStream) var COLLIDE_SOUND
-export(AudioStream) var DEATH_SOUND
+export(AudioStream) var KILLED_SOUND
 
 var SOURCE = null
 var SOURCE_PATH = "string"
@@ -49,7 +49,7 @@ func _ready():
 		KILL_SOUND == null and
 		BLOCKED_SOUND == null and
 		COLLIDE_SOUND == null and
-		DEATH_SOUND == null
+		KILLED_SOUND == null
 		):
 			sound.queue_free()
 			components["sound_player"] = null
@@ -86,7 +86,7 @@ func _on_hitbox_hit(area, type) -> void:
 		if type == "killed" and area.get_parent().INANIMATE == false:
 			SOURCE.kills += 1
 	
-	if HIT_SOUND == null and BLOCKED_SOUND == null and DEATH_SOUND == null:
+	if HIT_SOUND == null and BLOCKED_SOUND == null and KILL_SOUND == null:
 		return
 	
 	var sfx = Sound.new()
@@ -110,9 +110,11 @@ func _on_hitbox_hit(area, type) -> void:
 	else:
 		sound.add_sound(sfx)
 
-func death():
-	if DEATH_SOUND != null:
-		var sfx = Sound.new()
-		sfx.name = truName+"_death"
-		sfx.stream = DEATH_SOUND
+func _on_stats_health_changed(type, result, net) -> void:
+	if type == "killed":
+		var sfx := Sound.new()
+		sfx.stream = KILLED_SOUND
 		sound.add_sound(sfx)
+
+func death():
+	emit_signal("death")

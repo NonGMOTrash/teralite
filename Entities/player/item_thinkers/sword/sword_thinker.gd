@@ -36,13 +36,13 @@ func secondary():
 
 	cooldown.wait_time = animation.get_animation("counter").length + counter_cooldown
 	cooldown.start()
-
+	
 	player.components["stats"].add_status_effect(
 		"slowness", # effect
 		animation.get_animation("counter").length, # duration
 		counter_slowness_lvl # level
 	)
-
+	
 	var hitboxes = counter.get_overlapping_areas()
 	if hitboxes.size() == 0:
 		animation.play("counter")
@@ -55,6 +55,7 @@ func secondary():
 				distance = counter.global_position.distance_to(hitbox.global_position)
 
 		can_counter = true
+		print("true")
 		_on_counter_area_entered(closest_hitbox)
 
 	sound_player.play_sound("counter_ready")
@@ -62,28 +63,45 @@ func secondary():
 
 func set_counter_window(to: bool):
 	can_counter = to
+	print(to)
 	player_hurtbox.set_deferred("monitorable", not to)
 	player_hurtbox.set_deferred("monitoring", not to)
+	
+	if to == true:
+		yield(get_tree().create_timer(0.01666), "timeout")
+		
+		var hitbox = player_hurtbox.get_overlapping_areas()
+		if hitbox.size() == 0:
+			return
+		else:
+			hitbox = hitbox[0] as Area2D
+			player_hurtbox._on_hurtbox_area_entered(hitbox)
+			hitbox._on_hitbox_area_entered(player_hurtbox)
 
 func _on_counter_area_entered(area: Area2D) -> void:
 	if can_counter == false:
+		prints(area.get_parent().get_name(), "can't counter")
 		return
-
+	else:
+		prints(area.get_parent().get_name(), "can't countered")
+	
 	can_counter = false
-
+	print("false")
+	
 	var area_entity: Entity = area.get_parent()
 	if area_entity is Attack:
+		area_entity.velocity *= -1
 		area_entity.death()
-
-	var slash = res.aquire_melee("slash")
+	
+	var slash := res.aquire_melee("slash")
 	slash.setup(player, area.global_position)
 	global.nodes["ysort"].call_deferred("add_child", slash)
-
+	
 	sound_player.play_sound("counter_success")
-
-	cooldown.wait_time = 0.1
+	
+	cooldown.wait_time = 0.12
 	cooldown.start()
-
+	
 	player.components["stats"].add_status_effect(
 		"slowness", # effect
 		-animation.get_animation("counter").length, # duration

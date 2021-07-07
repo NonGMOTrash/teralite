@@ -8,6 +8,7 @@ radius = 50.0
 [node name="brain" type="Node2D"]
 script = ExtResource( 2 )
 SIGHT_RANGE = 135.0
+IGNORE_INANIMATE = false
 
 [node name="think_timer" type="Timer" parent="."]
 wait_time = 0.05

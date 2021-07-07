@@ -13,8 +13,8 @@ var the_seed = "downwardspiral"
 var selection = 0 # <-- for the item bar (0 1 2)
 var FOV = Vector2(1, 1)
 var previous_scene = null # PROBLEM_NOTE i don't think this is used
-var player_hub_pos = Vector2(0, 0)
-var last_ambiance = 0 # PROBLEM_NOTE: this isn't used
+var player_hub_pos = {"A":Vector2(0, 0)}
+var last_ambiance = 0 # PROBLEM_NOTE: this isn't used i don't think
 
 # PROBLEM_NOTE: might be a bit better to have this be in a seperate "save" global?
 # data vars
@@ -26,7 +26,7 @@ var level_deaths = {}
 var level_times = {}
 
 const ver_phase = "Beta"
-const ver_num = 3.0
+const ver_num = 3.1
 const ver_hotfix = 0
 
 # for saving things
@@ -149,7 +149,7 @@ func get_empty_save_data():
 		"save_name": "untitled save",
 		"stars": 0,
 		"last_hub": null,
-		"hub_pos": null,
+		"hub_pos": {"A": Vector2.ZERO},
 		"cleared_levels": [],
 		"perfected_levels": [],
 		"level_deaths": {},
@@ -191,7 +191,7 @@ func get_saves():
 
 func write_save(entered_save_name, data):
 	var new_save_name = entered_save_name
-	if new_save_name == "": 
+	if new_save_name == "":
 		new_save_name = "untitled save"
 	
 	save_name = new_save_name
@@ -257,11 +257,16 @@ func load_save(entered_save_name):
 					if key in OLD_LEVEL_CODES:
 						level_times[level_code_to_name(key)] = level_times[key]
 			
+			if player_hub_pos is Vector2:
+				player_hub_pos = {"A": player_hub_pos}
+			
 			# changes scene to the correct hub
-			match last_hub:
-				null: get_tree().change_scene_to(load("res://Levels/A/Redwood.tscn"))
-				"A_hub": get_tree().change_scene_to(load("res://Levels/A/A-Hub.tscn"))
-				"B_hub": pass #ext ext
+			if last_hub == null:
+				get_tree().change_scene("res://Levels/A/Redwood.tscn")
+			elif last_hub.length() != 1:
+				get_tree().change_scene("res://Levels/A/A-Hub.tscn")
+			else:
+				get_tree().change_scene("res://Levels/%s/%s-Hub.tscn" % [last_hub, last_hub])
 			
 		else:
 			#load failed

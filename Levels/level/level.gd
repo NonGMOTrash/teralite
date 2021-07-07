@@ -1,14 +1,12 @@
 extends Navigation2D
 
-enum AMBIANCE_TYPES {NONE, FOREST}
-export(AMBIANCE_TYPES) var AMBIANCE = AMBIANCE_TYPES.FOREST
+enum TYPES {NONE, AUTUMN, UNDERGROUND}
 
-enum PARTICLE_TYPES {NONE, FOREST}
-export(PARTICLE_TYPES) var GLOBAL_PARTICLES = PARTICLE_TYPES.FOREST
-
+export(TYPES) var AMBIANCE = TYPES.AUTUMN
+export(TYPES) var GLOBAL_PARTICLES = TYPES.AUTUMN
 export var FORCE_SLEEP_UNTIL_VISIBLE = false
 
-export(String) var WORLD = "A"
+export(String) var WORLD := "A"
 const LEVEL_TYPE := 0 # PROBLEM_NOTE: make this a string
 
 var max_kills: int = 0
@@ -43,7 +41,8 @@ func _ready() -> void:
 	ambiance.MODE = Sound.MODES.REPEATING
 	
 	match AMBIANCE:
-		AMBIANCE_TYPES.FOREST: ambiance.stream = load("res://Levels/level/forest_ambiance.wav")
+		TYPES.AUTUMN: ambiance.stream = load("res://Levels/level/forest_ambiance.wav")
+		TYPES.UNDERGROUND: ambiance.stream = load("res://Levels/level/cave_ambiance.ogg")
 		_: return
 	
 	global.add_child(ambiance)

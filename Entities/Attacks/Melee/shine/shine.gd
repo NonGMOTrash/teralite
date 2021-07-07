@@ -8,7 +8,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	if visible == false: return
 	
 	var area_entity = area.get_parent()
-	print(area_entity.get_name())
+	
 	if area_entity is Projectile:
 		area_entity.velocity *= -REFLECTION_MULT
 		sound.play_sound("reflect")

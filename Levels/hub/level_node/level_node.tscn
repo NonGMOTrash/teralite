@@ -5,7 +5,7 @@
 [ext_resource path="res://Levels/hub/level_node/level_node.gd" type="Script" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 32.086
+radius = 32.0
 
 [node name="level_node" type="Node2D"]
 position = Vector2( 0, -0.365738 )
@@ -14,12 +14,15 @@ script = ExtResource( 3 )
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 0, 0.7739 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Sprite" type="Sprite" parent="Area2D"]
 texture = ExtResource( 2 )
 hframes = 2
 vframes = 2
-frame = 3
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 self_modulate = Color( 1, 1, 1, 0.392157 )
@@ -27,6 +30,9 @@ shape = SubResource( 1 )
 
 [node name="Node2D" type="Node2D" parent="."]
 z_index = 4096
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Label" type="Label" parent="Node2D"]
 visible = false

@@ -91,6 +91,12 @@ const data := {
 	"banner": "res://Props/banner/banner.tscn",
 	"flag": "res://Props/flag/flag.tscn",
 	"torch": "res://Props/torch/torch.tscn",
+	"rock": "res://Props/rock/rock.tscn",
+	"rock2": "res://Props/rock2/rock2.tscn",
+	"stalagmite": "res://Props/stalagmite/stalagmite.tscn",
+	"stalagmite2": "res://Props/stalagmite2/stalagmite2.tscn",
+	"water_stalagmite": "res://Props/water_stalagmite/water_stalagmite.tscn",
+	"ore": "res://Props/ore/ore.tscn",
 	
 	# audio
 	"sword_clang": "res://Entities/Attacks/Melee/slash/sword_clang.wav",
