@@ -7,7 +7,7 @@ const data := {
 	"spikes_offset": "res://Entities/spikes/spikes_offest/spikes_offset.tscn",
 	"chaser": "res://Entities/chaser/chaser.tscn",
 	"brute_chaser": "res://Entities/chaser/brute_chaser/brute_chaser.tscn",
-	"gold_chaser": "res://Entities/chaser/gold_chaser/Gold_Chaser.tscn",
+	"gold_chaser": "res://Entities/chaser/gold_chaser/gold_chaser.tscn",
 	"crate": "res://Entities/crate/crate.tscn",
 	"fire": "res://Entities/fire/fire.tscn",
 	"timber_box": "res://Entities/fire/timber_pot/timber_pot.tscn",

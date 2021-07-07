@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://Entities/chaser/Chaser.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Entity.gd" type="Script" id=1]
 [ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=4]

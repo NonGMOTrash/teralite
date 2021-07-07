@@ -33,7 +33,6 @@ SLOWDOWN = 600
 TOP_SPEED = 85
 FORCE_MULT = 1.0
 truName = "ultra_chaser"
-dash_cooldown = 0.75
 dash_power = 140
 
 [node name="stats" parent="." index="0"]
@@ -60,6 +59,7 @@ general_springs = {
 }
 
 [node name="action_lobe" parent="brain" index="4" instance=ExtResource( 5 )]
+PATIENCE = 0.08
 
 [node name="fdash" parent="brain/action_lobe" index="2" instance=ExtResource( 4 )]
 best_distance = 16
@@ -78,12 +78,8 @@ GLOBAL_COOLDOWN = true
 margin_left = -10.2629
 margin_right = 10.7371
 
-[node name="dash_cooldown" type="Timer" parent="." index="10"]
-one_shot = true
-autostart = true
+[connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 
 [editable path="hitbox"]
-
 [editable path="hurtbox"]
-
 [editable path="entityPush"]
