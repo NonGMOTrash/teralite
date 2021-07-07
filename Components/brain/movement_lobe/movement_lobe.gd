@@ -1,9 +1,12 @@
 extends Node2D
 
+const PATH_DIST := 8
+
 onready var idle_timer = $idle_timer
 onready var wander_timer = $wander_timer
 onready var movement_timer = $movement_timer
 onready var brain = get_parent()
+onready var entity = brain.get_parent()
 
 export var IDLE_TIME = 0.8
 export var IDLE_OFFSET = 0.4
@@ -26,12 +29,12 @@ var springs = {}
 
 var guard_pos = Vector2.ZERO
 var guard_path = null
+var wander_pos = Vector2.ZERO
+var wander_path = null
 var best_position_paths = []
 
 var strafe_dir = 0
 var strafe_change = 1
-
-signal debug
 
 # PROBLEM_NOTE: it would probably be alot more streamlined to have a state variable
 # it could also probably fix the bug where sometimes enemies won't wander
@@ -67,67 +70,60 @@ func _ready() -> void:
 		for entity_spring in entity_springs:
 			entity_spring = springs.get(entity_spring)
 
+var c := 0
+func update_path(path: PoolVector2Array, end_pos: Vector2) -> PoolVector2Array:
+	if entity.components["sleeper"] != null and entity.components["sleeper"].is_on_screen() == false:
+		return path
+	
+	if path.size() <= 2 or entity.velocity == Vector2.ZERO:#brain.los_check(path[0], false) != true: #or brain.get_parent().get_speed() == 0:
+		c += 1
+		prints(c, "(%s)" % brain.get_parent().get_name())
+		path = get_tree().current_scene.pathfind(global_position, end_pos)
+	
+	if path.size() > 0 and global_position.distance_to(path[0]) < PATH_DIST:
+		if brain.los_check(path[0], false) == true:
+			path.remove(0)
+	
+	return path
+
 func _on_idle_timer_timeout() -> void:
 	wander_timer.wait_time = clamp(WANDER_TIME + rand_range(-(WANDER_OFFSET), WANDER_OFFSET), 0.01, 999.0)
-	if brain.targets != []: return 
+	if brain.targets != []: return
 	
-	var wander_pos = global_position + (Vector2(rand_range(-1,1),rand_range(-1,1)).normalized()*100)
+	wander_pos = global_position + (Vector2(rand_range(-1,1),rand_range(-1,1)).normalized()*100)
 	
-	if brain.los_check(wander_pos) == true:
+	if brain.los_check(wander_pos, false) == true:
 		brain.get_parent().input_vector = global_position.direction_to(wander_pos).normalized()
-	else:
-		var wander_path = get_tree().current_scene.pathfind(global_position, wander_pos)
+	elif wander_path == null:
+		wander_path = update_path(PoolVector2Array(), wander_pos)
+	elif wander_path is PoolVector2Array:
+		wander_path = update_path(wander_path, wander_pos)
 		
-		#debug()
-		#yield(self, "debug")
-		
-		var tries = 0
+		var tries := 0
 		while wander_path.size() < 2 and tries < MOVEMENT_EFFICIENCY:
 			wander_pos = global_position + (
-				Vector2( rand_range(-1,1),rand_range(-1,1)).normalized() * rand_range(50,150)
+				Vector2( rand_range(-1,1),rand_range(-1,1) ).normalized() * rand_range(50,150)
 			)
-			wander_path = []
-			wander_path = get_tree().current_scene.pathfind(global_position, wander_pos)
+			wander_path = update_path(wander_path, wander_pos)
 			tries += 1
-			
-			# PROBLEM_NOTE: the game crashes with no error message without this. strangely, putting it
-			# anywhere in this function before this line will also stop the error, super weird
-			# this stil casues a non fatal error a bunch, but its better than a crash
-			# also got this once: Internal Script Error! opcode #38 (report please).
-			#debug()
-			#yield(self, "debug")
-			# EDIT: moved it to line 80, that seemed to fix it??
-			# EDIT2: moved it to brain.gd (i think the error is with target tracking)
-			# EDIT3: IM PRETTY SURE I KNOW WHAT THE PROBLEM IS. if you go to a-6 and just hold right,
-			# the game crashes as soon as you enter a deadzone in the navpoly generation.
-			# so i think this must be an error with the pathfinding.
-			# EDIT4: never fixed the error with the pathfinding (i think it might be on godot's end)
-			# however, i did fix the nav poly generation so that should pretty much fix this issue
-			# EDIT5: i am an idiot, it's because if there's no possible path it gets stuck in the while
-			# loop
-			# EDIT6: fixed the navpoly generation btw
-			# EDIT7: i think this was an error with archers can i can remove this now? (PROBLEM_NOTE)
 		
 		if wander_path.size() > 1:
 			brain.get_parent().input_vector = (
-				global_position.direction_to(wander_path[1]).normalized() * WANDER_SPEED
+				global_position.direction_to(wander_path[0]).normalized() * WANDER_SPEED
 			)
 	
 	if global_position.distance_to(guard_pos) > WANDER_RANGE: 
 		# wander back to guard pos
-		if brain.los_check(guard_pos) == true:
+		if brain.los_check(guard_pos, false) == true:
 			brain.get_parent().input_vector = global_position.direction_to(guard_pos).normalized()
 			guard_path = null
 		else:
-			if guard_path == null or guard_path.size() < 2:
-				guard_path = get_tree().current_scene.pathfind(global_position, guard_pos)
-			elif brain.los_check(guard_path[0]) == false:
-				guard_path = get_tree().current_scene.pathfind(global_position, guard_pos)
-			if guard_path.size() < 2: 
-				guard_path = null
-			if guard_path != null and global_position.distance_to(guard_path[0]) < 10:
-				guard_path.remove(0)
-			if guard_path != null and not guard_path.size() < 2:
+			if guard_path == null:
+				guard_path = update_path(PoolVector2Array(), guard_pos)
+			elif guard_path is PoolVector2Array:
+				guard_path = update_path(guard_path, guard_pos)
+			
+			if guard_path.size() > 0:
 				brain.get_parent().input_vector = global_position.direction_to(guard_path[0]).normalized()
 	else:
 		guard_path = null
@@ -142,13 +138,9 @@ func _on_wander_timer_timeout() -> void:
 	idle_timer.start()
 
 func awoken():
-	match randi() % 2:
-		0:
-			idle_timer.start()
-			wander_timer.stop()
-		1:
-			idle_timer.stop()
-			wander_timer.start()
+	brain.get_parent().input_vector = Vector2.ZERO
+	idle_timer.stop()
+	wander_timer.start()
 
 func get_spring(target:Entity):
 	var spring = null
@@ -182,21 +174,22 @@ func _on_movement_timer_timeout() -> void:
 	var trigger_anti_stuck: bool = true
 	
 	if brain.targets == []: # no targets
-		
 		# for adjusting guard_path
-		if brain.memory_lobe != null and brain.memory_lobe.memory == []:
-			if guard_path != null:
-				if guard_path.size() == 0 or brain.los_check(guard_path[0]) == false:
-					guard_path = get_tree().current_scene.pathfind(global_position, 
-							brain.movement_lobe.guard_pos)
-				if guard_path.size() != 0 and global_position.distance_to(guard_path[0]) < 7:
-					guard_path.remove(0)
-				if guard_path.size() != 0:
-					brain.get_parent().input_vector = global_position.direction_to(guard_path[0]).normalized()
+		if brain.memory_lobe == null or brain.memory_lobe.memory == [] and guard_path != null:
+				if global_position.distance_to(guard_pos) > WANDER_RANGE:
+					guard_path = update_path(guard_path, guard_pos)
+					if guard_path.size() != 0:
+						brain.get_parent().input_vector = global_position.direction_to(guard_path[0]).normalized()
+					
+					return
 			
-			return
-		
-		if brain.memory_lobe == null: return
+				# adjusting wander_path
+				elif wander_timer.time_left == 0 and wander_path != null:
+					wander_path = update_path(wander_path, wander_pos)
+					if wander_path.size() != 0:
+						brain.get_parent().input_vector = global_position.direction_to(wander_path[0]).normalized()
+					
+					return
 		
 		# change intention based on memories
 		for i in range(brain.memory_lobe.memory.size()-1, -1, -1):
@@ -208,7 +201,7 @@ func _on_movement_timer_timeout() -> void:
 			
 			var strength = brain.SIGHT_RANGE / global_position.distance_to(best_position)
 			
-			if brain.los_check(best_position) == true:
+			if brain.los_check(best_position, false) == true:
 				brain.memory_lobe.memory_paths[i] = null
 				if spring.INVERT_DISTANCE == false:
 					intention += global_position.direction_to(best_position) * strength
@@ -216,13 +209,14 @@ func _on_movement_timer_timeout() -> void:
 					intention += global_position.direction_to(best_position) * -1 * strength
 			else:
 				var path = brain.memory_lobe.memory_paths[i]
-				if path == null or brain.los_check(path[0]) == false:
-					path = get_tree().current_scene.pathfind(global_position, best_position)
-				if path.size() < 1: path = null
-				if path != null and global_position.distance_to(path[0]) < 7:
-					path.remove(0)
-				if path != null and not path.size() < 1:
-					brain.memory_lobe.memory_paths[i] = path
+				if path == null:
+					path = update_path(PoolVector2Array(), best_position)
+				elif path is PoolVector2Array:
+					path = update_path(path, best_position)
+				
+				brain.memory_lobe.memory_paths[i] = path
+				
+				if path.size() > 0:
 					if spring.INVERT_DISTANCE == false:
 						intention += global_position.direction_to(path[0]).normalized() * strength
 					else:
@@ -274,7 +268,7 @@ func _on_movement_timer_timeout() -> void:
 					if spring.FARZONE <= global_position.distance_to(best_position):
 						strength = 0
 				
-				if brain.los_check(best_position) == true:
+				if brain.los_check(best_position, false) == true:
 					#best_position_paths[i] = null
 					if spring.INVERT_DISTANCE == false:
 						intention += global_position.direction_to(best_position) * strength
@@ -283,14 +277,12 @@ func _on_movement_timer_timeout() -> void:
 				else:
 					var path = best_position_paths[i]
 					
-					# PROBLEM_NOTE: sometimes the AI will just move back and forth, can't figure out why
-					if path != null and path.size() < 2 and global_position.distance_to(path[0]) < 5:
-						path.pop_front()
-					
-					if path == null or path.size() < 2 or brain.los_check(path[0]) == null:
-						path = get_tree().current_scene.pathfind(global_position, best_position)
-					
-					if path.size() < 2:
+					if path == null:
+						path = update_path(PoolVector2Array(), best_position)
+					elif path is PoolVector2Array:
+						path = update_path(path, best_position)
+						
+					if path == null or path.size() < 2:
 						continue
 					
 					best_position_paths[i] = path
@@ -311,7 +303,3 @@ func _on_movement_timer_timeout() -> void:
 	intention = intention.normalized()
 	
 	brain.get_parent().input_vector = intention
-
-func debug(): 
-	if brain.get_parent().is_queued_for_deletion() == false:
-		emit_signal("debug")

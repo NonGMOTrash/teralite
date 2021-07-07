@@ -56,7 +56,6 @@ func _ready():
 	armor = DEFENCE
 
 func change_health(value, true_value, type: String = "hurt") -> String:
-	#if get_parent().truName == "knight": print("before: ")
 	BONUS_HEALTH = clamp(BONUS_HEALTH, 0, 99)
 	var amount = value
 	var true_amount = true_value

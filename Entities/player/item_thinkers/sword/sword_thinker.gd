@@ -55,7 +55,6 @@ func secondary():
 				distance = counter.global_position.distance_to(hitbox.global_position)
 
 		can_counter = true
-		print("true")
 		_on_counter_area_entered(closest_hitbox)
 
 	sound_player.play_sound("counter_ready")
@@ -63,7 +62,6 @@ func secondary():
 
 func set_counter_window(to: bool):
 	can_counter = to
-	print(to)
 	player_hurtbox.set_deferred("monitorable", not to)
 	player_hurtbox.set_deferred("monitoring", not to)
 	
@@ -80,13 +78,9 @@ func set_counter_window(to: bool):
 
 func _on_counter_area_entered(area: Area2D) -> void:
 	if can_counter == false:
-		prints(area.get_parent().get_name(), "can't counter")
 		return
-	else:
-		prints(area.get_parent().get_name(), "can't countered")
 	
 	can_counter = false
-	print("false")
 	
 	var area_entity: Entity = area.get_parent()
 	if area_entity is Attack:

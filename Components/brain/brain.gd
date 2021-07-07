@@ -1,7 +1,5 @@
 extends Node2D
 
-const LOS_MASK = 3
-
 onready var think_timer = $think_timer
 onready var sight = $sight
 onready var sight_shape = $sight/CollisionShape2D
@@ -11,8 +9,6 @@ var action_lobe: Node
 var memory_lobe: Node
 var warning_lobe: Node
 var communication_lobe: Node
-
-export var DEBUG_DRAW := false
 
 export(int, 0, 20) var TOLERANCE = 3 # the amount of times it will tolerate friendly fire before infighting
 export(float, 0.01666, 3.0) var THINK_TIME = 0.1
@@ -49,22 +45,20 @@ func _ready():
 	think_timer.wait_time = THINK_TIME
 
 func _draw():
-	if DEBUG_DRAW == false: return
-
-	draw_line(position, position + entity.input_vector * 16, Color.orange, 2.5)
-
+	draw_line(position, position + entity.input_vector * 8, Color.orange, 1.4)
+	
 	if memory_lobe != null:
 		for i in memory_lobe.memory.size():
 			draw_circle(to_local(memory_lobe.memory[i]), 2, Color.blue)
 			if targets == []:
-				if los_check(memory_lobe.memory[i]) == true:
+				if los_check(memory_lobe.memory[i], false) == true:
 					draw_line(position, to_local(memory_lobe.memory[i]), Color.lightblue, 1.0)
 				else:
 					var path = get_tree().current_scene.pathfind(global_position, memory_lobe.memory[i])
 					if path.size() < 2: path = [position, Vector2.ZERO]
 					for x in path.size(): path[x] = to_local(path[x])
 					draw_multiline(path, Color.lightblue)
-
+	
 	if movement_lobe != null:
 		for i in targets.size():
 			var target = targets[i]
@@ -77,17 +71,17 @@ func _draw():
 				
 				best_position = target.global_position + target_to_me * spring.DISTANCE
 				
-				if los_check(best_position) == true:
+				if los_check(best_position, false) == true:
 					draw_line(position, to_local(best_position), Color.red, 1, false)
 				else:
-					#var path = get_tree().current_scene.pathfind(global_position, best_position)
-					#if path.size() < 2: path = [Vector2.ZERO, Vector2.ZERO]
 					var path = movement_lobe.best_position_paths[i]
 					if path != null and path.size() > 1:
 						for x in path.size(): path[x] = to_local(path[x])
 						draw_multiline(path, Color.red, 1.5)
-
-		if targets == [] and memory_lobe == null or memory_lobe.memory == []:
+						for point in path:
+							draw_circle(point, 1, Color.red)
+		
+		if targets == [] and (memory_lobe == null or memory_lobe.memory == []):
 			draw_circle(to_local(movement_lobe.guard_pos), movement_lobe.WANDER_RANGE, Color8(255, 255, 0, 50))
 			if movement_lobe.guard_path == null:
 				draw_line(position, to_local(movement_lobe.guard_pos), Color.yellow, 1, false)
@@ -125,19 +119,23 @@ func is_target_valid(index: int) -> bool: # maybe make this work with the target
 	else:
 		return true
 
-func los_check(target):
+func los_check(target, ignore_low_barriers:=true):
+	var mask := 3
+	if ignore_low_barriers == false:
+		mask += 32
+	
 	var target_pos = target
 	if target is Entity: 
 		target_pos = target.global_position
 	
 	var ss = get_world_2d().direct_space_state
 	
-	var vision = ss.intersect_ray(target_pos, global_position, [entity], LOS_MASK)
+	var vision = ss.intersect_ray(target_pos, global_position, [entity], mask)
 	if vision == null: 
 		return null
-	else: 
+	else:
 		vision = ss.intersect_ray(global_position.move_toward(target_pos, 2.5),
-				target_pos, [entity], LOS_MASK)
+				target_pos, [entity], mask)
 	
 	if vision:
 		if vision.collider is TileMap:
@@ -153,18 +151,6 @@ func los_check(target):
 			return false
 		elif target is Vector2:
 			return true
-
-# PROBLEM_NOTE: report about the game crashing without an error message
-# i tested with all brain.gd functions and memory.gd functions, and i found that add_target() is the
-# culpret. although strangly, the error always happens when the function returns. i checked everywhere
-# add_target() is used but i dont see any ramifications that could occur from it returning early.
-# this leads me to suspect it may be a completely different function in one of the other lobes.
-
-# EDIT: im starting to suspect it's a pathfinding bug. i finally got a level that can recreate the bug
-# consistantly. it has an enemy surrounded in the checker pattern, and the game crashes always at 1.9s
-# I think because that's when the enemy starts wandering
-
-# EDIT2: it's due to a infinitely running while loop. see the notes in movement_lobe.gd for details
 
 func add_target(tar: Entity, force = false) -> void:
 	if tar == entity:
@@ -276,17 +262,16 @@ func _on_think_timer_timeout() -> void:
 		if not targets.has(body) and body.is_queued_for_deletion() == false:
 			add_target(body)
 	
-	#if movement_lobe == null:
-	
 	for i in targets.size():
 		if is_target_valid(i) == false:
 			remove_target(i)
-	
-	if DEBUG_DRAW == true:
+
+func _process(delta: float) -> void:
+	if OS.is_debug_build() == true and has_method("_draw"):
 		update()
 
 # PROBLEM_NOTE: this is a bad way to prevent effect spam, better to have entities be able to see through
-# eachother. couldn't get it working though
+# eachother. it seems harder than i thought to get working though (unless im stupid, thats possible)
 func spawn_effect(effect: String, pos: Vector2):
 	if effect_cooldown.time_left != 0: return
 	

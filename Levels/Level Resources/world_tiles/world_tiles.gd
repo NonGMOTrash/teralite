@@ -37,7 +37,7 @@ func _ready() -> void:
 			
 			if not get_cell(x, y) in valid_ids:
 				nav.set_cell(x, y, _full_nav)
-			elif not get_cell(x, y+1) in valid_ids:
+			elif get_cell(x, y+1) != get_cell(x, y):
 				nav.set_cell(x, y, _half_nav)
 	
 	# Force the navigation mesh to update immediately
