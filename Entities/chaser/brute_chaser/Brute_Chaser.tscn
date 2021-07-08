@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Entities/chaser/brute_chaser/brute chaser.png" type="Texture" id=1]
 [ext_resource path="res://Entities/chaser/chaser.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/stats/status_effects/regeneration/regeneration.tscn" type="PackedScene" id=3]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -17,6 +18,10 @@ truName = "brute_chaser"
 MAX_HEALTH = 4
 HEALTH = 4
 DAMAGE = 2
+
+[node name="regeneration" parent="stats" index="0" instance=ExtResource( 3 )]
+level = 0.4
+DURATION_TIME = 999.0
 
 [node name="sprite" parent="." index="1"]
 material = SubResource( 1 )

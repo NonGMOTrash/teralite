@@ -5,20 +5,24 @@ onready var duration = $duration
 onready var trigger = $trigger
 
 export(float, 0.01, 999) var level := 1.0
-export(float, 0.01, 999) var INIT_DURATION := 0.01
+export(bool) var decimal_levels := true
 export(bool) var USE_TRIGGER := true
 export(float, 0.01, 999) var TRIGGER_TIME := 2.5
-export(float, 0.01, 999) var DEFAULT_DURATION := 5.0
+export(float, 0.01, 999) var DURATION_TIME := 5.0
 
 func _ready() -> void:
 	get_parent().status_effects[name] = self
 	
-	duration.wait_time = DEFAULT_DURATION # generic default, should never be used
-	var x = floor(level)
-	if x < 1: x = 1
-	trigger.wait_time = TRIGGER_TIME / x
-	duration.wait_time = INIT_DURATION
+	duration.wait_time = DURATION_TIME
 	duration.start()
+	
+	var x = level
+	if decimal_levels == false:
+		x = floor(level)
+		if x < 1: 
+			x = 1
+	
+	trigger.wait_time = TRIGGER_TIME / x
 	
 	if USE_TRIGGER == true:
 		trigger.start()
@@ -33,8 +37,13 @@ func change_level(amount: float):
 # warning-ignore:narrowing_conversion
 	level = level + amount
 	if level <= 0: _on_duration_timeout()
-	var x = floor(level)
-	if x == 0: x += 0.01
+	
+	var x = level
+	if decimal_levels == false:
+		x = floor(level)
+		if x == 0: 
+			x = 1
+	
 	trigger.wait_time = TRIGGER_TIME / x
 	trigger.start()
 
