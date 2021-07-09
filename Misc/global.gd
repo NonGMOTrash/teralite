@@ -26,7 +26,7 @@ var level_deaths = {}
 var level_times = {}
 
 const ver_phase = "Beta"
-const ver_num = 3.1
+const ver_num = 3.2
 const ver_hotfix = 0
 
 # for saving things
@@ -108,6 +108,8 @@ func _ready():
 			v = v + " Hotfix"
 		else:
 			v = v + " Hotfix #" + str(global.ver_hotfix)
+	if OS.is_debug_build() == true:
+		v = v + " (Debug)"
 	prints("teralite", v)
 	prints("seed:", the_seed)
 	prints("hashed seed:", the_seed.hash())
@@ -293,7 +295,9 @@ func level_code_to_name(lvl:String) -> String:
 		"A-14": return "Monarch"
 		"A-15": return "Duo"
 		"A-secret": return "Shadow"
-		_: return "ERROR; INVALID LEVEL CODE"
+		_: 
+			push_error("invalid level code '%s'" % lvl)
+			return lvl
 
 func delete_save(entered_save_name):
 	var save_file = File.new()
@@ -428,3 +432,9 @@ func update_cursor():
 			"Sword": Input.set_custom_mouse_cursor(CURSOR_SWORD, Input.CURSOR_ARROW, centered)
 			"Pistol": Input.set_custom_mouse_cursor(CURSOR_PISTOL, Input.CURSOR_ARROW, centered)
 			"Bow": Input.set_custom_mouse_cursor(CURSOR_BOW, Input.CURSOR_ARROW, centered)
+
+func quit():
+	print("")
+	print("hope you had fun lol")
+	res.free()
+	get_tree().quit()

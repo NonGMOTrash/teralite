@@ -44,9 +44,9 @@ func _ready():
 #	var item = res.aquire_entity("xbow")
 #	item.global_position = global_position
 #	get_parent().call_deferred("add_child", item)
-
+	
 #	stats.add_status_effect("poison", 60, 1)
-
+	
 	dash_buffer *= (1.0/60.0)
 	global.selection = 0
 	iTimer.start()
@@ -59,14 +59,21 @@ func _ready():
 	else:
 		health_bar.update_bar(0, 0, 0)
 		health_bar.visible = true
-
+	
 	if get_parent().owner == null: return
-
+	
 	global.emit_signal("update_health")
 	global.update_cursor()
-
+	
 	connect("swapped_item", self, "swapped_item")
 	swapped_item(null)
+	
+	# prevents lag spike when you first dash
+	yield(get_tree().current_scene, "ready")
+	var particles: Particles2D = dust_particles.instance()
+	global.nodes["ysort"].call_deferred("add_child", particles)
+	yield(particles, "ready")
+	particles.global_position = Vector2(-999, -999)
 
 func _physics_process(_delta):
 	if get_global_mouse_position().x > global_position.x:
@@ -165,11 +172,11 @@ func death():
 		for child in get_parent().get_children(): # PROBLEM_NOTE: kinda bad way to do this, use a group
 			if child is Entity and not child == self and child.is_queued_for_deletion() == false:
 				if child.truName == "player":
-
+					
 					if global.settings["auto_restart"] == true:
 						child.death()
 						continue
-
+					
 					name = "dedplayer"
 					child.name = "player"
 					child.components["health_bar"].visible = false
@@ -183,7 +190,7 @@ func death():
 						null, # item bar value
 						null # bar timer duration
 					)
-
+					
 					var my_death = player_death.instance()
 					if name == "player":
 						my_death.simple_mode = false
@@ -191,20 +198,20 @@ func death():
 					my_death.death_message = death_message
 					get_parent().add_child(my_death)
 					my_death.global_position = global_position
-
+					
 					found_replacement = true
 					queue_free()
 					return
-
+		
 		if found_replacement == true: return
-
+		
 		if not global.level_deaths.has(get_tree().current_scene.get_name()):
 			global.level_deaths[get_tree().current_scene.get_name()] = 0
 		global.level_deaths[get_tree().current_scene.get_name()] += 1
-
+		
 		# hide ui
 		global.nodes["stopwatch"].set_pause(true)
-
+		
 		var elements = [
 			global.nodes["health_ui"],
 			global.nodes["item_bar"],
@@ -213,11 +220,11 @@ func death():
 #		elements.append(global.nodes["health_ui"])
 #		elements.append(global.nodes["item_bar"])
 #		elements.append(global.nodes["item_info"])
-
+		
 		for element in elements:
 			if element != null:
 				element.visible = false
-
+	
 	var my_death = player_death.instance()
 	if name == "player" and global.nodes["level_completed"].visible == false:
 		my_death.simple_mode = false
@@ -225,7 +232,7 @@ func death():
 	my_death.death_message = death_message
 	get_parent().add_child(my_death)
 	my_death.global_position = global_position
-
+	
 	queue_free()
 
 func _on_stats_health_changed(_type, result, net) -> void:
@@ -233,13 +240,13 @@ func _on_stats_health_changed(_type, result, net) -> void:
 		if result == "hurt" and name == "player":
 			global.nodes["camera"].shake(5, 15, 0.2)
 			OS.delay_msec(34)
-
+		
 		if net < 0:
 			damage_taken += abs(net)
-
+		
 		if global.settings["perfection_mode"] == true:
 			death()
-
+		
 	global.emit_signal("update_health")
 
 func _on_hurtbox_got_hit(by_area, _type) -> void:
@@ -270,16 +277,16 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 			"fire": death_message = "Death by burning."
 			"slash": death_message = "Death by %s's blade." % source_name
 			"swipe": death_message = "Death by %s's dagger." % source_name
-			"stab": death_message = "Death by %s's spear." % source_name
+			"poke": death_message = "Death by %s's spear." % source_name
 			"arrow": death_message = "Death by %s's arrow." % source_name
 			"bolt": death_message = "Death by %s's bolt." % source_name
 			"magic": death_message = "Death by %s's magic." % source_name
 			"blow_dart": death_message = "Death by %s's blowdart" % source_name
 			"slime": death_message = "Death by slime."
 			_: death_message = "death message messed up, report pls ;-;"
-
+	
 	death_message = death_message.replace("_", " ")
-
+	
 	emit_signal("updated_death_message")
 
 func _on_dash_cooldown_timeout() -> void:

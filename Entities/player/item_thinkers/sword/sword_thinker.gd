@@ -61,10 +61,6 @@ func secondary():
 	player_sprite.play_effect("invincibility", 0.25/0.4)
 
 func set_counter_window(to: bool):
-	can_counter = to
-	player_hurtbox.set_deferred("monitorable", not to)
-	player_hurtbox.set_deferred("monitoring", not to)
-	
 	if to == true:
 		yield(get_tree().create_timer(0.01666), "timeout")
 		
@@ -75,6 +71,10 @@ func set_counter_window(to: bool):
 			hitbox = hitbox[0] as Area2D
 			player_hurtbox._on_hurtbox_area_entered(hitbox)
 			hitbox._on_hitbox_area_entered(player_hurtbox)
+	
+	can_counter = to
+	player_hurtbox.set_deferred("monitorable", not to)
+	player_hurtbox.set_deferred("monitoring", not to)
 
 func _on_counter_area_entered(area: Area2D) -> void:
 	if can_counter == false:

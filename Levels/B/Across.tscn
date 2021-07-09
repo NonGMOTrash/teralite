@@ -37,7 +37,7 @@ position = Vector2( 384.177, 472.887 )
 thing = ExtResource( 4 )
 
 [node name="crate_2" parent="YSort" index="4" instance=ExtResource( 5 )]
-position = Vector2( 576.642, 448.987 )
+position = Vector2( 568.027, 478.953 )
 
 [node name="spawner" parent="YSort/crate_2" index="7" instance=ExtResource( 1 )]
 thing = ExtResource( 4 )
@@ -45,7 +45,7 @@ custom_properties = {
 }
 
 [node name="crate_3" parent="YSort" index="5" instance=ExtResource( 5 )]
-position = Vector2( 591.74, 448.987 )
+position = Vector2( 583.125, 478.953 )
 
 [node name="spawner" parent="YSort/crate_3" index="7" instance=ExtResource( 1 )]
 thing = ExtResource( 4 )

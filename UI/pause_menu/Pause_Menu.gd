@@ -84,7 +84,7 @@ func _on_quit_pressed() -> void:
 		var letter: String = get_tree().current_scene.LETTER
 		global.player_hub_pos[letter] = global.get_node(global.nodes["player"]).global_position
 		global.write_save(global.save_name, global.get_save_data_dict())
-	get_tree().quit()
+	global.quit()
 
 func _on_Options_closed() -> void:
 	visible = true

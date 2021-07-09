@@ -151,7 +151,7 @@ func add_status_effect(new_status_effect:String, duration=2.5, level=1.0):
 		return
 	
 	if status_effects[status_name] == null and duration > 0 and level > 0: 
-		status_effect.INIT_DURATION = duration
+		status_effect.DURATION_TIME = duration
 		status_effect.level = level
 		call_deferred("add_child", status_effect)
 	elif status_effects[status_name] != null:

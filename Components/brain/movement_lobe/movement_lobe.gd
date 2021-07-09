@@ -70,14 +70,11 @@ func _ready() -> void:
 		for entity_spring in entity_springs:
 			entity_spring = springs.get(entity_spring)
 
-var c := 0
 func update_path(path: PoolVector2Array, end_pos: Vector2) -> PoolVector2Array:
 	if entity.components["sleeper"] != null and entity.components["sleeper"].is_on_screen() == false:
 		return path
 	
 	if path.size() <= 2 or entity.velocity == Vector2.ZERO:#brain.los_check(path[0], false) != true: #or brain.get_parent().get_speed() == 0:
-		c += 1
-		prints(c, "(%s)" % brain.get_parent().get_name())
 		path = get_tree().current_scene.pathfind(global_position, end_pos)
 	
 	if path.size() > 0 and global_position.distance_to(path[0]) < PATH_DIST:
@@ -177,7 +174,10 @@ func _on_movement_timer_timeout() -> void:
 		# for adjusting guard_path
 		if brain.memory_lobe == null or brain.memory_lobe.memory == [] and guard_path != null:
 				if global_position.distance_to(guard_pos) > WANDER_RANGE:
-					guard_path = update_path(guard_path, guard_pos)
+					if guard_path == null:
+						guard_path = update_path(PoolVector2Array(), guard_pos)
+					else:
+						guard_path = update_path(guard_path, guard_pos)
 					if guard_path.size() != 0:
 						brain.get_parent().input_vector = global_position.direction_to(guard_path[0]).normalized()
 					
@@ -192,37 +192,38 @@ func _on_movement_timer_timeout() -> void:
 					return
 		
 		# change intention based on memories
-		for i in range(brain.memory_lobe.memory.size()-1, -1, -1):
-			var this_memory = brain.memory_lobe.memory[i]
-			var spring = brain.memory_lobe.memory_springs[i]
-			
-			var target_to_me = this_memory.direction_to(global_position).normalized()
-			var best_position = this_memory + target_to_me * spring.DISTANCE
-			
-			var strength = brain.SIGHT_RANGE / global_position.distance_to(best_position)
-			
-			if brain.los_check(best_position, false) == true:
-				brain.memory_lobe.memory_paths[i] = null
-				if spring.INVERT_DISTANCE == false:
-					intention += global_position.direction_to(best_position) * strength
-				else:
-					intention += global_position.direction_to(best_position) * -1 * strength
-			else:
-				var path = brain.memory_lobe.memory_paths[i]
-				if path == null:
-					path = update_path(PoolVector2Array(), best_position)
-				elif path is PoolVector2Array:
-					path = update_path(path, best_position)
+		if brain.memory_lobe != null:
+			for i in range(brain.memory_lobe.memory.size()-1, -1, -1):
+				var this_memory = brain.memory_lobe.memory[i]
+				var spring = brain.memory_lobe.memory_springs[i]
 				
-				brain.memory_lobe.memory_paths[i] = path
+				var target_to_me = this_memory.direction_to(global_position).normalized()
+				var best_position = this_memory + target_to_me * spring.DISTANCE
 				
-				if path.size() > 0:
+				var strength = brain.SIGHT_RANGE / global_position.distance_to(best_position)
+				
+				if brain.los_check(best_position, false) == true:
+					brain.memory_lobe.memory_paths[i] = null
 					if spring.INVERT_DISTANCE == false:
-						intention += global_position.direction_to(path[0]).normalized() * strength
+						intention += global_position.direction_to(best_position) * strength
 					else:
-						intention += global_position.direction_to(path[0]).normalized() * -1 * strength
-			
-			if strength > 0: trigger_anti_stuck = false
+						intention += global_position.direction_to(best_position) * -1 * strength
+				else:
+					var path = brain.memory_lobe.memory_paths[i]
+					if path == null:
+						path = update_path(PoolVector2Array(), best_position)
+					elif path is PoolVector2Array:
+						path = update_path(path, best_position)
+					
+					brain.memory_lobe.memory_paths[i] = path
+					
+					if path.size() > 0:
+						if spring.INVERT_DISTANCE == false:
+							intention += global_position.direction_to(path[0]).normalized() * strength
+						else:
+							intention += global_position.direction_to(path[0]).normalized() * -1 * strength
+				
+				if strength > 0: trigger_anti_stuck = false
 	
 	else: # has target(s)
 		for i in range(brain.targets.size()-1, -1, -1):

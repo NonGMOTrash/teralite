@@ -9,6 +9,12 @@ export(String) var LETTER := "A"
 const LEVEL_TYPE = 1
 
 func _ready() -> void:
+	global.nodes["level"] = self
+	global.nodes["canvaslayer"] = $CanvasLayer
+	global.nodes["ysort"] = $YSort
+	global.nodes["background"] = $Background
+	global.nodes["background_tiles"] = $YSort/background_tiles
+	
 	global.last_hub = get_tree().current_scene.LETTER
 	if not (global.save_name == "untitled_save" and global.stars == 0):
 		global.write_save(global.save_name, global.get_save_data_dict())
@@ -22,12 +28,6 @@ func _ready() -> void:
 		var pos = global.player_hub_pos.get(LETTER)
 		if pos != null and pos != Vector2.ZERO:
 			player.global_position = global.player_hub_pos[LETTER]
-	
-	global.nodes["level"] = self
-	global.nodes["canvaslayer"] = $CanvasLayer
-	global.nodes["ysort"] = $YSort
-	global.nodes["background"] = $Background
-	global.nodes["background_tiles"] = $YSort/background_tiles
 	
 	if global.last_ambiance == AMBIANCE: return
 	else: 

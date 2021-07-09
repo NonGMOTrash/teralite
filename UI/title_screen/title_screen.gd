@@ -78,8 +78,9 @@ func _ready() -> void:
 			version.text = version.text + " Hotfix"
 		else:
 			version.text = version.text + " Hotfix #" + str(global.ver_hotfix)
+	if OS.is_debug_build() == true:
+		version.text = version.text + " (Debug)"
 	
-	prints(OS.get_system_time_msecs(), OS.get_system_time_msecs() % MESSAGES.size())
 	msg.text = MESSAGES[OS.get_system_time_msecs() % MESSAGES.size()]
 	
 	# load settings config
@@ -152,7 +153,7 @@ func _on_options_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	if title_menu.visible == false: return
-	get_tree().quit()
+	global.quit()
 
 func _on_Options_visibility_changed() -> void:
 	if options_menu.visible == false and title_menu.visible == false:

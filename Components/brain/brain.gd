@@ -3,7 +3,6 @@ extends Node2D
 onready var think_timer = $think_timer
 onready var sight = $sight
 onready var sight_shape = $sight/CollisionShape2D
-onready var effect_cooldown = $effect_cooldown
 var movement_lobe: Node
 var action_lobe: Node
 var memory_lobe: Node
@@ -22,14 +21,14 @@ export var IGNORE_ATTACKS := true
 export var IGNORE_INANIMATE := true
 export var IGNORE_UNFACTIONED := true
 export var IGNORE_ALLIES := true
-export var EXCLUDES := []
+export var BLACKLIST := []
+var excluded := [weakref(entity)] # list of entities that can never be targets
 
 # PROBLEM_NOTE: it would be better to use a dictionary for targets and target_paths because the targets
 # are not accesed or removed in a set order. same goes for some stuff in movement_lobe.gd i think 
 var targets := []
 var target_paths := []
 var entities := []
-
 var entity: Entity
 
 signal found_target
@@ -128,15 +127,31 @@ func los_check(target, ignore_low_barriers:=true):
 	var target_pos = target
 	if target is Entity: 
 		target_pos = target.global_position
+#		prints(entity.get_name(), "->", target.get_name())
+#	else:
+#		prints(entity.get_name(), "->", target)
+	
+	var excludes := []
+	for i in range(excluded.size()-1, -1, -1):
+		var entity = excluded[i].get_ref()
+		if not entity is Entity:
+			excluded.remove(i)
+		elif not (target is Entity and entity == target):
+			excludes.append(entity)
 	
 	var ss = get_world_2d().direct_space_state
+	var vision = ss.intersect_ray(target_pos, global_position, excludes, mask)
 	
-	var vision = ss.intersect_ray(target_pos, global_position, [entity], mask)
-	if vision == null: 
-		return null
+	while vision and vision.collider is Entity and vision.collider.global_position != target_pos:
+		excluded.append(weakref(vision.collider))
+		excludes.append(vision.collider)
+		
+		vision = ss.intersect_ray(target_pos, global_position, excludes, mask)
+	
+	if vision == {}:
+		return false
 	else:
-		vision = ss.intersect_ray(global_position.move_toward(target_pos, 2.5),
-				target_pos, [entity], mask)
+		vision = ss.intersect_ray(global_position.move_toward(target_pos, 2.5), target_pos, excludes, mask)
 	
 	if vision:
 		if vision.collider is TileMap:
@@ -166,7 +181,7 @@ func add_target(tar: Entity, force = false) -> void:
 			return
 		elif tar.INANIMATE == true and IGNORE_INANIMATE == true:
 			return
-		elif tar.truName in EXCLUDES or tar.faction in EXCLUDES:
+		elif tar.truName in BLACKLIST or tar.faction in BLACKLIST:
 			return
 		elif global.get_relation(entity, tar) == "friendly" and IGNORE_ALLIES == true:
 			return
@@ -219,7 +234,7 @@ func remove_target(tar):
 			
 			spawn_effect("question", global_position.move_toward(targets[target_id].global_position, 32))
 	
-	targets.remove(target_id) 
+	targets.remove(target_id)
 	target_paths.remove(target_id)
 	emit_signal("lost_target")
 	
@@ -234,7 +249,7 @@ func _on_sight_body_entered(body: Node) -> void:
 		not (body is Attack and IGNORE_ATTACKS == true) and
 		not (body.faction == "" and IGNORE_UNFACTIONED == true) and
 		not (body.INANIMATE == true and IGNORE_INANIMATE == true) and
-		not (body.truName in EXCLUDES or body.faction in EXCLUDES) and
+		not (body.truName in BLACKLIST or body.faction in BLACKLIST) and
 		not (global.get_relation(entity, body) == "friendly" and IGNORE_ALLIES == true)
 	):
 		entities.append(body)
@@ -272,11 +287,7 @@ func _on_think_timer_timeout() -> void:
 #	if OS.is_debug_build() == true and has_method("_draw"):
 #		update()
 
-# PROBLEM_NOTE: this is a bad way to prevent effect spam, better to have entities be able to see through
-# eachother. it seems harder than i thought to get working though (unless im stupid, thats possible)
 func spawn_effect(effect: String, pos: Vector2):
-	if effect_cooldown.time_left != 0: return
-	
 	var new_effect = res.aquire_effect(effect)
 	if not new_effect is Effect:
 		push_warning("effect was invalid")
@@ -284,8 +295,6 @@ func spawn_effect(effect: String, pos: Vector2):
 	
 	entity.get_parent().call_deferred("add_child", new_effect)
 	new_effect.global_position = pos
-	
-	effect_cooldown.start()
 
 func get_target_names() -> Array:
 	var names := []
