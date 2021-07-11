@@ -121,7 +121,7 @@ const data := {
 	"footstep_grass": "res://Entities/footstep_grass.wav",
 	"footstep_wood": "res://Entities/footstep_wood.wav",
 	"heal": "res://Entities/heal.wav",
-	"forest_ambiance": "res://Levels/level/forest_ambiance.wav",
+	"forest_ambiance": "res://Levels/level/forest_ambiance.ogg",
 	"menu_pause": "res://UI/pause_menu/menu_pause.wav",
 	"menu_unpause": "res://UI/pause_menu/menu_unpause.wav",
 	"menu_click": "res://UI/menu_click.wav",

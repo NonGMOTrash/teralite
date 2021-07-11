@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Entities/Attacks/Melee/Melee.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/spear/spear.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Entities/Attacks/Melee/poke/poke_collide.wav" type="AudioStream" id=4]
 [ext_resource path="res://Entities/Attacks/Melee/poke/poke_block.wav" type="AudioStream" id=5]
 [ext_resource path="res://Entities/Attacks/Melee/poke/poke_hit.wav" type="AudioStream" id=6]
+[ext_resource path="res://Entities/Attacks/Melee/poke/poke_kill.wav" type="AudioStream" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 1.773
@@ -88,7 +89,7 @@ truName = "poke"
 RANGE = 8
 SPAWN_SOUND = ExtResource( 3 )
 HIT_SOUND = ExtResource( 6 )
-KILL_SOUND = ExtResource( 6 )
+KILL_SOUND = ExtResource( 7 )
 BLOCKED_SOUND = ExtResource( 5 )
 COLLIDE_SOUND = ExtResource( 4 )
 BOOST = 22

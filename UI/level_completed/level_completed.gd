@@ -10,6 +10,7 @@ onready var kills = $area/stats/kills/value
 onready var lvl: String = get_tree().current_scene.name
 
 var perfected := false
+var level_completed := false
 
 func _init():
 	visible = false
@@ -23,6 +24,7 @@ func get_player():
 func start():
 	$AnimationPlayer.play("animation")
 	visible = true
+	level_completed = true
 	
 	global.nodes["stopwatch"].visible = false
 	global.nodes["stopwatch"].set_pause(true)
@@ -103,3 +105,8 @@ func _input(_event):
 				get_tree().change_scene("res://Levels/A/A-Hub.tscn")
 		else:
 			get_tree().change_scene("res://Levels/%s/%s-Hub.tscn" % [last_hub, last_hub])
+
+func _process(delta: float) -> void:
+	if level_completed:
+		visible = not global.nodes["pause_menu"].visible
+		print(visible)

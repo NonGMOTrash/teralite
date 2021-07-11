@@ -51,7 +51,7 @@ func _ready() -> void:
 	ambiance.MODE = Sound.MODES.REPEATING
 	
 	match AMBIANCE:
-		TYPES.AUTUMN: ambiance.stream = load("res://Levels/level/forest_ambiance.wav")
+		TYPES.AUTUMN: ambiance.stream = load("res://Levels/level/forest_ambiance.ogg")
 		TYPES.UNDERGROUND: ambiance.stream = load("res://Levels/level/cave_ambiance.ogg")
 		_: return
 	

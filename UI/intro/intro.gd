@@ -4,7 +4,7 @@ const TITLE = preload("res://UI/title_screen/title_screen.tscn")
 const ERROR_PNG = preload("res://UI/intro/error.png")
 const ERROR_SFX = preload("res://UI/intro/os_error.wav")
 const HIT_EFFECT = preload("res://Effects/hit_effect/hit_effect.tscn")
-const HIT_SFX = preload("res://Entities/Attacks/Melee/slash/sword_kill.wav")
+const HIT_SFX = preload("res://Entities/Attacks/Melee/slash/slash_kill.wav")
 
 export(Array) var animation_queue: Array
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Entities/Attacks/Melee/Melee.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/sword/sword.png" type="Texture" id=2]
-[ext_resource path="res://Entities/Attacks/Melee/slash/sword_kill.wav" type="AudioStream" id=4]
+[ext_resource path="res://Entities/Attacks/Melee/slash/sword_tint.wav" type="AudioStream" id=3]
+[ext_resource path="res://Entities/Attacks/Melee/slash/slash_kill.wav" type="AudioStream" id=4]
 [ext_resource path="res://Entities/Attacks/Melee/slash/sword_clang.wav" type="AudioStream" id=5]
 [ext_resource path="res://Entities/Attacks/Melee/slash/sword_miss.wav" type="AudioStream" id=6]
 [ext_resource path="res://Entities/Attacks/Melee/slash/sword_hit.wav" type="AudioStream" id=7]
@@ -80,6 +81,7 @@ SPAWN_SOUND = ExtResource( 6 )
 HIT_SOUND = ExtResource( 7 )
 KILL_SOUND = ExtResource( 4 )
 BLOCKED_SOUND = ExtResource( 5 )
+COLLIDE_SOUND = ExtResource( 3 )
 
 [node name="stats" parent="." index="0"]
 MAX_HEALTH = 2

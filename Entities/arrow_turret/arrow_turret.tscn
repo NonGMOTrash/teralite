@@ -72,7 +72,7 @@ collision_layer = 2
 script = ExtResource( 1 )
 ACCELERATION = 0
 SLOWDOWN = 200
-FORCE_MULT = 0.3
+FORCE_MULT = 0.2
 truName = "arrow_turret"
 faction = "blue_kingdom"
 charge_speed = 0.6
@@ -124,7 +124,6 @@ COMMUNICATES = false
 
 [node name="hurtbox" parent="." instance=ExtResource( 7 )]
 visible = false
-iTime_multiplier = 0.0
 KILLED_SOUND = ExtResource( 8 )
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]

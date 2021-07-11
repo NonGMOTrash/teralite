@@ -90,12 +90,10 @@ func _process(_delta: float):
 		reload()
 		return
 	
-	if get_ready() == false and auto_ready_check == true: return
-	
 	if Input.is_action_pressed("drop_item"):
 		if player.inventory[global.selection] == null: return
 		var new_item_entity = res.aquire_entity(my_item)
-	
+		
 		if new_item_entity == null: return
 		var dir_vector = player.global_position.direction_to(player.get_global_mouse_position())
 		new_item_entity.global_position = player.global_position #+ dir_vector * 16
@@ -107,7 +105,10 @@ func _process(_delta: float):
 		
 		delete()
 		return
-
+	
+	if get_ready() == false and auto_ready_check == true:
+		return
+	
 	match PRIMARY_ACTION_MODE:
 		ACTION_MODES.SEMI:
 			if Input.is_action_just_pressed("primary_action"):
