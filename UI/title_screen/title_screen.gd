@@ -178,7 +178,7 @@ func _on_cancel_pressed() -> void:
 func _on_create_pressed() -> void:
 	var new_save_name = $new_save/VBoxContainer/HBoxContainer/name.text
 	if new_save_name == "": 
-		new_save_name = "untitled save"
+		new_save_name = "untitled_save"
 	
 	global.save_name = new_save_name
 	

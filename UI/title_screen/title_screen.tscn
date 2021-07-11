@@ -236,7 +236,7 @@ max_length = 40
 context_menu_enabled = false
 shortcut_keys_enabled = false
 selecting_enabled = false
-placeholder_text = "untitled save"
+placeholder_text = "untitled_save"
 caret_blink = true
 __meta__ = {
 "_edit_use_anchors_": false

@@ -16,7 +16,6 @@ var previous_scene = null # PROBLEM_NOTE i don't think this is used
 var player_hub_pos = {"A":Vector2(0, 0)}
 var last_ambiance = 0 # PROBLEM_NOTE: this isn't used i don't think
 
-# PROBLEM_NOTE: might be a bit better to have this be in a seperate "save" global?
 # data vars
 var stars = 0
 var last_hub = null
@@ -31,8 +30,7 @@ const ver_hotfix = 0
 
 # for saving things
 const SAVE_DIR := "user://saves/"
-var save_name: String = "untitled save"
-var save_path = SAVE_DIR + save_name
+var save_name: String = "untitled_save"
 var saves = []
 
 # PROBLEM_NOTE: make this a class for better autocomplete
@@ -148,7 +146,7 @@ func get_relation(me:Entity, other:Entity):
 
 func get_empty_save_data():
 	return {
-		"save_name": "untitled save",
+		"save_name": "untitled_save",
 		"stars": 0,
 		"last_hub": null,
 		"hub_pos": {"A": Vector2.ZERO},
@@ -194,19 +192,16 @@ func get_saves():
 func write_save(entered_save_name, data):
 	var new_save_name = entered_save_name
 	if new_save_name == "":
-		new_save_name = "untitled save"
+		new_save_name = "untitled_save"
 	
 	save_name = new_save_name
-	save_path = SAVE_DIR + save_name
 	
 	# makes saves directory if it does not exist
 	var dir = Directory.new()
 	if not dir.dir_exists(SAVE_DIR): dir.make_dir_recursive(SAVE_DIR)
 	
-	var new_save_path = SAVE_DIR + entered_save_name
-	
 	var save_file = File.new()
-	var error = save_file.open(new_save_path, File.WRITE)
+	var error = save_file.open(SAVE_DIR + save_name, File.WRITE)
 	if error == OK:
 		#load works
 		save_file.store_var(data)
@@ -219,10 +214,38 @@ func load_save(entered_save_name):
 	var save_file = File.new()
 	
 	save_name = entered_save_name
-	save_path = SAVE_DIR + save_name
 	
-	if save_file.file_exists(save_path):
-		var error = save_file.open(save_path, File.READ)
+	if not save_name.is_valid_filename():
+		# rename the save file to not have spaces
+		if save_file.file_exists(SAVE_DIR + save_name):
+			var error = save_file.open(SAVE_DIR + save_name, File.READ)
+			if error == OK:
+				var save_data = save_file.get_var()
+				save_file.close()
+				
+				var new_name := ""
+				for letter in save_name:
+					if letter.is_valid_filename():
+						new_name = new_name + letter
+					else:
+						new_name = new_name + "_"
+				save_name = new_name
+				
+				
+				error = save_file.open(SAVE_DIR + save_name, File.WRITE)
+				if error == OK:
+					save_file.store_var(save_data)
+					save_file.close()
+				else:
+					push_error("could not open newly created file on load (for renaming)")
+			else:
+				push_error("could not open save on load (for renaming)")
+		else:
+			push_error("could not find save on load (for renaming)")
+	
+	
+	if save_file.file_exists(SAVE_DIR + save_name):
+		var error = save_file.open(SAVE_DIR + save_name, File.READ)
 		if error == OK:
 			#load works
 			var new_data = save_file.get_var()
@@ -230,7 +253,6 @@ func load_save(entered_save_name):
 			# PROBLEM_NOTE: this is kinda dumb because I have to add a new line here every time i add a new
 			# var to a save, not sure there's exactly a better way (not a huge deal really)
 			if new_data.has("stars"): stars = new_data["stars"]
-			if new_data.has("save_name"): save_name = new_data["save_name"]
 			if new_data.has("last_hub"): last_hub = new_data["last_hub"]
 			if new_data.has("hub_pos"): player_hub_pos = new_data["hub_pos"]
 			if new_data.has("cleared_levels"): cleared_levels = new_data["cleared_levels"]
@@ -272,10 +294,10 @@ func load_save(entered_save_name):
 			
 		else:
 			#load failed
-			push_warning("could not open save on load")
+			push_error("could not open save on load")
 	else:
 		#file didn't exist
-		push_warning("could not find save on load")
+		push_error("could not find save on load")
 
 func level_code_to_name(lvl:String) -> String:
 	match lvl:
@@ -303,12 +325,11 @@ func delete_save(entered_save_name):
 	var save_file = File.new()
 	
 	save_name = entered_save_name
-	save_path = SAVE_DIR + save_name
 	
-	if save_file.file_exists(save_path):
+	if save_file.file_exists(SAVE_DIR + save_name):
 		# file found
 		var dir = Directory.new()
-		dir.remove(save_path)
+		dir.remove(SAVE_DIR + save_name)
 	else:
 		# file not found
 		push_warning("could not find save on delete")
@@ -362,9 +383,9 @@ func update_settings():
 			settings_config.close()
 		else:
 			# load failed
-			push_warning("could not load settings_config (on save)")
+			push_error("could not load settings_config (on save)")
 	else:
-		push_warning("could not find settings_config")
+		push_error("could not find settings_config")
 
 func physics_logic(delta, entity):
 	# PROBLEM NOTE:
