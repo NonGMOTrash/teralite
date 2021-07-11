@@ -13,7 +13,7 @@ func _on_hit_spawn_tree_entered():
 	get_parent().components["entity_push"] = self
 
 func _ready() -> void:
-	push_error("there's a hit spawn!!!! replace with a spawner")
+	push_error("%s has a depriciated hitspawn component, replace with a spawner" % get_parent().get_name())
 	
 	percent_chance = clamp(percent_chance, 0, 100)
 	

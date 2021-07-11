@@ -9,10 +9,10 @@ func _ready():
 	
 	particles = blood_particles.instance()
 	particles.amount *= round(level)
-	get_parent().get_parent().add_child(particles)
+	stats.get_parent().add_child(particles)
 
 func triggered():
-	get_parent().change_health(0, -1, "bleed")
+	stats.change_health(0, -1, "bleed")
 
 func depleted():
 	if particles == null:

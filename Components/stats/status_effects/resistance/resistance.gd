@@ -1,7 +1,5 @@
 extends Status_Effect
 
-onready var stats: Node = get_parent()
-
 var original_defence: int
 
 func _ready():

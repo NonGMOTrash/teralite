@@ -32,6 +32,8 @@ export(DEATHS) var death_type = DEATHS.LEFT_FADE
 export var block_effect = true
 export var impact_particles = true
 
+onready var entity = get_parent()
+
 func _ready():
 	if hit_effect == true:
 		var spawner = SPAWNER.instance()
@@ -40,7 +42,7 @@ func _ready():
 		spawner.spawn_on_hurt = true
 		spawner.effect_hframes = 3
 		spawner.effect_vframes = 3
-		get_parent().call_deferred("add_child", spawner)
+		entity.call_deferred("add_child", spawner)
 	
 	if death_effect == true:
 		var spawner = SPAWNER.instance()
@@ -62,7 +64,7 @@ func _ready():
 		
 		if death_type != DEATHS.HIT_EFFECT:
 			
-			var sprite: Sprite = get_parent().components["entity_sprite"]
+			var sprite: Sprite = entity.components["entity_sprite"]
 			spawner.effect_texture = sprite.texture
 			spawner.effect_hframes = sprite.hframes
 			spawner.effect_vframes = sprite.vframes
@@ -74,7 +76,7 @@ func _ready():
 				spawner.use_modulate = true
 				spawner.modulate = sprite.self_modulate
 		
-		get_parent().call_deferred("add_child", spawner)
+		entity.call_deferred("add_child", spawner)
 	
 	if block_effect == true:
 		var spawner = SPAWNER.instance()
@@ -84,10 +86,10 @@ func _ready():
 		spawner.rotation_mode = spawner.ROTATIONS.TOWARD_HITBOX
 		spawner.effect_hframes = 2
 		spawner.effect_vframes = 2
-		get_parent().call_deferred("add_child", spawner)
+		entity.call_deferred("add_child", spawner)
 	
 	if impact_particles == true:
 		var spawner = SPAWNER.instance()
 		spawner.spawn_on_hurt = true
 		spawner.thing = HIT_PARTICLES
-		get_parent().call_deferred("add_child", spawner)
+		entity.call_deferred("add_child", spawner)

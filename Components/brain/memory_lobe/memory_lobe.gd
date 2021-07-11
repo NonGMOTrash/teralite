@@ -1,6 +1,7 @@
 extends Node
 
 onready var brain = get_parent()
+onready var entity = brain.get_parent()
 onready var memory_timer = $memory_timer
 
 export(float, 0, 25.0) var MEMORY_TIME = 4.0
@@ -20,8 +21,8 @@ func _on_memory_lobe_tree_entered():
 func _ready() -> void:
 	memory_timer.wait_time = MEMORY_TIME
 	
-	if brain.get_parent().components.has("hurtbox"):
-		brain.get_parent().components["hurtbox"].connect("got_hit", self, "got_hit")
+	if entity.components.has("hurtbox"):
+		entity.components["hurtbox"].connect("got_hit", self, "got_hit")
 
 func add_memory(pos: Vector2, spring: Node, id: int):
 	if brain.get_parent().is_queued_for_deletion() == true: return
@@ -92,7 +93,7 @@ func got_hit(body, _type):
 						brain.movement_lobe.get_spring(source), source.get_instance_id())
 				
 				var effect = res.aquire("question").instance()
-				get_parent().get_parent().call_deferred("add_child", effect)
+				entity.call_deferred("add_child", effect)
 				effect.global_position = brain.global_position.move_toward(source.global_position, 32)
 		
 		"friendly":

@@ -8,8 +8,7 @@ export(AudioStream) var KILLED_SOUND
 export(float) var SPAWN_INVINCIBILITY := 0.0
 
 onready var iTimer = $Timer
-
-var entity
+onready var entity = get_parent()
 
 var the_area: Area2D
 var the_area_path: NodePath
@@ -25,8 +24,6 @@ func _init() -> void:
 		monitorable = false
 
 func _ready():
-	entity = get_parent()
-	
 	if SPAWN_INVINCIBILITY > 0.0:
 		# triggers invincibility
 		iTimer.wait_time = SPAWN_INVINCIBILITY
@@ -36,7 +33,7 @@ func _ready():
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	var area_entity = area.get_parent() as Entity
 	
-	if get_parent() == area_entity:
+	if entity == area_entity:
 		return
 	
 	# los check
@@ -45,10 +42,10 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if raycast and raycast.collider == global.nodes["world_tiles"]:
 		return
 	
-	if global.get_relation(get_parent(), area_entity) == "friendly":
+	if global.get_relation(entity, area_entity) == "friendly":
 		if area.TEAM_ATTACK == false: return
-		elif area_entity is Melee and area_entity.SOURCE == get_parent(): return
-		elif area_entity is Projectile and area_entity.SOURCE == get_parent():
+		elif area_entity is Melee and area_entity.SOURCE == entity: return
+		elif area_entity is Projectile and area_entity.SOURCE == entity:
 			if area_entity.has_left_src == false: return
 	
 	if area_entity is Projectile:
@@ -83,7 +80,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		
 		# for sfx
 		if HURT_SOUND != null or BLOCK_SOUND != null or HEAL_SOUND != null or KILLED_SOUND != null:
-			if get_parent().components["sound_player"] != null:
+			if entity.components["sound_player"] != null:
 				var sfx = Sound.new()
 				match result_type:
 					"hurt": sfx.stream = HURT_SOUND
@@ -92,12 +89,12 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 					"killed": sfx.stream = KILLED_SOUND
 				
 				if sfx.stream != null:
-					get_parent().components["sound_player"].add_sound(sfx)
+					entity.components["sound_player"].add_sound(sfx)
 				else:
 					sfx.queue_free()
 			
 			else:
-				push_warning("hurtbox can not play sounds because "+get_parent().truName+" has no sound_player")
+				push_warning("hurtbox can not play sounds because "+entity.truName+" has no sound_player")
 		
 	area.emit_signal("hit", self, result_type)
 	
@@ -112,16 +109,15 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	
 	if area.KNOCKBACK > 0:
 		var source_pos = area.global_position - area_entity.velocity
-		if area.get_parent() is Melee and get_node_or_null(area.get_parent().SOURCE_PATH) != null: 
-			source_pos = area.get_parent().SOURCE.global_position
+		if area_entity is Melee and get_node_or_null(area_entity.SOURCE_PATH) != null: 
+			source_pos = area_entity.SOURCE.global_position
 		
 		# knockback
 		entity.apply_force((source_pos.direction_to(global_position) * area.KNOCKBACK))
 	
 	if (
 		area.get_name() == "hitbox" and
-		monitorable == true #and
-		#global.get_relation(get_parent(), area_entity) != "friendly"
+		monitorable == true
 		):
 			# triggers invincibility
 			iTimer.wait_time = area.iTime * iTime_multiplier + 0.0001

@@ -50,22 +50,22 @@ func _ready():
 	if not my_item in res.data:
 		push_error("%s is not in res.gd" % my_item)
 	
-	if get_parent().truName != "player":
+	if player.truName != "player":
 		push_error("thinker's parent was not a player")
 		queue_free()
 	
 	if CURSOR == null:
 		push_warning("%s does not have a cursor" % get_name())
 	
-	get_parent().connect("swapped_item", self, "_check_if_selected")
+	player.connect("swapped_item", self, "_check_if_selected")
 	
 	global.connect("unpaused", self,"_update_cursor_on_unpause")
 	
-	if get_parent().inventory[global.selection] == my_item: selected()
-	if get_parent().get_name() == "player":
-		global.emit_signal("update_item_bar", get_parent().inventory)
+	if player.inventory[global.selection] == my_item: selected()
+	if player.get_name() == "player":
+		global.emit_signal("update_item_bar", player.inventory)
 	
-	if get_parent().inventory[global.selection] == my_item.to_lower():
+	if player.inventory[global.selection] == my_item.to_lower():
 		selected()
 	elif EQUIP_SOUND != null:
 		sound_player.create_sound(EQUIP_SOUND)
@@ -93,15 +93,15 @@ func _process(_delta: float):
 	if get_ready() == false and auto_ready_check == true: return
 	
 	if Input.is_action_pressed("drop_item"):
-		if get_parent().inventory[global.selection] == null: return
+		if player.inventory[global.selection] == null: return
 		var new_item_entity = res.aquire_entity(my_item)
 	
 		if new_item_entity == null: return
-		var dir_vector = get_parent().global_position.direction_to(get_parent().get_global_mouse_position())
-		new_item_entity.global_position = get_parent().global_position #+ dir_vector * 16
-		new_item_entity.SOURCE = get_parent()
+		var dir_vector = player.global_position.direction_to(player.get_global_mouse_position())
+		new_item_entity.global_position = player.global_position #+ dir_vector * 16
+		new_item_entity.SOURCE = player
 		var velo = dir_vector * 150
-		velo += get_parent().velocity / 1.5
+		velo += player.velocity / 1.5
 		new_item_entity.velocity = velo
 		global.nodes["ysort"].add_child(new_item_entity)
 		
@@ -170,15 +170,15 @@ func selected():
 		null # bar timer duration
 		)
 
-	if get_parent().inventory[global.selection] == my_item.to_lower():
+	if player.inventory[global.selection] == my_item.to_lower():
 		update_cursor()
 		_update_held_item()
-
+	
 	if EQUIP_SOUND != null:
 		sound_player.create_sound(EQUIP_SOUND)
 	if EQUIP_ANIM != "":
 		player.components["held_item"].animation.play(EQUIP_ANIM)
-
+	
 	if player.components["held_item"].sprite.frame > max_frame:
 		player.components["held_item"].sprite.frame = max_frame
 	
@@ -198,41 +198,41 @@ func pre_input_action():
 
 func primary():
 	if PRIMARY_ANIM != "":
-		get_parent().components["held_item"].animation.play(PRIMARY_ANIM)
+		player.components["held_item"].animation.play(PRIMARY_ANIM)
 
 func secondary():
 	if SECONDARY_ANIM != "":
-		get_parent().components["held_item"].animation.play(SECONDARY_ANIM)
+		player.components["held_item"].animation.play(SECONDARY_ANIM)
 
 func reload():
 	if RELOAD_ANIM != "":
-		get_parent().components["held_item"].animation.play(RELOAD_ANIM)
+		player.components["held_item"].animation.play(RELOAD_ANIM)
 
 func quick_spawn(attack:String, deferred:=true) -> void:
 	var new_attack = res.aquire_attack(attack)#.instance()
-	new_attack.setup(get_parent(), get_parent().get_global_mouse_position())
+	new_attack.setup(player, player.get_global_mouse_position())
 	if deferred == true:
-		get_parent().get_parent().call_deferred("add_child", new_attack)
+		global.nodes["ysort"].call_deferred("add_child", new_attack)
 	else:
-		get_parent().get_parent().add_child(new_attack)
+		global.nodes["ysort"].add_child(new_attack)
 
 func _update_held_item():
 	if HELD_ITEM_TEXTURE == null:
 		push_error("HELD_ITEM_TEXTURE is null")
 		HELD_ITEM_TEXTURE = load("res://Misc/generic.png")
-
-	get_parent().components["held_item"].sprite.texture = HELD_ITEM_TEXTURE
-	get_parent().components["held_item"].sprite.rotation_degrees = HELD_ITEM_ROTATION
-	get_parent().components["held_item"].anchor.position = HELD_ITEM_ANCHOR
+	
+	player.components["held_item"].sprite.texture = HELD_ITEM_TEXTURE
+	player.components["held_item"].sprite.rotation_degrees = HELD_ITEM_ROTATION
+	player.components["held_item"].anchor.position = HELD_ITEM_ANCHOR
 
 func _update_cursor_on_unpause():
-	if get_parent().inventory[global.selection] == my_item.to_lower():
+	if player.inventory[global.selection] == my_item.to_lower():
 		update_cursor()
 
 func delete():
-	get_parent().inventory[global.selection] = null
-	get_parent().held_item.sprite.texture = null
-	get_parent().held_item.sprite.rotation_degrees = 0
+	player.inventory[global.selection] = null
+	player.held_item.sprite.texture = null
+	player.held_item.sprite.rotation_degrees = 0
 	global.emit_signal("update_item_info", # set a condition to null to hide it
 		null, # current item
 		null, # extra info
@@ -240,8 +240,8 @@ func delete():
 		null, # item bar value
 		null # bar timer duration
 	)
-
-	if get_parent().get_name() == "player":
-		global.emit_signal("update_item_bar", get_parent().inventory)
-
+	
+	if player.get_name() == "player":
+		global.emit_signal("update_item_bar", player.inventory)
+	
 	queue_free()

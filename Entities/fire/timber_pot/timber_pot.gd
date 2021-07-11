@@ -17,13 +17,13 @@ func death():
 	
 	var new_fire = FIRE.instance()
 	new_fire.global_position = global_position
-	get_parent().call_deferred("add_child", new_fire)
+	global.nodes["ysort"].call_deferred("add_child", new_fire)
 	
 	for i in 5:
 		var newer_fire = FIRE.instance()
 		newer_fire.global_position = global_position
 		newer_fire.velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() * 150
-		get_parent().call_deferred("add_child", newer_fire)
+		global.nodes["ysort"].call_deferred("add_child", newer_fire)
 	queue_free()
 
 func _on_spread_timeout() -> void:
@@ -31,7 +31,7 @@ func _on_spread_timeout() -> void:
 	new_fire.global_position = global_position
 	new_fire.velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() * 100
 	new_fire.find_node("fuel").wait_time = 2.0
-	get_parent().call_deferred("add_child", new_fire)
+	global.nodes["ysort"].call_deferred("add_child", new_fire)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	fuel.wait_time = fuel.time_left + 96.0

@@ -16,6 +16,7 @@ var base_rate = RATE
 
 var playing = false
 
+onready var entity = get_parent()
 onready var delay = $delay
 
 func _init():
@@ -38,7 +39,7 @@ func _process(_delta: float):
 	OFFSET = clamp(RATE - OFFSET, 0.01, 1.0)
 	
 	if playing == true: return
-	elif get_parent().input_vector != Vector2.ZERO:
+	elif entity.input_vector != Vector2.ZERO:
 		if RATE - OFFSET <= 0: 
 			delay.wait_time = 0.001
 		else: 
@@ -49,7 +50,7 @@ func _process(_delta: float):
 
 func _on_delay_timeout() -> void:
 	footstep()
-	if get_parent().input_vector == Vector2.ZERO or RATE == 0:
+	if entity.input_vector == Vector2.ZERO or RATE == 0:
 		playing = false
 	else:
 		delay.wait_time = 1 / RATE
@@ -64,7 +65,7 @@ func footstep():
 	
 	var cell_id = -1
 	if bg != null:
-		cell_id = bg.get_cellv(bg.world_to_map(get_parent().global_position + Vector2(0, 6)))
+		cell_id = bg.get_cellv(bg.world_to_map(entity.global_position + Vector2(0, 6)))
 	
 	match cell_id:
 		-1: 

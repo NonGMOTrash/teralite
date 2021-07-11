@@ -35,7 +35,7 @@ position = Vector2( -366, -610 )
 [node name="ultra_chaser" parent="YSort" index="4" instance=ExtResource( 6 )]
 position = Vector2( 137, 708 )
 
-[node name="spawner" parent="YSort/ultra_chaser" index="13" instance=ExtResource( 8 )]
+[node name="spawner" parent="YSort/ultra_chaser" index="12" instance=ExtResource( 8 )]
 thing = ExtResource( 5 )
 
 [node name="crate" parent="YSort" index="5" instance=ExtResource( 2 )]

@@ -3,6 +3,8 @@ class_name Status_Effect
 
 onready var duration = $duration
 onready var trigger = $trigger
+onready var stats = get_parent()
+onready var entity = stats.get_parent()
 
 export(float, 0.01, 999) var level := 1.0
 export(bool) var decimal_levels := true
@@ -11,7 +13,7 @@ export(float, 0.01, 999) var TRIGGER_TIME := 2.5
 export(float, 0.01, 999) var DURATION_TIME := 5.0
 
 func _ready() -> void:
-	get_parent().status_effects[name] = self
+	stats.status_effects[name] = self
 	
 	duration.wait_time = DURATION_TIME
 	duration.start()
@@ -49,7 +51,7 @@ func change_level(amount: float):
 
 func _on_duration_timeout() -> void:
 	depleted()
-	get_parent().status_effects[get_name()] = null
+	stats.status_effects[get_name()] = null
 	queue_free()
 
 func _on_trigger_timeout() -> void:

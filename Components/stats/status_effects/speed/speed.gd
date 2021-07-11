@@ -1,6 +1,5 @@
 extends Status_Effect
 
-onready var entity: Entity = get_parent().get_parent() as Entity
 onready var top_speed_change = entity.TOP_SPEED * (level / 5.0)
 onready var acceleration_change = entity.ACCELERATION * (level / 4.0)
 onready var slowdown_change = entity.SLOWDOWN * (level / 15.0)

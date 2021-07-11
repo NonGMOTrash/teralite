@@ -13,6 +13,7 @@ export var STATUS_LEVEL = 1.0
 export var TEAM_ATTACK = true
 export(AudioStream) var TRIGGERED_SOUND
 
+onready var entity = get_parent()
 onready var timer = $Timer
 var stats: Node
 
@@ -24,7 +25,7 @@ func _on_hitbox_tree_entered() -> void:
 func _ready():
 	timer.wait_time = COOLDOWN
 	
-	var node = get_parent().components["stats"]
+	var node = entity.components["stats"]
 	if node == null: return
 	else: stats = node
 	
@@ -35,8 +36,8 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	var area_entity = area.get_parent()
 	if (
 		area_entity is Attack or
-		area.entity == get_parent() or
-		TEAM_ATTACK == false and global.get_relation(get_parent(), area_entity) == "friendly"
+		area.entity == entity or
+		TEAM_ATTACK == false and global.get_relation(entity, area_entity) == "friendly"
 	): 
 		return
 	
@@ -50,10 +51,10 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		set_deferred("monitorable", false)
 		timer.start()
 	
-	if get_parent().components["sound_player"] != null and TRIGGERED_SOUND != null:
+	if entity.components["sound_player"] != null and TRIGGERED_SOUND != null:
 		var sfx = Sound.new()
 		sfx.stream = TRIGGERED_SOUND
-		get_parent().components["sound_player"].add_sound(sfx)
+		entity.components["sound_player"].add_sound(sfx)
 
 func _on_Timer_timeout() -> void:
 	set_deferred("monitorable", true)

@@ -47,6 +47,8 @@ export var modifiers = {
 	"resistance": 0,
 }
 
+onready var entity = get_parent()
+
 func _on_stats_tree_entered():
 	get_parent().components["stats"] = self
 
@@ -106,20 +108,20 @@ func change_health(value, true_value, type: String = "hurt") -> String:
 		result_type = "heal"
 	
 	if HEALTH <= 0:
-		if get_parent().truName == "player" and type != "hurt":
+		if entity.truName == "player" and type != "hurt":
 			var msg: String
 			match type:
 				"burn": msg = "Death by fire."
 				"poison": msg = "Death by poison."
 				"bleed": msg = "Death by bleeding."
-			get_parent().death_message = msg
-			get_parent().force_death_msg = true
+			entity.death_message = msg
+			entity.force_death_msg = true
 		
-		get_parent().death()
+		entity.death()
 		return "killed"
 	
 	# PROBLEM_NOTE: would be better to put this in the player script instead of here
-	if get_parent().truName == "player": 
+	if entity.truName == "player": 
 		global.emit_signal("update_health")
 	
 	if result_type != "":

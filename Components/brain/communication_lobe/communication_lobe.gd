@@ -1,6 +1,7 @@
 extends Node
 
 onready var brain = get_parent()
+onready var entity: Entity = brain.get_parent()
 onready var delay_timer = $delay_timer
 
 export var TARGET_SPREADING = true
@@ -32,7 +33,7 @@ func _on_delay_timer_timeout() -> void:
 			and body.get_name() != "world_tiles"
 			and body.components["brain"] != null
 			and brain.los_check(body) == true
-			and global.get_relation(brain.get_parent(), body) == "friendly"
+			and global.get_relation(entity, body) == "friendly"
 			and not body.components["brain"].targets.has(the_target)
 			and body.components["memory_lobe"] != null
 			and not body.components["memory_lobe"].memory_id.has(the_target.get_instance_id())

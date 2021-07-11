@@ -18,6 +18,7 @@ var reversed = false
 var original_offset: Vector2
 var original_texture: Texture
 
+onready var entity = get_parent()
 onready var sprite = $anchor/sprite
 onready var anchor = $anchor
 onready var animation = $AnimationPlayer
@@ -38,11 +39,11 @@ func _ready():
 	if PARENT_BOND == false:
 		source = self
 	else:
-		if not get_parent() is Node2D:
+		if not entity is Node2D:
 			source = self
 			push_warning("held_item could not be bound to parent because it's not 2D")
 		else:
-			source = get_parent()
+			source = entity
 			if TARGETING == TT.INPUT_VECTOR or TARGETING == TT.BRAIN_TARGET and not source is Entity:
 				push_error("held_item could not be bound to parent because it's not an Entity")
 				source = self
@@ -57,11 +58,11 @@ func _process(delta):
 			target_pos = source.global_position + source.input_vector * 10
 		
 		elif TARGETING == TT.BRAIN_TARGET:
-			if TARGETING == TT.BRAIN_TARGET and get_parent().components["brain"] == null:
+			if TARGETING == TT.BRAIN_TARGET and entity.components["brain"] == null:
 				push_error("can't use BRAIN_TARGET targetting because brain couldn't be found, switching to INPUT_VECTOR")
 				TARGETING = TT.INPUT_VECTOR
 			else:
-				var closet_target = get_parent().components["brain"].get_closest_target()
+				var closet_target = entity.components["brain"].get_closest_target()
 				if closet_target is Entity:
 					target_pos = closet_target.global_position
 				else:

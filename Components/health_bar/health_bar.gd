@@ -1,6 +1,7 @@
 extends TextureProgress
 
-onready var stats = get_parent().components["stats"]
+onready var entity = get_parent()
+onready var stats = entity.components["stats"]
 onready var bonus = $bonus
 onready var armor = $armor
 onready var timer = $Timer
@@ -10,7 +11,7 @@ export(Gradient) var BONUS_GRAD
 export(Gradient) var ARMOR_GRAD
 
 func _on_healthBar_tree_entered():
-	get_parent().components["entity_push"] = self
+	get_parent().components["health_bar"] = self
 
 func _ready(): 
 	if stats == null:
@@ -28,7 +29,7 @@ func _ready():
 	bonus.max_value = max_value
 
 func update_bar(_type, _result, _net) -> void:
-	if get_parent().get_name() == "player":
+	if entity.get_name() == "player":
 		visible = false
 		return
 	else:

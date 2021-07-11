@@ -2,68 +2,70 @@
 <head>
 <style>
 
-body {
-	color: white;
-	background-color: black;
-    margin: 100px;
-}
+	body {
+		color: white;
+		background-color: black;
+		margin: 100px;
+		font-family:Verdana, sans-serif;
+	}
 
-a {
-	color: orange;
-}
-a:hover {
-	font-weight: bolder;
-}
+	a {
+		color: orange;
+	}
+	a:hover {
+		font-weight: bolder;
+	}
 
-code {
-	font-size: 14px;
-    color: lightgray;
-}
+	code {
+		font-size: 14px;
+		color: lightgray;
+	}
 
-.ascii-art {
-	font: monospace;
-	font-weight: bolder;
-    text-align: center;
-    color: orange;
-}
+	.ascii-art {
+		font: monospace;
+		font-weight: bolder;
+		text-align: center;
+		color: orange;
+	}
 
-.navbar {
-	position: fixed;
-    background-color: darkblue;
-    top: 0;
-    width: 100%;
-    margin: 0px;
-}
+	.navbar {
+		position: fixed;
+		background-color: darkblue;
+		top: 0;
+		width: 100%;
+		margin: 0px;
+	}
 
-.navbar ul {
-  	list-style-type: none;
- 	margin: 0;
- 	padding: 0;
- 	overflow: hidden;
-	background-color: #333;
-}
+	.navbar ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		background-color: #333;
+	}
 
-.navbar li {
-	float: left;
-	display: block;
-    text-align: center;
-    text-decoration: none;
-    margin: 10px;
-}
+	.navbar li {
+		float: left;
+		display: block;
+		text-align: center;
+		text-decoration: none;
+		margin: 10px;
+	}
 
-.navbar li a {
-	color: white;
-    padding: 10px;
-}
+	.navbar li a {
+		color: white;
+		padding: 10px;
+	}
 
-.navbar li a:hover {
-	background-color: blue;
-    font-weight: normal;
-}
+	.navbar li a:hover {
+		background-color: blue;
+		font-weight: normal;
+	}
 
 </style>
 
 </head>
+
 <body>
 <pre><code class="ascii-art">
             ###########     
@@ -99,130 +101,95 @@ code {
 <br>
 <p>helo, thanks for downloading</p>
 
-<h1 id="table-of-contents">table of contents</h1>
-
 <ul class="navbar">
-    <li> <a href="#info">info</a> </li>
-    <li> <a href="#credits">credits</a> </li>
-    <li> <a href="#patchnotes">patchnotes</a> </li>
+	<li> <a href="#info">info</a> </li>
+	<li> <a href="#credits">credits</a> </li>
+	<li> <a href="#patchnotes">patchnotes</a> </li>
 </ul>
-
-<ol id="tableofcontents">
-	<li>
-    	<a href="#info">info</a>
-    	<ul>
-			<li><a href="#can-i-share-this-game-with-other-people">can i share this game with other people?</a></li>
-			<li><a href="#-pck-not-found-at-path-error">.pck not found</a></li>
-			<li><a href="#particles-not-working">particles not working</a></li>
-			<li><a href="#old-saves-dissappeared">old saves dissappeared</a></li>
-			<li><a href="#compatiability-with-older-saves">compatiability with older saves</a></li>
-		</ul>
-	</li>
-	<li>
-    	<a href="#credits">credits</a>
-    	<ul>
-			<li><a href="#developer-">developer</a></li>
-    		<li><a href="#play-testers-">play testers</a></li>
-			<li><a href="#engine-">engine</a></li>
-			<li><a href="#font-credits-">font</a></li>
-            <li><a href="#sound-credits-">sound credits</a></li>
-   			<li><a href="#license-">license</a></li>
-		</ul>
-	</li>
-	<li>
-    	<a href="#patchnotes">patchnotes</a>
-        <ul>
-			<li><a href="#beta-3-0">beta 3.0 (latest)</a></li>
-			<li><a href="#beta-2-0">beta 2.0</a></li>
-			<li><a href="#beta-1-0">beta 1.0</a></li>
-		</ul>
-	</li>
-</ol>
 
 <h1 id="info">info</h1>
 
-<h2 id="can-i-share-this-game-with-other-people-">can i share this game with other people?</h2>
-<p>please don&#39;t, i wanna keep this game sorta secret for now. if you violate this policy, i will do absolutely nothing except be very very sad. however when the game is out, please share this game with EVERYONE. just like, constantly</p>
+	<h2 id="can-i-share">can i share this game with other people?</h2>
+		<p>please don&#39;t, i wanna keep this game sorta secret for now. if you violate this policy, i will do absolutely nothing except be very very sad. however when the game is out, please share this game with EVERYONE. just like, constantly</p>
 
-<h2 id="-pck-not-found-at-path-error">.pck not found at path &#39;.&#39; error</h2>
+	<h2 id="pck-not-found">.pck not found at path &#39;.&#39; error</h2>
+	
+		<p>teralite.exe has to be in the same folder as the teralite.pck or it won&#39;t work. if you want to have access to the game somewhere else, just make a shortcut of teralite.exe</p>
 
-<p>teralite.exe has to be in the same folder as the teralite.pck or it won&#39;t work. if you want to have access to the game somewhere else, just make a shortcut of teralite.exe</p>
+	<h2 id="particles-not-working">particles not working</h2>
 
-<h2 id="particles-not-working">particles not working</h2>
+		<p>if you&#39;re using a CPU with integrated graphics that doesn&#39;t support OpenGL ES 3, the game will fallback to OpenGL ES 2. this mostly works okay, but the game will run worse and particle effects won&#39;t work. sorry! i might make a &quot;CPU particles&quot; option in the future, but it would be a hassle because i would have to make a 2nd version of every particle effect</p>
 
-<p>if you&#39;re using a CPU with integrated graphics that doesn&#39;t support OpenGL ES 3, the game will fallback to OpenGL ES 2. this mostly works okay, but the game will run worse and particle effects won&#39;t work. sorry! i might make a &quot;CPU particles&quot; option in the future, but it would be a hassle because i would have to make a 2nd version of every particle effect</p>
+	<h2 id="old-saves-dissappeared">old saves dissappeared</h2>
 
-<h2 id="old-saves-dissappeared">old saves dissappeared</h2>
+		<p>due to the name change from project epsilon to teralite in beta 2.12, the game won&#39;t be able to find the folder where old game data was stored.
+		<br>it&#39;s pretty easy to fix tho, just follow these steps:</p>
+		<ol>
+			<li>go to the search bar on windows and search <code>%APPDATA%</code> (should take you to a file folder)</li>
+			<li>find the folder named &quot;Project Epsilon&quot; and rename it to &quot;Teralite&quot;</li>
+			<li>if it asks you if you want to replace the folder that&#39;s already named Teralite, click Yes</li>
+			<li>reopen teralite, and you should see your saves
+			<br>(you can also just cut and paste the actual save files from Project Epsilon into Teralite)</li>
+		</ol>
 
-<p>due to the name change from project epsilon to teralite in beta 2.12, the game won&#39;t be able to find the folder where old game data was stored.
-<br>it&#39;s pretty easy to fix tho, just follow these steps:</p>
-<ol>
-	<li>go to the search bar on windows and search <code>%APPDATA%</code> (should take you to a file folder)</li>
-	<li>find the folder named &quot;Project Epsilon&quot; and rename it to &quot;Teralite&quot;</li>
-	<li>if it asks you if you want to replace the folder that&#39;s already named Teralite, click Yes</li>
-	<li>reopen teralite, and you should see your saves
-	<br>(you can also just cut and paste the actual save files from Project Epsilon into Teralite)</li>
-</ol>
+	<h2 id="compatiability-with-older-saves">compatiability with older saves</h2>
 
-<h2 id="compatiability-with-older-saves">compatiability with older saves</h2>
-
-<ul>
-	<li>all polish updates (+0.1 updates) should work fine with old saves</li>
-	<li>using an old save from a 1.X version is possible, but i recomend you just start over with a new save</li>
-	<li>it will probably be a similar deal once 3.0 comes out but who knows 
-    <br> (in the future, i&#39;ll add an ingame warning for versions that aren&#39;t compatiable with eachother)</li>
-</ul>
+		<ul>
+			<li>all polish updates (+0.1 updates) should work fine with old saves</li>
+			<li>using an old save from a 1.X version is possible, but i recomend you just start over with a new save</li>
+			<li>it will probably be a similar deal once 3.0 comes out but who knows 
+			<br> (in the future, i&#39;ll add an ingame warning for versions that aren&#39;t compatiable with eachother)</li>
+		</ul>
 
 <h1 id="credits">credits</h1>
 
-
 <h3 id="developer-">developer:</h3>
 
-<p>NonGMOTrash</p>
-<ul>
-<li>itch: <a href="https://nongmotrash.itch.io">https://nongmotrash.itch.io</a></li>
-<li>youtube: <a href="https://www.youtube.com/channel/UCeM_Vg53GAkVPdgEmPfPAsw">https://www.youtube.com/channel/UCeM_Vg53GAkVPdgEmPfPAsw</a></li>
-<li>discord: <strong>NonGMOTrash#9437</strong></li>
-<li>email: <strong>nongmotrash@gmail.com</strong> (send me dumb stuff just no nsfw)</li>
-<li>github: <a href="https://github.com/NonGMOTrash">https://github.com/NonGMOTrash</a></li>
-</ul>
+	<p>NonGMOTrash</p>
+	<ul>
+		<li>itch: <a href="https://nongmotrash.itch.io">https://nongmotrash.itch.io</a></li>
+		<li>youtube: <a href="https://www.youtube.com/channel/UCeM_Vg53GAkVPdgEmPfPAsw">https://www.youtube.com/channel/UCeM_Vg53GAkVPdgEmPfPAsw</a></li>
+		<li>discord: <strong>NonGMOTrash#9437</strong></li>
+		<li>email: <strong>nongmotrash@gmail.com</strong> (send me dumb stuff just no nsfw)</li>
+		<li>github: <a href="https://github.com/NonGMOTrash">https://github.com/NonGMOTrash</a></li>
+	</ul>
 
 <h3 id="play-testers-">play testers:</h3>
-<p>
-you!<br>
-will add all the people later<br>
-(you&#39;ll be in the credits of the game itself aswell)
-</p>
+	<p>
+		you!<br>
+		will add all the people later<br>
+		(you&#39;ll be in the credits of the game itself aswell)
+	</p>
 
 
 <h3 id="engine-">engine:</h3>
 
-<p>teralite was created with the Godot Engine, it&#39;s license reads as follows:</p>
+	<p>teralite was created with the Godot Engine, it&#39;s license reads as follows:</p>
 
+	<code>
+		<pre>Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur. Copyright (c) 2014-2021 Godot Engine contributors.
+
+		Permission is hereby granted, free of charge, to any person obtaining a copy
+		of this software and associated documentation files (the "Software"), to deal
+		in the Software without restriction, including without limitation the rights
+		to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+		copies of the Software, and to permit persons to whom the Software is
+		furnished to do so, subject to the following conditions:
+
+		The above copyright notice and this permission notice shall be included in all
+		copies or substantial portions of the Software.
+
+		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+		IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+		FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+		AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+		SOFTWARE.</pre>
+	</code>
+	<p>addtionally,</p>
 <code>
-<pre>Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur. Copyright (c) 2014-2021 Godot Engine contributors.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.</pre>
-</code>
-<p>addtionally,</p>
-<code>
-<pre>Portions of this software are copyright ©2021 The FreeType Project (www.freetype.org). All rights reserved.</pre>
+	<pre>Portions of this software are copyright ©2021 The FreeType Project (www.freetype.org). All rights reserved.</pre>
 </code>
 
 <h3 id="font-credits-">font credits:</h3>
@@ -420,16 +387,18 @@ along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</pr
 
 <h1 id="patchnotes">patchnotes</h1>
 
-<h3 id="beta-3-2">beta 3.2 (7/XX/2021)</h2>
+<h3 id="beta-3-2">beta 3.2 (7/XX/2021)</h3>
 <ul>
-<li>improved line-of-sight detection (makes the pink watcher locks are a little less dumb)</li>
+<li>improved line-of-sight detection (watcher locks are now a little less dumb)</li>
 <li>fixed ultra chasers not dashing (not sure why this keeps happening)</li>
 <li>brute chasers now slowly regen health</li>
+<li>fixed not being able to drop the bow</li>
 <li>fixed some AI pathing bugs</li>
+<li>minor script optimizations</li>
 <li>fixed annoying little lag spike when you first dash</li>
 </ul>
 
-<h3 id="beta-3-1">beta 3.1 (7/5/2021)</h2>
+<h3 id="beta-3-1">beta 3.1 (7/5/2021)</h3>
 <ul>
 <li>added props to the underground</li>
 <li>added carpet background</li>
@@ -787,7 +756,7 @@ along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</pr
 <li>3 items (sword, pistol, white armor)</li>
 </ul>
 
-<h3 id="how-the-version-numbering-works">how the version numbering works</h3>
+<h3 id="version-numbering">how the version numbering works</h3>
 <p>i don&#39;t use semantic versioning because i suck</p>
 <p>instead, its:</p>
 

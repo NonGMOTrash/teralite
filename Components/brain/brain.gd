@@ -44,53 +44,53 @@ func _ready():
 	think_timer.wait_time = THINK_TIME
 
 # for debugging purposes:
-#func _draw():
-#	draw_line(position, position + entity.input_vector * 8, Color.orange, 1.4)
-#
-#	if memory_lobe != null:
-#		for i in memory_lobe.memory.size():
-#			draw_circle(to_local(memory_lobe.memory[i]), 2, Color.blue)
-#			if targets == []:
-#				if los_check(memory_lobe.memory[i], false) == true:
-#					draw_line(position, to_local(memory_lobe.memory[i]), Color.lightblue, 1.0)
-#				else:
-#					var path = get_tree().current_scene.pathfind(global_position, memory_lobe.memory[i])
-#					if path.size() < 2: path = [position, Vector2.ZERO]
-#					for x in path.size(): path[x] = to_local(path[x])
-#					draw_multiline(path, Color.lightblue)
-#
-#	if movement_lobe != null:
-#		for i in targets.size():
-#			var target = targets[i]
-#			if is_target_valid(i) == true:
-#				var spring = movement_lobe.get_spring(target)
-#
-#				var best_position = Vector2.ZERO
-#				var target_to_me = target.global_position.direction_to(global_position).normalized()
-#				# Internal Script Error! - opcode #0 (report please).
-#
-#				best_position = target.global_position + target_to_me * spring.DISTANCE
-#
-#				if los_check(best_position, false) == true:
-#					draw_line(position, to_local(best_position), Color.red, 1, false)
-#				else:
-#					var path = movement_lobe.best_position_paths[i]
-#					if path != null and path.size() > 1:
-#						for x in path.size(): path[x] = to_local(path[x])
-#						draw_multiline(path, Color.red, 1.5)
-#						for point in path:
-#							draw_circle(point, 1, Color.red)
-#
-#		if targets == [] and (memory_lobe == null or memory_lobe.memory == []):
-#			draw_circle(to_local(movement_lobe.guard_pos), movement_lobe.WANDER_RANGE, Color8(255, 255, 0, 50))
-#			if movement_lobe.guard_path == null:
-#				draw_line(position, to_local(movement_lobe.guard_pos), Color.yellow, 1, false)
-#			else:
-#				var path = movement_lobe.guard_path
-#				if path.size() < 2: path = [Vector2.ZERO, Vector2.ZERO]
-#				for i in path.size(): path[i] = to_local(path[i])
-#				draw_multiline(path, Color.yellow, 1, false)
-#				draw_circle(path[0], 1.5, Color.yellow)
+func _draw():
+	draw_line(position, position + entity.input_vector * 8, Color.orange, 1.4)
+
+	if memory_lobe != null:
+		for i in memory_lobe.memory.size():
+			draw_circle(to_local(memory_lobe.memory[i]), 2, Color.blue)
+			if targets == []:
+				if los_check(memory_lobe.memory[i], false) == true:
+					draw_line(position, to_local(memory_lobe.memory[i]), Color.lightblue, 1.0)
+				else:
+					var path = get_tree().current_scene.pathfind(global_position, memory_lobe.memory[i])
+					if path.size() < 2: path = [position, Vector2.ZERO]
+					for x in path.size(): path[x] = to_local(path[x])
+					draw_multiline(path, Color.lightblue)
+
+	if movement_lobe != null:
+		for i in targets.size():
+			var target = targets[i]
+			if is_target_valid(i) == true:
+				var spring = movement_lobe.get_spring(target)
+
+				var best_position = Vector2.ZERO
+				var target_to_me = target.global_position.direction_to(global_position).normalized()
+				# Internal Script Error! - opcode #0 (report please).
+
+				best_position = target.global_position + target_to_me * spring.DISTANCE
+
+				if los_check(best_position, false) == true:
+					draw_line(position, to_local(best_position), Color.red, 1, false)
+				else:
+					var path = movement_lobe.best_position_paths[i]
+					if path != null and path.size() > 1:
+						for x in path.size(): path[x] = to_local(path[x])
+						draw_multiline(path, Color.red, 1.5)
+						for point in path:
+							draw_circle(point, 1, Color.red)
+
+		if targets == [] and (memory_lobe == null or memory_lobe.memory == []):
+			draw_circle(to_local(movement_lobe.guard_pos), movement_lobe.WANDER_RANGE, Color8(255, 255, 0, 50))
+			if movement_lobe.guard_path == null:
+				draw_line(position, to_local(movement_lobe.guard_pos), Color.yellow, 1, false)
+			else:
+				var path = movement_lobe.guard_path
+				if path.size() < 2: path = [Vector2.ZERO, Vector2.ZERO]
+				for i in path.size(): path[i] = to_local(path[i])
+				draw_multiline(path, Color.yellow, 1, false)
+				draw_circle(path[0], 1.5, Color.yellow)
 
 func get_closest_target():
 	# PROBLEM_NOTE: make \/ this string more simple so it's easier to check for it (probably just use null or "")
@@ -283,9 +283,9 @@ func _on_think_timer_timeout() -> void:
 			remove_target(i)
 
 # this is for debugging purposes
-#func _process(delta: float) -> void:
-#	if OS.is_debug_build() == true and has_method("_draw"):
-#		update()
+func _process(delta: float) -> void:
+	if OS.is_debug_build() == true and has_method("_draw"):
+		update()
 
 func spawn_effect(effect: String, pos: Vector2):
 	var new_effect = res.aquire_effect(effect)

@@ -51,8 +51,8 @@ func _ready() -> void:
 	movement_timer.wait_time = 1.0 / MOVEMENT_EFFICIENCY
 	movement_timer.start()
 	
-	if brain.get_parent().components["sleeper"] != null:
-		brain.get_parent().components["sleeper"].connect("awoken", self, "awoken")
+	if entity.components["sleeper"] != null:
+		entity.components["sleeper"].connect("awoken", self, "awoken")
 	
 	# setting springs (replacing strings with paths to the spring node)
 	for child in get_children():
@@ -87,32 +87,43 @@ func _on_idle_timer_timeout() -> void:
 	wander_timer.wait_time = clamp(WANDER_TIME + rand_range(-(WANDER_OFFSET), WANDER_OFFSET), 0.01, 999.0)
 	if brain.targets != []: return
 	
-	wander_pos = global_position + (Vector2(rand_range(-1,1),rand_range(-1,1)).normalized()*100)
+	var ss = get_world_2d().direct_space_state
+	var position_tries := 0
+	while (
+		position_tries == 0 or 
+		ss.intersect_point(Vector2(wander_pos), 1, [], 33).has("collider") and
+		position_tries < max(MOVEMENT_EFFICIENCY/3, 1)
+	):
+		wander_pos = global_position + (Vector2(rand_range(-1,1),rand_range(-1,1)).normalized()*100)
+		position_tries += 1
 	
 	if brain.los_check(wander_pos, false) == true:
-		brain.get_parent().input_vector = global_position.direction_to(wander_pos).normalized()
+		entity.input_vector = global_position.direction_to(wander_pos).normalized()
 	elif wander_path == null:
 		wander_path = update_path(PoolVector2Array(), wander_pos)
 	elif wander_path is PoolVector2Array:
 		wander_path = update_path(wander_path, wander_pos)
 		
 		var tries := 0
-		while wander_path.size() < 2 and tries < MOVEMENT_EFFICIENCY:
-			wander_pos = global_position + (
-				Vector2( rand_range(-1,1),rand_range(-1,1) ).normalized() * rand_range(50,150)
-			)
-			wander_path = update_path(wander_path, wander_pos)
+		while wander_path.size() < 2 and tries < max(MOVEMENT_EFFICIENCY/3, 1):
 			tries += 1
+			
+			wander_pos = global_position + (Vector2(rand_range(-1,1),rand_range(-1,1)).normalized()*100)
+			
+			if ss.intersect_point(Vector2(wander_pos), 1, [], 33).has("collider"):
+				continue
+			else:
+				wander_path = update_path(wander_path, wander_pos)
 		
 		if wander_path.size() > 1:
-			brain.get_parent().input_vector = (
+			entity.input_vector = (
 				global_position.direction_to(wander_path[0]).normalized() * WANDER_SPEED
 			)
 	
 	if global_position.distance_to(guard_pos) > WANDER_RANGE: 
 		# wander back to guard pos
 		if brain.los_check(guard_pos, false) == true:
-			brain.get_parent().input_vector = global_position.direction_to(guard_pos).normalized()
+			entity.input_vector = global_position.direction_to(guard_pos).normalized()
 			guard_path = null
 		else:
 			if guard_path == null:
@@ -121,7 +132,7 @@ func _on_idle_timer_timeout() -> void:
 				guard_path = update_path(guard_path, guard_pos)
 			
 			if guard_path.size() > 0:
-				brain.get_parent().input_vector = global_position.direction_to(guard_path[0]).normalized()
+				entity.input_vector = global_position.direction_to(guard_path[0]).normalized()
 	else:
 		guard_path = null
 	
@@ -131,24 +142,24 @@ func _on_wander_timer_timeout() -> void:
 	idle_timer.wait_time = clamp(IDLE_TIME + rand_range(-(IDLE_OFFSET), IDLE_OFFSET), 0.01, 999.0) 
 	if brain.targets != []: return
 	if not global_position.distance_to(guard_pos) > WANDER_RANGE*1.5: 
-		brain.get_parent().input_vector = Vector2.ZERO
+		entity.input_vector = Vector2.ZERO
 	idle_timer.start()
 
 func awoken():
-	brain.get_parent().input_vector = Vector2.ZERO
+	entity.input_vector = Vector2.ZERO
 	idle_timer.stop()
 	wander_timer.start()
 
 func get_spring(target:Entity):
 	var spring = null
 	
-	if global.get_relation(brain.get_parent(), target) != "":
-		spring = general_springs.get(global.get_relation(brain.get_parent(), target))
+	if global.get_relation(entity, target) != "":
+		spring = general_springs.get(global.get_relation(entity, target))
 	if faction_springs.has(target.faction):
 		spring = faction_springs.get(target.faction)
 	if entity_springs.has(target.truName):
 		spring = entity_springs.get(target.truName)
-	if brain.get_parent().marked_enemies.has(target):
+	if entity.marked_enemies.has(target):
 		spring = general_springs["hostile"]
 	
 	if spring == "": 
@@ -160,7 +171,7 @@ func early_slowdown(destination: Vector2):
 	if SMART_SLOWDOWN == false:
 		return false
 	else:
-		if global_position.distance_to(destination) <= 0.01666 * brain.get_parent().SLOWDOWN:
+		if global_position.distance_to(destination) <= 0.01666 * entity.SLOWDOWN:
 			return true
 		else:
 			return false
@@ -179,7 +190,7 @@ func _on_movement_timer_timeout() -> void:
 					else:
 						guard_path = update_path(guard_path, guard_pos)
 					if guard_path.size() != 0:
-						brain.get_parent().input_vector = global_position.direction_to(guard_path[0]).normalized()
+						entity.input_vector = global_position.direction_to(guard_path[0]).normalized()
 					
 					return
 			
@@ -187,7 +198,7 @@ func _on_movement_timer_timeout() -> void:
 				elif wander_timer.time_left == 0 and wander_path != null:
 					wander_path = update_path(wander_path, wander_pos)
 					if wander_path.size() != 0:
-						brain.get_parent().input_vector = global_position.direction_to(wander_path[0]).normalized()
+						entity.input_vector = global_position.direction_to(wander_path[0]).normalized()
 					
 					return
 		
@@ -303,4 +314,4 @@ func _on_movement_timer_timeout() -> void:
 	
 	intention = intention.normalized()
 	
-	brain.get_parent().input_vector = intention
+	entity.input_vector = intention

@@ -26,7 +26,7 @@ func attack():
 	
 	var projectile = PROJECTILE.instance()
 	projectile.setup(self, pos)
-	get_parent().add_child(projectile)
+	global.nodes["ysort"].add_child(projectile)
 	attack_cooldown.start()
 
 func _on_action_lobe_action(action, target: Entity) -> void:

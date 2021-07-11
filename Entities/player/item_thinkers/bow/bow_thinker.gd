@@ -108,8 +108,8 @@ func primary():
 	arrow.SPEED = 50 + charge_percent * 3.5
 	arrow.RANGE = arrow.SPEED / 1.8
 	arrow.ACCELERATION = -((100 - charge_percent) * 1.8)
-	arrow.setup(get_parent(), get_parent().get_global_mouse_position())
-	get_parent().get_parent().add_child(arrow)
+	arrow.setup(player, player.get_global_mouse_position())
+	global.nodes["ysort"].add_child(arrow)
 	cooldown.start()
 	
 	state = IDLE
