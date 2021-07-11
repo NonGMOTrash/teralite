@@ -6,6 +6,7 @@ export var VELOCITY_ARMOR = 1
 export var ONHIT_SPEED_MULTIPLIER = 0.8
 export var MIN_DAM_SPEED = 30
 export var RECOIL = 50
+export var VELOCITY_INHERITENCE := 0.5
 export(float, -360, 360) var ROTATION_OFFSET := 0.0
 
 var has_left_src = false
@@ -24,6 +25,8 @@ func _ready():
 	# recoil
 	if SOURCE != null:
 		SOURCE.apply_force(target_pos.direction_to(SOURCE.global_position).normalized() * RECOIL)
+		
+		apply_force(SOURCE.velocity * VELOCITY_INHERITENCE)
 
 func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	# base Attack.gd setup
