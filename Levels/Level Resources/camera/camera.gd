@@ -19,7 +19,7 @@ var _power = 0
 var _priority = -99
 
 func _on_camera_tree_entered() -> void:
-	global.nodes["camera"] = self
+	refs.camera = weakref(self)
 
 func _ready():
 	smoothing_enabled = global.settings["smooth_camera"]
@@ -27,8 +27,8 @@ func _ready():
 	
 	global.connect("update_camera", self, "update_fov")
 	
-	if global.nodes["player"] != null and get_node_or_null(global.nodes["player"]) != null:
-		global_position = get_node(global.nodes["player"]).global_position
+	if refs.player.get_ref() != null:
+		global_position = refs.player.get_ref().global_position
 	else:
 		global_position = get_global_mouse_position()
 
@@ -41,8 +41,8 @@ func _input(event: InputEvent):
 
 func _physics_process(_delta: float) -> void:
 	var player
-	if global.nodes["player"] == null: return
-	player = get_node_or_null(global.nodes["player"])
+	if refs.player.get_ref() == null: return
+	player = refs.player.get_ref()
 	
 	if player == null:
 		if old_player_pos == null: return

@@ -15,4 +15,4 @@ func _on_dup_timer_timeout() -> void:
 		global_position + Vector2(rand_range(-1,1),rand_range(-1,1)).normalized() * 16
 		)
 	clone.dup_limit = dup_limit
-	global.nodes["ysort"].call_deferred("add_child", clone)
+	refs.ysort.get_ref().call_deferred("add_child", clone)

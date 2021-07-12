@@ -12,15 +12,15 @@ var remMaxHealth = 10
 var remBonusHealth = 10
 
 func _ready():
-	global.nodes["health_ui"] = self
+	refs.health_ui = weakref(self)
 	global.connect("update_health", self, "update")
 	update()
 	effect.play("blue")
 	visible = true
 
 func update():
-	if global.nodes["player"] == null: return
-	var player = get_tree().current_scene.get_node_or_null(global.nodes["player"])
+	if refs.player.get_ref() == null: return
+	var player = refs.player.get_ref()
 	if player == null: return
 	player = player.components["stats"]
 	if player == null: return

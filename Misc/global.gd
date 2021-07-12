@@ -33,26 +33,6 @@ const SAVE_DIR := "user://saves/"
 var save_name: String = "untitled_save"
 var saves = []
 
-# PROBLEM_NOTE: make this a class for better autocomplete
-var nodes = {
-	"level": null,
-	"player": null,
-	"canvaslayer": null,
-	"health_ui": null,
-	"item_bar": null,
-	"item_info": null,
-	"stopwatch": null,
-	"pause_menu": null,
-	"camera": null,
-	"ysort": null,
-	"world_tiles": null,
-	"background_tiles": null,
-	"background": null,
-	"navigation": null,
-	"level_completed": null,
-}
-
-# PROBLEM_NOTE: rename settings to options
 var settings = {
 	"fullscreen": false,
 	"perfection_mode": false,
@@ -203,11 +183,11 @@ func write_save(entered_save_name, data):
 	var save_file = File.new()
 	var error = save_file.open(SAVE_DIR + save_name, File.WRITE)
 	if error == OK:
-		#load works
+		# load works
 		save_file.store_var(data)
 		save_file.close()
 	else:
-		#what happens on a failed load
+		# load failed
 		push_warning("could not read save on write")
 
 func load_save(entered_save_name):
@@ -242,7 +222,6 @@ func load_save(entered_save_name):
 				push_error("could not open save on load (for renaming)")
 		else:
 			push_error("could not find save on load (for renaming)")
-	
 	
 	if save_file.file_exists(SAVE_DIR + save_name):
 		var error = save_file.open(SAVE_DIR + save_name, File.READ)
@@ -334,7 +313,7 @@ func delete_save(entered_save_name):
 		# file not found
 		push_warning("could not find save on delete")
 
-func update_settings():
+func update_settings(save_settings_config:=true):
 	OS.window_fullscreen = settings["fullscreen"]
 	
 	if global.settings["pixel_perfect"] == true:
@@ -350,109 +329,54 @@ func update_settings():
 	if get_tree().current_scene is Navigation2D:
 		# is level
 		
-		var camera = global.nodes["camera"]
-		if not camera is Camera2D: 
+		var camera = refs.camera.get_ref()
+		if not camera is Camera2D:
 			push_warning("could not find camera")
 		else:
 			camera.smoothing_enabled = global.settings["smooth_camera"]
 			camera.limit_smoothed = global.settings["smooth_camera"]
 		
-		var item_bar = global.nodes["item_bar"]
+		var item_bar = refs.item_bar.get_ref()
 		if item_bar == null: 
 			push_warning("could not find item_bar")
 		else:
-			if global.nodes["player"] == null: return
-			var player = get_node_or_null(global.nodes["player"])
+			var player = refs.player.get_ref()
 			if player == null: return
+			
 			var inventory = player.inventory
-			if global.settings["hide_bar"]==true and inventory[0]==null and inventory[1]==null and inventory[2]==null:
+			if (
+				global.settings["hide_bar"] == true and 
+				inventory[0] == null and
+				inventory[1] == null and
+				inventory[2] == null
+			):
 				item_bar.visible = false
 			else:
 				item_bar.visible = true
 	
 	AudioServer.set_bus_volume_db(0, linear2db(settings["volume"]))
 	
+	if save_settings_config == false:
+		return
+	
+	# saving to settings_config file
 	var settings_config = File.new()
 	
-	if settings_config.file_exists("user://settings_config"):
-		var error = settings_config.open("user://settings_config", File.WRITE)
+	var error = settings_config.open("user://settings_config", File.WRITE)
+	if error == OK:
+		# load works
+		settings_config.store_var(global.settings)
+		settings_config.close()
+	else:
+		# load failed
+		push_warning("could not load settings_config (on update), deleting")
 		
-		if error == OK:
-			# load works
-			settings_config.store_var(global.settings)
-			settings_config.close()
+		if settings_config.file_exists("user://settings_config"):
+			var dir := Directory.new()
+			dir.remove("user://settings_config")
+			print("deleted!")
 		else:
-			# load failed
-			push_error("could not load settings_config (on save)")
-	else:
-		push_error("could not find settings_config")
-
-func physics_logic(delta, entity):
-	# PROBLEM NOTE:
-	# i don't think this is used anymore, maybe remove
-	
-	#remove these once i have this function completely finalized
-	var ACCELERATION = entity.ACCELERATION
-	var MAX_SPEED = entity.MAX_SPEED
-	var FRICTION = entity.FRICTION
-	var velocity = entity.velocity
-	var forces = entity.forces
-	var input_vector = entity.input_vector
-	var WEIGHT = entity.WEIGHT
-	
-	input_vector = input_vector.normalized() # diagonally is same speed as straight
-	
-	for i in range(forces.size() - 1, -1, -1):
-		var direction = forces[i].get("direction").normalized()
-		var power = forces[i]["power"]
-		
-		if direction != Vector2.ZERO:
-			velocity = velocity.move_toward(direction * WEIGHT * 3, (power + ACCELERATION) * delta)
-			power *= 1 - clamp(WEIGHT / 1000.0, 0.01, 0.99)
-			if power < 1.0:
-				power = 0
-		else:
-			power = 0
-		
-		if power == 0: 
-			forces.remove(i)
-			return
-		forces[i]["power"] = power
-	
-	#velocity -= pull_vector * delta * FORCE_POWER   #demo for pull, doesn't work properly
-	
-	if input_vector != Vector2.ZERO:
-		# inputing movement: 
-		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta) # controls velocity
-	else:
-		# no input:
-		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta) # applys friction
-	
-	#updates entity's vars
-	entity.velocity = velocity
-	entity.input_vector = input_vector
-	entity.forces = forces
-
-func update_cursor():
-	if nodes["player"] == null: return
-	var player = get_node_or_null(nodes["player"])
-	if player == null: return
-	# PROBLEM_NOTE: probably would be better to just have Input.set_custom_mouse_cursor be 
-	# called in the item thinkers instead. 
-	# (maybe have a default cursor var that is automatically used when the item is selected)
-	# UPDATE: I think im doing that already?? not sure. but i might be able to delete this function
-	
-	var pointer = Vector2.ZERO
-	var centered = Vector2(22.5, 22.5)
-	
-	if get_tree().paused == true or get_tree().current_scene.get_name() == "title_screen":
-		Input.set_custom_mouse_cursor(CURSOR_NORMAL, Input.CURSOR_ARROW, pointer)
-	else:
-		match player.inventory[selection]:
-			null: Input.set_custom_mouse_cursor(CURSOR_EMPTY, Input.CURSOR_ARROW, centered)
-			"Sword": Input.set_custom_mouse_cursor(CURSOR_SWORD, Input.CURSOR_ARROW, centered)
-			"Pistol": Input.set_custom_mouse_cursor(CURSOR_PISTOL, Input.CURSOR_ARROW, centered)
-			"Bow": Input.set_custom_mouse_cursor(CURSOR_BOW, Input.CURSOR_ARROW, centered)
+			push_warning("could not find settings_config (on deletion)")
 
 func quit():
 	print("")

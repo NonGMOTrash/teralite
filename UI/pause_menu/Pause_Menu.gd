@@ -18,7 +18,7 @@ signal paused
 signal unpaused
 
 func _ready():
-	global.nodes["pause_menu"] = self
+	refs.pause_menu = weakref(self)
 	if get_tree().current_scene.LEVEL_TYPE == 1: 
 		return_to.text = "Return to Titlescreen"
 		restart.visible = false
@@ -38,7 +38,6 @@ func _input(event: InputEvent) -> void:
 			sound_player.create_sound(PAUSE_SOUND, true)
 		else:
 			global.emit_signal("unpaused")
-			global.update_cursor()
 			sound_player.create_sound(UNPAUSE_SOUND, true, Sound.MODES.ONESHOT, true, true)
 
 func multi_color_set(target:Control, color:Color):
@@ -51,7 +50,6 @@ func _on_resume_pressed() -> void:
 	pause_menu.visible = false
 	get_tree().paused = false
 	global.emit_signal("unpaused")
-	global.update_cursor()
 	sound_player.create_sound(UNPAUSE_SOUND, true)
 
 func _on_options_pressed() -> void:
@@ -66,7 +64,7 @@ func _on_return_to_pressed() -> void:
 	get_tree().paused = false
 	if get_tree().current_scene.LEVEL_TYPE == 1:
 		var letter: String = get_tree().current_scene.LETTER
-		global.player_hub_pos[letter] = global.get_node(global.nodes["player"]).global_position
+		global.player_hub_pos[letter] = refs.player.get_ref().global_position
 		global.write_save(global.save_name, global.get_save_data_dict())
 		
 		for sound in global.get_children():
@@ -82,7 +80,7 @@ func _on_return_to_pressed() -> void:
 func _on_quit_pressed() -> void:
 	if get_tree().current_scene.LEVEL_TYPE == 1: 
 		var letter: String = get_tree().current_scene.LETTER
-		global.player_hub_pos[letter] = global.get_node(global.nodes["player"]).global_position
+		global.player_hub_pos[letter] = refs.player.get_ref().global_position
 		global.write_save(global.save_name, global.get_save_data_dict())
 	global.quit()
 

@@ -68,7 +68,7 @@ func _on_Area2D_body_entered(body: Node) -> void:
 				return
 			else:
 				body.inventory[x] = truName
-				global.update_cursor()
+				
 				if thinker == null and type != item_types.POWERUP:
 					push_warning("item was not given a thinker")
 				else:

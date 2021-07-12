@@ -3,4 +3,4 @@ extends Item
 func on_pickup(player):
 	player.components["stats"].DEFENCE += 1
 	player.components["stats"].armor += 1
-	global.nodes["health_ui"].update()
+	refs.health_ui.get_ref().update()

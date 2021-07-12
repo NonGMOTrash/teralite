@@ -85,7 +85,7 @@ func _on_collision_body_entered(body: Node) -> void:
 		if get_node_or_null(SOURCE_PATH) != null:
 			var spark: Effect = BLOCK_SPARK.instance()
 			spark.rotation_degrees = rad2deg(SOURCE.global_position.direction_to(global_position).angle())
-			global.nodes["ysort"].call_deferred("add_child", spark)
+			refs.ysort.get_ref().call_deferred("add_child", spark)
 			yield(spark, "ready")
 			spark.global_position = global_position
 		

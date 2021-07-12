@@ -19,32 +19,19 @@ const GENERIC = preload("res://Misc/generic.png")
 #const BOW = preload("res://Entities/Item_Pickups/bow/bow.png")
 
 func _ready():
-	global.nodes["item_bar"] = self
+	refs.item_bar = weakref(self)
 	global.connect("update_item_bar", self, "update_icons")
 	if global.settings["hide_bar"] == false: bar.visible = true
 	visible = true
 
-func item_changed():
-	global.update_cursor()
-	# PROBLEM_NOTE: this should probably be done in the player script
-
 func _input(_event: InputEvent):
-	if Input.is_action_just_pressed("swap_right"): item_changed()
-	if Input.is_action_just_pressed("swap_left"): item_changed()
-	if Input.is_action_just_pressed("hotkey_left"): item_changed()
-	if Input.is_action_just_pressed("hotkey_mid"): item_changed()
-	if Input.is_action_just_pressed("hotkey_right"): item_changed()
-	
 	match global.selection:
 		0: bar.texture = ITEM_BAR_0
 		1: bar.texture = ITEM_BAR_1
 		2: bar.texture = ITEM_BAR_2
-	
-	#global.selection = selection
 
 func update_icons(inventory):
 	for i in 6: match_icon(i, inventory[i])
-	global.update_cursor()
 	if (
 		global.settings["hide_bar"] == true and 
 		inventory[0] == null and 

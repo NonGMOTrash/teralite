@@ -10,4 +10,4 @@ func on_pickup(player: Entity):
 #		):
 #			entity.death()
 	
-	global.nodes["level_completed"].start()
+	refs.level_completion.get_ref().start()

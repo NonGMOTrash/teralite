@@ -32,8 +32,8 @@ func _input(_event: InputEvent) -> void:
 
 func _process(_delta):
 	# PROBLEM_NOTE: this is kinda bad because it's checked every frame
-	print(global.nodes["pause_menu"].visible)
-	if global.nodes["pause_menu"].visible == true:
+	print(refs.pause_menu.get_ref().visible)
+	if refs.pause_menu.get_ref().visible == true:
 		label.visible = false
 	elif simple_mode == false:
 		label.visible = true

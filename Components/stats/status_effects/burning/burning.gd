@@ -8,7 +8,7 @@ func _ready() -> void:
 func entity_dies():
 	var new_fire = FIRE.instance()
 	new_fire.global_position = entity.global_position
-	global.nodes["ysort"].call_deferred("add_child", new_fire)
+	refs.ysort.get_ref().call_deferred("add_child", new_fire)
 
 func triggered():
 	stats.change_health(0, -1, "burn")

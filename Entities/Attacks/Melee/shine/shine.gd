@@ -16,6 +16,6 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		._on_hitbox_area_entered(area)
 	
 	var particles: Particles2D = SHINE_PARTICLES.instance()
-	global.nodes["ysort"].call_deferred("add_child", particles)
+	refs.ysort.get_ref().call_deferred("add_child", particles)
 	yield(particles, "tree_entered")
 	particles.global_position = global_position

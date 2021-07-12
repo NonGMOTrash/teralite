@@ -15,11 +15,11 @@ func _ready() -> void:
 	if name != "test_level":
 		global.write_save(global.save_name, global.get_save_data_dict())
 	
-	global.nodes["level"] = self
-	global.nodes["canvaslayer"] = $CanvasLayer
-	global.nodes["ysort"] = $YSort
-	global.nodes["background"] = $background
-	global.nodes["background_tiles"] = $YSort/background_tiles
+	refs.level = weakref(self)
+	refs.canvas_layer = weakref($CanvasLayer)
+	refs.ysort = weakref($YSort)
+	refs.background = weakref($background)
+	refs.background_tiles = weakref($YSort/background_tiles)
 	
 	if global.last_ambiance == AMBIANCE: return
 	else:
@@ -46,7 +46,7 @@ func _ready() -> void:
 		_: return
 	
 	global.add_child(ambiance)
-	global.nodes["ambiance"] = ambiance
+	refs.ambiance = weakref(ambiance)
 
 func pathfind(start:Vector2, end:Vector2) -> PoolVector2Array:
 	var path := get_simple_path(start, get_closest_point(end), true)

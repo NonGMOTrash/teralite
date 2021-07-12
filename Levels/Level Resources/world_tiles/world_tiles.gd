@@ -14,8 +14,8 @@ onready var nav = $nav
 onready var low_walls = $low_walls
 
 func _on_WorldTiles_tree_entered() -> void:
-	global.nodes["world_tiles"] = self
-	global.nodes["navigation"] = $nav
+	refs.world_tiles = weakref(self)
+	refs.navigation = weakref($nav)
 
 func _ready() -> void:
 	if generate_navigation == false: 

@@ -11,7 +11,7 @@ func _on_activation_area_entered(area: Area2D) -> void:
 	
 	var ss = get_world_2d().direct_space_state
 	var raycast = ss.intersect_ray(global_position, area.global_position, [], 1)
-	if raycast and raycast.collider == global.nodes["world_tiles"]:
+	if raycast and raycast.collider == refs.world_tiles.get_ref():
 		return
 	
 	animation.play("spikes")

@@ -42,7 +42,6 @@ const MESSAGES = [
 	"don't play at 4:20 PM",
 	"all lowercase",
 	"now with 50% more bugs",
-	"play f- friday night f- f-unkin'..!",
 	"play 20xx.io!",
 	"it's okay",
 	"5 merits lost :(",
@@ -88,12 +87,12 @@ func _ready() -> void:
 	
 	if not settings_config.file_exists("user://settings_config"):
 		push_warning("could not find settings_config, creating new")
+		
 		settings_config.open("user://settings_config", File.WRITE)
 		settings_config.store_var(global.settings)
 		settings_config.close()
-		
-	var error = settings_config.open("user://settings_config", File.READ)
 	
+	var error = settings_config.open("user://settings_config", File.READ)
 	if error == OK:
 		# load works
 		var new_settings = settings_config.get_var()
@@ -105,14 +104,12 @@ func _ready() -> void:
 			var key = global.settings.keys()[i]
 			if new_settings.has(key):
 				global.settings[key] = new_settings[key]
-		global.update_settings()
-
+		
+		global.update_settings(false)
+	
 	else:
 		# load failed
-		push_warning("could not load settings_config")
-	
-	#OS.window_fullscreen = global.settings["fullscreen"]
-	#AudioServer.set_bus_volume_db(0, global.settings["volume"])
+		push_error("could not load settings_config")
 
 func multi_color_set(target:Control, color:Color):
 	target.set_deferred("custom_colors/font_color", color)

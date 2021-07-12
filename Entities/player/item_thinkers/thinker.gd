@@ -101,7 +101,7 @@ func _process(_delta: float):
 		var velo = dir_vector * 150
 		velo += player.velocity / 1.5
 		new_item_entity.velocity = velo
-		global.nodes["ysort"].add_child(new_item_entity)
+		refs.ysort.get_ref().add_child(new_item_entity)
 		
 		delete()
 		return
@@ -213,9 +213,9 @@ func quick_spawn(attack:String, deferred:=true) -> void:
 	var new_attack = res.aquire_attack(attack)#.instance()
 	new_attack.setup(player, player.get_global_mouse_position())
 	if deferred == true:
-		global.nodes["ysort"].call_deferred("add_child", new_attack)
+		refs.ysort.get_ref().call_deferred("add_child", new_attack)
 	else:
-		global.nodes["ysort"].add_child(new_attack)
+		refs.ysort.get_ref().add_child(new_attack)
 
 func _update_held_item():
 	if HELD_ITEM_TEXTURE == null:

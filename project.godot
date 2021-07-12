@@ -98,6 +98,7 @@ default_bus_layout="res://Resources/Audio/default_bus_layout.tres"
 
 global="*res://Misc/global.gd"
 res="*res://Misc/res.gd"
+refs="*res://Misc/refs.gd"
 
 [debug]
 

@@ -76,7 +76,7 @@ func primary():
 	$spawner.spawn()
 
 func secondary():
-	var camera = global.nodes["camera"] as Camera2D
+	var camera = refs.camera.get_ref() as Camera2D
 	
 	if Input.is_action_pressed("secondary_action"):
 		camera.distance_ratio = ads_dist_ratio

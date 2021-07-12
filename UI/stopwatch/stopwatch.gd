@@ -6,7 +6,7 @@ var time = 0.0
 var paused = false
 
 func _ready():
-	global.nodes["stopwatch"] = self
+	refs.stopwatch = weakref(self)
 	visible = true
 
 func _process(_delta):

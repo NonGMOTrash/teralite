@@ -89,7 +89,7 @@ func _on_counter_area_entered(area: Area2D) -> void:
 	
 	var slash := res.aquire_melee("slash")
 	slash.setup(player, area.global_position)
-	global.nodes["ysort"].call_deferred("add_child", slash)
+	refs.ysort.get_ref().call_deferred("add_child", slash)
 	
 	sound_player.play_sound("counter_success")
 	

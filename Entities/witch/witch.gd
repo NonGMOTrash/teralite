@@ -20,4 +20,4 @@ func attack():
 	var blow_dart := res.aquire_projectile("blow_dart")
 	blow_dart.setup(self, stored_target_pos)
 	blow_dart.global_position = self.global_position
-	global.nodes["ysort"].call_deferred("add_child", blow_dart)
+	refs.ysort.get_ref().call_deferred("add_child", blow_dart)

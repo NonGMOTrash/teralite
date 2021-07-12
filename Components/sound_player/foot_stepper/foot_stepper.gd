@@ -58,19 +58,22 @@ func _on_delay_timeout() -> void:
 
 func footstep():
 	var audio
-	var bg = global.nodes["background_tiles"]
+	var bg = refs.background.get_ref()
 	if bg == null:
-		push_warning("global.nodes[background_tiles] == null")
+		push_warning("bg == null")
+		return
+	var bg_tiles = refs.background_tiles.get_ref()
+	if bg_tiles == null:
+		push_warning("bg_tiles == null")
 		return
 	
 	var cell_id = -1
-	if bg != null:
-		cell_id = bg.get_cellv(bg.world_to_map(entity.global_position + Vector2(0, 6)))
+	cell_id = bg_tiles.get_cellv(bg_tiles.world_to_map(entity.global_position + Vector2(0, 6)))
 	
 	match cell_id:
 		-1: 
 			# no tile; use the background TextureRect's id instead
-			match global.nodes["background"].ID:
+			match bg.ID:
 				-1: pass # nothing
 				0: audio = FOOTSTEP_GRASS # autumn
 				1: audio = FOOTSTEP_STONE # underground

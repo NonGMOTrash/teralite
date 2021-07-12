@@ -110,8 +110,8 @@ func spawn():
 		queue_free()
 		return
 	
-	if global.nodes["ysort"] == null:
-		push_error("global.nodes['ysort'] == null")
+	if refs.ysort.get_ref() == null:
+		push_error("ysort == null")
 		return
 	
 	var new_thing: Node2D = thing.instance()
@@ -173,7 +173,7 @@ func spawn():
 	for property in custom_properties.keys():
 		new_thing.set(property, custom_properties[property])
 	
-	global.nodes["ysort"].call_deferred("add_child", new_thing)
+	refs.ysort.get_ref().call_deferred("add_child", new_thing)
 	
 	spawns -= 1
 	

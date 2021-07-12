@@ -51,11 +51,7 @@ func _ready():
 	global.selection = 0
 	iTimer.start()
 	if get_name() == "player":
-		global.nodes["player"] = get_path()
-		# PROBLEM_NOTE: this is inconsistant with other things in global.nodes, most are direct references
-		# instead of paths. it is a bit nessesarly for the player though, because the path is needed to check
-		# if the player still exists with get_node_or_null(). really glad is_instance_valid() doesn't work '-'
-		# i should use weakrefs
+		refs.player = weakref(self)
 	else:
 		health_bar.update_bar(0, 0, 0)
 		health_bar.visible = true
@@ -63,7 +59,6 @@ func _ready():
 	if get_parent().owner == null: return
 	
 	global.emit_signal("update_health")
-	global.update_cursor()
 	
 	connect("swapped_item", self, "swapped_item")
 	swapped_item(null)
@@ -71,7 +66,7 @@ func _ready():
 	# prevents lag spike when you first dash
 	yield(get_tree().current_scene, "ready")
 	var particles: Particles2D = dust_particles.instance()
-	global.nodes["ysort"].call_deferred("add_child", particles)
+	refs.ysort.get_ref().call_deferred("add_child", particles)
 	yield(particles, "ready")
 	particles.global_position = Vector2(-999, -999)
 
@@ -101,7 +96,7 @@ func dash(direction: Vector2 = input_vector) -> void:
 		# particle effect
 		var particles = dust_particles.instance()
 		particles.rotation_degrees = rad2deg(direction.angle())
-		global.nodes["ysort"].call_deferred("add_child", particles)
+		refs.ysort.get_ref().call_deferred("add_child", particles)
 		yield(particles, "ready")
 		particles.global_position = global_position
 
@@ -121,24 +116,23 @@ func _input(_event: InputEvent) -> void:
 			global.selection += 1
 			if global.selection > 2: global.selection = 0
 			emit_signal("swapped_item", inventory[global.selection])
-			global.update_cursor()
+		
 		if Input.is_action_just_pressed("swap_left"):
 			global.selection -= 1
 			if global.selection < 0: global.selection = 2
 			emit_signal("swapped_item", inventory[global.selection])
-			global.update_cursor()
+		
 		if Input.is_action_just_pressed("hotkey_left"):
 			global.selection = 0
 			emit_signal("swapped_item", inventory[global.selection])
-			global.update_cursor()
+		
 		if Input.is_action_just_pressed("hotkey_mid"):
 			global.selection = 1
 			emit_signal("swapped_item", inventory[global.selection])
-			global.update_cursor()
+		
 		if Input.is_action_just_pressed("hotkey_right"):
 			global.selection = 2
 			emit_signal("swapped_item", inventory[global.selection])
-			global.update_cursor()
 
 func swapped_item(new_item):
 	if new_item == null:
@@ -180,7 +174,7 @@ func death():
 					name = "dedplayer"
 					child.name = "player"
 					child.components["health_bar"].visible = false
-					global.nodes["player"] = child.get_path()
+					refs.player = weakref(child)
 					global.emit_signal("update_health")
 					global.emit_signal("update_item_bar", child.inventory)
 					global.emit_signal("update_item_info", # set a condition to null to hide it
@@ -210,23 +204,20 @@ func death():
 		global.level_deaths[get_tree().current_scene.get_name()] += 1
 		
 		# hide ui
-		global.nodes["stopwatch"].set_pause(true)
+		refs.stopwatch.get_ref().set_pause(true)
 		
 		var elements = [
-			global.nodes["health_ui"],
-			global.nodes["item_bar"],
-			global.nodes["item_info"],
+			refs.health_ui.get_ref(),
+			refs.item_bar.get_ref(),
+			refs.item_info.get_ref(),
 		]
-#		elements.append(global.nodes["health_ui"])
-#		elements.append(global.nodes["item_bar"])
-#		elements.append(global.nodes["item_info"])
 		
 		for element in elements:
 			if element != null:
 				element.visible = false
 	
 	var my_death = player_death.instance()
-	if name == "player" and global.nodes["level_completed"].visible == false:
+	if name == "player" and refs.level_completion.get_ref().visible == false:
 		my_death.simple_mode = false
 	my_death.flip_h = sprite.flip_h
 	my_death.death_message = death_message
@@ -238,7 +229,7 @@ func death():
 func _on_stats_health_changed(_type, result, net) -> void:
 	if result != "heal" and result != "blocked":
 		if result == "hurt" and name == "player":
-			global.nodes["camera"].shake(5, 15, 0.2)
+			refs.camera.get_ref().shake(5, 15, 0.2)
 			OS.delay_msec(34)
 		
 		if net < 0:

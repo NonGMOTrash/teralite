@@ -16,37 +16,34 @@ func _init():
 	visible = false
 
 func _ready():
-	global.nodes["level_completed"] = self
-
-func get_player():
-	return get_node_or_null(global.nodes["player"])
+	refs.level_completion = weakref(self)
 
 func start():
 	$AnimationPlayer.play("animation")
 	visible = true
 	level_completed = true
 	
-	global.nodes["stopwatch"].visible = false
-	global.nodes["stopwatch"].set_pause(true)
-	global.nodes["item_info"].visible = false
-	global.nodes["item_bar"].visible = false
-	global.nodes["health_ui"].visible = false
+	refs.stopwatch.get_ref().visible = false
+	refs.stopwatch.get_ref().set_pause(true)
+	refs.item_info.get_ref().visible = false
+	refs.item_bar.get_ref().visible = false
+	refs.health_ui.get_ref().visible = false
 	
 	header.text = "%s Completed" % lvl
 	
-	if get_player() == null:
+	if refs.player.get_ref() == null:
 		damage.text = "? (this is a bug, pls report)"
 	else:
 		#var p_stats = get_player().components["stats"]
 		#damage.text = str(
 		#	((p_stats.HEALTH + p_stats.BONUS_HEALTH) / (p_stats.MAX_HEALTH + 0.0)) * 100
 		#) + "%"
-		damage.text = str(get_player().damage_taken)
+		damage.text = str(refs.player.get_ref().damage_taken)
 		if damage.text == "0":
 			damage.set("custom_colors/font_color", YELLOW)
 			perfected = true
 	
-	var time_value = global.nodes["stopwatch"].time
+	var time_value = refs.stopwatch.get_ref().time
 	var minute = int(floor(time_value / 60))
 	var second = int(floor(time_value - (minute * 60)))
 	var tenth = stepify(time_value - ((minute*60) + second), 0.1) * 10
@@ -65,16 +62,12 @@ func start():
 		if time_value < global.level_times[lvl]:
 			time.set("custom_colors/font_color", YELLOW)
 	
-	kills.text = "%s / %s" % [get_player().kills, get_tree().current_scene.max_kills]
-	if get_player().kills == get_tree().current_scene.max_kills:
+	kills.text = "%s / %s" % [refs.player.get_ref().kills, get_tree().current_scene.max_kills]
+	if refs.player.get_ref().kills == get_tree().current_scene.max_kills:
 		kills.set("custom_colors/font_color", YELLOW)
 
 func _input(_event):
 	if Input.is_action_just_pressed("interact") and visible == true:
-#		prints("%s completed with a time of: %s" % [lvl, global.nodes["stopwatch"].time])
-#		prints("times:", global.level_times)
-#		prints("deaths:", global.level_deaths)
-#		prints("perfects:", global.perfected_levels)
 		if lvl == "thx":
 			if global.last_hub == null: global.last_hub = "A"
 			get_tree().change_scene("res://Levels/%s/%s-Hub.tscn" % [global.last_hub, global.last_hub])
@@ -86,7 +79,7 @@ func _input(_event):
 		if perfected == true:
 			global.perfected_levels.push_back(lvl)
 		
-		var stopwatch = global.nodes["stopwatch"]
+		var stopwatch = refs.stopwatch.get_ref()
 		if stopwatch == null: 
 			push_warning("could not find stopwatch")
 		elif not lvl in global.level_times or global.level_times[lvl] > stopwatch.time:
@@ -108,5 +101,5 @@ func _input(_event):
 
 func _process(delta: float) -> void:
 	if level_completed:
-		visible = not global.nodes["pause_menu"].visible
+		visible = not refs.pause_menu.get_ref().visible
 		print(visible)

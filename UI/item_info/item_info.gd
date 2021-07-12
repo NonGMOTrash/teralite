@@ -7,7 +7,7 @@ onready var bar = $HBoxContainer/Bar
 onready var timer = $Timer
 
 func _ready():
-	global.nodes["item_info"] = self
+	refs.item_info = weakref(self)
 	global.connect("update_item_info", self, "update_item_info")
 	visible = true
 

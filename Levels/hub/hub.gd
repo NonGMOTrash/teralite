@@ -9,17 +9,16 @@ export(String) var LETTER := "A"
 const LEVEL_TYPE = 1
 
 func _ready() -> void:
-	global.nodes["level"] = self
-	global.nodes["canvaslayer"] = $CanvasLayer
-	global.nodes["ysort"] = $YSort
-	global.nodes["background"] = $Background
-	global.nodes["background_tiles"] = $YSort/background_tiles
+	refs.level = weakref(self)
+	refs.canvas_layer = weakref($CanvasLayer)
+	refs.ysort = weakref($YSort)
+	refs.background = weakref($Background)
+	refs.background_tiles = weakref($YSort/background_tiles)
 	
 	global.last_hub = get_tree().current_scene.LETTER
 	if not (global.save_name == "untitled_save" and global.stars == 0):
 		global.write_save(global.save_name, global.get_save_data_dict())
 	global.emit_signal("update_health")
-	global.update_cursor()
 	
 	var player = $YSort.find_node("player")
 	if player == null: 
@@ -56,4 +55,4 @@ func _ready() -> void:
 		_: return
 	
 	global.add_child(ambiance)
-	global.nodes["ambiance"] = ambiance
+	refs.ambiance = weakref(ambiance)
