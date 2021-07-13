@@ -4,7 +4,6 @@ export(PackedScene) var dust_particles
 export(PackedScene) var player_death
 
 var damage_taken = 0
-var kills = 0
 var death_message: String = ";-;"
 
 export var dash_strength = 300
@@ -230,7 +229,7 @@ func _on_stats_health_changed(_type, result, net) -> void:
 	if result != "heal" and result != "blocked":
 		if result == "hurt" and name == "player":
 			refs.camera.get_ref().shake(5, 15, 0.2)
-			OS.delay_msec(34)
+			OS.delay_msec(30)
 		
 		if net < 0:
 			damage_taken += abs(net)
@@ -251,29 +250,29 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 		source_name = source.truName
 	
 	if entity_name == "player" or source_name == "player":
-		death_message = "Death by stupidity."
+		death_message = "you killed yourself :("
 	elif entity.truName == "player":
-		death_message = "Death by betrayal."
+		death_message = "betrayal!"
 	elif source != null and source.truName == "player":
-		death_message = "Death by betrayal."
+		death_message = "betrayal!"
 	elif "spikes" in entity_name:
-		death_message = "Death by impalement."
+		death_message = "impaled by some spikes"
 	else:
 		match entity_name:
-			"crate": death_message = "Death by... a crate? what??"
-			"chaser": death_message = "Death by chaser."
-			"brute_chaser": death_message = "Death by brute chaser."
-			"gold_chaser": death_message = "Death by golden chaser."
-			"ultra_chaser": death_message = "Death by ultra chaser."
-			"fire": death_message = "Death by burning."
-			"slash": death_message = "Death by %s's blade." % source_name
-			"swipe": death_message = "Death by %s's dagger." % source_name
-			"poke": death_message = "Death by %s's spear." % source_name
-			"arrow": death_message = "Death by %s's arrow." % source_name
-			"bolt": death_message = "Death by %s's bolt." % source_name
-			"magic": death_message = "Death by %s's magic." % source_name
-			"blow_dart": death_message = "Death by %s's blowdart" % source_name
-			"slime": death_message = "Death by slime."
+			"crate": death_message = "killed by a crate, somehow?"
+			"chaser": death_message = "killed by a chaser"
+			"brute_chaser": death_message = "killed by a brute chaster"
+			"gold_chaser": death_message = "killed by a golden chaser"
+			"ultra_chaser": death_message = "killed by an ultra chaser"
+			"fire": death_message = "burned"
+			"slash": death_message = "slashed by a %s" % source_name
+			"swipe": death_message = "severed by a %s" % source_name
+			"poke": death_message = "stabbed by a %s" % source_name
+			"arrow": death_message = "shot by a %s" % source_name
+			"bolt": death_message = "shot by a %s" % source_name
+			"magic": death_message = "killed by a %s's magic" % source_name
+			"blow_dart": death_message = "incapicitated by %s's blowgun" % source_name
+			"slime": death_message = "killed by a slime"
 			_: death_message = "death message messed up, report pls ;-;"
 	
 	death_message = death_message.replace("_", " ")

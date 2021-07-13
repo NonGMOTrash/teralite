@@ -5,6 +5,41 @@ const OLD_LEVEL_CODES := [
 	"A-12", "A-13", "A-14", "A-15", "A-secret"
 ]
 
+const DEV_TIMES := {
+	"Redwood": 9.5,
+	"Midpoint": 12.7,
+	"Quickstep": 14.8,
+	"Barricade": 17.1,
+	"Brick": 15.7,
+	"Gauntlet": 22.1,
+	"Sprint": 24.1,
+	"Timber": 8.8,
+	"Army": 8.2,
+	"Entrance": 10.5,
+	"Ambushed": 10.4,
+	"Caged": 22.5,
+	"Monarch": 19.6,
+	"River": 8.4,
+	"Horde": 25.3,
+	"Duo": 21.8,
+	"Spiral": 14.1,
+	"Shadow": 21.7,
+	"Fortified": 17.6,
+	"Vault": 14.4,
+	"Pathway": 9.2,
+	"Slice": 12.5,
+	"Disorderly": 16.5,
+	"Across": 15.0,
+	"Halls": 30.5,
+	"Mythical": 21.8,
+	"Ranger": 37.4,
+	"Breach": 26.7,
+	"Duel": 61.0,
+	"Poison": 22.3,
+	"Isolated": 11.2,
+	"Hex": 11.1,
+}
+
 #all the global variables
 var quality_of_this_game = -999 # = very bad game
 var the_seed = "downwardspiral"

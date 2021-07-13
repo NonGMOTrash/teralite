@@ -1,18 +1,18 @@
 extends Node
 
-var level:WeakRef
-var player:WeakRef
-var canvas_layer:WeakRef
-var health_ui:WeakRef
-var item_bar:WeakRef
-var item_info:WeakRef
-var stopwatch:WeakRef
-var pause_menu:WeakRef
-var camera:WeakRef
-var ysort:WeakRef
-var world_tiles:WeakRef
-var background_tiles:WeakRef
-var background:WeakRef
-var navigation:WeakRef
-var level_completion:WeakRef
-var ambiance:WeakRef
+var level := weakref(Object())
+var player := weakref(Object())
+var canvas_layer := weakref(Object())
+var health_ui := weakref(Object())
+var item_bar := weakref(Object())
+var item_info := weakref(Object())
+var stopwatch := weakref(Object())
+var pause_menu := weakref(Object())
+var camera := weakref(Object())
+var ysort := weakref(Object())
+var world_tiles := weakref(Object())
+var background_tiles := weakref(Object())
+var background := weakref(Object())
+var navigation := weakref(Object())
+var level_completion := weakref(Object())
+var ambiance := weakref(Object())
