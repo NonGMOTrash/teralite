@@ -138,13 +138,15 @@ func los_check(target, ignore_low_barriers:=true):
 			excluded.remove(i)
 		elif not (target is Entity and entity == target):
 			excludes.append(excluded_entity)
+			prints("temporarily excluded", excluded_entity.get_name())
 	
 	var ss = get_world_2d().direct_space_state
 	var vision = ss.intersect_ray(target_pos, global_position, excludes, mask)
 	
 	while vision and vision.collider is Entity and vision.collider.global_position != target_pos:
-		excluded.append(weakref(vision.collider))
+		#excluded.append(weakref(vision.collider))
 		excludes.append(vision.collider)
+		prints("temporarily excluded", vision.collider.get_name())
 		
 		vision = ss.intersect_ray(target_pos, global_position, excludes, mask)
 	
@@ -169,24 +171,30 @@ func los_check(target, ignore_low_barriers:=true):
 			return true
 
 func add_target(tar: Entity, force = false) -> void:
+	var valid := true
 	if tar == entity:
-		return
+		valid = false
 	elif movement_lobe != null and movement_lobe.get_spring(tar) == null: 
 		return
 	
 	if force == false:
 		if tar is Attack and IGNORE_ATTACKS == true:
-			return
+			valid = false
 		elif tar.faction == "" and IGNORE_UNFACTIONED == true:
-			return
+			valid = false
 		elif tar.INANIMATE == true and IGNORE_INANIMATE == true:
-			return
+			valid = false
 		elif tar.truName in BLACKLIST or tar.faction in BLACKLIST:
-			return
+			valid = false
 		elif global.get_relation(entity, tar) == "friendly" and IGNORE_ALLIES == true:
-			return
+			valid = false
 		elif targets.size() >= MAX_TARGETS:
-			return
+			valid = false
+	
+	if valid == false:
+		excluded.append(weakref(tar))
+		prints("excluded", tar.get_name())
+		return
 	
 	targets.append(tar)
 	target_paths.append(tar.get_path())
