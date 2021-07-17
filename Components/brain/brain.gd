@@ -9,8 +9,8 @@ var memory_lobe: Node
 var warning_lobe: Node
 var communication_lobe: Node
 
-export(int, 0, 20) var TOLERANCE = 3 # the amount of times it will tolerate friendly fire before infighting
-export(float, 0.01666, 3.0) var THINK_TIME = 0.1
+export(int, 0, 20) var TOLERANCE = 2 # the amount of times it will tolerate friendly fire before infighting
+export(float, 0.01666, 1.0) var THINK_TIME = 0.1
 export(float, 0, 300) var SIGHT_RANGE = 100
 export(int, 1, 99) var MAX_TARGETS = 5
 export var COMMUNICATES = true
@@ -97,20 +97,18 @@ func get_closest_target():
 	var target = "no target found from get_closest_target()"
 	var dist = 999
 	for i in targets.size():
-		if is_target_valid(i):
+		if get_node_or_null(target_paths[i]) != null:
 			if global_position.distance_to(targets[i].global_position) < dist:
 				target = targets[i]
 				dist = global_position.distance_to(targets[i].global_position)
-	return target
+	return target 
 
 func is_target_valid(index: int) -> bool: # maybe make this work with the target node OR target index
 	if index > targets.size() - 1 or index > target_paths.size() -1: 
 		return false
-		
+	
 	var target = targets[index]
-	if target == null:
-		return false
-	elif get_node_or_null(target_paths[index]) == null:
+	if get_node_or_null(target_paths[index]) == null:
 		return false
 	elif target.is_queued_for_deletion() == true:
 		return false
@@ -125,28 +123,22 @@ func los_check(target, ignore_low_barriers:=true):
 		mask += 32
 	
 	var target_pos = target
-	if target is Entity: 
+	if target is Entity:
 		target_pos = target.global_position
-#		prints(entity.get_name(), "->", target.get_name())
-#	else:
-#		prints(entity.get_name(), "->", target)
 	
 	var excludes := []
 	for i in range(excluded.size()-1, -1, -1):
 		var excluded_entity = excluded[i].get_ref()
-		if not excluded_entity is Entity:
+		if excluded_entity == null:
 			excluded.remove(i)
 		elif not (target is Entity and entity == target):
 			excludes.append(excluded_entity)
-			prints("temporarily excluded", excluded_entity.get_name())
 	
 	var ss = get_world_2d().direct_space_state
 	var vision = ss.intersect_ray(target_pos, global_position, excludes, mask)
 	
 	while vision and vision.collider is Entity and vision.collider.global_position != target_pos:
-		#excluded.append(weakref(vision.collider))
 		excludes.append(vision.collider)
-		prints("temporarily excluded", vision.collider.get_name())
 		
 		vision = ss.intersect_ray(target_pos, global_position, excludes, mask)
 	
@@ -171,29 +163,19 @@ func los_check(target, ignore_low_barriers:=true):
 			return true
 
 func add_target(tar: Entity, force = false) -> void:
-	var valid := true
-	if tar == entity:
-		valid = false
-	elif movement_lobe != null and movement_lobe.get_spring(tar) == null: 
-		return
-	
-	if force == false:
-		if tar is Attack and IGNORE_ATTACKS == true:
-			valid = false
-		elif tar.faction == "" and IGNORE_UNFACTIONED == true:
-			valid = false
-		elif tar.INANIMATE == true and IGNORE_INANIMATE == true:
-			valid = false
-		elif tar.truName in BLACKLIST or tar.faction in BLACKLIST:
-			valid = false
-		elif global.get_relation(entity, tar) == "friendly" and IGNORE_ALLIES == true:
-			valid = false
-		elif targets.size() >= MAX_TARGETS:
-			valid = false
-	
-	if valid == false:
+	if (
+		not tar == entity and
+		(movement_lobe != null and movement_lobe.get_spring(tar) == null) or
+		force == false and
+		(tar is Attack and IGNORE_ATTACKS == true) or
+		(tar.faction == "" and IGNORE_UNFACTIONED == true) or
+		(tar.INANIMATE == true and IGNORE_INANIMATE == true) or
+		tar.truName in BLACKLIST or tar.faction in BLACKLIST or
+		(global.get_relation(entity, tar) == "friendly" and IGNORE_ALLIES == true)
+	):
 		excluded.append(weakref(tar))
-		prints("excluded", tar.get_name())
+		return
+	elif targets.size() >= MAX_TARGETS: # dont want to exclude an entity just because it was at max
 		return
 	
 	targets.append(tar)
@@ -254,6 +236,7 @@ func remove_target(tar):
 func _on_sight_body_entered(body: Node) -> void:
 	if (
 		body is Entity and
+		not body in entities and
 		not (body is Attack and IGNORE_ATTACKS == true) and
 		not (body.faction == "" and IGNORE_UNFACTIONED == true) and
 		not (body.INANIMATE == true and IGNORE_INANIMATE == true) and

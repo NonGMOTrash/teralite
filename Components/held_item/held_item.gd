@@ -34,7 +34,7 @@ func _ready():
 	sprite.frame = 0
 	sprite.frame_coords = Vector2.ZERO
 	original_offset = sprite.offset
-	#original_rotation 
+	#original_rotation
 	
 	if PARENT_BOND == false:
 		source = self
@@ -51,7 +51,7 @@ func _ready():
 				push_error("held_item could not be bound to parent because it has no brain")
 				source = self
 
-func _process(delta):
+func _physics_process(delta):
 	if TARGETING != TT.MANUAL and visible == true:
 	
 		if TARGETING == TT.INPUT_VECTOR:
@@ -62,9 +62,12 @@ func _process(delta):
 				push_error("can't use BRAIN_TARGET targetting because brain couldn't be found, switching to INPUT_VECTOR")
 				TARGETING = TT.INPUT_VECTOR
 			else:
-				var closet_target = entity.components["brain"].get_closest_target()
-				if closet_target is Entity:
-					target_pos = closet_target.global_position
+				if entity.components["brain"].targets.size() != 0:
+					var closet_target = entity.components["brain"].get_closest_target()
+					if closet_target is Entity:
+						target_pos = closet_target.global_position
+					else:
+						emit_signal("cant_rotate")
 				else:
 					emit_signal("cant_rotate")
 		

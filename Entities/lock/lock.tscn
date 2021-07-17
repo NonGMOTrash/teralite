@@ -79,6 +79,7 @@ tracks/4/keys = {
 [node name="lock" type="KinematicBody2D"]
 collision_layer = 3
 script = ExtResource( 1 )
+FORCE_MULT = 0.0
 truName = "lock"
 
 [node name="Sprite" type="Sprite" parent="."]

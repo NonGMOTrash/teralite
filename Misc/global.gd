@@ -59,8 +59,8 @@ var perfected_levels = []
 var level_deaths = {}
 var level_times = {}
 
-const ver_phase = "Beta"
-const ver_num = 3.2
+const ver_phase = "beta"
+const ver_num = 3.3
 const ver_hotfix = 0
 
 # for saving things
@@ -409,12 +409,16 @@ func update_settings(save_settings_config:=true):
 		if settings_config.file_exists("user://settings_config"):
 			var dir := Directory.new()
 			dir.remove("user://settings_config")
-			print("deleted!")
 		else:
 			push_warning("could not find settings_config (on deletion)")
 
 func quit():
-	print("")
-	print("hope you had fun lol")
-	res.free()
+	print(
+		"\n" +
+		"hope you had fun or whatever\n" +
+		"there's some memory leaks that happen when the game quits, and i have no idea why :(\n" +
+		"i guess it doesn't really matter\n"
+	)
+	res.queue_free()
+	self.queue_free()
 	get_tree().quit()

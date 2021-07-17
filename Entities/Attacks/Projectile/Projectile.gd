@@ -58,7 +58,6 @@ func _physics_process(delta):
 
 	if auto_rotate == true:
 		rotation += get_angle_to(global_position + velocity) + deg2rad(ROTATION_OFFSET)
-		#prints(DIRECTION.angle(), get_angle_to(global_position + velocity) + ROTATION_OFFSET)
 
 func death():
 	.death()

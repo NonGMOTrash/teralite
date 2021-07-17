@@ -109,6 +109,5 @@ func remove_irrelevant_memories():
 		var best_position = Vector2.ZERO
 		var target_to_me = this_memory.direction_to(brain.global_position).normalized()
 		best_position = this_memory + target_to_me * spring.DISTANCE
-		
 		if brain.global_position.distance_to(best_position) < 6 and brain.los_check(best_position) == true:
 			remove_memory(i)

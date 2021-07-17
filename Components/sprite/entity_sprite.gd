@@ -71,14 +71,19 @@ func _ready():
 	if stats == null: return
 	stats.connect("health_changed", self, "_on_health_changed")
 
-func _physics_process(_delta):
+func _process(_delta):
 	# off
-	if auto_flip_mode == AFM.OFF: return
+	if auto_flip_mode == AFM.OFF: 
+		return
 	
 	# target
 	if auto_flip_mode == AFM.TARGET:
 		var brain = entity.components["brain"]
-		if brain == null: return
+		if brain == null: 
+			return
+		if brain.targets.size() == 0:
+			return
+		
 		var closest_target = brain.get_closest_target()
 		if brain != null and not closest_target is String:
 			if global_position.direction_to(closest_target.global_position).x > 0:

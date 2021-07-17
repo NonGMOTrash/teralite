@@ -74,7 +74,7 @@ func update_path(path: PoolVector2Array, end_pos: Vector2) -> PoolVector2Array:
 	if entity.components["sleeper"] != null and entity.components["sleeper"].is_on_screen() == false:
 		return path
 	
-	if path.size() <= 2 or entity.velocity == Vector2.ZERO:#brain.los_check(path[0], false) != true: #or brain.get_parent().get_speed() == 0:
+	if path.size() <= 2 or entity.velocity == Vector2.ZERO:
 		path = get_tree().current_scene.pathfind(global_position, end_pos)
 	
 	if path.size() > 0 and global_position.distance_to(path[0]) < PATH_DIST:
@@ -96,7 +96,6 @@ func _on_idle_timer_timeout() -> void:
 	):
 		wander_pos = global_position + (Vector2(rand_range(-1,1),rand_range(-1,1)).normalized()*100)
 		position_tries += 1
-	
 	if brain.los_check(wander_pos, false) == true:
 		entity.input_vector = global_position.direction_to(wander_pos).normalized()
 	elif wander_path == null:
@@ -239,7 +238,7 @@ func _on_movement_timer_timeout() -> void:
 	else: # has target(s)
 		for i in range(brain.targets.size()-1, -1, -1):
 			var target = brain.targets[i]
-			if brain.is_target_valid(i) == false: 
+			if get_node_or_null(brain.target_paths[i]) == null:
 				brain.remove_target(target)
 			elif get_spring(target) != null:
 				var spring = get_spring(target)
@@ -279,7 +278,6 @@ func _on_movement_timer_timeout() -> void:
 				if spring.USE_FARZONE == true:
 					if spring.FARZONE <= global_position.distance_to(best_position):
 						strength = 0
-				
 				if brain.los_check(best_position, false) == true:
 					#best_position_paths[i] = null
 					if spring.INVERT_DISTANCE == false:
@@ -293,7 +291,7 @@ func _on_movement_timer_timeout() -> void:
 						path = update_path(PoolVector2Array(), best_position)
 					elif path is PoolVector2Array:
 						path = update_path(path, best_position)
-						
+					
 					if path == null or path.size() < 2:
 						continue
 					
