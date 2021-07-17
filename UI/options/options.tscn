@@ -82,7 +82,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.37449
-margin_top = 24.2494
+margin_top = 22.2494
 margin_right = -2.12428
 margin_bottom = -2.24938
 alignment = 1
@@ -114,7 +114,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.37449
-margin_top = 24.2494
+margin_top = 22.2494
 margin_right = -2.12428
 margin_bottom = -2.24938
 alignment = 1
@@ -141,6 +141,7 @@ custom_styles/normal = ExtResource( 8 )
 text = "Exit"
 
 [node name="sound_player" parent="." instance=ExtResource( 1 )]
+
 [connection signal="tab_changed" from="tabs" to="." method="_on_tabs_tab_changed"]
 [connection signal="visibility_changed" from="tabs" to="." method="_on_tabs_visibility_changed"]
 [connection signal="value_changed" from="tabs/Audio/volume" to="." method="_on_volume_value_changed"]

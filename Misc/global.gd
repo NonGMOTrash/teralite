@@ -223,7 +223,8 @@ func write_save(entered_save_name, data):
 		save_file.close()
 	else:
 		# load failed
-		push_warning("could not read save on write")
+		push_error("could not read save on write")
+		OS.alert("could not read save on write", "reportpls.jpg")
 
 func load_save(entered_save_name):
 	var save_file = File.new()
@@ -253,10 +254,13 @@ func load_save(entered_save_name):
 					save_file.close()
 				else:
 					push_error("could not open newly created file on load (for renaming)")
+					OS.alert("could not open newly created file on load (for renaming)", "reportpls.jpg")
 			else:
 				push_error("could not open save on load (for renaming)")
+				OS.alert("could not open save on load (for renaming)", "reportpls.jpg")
 		else:
 			push_error("could not find save on load (for renaming)")
+			OS.alert("could not find save on load (for renaming)", "reportpls.jpg")
 	
 	if save_file.file_exists(SAVE_DIR + save_name):
 		var error = save_file.open(SAVE_DIR + save_name, File.READ)
@@ -307,11 +311,13 @@ func load_save(entered_save_name):
 				get_tree().change_scene("res://Levels/%s/%s-Hub.tscn" % [last_hub, last_hub])
 			
 		else:
-			#load failed
+			# load failed
 			push_error("could not open save on load")
+			OS.alert("could not open save on load", "reportpls.jpg")
 	else:
-		#file didn't exist
+		# file didn't exist
 		push_error("could not find save on load")
+		OS.alert("could not find save on load", "reportpls.jpg")
 
 func level_code_to_name(lvl:String) -> String:
 	match lvl:
@@ -347,6 +353,8 @@ func delete_save(entered_save_name):
 	else:
 		# file not found
 		push_warning("could not find save on delete")
+		OS.alert("could not find save on delete", "reportpls.jpg")
+		
 
 func update_settings(save_settings_config:=true):
 	OS.window_fullscreen = settings["fullscreen"]
@@ -404,13 +412,15 @@ func update_settings(save_settings_config:=true):
 		settings_config.close()
 	else:
 		# load failed
-		push_warning("could not load settings_config (on update), deleting")
+		push_error("could not load settings_config (on update), deleting")
+		OS.alert("could not load settings config (on update)", "reportpls.jpg")
 		
 		if settings_config.file_exists("user://settings_config"):
 			var dir := Directory.new()
 			dir.remove("user://settings_config")
 		else:
-			push_warning("could not find settings_config (on deletion)")
+			push_error("could not find settings_config (on deletion)")
+			OS.alert("could not find settings_config (on deletion)", "reportpls.jpg")
 
 func quit():
 	print(

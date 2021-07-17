@@ -110,6 +110,7 @@ func _ready() -> void:
 	else:
 		# load failed
 		push_error("could not load settings_config")
+		OS.alert("could not load settings_config", "reportpls.jpg")
 
 func multi_color_set(target:Control, color:Color):
 	target.set_deferred("custom_colors/font_color", color)
