@@ -79,13 +79,9 @@ func _process(_delta):
 	# target
 	if auto_flip_mode == AFM.TARGET:
 		var brain = entity.components["brain"]
-		if brain == null: 
-			return
-		if brain.targets.size() == 0:
-			return
-		
-		var closest_target = brain.get_closest_target()
-		if brain != null and not closest_target is String:
+		if brain != null and brain.targets.size() > 0:
+			var closest_target = brain.get_closest_target()
+			
 			if global_position.direction_to(closest_target.global_position).x > 0:
 				if invert_flipping == true: flip()
 				else: unflip()
@@ -95,7 +91,6 @@ func _process(_delta):
 			return
 	
 	# movement
-	if not "input_vector" in entity: return
 	var input_vector = entity.input_vector
 	if input_vector.x > 0:
 		if invert_flipping == true: flip()

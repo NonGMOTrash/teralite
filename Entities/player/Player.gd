@@ -1,5 +1,7 @@
 extends Entity
 
+const CURSOR_EMPTY = preload("res://UI/cursors/cursor_empty.png")
+
 export(PackedScene) var dust_particles
 export(PackedScene) var player_death
 
@@ -132,6 +134,9 @@ func _input(_event: InputEvent) -> void:
 		if Input.is_action_just_pressed("hotkey_right"):
 			global.selection = 2
 			emit_signal("swapped_item", inventory[global.selection])
+		
+		if inventory[global.selection] == null:
+				Input.set_custom_mouse_cursor(CURSOR_EMPTY, Input.CURSOR_ARROW, Vector2(22.5, 22.5))
 
 func swapped_item(new_item):
 	if new_item == null:

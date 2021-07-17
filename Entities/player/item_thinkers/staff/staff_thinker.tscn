@@ -21,8 +21,4 @@ SHINE_COOLDOWN = 0.3
 wait_time = 0.42
 one_shot = true
 
-[node name="invincibility" type="Timer" parent="."]
-
 [node name="sound_player" parent="." instance=ExtResource( 2 )]
-
-[connection signal="timeout" from="invincibility" to="." method="_on_invincibility_timeout"]

@@ -8,14 +8,14 @@
 [ext_resource path="res://Components/sound_player/sound/sound.gd" type="Script" id=6]
 [ext_resource path="res://Entities/Attacks/Melee/shine/shine_reflect.wav" type="AudioStream" id=7]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 11.0
-
 [sub_resource type="CircleShape2D" id=2]
 radius = 3.0
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 6.0
+[sub_resource type="CircleShape2D" id=1]
+radius = 5.5
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 12.0
 
 [sub_resource type="Animation" id=4]
 resource_local_to_scene = true
@@ -33,18 +33,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("hurtbox/CollisionShape2D:shape")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.075, 0.15, 0.225 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ SubResource( 2 ), SubResource( 3 ), SubResource( 1 ), SubResource( 1 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -87,7 +75,6 @@ REFLECTION_MULT = 0.9
 [node name="stats" parent="." index="0"]
 MAX_HEALTH = 99
 HEALTH = 99
-DEFENCE = 99
 DAMAGE = 0
 TRUE_DAMAGE = 1
 
@@ -102,7 +89,7 @@ visible = false
 iTime_multiplier = 0.0
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 disabled = true
 
 [node name="hitbox" parent="." index="3"]
@@ -113,15 +100,27 @@ KNOCKBACK = 160
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 shape = SubResource( 1 )
 
+[node name="reflection" type="Area2D" parent="." index="4"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="reflection" index="0"]
+shape = SubResource( 6 )
+
+[node name="collision" parent="." index="5"]
+visible = false
+
 [node name="reflect" type="AudioStreamPlayer2D" parent="sound" index="0"]
 stream = ExtResource( 7 )
 script = ExtResource( 6 )
 MODE = 1
 AUTO_PLAY = false
 
-[node name="animation" parent="." index="6"]
+[node name="animation" parent="." index="7"]
 anims/animation = SubResource( 4 )
 anims/hold = SubResource( 5 )
+
+[connection signal="area_entered" from="reflection" to="." method="_on_reflection_area_entered"]
 
 [editable path="hurtbox"]
 [editable path="hitbox"]

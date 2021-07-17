@@ -55,6 +55,10 @@ func selected():
 
 func unselected():
 	reload.stop()
+	var camera: Camera2D = refs.camera.get_ref()
+	camera.distance_ratio = camera.DEFAULT_DISTANCE_RATIO
+	camera.distance_max = camera.DEFAULT_DISTANCE_MAX
+	camera.zoom_to(Vector2(1, 1), ads_zoom_speed)
 
 func primary():
 	.primary()
