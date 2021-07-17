@@ -23,4 +23,4 @@ func _on_brain_think() -> void:
 	elif state == S.DOWN and brain.targets.size() != 0:
 		# rise
 		animation.play("rise")
-		sound_player.play_sound("lower")
+		sound_player.play_sound("rise")

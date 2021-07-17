@@ -13,6 +13,8 @@ export(int, 0, 20) var TOLERANCE = 2 # the amount of times it will tolerate frie
 export(float, 0.01666, 1.0) var THINK_TIME = 0.1
 export(float, 0, 300) var SIGHT_RANGE = 100
 export(int, 1, 99) var MAX_TARGETS = 5
+export(bool) var SIGHT_EFFECTS := true
+# PROBLEM_NOTE: idk why this is in the brain
 export var COMMUNICATES = true
 export(float, 0.01, 10.0) var COMM_DELAY = 1.2
 export(float, 0.0, 5.0) var COMM_DELAY_VARIANCE = 0.5
@@ -22,7 +24,7 @@ export var IGNORE_INANIMATE := true
 export var IGNORE_UNFACTIONED := true
 export var IGNORE_ALLIES := true
 export var BLACKLIST := []
-var excluded := [weakref(entity)] # list of entities that can never be targets
+var excluded := [] # list of entities that can never be targets
 
 # PROBLEM_NOTE: it would be better to use a dictionary for targets and target_paths because the targets
 # are not accesed or removed in a set order. same goes for some stuff in movement_lobe.gd i think 
@@ -42,6 +44,8 @@ func _on_brain_tree_entered():
 func _ready():
 	sight_shape.shape.radius = SIGHT_RANGE
 	think_timer.wait_time = THINK_TIME
+	
+	excluded.append(weakref(entity))
 
 # for debugging purposes:
 #func _draw():
@@ -104,7 +108,7 @@ func get_closest_target():
 	return target 
 
 func is_target_valid(index: int) -> bool: # maybe make this work with the target node OR target index
-	if index > targets.size() - 1 or index > target_paths.size() -1: 
+	if index > targets.size() - 1 or index > target_paths.size() -1:
 		return false
 	
 	var target = targets[index]
@@ -279,12 +283,15 @@ func _on_think_timer_timeout() -> void:
 #		update()
 
 func spawn_effect(effect: String, pos: Vector2):
+	if SIGHT_EFFECTS == false:
+		return
+	
 	var new_effect = res.aquire_effect(effect)
 	if not new_effect is Effect:
 		push_warning("effect was invalid")
 		return
 	
-	entity.get_parent().call_deferred("add_child", new_effect)
+	refs.ysort.get_ref().call_deferred("add_child", new_effect)
 	new_effect.global_position = pos
 
 func get_target_names() -> Array:

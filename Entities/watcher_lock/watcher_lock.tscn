@@ -86,6 +86,7 @@ TOP_SPEED = 0
 FORCE_MULT = 0.0
 INANIMATE = true
 truName = "watcher_lock"
+faction = "player"
 
 [node name="Sprite" type="Sprite" parent="."]
 z_index = -1
@@ -103,9 +104,10 @@ anims/rise = SubResource( 2 )
 [node name="brain" parent="." instance=ExtResource( 3 )]
 TOLERANCE = 20
 SIGHT_RANGE = 300.0
-MAX_TARGETS = 1
+MAX_TARGETS = 3
+SIGHT_EFFECTS = false
 COMMUNICATES = false
-EXCLUDES = [ "player" ]
+BLACKLIST = [ "player", "watcher_lock" ]
 
 [node name="sound_player" parent="." instance=ExtResource( 5 )]
 

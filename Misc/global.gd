@@ -429,6 +429,6 @@ func quit():
 		"there's some memory leaks that happen when the game quits, and i have no idea why :(\n" +
 		"i guess it doesn't really matter\n"
 	)
-	res.queue_free()
-	self.queue_free()
+#	res.queue_free()
+#	self.queue_free()
 	get_tree().quit()
