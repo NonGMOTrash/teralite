@@ -6,6 +6,7 @@ onready var sprite = $Sprite
 onready var fuel = $fuel
 onready var spread = $spread
 onready var hitbox = $hitbox
+onready var detection = $detection
 
 var smoke: Particles2D
 
@@ -32,15 +33,23 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	var modifier = area.get_parent().components["stats"].modifiers["burning"]
 	if modifier < 0 and abs(modifier) > hitbox.STATUS_LEVEL: return
 	
-	fuel.wait_time = fuel.time_left + 6.5
+	fuel.wait_time = fuel.time_left + 1.0
 	fuel.start()
 
 func _on_spread_timeout() -> void:
-	if fuel.time_left < 4: return
+	var lowest_dist: float = 999.9
+	var entity: Entity
+	for detected_entity in detection.get_overlapping_bodies():
+		if detected_entity.truName == "fire":
+			continue
+		elif global_position.distance_to(detected_entity.global_position) < lowest_dist:
+			entity = detected_entity
+	if entity == null:
+		return
 	
-	var new_fire = self.duplicate()
+	var new_fire = duplicate()
 	new_fire.global_position = global_position
-	new_fire.velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() * 125
+	new_fire.velocity = global_position.direction_to(entity.global_position).normalized() * 125
 	
 	new_fire.find_node("fuel").wait_time = 1.0
 	get_parent().call_deferred("add_child", new_fire)

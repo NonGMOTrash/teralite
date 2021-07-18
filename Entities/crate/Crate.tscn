@@ -25,6 +25,7 @@ extents = Vector2( 9, 9 )
 extents = Vector2( 8, 5 )
 
 [node name="crate" type="KinematicBody2D"]
+collision_layer = 3
 script = ExtResource( 3 )
 STATIC = true
 INANIMATE = true

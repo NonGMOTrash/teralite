@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Entities/fire/fire.gd" type="Script" id=1]
 [ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=2]
@@ -70,6 +70,9 @@ tracks/2/keys = {
 } ]
 }
 
+[sub_resource type="CircleShape2D" id=5]
+radius = 40.0
+
 [node name="fire" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 1 )
@@ -88,7 +91,7 @@ modulate = Color( 0.121569, 0.352941, 0.964706, 1 )
 shape = SubResource( 1 )
 
 [node name="hitbox" parent="." instance=ExtResource( 2 )]
-COOLDOWN = 4.0
+COOLDOWN = 1.0
 iTime = 0.0
 DAM_TYPE = "burn"
 KNOCKBACK = 0
@@ -103,7 +106,7 @@ autoplay = "fire"
 anims/fire = SubResource( 3 )
 
 [node name="fuel" type="Timer" parent="."]
-wait_time = 8.0
+wait_time = 2.5
 one_shot = true
 autostart = true
 __meta__ = {
@@ -122,6 +125,13 @@ strength = 30
 
 [node name="CollisionShape2D" parent="entity_push" index="0"]
 shape = SubResource( 1 )
+
+[node name="detection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+shape = SubResource( 5 )
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="fuel" to="." method="_on_fuel_timeout"]
