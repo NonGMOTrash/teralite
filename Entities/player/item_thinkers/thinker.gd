@@ -40,7 +40,6 @@ var max_frame := HELD_ITEM_FRAMES.x * HELD_ITEM_FRAMES.y - 1
 # maybe make this a global signal??
 signal update_ui(bar_max, bar_value, info_string)
 
-
 func _ready():
 	# error checking stuff
 	if my_item == "":

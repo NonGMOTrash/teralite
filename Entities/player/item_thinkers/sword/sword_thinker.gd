@@ -8,8 +8,8 @@ export var counter_cooldown := 0.2
 onready var cooldown := $cooldown as Timer
 onready var counter := $counter as Area2D
 onready var animation := $AnimationPlayer as AnimationPlayer
-onready var player_hurtbox := get_parent().components["hurtbox"] as Area2D
-onready var player_sprite := get_parent().components["entity_sprite"] as Sprite
+onready var player_hurtbox: Area2D = player.components["hurtbox"]
+onready var player_sprite: Sprite = player.components["entity_sprite"]
 
 var can_counter := false
 
@@ -17,7 +17,7 @@ func _init():
 	res.allocate("slash")
 
 func _physics_process(_delta):
-	counter.global_position = player.global_position + player.velocity
+	counter.global_position = player.global_position + player.input_vector.normalized() * 4
 
 func get_ready():
 	if cooldown.time_left > 0:
@@ -33,7 +33,7 @@ func primary():
 
 func secondary():
 	.secondary()
-
+	
 	cooldown.wait_time = animation.get_animation("counter").length + counter_cooldown
 	cooldown.start()
 	
@@ -53,16 +53,21 @@ func secondary():
 			if counter.global_position.distance_to(hitbox.global_position) < distance:
 				closest_hitbox = hitbox
 				distance = counter.global_position.distance_to(hitbox.global_position)
-
 		can_counter = true
 		_on_counter_area_entered(closest_hitbox)
-
+	
 	sound_player.play_sound("counter_ready")
-	player_sprite.play_effect("invincibility", 0.25/0.4)
+	player_sprite.play_effect("invincibility", 0.625)
 
 func set_counter_window(to: bool):
+	print("set to %s" % to)
+	
+	can_counter = to
+	player_hurtbox.set_deferred("monitorable", not to)
+	player_hurtbox.set_deferred("monitoring", not to)
+	
 	if to == true:
-		yield(get_tree().create_timer(0.01666), "timeout")
+		#yield(get_tree().create_timer(0.01666), "timeout")
 		
 		var hitbox = player_hurtbox.get_overlapping_areas()
 		if hitbox.size() == 0:
@@ -71,21 +76,18 @@ func set_counter_window(to: bool):
 			hitbox = hitbox[0] as Area2D
 			player_hurtbox._on_hurtbox_area_entered(hitbox)
 			hitbox._on_hitbox_area_entered(player_hurtbox)
-	
-	can_counter = to
-	player_hurtbox.set_deferred("monitorable", not to)
-	player_hurtbox.set_deferred("monitoring", not to)
 
 func _on_counter_area_entered(area: Area2D) -> void:
+	prints(area.get_parent().get_name(), "entered (%s)" % can_counter)
 	if can_counter == false:
 		return
 	
 	can_counter = false
 	
 	var area_entity: Entity = area.get_parent()
-	if area_entity is Attack:
-		area_entity.velocity *= -1
-		area_entity.death()
+	if area_entity is Attack and area_entity.components["stats"].TRUE_DAMAGE <= 0:
+		area_entity.velocity *= -3
+		area_entity.components["stats"].change_health(-5, 0)
 	
 	var slash := res.aquire_melee("slash")
 	slash.setup(player, area.global_position)
@@ -93,7 +95,7 @@ func _on_counter_area_entered(area: Area2D) -> void:
 	
 	sound_player.play_sound("counter_success")
 	
-	cooldown.wait_time = 0.12
+	cooldown.wait_time = 0.2
 	cooldown.start()
 	
 	player.components["stats"].add_status_effect(
