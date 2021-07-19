@@ -62,12 +62,12 @@ func secondary():
 func set_counter_window(to: bool):
 	print("set to %s" % to)
 	
-	can_counter = to
+	can_counter = not to
+	player.can_dash = not to
 	player_hurtbox.set_deferred("monitorable", not to)
 	player_hurtbox.set_deferred("monitoring", not to)
 	
 	if to == true:
-		#yield(get_tree().create_timer(0.01666), "timeout")
 		
 		var hitbox = player_hurtbox.get_overlapping_areas()
 		if hitbox.size() == 0:
@@ -78,13 +78,13 @@ func set_counter_window(to: bool):
 			hitbox._on_hitbox_area_entered(player_hurtbox)
 
 func _on_counter_area_entered(area: Area2D) -> void:
-	prints(area.get_parent().get_name(), "entered (%s)" % can_counter)
-	if can_counter == false:
+	var area_entity: Entity = area.get_parent()
+	
+	if can_counter == false or (area_entity is Attack and area_entity.SOURCE == player):
 		return
 	
 	can_counter = false
 	
-	var area_entity: Entity = area.get_parent()
 	if area_entity is Attack and area_entity.components["stats"].TRUE_DAMAGE <= 0:
 		area_entity.velocity *= -3
 		area_entity.components["stats"].change_health(-5, 0)

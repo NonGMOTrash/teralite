@@ -9,7 +9,7 @@ export var TOP_SPEED = 80
 export(float, 0.0, 10.0) var FORCE_MULT = 1.0
 export(bool) var INANIMATE := false
 
-var velocity = Vector2.ZERO
+var velocity: Vector2 = Vector2.ZERO
 var input_vector = Vector2.ZERO
 var rooted := false
 
@@ -44,11 +44,8 @@ func _init():
 	add_to_group("entity", true)
 
 func _ready():
-	global_position.y -= 0.02
-	# this is to solve ysort issues. it's a little jank but it works
-	# i think the sorting is only triggered when the y position changes
-	
-	# PROBLEM_NOTE: maybe do global_position.y += 0.01, might break things though
+	global_position.y -= 0.01
+	# PROBLEM_NOTE: maybe do 'move_and_slide(Vector2(0, 0.01)'
 	
 	if truName == "":
 		push_error("%s's truName was not set" % get_name())
@@ -60,11 +57,6 @@ func _ready():
 		get_tree().current_scene.max_kills += 1
 
 func _physics_process(delta: float): # physics logic
-#	# PROBLEM_NOTE: \/ not sure why i did this
-#	marked_enemies = []
-#	if marked_enemies.size() > 0:
-#		breakpoint
-	
 	if STATIC == true: 
 		set_physics_process(false)
 		return
@@ -72,10 +64,14 @@ func _physics_process(delta: float): # physics logic
 	input_vector = input_vector.normalized() # diagonally is same speed as straight
 	
 	# movement w/ input vector
-	if input_vector != Vector2.ZERO and rooted == false:
+	#var old_velocity := velocity
+	if input_vector != Vector2.ZERO and rooted == false and get_speed() <= TOP_SPEED:
 		velocity = velocity.move_toward(input_vector * TOP_SPEED, ACCELERATION * delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, SLOWDOWN * delta)
+	if truName == "player":
+		#prints(old_velocity, "->", velocity)
+		prints(get_speed())
 	
 	velocity = move_and_slide(velocity)
 
@@ -87,7 +83,7 @@ func death():
 	queue_free()
 	visible = false
 
-func get_speed():
+func get_speed() -> float:
 	var velo = velocity
 	if input_vector != Vector2.ZERO: velo *= input_vector.normalized()
 	return abs(velo.x) + abs(velo.y)

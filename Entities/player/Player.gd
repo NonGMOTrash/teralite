@@ -40,6 +40,7 @@ onready var sound_player = $foot_stepper
 onready var held_item = $held_item
 
 var force_death_msg := false
+var can_dash := true
 
 func _ready():
 #	var item = res.aquire_entity("xbow")
@@ -106,10 +107,11 @@ func dash(direction: Vector2 = input_vector) -> void:
 func _input(_event: InputEvent) -> void:
 	# dash
 	if Input.is_action_just_pressed("dash"):
-		if dash_cooldown.time_left == 0:
-			dash()
-		elif dash_cooldown.time_left <= dash_buffer:
-			buffered_dash = input_vector
+		if can_dash:
+			if dash_cooldown.time_left == 0:
+				dash()
+			elif dash_cooldown.time_left <= dash_buffer:
+				buffered_dash = input_vector
 
 	# for item switching:
 	if get_name() == "player":
