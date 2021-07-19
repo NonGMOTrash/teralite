@@ -50,32 +50,24 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="smooth" parent="tabs/Visual" instance=ExtResource( 2 )]
-margin_top = 24.0
-margin_right = 359.0
-margin_bottom = 48.0
-shortcut_in_tooltip = false
-text = "Smooth camera"
-
-[node name="hidebar" parent="tabs/Visual" instance=ExtResource( 2 )]
-margin_top = 52.0
-margin_right = 359.0
-margin_bottom = 76.0
-shortcut_in_tooltip = false
-text = "Hide item bar when empty"
-
 [node name="fullscreen" parent="tabs/Visual" instance=ExtResource( 2 )]
-margin_top = 80.0
+margin_top = 38.0
 margin_right = 359.0
-margin_bottom = 104.0
+margin_bottom = 62.0
 shortcut_in_tooltip = false
 text = "Fullscreen"
 
 [node name="pixel" parent="tabs/Visual" instance=ExtResource( 2 )]
-margin_top = 108.0
+margin_top = 66.0
 margin_right = 359.0
-margin_bottom = 132.0
+margin_bottom = 90.0
 text = "Pixel perfect filter (not recomended)"
+
+[node name="vsync" parent="tabs/Visual" instance=ExtResource( 2 )]
+margin_top = 94.0
+margin_right = 359.0
+margin_bottom = 118.0
+text = "Vsync (caps your FPS at 60)"
 
 [node name="Audio" type="VBoxContainer" parent="tabs"]
 visible = false
@@ -120,11 +112,25 @@ margin_bottom = -2.24938
 alignment = 1
 
 [node name="perfection" parent="tabs/Game" instance=ExtResource( 2 )]
-margin_top = 58.0
+margin_top = 38.0
 margin_right = 359.0
-margin_bottom = 82.0
+margin_bottom = 62.0
 shortcut_in_tooltip = false
 text = "Perfection Mode"
+
+[node name="hidebar" parent="tabs/Game" instance=ExtResource( 2 )]
+margin_top = 66.0
+margin_right = 359.0
+margin_bottom = 90.0
+shortcut_in_tooltip = false
+text = "Hide item bar when empty"
+
+[node name="smooth" parent="tabs/Game" instance=ExtResource( 2 )]
+margin_top = 94.0
+margin_right = 359.0
+margin_bottom = 118.0
+shortcut_in_tooltip = false
+text = "Smooth camera"
 
 [node name="exit" parent="." instance=ExtResource( 3 )]
 anchor_top = 1.0

@@ -68,31 +68,38 @@ const SAVE_DIR := "user://saves/"
 var save_name: String = "untitled_save"
 var saves = []
 
-var settings = {
+var settings := {
 	"fullscreen": false,
 	"perfection_mode": false,
 	"pixel_perfect": false,
 	"smooth_camera": true,
 	"hide_bar": true,
 	"volume": 0.50,
+	"vsync": true,
 }
 
 # should move this and get_relation to Entity.gd probably
 var faction_relationships = {
 	"player": 
-		{"player": "friendly",
-		"monster": "hostile",
-		"blue_kingdom": "hostile",},
+		{
+			"player": "friendly",
+			"monster": "hostile",
+			"blue_kingdom": "hostile",
+		},
 	
 	"monster":
-		{"player": "hostile",
-		"monster": "friendly",
-		"blue_kingdom": "hostile",},
+		{
+			"player": "hostile",
+			"monster": "friendly",
+			"blue_kingdom": "hostile",
+		},
 	
 	"blue_kingdom":
-		{"player": "hostile",
-		"monster": "hostile",
-		"blue_kingdom": "friendly",},
+		{
+			"player": "hostile",
+			"monster": "hostile",
+			"blue_kingdom": "friendly",
+		},
 }
 
 # cursor sprites preloaded:
@@ -144,7 +151,7 @@ func _ready():
 	#if get_tree().current_scene.get_name() != "test_level":
 	#	get_tree().change_scene("res://Levels/test_level.tscn")
 
-# global functions
+# PROBLEM_NOTE: should probably move this to entity.gd
 func get_relation(me:Entity, other:Entity):
 	var faction_one = me.faction
 	var faction_two = other.faction
@@ -358,6 +365,8 @@ func delete_save(entered_save_name):
 
 func update_settings(save_settings_config:=true):
 	OS.window_fullscreen = settings["fullscreen"]
+	
+	OS.vsync_enabled = settings["vsync"]
 	
 	if global.settings["pixel_perfect"] == true:
 		# PROBLEM_NOTE: should use a screen_size var in global.gd instead of just having a vector2 

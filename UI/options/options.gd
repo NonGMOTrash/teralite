@@ -2,11 +2,12 @@ extends Control
 
 onready var sound_player = $sound_player
 onready var tabs = $tabs
-onready var smooth = $tabs/Visual/smooth
-onready var hidebar = $tabs/Visual/hidebar
 onready var fullscreen = $tabs/Visual/fullscreen
-onready var perfection = $tabs/Game/perfection
 onready var pixel = $tabs/Visual/pixel
+onready var vsync = $tabs/Visual/vsync
+onready var perfection = $tabs/Game/perfection
+onready var smooth = $tabs/Game/smooth
+onready var hidebar = $tabs/Game/hidebar
 onready var volume = $tabs/Audio/volume
 onready var volume_label = $tabs/Audio/volume_label
 
@@ -24,6 +25,7 @@ func _on_tabs_visibility_changed() -> void:
 	perfection.pressed = global.settings["perfection_mode"]
 	pixel.pressed = global.settings["pixel_perfect"]
 	volume.value = global.settings["volume"] * 100
+	vsync.pressed = global.settings["vsync"]
 	
 	if visible == false: return
 	tabs.current_tab = 0
@@ -42,6 +44,7 @@ func _on_exit_pressed() -> void:
 	global.settings["perfection_mode"] = perfection.pressed
 	global.settings["pixel_perfect"] = pixel.pressed
 	global.settings["volume"] = volume.value / 100
+	global.settings["vsync"] = vsync.pressed
 	
 	global.update_settings()
 	

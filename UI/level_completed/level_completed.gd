@@ -1,6 +1,7 @@
 extends Control
 
-const YELLOW := Color8(242, 211, 53) 
+const NORMAL_CURSOR := preload("res://UI/cursors/cursor_normal.png")
+const YELLOW := Color8(242, 211, 53)
 
 onready var header = $area/header/label
 onready var damage = $area/body/damage/Label
@@ -84,6 +85,8 @@ func start():
 		global.level_deaths[lvl] = 0
 	else:
 		global.level_deaths[lvl] += 1
+	
+	Input.set_custom_mouse_cursor(NORMAL_CURSOR, CURSOR_ARROW, Vector2(0, 0))
 
 func _input(_event):
 	if Input.is_action_just_pressed("interact") and visible == true:

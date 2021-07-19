@@ -22,7 +22,7 @@ const yellow = Color8(242, 211, 53)
 const white = Color8(255, 255, 255)
 const MESSAGES = [
 	"idk",
-	"now with big floppa",
+	"big floppa edition",
 	"the least bad game yet!",
 	"less bugs than something something 76!",
 	"worse than school",
@@ -30,7 +30,7 @@ const MESSAGES = [
 	"don't play project epsilon",
 	"downward spiral",
 	"no amogus allowed",
-	"waiting for godot 4.0",
+	"im NOT waiting for godot 4.0",
 	"loading a rocket launcher",
 	"pls enjoy",
 	"helo",
@@ -38,7 +38,6 @@ const MESSAGES = [
 	"a deep polticial statement",
 	"blebsome",
 	"has a little something for everyone",
-	"5/10",
 	"don't play at 4:20 PM",
 	"all lowercase",
 	"now with 50% more bugs",
@@ -58,9 +57,9 @@ const MESSAGES = [
 	"a quircky new earthbound inspired RPG",
 	"straight down to heck",
 	"worst mistake of my life",
+	"proof that software is getting worse",
 ]
 
-# save icon preload
 onready var SAVE_ICON = preload("res://UI/Icons/save.png")
 
 func _ready() -> void:
