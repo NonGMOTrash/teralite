@@ -58,6 +58,7 @@ const MESSAGES = [
 	"straight down to heck",
 	"worst mistake of my life",
 	"proof that software is getting worse",
+	"play project eclise!"
 ]
 
 onready var SAVE_ICON = preload("res://UI/Icons/save.png")

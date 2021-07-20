@@ -78,6 +78,7 @@ func _on_sleep_timer_timeout() -> void:
 	active = false
 	entity.set_physics_process(false)
 	entity.set_process(false)
+	entity.velocity = Vector2.ZERO
 	visible = false
 	for child in entity.get_children():
 		if child.get_name() != "sleeper":
