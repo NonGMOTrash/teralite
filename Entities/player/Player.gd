@@ -12,12 +12,12 @@ export var dash_strength = 300
 export var dash_buffer = 8
 
 var inventory = [
-	null, #slot 0 (right)
-	null, #slot 1 (middle)
-	null, #slot 2 (left)
-	null, #passive 1
-	null, #passive 2
-	null #passive 3
+	null, # slot 0 (right)
+	null, # slot 1 (middle)
+	null, # slot 2 (left)
+	null, # passive 1
+	null, # passive 2
+	null  # passive 3
 ]
 
 var item_name = ""
@@ -77,7 +77,14 @@ func _physics_process(_delta):
 		sprite.flip_h = false
 	else:
 		sprite.flip_h = true
-
+		
+	if get_global_mouse_position().y > global_position.y:
+		if sprite.texture != sprite.front_texture:
+			sprite.texture = sprite.front_texture
+	else:
+		if sprite.texture != sprite.back_texture:
+			sprite.texture = sprite.back_texture
+	
 	if not animation.current_animation == "dash":
 		if input_vector == Vector2.ZERO:
 			animation.play("stand")

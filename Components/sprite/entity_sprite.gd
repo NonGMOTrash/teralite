@@ -9,8 +9,9 @@ enum AFM { # auto flip modes
 export(AFM) var auto_flip_mode = AFM.MOVEMENT
 export var invert_flipping = false
 export(int, -1, 2) var shadow_size = 1
+export(Texture) var back_texture: Texture
 
-var stored_offset
+var original_offset: Vector2
 
 const SHADOW_ONE = preload("res://Components/sprite/shadow0.png")
 const SHADOW_TWO = preload("res://Components/sprite/shadow1.png")
@@ -33,11 +34,13 @@ onready var texture_c_effect = $texture_overlay_c/effects
 
 onready var entity := get_parent() as Entity
 
+onready var front_texture: Texture = texture
+
 func _on_entity_sprite_tree_entered():
 	get_parent().components["entity_sprite"] = self
 
 func _ready():
-	stored_offset = offset
+	original_offset = offset
 	shadow_size = clamp(shadow_size, 1, 3)
 	var shadow_sprite
 	match shadow_size:
@@ -72,52 +75,73 @@ func _ready():
 	stats.connect("health_changed", self, "_on_health_changed")
 
 func _process(_delta):
-	# off
-	if auto_flip_mode == AFM.OFF: 
-		return
-	
-	# target
-	if auto_flip_mode == AFM.TARGET:
-		var brain = entity.components["brain"]
-		if brain != null and brain.targets.size() > 0:
-			var closest_target = brain.get_closest_target()
+	match auto_flip_mode:
+		AFM.OFF:
+			pass
+		
+		AFM.TARGET:
+			var brain: Node2D = entity.components["brain"]
+			if brain != null and brain.targets.size() > 0:
+				var closest_target = brain.get_closest_target()
+				
+				if global_position.direction_to(closest_target.global_position).x > 0:
+					if invert_flipping == true: h_flip()
+					else: h_unflip()
+				elif global_position.direction_to(closest_target.global_position).x < 0:
+					if invert_flipping == true: h_unflip()
+					else: h_flip()
+				
+				if global_position.direction_to(closest_target.global_position).y > 0:
+					if invert_flipping == true: v_flip()
+					else: v_unflip()
+				elif global_position.direction_to(closest_target.global_position).y < 0:
+					if invert_flipping == true: v_unflip()
+					else: v_flip()
+		
+		AFM.MOVEMENT:
+			var input_vector = entity.input_vector
 			
-			if global_position.direction_to(closest_target.global_position).x > 0:
-				if invert_flipping == true: flip()
-				else: unflip()
-			elif global_position.direction_to(closest_target.global_position).x < 0:
-				if invert_flipping == true: unflip()
-				else: flip()
-			return
-	
-	# movement
-	var input_vector = entity.input_vector
-	if input_vector.x > 0:
-		if invert_flipping == true: flip()
-		else: unflip()
-	elif input_vector.x < 0:
-		if invert_flipping == true: unflip()
-		else: flip()
+			if input_vector.x > 0:
+				if invert_flipping == true: h_flip()
+				else: h_unflip()
+			elif input_vector.x < 0:
+				if invert_flipping == true: h_unflip()
+				else: h_flip()
+			
+			if input_vector.y > 0:
+				if invert_flipping == true: v_flip()
+				else: v_unflip()
+			elif input_vector.y < 0:
+				if invert_flipping == true: v_unflip()
+				else: v_flip()
 
-func flip():
+func h_flip():
 	flip_h = true
-	offset = stored_offset * -1
+	offset = original_offset * -1
 
-func unflip():
+func h_unflip():
 	flip_h = false
-	offset = stored_offset
+	offset = original_offset
+
+func v_flip():
+	if texture != back_texture and back_texture != null:
+		texture = back_texture
+
+func v_unflip():
+	if texture != front_texture:
+		texture = front_texture
 
 func animate_overlay():
 	color_a.hframes = hframes
 	color_a.vframes = vframes
 	color_a.flip_h = flip_h
 	color_a.frame = frame
-
+	
 	color_b.hframes = hframes
 	color_b.vframes = vframes
 	color_b.flip_h = flip_h
 	color_b.frame = frame
-
+	
 	color_c.hframes = hframes
 	color_c.vframes = vframes
 	color_c.flip_h = flip_h

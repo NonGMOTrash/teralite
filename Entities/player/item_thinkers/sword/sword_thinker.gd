@@ -60,8 +60,6 @@ func secondary():
 	player_sprite.play_effect("invincibility", 0.625)
 
 func set_counter_window(to: bool):
-	print("set to %s" % to)
-	
 	can_counter = not to
 	player.can_dash = not to
 	player_hurtbox.set_deferred("monitorable", not to)

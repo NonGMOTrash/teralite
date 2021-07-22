@@ -69,9 +69,6 @@ func _physics_process(delta: float): # physics logic
 		velocity = velocity.move_toward(input_vector * TOP_SPEED, ACCELERATION * delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, SLOWDOWN * delta)
-	if truName == "player":
-		#prints(old_velocity, "->", velocity)
-		prints(get_speed())
 	
 	velocity = move_and_slide(velocity)
 

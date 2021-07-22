@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Entities/chaser/brute_chaser/brute chaser.png" type="Texture" id=1]
 [ext_resource path="res://Entities/chaser/chaser.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Components/stats/status_effects/regeneration/regeneration.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/chaser/brute_chaser/brute chaser_back.png" type="Texture" id=4]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -26,6 +27,7 @@ DURATION_TIME = 999.0
 [node name="sprite" parent="." index="1"]
 material = SubResource( 1 )
 texture = ExtResource( 1 )
+back_texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" parent="." index="3"]
 position = Vector2( 0, 5.23597 )
@@ -36,7 +38,7 @@ KNOCKBACK = 140
 [node name="hurtbox" parent="." index="5"]
 position = Vector2( 0, 2.05111 )
 
-[node name="movement_lobe" parent="brain" index="3"]
+[node name="movement_lobe" parent="brain" index="2"]
 general_springs = {
 "friendly": "",
 "hostile": "default_spring",

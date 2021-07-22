@@ -60,7 +60,7 @@ var level_deaths = {}
 var level_times = {}
 
 const ver_phase = "beta"
-const ver_num = 3.3
+const ver_num = 3.4
 const ver_hotfix = 0
 
 # for saving things

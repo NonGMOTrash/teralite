@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Entities/chaser/chaser.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/chaser/ultra_chaser/ultra_chaser.gd" type="Script" id=2]
 [ext_resource path="res://Entities/chaser/ultra_chaser/ultra chaser.png" type="Texture" id=3]
 [ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/chaser/ultra_chaser/ultra chaser_back.png" type="Texture" id=6]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -44,6 +45,7 @@ DAMAGE = 2
 material = SubResource( 1 )
 texture = ExtResource( 3 )
 frame = 0
+back_texture = ExtResource( 6 )
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/dash = SubResource( 2 )
@@ -51,7 +53,7 @@ anims/dash = SubResource( 2 )
 [node name="brain" parent="." index="7"]
 SIGHT_RANGE = 120.0
 
-[node name="movement_lobe" parent="brain" index="3"]
+[node name="movement_lobe" parent="brain" index="2"]
 general_springs = {
 "friendly": "",
 "hostile": "default_spring",

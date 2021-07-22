@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Entities/chaser/gold_chaser/gold chaser.png" type="Texture" id=1]
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/chaser/chaser.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Item_Pickups/gold_heart/gold_heart.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/chaser/gold_chaser/gold chaser_back.png" type="Texture" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -23,6 +24,7 @@ DAMAGE = 3
 [node name="sprite" parent="." index="1"]
 material = SubResource( 1 )
 texture = ExtResource( 1 )
+back_texture = ExtResource( 5 )
 
 [node name="shadow" parent="sprite" index="0"]
 position = Vector2( 0, 1 )
@@ -45,7 +47,7 @@ position = Vector2( 0, -2.05111 )
 [node name="CollisionShape2D" parent="entityPush" index="0"]
 position = Vector2( 0, 2.05111 )
 
-[node name="movement_lobe" parent="brain" index="3"]
+[node name="movement_lobe" parent="brain" index="2"]
 general_springs = {
 "friendly": "",
 "hostile": "default_spring",

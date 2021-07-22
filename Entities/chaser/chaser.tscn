@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Entities/Entity.gd" type="Script" id=1]
 [ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=2]
@@ -8,8 +8,9 @@
 [ext_resource path="res://Components/entity_push/entity_push.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Entities/chaser/chaser.png" type="Texture" id=9]
+[ext_resource path="res://Entities/chaser/chaser_back.png" type="Texture" id=9]
 [ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Entities/chaser/chaser.png" type="Texture" id=11]
 [ext_resource path="res://Entities/damage.wav" type="AudioStream" id=13]
 [ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=15]
@@ -92,9 +93,10 @@ HEALTH = 2
 [node name="sprite" parent="." instance=ExtResource( 3 )]
 material = SubResource( 1 )
 scale = Vector2( 1.03, 0.97 )
-texture = ExtResource( 9 )
+texture = ExtResource( 11 )
 hframes = 2
 frame = 1
+back_texture = ExtResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "speed"

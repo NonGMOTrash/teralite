@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Entities/knight/knight.gd" type="Script" id=1]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Components/brain/movement_lobe/spring/spring.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Components/held_item/held_item.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Entities/Item_Pickups/sword/sword.png" type="Texture" id=19]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -160,7 +162,16 @@ anims/warning = SubResource( 5 )
 [node name="entity_effects" parent="." instance=ExtResource( 10 )]
 death_type = 3
 
+[node name="held_item" parent="." instance=ExtResource( 18 )]
+TARGETING = 1
+
+[node name="sprite" parent="held_item/anchor" index="0"]
+texture = ExtResource( 19 )
+hframes = 1
+frame = 0
+
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 
 [editable path="entityPush"]
 [editable path="hurtbox"]
+[editable path="held_item"]

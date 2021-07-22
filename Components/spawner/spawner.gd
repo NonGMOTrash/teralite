@@ -21,6 +21,7 @@ export(Color) var modulate
 export(int) var random_position_offset = 0
 
 export(Texture) var effect_texture
+export(bool) var effect_inherit_texture := false
 export(int) var effect_hframes = 1
 export(int) var effect_vframes = 1
 export(bool) var effect_inherit_flipping = true
@@ -142,7 +143,7 @@ func spawn():
 				entity.global_position.direction_to(entity.get_global_mouse_position()).angle())
 	
 	if new_thing is Effect:
-		var sprite = new_thing.get_node(new_thing.sprite) as Sprite
+		var sprite: Sprite = new_thing.get_node(new_thing.sprite)
 		
 		if sprite == null:
 			push_error("effect sprite could not be found")
@@ -150,6 +151,8 @@ func spawn():
 		
 		if effect_texture != null:
 			sprite.texture = effect_texture
+		elif effect_inherit_texture == true:
+			sprite.texture = entity.components["entity_sprite"].texture
 	
 		sprite.hframes = effect_hframes
 		sprite.vframes = effect_vframes

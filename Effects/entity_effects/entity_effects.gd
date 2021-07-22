@@ -64,8 +64,8 @@ func _ready():
 		
 		if death_type != DEATHS.HIT_EFFECT:
 			
+			spawner.effect_inherit_texture = true
 			var sprite: Sprite = entity.components["entity_sprite"]
-			spawner.effect_texture = sprite.texture
 			spawner.effect_hframes = sprite.hframes
 			spawner.effect_vframes = sprite.vframes
 			
@@ -93,3 +93,5 @@ func _ready():
 		spawner.spawn_on_hurt = true
 		spawner.thing = HIT_PARTICLES
 		entity.call_deferred("add_child", spawner)
+	
+	queue_free()
