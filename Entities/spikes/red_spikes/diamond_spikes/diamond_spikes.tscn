@@ -87,10 +87,15 @@ TRUE_DAMAGE = 3
 texture = ExtResource( 3 )
 
 [node name="pokey" parent="." index="2"]
+position = Vector2( 0.5, -4 )
 texture = ExtResource( 2 )
 
 [node name="hitbox" parent="." index="3"]
 visible = true
+position = Vector2( 0, -1 )
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+scale = Vector2( 0.8, 0.9 )
 
 [node name="CollisionShape2D" parent="activation" index="0"]
 shape = SubResource( 1 )

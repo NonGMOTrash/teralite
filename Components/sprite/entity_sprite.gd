@@ -75,43 +75,44 @@ func _ready():
 	stats.connect("health_changed", self, "_on_health_changed")
 
 func _process(_delta):
-	match auto_flip_mode:
-		AFM.OFF:
-			pass
+	if auto_flip_mode == AFM.OFF:
+		return
+	
+	var target: Entity
+	if entity.components["brain"] and entity.components["brain"].targets.size() > 0:
+		target = entity.components["brain"].get_closest_target()
+		if entity.truName == "medic":
+			print(entity.components["brain"].get_closest_target().get_name())
+	
+	if auto_flip_mode == AFM.MOVEMENT or target == null:
+		var input_vector: Vector2 = entity.input_vector
 		
-		AFM.TARGET:
-			var brain: Node2D = entity.components["brain"]
-			if brain != null and brain.targets.size() > 0:
-				var closest_target = brain.get_closest_target()
-				
-				if global_position.direction_to(closest_target.global_position).x > 0:
-					if invert_flipping == true: h_flip()
-					else: h_unflip()
-				elif global_position.direction_to(closest_target.global_position).x < 0:
-					if invert_flipping == true: h_unflip()
-					else: h_flip()
-				
-				if global_position.direction_to(closest_target.global_position).y > 0:
-					if invert_flipping == true: v_flip()
-					else: v_unflip()
-				elif global_position.direction_to(closest_target.global_position).y < 0:
-					if invert_flipping == true: v_unflip()
-					else: v_flip()
+		if input_vector.x > 0:
+			if invert_flipping == true: h_flip()
+			else: h_unflip()
+		elif input_vector.x < 0:
+			if invert_flipping == true: h_unflip()
+			else: h_flip()
 		
-		AFM.MOVEMENT:
-			var input_vector = entity.input_vector
-			
-			if input_vector.x > 0:
+		if input_vector.y > 0:
+			if invert_flipping == true: v_flip()
+			else: v_unflip()
+		elif input_vector.y < 0:
+			if invert_flipping == true: v_unflip()
+			else: v_flip()
+	
+	elif auto_flip_mode == AFM.TARGET:
+			if global_position.direction_to(target.global_position).x > 0:
 				if invert_flipping == true: h_flip()
 				else: h_unflip()
-			elif input_vector.x < 0:
+			elif global_position.direction_to(target.global_position).x < 0:
 				if invert_flipping == true: h_unflip()
 				else: h_flip()
 			
-			if input_vector.y > 0:
+			if global_position.direction_to(target.global_position).y > 0:
 				if invert_flipping == true: v_flip()
 				else: v_unflip()
-			elif input_vector.y < 0:
+			elif global_position.direction_to(target.global_position).y < 0:
 				if invert_flipping == true: v_unflip()
 				else: v_flip()
 

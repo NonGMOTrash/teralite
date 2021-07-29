@@ -1,26 +1,30 @@
 extends Attack
 class_name Melee
 
-const BLOCK_SPARK = preload("res://Effects/block_spark/block_spark.tscn")
+const BLOCK_SPARK := preload("res://Effects/block_spark/block_spark.tscn")
 
 export(bool) var HOLDS := false
-export(int, 0, 200) var BOOST = 50
-export(int, 0, 200) var RECOIL = 70
+export(int, 0, 200) var BOOST := 50
+export(int, 0, 200) var RECOIL := 70
 export(bool) var ANIMATION_NEVER_BACKWARDS := false
 export(bool) var HIDE_HELD_ITEM := true
 export(bool) var REVERSE_HELD_ITEM := true
 
-var recoiled = false
+var recoiled := false
 
-onready var animation := $animation as AnimationPlayer
+onready var animation: AnimationPlayer = $animation
+onready var sprite: Sprite = $Sprite
 
-func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
+func setup(new_source := Entity.new(), new_target_pos := Vector2.ZERO):
 	.setup(new_source, new_target_pos)
+	start_pos = SOURCE.global_position + RANGE * DIRECTION
+	visible = false
 
 func _ready():
-	global_position.move_toward(target_pos, abs(RANGE - 6))
+	if SOURCE == null: 
+		SOURCE = get_node_or_null(SOURCE_PATH)
 	
-	if SOURCE == null: SOURCE = get_node_or_null(SOURCE_PATH)
+	_physics_process(float())
 	
 	# boost
 	if get_node_or_null(SOURCE_PATH) != null and SOURCE.is_queued_for_deletion() == false:
@@ -33,15 +37,18 @@ func _ready():
 	# hide held item
 	if held_item != null and HIDE_HELD_ITEM == true:
 		held_item.visible = false
+		held_item.sprite.visible = false
 	
-	if held_item != null and held_item.sprite.flip_v == true and ANIMATION_NEVER_BACKWARDS == false:
+	if held_item != null and held_item.reversed == true and ANIMATION_NEVER_BACKWARDS == false:
 		animation.play_backwards("animation")
+		# \/ back to prevent flicker bug, no idea why the animation doesn't do this
+		sprite.position = Vector2(0, 4)
+		sprite.rotation_degrees = 180
 	else:
 		animation.play("animation")
-
-	_physics_process(0.0)
 	
 	visible = true
+
 
 func _physics_process(_delta):
 	if get_node_or_null(SOURCE_PATH) != null and SOURCE.is_queued_for_deletion() == false:
@@ -108,8 +115,10 @@ func _on_Melee_tree_exiting() -> void:
 				# fixes flashing due to the held_item updating a frame late
 				held_item.sprite.flip_v = not held_item.sprite.flip_v
 				held_item.sprite.offset *= -1
-
+			
 			held_item.visible = true
+			held_item.sprite.visible = true
 
 func _on_animation_animation_finished(anim_name: String) -> void:
 	queue_free()
+

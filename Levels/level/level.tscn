@@ -34,7 +34,7 @@ show_behind_parent = true
 [node name="item_info" parent="CanvasLayer" instance=ExtResource( 7 )]
 
 [node name="stopwatch" parent="CanvasLayer" instance=ExtResource( 13 )]
-margin_bottom = 22.0
+margin_bottom = 24.0
 
 [node name="pause_menu" parent="CanvasLayer" instance=ExtResource( 9 )]
 

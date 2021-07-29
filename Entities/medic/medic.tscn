@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Entities/medic/medic.gd" type="Script" id=1]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=2]
@@ -16,6 +16,9 @@
 [ext_resource path="res://Entities/medic/medic.png" type="Texture" id=14]
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Entities/Item_Pickups/heart/heart.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Entities/medic/medic_back.png" type="Texture" id=17]
+[ext_resource path="res://Entities/Item_Pickups/heart/heart.png" type="Texture" id=18]
+[ext_resource path="res://Components/held_item/held_item.tscn" type="PackedScene" id=19]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -27,6 +30,39 @@ height = 3.1355
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 5.92042
 height = 3.1355
+
+[sub_resource type="Animation" id=4]
+resource_name = "stand"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "walk"
+length = 0.48
+step = 0.12
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.12, 0.24, 0.36 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4 ]
+}
 
 [node name="medic" type="KinematicBody2D"]
 collision_layer = 2
@@ -47,7 +83,13 @@ DAMAGE = -1
 [node name="entity_sprite" parent="." instance=ExtResource( 2 )]
 material = SubResource( 1 )
 texture = ExtResource( 14 )
+hframes = 5
+frame = 4
 auto_flip_mode = 2
+back_texture = ExtResource( 17 )
+
+[node name="shadow" parent="entity_sprite" index="0"]
+position = Vector2( 0, 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -135,8 +177,22 @@ standby_mode = true
 thing = ExtResource( 16 )
 entity_inherit_velocity = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/stand = SubResource( 4 )
+anims/walk = SubResource( 5 )
+
+[node name="held_item" parent="." instance=ExtResource( 19 )]
+TARGETING = 1
+
+[node name="sprite" parent="held_item/anchor" index="0"]
+texture = ExtResource( 18 )
+hframes = 1
+frame = 0
+
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 
+[editable path="entity_sprite"]
 [editable path="entity_push"]
 [editable path="hurtbox"]
 [editable path="brain"]
+[editable path="held_item"]

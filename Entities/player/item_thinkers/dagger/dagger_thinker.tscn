@@ -47,6 +47,7 @@ color_ramp = SubResource( 5 )
 [node name="dagger_thinker" type="Node"]
 script = ExtResource( 1 )
 HELD_ITEM_TEXTURE = ExtResource( 2 )
+HELD_ITEM_OFFSET = Vector2( 0, -2 )
 HELD_ITEM_ANCHOR = Vector2( 6, 0 )
 my_item = "dagger"
 display_name = "Dagger"

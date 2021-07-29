@@ -80,8 +80,7 @@ HIT_SOUND = ExtResource( 5 )
 KILL_SOUND = ExtResource( 5 )
 BLOCKED_SOUND = ExtResource( 2 )
 COLLIDE_SOUND = ExtResource( 3 )
-DEATH_SOUND = ExtResource( 3 )
-BOOST = 40
+BOOST = 30
 RECOIL = 20
 
 [node name="stats" parent="." index="0"]
@@ -101,7 +100,6 @@ position = Vector2( -4, 7 )
 iTime = 0.25
 STATUS_EFFECT = "bleed"
 STATUS_DURATION = 2.0
-TEAM_ATTACK = false
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 position = Vector2( 2, 0 )

@@ -208,22 +208,31 @@ func reload():
 	if RELOAD_ANIM != "":
 		player.components["held_item"].animation.play(RELOAD_ANIM)
 
-func quick_spawn(attack:String, deferred:=true) -> void:
-	var new_attack = res.aquire_attack(attack)#.instance()
+func quick_spawn(attack: String, deferred := true) -> void:
+	var new_attack := res.aquire_attack(attack)
 	new_attack.setup(player, player.get_global_mouse_position())
+	
 	if deferred == true:
 		refs.ysort.get_ref().call_deferred("add_child", new_attack)
 	else:
 		refs.ysort.get_ref().add_child(new_attack)
 
+
 func _update_held_item():
+	
 	if HELD_ITEM_TEXTURE == null:
 		push_error("HELD_ITEM_TEXTURE is null")
 		HELD_ITEM_TEXTURE = load("res://Misc/generic.png")
 	
-	player.components["held_item"].sprite.texture = HELD_ITEM_TEXTURE
-	player.components["held_item"].sprite.rotation_degrees = HELD_ITEM_ROTATION
-	player.components["held_item"].anchor.position = HELD_ITEM_ANCHOR
+	var held_item: Node2D = player.components["held_item"]
+	held_item.sprite.texture = HELD_ITEM_TEXTURE
+	held_item.sprite.rotation_degrees = HELD_ITEM_ROTATION
+	held_item.original_offset = HELD_ITEM_OFFSET
+	if held_item.sprite.flip_v == false:
+		held_item.sprite.offset = HELD_ITEM_OFFSET
+	else:
+		held_item.sprite.offset = -HELD_ITEM_OFFSET
+	held_item.anchor.position = HELD_ITEM_ANCHOR
 
 func _update_cursor_on_unpause():
 	if player.inventory[global.selection] == my_item.to_lower():

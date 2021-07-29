@@ -21,7 +21,7 @@ HEALTH = 4
 DAMAGE = 2
 
 [node name="regeneration" parent="stats" index="0" instance=ExtResource( 3 )]
-level = 0.4
+level = 0.25
 DURATION_TIME = 999.0
 
 [node name="sprite" parent="." index="1"]

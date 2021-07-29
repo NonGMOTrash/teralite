@@ -137,10 +137,10 @@ MEMORY_TIME = 2.0
 visible = false
 
 [node name="health_bar" parent="." instance=ExtResource( 11 )]
-margin_left = -10.375
-margin_top = -13.75
-margin_right = 10.625
-margin_bottom = -9.74826
+margin_left = -10.5256
+margin_top = -10.8466
+margin_right = 10.4744
+margin_bottom = -6.84664
 
 [node name="entity_effects" parent="." instance=ExtResource( 12 )]
 death_type = 5

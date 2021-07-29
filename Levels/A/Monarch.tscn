@@ -19,7 +19,7 @@ tile_data = PoolIntArray( 1769539, 11, 0, 2097200, 18, 0, 2424885, 22, 0, 242489
 [node name="king" parent="YSort" index="2" instance=ExtResource( 2 )]
 position = Vector2( 456, 304 )
 
-[node name="death_spawn5" parent="YSort/king" index="13" instance=ExtResource( 3 )]
+[node name="death_spawn5" parent="YSort/king" index="12" instance=ExtResource( 3 )]
 thing = ExtResource( 4 )
 
 [node name="world_tiles" parent="YSort" index="3"]

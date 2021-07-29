@@ -143,7 +143,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 4.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0, 5 ]
+"values": [ 0, 6 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:scale")

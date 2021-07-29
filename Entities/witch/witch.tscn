@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Entities/witch/witch.gd" type="Script" id=1]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=2]
@@ -14,6 +14,9 @@
 [ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Entities/witch/witch.png" type="Texture" id=14]
+[ext_resource path="res://Entities/witch/witch_back.png" type="Texture" id=15]
+[ext_resource path="res://Entities/Item_Pickups/blow_gun/blow_gun.png" type="Texture" id=16]
+[ext_resource path="res://Components/held_item/held_item.tscn" type="PackedScene" id=17]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -25,33 +28,36 @@ radius = 6.97983
 radius = 8.97593
 
 [sub_resource type="Animation" id=4]
-resource_name = "attack"
-length = 0.2
+resource_name = "stand"
+length = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("entity_sprite:scale")
+tracks/0/path = NodePath("entity_sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 0.25, 4, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.15, 1.15 ), Vector2( 1, 1 ) ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.2 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "attack"
-} ]
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "walk"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 0 ]
 }
 
 [node name="witch" type="KinematicBody2D"]
@@ -63,14 +69,17 @@ TOP_SPEED = 50
 FORCE_MULT = 1.1
 truName = "witch"
 faction = "blue_kingdom"
-attack_cooldown = 1.75
+attack_cooldown = 1.3
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
 
 [node name="entity_sprite" parent="." instance=ExtResource( 4 )]
 material = SubResource( 1 )
 texture = ExtResource( 14 )
+hframes = 4
+frame = 1
 auto_flip_mode = 2
+back_texture = ExtResource( 15 )
 
 [node name="shadow" parent="entity_sprite" index="0"]
 position = Vector2( 0, 1 )
@@ -87,11 +96,13 @@ visible = false
 shape = SubResource( 2 )
 
 [node name="hurtbox" parent="." instance=ExtResource( 7 )]
+visible = false
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 shape = SubResource( 3 )
 
 [node name="sleeper" parent="." instance=ExtResource( 5 )]
+visible = false
 
 [node name="attack_cooldown" type="Timer" parent="."]
 
@@ -135,10 +146,20 @@ hit_effect = false
 death_type = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 4 )
+anims/stand = SubResource( 4 )
+anims/walk = SubResource( 5 )
+
+[node name="held_item" parent="." instance=ExtResource( 17 )]
+TARGETING = 1
+
+[node name="sprite" parent="held_item/anchor" index="0"]
+texture = ExtResource( 16 )
+hframes = 1
+frame = 0
 
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 
 [editable path="entity_sprite"]
 [editable path="entity_push"]
 [editable path="hurtbox"]
+[editable path="held_item"]

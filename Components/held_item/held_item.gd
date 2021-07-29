@@ -41,38 +41,36 @@ func _ready():
 	else:
 		if not entity is Node2D:
 			source = self
-			push_warning("held_item could not be bound to parent because it's not 2D")
+			push_error("held_item could not be bound to parent because parent isn't 2D")
+			OS.alert("held_item could not be bound to parent because parent isn't 2D","error")
 		else:
 			source = entity
-			if TARGETING == TT.INPUT_VECTOR or TARGETING == TT.BRAIN_TARGET and not source is Entity:
-				push_error("held_item could not be bound to parent because it's not an Entity")
-				source = self
+			if TARGETING == TT.INPUT_VECTOR or TARGETING == TT.BRAIN_TARGET and not entity is Entity:
+				push_error("held_item could not be bound to source because it's not an KinematicBody2D")
+				OS.alert("held_item could not be source bound because source is not KinematicBody2D", "error")
 			elif TARGETING == TT.BRAIN_TARGET and source.components["brain"] == null:
-				push_error("held_item could not be bound to parent because it has no brain")
-				source = self
+				push_error("held_item could not be bound to source because they have no brain")
+				OS.alert("held_item could not be bound to source because they have no brain", "error")
 
-func _physics_process(delta):
+func _physics_process(_delta: float) -> void:
 	if TARGETING != TT.MANUAL and visible == true:
-	
-		if TARGETING == TT.INPUT_VECTOR:
-			target_pos = source.global_position + source.input_vector * 10
+		if TARGETING == TT.CURSOR:
+			target_pos = get_global_mouse_position()
+		
+		elif TARGETING == TT.INPUT_VECTOR or source.components["brain"].targets.size() == 0:
+			if source.input_vector != Vector2.ZERO:
+				target_pos = source.global_position + source.input_vector * 10
 		
 		elif TARGETING == TT.BRAIN_TARGET:
 			if TARGETING == TT.BRAIN_TARGET and entity.components["brain"] == null:
-				push_error("can't use BRAIN_TARGET targetting because brain couldn't be found, switching to INPUT_VECTOR")
+				push_error("can't use BRAIN_TARGET without a brain, switching to INPUT_VECTOR")
 				TARGETING = TT.INPUT_VECTOR
 			else:
-				if entity.components["brain"].targets.size() != 0:
-					var closet_target = entity.components["brain"].get_closest_target()
-					if closet_target is Entity:
-						target_pos = closet_target.global_position
-					else:
-						emit_signal("cant_rotate")
+				var closet_target = entity.components["brain"].get_closest_target()
+				if closet_target is Entity:
+					target_pos = closet_target.global_position
 				else:
 					emit_signal("cant_rotate")
-		
-		elif TARGETING == TT.CURSOR:
-			target_pos = get_global_mouse_position()
 	
 	rotation_degrees = rad2deg(global_position.direction_to(target_pos).angle())
 	

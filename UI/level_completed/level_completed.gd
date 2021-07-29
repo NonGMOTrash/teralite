@@ -21,6 +21,9 @@ func _ready():
 	refs.level_completion = weakref(self)
 
 func start():
+	if level_completed == true:
+		return
+	
 	$AnimationPlayer.play("animation")
 	visible = true
 	level_completed = true

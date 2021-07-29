@@ -3,9 +3,16 @@ extends Entity
 export(float, 0.0, 1000.0) var throw_strength := 150.0
 
 onready var stats = $stats
+onready var animation := $AnimationPlayer
 
 func _init():
 	res.allocate("heart")
+
+func _physics_process(delta: float) -> void:
+	if input_vector == Vector2.ZERO:
+		animation.play("stand")
+	else:
+		animation.play("walk")
 
 func _on_action_lobe_action(action, target) -> void:
 	if target.components["stats"].HEALTH == target.components["stats"].MAX_HEALTH:

@@ -23,7 +23,7 @@
         text-decoration: underline;
       }
 
-      code {
+      .code {
         font-size: 14px;
         color: lightgray;
       }
@@ -246,6 +246,7 @@
         <li>discord: <strong>NonGMOTrash#9437</strong></li>
         <li>email: <strong>nongmotrash@gmail.com</strong></li>
         <li>github: <a href="https://github.com/NonGMOTrash">https://github.com/NonGMOTrash</a></li>
+		<li>newgrounds: <a href="https://nongmotrash.newgrounds.com">https://nongmotrash.newgrounds.com</a></li>
       </ul>
 
       <hr class="minor">
@@ -281,7 +282,7 @@
           AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
           LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
           OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-          SOFTWARE.
+		SOFTWARE.
         </pre>
       </code>
       <p>addtionally,</p>
@@ -408,7 +409,7 @@
           thrown_spear_collide: &quot;Sharp wooden post, stake, dig into soil, ground 4&quot; by ZapSplat ( <a href="https://www.zapsplat.com/music/sharp-wooden-post-stake-dig-into-soil-ground-4/">zapslat.com link</a> ) licensed under
           ZapSplat standard license
         </li>
-        
+
         <li>
           thrown_spear_blocked: &quot;Axe swing, hit body against wood, metal clang, impact squelch 3&quot; by ZapSplat (
           <a href="https://www.zapsplat.com/music/axe-swing-hit-body-against-wood-metal-clang-impact-squelch-3/">zapslat.com link</a>) licensed under ZapSplat standard license
@@ -480,7 +481,7 @@
 
         <li>blow_dart_shoot: &quot;Blowpipe&quot; by loudernoises (<a href="https://freesound.org/people/loudernoises/sounds/334168/">freesound.org link</a>) licensed under CC0</li>
 
-        <li>blow_dart_collide: &quot;Dart strikes dartboard 5&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/dart-strikes-dartboard-5/">h</a>) licensed under ZapSplat standard license</li>
+        <li>blow_dart_collide: &quot;Dart strikes dartboard 5&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/dart-strikes-dartboard-5/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
 
         <li>blow_dart_hit: &quot;Blood Impact&quot; by EminYILDIRIM (<a href="https://freesound.org/people/EminYILDIRIM/sounds/554284/">freesound.org link</a>) licensed under CC BY 3.0</li>
 
@@ -521,17 +522,31 @@
         </pre>
       </code>
 
-      <p>github repo is here: <em>(private until full release)</em></p>
+	  <p>
+		i didn't include a copy of the GNU license because im a bad person (just look it up)<br>
+		also if you wanna gaze upon the horrible abominaton that is teralite's source code, the github repo is here: <em>(private until full release)</em>
+	  </p>
 
       <hr class="major">
       <h1 id="patchnotes">patchnotes</h1>
       <hr class="minor">
-      
+
 	  <h3 id="beta-3-4">beta 3.4 (7/2X/2021)</h3>
       <ul>
-        <li>graphics overhaul: every sprite and tile has been touched up or redone + new animations and back facing sprites</li>
+        <li>graphics overhaul: every sprite and tile has been touched up or redone</li>
+		<ul>
+			<li>actual walking animations for many enemies</li>
+			<li>back facing versions of sprites</li>
+			<li>enemies now have held items like the player</li>
+			<li>64 color pallete (up from 32)</li>
+			<li>better spritework probably lol</li>
+		</ul>
+		<li>fixed level completion screen showing weird stuff</li>
+		<li>held melee items now rotate around the handle</li>
+		<li>fixed sword flicker that happened every second swing</li>
+		<li>archers and arrow turrets shoot faster and further</li>
       </ul>
-	  
+
       <h3 id="beta-3-3">beta 3.3 (7/19/2021)</h3>
       <ul>
         <li>fixed enemies spontaneously giving up on life</li>
@@ -762,7 +777,7 @@
         <li>a big behind the scenes improvement (singular)</li>
       </ul>
 
-      <h3 id="beta-2-5">beta 2.5 (1/30/2020)</h3>
+      <h3 id="beta-2-5">beta 2.5 (12/30/2020)</h3>
       <ul>
         <li>entities can now kill their target without crashing the game (this also fixed all known crashes previously in the game)</li>
         <li>added entity pathfinding</li>
@@ -929,18 +944,18 @@
       <hr class="minor">
 
       <h3 id="version-numbering">how the version numbering works</h3>
-      <p>i don&#39;t use semantic versioning because i suck</p>
+      <p>i don&#39;t use semantic versioning because im just too cool for that</p>
       <p>instead, its:</p>
 
       <p><em>Phase</em> <strong>content</strong>.<strong>patch</strong> <em>Hotfix</em></p>
 
       <p>
-        <em>Phase</em> is Alpha or Beta. if the version is after the official release, <em>Phase</em> is ommited<br />
-        <strong>content</strong> is only incremented for big content updates (although it starts at 1)<br />
-        <strong>patch</strong> is incremented for minor polish updates<br />
+        <em>Phase</em> is Alpha or Beta. if the version is after the official release, <em>Phase</em> is ommited<br>
+        <strong>content</strong> is only incremented for big content updates (although it starts at 1)<br>
+        <strong>patch</strong> is incremented for minor polish updates<br>
         <em>Hotfix</em> isn&#39;t displayed unless there&#39;s a hotfix for that version. if there&#39;s multiple hotfixes for a version, a counter is added (i.e. Hotfix #2)
       </p>
     </div>
-    
+
   </body>
 </html>

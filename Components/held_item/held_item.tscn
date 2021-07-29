@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Components/held_item/held_item.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Item_Pickups/bow/bow_charging.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "bow_charge"
+length = 1.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("anchor/sprite:texture")
 tracks/0/interp = 1
@@ -84,6 +85,22 @@ tracks/1/keys = {
 "values": [ 0.0, -50.0, 90.0, 50.0, 0.0 ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "warn"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("anchor/sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 0.5, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
+}
+
 [node name="held_item" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -100,6 +117,7 @@ frame = 2
 anims/bow_charge = SubResource( 1 )
 anims/spin = SubResource( 2 )
 anims/test_slash = SubResource( 3 )
+anims/warn = SubResource( 4 )
 
 [connection signal="tree_entered" from="." to="." method="_on_held_item_tree_entered"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]

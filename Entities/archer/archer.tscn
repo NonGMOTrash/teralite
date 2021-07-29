@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Entities/archer/archer.gd" type="Script" id=1]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Entities/archer/archer_back.png" type="Texture" id=18]
+[ext_resource path="res://Components/held_item/held_item.tscn" type="PackedScene" id=19]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -29,34 +31,48 @@ height = 2.46986
 radius = 7.07107
 
 [sub_resource type="Animation" id=4]
-resource_name = "attack"
-length = 0.6
-step = 0.05
+resource_name = "stand"
+length = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:scale")
+tracks/0/path = NodePath("sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6 ),
-"transitions": PoolRealArray( 1, 2, 1, 2, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.25, 1.25 ), Vector2( 1, 1 ), Vector2( 1.25, 1.25 ), Vector2( 1, 1 ) ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
 }
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.6 ),
+"times": PoolRealArray( 0.05 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "attack"
-} ]
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_local_to_scene = true
+resource_name = "walk"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
 }
 
 [node name="archer" type="KinematicBody2D"]
@@ -66,7 +82,8 @@ ACCELERATION = 200
 truName = "archer"
 faction = "blue_kingdom"
 PROJECTILE = ExtResource( 6 )
-attack_cooldown_time = 1.2
+warn_animation = "bow_charge"
+warn_times = 1
 
 [node name="stats" parent="." instance=ExtResource( 9 )]
 MAX_HEALTH = 2
@@ -76,11 +93,10 @@ DAMAGE = 2
 [node name="sprite" parent="." instance=ExtResource( 2 )]
 material = SubResource( 1 )
 texture = ExtResource( 3 )
-offset = Vector2( 2, 0 )
+hframes = 4
+frame = 3
 auto_flip_mode = 2
-
-[node name="shadow" parent="sprite" index="0"]
-position = Vector2( 0, 2 )
+back_texture = ExtResource( 18 )
 
 [node name="entityPush" parent="." instance=ExtResource( 12 )]
 visible = false
@@ -103,11 +119,6 @@ visible = false
 position = Vector2( 7.15256e-07, 0.5 )
 scale = Vector2( 0.7, 0.95 )
 
-[node name="attack_cooldown" type="Timer" parent="."]
-wait_time = 1.7
-one_shot = true
-autostart = true
-
 [node name="health_bar" parent="." instance=ExtResource( 10 )]
 margin_left = -10.2425
 margin_top = -13.2035
@@ -129,7 +140,7 @@ general_springs = {
 }
 
 [node name="space" parent="brain/movement_lobe" instance=ExtResource( 14 )]
-DISTANCE = 45
+DISTANCE = 60
 
 [node name="follow" parent="brain/movement_lobe" instance=ExtResource( 14 )]
 DEADZONE = 32
@@ -140,18 +151,17 @@ MEMORY_TIME = 6.5
 
 [node name="action_lobe" parent="brain" instance=ExtResource( 13 )]
 PATIENCE = 0.55
-ACTION_WEIGHTING = 0.0
-ACTION_DEWEIGHTING = 0.0
 
 [node name="action" parent="brain/action_lobe" instance=ExtResource( 16 )]
 best_distance = 50
 distance_weight = 4
 health_weight = 1
-COOLDOWN = 1.0
+COOLDOWN = 1.45
 GLOBAL_COOLDOWN = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 4 )
+anims/stand = SubResource( 4 )
+anims/walk = SubResource( 5 )
 
 [node name="foot_stepper" parent="." instance=ExtResource( 17 )]
 
@@ -159,8 +169,13 @@ anims/attack = SubResource( 4 )
 death_type = 3
 block_effect = false
 
+[node name="held_item" parent="." instance=ExtResource( 19 )]
+TARGETING = 1
+DEFAULT_HFRAMES = 3
+
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 
 [editable path="sprite"]
 [editable path="entityPush"]
 [editable path="hurtbox"]
+[editable path="held_item"]

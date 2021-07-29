@@ -4,7 +4,6 @@
 [ext_resource path="res://UI/item_bar/item_bar.gd" type="Script" id=2]
 
 [node name="item_bar" type="Control"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 3.57497
@@ -23,44 +22,40 @@ margin_left = -52.0
 margin_top = -40.0
 margin_right = 52.0
 texture = ExtResource( 1 )
+stretch_mode = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="left_icon" type="TextureRect" parent="bar"]
-margin_left = 8.0
-margin_top = 8.0
 margin_right = 32.0
 margin_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_clip_content = true
-expand = true
-stretch_mode = 3
+stretch_mode = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="mid_icon" type="TextureRect" parent="bar"]
-anchor_left = 0.347
-anchor_right = 0.347
-margin_left = 6.0
-margin_top = 8.0
-stretch_mode = 3
+anchor_left = 0.33
+anchor_right = 0.33
+margin_right = 32.0
+margin_bottom = 32.0
+stretch_mode = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="right_icon" type="TextureRect" parent="bar"]
-anchor_left = 0.646
-anchor_right = 0.646
-margin_left = 9.0
-margin_top = 8.0
-margin_right = 33.0
+anchor_left = 0.65
+anchor_right = 0.65
+margin_right = 32.0
 margin_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-stretch_mode = 3
+stretch_mode = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }

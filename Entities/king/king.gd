@@ -28,7 +28,7 @@ func _physics_process(delta):
 
 func summon():
 	for _i in range(0, 3):
-		var guard
+		var guard: Entity
 		
 		match stored_input:
 			"knight": guard = KNIGHT.instance()
@@ -37,8 +37,9 @@ func summon():
 		
 		guard.marked_enemies = marked_enemies
 		get_parent().call_deferred("add_child", guard)
+		yield(guard, "ready")
 		guard.global_position = global_position #+ Vector2(rand_range(-16, 16), rand_range(-16, 16))
-		guard.velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() * 90
+		guard.apply_force(Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() * 90)
 	
 	cooldown.start()
 

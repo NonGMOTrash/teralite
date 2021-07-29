@@ -9,7 +9,7 @@ var target_pos = Vector2.ZERO
 var DIRECTION = Vector2.ZERO
 
 export var auto_setup = true
-export var auto_rotate = false
+export var auto_rotate = true
 export var death_free = false
 export(AudioStream) var SPAWN_SOUND
 export(AudioStream) var HIT_SOUND
@@ -18,12 +18,12 @@ export(AudioStream) var BLOCKED_SOUND
 export(AudioStream) var COLLIDE_SOUND
 export(AudioStream) var KILLED_SOUND
 
-var SOURCE = null
-var SOURCE_PATH = "string"
+var SOURCE: Entity
+var SOURCE_PATH: NodePath
 
-onready var hitbox = $hitbox
-onready var collision = $collision
-onready var stats = $stats
+onready var hitbox: Area2D = $hitbox
+onready var collision: Area2D = $collision
+onready var stats: Node = $stats
 onready var sound = $sound
 
 func _init():
@@ -37,9 +37,7 @@ func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	DIRECTION = start_pos.direction_to(target_pos).normalized()
 	SOURCE_PATH = SOURCE.get_path()
 
-func _ready(): 
-	# PROBLEM_NOTE I think i could make this a tree_entered (which triggers before ready), put setup() in it,
-	# and be able to avoid calling the setup function when new things are added
+func _ready():
 	global_position = start_pos
 	global_position.move_toward(target_pos, 6)
 	
@@ -50,9 +48,9 @@ func _ready():
 		BLOCKED_SOUND == null and
 		COLLIDE_SOUND == null and
 		KILLED_SOUND == null
-		):
-			sound.queue_free()
-			components["sound_player"] = null
+	):
+		sound.queue_free()
+		components["sound_player"] = null
 	elif SPAWN_SOUND != null:
 		var sfx = Sound.new()
 		sfx.name = truName+"_spawn"
@@ -62,12 +60,16 @@ func _ready():
 		#if HIT_SOUND != null or KILL_SOUND != null  or BLOCKED_SOUND != null:
 		#	hitbox.connect("hit", self, "hitbox_hit")
 	
-	if auto_rotate == true: rotation += get_angle_to(target_pos)
-	visible = true
+	if auto_rotate == true:
+		look_at(target_pos)
+	
+	if not "recoiled" in self: # check if im a Melee
+		visible = true
 
 func _on_collision_body_entered(body: Node) -> void:
-	if visible == false: 
+	if visible == false:
 		return
+	
 	if body.get_name() == "world_tiles":
 		if COLLIDE_SOUND != null:
 			var sfx = Sound.new()
@@ -86,7 +88,7 @@ func _on_hitbox_hit(area, type) -> void:
 	if HIT_SOUND == null and BLOCKED_SOUND == null and KILL_SOUND == null:
 		return
 	
-	var sfx = Sound.new()
+	var sfx := Sound.new()
 	
 	match type:
 		"hurt":
