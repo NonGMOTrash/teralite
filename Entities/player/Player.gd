@@ -2,11 +2,11 @@ extends Entity
 
 const CURSOR_EMPTY = preload("res://UI/cursors/cursor_empty.png")
 
-export(PackedScene) var dust_particles
+export(PackedScene) var dash_effect
 export(PackedScene) var player_death
 
 var damage_taken = 0
-var death_message: String = ";-;"
+var death_message: String = "death message missing :("
 
 export var dash_strength = 300
 export var dash_buffer = 8
@@ -67,10 +67,10 @@ func _ready():
 	
 	# prevents lag spike when you first dash
 	yield(get_tree().current_scene, "ready")
-	var particles: Particles2D = dust_particles.instance()
-	refs.ysort.get_ref().call_deferred("add_child", particles)
-	yield(particles, "ready")
-	particles.global_position = Vector2(-999, -999)
+	var effect: Effect = dash_effect.instance()
+	refs.ysort.get_ref().call_deferred("add_child", effect)
+	yield(effect, "ready")
+	effect.global_position = Vector2(-999, -999)
 
 func _physics_process(_delta):
 	if get_global_mouse_position().x > global_position.x:
@@ -103,11 +103,11 @@ func dash(direction: Vector2 = input_vector) -> void:
 		dash_cooldown.start()
 
 		# particle effect
-		var particles = dust_particles.instance()
-		particles.rotation_degrees = rad2deg(direction.angle())
-		refs.ysort.get_ref().call_deferred("add_child", particles)
-		yield(particles, "ready")
-		particles.global_position = global_position
+		var effect = dash_effect.instance()
+		effect.rotation_degrees = rad2deg(direction.angle())
+		refs.ysort.get_ref().call_deferred("add_child", effect)
+		yield(effect, "ready")
+		effect.global_position = global_position + Vector2(0, 6)
 
 	buffered_dash = Vector2.ZERO
 

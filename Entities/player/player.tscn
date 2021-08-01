@@ -16,7 +16,7 @@
 [ext_resource path="res://Entities/player/player_death/player_death.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Entities/player/player_back.png" type="Texture" id=15]
 [ext_resource path="res://Components/held_item/held_item.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Effects/Particles/dust_particles.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Effects/dash_effect/dash_effect.tscn" type="PackedScene" id=17]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -176,7 +176,7 @@ script = ExtResource( 2 )
 ACCELERATION = 600
 truName = "player"
 faction = "player"
-dust_particles = ExtResource( 17 )
+dash_effect = ExtResource( 17 )
 player_death = ExtResource( 14 )
 dash_strength = 170
 

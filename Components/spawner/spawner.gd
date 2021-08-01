@@ -18,6 +18,7 @@ export(int, 1, 99) var spawns := 1
 
 export var use_modulate = false
 export(Color) var modulate
+export(Vector2) var position_offset := Vector2.ZERO
 export(int) var random_position_offset = 0
 
 export(Texture) var effect_texture
@@ -120,7 +121,7 @@ func spawn():
 	new_thing.global_position = entity.global_position + Vector2(
 			rand_range(-random_position_offset, random_position_offset), 
 			rand_range(-random_position_offset, random_position_offset)
-	)
+	) + position_offset
 	
 	if new_thing is Particles2D and "max_lifetime" in new_thing:
 		new_thing.one_shot = particle_one_shot

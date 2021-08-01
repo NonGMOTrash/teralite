@@ -56,8 +56,7 @@ shape = SubResource( 4 )
 
 [node name="death_spawn" parent="." instance=ExtResource( 6 )]
 thing = ExtResource( 9 )
-effect_hframes = 3
-effect_vframes = 3
+effect_hframes = 5
 
 [node name="sleeper" parent="." instance=ExtResource( 7 )]
 visible = false

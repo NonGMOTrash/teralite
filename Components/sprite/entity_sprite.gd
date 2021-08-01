@@ -78,11 +78,7 @@ func _process(_delta):
 	if auto_flip_mode == AFM.OFF:
 		return
 	
-	var target: Entity
-	if entity.components["brain"] and entity.components["brain"].targets.size() > 0:
-		target = entity.components["brain"].get_closest_target()
-		if entity.truName == "medic":
-			print(entity.components["brain"].get_closest_target().get_name())
+	var target: Entity = entity.components["brain"].get_closest_target()
 	
 	if auto_flip_mode == AFM.MOVEMENT or target == null:
 		var input_vector: Vector2 = entity.input_vector

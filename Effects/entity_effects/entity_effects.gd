@@ -40,8 +40,8 @@ func _ready():
 		spawner.thing = HIT_EFFECT
 		spawner.spawn_on_free = false
 		spawner.spawn_on_hurt = true
-		spawner.effect_hframes = 3
-		spawner.effect_vframes = 3
+		spawner.effect_hframes = 5
+		spawner.effect_vframes = 1
 		entity.call_deferred("add_child", spawner)
 	
 	if death_effect == true:
@@ -50,8 +50,8 @@ func _ready():
 		match death_type:
 			DEATHS.HIT_EFFECT: 
 				spawner.thing = HIT_EFFECT
-				spawner.effect_hframes = 3
-				spawner.effect_vframes = 3
+				spawner.effect_hframes = 5
+				spawner.effect_vframes = 1
 			DEATHS.DISSOVE_FADE: spawner.thing = DISSOLVE_FADE
 			DEATHS.FLIP_FADE: spawner.thing = FLIP_FADE
 			DEATHS.LEFT_FADE: spawner.thing = LEFT_FADE
@@ -84,8 +84,8 @@ func _ready():
 		spawner.spawn_on_block = true
 		spawner.thing = BLOCK_SPARK
 		spawner.rotation_mode = spawner.ROTATIONS.TOWARD_HITBOX
-		spawner.effect_hframes = 2
-		spawner.effect_vframes = 2
+		spawner.effect_hframes = 4
+		spawner.effect_vframes = 1
 		entity.call_deferred("add_child", spawner)
 	
 	if impact_particles == true:

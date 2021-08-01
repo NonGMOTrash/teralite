@@ -96,9 +96,9 @@ func _ready():
 #				draw_multiline(path, Color.yellow, 1, false)
 #				draw_circle(path[0], 1.5, Color.yellow)
 
-func get_closest_target(exclude_self:=true):
+func get_closest_target(exclude_self:=true) -> Entity:
 	# PROBLEM_NOTE: make \/ this string more simple so it's easier to check for it (probably just use null or "")
-	var target = "no target found from get_closest_target()"
+	var target: Entity
 	var dist = 999
 	for i in targets.size():
 		if get_node_or_null(target_paths[i]) != null:

@@ -78,3 +78,5 @@ position = Vector2( 200, 680 )
 
 [node name="death_spawn" parent="YSort/Crate" index="4" instance=ExtResource( 1 )]
 thing = ExtResource( 5 )
+
+[editable path="YSort/world_tiles"]

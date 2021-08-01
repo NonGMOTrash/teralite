@@ -5,7 +5,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "animation"
-length = 0.25
+length = 0.2
 step = 0.025
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -26,8 +26,7 @@ tracks/0/keys = {
 position = Vector2( -6, 0 )
 rotation = 3.14159
 texture = ExtResource( 2 )
-vframes = 2
-hframes = 2
+hframes = 4
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "animation"

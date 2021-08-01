@@ -25,7 +25,7 @@ func attack(finished_animation):
 	
 	var closest_target = brain.get_closest_target()
 	var target_pos = Vector2.ZERO
-	if not closest_target is String:
+	if closest_target != null:
 		target_pos = closest_target.global_position
 	
 	var melee := MELEE.instance() as Melee

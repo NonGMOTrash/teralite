@@ -5,40 +5,28 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "animation"
-length = 0.3
-step = 0.05
+length = 0.05
+step = 0.0166667
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath("..:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("..:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
+"times": PoolRealArray( 0, 0.05 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
 
 [node name="muzzle_flash" instance=ExtResource( 1 )]
+visible = false
 
 [node name="Sprite" parent="." index="0"]
 self_modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 24, 0 )
 texture = ExtResource( 2 )
-hframes = 5
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "animation"

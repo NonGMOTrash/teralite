@@ -11,9 +11,11 @@
 [ext_resource path="res://Entities/player/item_thinkers/dagger/dagger_dash_hit.wav" type="AudioStream" id=9]
 
 [sub_resource type="Curve" id=1]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+max_value = 3.0
+_data = [ Vector2( 0, 3 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=2]
+width = 1992
 curve = SubResource( 1 )
 
 [sub_resource type="ParticlesMaterial" id=3]
@@ -28,6 +30,7 @@ orbit_velocity_random = 0.0
 linear_accel = -2.0
 angle_random = 1.0
 scale_curve = SubResource( 2 )
+color = Color( 1, 1, 1, 0.588235 )
 
 [sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0.00724638, 1 )
@@ -83,6 +86,7 @@ explosiveness = 1.0
 process_material = SubResource( 3 )
 
 [node name="after_image" type="Particles2D" parent="."]
+z_index = 200
 emitting = false
 amount = 1
 lifetime = 0.5

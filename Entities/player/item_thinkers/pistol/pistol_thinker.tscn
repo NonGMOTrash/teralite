@@ -42,7 +42,7 @@ standby_mode = true
 thing = ExtResource( 9 )
 spawn_on_free = false
 rotation_mode = 1
-effect_hframes = 5
+position_offset = Vector2( 0, -2 )
 effect_inherit_flipping = false
 
 [connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]
