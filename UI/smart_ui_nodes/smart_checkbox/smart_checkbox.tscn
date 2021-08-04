@@ -12,10 +12,12 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+selected_color = Color( 0.968627, 0.588235, 0.0901961, 1 )
 hover_sound = ExtResource( 4 )
 click_sound = ExtResource( 3 )
 
 [node name="sound_player" parent="." instance=ExtResource( 1 )]
+
 [connection signal="button_down" from="." to="." method="_on_SmartCheckbox_button_down"]
 [connection signal="focus_entered" from="." to="." method="_on_SmartCheckbox_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_SmartCheckbox_focus_exited"]

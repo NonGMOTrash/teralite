@@ -18,8 +18,9 @@ onready var saves_list = $saves/saves_list
 
 var locked_input = true
 
-const yellow = Color8(242, 211, 53)
+const yellow = Color8(247, 150, 23)
 const white = Color8(255, 255, 255)
+
 const MESSAGES = [
 	"idk",
 	"big floppa edition",
@@ -37,7 +38,7 @@ const MESSAGES = [
 	"0% political",
 	"a deep polticial statement",
 	"blebsome",
-	"has a little something for everyone",
+	"a little something for everyone",
 	"don't play at 4:20 PM",
 	"all lowercase",
 	"now with 50% more bugs",

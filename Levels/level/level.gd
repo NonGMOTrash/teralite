@@ -10,6 +10,10 @@ export(String) var WORLD := "A"
 const LEVEL_TYPE := 0 # PROBLEM_NOTE: make this a string
 
 var max_kills: int = 0
+var update_particles := true
+
+onready var particle_anchor: Node2D = $particle_anchor
+onready var particles: Particles2D = $particle_anchor/particles
 
 func _ready() -> void:
 	if name != "test_level":
@@ -20,6 +24,18 @@ func _ready() -> void:
 	refs.ysort = weakref($YSort)
 	refs.background = weakref($background)
 	refs.background_tiles = weakref($YSort/background_tiles)
+	
+	match GLOBAL_PARTICLES:
+		TYPES.AUTUMN:
+			particles.amount = 100
+			particles.lifetime = 18
+			particles.preprocess = 15
+			particles.process_material = load("res://Levels/level/autumn_particles.tres")
+			particles.texture = load("res://Levels/level/leaf.png")
+		_:
+			update_particles = false
+			set_physics_process(false)
+			particle_anchor.queue_free()
 	
 	if global.last_ambiance == AMBIANCE: return
 	else:
@@ -47,6 +63,10 @@ func _ready() -> void:
 	
 	global.add_child(ambiance)
 	refs.ambiance = weakref(ambiance)
+	
+	# revent freeze when this is loaded
+	res.allocate("hit_effect")
+	res.allocate("item_pickup_effect")
 
 func pathfind(start:Vector2, end:Vector2) -> PoolVector2Array:
 	var path := get_simple_path(start, get_closest_point(end), true)
@@ -55,3 +75,12 @@ func pathfind(start:Vector2, end:Vector2) -> PoolVector2Array:
 		return path
 	
 	return path
+
+func _physics_process(delta: float) -> void:
+	if update_particles == true:
+		var player = refs.player.get_ref()
+		if player != null:
+			particle_anchor.position = to_local(player.global_position)
+			if player.velocity != Vector2.ZERO:
+				particle_anchor.position += player.velocity * 2
+			particle_anchor.position.y -= 216

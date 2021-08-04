@@ -135,6 +135,7 @@ enabled=PoolStringArray( "res://addons/paulloz.colorblindness/plugin.cfg" )
 [global]
 
 framerate=false
+"visibility rect"=false
 
 [importer_defaults]
 

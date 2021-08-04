@@ -6,7 +6,12 @@ export(TYPES) var AMBIANCE = TYPES.AUTUMN
 export(TYPES) var GLOBAL_PARTICLES = TYPES.AUTUMN
 export(String) var LETTER := "A" 
 
+var update_particles := true
+
 const LEVEL_TYPE = 1
+
+onready var particle_anchor: Node2D = $particle_anchor
+onready var particles: Particles2D = $particle_anchor/particles
 
 func _ready() -> void:
 	refs.level = weakref(self)
@@ -27,6 +32,19 @@ func _ready() -> void:
 		var pos = global.player_hub_pos.get(LETTER)
 		if pos != null and pos != Vector2.ZERO:
 			player.global_position = global.player_hub_pos[LETTER]
+	
+	match GLOBAL_PARTICLES:
+		TYPES.AUTUMN:
+			particles.amount = 100
+			particles.lifetime = 18
+			particles.preprocess = 15
+			particles.material = load("res://Levels/level/autumn_particles.tres")
+			particles.texture = load("res://Levels/level/leaf.png")
+			
+		_:
+			update_particles = false
+			set_physics_process(false)
+			particle_anchor.queue_free()
 	
 	if global.last_ambiance == AMBIANCE: return
 	else: 
@@ -56,3 +74,12 @@ func _ready() -> void:
 	
 	global.add_child(ambiance)
 	refs.ambiance = weakref(ambiance)
+
+func _physics_process(_delta: float) -> void:
+	if update_particles == true:
+		var player = refs.player.get_ref()
+		if player != null:
+			particle_anchor.position = to_local(player.global_position)
+			if player.velocity != Vector2.ZERO:
+				particle_anchor.position += player.velocity * 2
+			particle_anchor.position.y -= 216

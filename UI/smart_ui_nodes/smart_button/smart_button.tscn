@@ -20,6 +20,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+selected_color = Color( 0.968627, 0.588235, 0.0901961, 1 )
 hover_sound = SubResource( 1 )
 click_sound = SubResource( 2 )
 

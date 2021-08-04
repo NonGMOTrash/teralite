@@ -124,6 +124,7 @@ SIGHT_RANGE = 190.0
 COMM_DELAY = 0.2
 COMM_DELAY_VARIANCE = 0.3
 IGNORE_ALLIES = false
+BLACKLIST = [ "medic" ]
 
 [node name="movement_lobe" parent="brain" instance=ExtResource( 9 )]
 IDLE_TIME = 0.4
@@ -155,7 +156,7 @@ best_distance = 24
 health_weight = 4
 status_effect = "burning"
 status_weight = 1
-COOLDOWN = 1.0
+COOLDOWN = 0.7
 GLOBAL_COOLDOWN = true
 
 [node name="heal_self" parent="brain/action_lobe" instance=ExtResource( 12 )]
@@ -165,7 +166,7 @@ distance_weight = 0
 health_weight = 1
 status_effect = "burning"
 status_weight = 1
-COOLDOWN = 1.0
+COOLDOWN = 0.7
 GLOBAL_COOLDOWN = true
 
 [node name="entity_effects" parent="." instance=ExtResource( 13 )]

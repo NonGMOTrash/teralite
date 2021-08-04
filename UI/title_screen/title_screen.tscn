@@ -4,7 +4,7 @@
 [ext_resource path="res://UI/Themes/Styles/stylebox_box.tres" type="StyleBox" id=2]
 [ext_resource path="res://UI/title_screen/title_screen.gd" type="Script" id=3]
 [ext_resource path="res://UI/Icons/play.png" type="Texture" id=4]
-[ext_resource path="res://UI/Icons/x.png" type="Texture" id=5]
+[ext_resource path="res://UI/Icons/exit.png" type="Texture" id=5]
 [ext_resource path="res://UI/title_screen/teralite_title.png" type="Texture" id=6]
 [ext_resource path="res://UI/Icons/gear.png" type="Texture" id=7]
 [ext_resource path="res://UI/options/options.tscn" type="PackedScene" id=8]
@@ -64,6 +64,7 @@ size_flags_vertical = 4
 margin_top = 104.0
 margin_right = 192.0
 margin_bottom = 126.0
+custom_constants/hseparation = -15
 shortcut_in_tooltip = false
 text = "Play"
 icon = ExtResource( 4 )
@@ -73,6 +74,7 @@ flat = true
 margin_top = 130.0
 margin_right = 192.0
 margin_bottom = 152.0
+custom_constants/hseparation = -15
 shortcut_in_tooltip = false
 text = "Options"
 icon = ExtResource( 7 )
@@ -82,6 +84,7 @@ flat = true
 margin_top = 156.0
 margin_right = 192.0
 margin_bottom = 178.0
+custom_constants/hseparation = -17
 shortcut_in_tooltip = false
 text = "Quit"
 icon = ExtResource( 5 )
@@ -282,12 +285,6 @@ flat = true
 
 [node name="tabs" parent="Options" index="0"]
 theme = ExtResource( 1 )
-
-[node name="Audio" parent="Options/tabs" index="1"]
-margin_top = 22.2494
-
-[node name="Game" parent="Options/tabs" index="2"]
-margin_top = 22.2494
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5

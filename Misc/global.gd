@@ -20,6 +20,8 @@ const DEV_TIMES := {
 	"Caged": 22.5,
 	"Monarch": 19.6,
 	"River": 8.4,
+	"Conflict": 23.8,
+	"Settlement": 80.9,
 	"Horde": 25.3,
 	"Duo": 21.8,
 	"Spiral": 14.1,
@@ -32,7 +34,7 @@ const DEV_TIMES := {
 	"Across": 15.0,
 	"Halls": 30.5,
 	"Mythical": 21.8,
-	"Ranger": 37.4,
+	"Ranger": 16.6,
 	"Breach": 26.7,
 	"Duel": 61.0,
 	"Poison": 22.3,
@@ -60,7 +62,7 @@ var level_deaths = {}
 var level_times = {}
 
 const ver_phase = "beta"
-const ver_num = 3.4
+const ver_num = 3.5
 const ver_hotfix = 0
 
 # for saving things
@@ -73,7 +75,7 @@ var settings := {
 	"perfection_mode": false,
 	"pixel_perfect": false,
 	"smooth_camera": true,
-	"hide_bar": true,
+	"hide_bar": false,
 	"volume": 0.50,
 	"vsync": true,
 }

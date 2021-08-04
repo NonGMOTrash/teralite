@@ -73,6 +73,7 @@ tracks/4/keys = {
 
 [node name="level_completed" type="ColorRect"]
 pause_mode = 2
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
@@ -136,24 +137,24 @@ size_flags_horizontal = 3
 alignment = 1
 
 [node name="icon" type="TextureRect" parent="area/body/damage"]
-margin_left = 51.0
-margin_top = 8.0
-margin_right = 115.0
-margin_bottom = 72.0
+margin_left = 53.0
+margin_top = 10.0
+margin_right = 114.0
+margin_bottom = 70.0
 size_flags_horizontal = 4
 texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="area/body/damage"]
-margin_top = 76.0
+margin_top = 74.0
 margin_right = 167.0
-margin_bottom = 92.0
+margin_bottom = 90.0
 text = "damage taken: "
 align = 1
 
 [node name="comment" type="Label" parent="area/body/damage"]
-margin_top = 96.0
+margin_top = 94.0
 margin_right = 167.0
-margin_bottom = 112.0
+margin_bottom = 110.0
 align = 1
 
 [node name="VSeparator" type="VSeparator" parent="area/body"]
@@ -169,24 +170,24 @@ size_flags_horizontal = 3
 alignment = 1
 
 [node name="icon" type="TextureRect" parent="area/body/time"]
-margin_left = 52.0
+margin_left = 55.0
 margin_top = 8.0
-margin_right = 116.0
-margin_bottom = 72.0
+margin_right = 113.0
+margin_bottom = 71.0
 size_flags_horizontal = 4
 texture = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="area/body/time"]
-margin_top = 76.0
+margin_top = 75.0
 margin_right = 168.0
-margin_bottom = 92.0
+margin_bottom = 91.0
 text = "time: "
 align = 1
 
 [node name="comment" type="Label" parent="area/body/time"]
-margin_top = 96.0
+margin_top = 95.0
 margin_right = 168.0
-margin_bottom = 112.0
+margin_bottom = 111.0
 align = 1
 
 [node name="HSeparator" type="HSeparator" parent="area"]
@@ -201,16 +202,16 @@ margin_bottom = 176.0
 alignment = 1
 
 [node name="proceed" parent="area/footer" instance=ExtResource( 5 )]
-margin_left = 96.0
-margin_right = 175.0
+margin_left = 100.0
+margin_right = 171.0
 margin_bottom = 22.0
 text = "proceed"
 icon = ExtResource( 6 )
 flat = true
 
 [node name="replay" parent="area/footer" instance=ExtResource( 5 )]
-margin_left = 179.0
-margin_right = 247.0
+margin_left = 175.0
+margin_right = 243.0
 margin_bottom = 22.0
 text = "replay"
 icon = ExtResource( 7 )

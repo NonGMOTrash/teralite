@@ -39,6 +39,7 @@ func selected():
 func unselected():
 	state = IDLE
 	charge.stop()
+	player.components["held_item"].animation.stop()
 
 func _process(_delta):
 	# PROBLEM_NOTE: not ideal to check this every frame in _process()

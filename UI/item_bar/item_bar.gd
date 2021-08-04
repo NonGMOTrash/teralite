@@ -12,11 +12,8 @@ const ITEM_BAR_0 = preload("res://UI/item_bar/item_bar_0.png")
 const ITEM_BAR_1 = preload("res://UI/item_bar/item_bar_1.png")
 const ITEM_BAR_2 = preload("res://UI/item_bar/item_bar_2.png")
 const GENERIC = preload("res://Misc/generic.png")
-
-#const PISTOL = preload("res://Entities/Item_Pickups/pistol/pistol.png")
-#const WHITE_ARMOR = preload("res://Entities/Item_Pickups/white_armor/white_armor.png")
-#const SWORD = preload("res://Entities/Item_Pickups/sword/sword.png")
-#const BOW = preload("res://Entities/Item_Pickups/bow/bow.png")
+const NORMAL_COLOR := Color8(46, 34, 47)
+const SELECTED_COLOR := Color8(249, 194, 43)
 
 func _ready():
 	refs.item_bar = weakref(self)
@@ -26,16 +23,30 @@ func _ready():
 
 func _input(_event: InputEvent):
 	match global.selection:
-		0: bar.texture = ITEM_BAR_0
-		1: bar.texture = ITEM_BAR_1
-		2: bar.texture = ITEM_BAR_2
+		0:
+			bar.texture = ITEM_BAR_0
+			left_icon.get_material().set_shader_param("color", SELECTED_COLOR)
+			mid_icon.get_material().set_shader_param("color", NORMAL_COLOR)
+			right_icon.get_material().set_shader_param("color", NORMAL_COLOR)
+		1:
+			bar.texture = ITEM_BAR_1
+			left_icon.get_material().set_shader_param("color", NORMAL_COLOR)
+			mid_icon.get_material().set_shader_param("color", SELECTED_COLOR)
+			right_icon.get_material().set_shader_param("color", NORMAL_COLOR)
+		2:
+			bar.texture = ITEM_BAR_2
+			left_icon.get_material().set_shader_param("color", NORMAL_COLOR)
+			mid_icon.get_material().set_shader_param("color", NORMAL_COLOR)
+			right_icon.get_material().set_shader_param("color", SELECTED_COLOR)
 
 func update_icons(inventory):
-	for i in 6: match_icon(i, inventory[i])
+	for i in 6:
+		match_icon(i, inventory[i])
+	
 	if (
-		global.settings["hide_bar"] == true and 
-		inventory[0] == null and 
-		inventory[1] == null and 
+		global.settings["hide_bar"] == true and
+		inventory[0] == null and
+		inventory[1] == null and
 		inventory[2] == null
 	):
 		bar.visible = false

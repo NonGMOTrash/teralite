@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/smart_ui_nodes/smart_checkbox/smart_checkbox.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://UI/options/options.gd" type="Script" id=6]
 [ext_resource path="res://UI/Themes/general_theme.tres" type="Theme" id=7]
 [ext_resource path="res://UI/Themes/Styles/stylebox_box.tres" type="StyleBox" id=8]
+[ext_resource path="res://UI/Icons/exit.png" type="Texture" id=9]
 
 [node name="options" type="Control"]
 visible = false
@@ -67,7 +68,7 @@ text = "Pixel perfect filter (not recomended)"
 margin_top = 94.0
 margin_right = 359.0
 margin_bottom = 118.0
-text = "Vsync (caps your FPS at 60)"
+text = "Vsync (caps your FPS to your monitor refresh rate)"
 
 [node name="Audio" type="VBoxContainer" parent="tabs"]
 visible = false
@@ -144,7 +145,9 @@ custom_styles/hover = ExtResource( 4 )
 custom_styles/pressed = ExtResource( 4 )
 custom_styles/focus = ExtResource( 4 )
 custom_styles/normal = ExtResource( 8 )
+custom_constants/hseparation = -16
 text = "Exit"
+icon = ExtResource( 9 )
 
 [node name="sound_player" parent="." instance=ExtResource( 1 )]
 
