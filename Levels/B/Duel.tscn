@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Levels/level/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level Resources/world_tiles/bg_stone.png" type="Texture" id=2]
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Item_Pickups/star/star.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/queen/queen.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Effects/Particles/sparkle_particles.tscn" type="PackedScene" id=6]
 
 [node name="Duel" instance=ExtResource( 1 )]
 AMBIANCE = 2
@@ -32,5 +33,7 @@ position = Vector2( 612.047, 471.285 )
 
 [node name="spawner" parent="YSort/queen" index="12" instance=ExtResource( 3 )]
 thing = ExtResource( 4 )
+
+[node name="sparkle_particles" parent="YSort/queen" index="13" instance=ExtResource( 6 )]
 
 [editable path="YSort/world_tiles"]

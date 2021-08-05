@@ -169,15 +169,6 @@ func selected():
 		null, # item bar value
 		null # bar timer duration
 		)
-
-	if player.inventory[global.selection] == my_item.to_lower():
-		update_cursor()
-		_update_held_item()
-	
-	if EQUIP_SOUND != null:
-		sound_player.create_sound(EQUIP_SOUND)
-	if EQUIP_ANIM != "":
-		player.components["held_item"].animation.play(EQUIP_ANIM)
 	
 	if player.components["held_item"].sprite.frame > max_frame:
 		player.components["held_item"].sprite.frame = max_frame
@@ -189,6 +180,15 @@ func selected():
 	
 	if RESET_HELD_ITEM_FLIPPING == true:
 		player.components["held_item"].reversed = false
+	
+	if player.inventory[global.selection] == my_item.to_lower():
+		update_cursor()
+		_update_held_item()
+	
+	if EQUIP_SOUND != null:
+		sound_player.create_sound(EQUIP_SOUND)
+	if EQUIP_ANIM != "":
+		player.components["held_item"].animation.play(EQUIP_ANIM)
 
 func unselected():
 	pass

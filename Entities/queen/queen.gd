@@ -31,11 +31,15 @@ func _on_action_lobe_action(action, target) -> void:
 		held_item.sprite.hframes = 1
 		held_item.sprite.vframes = 1
 		held_item.sprite.frame = 0
+		held_item.sprite.offset = Vector2(0, -4)
+		held_item.original_offset = Vector2(0, -4)
 		held_item.animation.play("warn")
 		held_item.animation.queue("warn")
 	elif action == "shoot":
 		stored_attack = res.aquire_projectile("arrow") 
 		held_item.animation.play("bow_charge")
+		held_item.sprite.offset = Vector2(0, 0)
+		held_item.original_offset = Vector2(0, 0)
 
 func attack(_finished_animation:String):
 	if animation.get_queue().size() > 0 or get_node_or_null(stored_path) == null:
@@ -43,6 +47,7 @@ func attack(_finished_animation:String):
 	
 	if stored_attack.truName == "arrow":
 		stored_attack.SPEED = shoot_speed
+		held_item.sprite.frame = 0
 	
 	stored_attack.setup(self, stored_target.global_position)
 	stored_attack.SOURCE_PATH = get_path()

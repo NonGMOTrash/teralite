@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/star/star.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Entities/knight/rogue/rogue.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/level/level.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Entities/crate/crate.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Effects/Particles/sparkle_particles.tscn" type="PackedScene" id=8]
 
 [node name="Entrance" instance=ExtResource( 6 )]
 FORCE_SLEEP_UNTIL_VISIBLE = true
@@ -34,6 +35,8 @@ position = Vector2( 521.713, 421.231 )
 
 [node name="death_spawn2" parent="YSort/knight" index="12" instance=ExtResource( 1 )]
 thing = ExtResource( 2 )
+
+[node name="sparkle_particles" parent="YSort/knight" index="14" instance=ExtResource( 8 )]
 
 [node name="Crate2" parent="YSort" index="5" instance=ExtResource( 7 )]
 position = Vector2( 473.353, 489.124 )
