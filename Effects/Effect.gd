@@ -14,6 +14,10 @@ export(float, -32, 32) var effect_speed_randomness = 0.02
 onready var default_sprite = preload("res://Entities/crate/crate.png")
 
 func _ready():
+	if global.settings["particles"] == 0:
+		visible = false
+		queue_free()
+	
 	effect_speed += rand_range(-effect_speed_randomness, effect_speed_randomness)
 	if random_flip_h == true:
 		flip_h = (randi() % 2 == 0)

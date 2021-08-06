@@ -2,16 +2,20 @@ extends Control
 
 onready var sound_player = $sound_player
 onready var tabs = $tabs
-onready var fullscreen = $tabs/Visual/fullscreen
-onready var pixel = $tabs/Visual/pixel
-onready var vsync = $tabs/Visual/vsync
+onready var fullscreen = $tabs/Video/fullscreen
+onready var pixel = $tabs/Video/pixel
+onready var vsync = $tabs/Video/vsync
 onready var perfection = $tabs/Game/perfection
 onready var smooth = $tabs/Game/smooth
 onready var hidebar = $tabs/Game/hidebar
 onready var volume = $tabs/Audio/volume
 onready var volume_label = $tabs/Audio/volume_label
+onready var particles = $tabs/Video/particles/dropdown
 
 signal closed
+
+func _ready() -> void:
+	visible = false
 
 func multi_color_set(target:Control, color:Color):
 	target.set_deferred("custom_colors/font_color", color)
@@ -26,6 +30,7 @@ func _on_tabs_visibility_changed() -> void:
 	pixel.pressed = global.settings["pixel_perfect"]
 	volume.value = global.settings["volume"] * 100
 	vsync.pressed = global.settings["vsync"]
+	particles.selected = global.settings["particles"]
 	
 	if visible == false: return
 	tabs.current_tab = 0
@@ -45,6 +50,7 @@ func _on_exit_pressed() -> void:
 	global.settings["pixel_perfect"] = pixel.pressed
 	global.settings["volume"] = volume.value / 100
 	global.settings["vsync"] = vsync.pressed
+	global.settings["particles"] = particles.selected
 	
 	global.update_settings()
 	

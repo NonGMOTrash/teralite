@@ -7,6 +7,7 @@ export(TYPES) var GLOBAL_PARTICLES = TYPES.AUTUMN
 export(String) var LETTER := "A" 
 
 var update_particles := true
+var has_particles := true
 
 const LEVEL_TYPE = 1
 
@@ -33,6 +34,12 @@ func _ready() -> void:
 		if pos != null and pos != Vector2.ZERO:
 			player.global_position = global.player_hub_pos[LETTER]
 	
+	if global.settings["particles"] != 3:
+		update_particles = false
+		set_physics_process(false)
+		particles.visible = false
+		particles.emitting = false
+	
 	match GLOBAL_PARTICLES:
 		TYPES.AUTUMN:
 			particles.amount = 100
@@ -40,7 +47,6 @@ func _ready() -> void:
 			particles.preprocess = 15
 			particles.material = load("res://Levels/level/autumn_particles.tres")
 			particles.texture = load("res://Levels/level/leaf.png")
-			
 		_:
 			update_particles = false
 			set_physics_process(false)

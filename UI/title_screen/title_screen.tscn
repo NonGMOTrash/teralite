@@ -25,6 +25,7 @@ __meta__ = {
 [node name="main" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -8.9407e-08
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -161,41 +162,45 @@ __meta__ = {
 }
 
 [node name="new" parent="saves/HBoxContainer" instance=ExtResource( 9 )]
-margin_left = 26.0
+margin_left = 25.0
 margin_right = 94.0
+margin_bottom = 22.0
 text = "New Save"
 flat = true
 
 [node name="VSeparator" type="VSeparator" parent="saves/HBoxContainer"]
 margin_left = 98.0
 margin_right = 99.0
-margin_bottom = 20.0
+margin_bottom = 22.0
 
 [node name="load" parent="saves/HBoxContainer" instance=ExtResource( 9 )]
 margin_left = 103.0
-margin_right = 176.0
+margin_right = 177.0
+margin_bottom = 22.0
 text = "Load Save"
 flat = true
 
 [node name="VSeparator2" type="VSeparator" parent="saves/HBoxContainer"]
-margin_left = 180.0
-margin_right = 181.0
-margin_bottom = 20.0
+margin_left = 181.0
+margin_right = 182.0
+margin_bottom = 22.0
 
 [node name="delete" parent="saves/HBoxContainer" instance=ExtResource( 9 )]
-margin_left = 185.0
-margin_right = 268.0
+margin_left = 186.0
+margin_right = 270.0
+margin_bottom = 22.0
 text = "Delete Save"
 flat = true
 
 [node name="VSeparator3" type="VSeparator" parent="saves/HBoxContainer"]
-margin_left = 272.0
-margin_right = 273.0
-margin_bottom = 20.0
+margin_left = 274.0
+margin_right = 275.0
+margin_bottom = 22.0
 
 [node name="back" parent="saves/HBoxContainer" instance=ExtResource( 9 )]
-margin_left = 277.0
-margin_right = 317.0
+margin_left = 279.0
+margin_right = 319.0
+margin_bottom = 22.0
 text = "Back"
 flat = true
 
@@ -282,6 +287,7 @@ text = "Cancel"
 flat = true
 
 [node name="Options" parent="." instance=ExtResource( 8 )]
+visible = false
 
 [node name="tabs" parent="Options" index="0"]
 theme = ExtResource( 1 )

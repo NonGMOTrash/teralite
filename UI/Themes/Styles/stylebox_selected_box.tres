@@ -2,13 +2,11 @@
 
 [ext_resource path="res://UI/Themes/Styles/stylebox_selected_box.png" type="Texture" id=1]
 
-
-
 [resource]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 16, 16 )
-margin_left = 2.12428
-margin_right = 2.24938
-margin_top = 1.99918
+margin_left = 6.0
+margin_right = 6.0
+margin_top = 3.0
 margin_bottom = 2.12428
 axis_stretch_vertical = 1

@@ -6,6 +6,11 @@ var max_lifetime = (lifetime + lifetime * process_material.lifetime_randomness) 
 var stopping = false
 
 func _ready():
+	if global.settings["particles"] < 2:
+		queue_free()
+		visible = false
+		return
+	
 	if auto_start == true:
 		emitting = true
 	

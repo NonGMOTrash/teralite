@@ -11,6 +11,7 @@ const LEVEL_TYPE := 0 # PROBLEM_NOTE: make this a string
 
 var max_kills: int = 0
 var update_particles := true
+var has_particles := true
 
 onready var particle_anchor: Node2D = $particle_anchor
 onready var particles: Particles2D = $particle_anchor/particles
@@ -25,6 +26,12 @@ func _ready() -> void:
 	refs.background = weakref($background)
 	refs.background_tiles = weakref($YSort/background_tiles)
 	
+	if global.settings["particles"] != 3:
+		update_particles = false
+		set_physics_process(false)
+		particles.visible = false
+		particles.emitting = false
+	
 	match GLOBAL_PARTICLES:
 		TYPES.AUTUMN:
 			particles.amount = 100
@@ -36,6 +43,7 @@ func _ready() -> void:
 			update_particles = false
 			set_physics_process(false)
 			particle_anchor.queue_free()
+			has_particles = false
 	
 	if global.last_ambiance == AMBIANCE: return
 	else:

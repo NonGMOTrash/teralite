@@ -78,6 +78,7 @@ var settings := {
 	"hide_bar": false,
 	"volume": 0.50,
 	"vsync": true,
+	"particles": 3, # 0 = none, 1 = low, 2 = medium, 3 = all
 }
 
 # should move this and get_relation to Entity.gd probably
@@ -407,6 +408,17 @@ func update_settings(save_settings_config:=true):
 				item_bar.visible = false
 			else:
 				item_bar.visible = true
+		
+		var particles: Particles2D = get_tree().current_scene.particles
+		if particles != null:
+			var enabled := false
+			if global.settings["particles"] == 3:
+				enabled = true
+			
+			get_tree().current_scene.update_particles = enabled
+			get_tree().current_scene.set_physics_process(enabled)
+			get_tree().current_scene.particles.visible = enabled
+			get_tree().current_scene.particles.emitting = enabled
 	
 	AudioServer.set_bus_volume_db(0, linear2db(settings["volume"]))
 	
