@@ -30,7 +30,7 @@ func _on_fuel_timeout() -> void:
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Melee or area.get_parent().components["stats"] == null: return
-	var modifier = area.get_parent().components["stats"].modifiers["burning"]
+	var modifier = area.get_parent().components["stats"].burning_modifier
 	if modifier < 0 and abs(modifier) > hitbox.STATUS_LEVEL: return
 	
 	fuel.wait_time = fuel.time_left + 1.0

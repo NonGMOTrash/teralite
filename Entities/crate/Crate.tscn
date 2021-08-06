@@ -39,6 +39,13 @@ shadow_size = -1
 
 [node name="stats" parent="." instance=ExtResource( 4 )]
 DAMAGE = 0
+poison_modifier = -99.0
+burning_modifier = 4.0
+bleed_modifier = -99.0
+speed_modifier = -99.0
+slowness_modifier = -99.0
+regeneration_modifier = -99.0
+resistance_modifier = -99.0
 
 [node name="hurtbox" parent="." instance=ExtResource( 1 )]
 visible = false

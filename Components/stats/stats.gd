@@ -37,15 +37,13 @@ var status_effects = {
 
 # PROBLEM_NOTE: should add a 'ALL' modifier
 # PROBLEM_NOTE: this should not be a dictionary (bad exporting)
-export var modifiers = {
-	"poison": 0, # changes the level of a given status effect by the value
-	"burning": 0, 
-	"bleeding": 0, 
-	"speed": 0,
-	"slowness": 0,
-	"regeneration": 0,
-	"resistance": 0,
-}
+export(float) var poison_modifier: float = 0
+export(float) var burning_modifier: float = 0
+export(float) var bleed_modifier: float = 0
+export(float) var speed_modifier: float = 0
+export(float) var slowness_modifier: float = 0
+export(float) var regeneration_modifier: float = 0
+export(float) var resistance_modifier: float = 0
 
 onready var entity = get_parent()
 
@@ -152,13 +150,28 @@ func add_status_effect(new_status_effect:String, duration=2.5, level=1.0):
 		push_error("status name '%s' not found in keys" % status_name)
 		return
 	
-	if status_effects[status_name] == null and duration > 0 and level > 0: 
+	var modded_level: float = level + get_modifier(status_name)
+	
+	if status_effects[status_name] == null and duration > 0 and modded_level > 0: 
 		status_effect.DURATION_TIME = duration
-		status_effect.level = level
+		status_effect.level = modded_level
 		call_deferred("add_child", status_effect)
 	elif status_effects[status_name] != null:
 		status_effect = status_effects[status_name]
 		status_effect.duration.wait_time = max(status_effect.duration.wait_time + duration, 0.01)
 		status_effect.duration.start()
-		status_effect.level += level
-	
+		status_effect.level += modded_level
+
+func get_modifier(status:String) -> float:
+	match status:
+		"poison": return poison_modifier
+		"burning": return burning_modifier
+		"bleed": return bleed_modifier
+		"speed": return speed_modifier
+		"slowness": return slowness_modifier
+		"regeneration": return regeneration_modifier
+		"resistance": return resistance_modifier
+		_:
+			push_error("%s is not a valid status")
+			return 0.0
+		

@@ -409,8 +409,9 @@ func update_settings(save_settings_config:=true):
 			else:
 				item_bar.visible = true
 		
-		var particles: Particles2D = get_tree().current_scene.particles
-		if particles != null:
+		if get_tree().current_scene.has_particles == true:
+			var particles: Particles2D = get_tree().current_scene.particles
+			
 			var enabled := false
 			if global.settings["particles"] == 3:
 				enabled = true
