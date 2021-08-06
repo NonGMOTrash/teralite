@@ -50,5 +50,10 @@ func _on_stats_health_changed(_type, _result, _net) -> void:
 
 func _on_action_lobe_action(action, target) -> void:
 	if cooldown.time_left > 0 or animation.is_playing() == true: return
-	stored_input = action
-	animation.play("summon")
+	if action == "slam":
+		animation.play("slam")
+		if brain.targets.size() > 0:
+			input_vector = global_position.direction_to(brain.get_closest_target().global_position).normalized()
+	else:
+		stored_input = action
+		animation.play("summon")
