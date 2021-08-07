@@ -62,7 +62,6 @@ __meta__ = {
 [node name="particle_anchor" type="Node2D" parent="."]
 
 [node name="particles" type="Particles2D" parent="particle_anchor"]
-scale = Vector2( 0.969231, 0.968051 )
 z_index = 999
 amount = 100
 lifetime = 18.0

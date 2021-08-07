@@ -132,7 +132,7 @@ func _on_cooldown_timeout() -> void:
 		0.001, # item bar value
 		null # bar timer duration
 		)
-	if Input.is_action_pressed("primary_action"):
+	if Input.is_action_pressed("primary_action") and global.selection == slot:
 		charge.start()
 		state = CHARGING
 		if get_parent().components["held_item"] != null:

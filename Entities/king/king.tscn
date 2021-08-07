@@ -25,7 +25,7 @@ extents = Vector2( 7, 8 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 6, 6 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "slam"
 length = 1.6
 tracks/0/type = "value"
@@ -77,7 +77,7 @@ tracks/3/keys = {
 "values": [ 540, 0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 2.0
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -106,7 +106,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 2, 3, 4, 5, 2, 3, 4, 5, 6, 1, 0 ]
 }
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=6]
 radius = 9.78275
 
 [node name="king" type="KinematicBody2D"]
@@ -197,21 +197,22 @@ position = Vector2( 0, 1 )
 shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/slam = SubResource( 6 )
-anims/summon = SubResource( 4 )
+anims/slam = SubResource( 4 )
+anims/summon = SubResource( 5 )
 
 [node name="entity_effects" parent="." instance=ExtResource( 9 )]
 death_type = 6
 block_effect = false
 
 [node name="hitbox" parent="." instance=ExtResource( 14 )]
+visible = false
 COOLDOWN = 0.01
 COOLDOWN_ON_START = false
 KNOCKBACK = 400
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 position = Vector2( 0, 1 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 disabled = true
 
 [connection signal="health_changed" from="stats" to="." method="_on_stats_health_changed"]

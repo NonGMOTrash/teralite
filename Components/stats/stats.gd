@@ -73,10 +73,10 @@ func change_health(value, true_value, type: String = "hurt") -> String:
 			while amount != 0 and armor > 0:
 				armor -= 1
 				amount += 1
-		
-		if reset_armor == true and value < 0:
-			armor = DEFENCE
-			reset_armor = false
+				
+				if reset_armor == true and value < 0:
+					armor = DEFENCE
+					reset_armor = false
 		
 		if armor <= 0: 
 			reset_armor = true

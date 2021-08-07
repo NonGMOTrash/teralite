@@ -68,10 +68,11 @@ FORCE_MULT = 0.86
 truName = "queen"
 faction = "blue_kingdom"
 shoot_speed = 215.0
+snipe_speed = 350.0
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
-MAX_HEALTH = 10
-HEALTH = 10
+MAX_HEALTH = 15
+HEALTH = 15
 DEFENCE = 1
 DAMAGE = 2
 
@@ -79,6 +80,7 @@ DAMAGE = 2
 material = SubResource( 1 )
 texture = ExtResource( 15 )
 hframes = 4
+frame = 1
 auto_flip_mode = 2
 back_texture = ExtResource( 17 )
 
@@ -133,8 +135,13 @@ COOLDOWN = 0.4
 GLOBAL_COOLDOWN = true
 
 [node name="shoot" parent="brain/action_lobe" instance=ExtResource( 13 )]
-best_distance = 60
+best_distance = 45
 COOLDOWN = 0.1
+GLOBAL_COOLDOWN = true
+
+[node name="snipe" parent="brain/action_lobe" instance=ExtResource( 13 )]
+best_distance = 60
+COOLDOWN = 1.5
 GLOBAL_COOLDOWN = true
 
 [node name="memory_lobe" parent="brain" instance=ExtResource( 16 )]
@@ -161,7 +168,6 @@ TARGETING = 1
 [node name="sprite" parent="held_item/anchor" index="0"]
 texture = ExtResource( 18 )
 hframes = 1
-frame = 0
 
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 

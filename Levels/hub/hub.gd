@@ -45,12 +45,13 @@ func _ready() -> void:
 			particles.amount = 100
 			particles.lifetime = 18
 			particles.preprocess = 15
-			particles.material = load("res://Levels/level/autumn_particles.tres")
+			particles.process_material = load("res://Levels/level/autumn_particles.tres")
 			particles.texture = load("res://Levels/level/leaf.png")
 		_:
 			update_particles = false
 			set_physics_process(false)
 			particle_anchor.queue_free()
+			has_particles = false
 	
 	if global.last_ambiance == AMBIANCE: return
 	else: 
