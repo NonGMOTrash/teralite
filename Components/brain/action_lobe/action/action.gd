@@ -66,9 +66,9 @@ func _ready():
 func evaluate(warned = false) -> Array: #-> [score, target]
 	if COOLDOWN > 0 and cooldown_timer.time_left > 0:
 		if target_type != relations.myself and brain.targets.size() > 0:
-			return [0, brain.targets[0]]
+			return [-1, brain.targets[0]]
 		else:
-			return [0, entity]
+			return [-1, entity]
 	
 	var scores = []
 	var targets = []

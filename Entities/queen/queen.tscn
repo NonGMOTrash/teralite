@@ -69,6 +69,7 @@ truName = "queen"
 faction = "blue_kingdom"
 shoot_speed = 215.0
 snipe_speed = 350.0
+danger_threshold = 6
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
 MAX_HEALTH = 15
@@ -107,19 +108,29 @@ visible = false
 SIGHT_RANGE = 180.0
 
 [node name="movement_lobe" parent="brain" instance=ExtResource( 8 )]
+WANDER_RANGE = 250.0
+MOVEMENT_EFFICIENCY = 17
 general_springs = {
 "friendly": "",
-"hostile": "spring",
+"hostile": "attack",
 "neutral": ""
 }
 entity_springs = {
 "king": "guard"
 }
 
-[node name="spring" parent="brain/movement_lobe" instance=ExtResource( 7 )]
+[node name="attack" parent="brain/movement_lobe" instance=ExtResource( 7 )]
 DISTANCE_MIN = 22
 DISTANCE_MAX = 50
 USE_DISTANCE_RANGE = true
+
+[node name="space" parent="brain/movement_lobe" instance=ExtResource( 7 )]
+DISTANCE_MIN = 100
+DISTANCE_MAX = 150
+USE_DISTANCE_RANGE = true
+
+[node name="run" parent="brain/movement_lobe" instance=ExtResource( 7 )]
+INVERT_DISTANCE = true
 
 [node name="guard" parent="brain/movement_lobe" instance=ExtResource( 7 )]
 DEADZONE = 45
@@ -141,8 +152,17 @@ GLOBAL_COOLDOWN = true
 
 [node name="snipe" parent="brain/action_lobe" instance=ExtResource( 13 )]
 best_distance = 60
-COOLDOWN = 1.5
+COOLDOWN = 2.0
 GLOBAL_COOLDOWN = true
+
+[node name="heal" parent="brain/action_lobe" instance=ExtResource( 13 )]
+target_type = 2
+tag = 2
+distance_weight = 0
+best_health_percent = 20
+health_weight = 1
+default_score = 0.0
+COOLDOWN = 5.0
 
 [node name="memory_lobe" parent="brain" instance=ExtResource( 16 )]
 MEMORY_TIME = 10.0
@@ -169,6 +189,7 @@ TARGETING = 1
 texture = ExtResource( 18 )
 hframes = 1
 
+[connection signal="health_changed" from="stats" to="." method="_on_stats_health_changed"]
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 
 [editable path="entity_push"]
