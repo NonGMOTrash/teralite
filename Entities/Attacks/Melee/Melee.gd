@@ -40,20 +40,27 @@ func _ready():
 		held_item.sprite.visible = false
 	
 	if held_item != null and held_item.reversed == true and ANIMATION_NEVER_BACKWARDS == false:
-		animation.play_backwards("animation")
-		# \/ hack to prevent flicker bug, no idea why the animation doesn't do this
-		if REVERSE_HELD_ITEM == true:
+		if held_item.facing_left():
+			animation.play("animation")
+			sprite.position = Vector2(0, -4)
+			sprite.rotation_degrees = 0
+		else:
+			animation.play_backwards("animation")
+			# \/ hack to prevent flicker bug, no idea why the animation doesn't do this
 			sprite.position = Vector2(0, 4)
 			sprite.rotation_degrees = 180
 	else:
-		animation.play("animation")
-		# \/ hack to prevent flicker bug, no idea why the animation doesn't do this
-		if REVERSE_HELD_ITEM == true:
+		if held_item.facing_left():
+			animation.play_backwards("animation")
+			sprite.position = Vector2(0, 4)
+			sprite.rotation_degrees = 180
+		else:
+			animation.play("animation")
+			# \/ hack to prevent flicker bug, no idea why the animation doesn't do this
 			sprite.position = Vector2(0, -4)
 			sprite.rotation_degrees = 0
 	
 	visible = true
-
 
 func _physics_process(_delta):
 	if get_node_or_null(SOURCE_PATH) != null and SOURCE.is_queued_for_deletion() == false:

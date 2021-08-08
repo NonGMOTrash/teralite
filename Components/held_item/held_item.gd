@@ -74,11 +74,7 @@ func _physics_process(_delta: float) -> void:
 	
 	rotation_degrees = rad2deg(global_position.direction_to(target_pos).angle())
 	
-	if ( # PROBLEM_NOTE: maybe i can do this simplier, but it works
-		rotation_degrees < -90 or
-		rotation_degrees > 0 and rotation_degrees < 180 and
-		not rotation_degrees < 90 and rotation_degrees > 0
-	):
+	if facing_left():
 		sprite.flip_v = true
 		sprite.offset = original_offset * -1
 	else:
@@ -89,10 +85,14 @@ func _physics_process(_delta: float) -> void:
 		sprite.flip_v = not sprite.flip_v
 		sprite.offset *= -1
 	
-	if rotation_degrees < 0:
-		show_behind_parent = true
-	else:
-		show_behind_parent = false
+	show_behind_parent = (rotation_degrees < 0) as bool
 
 func _on_AnimationPlayer_animation_started(_anim_name: String) -> void:
 	original_texture = sprite.texture
+
+func facing_left() -> bool:
+	return ( # PROBLEM_NOTE: maybe i can do this simplier, but it works
+		rotation_degrees < -90 or
+		rotation_degrees > 0 and rotation_degrees < 180 and
+		not rotation_degrees < 90 and rotation_degrees > 0
+	)
