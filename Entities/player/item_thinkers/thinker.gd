@@ -219,7 +219,6 @@ func quick_spawn(attack: String, deferred := true) -> void:
 
 
 func _update_held_item():
-	
 	if HELD_ITEM_TEXTURE == null:
 		push_error("HELD_ITEM_TEXTURE is null")
 		HELD_ITEM_TEXTURE = load("res://Misc/generic.png")

@@ -23,6 +23,12 @@ func _init() -> void:
 func _ready() -> void:
 	held_item.animation.connect("animation_finished", self, "attack")
 
+func _physics_process(delta: float) -> void:
+	if input_vector == Vector2.ZERO:
+		animation.play("stand")
+	else:
+		animation.play("walk")
+
 func _on_action_lobe_action(action, target) -> void:
 	if held_item.animation.is_playing() == true:
 		return
@@ -67,8 +73,10 @@ func attack(finished_animation:String):
 	if animation.get_queue().size() > 0 or get_node_or_null(stored_path) == null:
 		return
 	
+	held_item.sprite.texture = null
+	
 	if finished_animation == "spin":
-		stats.change_health(4, 0, "heal")
+		stats.change_health(3, 0, "heal")
 		TOP_SPEED *= 10
 		return
 	

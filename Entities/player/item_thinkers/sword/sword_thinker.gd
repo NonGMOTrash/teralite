@@ -60,13 +60,13 @@ func secondary():
 	player_sprite.play_effect("invincibility", 0.625)
 
 func set_counter_window(to: bool):
-	can_counter = not to
+	print(to)
+	can_counter = to
 	player.can_dash = not to
 	player_hurtbox.set_deferred("monitorable", not to)
 	player_hurtbox.set_deferred("monitoring", not to)
 	
 	if to == true:
-		
 		var hitbox = player_hurtbox.get_overlapping_areas()
 		if hitbox.size() == 0:
 			return

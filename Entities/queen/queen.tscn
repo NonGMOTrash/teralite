@@ -69,11 +69,11 @@ truName = "queen"
 faction = "blue_kingdom"
 shoot_speed = 215.0
 snipe_speed = 350.0
-danger_threshold = 6
+danger_threshold = 4
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
-MAX_HEALTH = 15
-HEALTH = 15
+MAX_HEALTH = 13
+HEALTH = 13
 DEFENCE = 1
 DAMAGE = 2
 
@@ -81,7 +81,7 @@ DAMAGE = 2
 material = SubResource( 1 )
 texture = ExtResource( 15 )
 hframes = 4
-frame = 1
+frame = 3
 auto_flip_mode = 2
 back_texture = ExtResource( 17 )
 

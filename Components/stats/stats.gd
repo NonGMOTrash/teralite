@@ -21,7 +21,6 @@ export var HEALTH = 1
 export var BONUS_HEALTH = 0
 export var DEFENCE = 0
 var armor = 0
-var reset_armor = false
 export var DAMAGE = 1
 export var TRUE_DAMAGE = 0
 
@@ -70,16 +69,17 @@ func change_health(value, true_value, type: String = "hurt") -> String:
 		if armor < 0 and amount < 0:
 			amount += armor # << for negative defence
 		else:
-			while amount != 0 and armor > 0:
-				armor -= 1
-				amount += 1
-				
-				if reset_armor == true and value < 0:
-					armor = DEFENCE
-					reset_armor = false
-		
-		if armor <= 0: 
-			reset_armor = true
+			var new_amount: int = amount
+			for i in abs(amount):
+				if armor == 0:
+					if amount != 0:
+						armor = DEFENCE
+					continue
+				else:
+					armor -= 1
+					new_amount += 1
+			amount = new_amount
+			
 		
 		sum = amount + true_amount
 		net = sum
@@ -95,6 +95,7 @@ func change_health(value, true_value, type: String = "hurt") -> String:
 			elif HEALTH > 0:
 				HEALTH -= 1
 			sum -= 1
+	
 	elif sum == 0: # hit by a 0 damage attack
 		result_type = ""
 		# PROBLEM_NOTE, maybe i should make the type here block
