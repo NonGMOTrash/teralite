@@ -92,3 +92,8 @@ func _physics_process(delta: float) -> void:
 			if player.velocity != Vector2.ZERO:
 				particle_anchor.position += player.velocity * 2
 			particle_anchor.position.y -= 216
+
+func _on_level_tree_exiting() -> void:
+	global.total_time += refs.stopwatch.get_ref().time
+	global.speedrun_time += refs.stopwatch.get_ref().time
+

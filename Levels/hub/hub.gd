@@ -13,6 +13,7 @@ const LEVEL_TYPE = 1
 
 onready var particle_anchor: Node2D = $particle_anchor
 onready var particles: Particles2D = $particle_anchor/particles
+onready var timer: Timer = $Timer
 
 func _ready() -> void:
 	refs.level = weakref(self)
@@ -90,3 +91,6 @@ func _physics_process(_delta: float) -> void:
 			if player.velocity != Vector2.ZERO:
 				particle_anchor.position += player.velocity * 2
 			particle_anchor.position.y -= 216
+
+func _on_hub_tree_exiting() -> void:
+	global.total_time += 9999.0 - timer.time_left

@@ -70,4 +70,6 @@ visibility_rect = Rect2( -9900, -9900, 19800, 19800 )
 local_coords = false
 texture = ExtResource( 15 )
 
+[connection signal="tree_exiting" from="." to="." method="_on_level_tree_exiting"]
+
 [editable path="YSort/world_tiles"]

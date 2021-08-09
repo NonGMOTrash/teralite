@@ -106,14 +106,12 @@ func _on_proceed_pressed() -> void:
 		get_tree().change_scene("res://Levels/%s/%s-Hub.tscn" % [global.last_hub, global.last_hub])
 		return
 	
-	var last_hub = global.last_hub
-	
 	if lvl == "Duel":
 		get_tree().change_scene("res://Levels/thx.tscn")
-	elif last_hub == null or last_hub.length() != 1:
+	elif global.last_hub == null or global.last_hub.length() != 1:
 			get_tree().change_scene("res://Levels/A/A-Hub.tscn")
 	else:
-		get_tree().change_scene("res://Levels/%s/%s-Hub.tscn" % [last_hub, last_hub])
+		get_tree().change_scene("res://Levels/%s/%s-Hub.tscn" % [global.last_hub, global.last_hub])
 
 func _on_replay_pressed() -> void:
 	get_tree().reload_current_scene()

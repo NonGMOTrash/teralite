@@ -60,6 +60,8 @@ var cleared_levels = []
 var perfected_levels = []
 var level_deaths = {}
 var level_times = {}
+var total_time = 0.0
+var speedrun_time = 0.0
 
 const ver_phase = "beta"
 const ver_num = 3.5
@@ -179,9 +181,11 @@ func get_empty_save_data():
 		"perfected_levels": [],
 		"level_deaths": {},
 		"level_times": {},
-		"ver_phase": global.ver_phase,
-		"ver_num": global.ver_num,
-		"ver_hotfix": global.ver_hotfix
+		"ver_phase": ver_phase,
+		"ver_num": ver_num,
+		"ver_hotfix": ver_hotfix,
+		"total_time": 0.0,
+		"speedrun_time": 0.0,
 	}
 
 func get_save_data_dict():
@@ -194,9 +198,11 @@ func get_save_data_dict():
 		"perfected_levels": perfected_levels,
 		"level_deaths": level_deaths,
 		"level_times": level_times,
-		"ver_phase": global.ver_phase,
-		"ver_num": global.ver_num,
-		"ver_hotfix": global.ver_hotfix
+		"ver_phase": ver_phase,
+		"ver_num": ver_num,
+		"ver_hotfix": ver_hotfix,
+		"total_time": total_time,
+		"speedrun_time": speedrun_time,
 	}
 
 func get_saves():
@@ -287,6 +293,8 @@ func load_save(entered_save_name):
 			if new_data.has("perfected_levels"): perfected_levels = new_data["perfected_levels"]
 			if new_data.has("level_deaths"): level_deaths = new_data["level_deaths"]
 			if new_data.has("level_times"): level_times = new_data["level_times"]
+			if new_data.has("total_time"): total_time = new_data["total_time"]
+			if new_data.has("speedrun_time"): speedrun_time = new_data["speedrun_time"]
 			
 			save_file.close()
 			
