@@ -14,3 +14,6 @@ healing = 1
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
+
+[node name="shadow" parent="Sprite" index="0"]
+position = Vector2( 0, 1 )

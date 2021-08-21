@@ -14,5 +14,8 @@ pickup_sound = ExtResource( 3 )
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
 
+[node name="shadow" parent="Sprite" index="0"]
+position = Vector2( 0, 0 )
+
 [node name="CollisionShape2D" parent="." index="1"]
 visible = true

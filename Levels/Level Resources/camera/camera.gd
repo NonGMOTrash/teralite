@@ -10,13 +10,13 @@ onready var frequency_timer = $frequency
 onready var duration_timer = $duration
 onready var zoom_tween = $zoom_tween
 
-var distance_ratio := DEFAULT_DISTANCE_RATIO
+var distance_ratio := DEFAULT_DISTANCE_RATIO # 1-0, higher = see further
 var distance_max := DEFAULT_DISTANCE_MAX
 
 var old_player_pos = null
 var set_mouse_pos := Vector2.ZERO
-var _power = 0
-var _priority = -99
+var power = 0
+var priority = -99
 
 func _on_camera_tree_entered() -> void:
 	refs.camera = weakref(self)
@@ -57,16 +57,17 @@ func _physics_process(_delta: float) -> void:
 	
 	old_player_pos = player.global_position
 	
-	global_position = player.global_position + (player.get_local_mouse_position() * distance_ratio)
+	global_position = player.global_position + (get_local_mouse_position() * distance_ratio)
+	
 	if global_position.distance_to(player.global_position) > distance_max:
 		global_position = player.global_position.move_toward(global_position, distance_max)
 
 func shake(power=10, frequency=10, duration=0.2):
-	if not (power * frequency * duration) > _priority: 
+	if not (power * frequency * duration) > priority: 
 		return
 	
-	_priority = power * frequency * duration
-	_power = power
+	priority = power * frequency * duration
+	power = power
 	
 	duration_timer.wait_time = duration
 	frequency_timer.wait_time = 1.0 / frequency
@@ -74,7 +75,7 @@ func shake(power=10, frequency=10, duration=0.2):
 	frequency_timer.start()
 
 func single_shake(TRANS = DEFAULT_TRANS, EASE = DEFAULT_EASE):
-	var final_offset = Vector2( rand_range(-_power,_power) , rand_range(-_power,_power) )
+	var final_offset = Vector2( rand_range(-power,power) , rand_range(-power,power) )
 	tween.interpolate_property(self, "offset", offset, final_offset, frequency_timer.wait_time, 
 			TRANS, EASE)
 	tween.start()
@@ -83,7 +84,7 @@ func stop_shaking(TRANS = DEFAULT_TRANS, EASE = DEFAULT_EASE):
 	tween.interpolate_property(self, "offset", offset, Vector2.ZERO, frequency_timer.wait_time, 
 			TRANS, EASE)
 	tween.start()
-	_priority = -99
+	priority = -99
 
 func _on_frequency_timeout() -> void:
 	single_shake()

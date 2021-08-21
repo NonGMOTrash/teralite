@@ -156,7 +156,7 @@ PATIENCE = 0.55
 best_distance = 50
 distance_weight = 4
 health_weight = 1
-COOLDOWN = 1.45
+COOLDOWN = 1.6
 GLOBAL_COOLDOWN = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

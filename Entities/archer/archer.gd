@@ -7,7 +7,7 @@ onready var held_item = $held_item
 
 export(PackedScene) var PROJECTILE
 export(String) var warn_animation: String
-export(int, 1, 5) var warn_times:int 
+export(int, 1, 5) var warn_times:int
 
 var targit: Entity
 var targit_path: NodePath

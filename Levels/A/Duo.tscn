@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Levels/level/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/chaser/ultra_chaser/ultra_chaser.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Effects/Particles/sparkle_particles.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/Item_Pickups/star/star.tscn" type="PackedScene" id=5]
 
 [node name="Duo" instance=ExtResource( 1 )]
@@ -22,5 +23,9 @@ tile_data = PoolIntArray( 655385, 7, 131073, 655386, 7, 65543, 655387, 7, 65543,
 [node name="ultra_chaser" parent="YSort" index="3" instance=ExtResource( 2 )]
 position = Vector2( 569.287, 284.178 )
 
-[node name="death_spawn2" parent="YSort/ultra_chaser" index="13" instance=ExtResource( 3 )]
+[node name="death_spawn2" parent="YSort/ultra_chaser" index="12" instance=ExtResource( 3 )]
 thing = ExtResource( 5 )
+
+[node name="sparkle_particles" parent="YSort/ultra_chaser" index="13" instance=ExtResource( 4 )]
+
+[editable path="YSort/world_tiles"]

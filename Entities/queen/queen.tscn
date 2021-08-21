@@ -162,7 +162,7 @@ distance_weight = 0
 best_health_percent = 20
 health_weight = 1
 default_score = 0.0
-COOLDOWN = 5.0
+COOLDOWN = 7.0
 
 [node name="memory_lobe" parent="brain" instance=ExtResource( 16 )]
 MEMORY_TIME = 10.0

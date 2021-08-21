@@ -1,7 +1,7 @@
 extends Entity
 
-onready var brain = $brain
-onready var animation = $AnimationPlayer
+onready var brain := $brain
+onready var animation := $AnimationPlayer
 
 export(int) var dash_power
 
