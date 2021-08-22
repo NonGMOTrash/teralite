@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/crate/crate.gd" type="Script" id=3]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Entities/crate/crate_destory.wav" type="AudioStream" id=5]
+[ext_resource path="res://Entities/crate/crate_destroy.wav" type="AudioStream" id=5]
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=8]
@@ -14,14 +14,10 @@
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 
-[sub_resource type="AudioStreamRandomPitch" id=2]
-audio_stream = ExtResource( 5 )
-random_pitch = 1.05
-
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 9, 9 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 8, 5 )
 
 [node name="crate" type="KinematicBody2D"]
@@ -50,16 +46,16 @@ resistance_modifier = -99.0
 [node name="hurtbox" parent="." instance=ExtResource( 1 )]
 visible = false
 position = Vector2( 0, 4 )
-KILLED_SOUND = SubResource( 2 )
+KILLED_SOUND = ExtResource( 5 )
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 position = Vector2( 0, -7 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 0.129412, 0.309804, 0.92549, 1 )
 position = Vector2( 0, -2 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="death_spawn" parent="." instance=ExtResource( 6 )]
 thing = ExtResource( 9 )
@@ -69,6 +65,7 @@ effect_hframes = 5
 visible = false
 position = Vector2( -9.53674e-07, 2.38419e-07 )
 scale = Vector2( 0.9, 1.2 )
+sleep_delay = 0.01
 
 [node name="sound_player" parent="." instance=ExtResource( 8 )]
 

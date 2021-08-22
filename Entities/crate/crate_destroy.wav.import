@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/crate_destroy.wav-5b250f81549e3d20f4ce1562778779b0.sample"
+
+[deps]
+
+source_file="res://Entities/crate/crate_destroy.wav"
+dest_files=[ "res://.import/crate_destroy.wav-5b250f81549e3d20f4ce1562778779b0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

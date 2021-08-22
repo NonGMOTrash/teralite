@@ -112,7 +112,7 @@ const data := {
 	"pistol_pickup": "res://Entities/Attacks/Projectile/small_bullet/pistol_pickup.wav",
 	"star_pickup": "res://Entities/Item_Pickups/star/star_pickup.wav",
 	"armor_pickup": "res://Entities/Item_Pickups/white_armor/armor_pickup.wav",
-	"crate_destory": "res://Entities/crate/crate_destory.wav",
+	"crate_destroy": "res://Entities/crate/crate_destroy.wav",
 	"bow_draw": "res://Entities/player/item_thinkers/bow/bow_draw.wav",
 	"pistol_reload": "res://Entities/player/item_thinkers/pistol/pistol_reload.wav",
 	"player_death": "res://Entities/player/player_death/player_death.wav",
