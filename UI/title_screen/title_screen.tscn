@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/Themes/general_theme.tres" type="Theme" id=1]
-[ext_resource path="res://UI/Themes/Styles/stylebox_box.tres" type="StyleBox" id=2]
 [ext_resource path="res://UI/title_screen/title_screen.gd" type="Script" id=3]
 [ext_resource path="res://UI/Icons/play.png" type="Texture" id=4]
 [ext_resource path="res://UI/Icons/exit.png" type="Texture" id=5]
@@ -9,7 +8,6 @@
 [ext_resource path="res://UI/Icons/gear.png" type="Texture" id=7]
 [ext_resource path="res://UI/options/options.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/smart_ui_nodes/smart_button/smart_button.tscn" type="PackedScene" id=9]
-[ext_resource path="res://UI/Themes/Styles/stylebox_selected_box.tres" type="StyleBox" id=10]
 
 [node name="title_screen" type="ColorRect"]
 anchor_right = 1.0
@@ -123,7 +121,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="saves" type="Control" parent="."]
+[node name="saves" type="VBoxContainer" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -136,73 +134,57 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="saves_list" type="ItemList" parent="saves"]
-anchor_right = 1.0
-margin_bottom = 152.0
-custom_styles/cursor = ExtResource( 2 )
-custom_styles/selected_focus = ExtResource( 10 )
-custom_styles/bg_focus = ExtResource( 2 )
-custom_styles/cursor_unfocused = ExtResource( 2 )
-custom_styles/selected = ExtResource( 10 )
-custom_styles/bg = ExtResource( 2 )
-custom_colors/font_color_selected = Color( 0.823529, 0.654902, 0.0823529, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ScrollContainer" type="ScrollContainer" parent="saves"]
+margin_right = 344.0
+margin_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="saves_list" type="GridContainer" parent="saves/ScrollContainer"]
+margin_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="VScrollBar" type="VScrollBar" parent="saves/ScrollContainer"]
+visible = false
+margin_right = 16.0
+margin_bottom = 20.4988
 
 [node name="HBoxContainer" type="HBoxContainer" parent="saves"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -20.0
-alignment = 1
+margin_top = 154.0
+margin_right = 344.0
+margin_bottom = 176.0
+
+[node name="back" parent="saves/HBoxContainer" instance=ExtResource( 9 )]
+margin_right = 58.0
+margin_bottom = 22.0
+text = "Back"
+icon = ExtResource( 5 )
+flat = true
+align = 0
+
+[node name="space" type="Control" parent="saves/HBoxContainer"]
+margin_left = 62.0
+margin_right = 223.0
+margin_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="new" parent="saves/HBoxContainer" instance=ExtResource( 9 )]
-margin_left = 25.0
-margin_right = 94.0
+margin_left = 227.0
+margin_right = 344.0
 margin_bottom = 22.0
-text = "New Save"
+text = "Create New Save"
 flat = true
-
-[node name="VSeparator" type="VSeparator" parent="saves/HBoxContainer"]
-margin_left = 98.0
-margin_right = 99.0
-margin_bottom = 22.0
-
-[node name="load" parent="saves/HBoxContainer" instance=ExtResource( 9 )]
-margin_left = 103.0
-margin_right = 177.0
-margin_bottom = 22.0
-text = "Load Save"
-flat = true
-
-[node name="VSeparator2" type="VSeparator" parent="saves/HBoxContainer"]
-margin_left = 181.0
-margin_right = 182.0
-margin_bottom = 22.0
-
-[node name="delete" parent="saves/HBoxContainer" instance=ExtResource( 9 )]
-margin_left = 186.0
-margin_right = 270.0
-margin_bottom = 22.0
-text = "Delete Save"
-flat = true
-
-[node name="VSeparator3" type="VSeparator" parent="saves/HBoxContainer"]
-margin_left = 274.0
-margin_right = 275.0
-margin_bottom = 22.0
-
-[node name="back" parent="saves/HBoxContainer" instance=ExtResource( 9 )]
-margin_left = 279.0
-margin_right = 319.0
-margin_bottom = 22.0
-text = "Back"
-flat = true
+align = 2
 
 [node name="new_save" type="Control" parent="."]
 visible = false
@@ -292,16 +274,17 @@ visible = false
 [node name="tabs" parent="Options" index="0"]
 theme = ExtResource( 1 )
 
+[node name="dropdown" parent="Options/tabs/Video/particles" index="2"]
+items = [ "None", null, false, 0, null, "Low", null, false, 1, null, "Medium", null, false, 2, null, "All", null, false, 3, null ]
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 
 [connection signal="pressed" from="main/center/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="main/center/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="main/center/quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="saves/HBoxContainer/new" to="." method="_on_new_pressed"]
-[connection signal="pressed" from="saves/HBoxContainer/load" to="." method="_on_load_pressed"]
-[connection signal="pressed" from="saves/HBoxContainer/delete" to="." method="_on_delete_pressed"]
 [connection signal="pressed" from="saves/HBoxContainer/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="saves/HBoxContainer/new" to="." method="_on_new_pressed"]
 [connection signal="pressed" from="new_save/create" to="." method="_on_create_pressed"]
 [connection signal="pressed" from="new_save/cancel" to="." method="_on_cancel_pressed"]
 [connection signal="visibility_changed" from="Options" to="." method="_on_Options_visibility_changed"]

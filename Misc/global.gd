@@ -107,6 +107,8 @@ var faction_relationships = {
 		},
 }
 
+const VER_INCOMPATIABILITY := []
+
 # cursor sprites preloaded:
 const CURSOR_NORMAL = preload("res://UI/cursors/cursor_normal.png")
 const CURSOR_EMPTY = preload("res://UI/cursors/cursor_empty.png")
@@ -205,7 +207,7 @@ func get_save_data_dict():
 		"speedrun_time": speedrun_time,
 	}
 
-func get_saves():
+func update_saves():
 	saves = []
 	var dir = Directory.new()
 	if not dir.dir_exists(SAVE_DIR): dir.make_dir_recursive(SAVE_DIR)
@@ -263,7 +265,6 @@ func load_save(entered_save_name):
 						new_name = new_name + "_"
 				save_name = new_name
 				
-				
 				error = save_file.open(SAVE_DIR + save_name, File.WRITE)
 				if error == OK:
 					save_file.store_var(save_data)
@@ -284,7 +285,7 @@ func load_save(entered_save_name):
 			#load works
 			var new_data = save_file.get_var()
 			
-			# PROBLEM_NOTE: this is kinda dumb because I have to add a new line here every time i add a new
+			# PROBLEM_NOTE: this is kinda bad because I have to add a new line here every time i add a new
 			# var to a save, not sure there's exactly a better way (not a huge deal really)
 			if new_data.has("stars"): stars = new_data["stars"]
 			if new_data.has("last_hub"): last_hub = new_data["last_hub"]
@@ -334,8 +335,8 @@ func load_save(entered_save_name):
 			OS.alert("could not open save on load", "reportpls.jpg")
 	else:
 		# file didn't exist
-		push_error("could not find save on load")
-		OS.alert("could not find save on load", "reportpls.jpg")
+		push_error("could not find save '%s' on load" % save_name)
+		OS.alert("could not find save '%s' on load" % save_name, "reportpls.jpg")
 
 func level_code_to_name(lvl:String) -> String:
 	match lvl:
@@ -464,3 +465,33 @@ func quit():
 #	res.queue_free()
 #	self.queue_free()
 	get_tree().quit()
+
+func sec_to_time(time: float) -> String:
+	var hours = int(floor(time / 3600))
+	var minute = int(floor(time / 60))
+	var second = int(floor(time - (minute * 60)))
+	var tenth = stepify(time - ((minute*60) + second), 0.1) * 10
+	if tenth == 10: tenth = 0
+	
+	if second < 10: 
+		second = str(second)
+		second = "0"+second
+	
+	if hours > 1:
+		return (
+			str(hours) +
+			":" +
+			str(minute) +
+			":" +
+			str(second) +
+			"." +
+			str(tenth)
+		)
+	else:
+		return (
+			str(minute) +
+			":" +
+			str(second) +
+			"." +
+			str(tenth)
+		)

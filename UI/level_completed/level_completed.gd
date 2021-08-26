@@ -46,21 +46,8 @@ func start():
 			damage_comment.text = "perfect!"
 			perfected = true
 	
-	var time_value = refs.stopwatch.get_ref().time
-	var minute = int(floor(time_value / 60))
-	var second = int(floor(time_value - (minute * 60)))
-	var tenth = stepify(time_value - ((minute*60) + second), 0.1) * 10
-	if tenth == 10: tenth = 0
-	if second < 10: 
-		second = str(second)
-		second = "0"+second
-	time.text = time.text + (
-		str(minute) +
-		":" +
-		str(second) +
-		"." +
-		str(tenth)
-	)
+	var time_value: float = refs.stopwatch.get_ref().time
+	time.text = time.text + global.sec_time_time(time_value)
 	if global.level_times.has(lvl):
 		if time_value < global.level_times[lvl]:
 			time.set("custom_colors/font_color", YELLOW)

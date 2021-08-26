@@ -51,24 +51,7 @@ func _ready() -> void:
 	
 	var time_txt = "Best Time: NA"
 	if LEVEL in global.level_times:
-		var time = global.level_times[LEVEL]
-		var minute = int(floor(time / 60))
-		var second = int(floor(time - (minute * 60)))
-		var tenth = stepify(time - ((minute*60) + second), 0.1) * 10
-		if tenth == 10: 
-			tenth = 0
-		if second < 10: 
-			second = str(second)
-			second = "0"+second
-		
-		var final_time = (
-			str(minute) +
-			":" +
-			str(second) +
-			"." +
-			str(tenth)
-			)
-		time_txt = "Best Time: %s" % final_time
+		time_txt = "Best Time: %s" % global.sec_to_time(global.level_times[LEVEL])
 	
 	label.text = (
 		LEVEL + "\n" +

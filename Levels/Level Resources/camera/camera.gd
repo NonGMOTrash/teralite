@@ -27,10 +27,7 @@ func _ready():
 	
 	global.connect("update_camera", self, "update_fov")
 	
-	if refs.player.get_ref() != null:
-		global_position = refs.player.get_ref().global_position
-	else:
-		global_position = get_global_mouse_position()
+	global_position = get_global_mouse_position()
 
 func update_fov():
 	zoom = global.FOV

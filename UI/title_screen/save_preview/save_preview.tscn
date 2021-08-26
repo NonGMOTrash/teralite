@@ -1,0 +1,193 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://UI/Themes/Styles/stylebox_box.tres" type="StyleBox" id=1]
+[ext_resource path="res://UI/Icons/save.png" type="Texture" id=2]
+[ext_resource path="res://UI/Themes/general_theme.tres" type="Theme" id=3]
+[ext_resource path="res://UI/Icons/plain_star.png" type="Texture" id=4]
+[ext_resource path="res://UI/Icons/hourglass.png" type="Texture" id=5]
+[ext_resource path="res://UI/title_screen/save_preview/save_preview.gd" type="Script" id=6]
+[ext_resource path="res://UI/smart_ui_nodes/smart_button/smart_button.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/Icons/deaths.png" type="Texture" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="save_preview" type="PanelContainer"]
+margin_right = 185.0
+margin_bottom = 66.4988
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 3 )
+custom_styles/panel = ExtResource( 1 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="main" type="VBoxContainer" parent="."]
+margin_left = 6.0
+margin_top = 2.24938
+margin_right = 179.0
+margin_bottom = 64.2494
+
+[node name="HBoxContainer" type="HBoxContainer" parent="main"]
+margin_right = 173.0
+margin_bottom = 16.0
+
+[node name="icon" type="TextureRect" parent="main/HBoxContainer"]
+margin_right = 16.0
+margin_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 2 )
+stretch_mode = 3
+
+[node name="name" type="Label" parent="main/HBoxContainer"]
+margin_left = 20.0
+margin_right = 137.0
+margin_bottom = 16.0
+text = "WWWWWWWWWWWWW"
+
+[node name="space" type="Panel" parent="main/HBoxContainer"]
+margin_left = 141.0
+margin_right = 145.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+
+[node name="version" type="Label" parent="main/HBoxContainer"]
+margin_left = 149.0
+margin_right = 173.0
+margin_bottom = 16.0
+custom_colors/font_color = Color( 0.423529, 0.937255, 0.160784, 1 )
+text = "v0.0"
+align = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="main"]
+margin_top = 20.0
+margin_right = 173.0
+margin_bottom = 36.0
+
+[node name="stars_icon" type="TextureRect" parent="main/HBoxContainer2"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 4 )
+
+[node name="stars" type="Label" parent="main/HBoxContainer2"]
+margin_left = 20.0
+margin_right = 34.0
+margin_bottom = 16.0
+text = "-1"
+
+[node name="VSeparator" type="VSeparator" parent="main/HBoxContainer2"]
+margin_left = 38.0
+margin_right = 39.0
+margin_bottom = 16.0
+
+[node name="deaths_icon" type="TextureRect" parent="main/HBoxContainer2"]
+margin_left = 43.0
+margin_right = 58.0
+margin_bottom = 16.0
+texture = ExtResource( 8 )
+
+[node name="deaths" type="Label" parent="main/HBoxContainer2"]
+margin_left = 62.0
+margin_right = 76.0
+margin_bottom = 16.0
+text = "-1"
+
+[node name="VSeparator_2" type="VSeparator" parent="main/HBoxContainer2"]
+margin_left = 80.0
+margin_right = 81.0
+margin_bottom = 16.0
+
+[node name="time_icon" type="TextureRect" parent="main/HBoxContainer2"]
+margin_left = 85.0
+margin_right = 100.0
+margin_bottom = 16.0
+texture = ExtResource( 5 )
+
+[node name="time" type="Label" parent="main/HBoxContainer2"]
+margin_left = 104.0
+margin_right = 171.0
+margin_bottom = 16.0
+text = "-1 minutes"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="main"]
+margin_top = 40.0
+margin_right = 173.0
+margin_bottom = 62.0
+
+[node name="play" parent="main/HBoxContainer3" instance=ExtResource( 7 )]
+margin_right = 36.0
+margin_bottom = 22.0
+text = "play"
+flat = true
+
+[node name="space" type="Panel" parent="main/HBoxContainer3"]
+margin_left = 40.0
+margin_right = 119.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+
+[node name="delete" parent="main/HBoxContainer3" instance=ExtResource( 7 )]
+margin_left = 123.0
+margin_right = 173.0
+margin_bottom = 22.0
+text = "delete"
+flat = true
+selected_color = Color( 0.972549, 0.101961, 0.101961, 1 )
+
+[node name="delete_confirmation" type="VBoxContainer" parent="."]
+visible = false
+margin_left = 6.0
+margin_top = 2.24938
+margin_right = 179.0
+margin_bottom = 64.2494
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 5
+alignment = 1
+
+[node name="Label" type="Label" parent="delete_confirmation"]
+margin_right = 173.0
+margin_bottom = 35.0
+text = "are you sure you want to delete this save?"
+align = 1
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="delete_confirmation"]
+margin_top = 39.0
+margin_right = 173.0
+margin_bottom = 61.0
+
+[node name="final_delete" parent="delete_confirmation/HBoxContainer" instance=ExtResource( 7 )]
+margin_right = 50.0
+margin_bottom = 22.0
+text = "delete"
+flat = true
+selected_color = Color( 0.972549, 0.101961, 0.101961, 1 )
+
+[node name="space" type="Panel" parent="delete_confirmation/HBoxContainer"]
+margin_left = 54.0
+margin_right = 119.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+
+[node name="cancel" parent="delete_confirmation/HBoxContainer" instance=ExtResource( 7 )]
+margin_left = 123.0
+margin_right = 173.0
+margin_bottom = 22.0
+text = "cancel"
+flat = true
+
+[connection signal="pressed" from="main/HBoxContainer3/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="main/HBoxContainer3/delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="delete_confirmation/HBoxContainer/final_delete" to="." method="_on_final_delete_pressed"]
+[connection signal="pressed" from="delete_confirmation/HBoxContainer/cancel" to="." method="_on_cancel_pressed"]

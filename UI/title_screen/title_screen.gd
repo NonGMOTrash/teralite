@@ -13,52 +13,34 @@ onready var new_save_menu = $new_save
 onready var options_menu = $Options
 onready var new = $saves/HBoxContainer/new
 onready var create = $new_save/create
-onready var load_save = $saves/HBoxContainer/load
-onready var saves_list = $saves/saves_list
+onready var saves_list := $saves/ScrollContainer/saves_list
 
 var locked_input = true
 
-const yellow = Color8(247, 150, 23)
-const white = Color8(255, 255, 255)
+const yellow := Color8(247, 150, 23)
+const white := Color8(255, 255, 255)
+const SAVE_PREVIEW := preload("res://UI/title_screen/save_preview/save_preview.tscn")
 
 const MESSAGES = [
-	"idk",
-	"big floppa edition",
-	"the least bad game yet!",
-	"less bugs than something something 76!",
-	"worse than school",
-	"worse than work",
-	"don't play project epsilon",
-	"downward spiral",
-	"no amogus allowed",
-	"im NOT waiting for godot 4.0",
-	"loading a rocket launcher",
-	"pls enjoy",
-	"helo",
-	"0% political",
-	"a deep polticial statement",
-	"blebsome",
-	"a little something for everyone",
-	"don't play at 4:20 PM",
-	"all lowercase",
-	"now with 50% more bugs",
-	"play 20xx.io!",
-	"it's okay",
-	"5 merits lost :(",
-	"dumpy baby",
-	"spikes galore",
-	"women aren't real*",
-	"it really makes you feel orange",
-	"t posing allowed",
-	"dont go to /r/dontgohere",
-	"game of the year, fornever",
-	"100% based",
-	"100% cringe",
+	"idk", "big floppa edition", "the least bad game yet!",
+	"less bugs than something something 76!", 
+	"worse than school", "worse than work",
+	"don't play project epsilon", "downward spiral",
+	"no amogus allowed", "im NOT waiting for godot 4.0",
+	"loading a rocket launcher", "pls enjoy", "helo",
+	"0% political", "a deep polticial statement",
+	"blebsome", "a little something for everyone",
+	"don't play at 4:20 PM", "all lowercase",
+	"now with 50% more bugs", "play 20xx.io!",
+	"it's okay", "5 merits lost :(", "dumpy baby",
+	"spikes galore", "women aren't real*",
+	"it really makes you feel orange", "t posing allowed",
+	"dont go to /r/dontgohere", "game of the year, fornever",
+	"100% based", "100% cringe", 
 	"i visit newgrounds.com everyday",
 	"a quircky new earthbound inspired RPG",
-	"straight down to heck",
-	"worst mistake of my life",
-	"proof that software is getting worse",
+	"straight down to heck", "worst mistake of my life",
+	"proof that software is getting worse", 
 	"play project eclise!"
 ]
 
@@ -119,22 +101,49 @@ func multi_color_set(target:Control, color:Color):
 	target.set_deferred("custom_colors/font_color_hover", color)
 
 func load_saves_list_items(): # add items from the saves directory into here
-	saves_list.clear()
-	
 	# sets saves var to all the files in the saves directory
-	global.get_saves()
+	global.update_saves()
 	
-	for i in global.saves.size():
-		saves_list.add_item(global.saves[i], SAVE_ICON)
+	for save in global.saves:
+		if saves_list.find_node(save):
+			continue
 		
-		var tooltip = "(oops, tooltip broke. pls report)"
+		var save_preview := SAVE_PREVIEW.instance()
+		saves_list.call_deferred("add_child", save_preview)
+		yield(save_preview, "ready")
+		
 		var reader = File.new()
-		var error = reader.open(global.SAVE_DIR + global.saves[i], File.READ)
+		var error = reader.open(global.SAVE_DIR + save, File.READ)
 		if error == OK:
-			var data = reader.get_var()
-			tooltip = "Stars: "+str(data["stars"])
-		
-		saves_list.set_item_tooltip(i, tooltip)
+			var data: Dictionary = reader.get_var()
+			
+			save_preview.stars.text = str(data["stars"])
+			save_preview.save_name.text = data["save_name"]
+			save_preview.version.text = str(data["ver_num"])
+			if data["ver_num"] < global.ver_num:
+				if floor(data["ver_num"]) < 1.0:
+					save_preview.version.set_deferred("custom_colors/font_color", Color.yellow)
+				else:
+					save_preview.version.set_deferred("custom_colors/font_color", Color.greenyellow)
+			elif data["ver_num"] > global.ver_num:
+				save_preview.version.set_deferred("custom_colors/font_color", Color.lightblue)
+			
+			var deaths: int = 0
+			for amount in data["level_deaths"].values():
+				deaths += amount
+			save_preview.deaths.text = str(deaths)
+			
+			if "total_time" in data:
+				save_preview.time.text = global.sec_to_time(data["total_time"])
+			else:
+				save_preview.time.text = "0:00.0"
+		else:
+			save_preview.time.visible = false
+			save_preview.deaths.visible = false
+			save_preview.get_node("main/HBoxContainer2/deaths_icon").visible = false
+			save_preview.get_node("main/HBoxContainer2/stars_icon").visible = false
+			save_preview.get_node("main/HBoxContainer2/time_icon").visible = false
+			save_preview.stars = "error, data couldn't be loaded :("
 
 func _on_Timer_timeout() -> void:
 	locked_input = false
@@ -186,15 +195,6 @@ func _on_create_pressed() -> void:
 	
 	global.write_save(global.save_name, data)
 	global.load_save(global.save_name)
-
-func _on_load_pressed() -> void:
-	if saves_list.get_selected_items().size() == 0: return
-	global.load_save(saves_list.get_item_text(saves_list.get_selected_items()[0]))
-	
-func _on_delete_pressed() -> void:
-	if saves_list.get_selected_items().size() == 0: return
-	global.delete_save(saves_list.get_item_text(saves_list.get_selected_items()[0]))
-	load_saves_list_items()
 
 func _on_Options_closed() -> void:
 	title_menu.visible = true
