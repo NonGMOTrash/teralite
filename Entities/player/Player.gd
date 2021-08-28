@@ -262,7 +262,7 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 	if entity is Attack and get_node_or_null(entity.SOURCE_PATH) != null:
 		source = entity.SOURCE
 		source_name = source.truName
-	
+	prints(entity_name, source_name)
 	if entity_name == "player" or source_name == "player":
 		death_message = "you killed yourself :("
 	elif entity.truName == "player":
@@ -281,7 +281,8 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 			"fire": death_message = "burned"
 			"slash": death_message = "slashed by a %s" % source_name
 			"swipe": death_message = "severed by a %s" % source_name
-			"poke": death_message = "stabbed by a %s" % source_name
+			"poke": death_message = "speared by a %s" % source_name
+			"stab": death_message = "stabbed by a %s" % source_name
 			"arrow": death_message = "shot by a %s" % source_name
 			"bolt": death_message = "shot by a %s" % source_name
 			"magic": death_message = "killed by a %s's magic" % source_name

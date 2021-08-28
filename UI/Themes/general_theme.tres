@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=2]
+[gd_resource type="Theme" load_steps=16 format=2]
 
 [ext_resource path="res://UI/Themes/Fonts/m6x11.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Themes/Styles/stylebox_full.tres" type="StyleBox" id=2]
@@ -9,7 +9,9 @@
 [ext_resource path="res://UI/Icons/unchecked.png" type="Texture" id=7]
 [ext_resource path="res://UI/Themes/Styles/stylebox_spikey.tres" type="StyleBox" id=8]
 [ext_resource path="res://UI/Icons/x.png" type="Texture" id=9]
+[ext_resource path="res://UI/Icons/option_empty.png" type="Texture" id=10]
 [ext_resource path="res://UI/Icons/dropdown.png" type="Texture" id=11]
+[ext_resource path="res://UI/Icons/option_selected.png" type="Texture" id=12]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -35,8 +37,8 @@ CheckBox/constants/check_vadjust = 0
 CheckBox/constants/hseparation = 4
 CheckBox/fonts/font = null
 CheckBox/icons/checked = ExtResource( 6 )
-CheckBox/icons/radio_checked = null
-CheckBox/icons/radio_unchecked = null
+CheckBox/icons/radio_checked = ExtResource( 12 )
+CheckBox/icons/radio_unchecked = ExtResource( 10 )
 CheckBox/icons/unchecked = ExtResource( 7 )
 CheckBox/styles/disabled = null
 CheckBox/styles/focus = SubResource( 1 )
@@ -46,7 +48,7 @@ CheckBox/styles/normal = null
 CheckBox/styles/pressed = null
 HSeparator/constants/separation = 1
 HSeparator/styles/separator = SubResource( 2 )
-Icons/icons/close = null
+Icons/icons/close = ExtResource( 9 )
 Label/colors/font_color = Color( 1, 1, 1, 1 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 1 )
 Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -80,11 +82,11 @@ PopupMenu/colors/font_color_separator = Color( 0.88, 0.88, 0.88, 1 )
 PopupMenu/constants/hseparation = 4
 PopupMenu/constants/vseparation = 4
 PopupMenu/fonts/font = null
-PopupMenu/icons/checked = null
-PopupMenu/icons/radio_checked = null
-PopupMenu/icons/radio_unchecked = null
+PopupMenu/icons/checked = ExtResource( 12 )
+PopupMenu/icons/radio_checked = ExtResource( 12 )
+PopupMenu/icons/radio_unchecked = ExtResource( 10 )
 PopupMenu/icons/submenu = null
-PopupMenu/icons/unchecked = null
+PopupMenu/icons/unchecked = ExtResource( 10 )
 PopupMenu/styles/hover = null
 PopupMenu/styles/labeled_separator_left = null
 PopupMenu/styles/labeled_separator_right = null

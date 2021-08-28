@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/Themes/general_theme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/Icons/save.png" type="Texture" id=2]
 [ext_resource path="res://UI/title_screen/title_screen.gd" type="Script" id=3]
 [ext_resource path="res://UI/Icons/play.png" type="Texture" id=4]
 [ext_resource path="res://UI/Icons/exit.png" type="Texture" id=5]
@@ -125,25 +126,25 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = -20.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
 theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="saves"]
-margin_right = 344.0
-margin_bottom = 150.0
+margin_right = 364.0
+margin_bottom = 170.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="saves_list" type="GridContainer" parent="saves/ScrollContainer"]
-margin_bottom = 150.0
+margin_bottom = 170.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
@@ -155,9 +156,9 @@ margin_right = 16.0
 margin_bottom = 20.4988
 
 [node name="HBoxContainer" type="HBoxContainer" parent="saves"]
-margin_top = 154.0
-margin_right = 344.0
-margin_bottom = 176.0
+margin_top = 174.0
+margin_right = 364.0
+margin_bottom = 196.0
 
 [node name="back" parent="saves/HBoxContainer" instance=ExtResource( 9 )]
 margin_right = 58.0
@@ -169,7 +170,7 @@ align = 0
 
 [node name="space" type="Control" parent="saves/HBoxContainer"]
 margin_left = 62.0
-margin_right = 223.0
+margin_right = 243.0
 margin_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -179,8 +180,8 @@ __meta__ = {
 }
 
 [node name="new" parent="saves/HBoxContainer" instance=ExtResource( 9 )]
-margin_left = 227.0
-margin_right = 344.0
+margin_left = 247.0
+margin_right = 364.0
 margin_bottom = 22.0
 text = "Create New Save"
 flat = true
@@ -208,18 +209,18 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="new_save/VBoxContainer"]
 margin_right = 344.0
-margin_bottom = 24.0
+margin_bottom = 26.0
 
 [node name="name_label" type="Label" parent="new_save/VBoxContainer/HBoxContainer"]
 margin_top = 5.0
-margin_right = 66.0
-margin_bottom = 19.0
+margin_right = 67.0
+margin_bottom = 21.0
 text = "Save Name:"
 
 [node name="name" type="LineEdit" parent="new_save/VBoxContainer/HBoxContainer"]
-margin_left = 70.0
+margin_left = 71.0
 margin_right = 344.0
-margin_bottom = 24.0
+margin_bottom = 26.0
 size_flags_horizontal = 3
 custom_constants/minimum_spaces = 0
 max_length = 40
@@ -232,38 +233,57 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="difficulty" type="OptionButton" parent="new_save/VBoxContainer"]
-visible = false
-margin_top = 28.0
+[node name="HBoxContainer_2" type="HBoxContainer" parent="new_save/VBoxContainer"]
+margin_top = 30.0
 margin_right = 344.0
-margin_bottom = 48.0
-custom_constants/arrow_margin = 270
-text = "Difficulty"
+margin_bottom = 52.0
+
+[node name="icon_label" type="Label" parent="new_save/VBoxContainer/HBoxContainer_2"]
+margin_top = 3.0
+margin_right = 65.0
+margin_bottom = 19.0
+text = "Save Icon:"
+
+[node name="prev" parent="new_save/VBoxContainer/HBoxContainer_2" instance=ExtResource( 9 )]
+margin_left = 69.0
+margin_right = 127.0
+margin_bottom = 22.0
+text = "<< prev"
 flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="icon" type="TextureRect" parent="new_save/VBoxContainer/HBoxContainer_2"]
+margin_left = 131.0
+margin_right = 147.0
+margin_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 2 )
+stretch_mode = 5
+
+[node name="next" parent="new_save/VBoxContainer/HBoxContainer_2" instance=ExtResource( 9 )]
+margin_left = 151.0
+margin_right = 210.0
+margin_bottom = 22.0
+text = "next >>"
+flat = true
 
 [node name="create" parent="new_save" instance=ExtResource( 9 )]
-anchor_left = 0.5
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -57.5
-margin_top = -20.0
-margin_right = 57.5
+margin_left = -117.0
+margin_top = -22.0
+margin_right = 0.0
 margin_bottom = 0.0
 text = "Create New Save"
 flat = true
 
 [node name="cancel" parent="new_save" instance=ExtResource( 9 )]
-anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -50.0
-margin_top = -20.0
-margin_right = 0.0
+margin_top = -22.0
+margin_right = 50.0
 margin_bottom = 0.0
 text = "Cancel"
 flat = true
@@ -274,9 +294,6 @@ visible = false
 [node name="tabs" parent="Options" index="0"]
 theme = ExtResource( 1 )
 
-[node name="dropdown" parent="Options/tabs/Video/particles" index="2"]
-items = [ "None", null, false, 0, null, "Low", null, false, 1, null, "Medium", null, false, 2, null, "All", null, false, 3, null ]
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 
@@ -285,6 +302,8 @@ wait_time = 0.5
 [connection signal="pressed" from="main/center/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="saves/HBoxContainer/back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="saves/HBoxContainer/new" to="." method="_on_new_pressed"]
+[connection signal="pressed" from="new_save/VBoxContainer/HBoxContainer_2/prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="new_save/VBoxContainer/HBoxContainer_2/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="new_save/create" to="." method="_on_create_pressed"]
 [connection signal="pressed" from="new_save/cancel" to="." method="_on_cancel_pressed"]
 [connection signal="visibility_changed" from="Options" to="." method="_on_Options_visibility_changed"]

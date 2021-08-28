@@ -62,9 +62,10 @@ var level_deaths = {}
 var level_times = {}
 var total_time = 0.0
 var speedrun_time = 0.0
+var icon = 0
 
 const ver_phase = "beta"
-const ver_num = 3.5
+const ver_num = 3.6
 const ver_hotfix = 0
 
 # for saving things
@@ -81,6 +82,7 @@ var settings := {
 	"volume": 0.50,
 	"vsync": true,
 	"particles": 3, # 0 = none, 1 = low, 2 = medium, 3 = all
+	"gpu_snap": false,
 }
 
 # should move this and get_relation to Entity.gd probably
@@ -188,6 +190,7 @@ func get_empty_save_data():
 		"ver_hotfix": ver_hotfix,
 		"total_time": 0.0,
 		"speedrun_time": 0.0,
+		"icon": 0,
 	}
 
 func get_save_data_dict():
@@ -205,6 +208,7 @@ func get_save_data_dict():
 		"ver_hotfix": ver_hotfix,
 		"total_time": total_time,
 		"speedrun_time": speedrun_time,
+		"icon": icon,
 	}
 
 func update_saves():
@@ -296,6 +300,7 @@ func load_save(entered_save_name):
 			if new_data.has("level_times"): level_times = new_data["level_times"]
 			if new_data.has("total_time"): total_time = new_data["total_time"]
 			if new_data.has("speedrun_time"): speedrun_time = new_data["speedrun_time"]
+			if new_data.has("icon"): icon = new_data["icon"]
 			
 			save_file.close()
 			
@@ -377,6 +382,7 @@ func delete_save(entered_save_name):
 
 func update_settings(save_settings_config:=true):
 	OS.window_fullscreen = settings["fullscreen"]
+	ProjectSettings.set_setting("rendering/2d/snapping/use_gpu_pixel_snap", settings["gpu_snap"])
 	
 	OS.vsync_enabled = settings["vsync"]
 	
@@ -391,7 +397,7 @@ func update_settings(save_settings_config:=true):
 				)
 	
 	if get_tree().current_scene is Navigation2D:
-		# is level
+		# is map
 		
 		var camera = refs.camera.get_ref()
 		if not camera is Camera2D:

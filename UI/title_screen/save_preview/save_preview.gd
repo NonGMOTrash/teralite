@@ -12,7 +12,7 @@ onready var time := $main/HBoxContainer2/time
 onready var saves_list: GridContainer = get_parent()
 
 signal play(save_name)
-signal delete
+signal delete()
 
 func _ready() -> void:
 	name = save_name.text

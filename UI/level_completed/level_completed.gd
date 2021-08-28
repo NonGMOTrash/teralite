@@ -47,7 +47,7 @@ func start():
 			perfected = true
 	
 	var time_value: float = refs.stopwatch.get_ref().time
-	time.text = time.text + global.sec_time_time(time_value)
+	time.text = time.text + global.sec_to_time(time_value)
 	if global.level_times.has(lvl):
 		if time_value < global.level_times[lvl]:
 			time.set("custom_colors/font_color", YELLOW)

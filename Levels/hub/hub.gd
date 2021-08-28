@@ -93,4 +93,4 @@ func _physics_process(_delta: float) -> void:
 			particle_anchor.position.y -= 216
 
 func _on_hub_tree_exiting() -> void:
-	global.total_time += 9999.0 - timer.time_left
+	global.total_time += timer.wait_time - timer.time_left

@@ -14,6 +14,7 @@ onready var options_menu = $Options
 onready var new = $saves/HBoxContainer/new
 onready var create = $new_save/create
 onready var saves_list := $saves/ScrollContainer/saves_list
+onready var save_icon := $new_save/VBoxContainer/HBoxContainer_2/icon
 
 var locked_input = true
 
@@ -43,6 +44,17 @@ const MESSAGES = [
 	"proof that software is getting worse", 
 	"play project eclise!"
 ]
+const SAVE_ICONS := [
+	preload("res://UI/Icons/save.png"),
+	preload("res://Entities/player/player_flat.png"),
+	preload("res://UI/Icons/plain_star.png"),
+	preload("res://UI/Icons/teralite_logo_small.png"),
+	preload("res://Entities/Item_Pickups/sword/sword.png"),
+	preload("res://Entities/Item_Pickups/heart/heart.png"),
+	preload("res://Entities/Item_Pickups/bow/bow.png"),
+	preload("res://Entities/Item_Pickups/pistol/pistol.png"),
+]
+var save_icon_id: int = 0
 
 onready var SAVE_ICON = preload("res://UI/Icons/save.png")
 
@@ -105,8 +117,10 @@ func load_saves_list_items(): # add items from the saves directory into here
 	global.update_saves()
 	
 	for save in global.saves:
-		if saves_list.find_node(save):
-			continue
+		var existing_save_preview := saves_list.find_node(save)
+		if existing_save_preview:
+			existing_save_preview.queue_free()
+			yield(existing_save_preview, "tree_exited")
 		
 		var save_preview := SAVE_PREVIEW.instance()
 		saves_list.call_deferred("add_child", save_preview)
@@ -119,7 +133,13 @@ func load_saves_list_items(): # add items from the saves directory into here
 			
 			save_preview.stars.text = str(data["stars"])
 			save_preview.save_name.text = data["save_name"]
+			save_preview.name = data["save_name"]
 			save_preview.version.text = str(data["ver_num"])
+			if data["save_name"] == "icon":
+				print("loaded:")
+				print(data)
+			if "icon" in data:
+				save_preview.icon.texture = SAVE_ICONS[data["icon"]]
 			if data["ver_num"] < global.ver_num:
 				if floor(data["ver_num"]) < 1.0:
 					save_preview.version.set_deferred("custom_colors/font_color", Color.yellow)
@@ -185,17 +205,31 @@ func _on_cancel_pressed() -> void:
 
 func _on_create_pressed() -> void:
 	var new_save_name = $new_save/VBoxContainer/HBoxContainer/name.text
-	if new_save_name == "": 
+	if new_save_name == "":
 		new_save_name = "untitled_save"
 	
 	global.save_name = new_save_name
 	
 	var data = global.get_empty_save_data()
 	data["save_name"] = global.save_name
-	
+	data["icon"] = save_icon_id
+	print("created:")
+	print(data)
 	global.write_save(global.save_name, data)
 	global.load_save(global.save_name)
 
 func _on_Options_closed() -> void:
 	title_menu.visible = true
 	play.grab_focus()
+
+func _on_next_pressed() -> void:
+	save_icon_id += 1
+	if save_icon_id > SAVE_ICONS.size()-1:
+		save_icon_id = 0
+	save_icon.texture = SAVE_ICONS[save_icon_id]
+
+func _on_prev_pressed() -> void:
+	save_icon_id -= 1
+	if save_icon_id < 0:
+		save_icon_id = SAVE_ICONS.size()-1
+	save_icon.texture = SAVE_ICONS[save_icon_id]

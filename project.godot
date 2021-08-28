@@ -136,6 +136,8 @@ enabled=PoolStringArray( "res://addons/paulloz.colorblindness/plugin.cfg" )
 
 framerate=false
 "visibility rect"=false
+uv_contact=false
+"gpu pixel snap"=false
 
 [importer_defaults]
 
@@ -373,3 +375,4 @@ name_num_separator=2
 quality/driver/fallback_to_gles2=true
 batching/precision/uv_contract=true
 quality/dynamic_fonts/use_oversampling=false
+quality/batching/uv_contact=false

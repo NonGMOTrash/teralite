@@ -45,12 +45,12 @@ stretch_mode = 3
 
 [node name="name" type="Label" parent="main/HBoxContainer"]
 margin_left = 20.0
-margin_right = 137.0
+margin_right = 103.0
 margin_bottom = 16.0
-text = "WWWWWWWWWWWWW"
+text = "untitled_save"
 
 [node name="space" type="Panel" parent="main/HBoxContainer"]
-margin_left = 141.0
+margin_left = 107.0
 margin_right = 145.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
@@ -111,9 +111,9 @@ texture = ExtResource( 5 )
 
 [node name="time" type="Label" parent="main/HBoxContainer2"]
 margin_left = 104.0
-margin_right = 171.0
+margin_right = 145.0
 margin_bottom = 16.0
-text = "-1 minutes"
+text = "00:00.0"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="main"]
 margin_top = 40.0

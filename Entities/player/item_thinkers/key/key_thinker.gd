@@ -18,3 +18,9 @@ func _on_activation_body_entered(body: Node) -> void:
 	if body.truName == "lock":
 		body.unlock()
 		delete()
+
+func primary():
+	for body in activation.get_overlapping_bodies():
+		if body is Entity and body.truName == "lock":
+			_on_activation_body_entered(body)
+			break

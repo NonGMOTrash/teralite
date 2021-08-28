@@ -11,6 +11,7 @@ onready var hidebar = $tabs/Game/hidebar
 onready var volume = $tabs/Audio/volume
 onready var volume_label = $tabs/Audio/volume_label
 onready var particles = $tabs/Video/particles/dropdown
+onready var gpu_snap = $tabs/Video/gpu_snap
 
 signal closed
 
@@ -51,6 +52,7 @@ func _on_exit_pressed() -> void:
 	global.settings["volume"] = volume.value / 100
 	global.settings["vsync"] = vsync.pressed
 	global.settings["particles"] = particles.selected
+	global.settings["gpu_snap"] = gpu_snap.pressed
 	
 	global.update_settings()
 	

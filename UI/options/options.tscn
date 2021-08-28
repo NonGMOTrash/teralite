@@ -56,28 +56,34 @@ __meta__ = {
 }
 
 [node name="fullscreen" parent="tabs/Video" instance=ExtResource( 2 )]
-margin_top = 25.0
-margin_right = 364.0
-margin_bottom = 49.0
+margin_top = 11.0
+margin_right = 352.0
+margin_bottom = 35.0
 shortcut_in_tooltip = false
 text = "Fullscreen"
 
 [node name="pixel" parent="tabs/Video" instance=ExtResource( 2 )]
-margin_top = 53.0
-margin_right = 364.0
-margin_bottom = 77.0
+margin_top = 39.0
+margin_right = 352.0
+margin_bottom = 63.0
 text = "Pixel perfect filter (not recomended)"
 
+[node name="gpu_snap" parent="tabs/Video" instance=ExtResource( 2 )]
+margin_top = 67.0
+margin_right = 352.0
+margin_bottom = 91.0
+text = "GPU pixel snap"
+
 [node name="vsync" parent="tabs/Video" instance=ExtResource( 2 )]
-margin_top = 81.0
-margin_right = 364.0
-margin_bottom = 105.0
-text = "Vsync (caps your FPS to your monitor refresh rate)"
+margin_top = 95.0
+margin_right = 352.0
+margin_bottom = 119.0
+text = "Vsync"
 
 [node name="particles" type="HBoxContainer" parent="tabs/Video"]
-margin_top = 109.0
-margin_right = 364.0
-margin_bottom = 129.0
+margin_top = 123.0
+margin_right = 352.0
+margin_bottom = 143.0
 
 [node name="icon" type="TextureRect" parent="tabs/Video/particles"]
 margin_right = 16.0
@@ -95,6 +101,7 @@ text = "Particles:"
 margin_left = 82.0
 margin_right = 131.0
 margin_bottom = 20.4988
+theme = ExtResource( 7 )
 custom_styles/hover = ExtResource( 8 )
 custom_styles/normal = ExtResource( 8 )
 custom_constants/hseparation = -7
@@ -169,10 +176,11 @@ text = "Smooth camera"
 [node name="exit" parent="." instance=ExtResource( 3 )]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -59.0
+margin_left = -65.0
 margin_top = 9.0
-margin_right = -7.50122
+margin_right = -10.0
 margin_bottom = 31.0
+rect_scale = Vector2( 0.995537, 1 )
 custom_styles/hover = ExtResource( 4 )
 custom_styles/pressed = ExtResource( 4 )
 custom_styles/focus = ExtResource( 4 )
