@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Entities/Attacks/Attack.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Attacks/Melee/Melee.gd" type="Script" id=2]
@@ -11,6 +11,59 @@ resource_local_to_scene = true
 resource_name = "animation"
 length = 0.2
 step = 0.01
+
+[sub_resource type="Animation" id=4]
+resource_name = "animation_reverse"
+length = 0.3
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.3 ),
+"transitions": PoolRealArray( 2, 1, 0.5 ),
+"update": 0,
+"values": [ 180.0, 90.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.08, 0.3 ),
+"transitions": PoolRealArray( 2, 1, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0, 4 ), Vector2( 5, 0 ), Vector2( 0, -4.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("hitbox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.08, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -2, 5 ), Vector2( 4, 0 ), Vector2( -2, -5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("hitbox/CollisionShape2D:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.08, 0.3 ),
+"transitions": PoolRealArray( 2, 1, 0.5 ),
+"update": 0,
+"values": [ 0.0, -90.0, -180.0 ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "hold"
@@ -30,6 +83,7 @@ shape = SubResource( 1 )
 
 [node name="animation" type="AnimationPlayer" parent="." index="6"]
 anims/animation = SubResource( 2 )
+anims/animation_reverse = SubResource( 4 )
 anims/hold = SubResource( 3 )
 
 [connection signal="tree_exiting" from="." to="." method="_on_Melee_tree_exiting"]

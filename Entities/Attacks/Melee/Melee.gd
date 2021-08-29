@@ -46,13 +46,13 @@ func _ready():
 				sprite.position = Vector2(0, -4)
 				sprite.rotation_degrees = 0
 			else:
-				animation.play_backwards("animation")
+				animation.play("animation_reverse")
 				# \/ hack to prevent flicker bug, no idea why the animation doesn't do this
 				sprite.position = Vector2(0, 4)
 				sprite.rotation_degrees = 180
 		else:
 			if held_item.facing_left():
-				animation.play_backwards("animation")
+				animation.play("animation_reverse")
 				sprite.position = Vector2(0, 4)
 				sprite.rotation_degrees = 180
 			else:

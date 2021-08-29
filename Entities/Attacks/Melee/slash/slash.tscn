@@ -23,7 +23,7 @@ radius = 3.0
 resource_local_to_scene = true
 resource_name = "animation"
 length = 0.3
-step = 0.05
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:rotation_degrees")
 tracks/0/interp = 1
@@ -31,7 +31,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3 ),
+"times": PoolRealArray( 0, 0.07, 0.3 ),
 "transitions": PoolRealArray( 2, 1, 0.5 ),
 "update": 0,
 "values": [ 0.0, 90.0, 180.0 ]
@@ -43,10 +43,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3 ),
+"times": PoolRealArray( 0, 0.07, 0.3 ),
 "transitions": PoolRealArray( 2, 1, 0.5 ),
 "update": 0,
-"values": [ Vector2( 0, -4 ), Vector2( 5, 0 ), Vector2( 0, 4 ) ]
+"values": [ Vector2( 0, -4 ), Vector2( 5, 0 ), Vector2( 0, 4.5 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("hitbox:position")
@@ -55,7 +55,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3 ),
+"times": PoolRealArray( 0, 0.07, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -2, -5 ), Vector2( 4, 0 ), Vector2( -2, 5 ) ]
@@ -67,7 +67,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3 ),
+"times": PoolRealArray( 0, 0.07, 0.3 ),
 "transitions": PoolRealArray( 2, 1, 0.5 ),
 "update": 0,
 "values": [ 0.0, 90.0, 180.0 ]

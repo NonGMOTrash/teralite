@@ -13,8 +13,8 @@ radius = 1.773
 height = 18.7395
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 2.17059
-height = 4.22272
+radius = 2.0
+height = 3.5
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 0.582588
@@ -22,7 +22,7 @@ height = 9.07045
 
 [sub_resource type="Animation" id=4]
 resource_local_to_scene = true
-length = 0.9
+length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("hitbox:position")
 tracks/0/interp = 1
@@ -30,7 +30,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4, 0.5, 0.9 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.7 ),
 "transitions": PoolRealArray( 2, 0.25, 0.5, 2 ),
 "update": 0,
 "values": [ Vector2( 6, 0 ), Vector2( 22, 0 ), Vector2( 24, 0 ), Vector2( 6, 0 ) ]
@@ -42,7 +42,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4, 0.5, 0.9 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.7 ),
 "transitions": PoolRealArray( 2, 0.25, 0.5, 2 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 16, 0 ), Vector2( 18, 0 ), Vector2( 0, 0 ) ]
@@ -54,7 +54,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.4, 0.5, 0.9 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.7 ),
 "transitions": PoolRealArray( 2, 0.25, 0.5, 2 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 16, 0 ), Vector2( 18, 0 ), Vector2( 0, 0 ) ]
@@ -66,7 +66,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.4, 0.5, 0.9 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.7 ),
 "transitions": PoolRealArray( 2, 0.25, 0.5, 2 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 16, 0 ), Vector2( 18, 0 ), Vector2( 0, 0 ) ]
@@ -78,7 +78,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -115,7 +115,6 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="hitbox" parent="." index="3"]
-visible = false
 position = Vector2( 6, 0 )
 iTime = 0.4
 KNOCKBACK = 110
@@ -123,6 +122,7 @@ KNOCKBACK = 110
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 rotation = -1.5708
 shape = SubResource( 2 )
+disabled = true
 one_way_collision = true
 
 [node name="collision" parent="." index="4"]

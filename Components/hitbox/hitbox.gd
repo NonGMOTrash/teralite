@@ -2,6 +2,7 @@ extends Area2D
 
 export var COOLDOWN = 0.5
 export var COOLDOWN_ON_START := true
+export var COOLDOWN_SHARE := false
 export var iTime = 0.1
 export var DAMAGE = 0
 export var TRUE_DAMAGE = 0
@@ -17,6 +18,8 @@ onready var entity = get_parent()
 onready var timer = $Timer
 var stats: Node
 
+var other_hitboxes := []
+
 signal hit(area, type)
 
 func _on_hitbox_tree_entered() -> void:
@@ -31,6 +34,10 @@ func _ready():
 	
 	DAMAGE += stats.DAMAGE
 	TRUE_DAMAGE += stats.TRUE_DAMAGE
+	
+	for child in entity.get_children():
+		if child is Area2D and "COOLDOWN" in child:
+			other_hitboxes.append(child)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	var area_entity = area.get_parent()
@@ -38,7 +45,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		area_entity is Attack or
 		area.entity == entity or
 		TEAM_ATTACK == false and global.get_relation(entity, area_entity) == "friendly"
-	): 
+	):
 		return
 	
 	# los check
@@ -50,6 +57,11 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	if COOLDOWN_ON_START == true:
 		set_deferred("monitorable", false)
 		timer.start()
+	
+	if COOLDOWN_SHARE == true:
+		for hitbox in other_hitboxes:
+			hitbox.set_deferred("monitorable", false)
+			hitbox.timer.start()
 	
 	if entity.components["sound_player"] != null and TRIGGERED_SOUND != null:
 		var sfx = Sound.new()

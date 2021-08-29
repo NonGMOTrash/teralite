@@ -262,7 +262,7 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 	if entity is Attack and get_node_or_null(entity.SOURCE_PATH) != null:
 		source = entity.SOURCE
 		source_name = source.truName
-	prints(entity_name, source_name)
+	
 	if entity_name == "player" or source_name == "player":
 		death_message = "you killed yourself :("
 	elif entity.truName == "player":

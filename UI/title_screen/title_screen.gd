@@ -135,9 +135,6 @@ func load_saves_list_items(): # add items from the saves directory into here
 			save_preview.save_name.text = data["save_name"]
 			save_preview.name = data["save_name"]
 			save_preview.version.text = str(data["ver_num"])
-			if data["save_name"] == "icon":
-				print("loaded:")
-				print(data)
 			if "icon" in data:
 				save_preview.icon.texture = SAVE_ICONS[data["icon"]]
 			if data["ver_num"] < global.ver_num:
@@ -213,8 +210,6 @@ func _on_create_pressed() -> void:
 	var data = global.get_empty_save_data()
 	data["save_name"] = global.save_name
 	data["icon"] = save_icon_id
-	print("created:")
-	print(data)
 	global.write_save(global.save_name, data)
 	global.load_save(global.save_name)
 

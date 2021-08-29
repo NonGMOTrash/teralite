@@ -27,7 +27,6 @@ SLOWDOWN = 0
 FORCE_MULT = 1.7
 truName = "thrown_spear"
 RANGE = 200
-auto_rotate = true
 death_free = true
 SPAWN_SOUND = ExtResource( 5 )
 HIT_SOUND = ExtResource( 8 )
@@ -42,7 +41,7 @@ ROTATION_OFFSET = 90.0
 [node name="stats" parent="." index="0"]
 MAX_HEALTH = 2
 HEALTH = 2
-DAMAGE = 2
+DAMAGE = 3
 
 [node name="Sprite" parent="." index="1"]
 rotation = -0.785398
