@@ -21,14 +21,12 @@ radius = 1.60326
 rotation = 0.0
 truName = "bolt"
 RANGE = 300
-auto_rotate = true
 death_free = true
 SPAWN_SOUND = ExtResource( 4 )
 HIT_SOUND = ExtResource( 3 )
 KILL_SOUND = ExtResource( 3 )
 BLOCKED_SOUND = ExtResource( 5 )
 COLLIDE_SOUND = ExtResource( 5 )
-DEATH_SOUND = ExtResource( 5 )
 SPEED = 325
 VELOCITY_ARMOR = 0
 ONHIT_SPEED_MULTIPLIER = 0.85
@@ -51,6 +49,7 @@ shape = SubResource( 1 )
 
 [node name="hitbox" parent="." index="3"]
 visible = false
+COOLDOWN = 99.0
 KNOCKBACK = 130
 STATUS_EFFECT = "bleed"
 STATUS_DURATION = 1.2

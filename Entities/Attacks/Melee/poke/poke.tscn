@@ -87,6 +87,7 @@ tracks/4/keys = {
 [node name="poke" instance=ExtResource( 1 )]
 visible = true
 truName = "poke"
+ONHIT_SELF_DAMAGE = 0
 RANGE = 8
 SPAWN_SOUND = ExtResource( 3 )
 HIT_SOUND = ExtResource( 6 )
@@ -116,7 +117,7 @@ shape = SubResource( 1 )
 
 [node name="hitbox" parent="." index="3"]
 position = Vector2( 6, 0 )
-iTime = 0.4
+COOLDOWN = 0.4
 KNOCKBACK = 110
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]

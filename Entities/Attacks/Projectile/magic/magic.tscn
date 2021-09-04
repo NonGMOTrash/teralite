@@ -26,7 +26,6 @@ RANGE = 160
 death_free = true
 SPAWN_SOUND = ExtResource( 3 )
 COLLIDE_SOUND = ExtResource( 4 )
-DEATH_SOUND = ExtResource( 4 )
 SPEED = 180
 VELOCITY_ARMOR = 3
 ONHIT_SPEED_MULTIPLIER = 1.0
@@ -50,6 +49,7 @@ shape = SubResource( 1 )
 
 [node name="hitbox" parent="." index="3"]
 visible = false
+MULTIHITS = true
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 shape = SubResource( 2 )

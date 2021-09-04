@@ -92,7 +92,7 @@ func _on_counter_area_entered(area: Area2D) -> void:
 	
 	sound_player.play_sound("counter_success")
 	
-	cooldown.wait_time = 0.2
+	cooldown.wait_time = counter_cooldown
 	cooldown.start()
 	
 	player.components["stats"].add_status_effect(

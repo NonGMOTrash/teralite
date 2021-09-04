@@ -109,8 +109,7 @@ shape = SubResource( 3 )
 
 [node name="hitbox" parent="." instance=ExtResource( 7 )]
 visible = false
-COOLDOWN = 0.05
-iTime = 0.6
+COOLDOWN = 0.6
 TEAM_ATTACK = false
 TRIGGERED_SOUND = ExtResource( 13 )
 

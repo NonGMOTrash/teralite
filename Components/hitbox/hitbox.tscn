@@ -9,6 +9,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""
 }
+iTime = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 

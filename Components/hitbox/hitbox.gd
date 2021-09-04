@@ -1,9 +1,9 @@
 extends Area2D
 
-export var COOLDOWN = 0.5
-export var COOLDOWN_ON_START := true
-export var COOLDOWN_SHARE := false
+export(float, 0.001, 99) var COOLDOWN: float = 0.2
+export var COOLDOWN_ON_START := false
 export var iTime = 0.1
+export var MULTIHITS := true
 export var DAMAGE = 0
 export var TRUE_DAMAGE = 0
 export var DAM_TYPE = "null"
@@ -19,6 +19,9 @@ onready var timer = $Timer
 var stats: Node
 
 var other_hitboxes := []
+var blacklist := []
+
+var ready := false
 
 signal hit(area, type)
 
@@ -26,7 +29,14 @@ func _on_hitbox_tree_entered() -> void:
 	get_parent().components["hitbox"] = self
 
 func _ready():
+	ready = true
 	timer.wait_time = COOLDOWN
+	
+	if COOLDOWN_ON_START == true:
+		set_deferred("monitorable", false)
+		if entity.truName == "slash":
+			prints(entity.get_name(), "monitorable set false (on start)")
+		timer.start()
 	
 	var node = entity.components["stats"]
 	if node == null: return
@@ -41,10 +51,32 @@ func _ready():
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	var area_entity = area.get_parent()
+	
+#	if entity.truName == "slash":
+#		prints(
+#			(
+#			area_entity is Attack or
+#			area_entity == entity or
+#			entity is Attack and area_entity == entity.SOURCE or
+#			TEAM_ATTACK == false and global.get_relation(entity, area_entity) == "friendly" or
+#			area in blacklist and area.processing_hit == false
+#			), "|",
+#			area_entity is Attack,
+#			area_entity == entity,
+#			entity is Attack and area_entity == entity.SOURCE,
+#			TEAM_ATTACK == false and global.get_relation(entity, area_entity) == "friendly",
+#			area in blacklist and area.processing_hit == false, "|",
+#			"blacklist:", blacklist , "|",
+#			"area:", area, "|",
+#			"area_entity:", area_entity.get_name()
+#		)
+	
 	if (
 		area_entity is Attack or
-		area.entity == entity or
-		TEAM_ATTACK == false and global.get_relation(entity, area_entity) == "friendly"
+		area_entity == entity or
+		entity is Attack and area_entity == entity.SOURCE or
+		TEAM_ATTACK == false and global.get_relation(entity, area_entity) == "friendly" or
+		area in blacklist and area.processing_hit == false
 	):
 		return
 	
@@ -54,14 +86,11 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	if raycast and raycast.collider == refs.world_tiles.get_ref():
 		return
 	
-	if COOLDOWN_ON_START == true:
+	timer.start()
+	if MULTIHITS == false:
 		set_deferred("monitorable", false)
-		timer.start()
-	
-	if COOLDOWN_SHARE == true:
-		for hitbox in other_hitboxes:
-			hitbox.set_deferred("monitorable", false)
-			hitbox.timer.start()
+		if entity.truName == "slash":
+			prints(entity.get_name(), "monitorable set false (on hit, %s)" % area_entity.get_name())
 	
 	if entity.components["sound_player"] != null and TRIGGERED_SOUND != null:
 		var sfx = Sound.new()
@@ -69,4 +98,21 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		entity.components["sound_player"].add_sound(sfx)
 
 func _on_Timer_timeout() -> void:
+	blacklist = []
 	set_deferred("monitorable", true)
+	if entity.truName == "slash":
+			prints(entity.get_name(), "monitorable set true")
+	
+	if monitoring == true:
+		for area in get_overlapping_areas():
+			if "the_area" in area:
+				_on_hitbox_area_entered(area)
+				area._on_hurtbox_area_entered(self)
+
+var d = false
+func _process(delta: float) -> void:
+	if entity.truName == "slash":
+		if d == false:
+			print("")
+			d = true
+		prints(monitoring, monitorable)

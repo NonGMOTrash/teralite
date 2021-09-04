@@ -107,7 +107,7 @@ custom_styles/normal = ExtResource( 8 )
 custom_constants/hseparation = -7
 text = "None"
 flat = true
-items = [ "None", null, false, 0, null, "Low", null, false, 1, null, "Medium", null, false, 2, null, "All", null, false, 3, null ]
+items = [ "None", null, false, 0, null, "Few", null, false, 1, null, "Most", null, false, 2, null, "All", null, false, 3, null ]
 selected = 0
 
 [node name="Audio" type="VBoxContainer" parent="tabs"]

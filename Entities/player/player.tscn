@@ -1,6 +1,6 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/player/player.gd" type="Script" id=2]
 [ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=4]
@@ -8,7 +8,6 @@
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Components/entity_push/entity_push.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Effects/hit_effect/hit_effect.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/player/player.png" type="Texture" id=10]
 [ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Entities/damage.wav" type="AudioStream" id=12]
@@ -234,15 +233,12 @@ one_shot = true
 [node name="held_item" parent="." instance=ExtResource( 16 )]
 TARGETING = 2
 
-[node name="hit_effect_spawner" parent="." instance=ExtResource( 1 )]
-thing = ExtResource( 9 )
-spawn_on_hurt = true
-effect_hframes = 3
-effect_vframes = 3
-
 [node name="foot_stepper" parent="." instance=ExtResource( 11 )]
 RATE = 0.0
 OFFSET = 0.0
+
+[node name="entity_effects" parent="." instance=ExtResource( 1 )]
+death_effect = false
 
 [connection signal="health_changed" from="stats" to="." method="_on_stats_health_changed"]
 [connection signal="got_hit" from="hurtbox" to="." method="_on_hurtbox_got_hit"]

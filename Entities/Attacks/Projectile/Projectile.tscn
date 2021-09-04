@@ -19,7 +19,8 @@ MIN_DAM_SPEED = 0
 rotation = 0.0
 
 [node name="hitbox" parent="." index="3"]
-COOLDOWN_ON_START = false
+COOLDOWN = 0.001
+MULTIHITS = false
 
 [node name="collision" parent="." index="4"]
 input_pickable = false

@@ -74,7 +74,7 @@ tracks/3/keys = {
 [node name="swipe" instance=ExtResource( 7 )]
 visible = true
 truName = "stab"
-ONHIT_SELF_DAMAGE = 999
+ONHIT_SELF_DAMAGE = 1
 RANGE = 9
 SPAWN_SOUND = ExtResource( 4 )
 HIT_SOUND = ExtResource( 5 )
@@ -99,7 +99,7 @@ shape = SubResource( 1 )
 
 [node name="hitbox" parent="." index="3"]
 position = Vector2( -4, -7 )
-iTime = 0.25
+COOLDOWN = 0.25
 STATUS_EFFECT = "bleed"
 STATUS_DURATION = 2.0
 

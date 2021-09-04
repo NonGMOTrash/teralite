@@ -1,6 +1,5 @@
 extends Area2D
 
-export(float) var iTime_multiplier = 1.0
 export(AudioStream) var HURT_SOUND
 export(AudioStream) var BLOCK_SOUND
 export(AudioStream) var HEAL_SOUND
@@ -13,6 +12,7 @@ onready var entity = get_parent()
 var the_area: Area2D
 var the_area_path: NodePath
 var the_area_used := false
+var processing_hit := false
 
 signal got_hit(by_area, type)
 
@@ -31,7 +31,7 @@ func _ready():
 		#set_deferred("monitorable", false)
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	var area_entity = area.get_parent() as Entity
+	var area_entity: Entity = area.entity
 	
 	if entity == area_entity:
 		return
@@ -41,28 +41,42 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	var raycast = ss.intersect_ray(global_position, area.global_position, [], 1)
 	if raycast and raycast.collider == refs.world_tiles.get_ref():
 		return
-	
 	if global.get_relation(entity, area_entity) == "friendly":
-		if area.TEAM_ATTACK == false: return
-		elif area_entity is Melee and area_entity.SOURCE == entity: return
-		elif area_entity is Projectile and area_entity.SOURCE == entity:
-			if area_entity.has_left_src == false: return
+		if area.TEAM_ATTACK == false:
+			return
+		elif (
+			area_entity is Attack and
+			area_entity.SOURCE == entity and
+			not (area_entity is Projectile and area_entity.has_left_src == true)
+		):
+			return
 	
 	if area_entity is Projectile:
 		if area_entity.get_speed() < area_entity.MIN_DAM_SPEED:
 			return
 	
-	if (
-		the_area == null or 
-		the_area_path != null and get_node_or_null(the_area_path) != null
-	): 
-		the_area = area
-		the_area_path = area.get_path()
+	if area.MULTIHITS == false:
+		if (
+			the_area == null or
+			the_area_path != null and get_node_or_null(the_area_path) != null
+		): 
+			the_area = area
+			the_area_path = area.get_path()
+		
+		if area != the_area:
+			return
+		if the_area_used == true:
+			return
 	
-	if area != the_area: return
-	if the_area_used == true: return
+	if self in area.blacklist:
+		return
 	
 	the_area_used = true
+	
+	if area.MULTIHITS == true:
+		processing_hit = true
+		area.blacklist.append(self)
+		area.timer.start()
 	
 	# applies damage
 	
@@ -115,15 +129,21 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		# knockback
 		entity.apply_force((source_pos.direction_to(global_position) * area.KNOCKBACK))
 	
-	if (
+	processing_hit = false
+	
+	if area.iTime == 0:
+		the_area = null
+		the_area_used = false
+		set_deferred("monitorable", true)
+	elif (
 		area.get_name() == "hitbox" and
 		monitorable == true
-		):
-			# triggers invincibility
-			iTimer.wait_time = area.iTime * iTime_multiplier + 0.0001
-			iTimer.start()
-			set_deferred("monitorable", false)
-	
+	):
+		# triggers invincibility
+		iTimer.wait_time = area.iTime
+		iTimer.start()
+		set_deferred("monitorable", false)
+
 func _on_Timer_timeout() -> void:
 	the_area = null
 	the_area_used = false
