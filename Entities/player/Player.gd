@@ -7,6 +7,7 @@ export(PackedScene) var player_death
 
 var damage_taken = 0
 var death_message: String = "death message missing :("
+var damage_pause_count: int = 0
 
 export var dash_strength = 300
 export var dash_buffer = 8
@@ -38,6 +39,7 @@ onready var dash_cooldown = $dash_cooldown
 onready var health_bar = $healthBar
 onready var sound_player = $foot_stepper
 onready var held_item = $held_item
+onready var damage_pause_cooldown := $damage_pause_cooldown
 
 var force_death_msg := false
 var can_dash := true
@@ -241,9 +243,11 @@ func death():
 
 func _on_stats_health_changed(_type, result, net) -> void:
 	if result != "heal" and result != "blocked":
-		if result == "hurt" and name == "player":
+		if result == "hurt" and name == "player" and damage_pause_count < 2:
 			refs.camera.get_ref().shake(5, 15, 0.2)
-			OS.delay_msec(30)
+			OS.delay_msec((5/60.0) * 1000)
+			damage_pause_count += 1
+			damage_pause_cooldown.start()
 		
 		if net < 0:
 			damage_taken += abs(net)
@@ -297,3 +301,8 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 func _on_dash_cooldown_timeout() -> void:
 	if buffered_dash != Vector2.ZERO:
 		dash(buffered_dash)
+
+func _on_damge_pause_cooldown_timeout() -> void:
+	damage_pause_count -= 1
+	if damage_pause_count > 0:
+		damage_pause_cooldown.start()

@@ -240,9 +240,14 @@ OFFSET = 0.0
 [node name="entity_effects" parent="." instance=ExtResource( 1 )]
 death_effect = false
 
+[node name="damage_pause_cooldown" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="health_changed" from="stats" to="." method="_on_stats_health_changed"]
 [connection signal="got_hit" from="hurtbox" to="." method="_on_hurtbox_got_hit"]
 [connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="timeout" from="damage_pause_cooldown" to="." method="_on_damge_pause_cooldown_timeout"]
 
 [editable path="hurtbox"]
 [editable path="entityPush"]
