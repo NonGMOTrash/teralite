@@ -22,6 +22,8 @@ func _ready() -> void:
 	refs.background = weakref($Background)
 	refs.background_tiles = weakref($YSort/background_tiles)
 	
+	$Camera.pause_mode = PAUSE_MODE_INHERIT
+	
 	global.last_hub = get_tree().current_scene.LETTER
 	if not (global.save_name == "untitled_save" and global.stars == 0):
 		global.write_save(global.save_name, global.get_save_data_dict())

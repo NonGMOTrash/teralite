@@ -16,6 +16,7 @@
 [ext_resource path="res://Levels/level/leaf.png" type="Texture" id=15]
 
 [node name="level" type="Navigation2D"]
+pause_mode = 2
 z_index = 5
 script = ExtResource( 12 )
 __meta__ = {
@@ -23,9 +24,11 @@ __meta__ = {
 }
 
 [node name="background" parent="." instance=ExtResource( 4 )]
+pause_mode = 1
 show_behind_parent = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+pause_mode = 1
 
 [node name="health_ui" parent="CanvasLayer" instance=ExtResource( 5 )]
 show_behind_parent = true
@@ -42,11 +45,13 @@ margin_bottom = 24.0
 [node name="level_completed" parent="CanvasLayer" instance=ExtResource( 3 )]
 
 [node name="Camera" parent="." instance=ExtResource( 8 )]
+pause_mode = 1
 
 [node name="prop_placer" parent="." instance=ExtResource( 10 )]
 z_index = 201
 
 [node name="YSort" type="YSort" parent="."]
+pause_mode = 1
 show_behind_parent = true
 z_index = 200
 __meta__ = {
@@ -60,6 +65,7 @@ __meta__ = {
 [node name="world_tiles" parent="YSort" instance=ExtResource( 2 )]
 
 [node name="particle_anchor" type="Node2D" parent="."]
+pause_mode = 1
 
 [node name="particles" type="Particles2D" parent="particle_anchor"]
 z_index = 999

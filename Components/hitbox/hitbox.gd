@@ -34,8 +34,6 @@ func _ready():
 	
 	if COOLDOWN_ON_START == true:
 		set_deferred("monitorable", false)
-		if entity.truName == "slash":
-			prints(entity.get_name(), "monitorable set false (on start)")
 		timer.start()
 	
 	var node = entity.components["stats"]
@@ -51,25 +49,6 @@ func _ready():
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	var area_entity = area.get_parent()
-	
-#	if entity.truName == "slash":
-#		prints(
-#			(
-#			area_entity is Attack or
-#			area_entity == entity or
-#			entity is Attack and area_entity == entity.SOURCE or
-#			TEAM_ATTACK == false and global.get_relation(entity, area_entity) == "friendly" or
-#			area in blacklist and area.processing_hit == false
-#			), "|",
-#			area_entity is Attack,
-#			area_entity == entity,
-#			entity is Attack and area_entity == entity.SOURCE,
-#			TEAM_ATTACK == false and global.get_relation(entity, area_entity) == "friendly",
-#			area in blacklist and area.processing_hit == false, "|",
-#			"blacklist:", blacklist , "|",
-#			"area:", area, "|",
-#			"area_entity:", area_entity.get_name()
-#		)
 	
 	if (
 		area_entity is Attack or
@@ -108,11 +87,3 @@ func _on_Timer_timeout() -> void:
 			if "the_area" in area:
 				_on_hitbox_area_entered(area)
 				area._on_hurtbox_area_entered(self)
-
-var d = false
-func _process(delta: float) -> void:
-	if entity.truName == "slash":
-		if d == false:
-			print("")
-			d = true
-		prints(monitoring, monitorable)

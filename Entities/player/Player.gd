@@ -60,6 +60,11 @@ func _ready():
 		health_bar.update_bar(0, 0, 0)
 		health_bar.visible = true
 	
+	var camera = refs.camera.get_ref()
+	camera.smoothing_enabled = false
+	camera.global_position = global_position
+	camera.smoothing_enabled = true
+	
 	if get_parent().owner == null: return
 	
 	global.emit_signal("update_health")

@@ -303,11 +303,13 @@ tracks/2/keys = {
 }
 
 [node name="color_overlay" type="Sprite"]
+visible = false
 self_modulate = Color( 1, 1, 1, 0.156863 )
 material = SubResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="effects" type="AnimationPlayer" parent="."]
+autoplay = "off"
 anims/bleed = SubResource( 2 )
 anims/block = SubResource( 3 )
 anims/burn = SubResource( 4 )

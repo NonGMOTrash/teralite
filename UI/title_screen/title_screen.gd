@@ -24,10 +24,10 @@ const SAVE_PREVIEW := preload("res://UI/title_screen/save_preview/save_preview.t
 
 const MESSAGES = [
 	"idk", "big floppa edition", "the least bad game yet!",
-	"less bugs than something something 76!", 
-	"worse than school", "worse than work",
-	"don't play project epsilon", "downward spiral",
-	"no amogus allowed", "im NOT waiting for godot 4.0",
+	"less bugs than something something 76!",
+	"worse than league", "don't play project epsilon", 
+	"downward spiral", "no amogus allowed",
+	"im NOT waiting for godot 4.0",
 	"loading a rocket launcher", "pls enjoy", "helo",
 	"0% political", "a deep polticial statement",
 	"blebsome", "a little something for everyone",
@@ -42,7 +42,8 @@ const MESSAGES = [
 	"a quircky new earthbound inspired RPG",
 	"straight down to heck", "worst mistake of my life",
 	"proof that software is getting worse", 
-	"play project eclise!"
+	"play project eclise!", "engineer gaming", 
+	"don't be the goblin of 2fort",
 ]
 const SAVE_ICONS := [
 	preload("res://UI/Icons/save.png"),
@@ -113,15 +114,14 @@ func multi_color_set(target:Control, color:Color):
 	target.set_deferred("custom_colors/font_color_hover", color)
 
 func load_saves_list_items(): # add items from the saves directory into here
+	
+	for child in saves_list.get_children():
+		child.queue_free()
+	
 	# sets saves var to all the files in the saves directory
 	global.update_saves()
 	
 	for save in global.saves:
-		var existing_save_preview := saves_list.find_node(save)
-		if existing_save_preview:
-			existing_save_preview.queue_free()
-			yield(existing_save_preview, "tree_exited")
-		
 		var save_preview := SAVE_PREVIEW.instance()
 		saves_list.call_deferred("add_child", save_preview)
 		yield(save_preview, "ready")

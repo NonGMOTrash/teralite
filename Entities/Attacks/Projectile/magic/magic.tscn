@@ -49,6 +49,7 @@ shape = SubResource( 1 )
 
 [node name="hitbox" parent="." index="3"]
 visible = false
+COOLDOWN = 1.0
 MULTIHITS = true
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]

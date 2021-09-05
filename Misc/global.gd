@@ -83,6 +83,7 @@ var settings := {
 	"vsync": true,
 	"particles": 3, # 0 = none, 1 = low, 2 = medium, 3 = all
 	"gpu_snap": false,
+	"spawn_pause": false,
 }
 
 # should move this and get_relation to Entity.gd probably

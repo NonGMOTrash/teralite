@@ -12,6 +12,7 @@ const LEVEL_TYPE := 0 # PROBLEM_NOTE: make this a string
 var max_kills: int = 0
 var update_particles := true
 var has_particles := true
+var spawn_paused := false
 
 onready var particle_anchor: Node2D = $particle_anchor
 onready var particles: Particles2D = $particle_anchor/particles
@@ -25,6 +26,11 @@ func _ready() -> void:
 	refs.ysort = weakref($YSort)
 	refs.background = weakref($background)
 	refs.background_tiles = weakref($YSort/background_tiles)
+	
+	if global.settings["spawn_pause"] == true:
+		refs.camera.get_ref().pause_mode = PAUSE_MODE_PROCESS
+		get_tree().paused = true
+		spawn_paused = true
 	
 	if global.settings["particles"] != 3:
 		update_particles = false
@@ -97,3 +103,10 @@ func _on_level_tree_exiting() -> void:
 	global.total_time += refs.stopwatch.get_ref().time
 	global.speedrun_time += refs.stopwatch.get_ref().time
 
+func _input(event: InputEvent) -> void:
+	if spawn_paused == false:
+		return
+	elif not event is InputEventMouse and not event is InputEventJoypadMotion:
+		get_tree().paused = false
+		spawn_paused = false
+		refs.camera.get_ref().pause_mode = PAUSE_MODE_STOP

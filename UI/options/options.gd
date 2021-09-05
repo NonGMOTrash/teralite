@@ -12,6 +12,7 @@ onready var volume = $tabs/Audio/volume
 onready var volume_label = $tabs/Audio/volume_label
 onready var particles = $tabs/Video/particles/dropdown
 onready var gpu_snap = $tabs/Video/gpu_snap
+onready var spawn_pause = $tabs/Game/spawn_pause
 
 signal closed
 
@@ -32,6 +33,7 @@ func _on_tabs_visibility_changed() -> void:
 	volume.value = global.settings["volume"] * 100
 	vsync.pressed = global.settings["vsync"]
 	particles.selected = global.settings["particles"]
+	spawn_pause.pressed = global.settings["spawn_pause"]
 	
 	if visible == false: return
 	tabs.current_tab = 0
@@ -53,6 +55,7 @@ func _on_exit_pressed() -> void:
 	global.settings["vsync"] = vsync.pressed
 	global.settings["particles"] = particles.selected
 	global.settings["gpu_snap"] = gpu_snap.pressed
+	global.settings["spawn_pause"] = spawn_pause.pressed
 	
 	global.update_settings()
 	

@@ -90,7 +90,3 @@ func _on_src_collision_body_exited(body: Node) -> void:
 	if body == SOURCE:
 		has_left_src = true
 		$src_collision.queue_free()
-
-func _process(delta: float) -> void:
-	if truName == "bullet":
-		prints(name, has_left_src)
