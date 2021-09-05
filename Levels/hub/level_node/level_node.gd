@@ -17,7 +17,7 @@ func _ready() -> void:
 	
 	if WORLD_ENTRANCE == true:
 		var missing_stars: int = STAR_REQUIREMENT - global.stars
-		if missing_stars < 1 : txt = "Press [E] to enter"
+		if missing_stars < 1 : txt = "Press [Space] to enter"
 		elif missing_stars == 1: txt = "You need 1 more star"
 		elif missing_stars > 1: txt = "You need %s more stars" % missing_stars
 		
@@ -43,7 +43,7 @@ func _ready() -> void:
 			else:
 				txt = "You need %s more stars" % missing_stars
 			
-		1, 2, 3: txt = "Press [E] to enter"
+		1, 2, 3: txt = "Press [Space] to enter"
 	
 	var death_txt = "Deaths: NA"
 	if LEVEL in global.level_deaths:
@@ -64,7 +64,7 @@ func _input(event: InputEvent) -> void:
 	if player == null: return
 	if global.stars < STAR_REQUIREMENT: return
 	
-	if Input.is_action_just_pressed("interact"):
+	if Input.is_action_just_pressed("interact") and player.input_vector == Vector2.ZERO:
 		pressed = true
 		return
 	

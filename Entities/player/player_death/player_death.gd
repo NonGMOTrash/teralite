@@ -3,6 +3,7 @@ extends Sprite
 var waiting = false
 var simple_mode = true # just plays the animation; for the death of other players that aren't the main one
 var death_message: String
+var pressed := false
 
 onready var label = $CanvasLayer/Label
 
@@ -12,7 +13,7 @@ func _ready():
 	else:
 		label.text = ""
 		OS.delay_msec((5/60.0) * 1000)
-		label.text = death_message + "\n" + "Press [E] to retry."
+		label.text = death_message + "\n" + "Press [Space] to retry."
 
 func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
 	waiting = true
@@ -28,6 +29,8 @@ func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
+		pressed = true
+	elif Input.is_action_just_released("interact") and pressed == true:
 		get_tree().reload_current_scene()
 
 func _process(_delta):
