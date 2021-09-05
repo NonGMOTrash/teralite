@@ -4,5 +4,7 @@
 
 [node name="sound_player" type="Node"]
 script = ExtResource( 1 )
+FREE_WHEN_EMPTY = null
+
 [connection signal="tree_entered" from="." to="." method="_on_sound_player_tree_entered"]
 [connection signal="tree_exiting" from="." to="." method="_on_sound_player_tree_exiting"]

@@ -114,13 +114,16 @@ func get_position_for(sound:Sound) -> Vector2:
 		push_warning("src was not an Entity")
 		return Vector2.ZERO
 
+func skip_sound(sound:Sound = sounds.values()[0]):
+	sound.stop()
+
 func _on_sound_player_tree_exiting() -> void:
 	# make all sounds non-repeating delete themselves after they finished
 	for sound in sounds.values():
 		if sound.is_inside_tree() == false:
 			sound.queue_free()
 			continue
-
+	
 		if not sound.is_connected("finished", sound, "queue_free") and not sound.MODE == sound.MODES.REPEATING:
 			sound.connect("finished", sound, "queue_free")
 		elif sound.MODE == sound.MODES.STANDBY and sound.playing == false:

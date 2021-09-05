@@ -196,6 +196,7 @@ text = "Exit"
 icon = ExtResource( 9 )
 
 [node name="sound_player" parent="." instance=ExtResource( 1 )]
+FREE_WHEN_EMPTY = false
 
 [connection signal="tab_changed" from="tabs" to="." method="_on_tabs_tab_changed"]
 [connection signal="visibility_changed" from="tabs" to="." method="_on_tabs_visibility_changed"]

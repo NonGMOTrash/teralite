@@ -90,6 +90,7 @@ func _on_counter_area_entered(area: Area2D) -> void:
 	slash.setup(player, area.global_position)
 	refs.ysort.get_ref().call_deferred("add_child", slash)
 	
+	sound_player.skip_sound()
 	sound_player.play_sound("counter_success")
 	
 	cooldown.wait_time = counter_cooldown
