@@ -4,7 +4,7 @@
 [ext_resource path="res://UI/smart_ui_nodes/smart_checkbox/smart_checkbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/smart_ui_nodes/smart_button/smart_button.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/Themes/Styles/stylebox_selected_box.tres" type="StyleBox" id=4]
-[ext_resource path="res://Levels/Level Resources/world_tiles/nothing.png" type="Texture" id=5]
+[ext_resource path="res://UI/Themes/grabber.png" type="Texture" id=5]
 [ext_resource path="res://UI/options/options.gd" type="Script" id=6]
 [ext_resource path="res://UI/Themes/general_theme.tres" type="Theme" id=7]
 [ext_resource path="res://UI/Themes/Styles/stylebox_box.tres" type="StyleBox" id=8]
@@ -121,26 +121,25 @@ margin_bottom = -2.24938
 alignment = 1
 
 [node name="volume_label" type="Label" parent="tabs/Audio"]
-margin_top = 59.0
+margin_top = 58.0
 margin_right = 352.0
-margin_bottom = 75.0
+margin_bottom = 74.0
 text = "Volume (50%)"
 align = 1
 valign = 1
 
 [node name="volume" type="HSlider" parent="tabs/Audio"]
-margin_top = 79.0
+margin_top = 78.0
 margin_right = 352.0
-margin_bottom = 95.0
+margin_bottom = 96.0
 custom_icons/grabber_highlight = ExtResource( 5 )
 custom_icons/grabber = ExtResource( 5 )
 custom_styles/slider = ExtResource( 8 )
 custom_styles/grabber_area_highlight = ExtResource( 4 )
 custom_styles/grabber_area = ExtResource( 4 )
-value = 50.0
+value = 100.0
 allow_greater = true
 allow_lesser = true
-ticks_on_borders = true
 
 [node name="Game" type="VBoxContainer" parent="tabs"]
 visible = false

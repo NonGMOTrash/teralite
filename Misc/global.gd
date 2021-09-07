@@ -162,7 +162,7 @@ func _ready():
 	#	get_tree().change_scene("res://Levels/test_level.tscn")
 
 # PROBLEM_NOTE: should probably move this to entity.gd
-func get_relation(me:Entity, other:Entity):
+func get_relation(me:Entity, other:Entity) -> String:
 	var faction_one = me.faction
 	var faction_two = other.faction
 	var relation = ""
@@ -170,7 +170,7 @@ func get_relation(me:Entity, other:Entity):
 	if faction_one == "" or faction_two == "": 
 		return relation
 	
-	relation = faction_relationships.get(faction_one).get(faction_two)
+	relation = faction_relationships[faction_one][faction_two]
 	
 	if me.marked_enemies.has(other): relation = "hostile"
 	

@@ -170,3 +170,4 @@ func play_effect(effect: String, speed:=1.0):
 			texture_effect.play("fire", -1, speed)
 		"invincibility": color_a_effect.play("invincibility", -1, speed)
 		_: push_error("'%s' is not a valid effect (entity_sprite.gd)" % effect)
+

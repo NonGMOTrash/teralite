@@ -21,18 +21,15 @@ position = Vector2( 0, 3 )
 texture = ExtResource( 3 )
 
 [node name="color_overlay_a" parent="." instance=ExtResource( 1 )]
-visible = false
 self_modulate = Color( 0.490196, 0.0392157, 0.0392157, 0 )
 
 [node name="texture_overlay_a" parent="." instance=ExtResource( 4 )]
 
 [node name="color_overlay_b" parent="." instance=ExtResource( 1 )]
-visible = false
 
 [node name="texture_overlay_b" parent="." instance=ExtResource( 4 )]
 
 [node name="color_overlay_c" parent="." instance=ExtResource( 1 )]
-visible = false
 
 [node name="texture_overlay_c" parent="." instance=ExtResource( 4 )]
 

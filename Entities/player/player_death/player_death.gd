@@ -12,7 +12,7 @@ func _ready():
 		label.visible = false
 	else:
 		label.text = ""
-		OS.delay_msec((5/60.0) * 1000)
+		#OS.delay_msec((5/60.0) * 1000)
 		label.text = death_message + "\n" + "Press [Space] to retry."
 
 func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:

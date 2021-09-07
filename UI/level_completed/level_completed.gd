@@ -43,7 +43,7 @@ func start():
 		if refs.player.get_ref().damage_taken == 0:
 			damage.set("custom_colors/font_color", YELLOW)
 			damage_comment.set("custom_colors/font_color", YELLOW)
-			damage_comment.text = "perfect!"
+			damage_comment.text = "Perfect!"
 			perfected = true
 	
 	var time_value: float = refs.stopwatch.get_ref().time
@@ -55,7 +55,7 @@ func start():
 			time_comment.text = "personal best!"
 		if lvl in global.DEV_TIMES and time_value < global.DEV_TIMES[lvl]:
 			time_comment.set("custom_colors/font_color", Color.cyan)
-			time_comment.text = "speedrunner!"
+			time_comment.text = "Speedrunner!"
 	
 	if lvl == "thx": return
 	

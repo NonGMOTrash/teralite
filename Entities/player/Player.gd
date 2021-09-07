@@ -71,13 +71,6 @@ func _ready():
 	
 	connect("swapped_item", self, "swapped_item")
 	swapped_item(null)
-	
-	# prevents lag spike when you first dash
-	yield(get_tree().current_scene, "ready")
-	var effect: Effect = dash_effect.instance()
-	refs.ysort.get_ref().call_deferred("add_child", effect)
-	yield(effect, "ready")
-	effect.global_position = Vector2(-999, -999)
 
 func _physics_process(_delta):
 	if get_global_mouse_position().x > global_position.x:
@@ -187,7 +180,7 @@ func death():
 			if child is Entity and not child == self and child.is_queued_for_deletion() == false:
 				if child.truName == "player":
 					
-					if global.settings["auto_restart"] == true:
+					if global.settings.get("auto_restart") == true:
 						child.death()
 						continue
 					
@@ -250,7 +243,7 @@ func _on_stats_health_changed(_type, result, net) -> void:
 	if result != "heal" and result != "blocked":
 		if result == "hurt" and name == "player" and damage_pause_count < 2:
 			refs.camera.get_ref().shake(5, 15, 0.2)
-			OS.delay_msec((5/60.0) * 1000)
+			#OS.delay_msec((2/60.0) * 1000)
 			damage_pause_count += 1
 			damage_pause_cooldown.start()
 		
