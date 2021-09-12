@@ -37,7 +37,6 @@ func _input(event: InputEvent):
 		set_mouse_pos = get_global_mouse_position()
 
 func _physics_process(_delta: float) -> void:
-	print(zoom)
 	var player
 	if refs.player.get_ref() == null: return
 	player = refs.player.get_ref()

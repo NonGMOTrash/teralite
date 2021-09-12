@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/player/item_thinkers/medkit_thinker/medkit_thinker.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Item_Pickups/medkit/medkit.png" type="Texture" id=3]
+[ext_resource path="res://UI/cursors/cursor_medkit.png" type="Texture" id=4]
+[ext_resource path="res://Entities/player/item_thinkers/medkit_thinker/medkit_equip.wav" type="AudioStream" id=5]
+[ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/player/item_thinkers/medkit_thinker/medkit_use.wav" type="AudioStream" id=7]
+
+[node name="medkit_thinker" type="Node"]
+script = ExtResource( 2 )
+HELD_ITEM_TEXTURE = ExtResource( 3 )
+my_item = "medkit"
+display_name = "Medkit"
+CURSOR = ExtResource( 4 )
+CURSOR_MODE = 1
+EQUIP_SOUND = ExtResource( 5 )
+instant_healing = 1
+regen_level = 1.0
+regen_duration = 15.0
+delay = 3.0
+delay_slowness = 2.0
+
+[node name="sound_player" parent="." instance=ExtResource( 1 )]
+FREE_WHEN_EMPTY = false
+
+[node name="use" parent="sound_player" instance=ExtResource( 6 )]
+stream = ExtResource( 7 )
+MODE = 1
+AUTO_PLAY = false
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

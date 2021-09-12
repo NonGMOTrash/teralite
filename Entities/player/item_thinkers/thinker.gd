@@ -153,13 +153,14 @@ func _process(_delta: float):
 func get_ready() -> bool:
 	return true
 
-func update_cursor(custom_img = CURSOR):
-	var img = custom_img
+func update_cursor(texture: Texture = null):
+	if texture != null:
+		CURSOR = texture
 	var hotspot
 	match CURSOR_MODE:
 		CURSOR_MODES.CENTERED: hotspot = Vector2(22.5, 22.5)
 		CURSOR_MODES.POINTER: hotspot = Vector2.ZERO
-	Input.set_custom_mouse_cursor(img, Input.CURSOR_ARROW, hotspot)
+	Input.set_custom_mouse_cursor(CURSOR, Input.CURSOR_ARROW, hotspot)
 
 func selected():
 	global.emit_signal("update_item_info", # set a condition to null to hide it
@@ -168,7 +169,7 @@ func selected():
 		null, # item bar max
 		null, # item bar value
 		null # bar timer duration
-		)
+	)
 	
 	if player.components["held_item"].sprite.frame > max_frame:
 		player.components["held_item"].sprite.frame = max_frame

@@ -30,7 +30,6 @@ func _on_delay_timer_timeout() -> void:
 	for body in brain.sight.get_overlapping_bodies():
 		if (
 			body is Entity
-			and body.get_name() != "world_tiles"
 			and body.components["brain"] != null
 			and brain.los_check(body) == true
 			and global.get_relation(entity, body) == "friendly"

@@ -45,7 +45,7 @@ func selected():
 		null, # item bar max 
 		null, # item bar value 
 		null # bar timer duration
-		)
+	)
 	update_cursor()
 	_update_held_item()
 	
@@ -76,7 +76,7 @@ func primary():
 		null, # item bar max 
 		null, # item bar value 
 		null # bar timer duration
-		)
+	)
 	$spawner.spawn()
 
 func secondary():

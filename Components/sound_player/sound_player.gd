@@ -5,7 +5,7 @@ enum MODES {ONESHOT, STANDBY, REPEATING}
 # PROBLEM_NOTE: would be better to have different free modes: MANUAL, WHEN_EMPTY, AFTER_USE
 export var FREE_WHEN_EMPTY = false # if true, queue_free() if all the sounds are gone
 
-var sounds = {
+var sounds := {
 	#"soundname": node
 }
 
@@ -114,7 +114,9 @@ func get_position_for(sound:Sound) -> Vector2:
 		push_warning("src was not an Entity")
 		return Vector2.ZERO
 
-func skip_sound(sound:Sound = sounds.values()[0]):
+func skip_sound(sound:Sound = null):
+	if sound == null:
+		sound = sounds.values()[0]
 	sound.stop()
 
 func _on_sound_player_tree_exiting() -> void:
