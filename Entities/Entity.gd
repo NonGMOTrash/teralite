@@ -17,6 +17,7 @@ export var truName = ""
 export var faction = ""
 
 var marked_enemies: Array = []
+var marked_allies: Array = []
 
 var components = { # PROBLEM_NOTE, this doesn't support duplicate components but whatever
 	"brain": null,

@@ -2,7 +2,7 @@ extends TileMap
 
 export var placement_offset: Vector2 = Vector2.ZERO
 
-#onready var ysort = $YSort
+signal finished_batching
 
 onready var ysort = get_parent()
 
@@ -27,6 +27,9 @@ func _ready(): # converts tiles to their respective scenes
 			convert_tile(data.values()[i], data.keys()[i])
 	
 	clear() #remove all the tiles
+	if name == "entity_spawns":
+		print("finished_batching")
+	emit_signal("finished_batching")
 
 func convert_tile(tiles, thingName): # deletes the tile and places the entity
 	var tilePos

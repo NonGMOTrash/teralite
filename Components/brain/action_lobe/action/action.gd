@@ -83,7 +83,7 @@ func evaluate(warned = false) -> Array: #-> [score, target]
 		var target: Entity = targets_to_check[i]
 		
 		if (
-			target_type == relations.myself and target == self or
+			target_type == relations.myself and target == entity or
 			global.get_relation(brain.entity, target) == target_relation
 		):
 			
@@ -136,7 +136,6 @@ func evaluate(warned = false) -> Array: #-> [score, target]
 				new_score -= weight
 				if new_score < 0: new_score = 0
 				scores.append(new_score)
-				
 			
 			targets.append(target)
 	
@@ -159,3 +158,8 @@ func _on_deweight_timer_timeout() -> void:
 func _on_cooldown_timer_timeout() -> void:
 	if GLOBAL_COOLDOWN == true:
 		action_lobe.on_global_cooldown = false
+
+func _on_action_tree_exiting() -> void:
+	var index: int = action_lobe.actions.find(self)
+	if index != -1:
+		action_lobe.actions.remove(index)

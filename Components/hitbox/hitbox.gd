@@ -49,7 +49,6 @@ func _ready():
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	var area_entity = area.get_parent()
-	
 	if (
 		area_entity is Attack or
 		area_entity == entity or
@@ -68,8 +67,6 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	timer.start()
 	if MULTIHITS == false:
 		set_deferred("monitorable", false)
-		if entity.truName == "slash":
-			prints(entity.get_name(), "monitorable set false (on hit, %s)" % area_entity.get_name())
 	
 	if entity.components["sound_player"] != null and TRIGGERED_SOUND != null:
 		var sfx = Sound.new()
@@ -79,8 +76,6 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 func _on_Timer_timeout() -> void:
 	blacklist = []
 	set_deferred("monitorable", true)
-	if entity.truName == "slash":
-			prints(entity.get_name(), "monitorable set true")
 	
 	if monitoring == true:
 		for area in get_overlapping_areas():

@@ -290,6 +290,7 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 			"magic": death_message = "killed by a %s's magic" % source_name
 			"blow_dart": death_message = "incapicitated by %s's blowgun" % source_name
 			"slime": death_message = "killed by a slime"
+			"bullet": death_message = "shot by a %s" % source_name
 			_: death_message = "death message messed up, report pls ;-;"
 	
 	death_message = death_message.replace("_", " ")

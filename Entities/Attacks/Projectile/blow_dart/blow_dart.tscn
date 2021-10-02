@@ -27,17 +27,17 @@ SLOWDOWN = 0
 TOP_SPEED = 0
 truName = "blow_dart"
 RANGE = 125
-auto_rotate = true
 death_free = true
 SPAWN_SOUND = ExtResource( 4 )
 HIT_SOUND = ExtResource( 3 )
 KILL_SOUND = ExtResource( 3 )
 BLOCKED_SOUND = ExtResource( 5 )
 COLLIDE_SOUND = ExtResource( 5 )
-SPEED = 150
+SPEED = 200
 VELOCITY_ARMOR = 0
 ONHIT_SPEED_MULTIPLIER = 0.2
 RECOIL = 0
+VELOCITY_INHERITENCE = 0.1
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )
@@ -58,6 +58,9 @@ shape = SubResource( 2 )
 
 [node name="CollisionShape2D" parent="collision" index="0"]
 shape = SubResource( 3 )
+
+[node name="sound" parent="." index="6"]
+FREE_WHEN_EMPTY = false
 
 [node name="CollisionShape2D" parent="." index="7"]
 shape = SubResource( 4 )

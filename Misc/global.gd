@@ -65,7 +65,7 @@ var speedrun_time = 0.0
 var icon = 0
 
 const ver_phase = "beta"
-const ver_num = 3.6
+const ver_num = 4.0
 const ver_hotfix = 0
 
 # for saving things
@@ -90,23 +90,31 @@ var settings := {
 var faction_relationships = {
 	"player": 
 		{
+			"solo": "hostile",
 			"player": "friendly",
 			"monster": "hostile",
 			"blue_kingdom": "hostile",
 		},
-	
 	"monster":
 		{
+			"solo": "hostile",
 			"player": "hostile",
 			"monster": "friendly",
 			"blue_kingdom": "hostile",
 		},
-	
 	"blue_kingdom":
 		{
+			"solo": "hostile",
 			"player": "hostile",
 			"monster": "hostile",
 			"blue_kingdom": "friendly",
+		},
+	"solo":
+		{
+			"solo": "hostile",
+			"player": "hostile",
+			"monster": "hostile",
+			"blue_kingdom": "hostile",
 		},
 }
 
@@ -161,20 +169,20 @@ func _ready():
 	#if get_tree().current_scene.get_name() != "test_level":
 	#	get_tree().change_scene("res://Levels/test_level.tscn")
 
-# PROBLEM_NOTE: should probably move this to entity.gd
+# PROBLEM_NOTE: should probably move this to the Entity class
 func get_relation(me:Entity, other:Entity) -> String:
+	if me.marked_enemies.has(other):
+		return "hostile"
+	if me.marked_allies.has(other):
+		return "friendly"
+	
 	var faction_one = me.faction
 	var faction_two = other.faction
-	var relation = ""
 	
 	if faction_one == "" or faction_two == "": 
-		return relation
-	
-	relation = faction_relationships[faction_one][faction_two]
-	
-	if me.marked_enemies.has(other): relation = "hostile"
-	
-	return relation
+		return ""
+	else:
+		return faction_relationships[faction_one][faction_two]
 
 func get_empty_save_data():
 	return {

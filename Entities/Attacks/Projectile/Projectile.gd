@@ -9,7 +9,7 @@ export var RECOIL = 50
 export var VELOCITY_INHERITENCE := 0.5
 export(float, -360, 360) var ROTATION_OFFSET := 0.0
 
-var has_left_src = false
+var has_left_src := false
 var original_force_mult
 var distance_traveled := 0.0
 var old_pos: Vector2

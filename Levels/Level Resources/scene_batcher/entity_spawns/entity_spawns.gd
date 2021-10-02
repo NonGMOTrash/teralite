@@ -51,4 +51,5 @@ func set_data():
 		"green_heart": get_used_cells_by_id(54),
 		"boots": get_used_cells_by_id(55),
 		"medkit": get_used_cells_by_id(56),
+		"survivor": get_used_cells_by_id(57),
 	}

@@ -242,6 +242,7 @@ func remove_target(tar):
 func _on_sight_body_entered(body: Node) -> void:
 	if (
 		body is Entity and
+		not body == entity and
 		not body in entities and
 		not (body is Attack and IGNORE_ATTACKS == true) and
 		not (body.faction == "" and IGNORE_UNFACTIONED == true) and

@@ -1,0 +1,183 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Entities/survivor/survivor.gd" type="Script" id=1]
+[ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/survivor/survivor.png" type="Texture" id=4]
+[ext_resource path="res://Components/held_item/held_item.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Item_Pickups/pistol/pistol.png" type="Texture" id=6]
+[ext_resource path="res://Components/entity_push/entity_push.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Components/brain/movement_lobe/spring/spring.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Entities/Attacks/Projectile/small_bullet/small_bullet.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Entities/survivor/survivor_back.png" type="Texture" id=20]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="CircleShape2D" id=2]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 7.39377
+
+[sub_resource type="Animation" id=4]
+resource_name = "stand"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "walk"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 0 ]
+}
+
+[node name="survivor" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 1 )
+ACCELERATION = 600
+truName = "survivor"
+faction = "solo"
+warnings = 1
+PROJECTILE = ExtResource( 19 )
+regen_duration = 15.0
+regen_level = 1.0
+heal_animation_speed = 0.5
+
+[node name="stats" parent="." instance=ExtResource( 2 )]
+MAX_HEALTH = 5
+HEALTH = 5
+DAMAGE = 0
+
+[node name="entity_sprite" parent="." instance=ExtResource( 3 )]
+material = SubResource( 1 )
+texture = ExtResource( 4 )
+hframes = 4
+auto_flip_mode = 2
+back_texture = ExtResource( 20 )
+
+[node name="entity_push" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[node name="CollisionShape2D" parent="entity_push" index="0"]
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 2 )
+
+[node name="hurtbox" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+shape = SubResource( 3 )
+
+[node name="sleeper" parent="." instance=ExtResource( 9 )]
+visible = false
+
+[node name="health_bar" parent="." instance=ExtResource( 10 )]
+margin_left = -10.2531
+margin_top = -11.3791
+margin_right = 10.7469
+margin_bottom = -7.37738
+
+[node name="brain" parent="." instance=ExtResource( 11 )]
+TOLERANCE = 0
+IGNORE_ALLIES = false
+
+[node name="movement_lobe" parent="brain" instance=ExtResource( 14 )]
+IDLE_TIME = 1.6
+IDLE_OFFSET = 1.2
+WANDER_SPEED = 0.4
+WANDER_RANGE = 200.0
+MOVEMENT_EFFICIENCY = 18
+general_springs = {
+"friendly": "trail",
+"hostile": "attack",
+"neutral": "attack"
+}
+
+[node name="trail" parent="brain/movement_lobe" instance=ExtResource( 16 )]
+DEADZONE = 20
+USE_DEADZONE = true
+
+[node name="attack" parent="brain/movement_lobe" instance=ExtResource( 16 )]
+DISTANCE = 100
+
+[node name="memory_lobe" parent="brain" instance=ExtResource( 15 )]
+MEMORY_TIME = 6.0
+
+[node name="action_lobe" parent="brain" instance=ExtResource( 17 )]
+
+[node name="shoot" parent="brain/action_lobe" instance=ExtResource( 18 )]
+best_distance = 25
+COOLDOWN = 0.5
+GLOBAL_COOLDOWN = true
+
+[node name="medkit" parent="brain/action_lobe" instance=ExtResource( 18 )]
+target_type = 2
+tag = 1
+distance_weight = 0
+best_health_percent = 25
+health_weight = 9
+default_score = 0.1
+COOLDOWN = 5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/stand = SubResource( 4 )
+anims/walk = SubResource( 5 )
+
+[node name="foot_stepper" parent="." instance=ExtResource( 13 )]
+FREE_WHEN_EMPTY = false
+
+[node name="entity_effects" parent="." instance=ExtResource( 12 )]
+death_type = 1
+
+[node name="held_item" parent="." instance=ExtResource( 5 )]
+TARGETING = 1
+
+[node name="sprite" parent="held_item/anchor" index="0"]
+texture = ExtResource( 6 )
+hframes = 1
+
+[node name="friend_timer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+autostart = true
+
+[connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
+[connection signal="timeout" from="friend_timer" to="." method="_on_friend_timer_timeout"]
+
+[editable path="entity_push"]
+[editable path="hurtbox"]
+[editable path="held_item"]

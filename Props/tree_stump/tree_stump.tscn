@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Props/Prop.gd" type="Script" id=1]
 [ext_resource path="res://Props/tree_stump/tree_stump.png" type="Texture" id=2]
-[ext_resource path="res://Components/sprite/shadow2.png" type="Texture" id=3]
+[ext_resource path="res://Components/sprite/shadow1.png" type="Texture" id=3]
 
 [node name="tree_stump" type="Node2D"]
 script = ExtResource( 1 )
@@ -12,6 +12,5 @@ texture = ExtResource( 2 )
 
 [node name="shadow" type="Sprite" parent="."]
 self_modulate = Color( 1, 1, 1, 0.333333 )
-position = Vector2( 0, 1 )
 z_index = -1
 texture = ExtResource( 3 )
