@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Levels/Level Resources/scene_batcher/scene_batcher.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/pistol/pistol.png" type="Texture" id=2]
@@ -51,6 +51,7 @@
 [ext_resource path="res://Entities/Item_Pickups/boots/boots.png" type="Texture" id=49]
 [ext_resource path="res://Entities/Item_Pickups/medkit/medkit.png" type="Texture" id=50]
 [ext_resource path="res://Entities/survivor/survivor.png" type="Texture" id=51]
+[ext_resource path="res://Entities/red_barrel/red_barrel.png" type="Texture" id=52]
 
 [sub_resource type="TileSet" id=1]
 2/name = "player.png 2"
@@ -753,6 +754,20 @@
 57/shape_one_way_margin = 0.0
 57/shapes = [  ]
 57/z_index = 0
+58/name = "red_barrel.png 58"
+58/texture = ExtResource( 52 )
+58/tex_offset = Vector2( 0, 0 )
+58/modulate = Color( 1, 1, 1, 1 )
+58/region = Rect2( 0, 0, 10, 16 )
+58/tile_mode = 0
+58/occluder_offset = Vector2( 0, 0 )
+58/navigation_offset = Vector2( 0, 0 )
+58/shape_offset = Vector2( 0, 0 )
+58/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+58/shape_one_way = false
+58/shape_one_way_margin = 0.0
+58/shapes = [  ]
+58/z_index = 0
 
 [node name="entity_spawns" instance=ExtResource( 1 )]
 position = Vector2( 4, 4 )

@@ -33,6 +33,8 @@ const data := {
 	"watcher_lock": "res://Entities/watcher_lock/watcher_lock.tscn",
 	"green_heart": "res://Entities/Item_Pickups/green_heart/green_heart.tscn",
 	"survivor": "res://Entities/survivor/survivor.tscn",
+	"red_barrel": "res://Entities/red_barrel/red_barrel.tscn",
+	"explosion": "res://Entities/explosion/explosion.tscn",
 	
 	# items
 	"pistol": "res://Entities/Item_Pickups/pistol/pistol.tscn",

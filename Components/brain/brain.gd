@@ -114,9 +114,13 @@ func is_target_valid(index: int) -> bool: # maybe make this work with the target
 		return false
 	
 	var target = targets[index]
+	if target.truName == "survivor":
+		prints(entity.get_name(), target in entity.marked_allies)
 	if get_node_or_null(target_paths[index]) == null:
 		return false
 	elif target.is_queued_for_deletion() == true:
+		return false
+	elif target in entity.marked_allies and IGNORE_ALLIES == true:
 		return false
 	elif los_check(target) == false and not global_position.distance_to(target.global_position) < 5:
 		return false

@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Entities/Entity.gd" type="Script" id=1]
+[ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/explosion/explosion.png" type="Texture" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 1.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "New Anim"
+length = 0.5
+step = 0.063
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("entity_sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.063, 0.126, 0.189, 0.252, 0.315, 0.378, 0.441 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("hitbox/CollisionShape2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.063, 0.126, 0.189, 0.252 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 6, 6 ), Vector2( 20, 20 ), Vector2( 22, 22 ), Vector2( 24, 24 ), Vector2( 0, 0 ) ]
+}
+
+[node name="explosion" type="KinematicBody2D"]
+script = ExtResource( 1 )
+ACCELERATION = 0
+SLOWDOWN = 1000
+TOP_SPEED = 0
+FORCE_MULT = 0.1
+INANIMATE = true
+truName = "explosion"
+
+[node name="entity_sprite" parent="." instance=ExtResource( 3 )]
+material = SubResource( 1 )
+texture = ExtResource( 4 )
+hframes = 8
+frame = 7
+auto_flip_mode = 0
+
+[node name="shadow" parent="entity_sprite" index="0"]
+visible = false
+
+[node name="hitbox" parent="." instance=ExtResource( 2 )]
+COOLDOWN = 0.001
+DAMAGE = 5
+TRUE_DAMAGE = 2
+STATUS_EFFECT = "burning"
+STATUS_DURATION = 3.0
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+scale = Vector2( 1e-05, 1e-05 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 3 )
+
+[editable path="entity_sprite"]
+[editable path="hitbox"]

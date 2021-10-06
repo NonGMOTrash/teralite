@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Entities/Entity.gd" type="Script" id=1]
+[ext_resource path="res://Entities/red_barrel/red_barrel.png" type="Texture" id=2]
+[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/explosion/explosion.tscn" type="PackedScene" id=7]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 3.86868
+height = 6.35934
+
+[sub_resource type="CapsuleShape2D" id=3]
+height = 10.7246
+
+[node name="red_barrel" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource( 1 )
+ACCELERATION = 0
+TOP_SPEED = 0
+INANIMATE = true
+truName = "red_barrel"
+
+[node name="entity_sprite" parent="." instance=ExtResource( 3 )]
+material = SubResource( 1 )
+texture = ExtResource( 2 )
+auto_flip_mode = 0
+
+[node name="shadow" parent="entity_sprite" index="0"]
+position = Vector2( 0, 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="stats" parent="." instance=ExtResource( 4 )]
+MAX_HEALTH = 2
+HEALTH = 2
+DEFENCE = 1
+DAMAGE = 4
+TRUE_DAMAGE = 2
+poison_modifier = -99.0
+burning_modifier = 2.0
+bleed_modifier = -99.0
+speed_modifier = -99.0
+slowness_modifier = -99.0
+regeneration_modifier = -99.0
+resistance_modifier = -99.0
+
+[node name="hurtbox" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+shape = SubResource( 3 )
+
+[node name="spawner" parent="." instance=ExtResource( 6 )]
+thing = ExtResource( 7 )
+
+[editable path="entity_sprite"]
+[editable path="hurtbox"]

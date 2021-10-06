@@ -22,30 +22,22 @@ onready var medkit_action := $brain/action_lobe/medkit
 onready var friend_timer := $friend_timer
 onready var animation := $AnimationPlayer
 
-#func _init() -> void:
-#	refs.ysort.get_ref().get_node("entity_spawns").connect("finished_batching", self, "make_friends")
-#	prints(get_name(), "connected")
-
 func _ready() -> void:
 	held_item.animation.connect("animation_finished", self, "attack")
 	actionable = true
 
 # sets all nearby survivors as friendly :DDD
 func _on_friend_timer_timeout() -> void:
-	prints(get_name(), "start")
 	var n := []
-	# should mak0e this trigger on a "all_entites_spawned" signal from entity spawns
+	# should make this trigger on a "all_entites_spawned" signal from entity spawns
 	for body in brain.sight.get_overlapping_bodies():
 		n.append(body.get_name())
 		if body is Entity and body.truName == "survivor" and brain.los_check(body):
 			marked_allies.append(body)
-	prints(get_name(), "available_targets:", n)
 	
 	var n2 := []
 	for ally in marked_allies:
 		n2.append(ally.get_name())
-	prints(get_name(), ":", n2)
-	prints(get_name(), "end")
 
 func _on_action_lobe_action(action, target) -> void:
 	if actionable == false:
@@ -97,9 +89,16 @@ func attack(finished_animation:String):
 		bullets = 10
 		actionable = true
 
-
 func _physics_process(delta: float) -> void:
 	if input_vector == Vector2.ZERO:
 		animation.play("stand")
 	else:
 		animation.play("walk")
+
+func _on_brain_lost_target() -> void:
+	if brain.targets.size() == 0 and bullets != 10:
+		queued_action = "reload"
+		held_item.animation.clear_queue()
+		held_item.animation.play("spin", -1, 0.9)
+		actionable = false
+	

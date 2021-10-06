@@ -72,7 +72,7 @@ warnings = 1
 PROJECTILE = ExtResource( 19 )
 regen_duration = 15.0
 regen_level = 1.0
-heal_animation_speed = 0.5
+heal_animation_speed = 1.0
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
 MAX_HEALTH = 5
@@ -113,7 +113,6 @@ margin_bottom = -7.37738
 
 [node name="brain" parent="." instance=ExtResource( 11 )]
 TOLERANCE = 0
-IGNORE_ALLIES = false
 
 [node name="movement_lobe" parent="brain" instance=ExtResource( 14 )]
 IDLE_TIME = 1.6
@@ -175,6 +174,7 @@ wait_time = 0.05
 one_shot = true
 autostart = true
 
+[connection signal="lost_target" from="brain" to="." method="_on_brain_lost_target"]
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 [connection signal="timeout" from="friend_timer" to="." method="_on_friend_timer_timeout"]
 

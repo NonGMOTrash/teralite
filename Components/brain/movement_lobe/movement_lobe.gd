@@ -145,9 +145,9 @@ func _on_wander_timer_timeout() -> void:
 	idle_timer.start()
 
 func awoken():
-	entity.input_vector = Vector2.ZERO
-	idle_timer.stop()
-	wander_timer.start()
+	if idle_timer.time_left == 0:
+		idle_timer.stop()
+		wander_timer.start()
 
 func get_spring(target:Entity):
 	var spring = null
