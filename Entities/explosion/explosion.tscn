@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Entities/Entity.gd" type="Script" id=1]
 [ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/explosion/explosion.png" type="Texture" id=4]
+[ext_resource path="res://Components/sound_player/sound/sound.gd" type="Script" id=5]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/explosion/explosion.wav" type="AudioStream" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -53,6 +56,20 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 6, 6 ), Vector2( 20, 20 ), Vector2( 22, 22 ), Vector2( 24, 24 ), Vector2( 0, 0 ) ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath("sound_player")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "explosion" ],
+"method": "play_sound"
+} ]
+}
 
 [node name="explosion" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -67,7 +84,6 @@ truName = "explosion"
 material = SubResource( 1 )
 texture = ExtResource( 4 )
 hframes = 8
-frame = 7
 auto_flip_mode = 0
 
 [node name="shadow" parent="entity_sprite" index="0"]
@@ -81,12 +97,22 @@ STATUS_EFFECT = "burning"
 STATUS_DURATION = 3.0
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
-scale = Vector2( 1e-05, 1e-05 )
+scale = Vector2( 6, 6 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "New Anim"
 "anims/New Anim" = SubResource( 3 )
+
+[node name="sound_player" parent="." instance=ExtResource( 6 )]
+FREE_WHEN_EMPTY = false
+
+[node name="explosion" type="AudioStreamPlayer2D" parent="sound_player"]
+stream = ExtResource( 7 )
+volume_db = 8.0
+script = ExtResource( 5 )
+SCENE_PERSIST = true
+AUTO_SET_PHYSICAL = false
 
 [editable path="entity_sprite"]
 [editable path="hitbox"]

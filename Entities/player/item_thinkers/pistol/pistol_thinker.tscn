@@ -31,6 +31,7 @@ one_shot = true
 one_shot = true
 
 [node name="sound_player" parent="." instance=ExtResource( 3 )]
+FREE_WHEN_EMPTY = false
 
 [node name="reload" parent="sound_player" instance=ExtResource( 6 )]
 stream = ExtResource( 5 )

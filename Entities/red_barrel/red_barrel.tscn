@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Entities/Entity.gd" type="Script" id=1]
 [ext_resource path="res://Entities/red_barrel/red_barrel.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Entities/explosion/explosion.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -60,6 +61,12 @@ shape = SubResource( 3 )
 
 [node name="spawner" parent="." instance=ExtResource( 6 )]
 thing = ExtResource( 7 )
+
+[node name="health_bar" parent="." instance=ExtResource( 8 )]
+margin_left = -10.6787
+margin_top = -13.0147
+margin_right = 10.3213
+margin_bottom = -9.01295
 
 [editable path="entity_sprite"]
 [editable path="hurtbox"]

@@ -66,5 +66,8 @@ visible = false
 position = Vector2( 4, 0 )
 shape = SubResource( 3 )
 
+[node name="sound" parent="." index="6"]
+FREE_WHEN_EMPTY = false
+
 [editable path="hurtbox"]
 [editable path="hitbox"]

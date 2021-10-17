@@ -1,3 +1,4 @@
+
 extends Node
 
 const data := {
@@ -56,6 +57,7 @@ const data := {
 	"key": "res://Entities/Item_Pickups/key/key.tscn",
 	"boots": "res://Entities/Item_Pickups/boots/boots.tscn",
 	"medkit": "res://Entities/Item_Pickups/medkit/medkit.tscn",
+	"awp": "res://Entities/Item_Pickups/awp/awp.tscn",
 	
 	# melees
 	"slash": "res://Entities/Attacks/Melee/slash/slash.tscn",
@@ -72,6 +74,7 @@ const data := {
 	"thrown_health_potion": "res://Entities/Attacks/Projectile/thrown_health_potion/thrown_health_potion.tscn",
 	"thrown_iron_potion": "res://Entities/Attacks/Projectile/thrown_iron_potion/thrown_iron_potion.tscn",
 	"blow_dart": "res://Entities/Attacks/Projectile/blow_dart/blow_dart.tscn",
+	"big_bullet": "res://Entities/Attacks/Projectile/big_bullet/big_bullet.tscn",
 	
 	# effects
 	"hit_effect": "res://Effects/hit_effect/hit_effect.tscn",
@@ -148,6 +151,7 @@ const data := {
 	"key_texture": "res://Entities/Item_Pickups/key/key.png",
 	"boots_texture": "res://Entities/Item_Pickups/boots/boots.png",
 	"medkit_texture": "res://Entities/Item_Pickups/medkit/medkit.png",
+	"awp_texture": "res://Entities/Item_Pickups/awp/awp.png",
 }
 
 func allocate(asset:String) -> void:

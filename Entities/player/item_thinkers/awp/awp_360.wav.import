@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/awp_360.wav-f96c5aaf0e27b8d17599072e6ff3cb4c.sample"
+
+[deps]
+
+source_file="res://Entities/player/item_thinkers/awp/awp_360.wav"
+dest_files=[ "res://.import/awp_360.wav-f96c5aaf0e27b8d17599072e6ff3cb4c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -442,8 +442,8 @@ func update_settings(save_settings_config:=true):
 			
 			get_tree().current_scene.update_particles = enabled
 			get_tree().current_scene.set_physics_process(enabled)
-			get_tree().current_scene.particles.visible = enabled
-			get_tree().current_scene.particles.emitting = enabled
+			particles.visible = enabled
+			particles.emitting = enabled
 	
 	AudioServer.set_bus_volume_db(0, linear2db(settings["volume"]))
 	

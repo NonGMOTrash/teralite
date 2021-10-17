@@ -4,6 +4,7 @@ const DEFAULT_TRANS = Tween.TRANS_ELASTIC
 const DEFAULT_EASE = Tween.EASE_OUT_IN
 const DEFAULT_DISTANCE_RATIO := 0.25
 const DEFAULT_DISTANCE_MAX := 40
+const DEFAULT_DISTANCE_MIN := 0
 
 onready var tween = $tween 
 onready var frequency_timer = $frequency
@@ -12,6 +13,7 @@ onready var zoom_tween = $zoom_tween
 
 var distance_ratio := DEFAULT_DISTANCE_RATIO # 1-0, higher = see further
 var distance_max := DEFAULT_DISTANCE_MAX
+var distance_min := DEFAULT_DISTANCE_MIN
 
 var old_player_pos = null
 var set_mouse_pos := Vector2.ZERO
@@ -37,7 +39,7 @@ func _input(event: InputEvent):
 		set_mouse_pos = get_global_mouse_position()
 
 func _physics_process(_delta: float) -> void:
-	var player
+	var player: Entity
 	if refs.player.get_ref() == null: return
 	player = refs.player.get_ref()
 	
@@ -50,14 +52,17 @@ func _physics_process(_delta: float) -> void:
 		set_physics_process(false)
 		return
 	
-	player = player as Entity
-	
 	old_player_pos = player.global_position
 	
-	global_position = player.global_position + (get_local_mouse_position() * distance_ratio)
+	if distance_min > 0 and global_position.distance_to(player.get_local_mouse_position()) < 8:
+		return
+	
+	global_position = player.global_position + (player.get_local_mouse_position() * distance_ratio)
 	
 	if global_position.distance_to(player.global_position) > distance_max:
 		global_position = player.global_position.move_toward(global_position, distance_max)
+	elif global_position.distance_to(player.global_position) < distance_min:
+		global_position = player.global_position.move_toward(get_local_mouse_position() * 99, distance_min)
 
 func shake(power=10, frequency=10, duration=0.2):
 	if not (power * frequency * duration) > priority: 
