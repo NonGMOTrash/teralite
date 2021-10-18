@@ -94,6 +94,7 @@ var faction_relationships = {
 			"player": "friendly",
 			"monster": "hostile",
 			"blue_kingdom": "hostile",
+			"army": "hostile",
 		},
 	"monster":
 		{
@@ -101,6 +102,7 @@ var faction_relationships = {
 			"player": "hostile",
 			"monster": "friendly",
 			"blue_kingdom": "hostile",
+			"army": "hostile",
 		},
 	"blue_kingdom":
 		{
@@ -108,6 +110,7 @@ var faction_relationships = {
 			"player": "hostile",
 			"monster": "hostile",
 			"blue_kingdom": "friendly",
+			"army": "hostile",
 		},
 	"solo":
 		{
@@ -115,6 +118,15 @@ var faction_relationships = {
 			"player": "hostile",
 			"monster": "hostile",
 			"blue_kingdom": "hostile",
+			"army": "hostile",
+		},
+	"army":
+		{
+			"solo": "hostile",
+			"player": "hostile",
+			"monster": "hostile",
+			"blue_kingdom": "hostile",
+			"army": "friendly",
 		},
 }
 

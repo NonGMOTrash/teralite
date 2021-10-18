@@ -54,4 +54,5 @@ func set_data():
 		"survivor": get_used_cells_by_id(57),
 		"red_barrel": get_used_cells_by_id(58),
 		"awp": get_used_cells_by_id(59),
+		"hunter": get_used_cells_by_id(60),
 	}
