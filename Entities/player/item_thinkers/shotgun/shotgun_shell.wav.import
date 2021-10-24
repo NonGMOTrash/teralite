@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/shotgun_shell.wav-2e9ab61dafdcb862ab2d0e3871de6ed0.sample"
+
+[deps]
+
+source_file="res://Entities/player/item_thinkers/shotgun/shotgun_shell.wav"
+dest_files=[ "res://.import/shotgun_shell.wav-2e9ab61dafdcb862ab2d0e3871de6ed0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

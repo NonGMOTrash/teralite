@@ -33,8 +33,6 @@ func _ready() -> void:
 	
 	if AUTO_PLAY == true:
 		play()
-		if get_parent().get_parent() is Entity and get_parent().get_parent().truName == "explosion":
-			print("!")
 	
 	# moving to sound_player (putting it in here causes an error sometimes
 	# resume: Resumed function '_ready()' after yield, but class instance is gone. 

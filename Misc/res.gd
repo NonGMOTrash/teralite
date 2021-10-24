@@ -59,6 +59,7 @@ const data := {
 	"boots": "res://Entities/Item_Pickups/boots/boots.tscn",
 	"medkit": "res://Entities/Item_Pickups/medkit/medkit.tscn",
 	"awp": "res://Entities/Item_Pickups/awp/awp.tscn",
+	"shotgun": "res://Entities/Item_Pickups/shotgun/shotgun.tscn",
 	
 	# melees
 	"slash": "res://Entities/Attacks/Melee/slash/slash.tscn",
@@ -76,6 +77,7 @@ const data := {
 	"thrown_iron_potion": "res://Entities/Attacks/Projectile/thrown_iron_potion/thrown_iron_potion.tscn",
 	"blow_dart": "res://Entities/Attacks/Projectile/blow_dart/blow_dart.tscn",
 	"big_bullet": "res://Entities/Attacks/Projectile/big_bullet/big_bullet.tscn",
+	"shotgun_shell": "res://Entities/Attacks/Projectile/shotgun_shell/shotgun_shell.tscn",
 	
 	# effects
 	"hit_effect": "res://Effects/hit_effect/hit_effect.tscn",
@@ -153,6 +155,7 @@ const data := {
 	"boots_texture": "res://Entities/Item_Pickups/boots/boots.png",
 	"medkit_texture": "res://Entities/Item_Pickups/medkit/medkit.png",
 	"awp_texture": "res://Entities/Item_Pickups/awp/awp.png",
+	"shotgun_texture": "res://Entities/Item_Pickups/shotgun/shotgun.png",
 }
 
 func allocate(asset:String) -> void:

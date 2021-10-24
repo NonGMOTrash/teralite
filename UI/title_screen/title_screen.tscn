@@ -22,6 +22,7 @@ __meta__ = {
 }
 
 [node name="main" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -8.9407e-08
@@ -188,7 +189,6 @@ flat = true
 align = 2
 
 [node name="new_save" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0

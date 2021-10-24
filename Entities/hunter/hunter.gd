@@ -36,7 +36,6 @@ func _on_action_lobe_action(action, target) -> void:
 		held_item.animation.queue("warn")
 
 func attack(finished_animation:String):
-	print("!!")
 	if held_item.animation.get_queue().size() > 0:
 		return
 	

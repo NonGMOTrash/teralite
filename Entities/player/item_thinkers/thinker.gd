@@ -209,15 +209,14 @@ func reload():
 	if RELOAD_ANIM != "":
 		player.components["held_item"].animation.play(RELOAD_ANIM)
 
-func quick_spawn(attack: String, deferred := true) -> void:
+func quick_spawn(attack:String,deferred:=true,target_position:=player.get_global_mouse_position())->void:
 	var new_attack := res.aquire_attack(attack)
-	new_attack.setup(player, player.get_global_mouse_position())
+	new_attack.setup(player, target_position)
 	
 	if deferred == true:
 		refs.ysort.get_ref().call_deferred("add_child", new_attack)
 	else:
 		refs.ysort.get_ref().add_child(new_attack)
-
 
 func _update_held_item():
 	if HELD_ITEM_TEXTURE == null:

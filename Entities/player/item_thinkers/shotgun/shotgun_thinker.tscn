@@ -1,0 +1,47 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Entities/player/item_thinkers/shotgun/shotgun_thinker.gd" type="Script" id=1]
+[ext_resource path="res://Components/sound_player/sound/sound.gd" type="Script" id=2]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Item_Pickups/shotgun/shotgun.png" type="Texture" id=5]
+[ext_resource path="res://Entities/Attacks/Projectile/small_bullet/small_bullet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/player/item_thinkers/shotgun/shotgun_shell.wav" type="AudioStream" id=8]
+[ext_resource path="res://Entities/player/item_thinkers/shotgun/shotgun_reload.wav" type="AudioStream" id=9]
+[ext_resource path="res://Entities/player/item_thinkers/shotgun/shotgun_equip.wav" type="AudioStream" id=10]
+
+[node name="shotgun_thinker" type="Node"]
+script = ExtResource( 1 )
+auto_ready_check = false
+HELD_ITEM_TEXTURE = ExtResource( 5 )
+RELOAD_ANIM = "load"
+my_item = "shotgun"
+display_name = "Shotgun"
+CURSOR_MODE = 1
+EQUIP_SOUND = ExtResource( 10 )
+
+[node name="cooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="reload" type="Timer" parent="."]
+one_shot = true
+
+[node name="spawner" parent="." instance=ExtResource( 4 )]
+thing = ExtResource( 6 )
+
+[node name="sound_player" parent="." instance=ExtResource( 3 )]
+FREE_WHEN_EMPTY = false
+
+[node name="reload" type="AudioStreamPlayer2D" parent="sound_player"]
+stream = ExtResource( 9 )
+script = ExtResource( 2 )
+MODE = 1
+AUTO_PLAY = false
+
+[node name="shell" parent="sound_player" instance=ExtResource( 7 )]
+stream = ExtResource( 8 )
+MODE = 1
+AUTO_PLAY = false
+
+[connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]

@@ -146,7 +146,7 @@ func evaluate(warned = false) -> Array: #-> [score, target]
 		if scores[i] > final_score:
 			final_score = scores[i]
 			final_target = targets[i]
-	if get_name() == "shoot": print(final_score)
+	
 	return [final_score, final_target]
 
 func score_modification(score): # for custom score modification

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Entities/Item_Pickups/item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/player/item_thinkers/shotgun/shotgun_thinker.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Item_Pickups/shotgun/shotgun.png" type="Texture" id=3]
+[ext_resource path="res://Components/sprite/shadow2.png" type="Texture" id=4]
+
+[node name="shotgun" instance=ExtResource( 1 )]
+truName = "shotgun"
+thinker = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )
+
+[node name="shadow" parent="Sprite" index="0"]
+position = Vector2( 0, -1 )
+texture = ExtResource( 4 )
+
+[node name="sound_player" parent="." index="3"]
+FREE_WHEN_EMPTY = false

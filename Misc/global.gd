@@ -266,14 +266,13 @@ func write_save(entered_save_name, data):
 		save_file.close()
 	else:
 		# load failed
-		push_error("could not read save on write")
-		OS.alert("could not read save on write", "reportpls.jpg")
+		push_error("could not open save '%s' on write" % save_name)
+		OS.alert("could not open save '%s' on write" % save_name, "reportpls.jpg")
 
 func load_save(entered_save_name):
 	var save_file = File.new()
 	
 	save_name = entered_save_name
-	
 	if not save_name.is_valid_filename():
 		# rename the save file to not have spaces
 		if save_file.file_exists(SAVE_DIR + save_name):
@@ -288,21 +287,16 @@ func load_save(entered_save_name):
 						new_name = new_name + letter
 					else:
 						new_name = new_name + "_"
-				save_name = new_name
 				
-				error = save_file.open(SAVE_DIR + save_name, File.WRITE)
-				if error == OK:
-					save_file.store_var(save_data)
-					save_file.close()
-				else:
-					push_error("could not open newly created file on load (for renaming)")
-					OS.alert("could not open newly created file on load (for renaming)", "reportpls.jpg")
+				delete_save(save_name)
+				save_name = new_name
+				write_save(save_name, save_data)
 			else:
-				push_error("could not open save on load (for renaming)")
-				OS.alert("could not open save on load (for renaming)", "reportpls.jpg")
+				push_error("could not open save '%s' on load (for renaming)" % save_name)
+				OS.alert("could not open save '%s' on load (for renaming)" % save_name, "reportpls.jpg")
 		else:
-			push_error("could not find save on load (for renaming)")
-			OS.alert("could not find save on load (for renaming)", "reportpls.jpg")
+			push_error("could not find save '%s' on load (for renaming)" % save_name)
+			OS.alert("could not find save '%s' on load (for renaming)" % save_name, "reportpls.jpg")
 	
 	if save_file.file_exists(SAVE_DIR + save_name):
 		var error = save_file.open(SAVE_DIR + save_name, File.READ)

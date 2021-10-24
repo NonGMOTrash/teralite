@@ -114,7 +114,6 @@ func multi_color_set(target:Control, color:Color):
 	target.set_deferred("custom_colors/font_color_hover", color)
 
 func load_saves_list_items(): # add items from the saves directory into here
-	
 	for child in saves_list.get_children():
 		child.queue_free()
 	
@@ -134,16 +133,17 @@ func load_saves_list_items(): # add items from the saves directory into here
 			save_preview.stars.text = str(data["stars"])
 			save_preview.save_name.text = data["save_name"]
 			save_preview.name = data["save_name"]
-			save_preview.version.text = str(data["ver_num"])
 			if "icon" in data:
 				save_preview.icon.texture = SAVE_ICONS[data["icon"]]
-			if data["ver_num"] < global.ver_num:
-				if floor(data["ver_num"]) < 1.0:
-					save_preview.version.set_deferred("custom_colors/font_color", Color.yellow)
-				else:
-					save_preview.version.set_deferred("custom_colors/font_color", Color.greenyellow)
-			elif data["ver_num"] > global.ver_num:
-				save_preview.version.set_deferred("custom_colors/font_color", Color.lightblue)
+			if "ver_num" in data:
+				save_preview.version.text = str(data["ver_num"])
+				if data["ver_num"] < global.ver_num:
+					if floor(data["ver_num"]) < 1.0:
+						save_preview.version.set_deferred("custom_colors/font_color", Color.yellow)
+					else:
+						save_preview.version.set_deferred("custom_colors/font_color", Color.greenyellow)
+				elif data["ver_num"] > global.ver_num:
+					save_preview.version.set_deferred("custom_colors/font_color", Color.lightblue)
 			
 			var deaths: int = 0
 			for amount in data["level_deaths"].values():
@@ -201,9 +201,12 @@ func _on_cancel_pressed() -> void:
 	new.grab_focus()
 
 func _on_create_pressed() -> void:
-	var new_save_name = $new_save/VBoxContainer/HBoxContainer/name.text
+	var new_save_name: String = $new_save/VBoxContainer/HBoxContainer/name.text
 	if new_save_name == "":
 		new_save_name = "untitled_save"
+	if not new_save_name.is_valid_filename():
+		$new_save/VBoxContainer/HBoxContainer/name.text = "not a valid filename"
+		return
 	
 	global.save_name = new_save_name
 	

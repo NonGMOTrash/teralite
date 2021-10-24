@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Levels/level/level.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Entities/hunter/hunter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Item_Pickups/shotgun/shotgun.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/knight/knight.tscn" type="PackedScene" id=3]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -71,8 +71,8 @@ anims/walk = SubResource( 2 )
 [node name="foot_stepper" parent="YSort/knight" index="10"]
 FREE_WHEN_EMPTY = false
 
-[node name="hunter" parent="YSort" index="4" instance=ExtResource( 2 )]
-position = Vector2( 139.221, 56.6325 )
+[node name="shotgun" parent="YSort" index="4" instance=ExtResource( 2 )]
+position = Vector2( 78.3991, 120.717 )
 
 [editable path="YSort/world_tiles"]
 [editable path="YSort/knight"]

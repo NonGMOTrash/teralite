@@ -14,6 +14,9 @@ var original_force_mult
 var distance_traveled := 0.0
 var old_pos: Vector2
 
+onready var original_damage: int = stats.DAMAGE
+onready var original_true_damage: int = stats.TRUE_DAMAGE
+
 func _init():
 	visible = false
 	original_force_mult = FORCE_MULT
@@ -73,6 +76,8 @@ func death():
 
 func _on_hitbox_hit(area: Area2D, type: String) -> void:
 	._on_hitbox_hit(area, type)
+	if truName == "shotgun_shell":
+		prints(get_name(), area.get_parent().get_name(), (area.get_parent() in hitbox.blacklist))
 	
 	if visible == false: return
 	if global.get_relation(self, area.get_parent()) == "friendly": return
