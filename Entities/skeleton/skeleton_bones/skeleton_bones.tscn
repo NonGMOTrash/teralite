@@ -1,0 +1,174 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Entities/skeleton/skeleton_bones/skeleton_bones.gd" type="Script" id=1]
+[ext_resource path="res://Components/entity_push/entity_push.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/skeleton/skeleton_bones/skeleton_bones.png" type="Texture" id=4]
+[ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/skeleton/skeleton_bones/skeleton_death.wav" type="AudioStream" id=9]
+[ext_resource path="res://Entities/skeleton/skeleton_bones/skeleton_resurrect.wav" type="AudioStream" id=10]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="Animation" id=2]
+resource_name = "die"
+length = 0.5
+step = 0.083
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.083, 0.166, 0.249 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 9 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "ressurect"
+length = 1.332
+step = 0.083
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.079, 1.162, 1.245, 1.328 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 3, 2, 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("entity_sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.083, 0.166, 0.249, 0.332, 0.415, 0.498, 0.581, 0.664, 0.747, 0.83, 0.913, 0.996, 1.079 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -1, 0.5 ), Vector2( 0, 0.8 ), Vector2( -0.7, -0.2 ), Vector2( -0.2, 0 ), Vector2( 1, 1 ), Vector2( 0, -0.1 ), Vector2( 0.6, -0.2 ), Vector2( -0.1, -1 ), Vector2( 0, 0 ), Vector2( -1, 0.2 ), Vector2( 0.4, 0.9 ), Vector2( -1, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.328 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "ressurect"
+} ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 10 )
+} ],
+"times": PoolRealArray( 0.913 )
+}
+
+[sub_resource type="CircleShape2D" id=4]
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 5.49613
+
+[node name="skeleton_bones" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 1 )
+ACCELERATION = 0
+SLOWDOWN = 800
+TOP_SPEED = 0
+FORCE_MULT = 2.0
+truName = "skeleton_bones"
+faction = "monster"
+ressurect_delay = 5.0
+
+[node name="stats" parent="." instance=ExtResource( 5 )]
+MAX_HEALTH = 5
+HEALTH = 5
+DAMAGE = 0
+poison_modifier = -99.0
+bleed_modifier = -99.0
+regeneration_modifier = -99.0
+
+[node name="entity_sprite" parent="." instance=ExtResource( 3 )]
+material = SubResource( 1 )
+texture = ExtResource( 4 )
+hframes = 4
+auto_flip_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "die"
+anims/die = SubResource( 2 )
+anims/ressurect = SubResource( 3 )
+
+[node name="ressurrect" type="Timer" parent="."]
+one_shot = true
+
+[node name="entity_push" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="CollisionShape2D" parent="entity_push" index="0"]
+shape = SubResource( 4 )
+
+[node name="hurtbox" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+shape = SubResource( 4 )
+
+[node name="entity_effects" parent="." instance=ExtResource( 7 )]
+death_type = -1
+
+[node name="health_bar" parent="." instance=ExtResource( 8 )]
+margin_left = -10.0
+margin_top = -4.42431
+margin_bottom = -0.424312
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.927032, 5.16488 )
+shape = SubResource( 5 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+max_distance = 400.0
+
+[connection signal="timeout" from="ressurrect" to="." method="_on_ressurrect_timeout"]
+
+[editable path="entity_push"]
+[editable path="hurtbox"]

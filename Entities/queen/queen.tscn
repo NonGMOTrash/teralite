@@ -70,6 +70,7 @@ faction = "blue_kingdom"
 shoot_speed = 215.0
 snipe_speed = 350.0
 danger_threshold = 4
+potions = 6
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
 MAX_HEALTH = 13
@@ -174,6 +175,7 @@ margin_right = 10.5944
 margin_bottom = -8.78223
 
 [node name="foot_stepper" parent="." instance=ExtResource( 11 )]
+FREE_WHEN_EMPTY = false
 
 [node name="entity_effects" parent="." instance=ExtResource( 12 )]
 death_type = 6

@@ -1,0 +1,191 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Entities/skeleton/skeleton.gd" type="Script" id=1]
+[ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/entity_push/entity_push.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/brain/movement_lobe/spring/spring.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Entities/Item_Pickups/sword/sword.png" type="Texture" id=15]
+[ext_resource path="res://Components/held_item/held_item.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Entities/Attacks/Melee/slash/slash.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Entities/Attacks/Projectile/arrow/arrow.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Entities/skeleton/skeleton.png" type="Texture" id=20]
+[ext_resource path="res://Entities/skeleton/skeleton_back.png" type="Texture" id=21]
+[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Entities/skeleton/skeleton_bones/skeleton_bones.tscn" type="PackedScene" id=23]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 8.34297
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 2.98835
+
+[sub_resource type="Animation" id=4]
+resource_name = "stand"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "walk"
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 0 ]
+}
+
+[node name="skeleton" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 1 )
+ACCELERATION = 300
+SLOWDOWN = 300
+TOP_SPEED = 50
+FORCE_MULT = 1.15
+truName = "skeleton"
+faction = "monster"
+MELEE = ExtResource( 18 )
+PROJECTILE = ExtResource( 19 )
+
+[node name="stats" parent="." instance=ExtResource( 3 )]
+MAX_HEALTH = 3
+HEALTH = 3
+poison_modifier = -99.0
+bleed_modifier = -99.0
+regeneration_modifier = -99.0
+
+[node name="entity_sprite" parent="." instance=ExtResource( 4 )]
+material = SubResource( 1 )
+texture = ExtResource( 20 )
+hframes = 4
+auto_flip_mode = 2
+back_texture = ExtResource( 21 )
+
+[node name="entity_push" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="CollisionShape2D" parent="entity_push" index="0"]
+shape = SubResource( 2 )
+
+[node name="hurtbox" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+shape = SubResource( 2 )
+
+[node name="sleeper" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
+
+[node name="attack_cooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="brain" parent="." instance=ExtResource( 7 )]
+
+[node name="movement_lobe" parent="brain" instance=ExtResource( 8 )]
+IDLE_TIME = 1.2
+IDLE_OFFSET = 0.0
+WANDER_TIME = 1.2
+WANDER_OFFSET = 0.0
+WANDER_SPEED = 0.8
+WANDER_RANGE = 200.0
+general_springs = {
+"friendly": "follow",
+"hostile": "close",
+"neutral": ""
+}
+
+[node name="close" parent="brain/movement_lobe" instance=ExtResource( 9 )]
+DISTANCE = 16
+
+[node name="far" parent="brain/movement_lobe" instance=ExtResource( 9 )]
+DISTANCE = 64
+
+[node name="follow" parent="brain/movement_lobe" instance=ExtResource( 9 )]
+DEADZONE = 64
+USE_DEADZONE = true
+
+[node name="action_lobe" parent="brain" instance=ExtResource( 11 )]
+PATIENCE = 0.1
+ACTION_WEIGHTING = 0.333
+ACTION_DEWEIGHTING = 0.2
+AUTO_ACTION_WEIGHTING = true
+
+[node name="slash" parent="brain/action_lobe" instance=ExtResource( 10 )]
+best_distance = 16
+GLOBAL_COOLDOWN = true
+
+[node name="shoot" parent="brain/action_lobe" instance=ExtResource( 10 )]
+best_distance = 36
+COOLDOWN = 2.1
+GLOBAL_COOLDOWN = true
+
+[node name="memory_lobe" parent="brain" instance=ExtResource( 17 )]
+
+[node name="health_bar" parent="." instance=ExtResource( 12 )]
+margin_left = -9.93587
+margin_top = -13.0817
+margin_right = 11.0641
+margin_bottom = -9.07994
+
+[node name="move_animations" type="AnimationPlayer" parent="."]
+anims/stand = SubResource( 4 )
+anims/walk = SubResource( 5 )
+
+[node name="foot_stepper" parent="." instance=ExtResource( 14 )]
+FREE_WHEN_EMPTY = false
+
+[node name="entity_effects" parent="." instance=ExtResource( 13 )]
+death_effect = false
+death_type = 0
+
+[node name="held_item" parent="." instance=ExtResource( 16 )]
+TARGETING = 1
+
+[node name="sprite" parent="held_item/anchor" index="0"]
+texture = ExtResource( 15 )
+hframes = 1
+
+[node name="spawner" parent="." instance=ExtResource( 22 )]
+standby_mode = true
+thing = ExtResource( 23 )
+
+[connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
+
+[editable path="entity_push"]
+[editable path="hurtbox"]
+[editable path="held_item"]

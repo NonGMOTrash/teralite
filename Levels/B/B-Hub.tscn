@@ -39,8 +39,8 @@ position = Vector2( 576, 103 )
 [node name="sprite" parent="YSort/player" index="1"]
 material = SubResource( 1 )
 
-[node name="sprite" parent="YSort/player/held_item/anchor" index="0"]
-frame = 0
+[node name="foot_stepper" parent="YSort/player" index="10"]
+FREE_WHEN_EMPTY = false
 
 [node name="Autumn" parent="YSort" index="3" instance=ExtResource( 4 )]
 position = Vector2( 539, 72 )

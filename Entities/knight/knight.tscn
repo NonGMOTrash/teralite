@@ -163,6 +163,7 @@ anims/stand = SubResource( 4 )
 anims/walk = SubResource( 5 )
 
 [node name="foot_stepper" parent="." instance=ExtResource( 17 )]
+FREE_WHEN_EMPTY = false
 
 [node name="entity_effects" parent="." instance=ExtResource( 10 )]
 death_type = 3

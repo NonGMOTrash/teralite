@@ -6,6 +6,7 @@ const POTION_TEXTURE := preload("res://Entities/Item_Pickups/health_potion/healt
 export(float) var shoot_speed: float
 export(float) var snipe_speed: float
 export(int) var danger_threshold: int
+export(int) var potions: int
 
 var stored_attack: Attack
 var stored_target: Entity
@@ -58,7 +59,7 @@ func _on_action_lobe_action(action, target) -> void:
 		held_item.original_offset = Vector2(0, 0)
 		movement_lobe.general_springs["hostile"] = "space"
 		ACCELERATION *= 0.5
-	elif action == "heal":
+	elif action == "heal" and stats.HEALTH < (stats.MAX_HEALTH * 0.8):
 		held_item.animation.play("spin")
 		held_item.sprite.offset = Vector2(0, 0)
 		held_item.original_offset = Vector2(0, 0)
@@ -68,6 +69,9 @@ func _on_action_lobe_action(action, target) -> void:
 		held_item.sprite.vframes = 1
 		movement_lobe.general_springs["hostile"] = "space"
 		TOP_SPEED *= 0.1
+		potions -= 1
+		if potions <= 0:
+			$brain/action_lobe/heal.queue_free()
 
 func attack(finished_animation:String):
 	if animation.get_queue().size() > 0 or get_node_or_null(stored_path) == null:

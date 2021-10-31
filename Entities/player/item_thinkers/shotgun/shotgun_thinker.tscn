@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Entities/player/item_thinkers/shotgun/shotgun_thinker.gd" type="Script" id=1]
 [ext_resource path="res://Components/sound_player/sound/sound.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Entities/player/item_thinkers/shotgun/shotgun_shell.wav" type="AudioStream" id=8]
 [ext_resource path="res://Entities/player/item_thinkers/shotgun/shotgun_reload.wav" type="AudioStream" id=9]
 [ext_resource path="res://Entities/player/item_thinkers/shotgun/shotgun_equip.wav" type="AudioStream" id=10]
+[ext_resource path="res://UI/cursors/cursor_shotgun.png" type="Texture" id=11]
 
 [node name="shotgun_thinker" type="Node"]
 script = ExtResource( 1 )
@@ -18,6 +19,7 @@ HELD_ITEM_TEXTURE = ExtResource( 5 )
 RELOAD_ANIM = "load"
 my_item = "shotgun"
 display_name = "Shotgun"
+CURSOR = ExtResource( 11 )
 CURSOR_MODE = 1
 EQUIP_SOUND = ExtResource( 10 )
 

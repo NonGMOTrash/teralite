@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/skeleton_death.wav-fe280a60b363870a3a425052874a6b87.sample"
+
+[deps]
+
+source_file="res://Entities/skeleton/skeleton_bones/skeleton_death.wav"
+dest_files=[ "res://.import/skeleton_death.wav-fe280a60b363870a3a425052874a6b87.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
