@@ -12,7 +12,7 @@ resource_name = "animation"
 length = 0.2
 step = 0.01
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "animation_reverse"
 length = 0.3
 step = 0.02
@@ -65,8 +65,7 @@ tracks/3/keys = {
 "values": [ 0.0, -90.0, -180.0 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "hold"
+[sub_resource type="Animation" id=4]
 
 [node name="Melee" instance=ExtResource( 1 )]
 visible = false
@@ -83,8 +82,8 @@ shape = SubResource( 1 )
 
 [node name="animation" type="AnimationPlayer" parent="." index="6"]
 anims/animation = SubResource( 2 )
-anims/animation_reverse = SubResource( 4 )
-anims/hold = SubResource( 3 )
+anims/animation_reverse = SubResource( 3 )
+anims/hold = SubResource( 4 )
 
 [connection signal="tree_exiting" from="." to="." method="_on_Melee_tree_exiting"]
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

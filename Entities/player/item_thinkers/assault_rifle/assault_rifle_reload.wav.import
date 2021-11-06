@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/assault_rifle_reload.wav-24ed22a011db2e61a9583ae2f6eb79ce.sample"
+
+[deps]
+
+source_file="res://Entities/player/item_thinkers/assault_rifle/assault_rifle_reload.wav"
+dest_files=[ "res://.import/assault_rifle_reload.wav-24ed22a011db2e61a9583ae2f6eb79ce.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

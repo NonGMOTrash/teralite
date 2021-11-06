@@ -1,17 +1,19 @@
 extends Thinker
 
-export var max_ammo = 10
+const SHOOT_SOUND := preload("res://Entities/player/item_thinkers/assault_rifle/assault_rifle_shoot.wav")
+
+export var max_ammo = 30
 var ammo = max_ammo
-export var cooldown_time = 0.175
-export var reload_time = 1.25
-export var ads_dist_ratio = 0.6
-export var ads_dist_max = 70
-export var ads_zoom = 0.92
+export var cooldown_time = 0.11
+export var reload_time = 1.7
+export var ads_dist_ratio = 0.7
+export var ads_dist_max = 80
+export var ads_zoom = 0.90
 export var ads_zoom_speed = 0.2
+export var recoil = 40
 
 onready var cooldown = $cooldown
 onready var reload = $reload
-onready var spawner = $spawner
 
 func _init() -> void:
 	res.allocate("bullet")
@@ -67,7 +69,11 @@ func primary():
 			reload()
 		return
 	
-	quick_spawn("bullet")
+	var bullet := res.aquire_projectile("bullet")
+	bullet.RECOIL = recoil
+	bullet.setup(player, player.get_global_mouse_position())
+	bullet.SPAWN_SOUND = SHOOT_SOUND
+	refs.ysort.get_ref().add_child(bullet)
 	ammo -= 1
 	cooldown.start()
 	reload.stop()
@@ -78,7 +84,7 @@ func primary():
 		null, # item bar value 
 		null # bar timer duration
 	)
-	spawner.spawn()
+	#spawner.spawn()
 
 func secondary():
 	var camera = refs.camera.get_ref() as Camera2D

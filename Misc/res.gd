@@ -61,6 +61,7 @@ const data := {
 	"medkit": "res://Entities/Item_Pickups/medkit/medkit.tscn",
 	"awp": "res://Entities/Item_Pickups/awp/awp.tscn",
 	"shotgun": "res://Entities/Item_Pickups/shotgun/shotgun.tscn",
+	"assault_rifle": "res://Entities/Item_Pickups/assault_rifle/assault_rifle.tscn",
 	
 	# melees
 	"slash": "res://Entities/Attacks/Melee/slash/slash.tscn",
@@ -157,6 +158,7 @@ const data := {
 	"medkit_texture": "res://Entities/Item_Pickups/medkit/medkit.png",
 	"awp_texture": "res://Entities/Item_Pickups/awp/awp.png",
 	"shotgun_texture": "res://Entities/Item_Pickups/shotgun/shotgun.png",
+	"assault_rifle_texture": "res://Entities/Item_Pickups/assault_rifle/assault_rifle.png",
 }
 
 func allocate(asset:String) -> void:
