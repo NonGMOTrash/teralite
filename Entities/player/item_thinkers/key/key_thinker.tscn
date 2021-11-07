@@ -15,10 +15,12 @@ HELD_ITEM_TEXTURE = ExtResource( 3 )
 my_item = "key"
 display_name = "Key"
 CURSOR = ExtResource( 5 )
+CURSOR_MODE = 1
 EQUIP_SOUND = ExtResource( 4 )
 activation_radius = 6.0
 
 [node name="sound_player" parent="." instance=ExtResource( 1 )]
+FREE_WHEN_EMPTY = false
 
 [node name="activation" type="Area2D" parent="."]
 collision_layer = 0

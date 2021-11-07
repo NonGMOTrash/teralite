@@ -8,6 +8,7 @@ export var MIN_DAM_SPEED = 30
 export var RECOIL = 50
 export var VELOCITY_INHERITENCE := 0.5
 export(float, -360, 360) var ROTATION_OFFSET := 0.0
+export(float, 0, 32) var SPAWN_OFFSET := 16
 
 var has_left_src := false
 var original_force_mult
@@ -36,13 +37,21 @@ func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	SOURCE = new_source
 	target_pos = new_target_pos
 	faction = SOURCE.faction
-	start_pos = SOURCE.global_position
-	DIRECTION = start_pos.direction_to(target_pos).normalized()
 	SOURCE_PATH = SOURCE.get_path()
 	# PROBLEM_NOTE: probably better to try .setup(new_source, new_target_pos) (also applies to Melee.gd)
 	# Projectile.gd setup
-	velocity = Vector2(SPEED, SPEED) * DIRECTION
 	visible = true
+	
+	# los check to the center of the player, prevents projectiles from spawning through walls
+	start_pos = SOURCE.global_position.move_toward(target_pos, SPAWN_OFFSET)
+	var ss = SOURCE.get_world_2d().direct_space_state
+	var raycast = ss.intersect_ray(start_pos, SOURCE.global_position.move_toward(start_pos,4), [], 1)
+	print(raycast)
+	if raycast and not raycast.collider == SOURCE:
+		start_pos = SOURCE.global_position
+	
+	DIRECTION = start_pos.direction_to(target_pos).normalized()
+	velocity = Vector2(SPEED, SPEED) * DIRECTION
 
 func _physics_process(delta):
 	if visible == false: return

@@ -23,6 +23,7 @@ func _on_activation_body_entered(body: Node) -> void:
 		delete()
 
 func selected():
+	.selected()
 	if ready == false:
 		return
 	

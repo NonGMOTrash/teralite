@@ -31,6 +31,9 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="src_collision" index="0"]
 shape = SubResource( 1 )
 
+[node name="sound" parent="." index="6"]
+FREE_WHEN_EMPTY = false
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="7"]
 shape = SubResource( 2 )
 
