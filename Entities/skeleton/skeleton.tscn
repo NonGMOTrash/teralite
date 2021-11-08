@@ -80,8 +80,8 @@ MELEE = ExtResource( 18 )
 PROJECTILE = ExtResource( 19 )
 
 [node name="stats" parent="." instance=ExtResource( 3 )]
-MAX_HEALTH = 3
-HEALTH = 3
+MAX_HEALTH = 5
+HEALTH = 5
 poison_modifier = -99.0
 bleed_modifier = -99.0
 regeneration_modifier = -99.0

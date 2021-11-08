@@ -50,7 +50,7 @@ func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	if raycast and not raycast.collider == SOURCE:
 		start_pos = SOURCE.global_position
 	
-	DIRECTION = start_pos.direction_to(target_pos).normalized()
+	DIRECTION = SOURCE.global_position.direction_to(target_pos).normalized()
 	velocity = Vector2(SPEED, SPEED) * DIRECTION
 
 func _physics_process(delta):

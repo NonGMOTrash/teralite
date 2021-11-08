@@ -1,0 +1,201 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://Entities/stalker/stalker.gd" type="Script" id=1]
+[ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/entity_push/entity_push.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Entities/stalker/stalker.png" type="Texture" id=14]
+[ext_resource path="res://Components/sprite/shadow2.png" type="Texture" id=15]
+[ext_resource path="res://Entities/stalker/stalker_reveal.wav" type="AudioStream" id=16]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="Animation" id=2]
+resource_name = "run"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 2.6532
+height = 10.0
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 5.06186
+height = 13.1492
+
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 7.53953
+height = 12.1883
+
+[sub_resource type="CircleShape2D" id=9]
+
+[sub_resource type="Animation" id=7]
+length = 1.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 1.2 ),
+"transitions": PoolRealArray( 1, 2, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.811765 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "visible" ],
+"method": "set_speed"
+}, {
+"args": [ "visible" ],
+"method": "set_speed"
+} ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 16 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[node name="stalker" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 1 )
+ACCELERATION = 225
+SLOWDOWN = 200
+TOP_SPEED = 50
+truName = "stalker"
+faction = "monster"
+REVEAL_SPEED_BOOST = 1.35
+
+[node name="stats" parent="." instance=ExtResource( 2 )]
+MAX_HEALTH = 17
+HEALTH = 17
+DAMAGE = 3
+
+[node name="entity_sprite" parent="." instance=ExtResource( 3 )]
+material = SubResource( 1 )
+texture = ExtResource( 14 )
+offset = Vector2( 3, -3 )
+hframes = 5
+frame = 2
+
+[node name="shadow" parent="entity_sprite" index="0"]
+visible = false
+position = Vector2( -2.25, 3.375 )
+scale = Vector2( 1.5, 1 )
+texture = ExtResource( 15 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "run"
+anims/run = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 2.66502, 1.2517 )
+rotation = 1.5708
+shape = SubResource( 3 )
+
+[node name="hitbox" parent="." instance=ExtResource( 4 )]
+visible = false
+COOLDOWN = 0.8
+STATUS_EFFECT = "bleed"
+STATUS_DURATION = 10.0
+TEAM_ATTACK = false
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+position = Vector2( -0.471939, -1.53379 )
+rotation = 1.5708
+shape = SubResource( 4 )
+
+[node name="hurtbox" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+position = Vector2( 0.529869, -0.645174 )
+rotation = 1.5708
+shape = SubResource( 8 )
+
+[node name="entity_push" parent="." instance=ExtResource( 9 )]
+visible = false
+
+[node name="CollisionShape2D" parent="entity_push" index="0"]
+shape = SubResource( 9 )
+
+[node name="brain" parent="." instance=ExtResource( 6 )]
+
+[node name="movement_lobe" parent="brain" instance=ExtResource( 8 )]
+
+[node name="memory_lobe" parent="brain" instance=ExtResource( 7 )]
+MEMORY_TIME = 8.0
+
+[node name="sleeper" parent="." instance=ExtResource( 13 )]
+visible = false
+position = Vector2( 1.26134, -0.893453 )
+scale = Vector2( 1.32585, 1.08935 )
+
+[node name="health_bar" parent="." instance=ExtResource( 11 )]
+margin_left = -10.5518
+margin_top = -13.8591
+margin_right = 10.4482
+margin_bottom = -9.85739
+
+[node name="entity_effects" parent="." instance=ExtResource( 10 )]
+death_type = 4
+
+[node name="foot_stepper" parent="." instance=ExtResource( 12 )]
+FREE_WHEN_EMPTY = false
+VOLUME_ADJUST = 8.0
+
+[node name="reveal" type="AnimationPlayer" parent="."]
+anims/animation = SubResource( 7 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 16 )
+
+[connection signal="hit" from="hitbox" to="." method="_on_hitbox_hit"]
+[connection signal="got_hit" from="hurtbox" to="." method="_on_hurtbox_got_hit"]
+
+[editable path="entity_sprite"]
+[editable path="hitbox"]
+[editable path="hurtbox"]
+[editable path="entity_push"]
