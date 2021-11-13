@@ -36,6 +36,8 @@ ads_dist_max = 200
 ads_dist_min = 0
 ads_zoom = 0.6
 ads_zoom_speed = 0.4
+mlg_time = 1.0
+mlg_damage_bonus = 10
 
 [node name="cooldown" type="Timer" parent="."]
 one_shot = true
@@ -44,8 +46,8 @@ autostart = true
 [node name="reload" type="Timer" parent="."]
 one_shot = true
 
-[node name="mlg_window" type="Timer" parent="."]
-wait_time = 0.24
+[node name="mlg_time" type="Timer" parent="."]
+wait_time = 0.1
 one_shot = true
 
 [node name="sound_player" parent="." instance=ExtResource( 1 )]

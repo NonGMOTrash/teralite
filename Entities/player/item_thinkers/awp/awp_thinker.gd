@@ -1,6 +1,8 @@
 extends Thinker
 
 const CRIT_SOUND: AudioStream = preload("res://Entities/player/item_thinkers/awp/awp_shoot_crit.wav")
+const UNSCOPED_HOTSPOT := Vector2(40.5, 40.5)
+const SCOPED_HOTSPOT := Vector2(13.5, 13.5)
 
 export var max_ammo = 3
 onready var ammo = max_ammo
@@ -12,31 +14,34 @@ export var ads_dist_max = 70
 export var ads_dist_min = 50
 export var ads_zoom = 0.92
 export var ads_zoom_speed = 0.2
+export var mlg_window = 1.0
+export var mlg_time = 0.25
 export var mlg_damage_bonus = 2
 
 onready var cooldown = $cooldown
 onready var reload = $reload
 onready var spawner = $spawner
-onready var mlg_window = $mlg_window
 onready var dot =  $dot
 onready var camera: Camera2D = refs.camera.get_ref()
+onready var mlg_timer = $mlg_time
 
-var rotations := []
-var rotation_direction: int = 1 # 1 = positive -1 = negative
 var old_angle: float = 0.0
+var last_visted := [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0] # times for all 8 circle sectors
+var sector: int = 0
+var opposite_sector: int = 4
+var old_sector: int = 0
+var sectors: int = 8
 var scoped := false
 var regular_smooth_speed = 10
 
 func _init() -> void:
 	res.allocate("bullet")
-	for i in range(1, 60):
-		rotations.append(0.0)
 
 func _ready() -> void:
 	cooldown.wait_time = cooldown_time
 	reload.wait_time = reload_time
-	#cooldown.start()
-	print(camera.smoothing_speed)
+	mlg_timer.wait_time = mlg_time
+	selected()
 
 func _on_reload_timeout() -> void:
 	ammo = max_ammo
@@ -64,7 +69,7 @@ func selected():
 		null # bar timer duration
 	)
 	#update_cursor()
-	Input.set_custom_mouse_cursor(CURSOR, Input.CURSOR_ARROW, Vector2(40.5, 40.5))#Vector2(67.5, 67.5))
+	Input.set_custom_mouse_cursor(CURSOR, Input.CURSOR_ARROW, UNSCOPED_HOTSPOT)
 	_update_held_item()
 	
 	# PROBLEM_NOTE: would be better if i could get this to inheireit \/
@@ -86,14 +91,14 @@ func primary():
 			reload()
 		return
 	
-	if mlg_window.time_left == 0:
-		quick_spawn("big_bullet")
-	else:
-		var bullet: Projectile = res.aquire_attack("big_bullet")
+	var bullet: Projectile = res.aquire_attack("big_bullet")
+	bullet.RECOIL = 0 #                   \/ gets the sector opposite from the current one
+	if mlg_timer.time_left > 0:
+		bullet.RECOIL = 50
 		bullet.get_node("stats").DAMAGE += mlg_damage_bonus
 		bullet.SPAWN_SOUND = CRIT_SOUND
-		bullet.setup(player, player.get_global_mouse_position())
-		refs.ysort.get_ref().call_deferred("add_child", bullet)
+	bullet.setup(player, player.get_global_mouse_position())
+	refs.ysort.get_ref().call_deferred("add_child", bullet)
 	
 	ammo -= 1
 	cooldown.start()
@@ -117,7 +122,7 @@ func secondary():
 		camera.distance_max = ads_dist_max
 		camera.distance_min = ads_dist_min
 		camera.zoom_to(Vector2(ads_zoom, ads_zoom), ads_zoom_speed)
-		Input.set_custom_mouse_cursor(SCOPED_CURSOR, Input.CURSOR_ARROW, Vector2(22.5, 22.5))
+		Input.set_custom_mouse_cursor(SCOPED_CURSOR, Input.CURSOR_ARROW, SCOPED_HOTSPOT)
 		sound_player.play_sound("scope")
 		camera.auto_target = false
 		var ss = player.get_world_2d().direct_space_state
@@ -137,7 +142,7 @@ func secondary():
 		camera.distance_min = camera.DEFAULT_DISTANCE_MIN
 		camera.zoom_to(Vector2(1, 1), ads_zoom_speed)
 		camera.smoothing_speed = regular_smooth_speed
-		Input.set_custom_mouse_cursor(CURSOR, Input.CURSOR_ARROW, Vector2(67.5, 67.5))
+		Input.set_custom_mouse_cursor(CURSOR, Input.CURSOR_ARROW, UNSCOPED_HOTSPOT)
 		sound_player.play_sound("unscope")
 		dot.visible = false
 
@@ -159,24 +164,27 @@ func _physics_process(delta: float) -> void:
 	if global.selection != slot:
 		return
 	
+	# 360 shananigans
 	var angle := rad2deg(player.global_position.direction_to(player.get_global_mouse_position()).angle()) + 180
-	var rotation: float = angle - old_angle
 	old_angle = angle
-	rotations.remove(0)
-	rotations.append(rotation)
+	sector = stepify(angle, 45) / 45
+	if sector == 8: sector = 0
+	opposite_sector = (sector + sectors/2) % sectors
+	old_sector = sector
+	last_visted[sector] = OS.get_ticks_msec()
 	
-	var total_rotation: float = 0
-	for i in rotations.size():
-		total_rotation += rotations[i]
-	
-	if total_rotation >= 330 or total_rotation < 1:
-		rotations.clear()
-		for i in range(1, 60):
-			rotations.append(0.0)
-		
-		if total_rotation >= 330:
-			sound_player.play_sound("360")
-			mlg_window.start()
+	# checks if you have done a 360
+	for i in range(0, 7):
+		print(i)
+		if (OS.get_ticks_msec() - last_visted[i]) / 1000.0 <= mlg_window:
+			if i == 6 and mlg_timer.time_left == 0:
+				mlg_timer.start()
+				sound_player.play_sound("360")
+				break
+			else:
+				continue
+		else:
+			break
 	
 	if scoped:
 		var ss = player.get_world_2d().direct_space_state
@@ -193,4 +201,4 @@ func _physics_process(delta: float) -> void:
 			)
 		else:
 			dot.visible = false
-		
+
