@@ -71,7 +71,6 @@ func primary():
 	var angles := []
 	var spread_step: float = (spread * 2) / pellets
 	var r: float = -(spread / 2) - (spread_step * floor(pellets/2.0))
-	print(r)
 	for i in pellets:
 		r += spread_step
 		angles.append(rad2deg(player.global_position.direction_to(player.get_global_mouse_position()).angle()) + r)

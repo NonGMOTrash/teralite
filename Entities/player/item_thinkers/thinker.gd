@@ -36,6 +36,7 @@ var bar_max = 0.0
 var bar_value = 0.0
 var item_scene = res.aquire(my_item)
 var max_frame := HELD_ITEM_FRAMES.x * HELD_ITEM_FRAMES.y - 1
+var accurate_mouse_pos := Vector2.ZERO
 
 # maybe make this a global signal??
 signal update_ui(bar_max, bar_value, info_string)
@@ -253,3 +254,7 @@ func delete():
 		global.emit_signal("update_item_bar", player.inventory)
 	
 	queue_free()
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouse:
+		accurate_mouse_pos = player.get_global_mouse_position()

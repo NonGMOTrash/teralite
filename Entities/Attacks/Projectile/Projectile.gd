@@ -46,7 +46,6 @@ func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	start_pos = SOURCE.global_position.move_toward(target_pos, SPAWN_OFFSET)
 	var ss = SOURCE.get_world_2d().direct_space_state
 	var raycast = ss.intersect_ray(start_pos, SOURCE.global_position.move_toward(start_pos,4), [], 1)
-	print(raycast)
 	if raycast and not raycast.collider == SOURCE:
 		start_pos = SOURCE.global_position
 	
@@ -85,8 +84,6 @@ func death():
 
 func _on_hitbox_hit(area: Area2D, type: String) -> void:
 	._on_hitbox_hit(area, type)
-	if truName == "shotgun_shell":
-		prints(get_name(), area.get_parent().get_name(), (area.get_parent() in hitbox.blacklist))
 	
 	if visible == false: return
 	if global.get_relation(self, area.get_parent()) == "friendly": return

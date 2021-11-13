@@ -19,6 +19,8 @@ var old_player_pos = null
 var set_mouse_pos := Vector2.ZERO
 var power = 0
 var priority = -99
+var target_pos := Vector2.ZERO
+var auto_target := true
 
 func _on_camera_tree_entered() -> void:
 	refs.camera = weakref(self)
@@ -46,8 +48,9 @@ func _physics_process(_delta: float) -> void:
 	if player == null:
 		if old_player_pos == null: return
 		
-		tween.interpolate_property(self, "global_position", global_position, old_player_pos, 4.0, 
-				Tween.TRANS_EXPO, Tween.EASE_OUT)
+		if auto_target == true:
+			tween.interpolate_property(self, "global_position", global_position, target_pos, 4.0, 
+					Tween.TRANS_EXPO, Tween.EASE_OUT)
 		tween.start()
 		set_physics_process(false)
 		return

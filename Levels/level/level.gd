@@ -78,7 +78,7 @@ func _ready() -> void:
 	global.add_child(ambiance)
 	refs.ambiance = weakref(ambiance)
 	
-	# revent freeze when this is loaded
+	# prevent freeze when this is loaded
 	res.allocate("hit_effect")
 	res.allocate("item_pickup_effect")
 

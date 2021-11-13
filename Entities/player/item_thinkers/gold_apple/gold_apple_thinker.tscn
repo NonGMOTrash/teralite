@@ -15,10 +15,11 @@ display_name = "Golden Apple"
 CURSOR = ExtResource( 6 )
 CURSOR_MODE = 1
 bonus_healing = 2
-regen_duration = 6.0
-regen_lvl = 0.35
+regen_duration = 3.0
+regen_lvl = 0.7
 
 [node name="sound_player" parent="." instance=ExtResource( 2 )]
+FREE_WHEN_EMPTY = false
 
 [node name="eat" parent="sound_player" instance=ExtResource( 4 )]
 stream = ExtResource( 5 )

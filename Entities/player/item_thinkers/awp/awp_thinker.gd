@@ -4,6 +4,7 @@ const CRIT_SOUND: AudioStream = preload("res://Entities/player/item_thinkers/awp
 
 export var max_ammo = 3
 onready var ammo = max_ammo
+export var SCOPED_CURSOR: Texture
 export var cooldown_time = 0.175
 export var reload_time = 1.25
 export var ads_dist_ratio = 0.6
@@ -17,10 +18,14 @@ onready var cooldown = $cooldown
 onready var reload = $reload
 onready var spawner = $spawner
 onready var mlg_window = $mlg_window
+onready var dot =  $dot
+onready var camera: Camera2D = refs.camera.get_ref()
 
 var rotations := []
 var rotation_direction: int = 1 # 1 = positive -1 = negative
 var old_angle: float = 0.0
+var scoped := false
+var regular_smooth_speed = 10
 
 func _init() -> void:
 	res.allocate("bullet")
@@ -31,6 +36,7 @@ func _ready() -> void:
 	cooldown.wait_time = cooldown_time
 	reload.wait_time = reload_time
 	#cooldown.start()
+	print(camera.smoothing_speed)
 
 func _on_reload_timeout() -> void:
 	ammo = max_ammo
@@ -57,8 +63,8 @@ func selected():
 		null, # item bar value 
 		null # bar timer duration
 	)
-	update_cursor()
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	#update_cursor()
+	Input.set_custom_mouse_cursor(CURSOR, Input.CURSOR_ARROW, Vector2(40.5, 40.5))#Vector2(67.5, 67.5))
 	_update_held_item()
 	
 	# PROBLEM_NOTE: would be better if i could get this to inheireit \/
@@ -72,7 +78,6 @@ func unselected():
 	camera.distance_max = camera.DEFAULT_DISTANCE_MAX
 	camera.distance_min = camera.DEFAULT_DISTANCE_MIN
 	camera.zoom_to(Vector2(1, 1), ads_zoom_speed)
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func primary():
 	.primary()
@@ -106,19 +111,35 @@ func secondary():
 	var camera = refs.camera.get_ref() as Camera2D
 	
 	if Input.is_action_pressed("secondary_action"):
+		scoped = true
+		regular_smooth_speed = camera.smoothing_speed
 		camera.distance_ratio = ads_dist_ratio
 		camera.distance_max = ads_dist_max
 		camera.distance_min = ads_dist_min
 		camera.zoom_to(Vector2(ads_zoom, ads_zoom), ads_zoom_speed)
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		Input.set_custom_mouse_cursor(SCOPED_CURSOR, Input.CURSOR_ARROW, Vector2(22.5, 22.5))
 		sound_player.play_sound("scope")
+		camera.auto_target = false
+		var ss = player.get_world_2d().direct_space_state
+		var direction: Vector2 = player.global_position.direction_to(accurate_mouse_pos)
+		var ray_pos = player.global_position + 999 * direction
+		var ray = ss.intersect_ray(player.global_position, ray_pos, [], 1)
+		if ray:
+			camera.global_position = ray.position
+			dot.global_position = ray.position
+			dot.visible = true
+		else:
+			dot.visible = false
 	else:
+		scoped = false
 		camera.distance_ratio = camera.DEFAULT_DISTANCE_RATIO
 		camera.distance_max = camera.DEFAULT_DISTANCE_MAX
 		camera.distance_min = camera.DEFAULT_DISTANCE_MIN
 		camera.zoom_to(Vector2(1, 1), ads_zoom_speed)
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		camera.smoothing_speed = regular_smooth_speed
+		Input.set_custom_mouse_cursor(CURSOR, Input.CURSOR_ARROW, Vector2(67.5, 67.5))
 		sound_player.play_sound("unscope")
+		dot.visible = false
 
 func reload():
 	.reload()
@@ -156,3 +177,20 @@ func _physics_process(delta: float) -> void:
 		if total_rotation >= 330:
 			sound_player.play_sound("360")
 			mlg_window.start()
+	
+	if scoped:
+		var ss = player.get_world_2d().direct_space_state
+		var direction: Vector2 = player.global_position.direction_to(accurate_mouse_pos)
+		var ray_pos = player.global_position + 999 * direction
+		var ray = ss.intersect_ray(player.global_position, ray_pos, [player], 3)
+		if ray:
+			dot.global_position = ray.position
+			dot.visible = true
+			refs.camera.get_ref().global_position = dot.global_position
+			# sets camera smoothing to be higher, amplified the farther you are scoped
+			camera.smoothing_speed = (
+				(regular_smooth_speed / 2) / max(player.global_position.distance_to(ray.position) / 150, 1)
+			)
+		else:
+			dot.visible = false
+		

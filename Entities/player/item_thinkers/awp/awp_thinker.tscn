@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/player/item_thinkers/awp/awp_thinker.gd" type="Script" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://Entities/player/item_thinkers/awp/awp_scope.wav" type="AudioStream" id=12]
 [ext_resource path="res://UI/cursors/cursor_awp.png" type="Texture" id=13]
 [ext_resource path="res://Entities/player/item_thinkers/awp/awp_equip.wav" type="AudioStream" id=14]
+[ext_resource path="res://Entities/player/item_thinkers/awp/awp_dot.png" type="Texture" id=15]
+[ext_resource path="res://UI/cursors/cursor_awp_unscoped.png" type="Texture" id=16]
 
 [node name="awp_thinker" type="Node"]
 script = ExtResource( 2 )
@@ -23,14 +25,15 @@ HELD_ITEM_TEXTURE = ExtResource( 4 )
 RELOAD_ANIM = "load"
 my_item = "awp"
 display_name = "AWP"
-CURSOR = ExtResource( 13 )
+CURSOR = ExtResource( 16 )
 CURSOR_MODE = 1
 EQUIP_SOUND = ExtResource( 14 )
+SCOPED_CURSOR = ExtResource( 13 )
 cooldown_time = 1.1
 reload_time = 1.7
-ads_dist_ratio = 2.0
+ads_dist_ratio = 1.0
 ads_dist_max = 200
-ads_dist_min = 40
+ads_dist_min = 0
 ads_zoom = 0.6
 ads_zoom_speed = 0.4
 
@@ -82,5 +85,9 @@ standby_mode = true
 thing = ExtResource( 6 )
 spawn_on_free = false
 rotation_mode = 1
+
+[node name="dot" type="Sprite" parent="."]
+z_index = 999
+texture = ExtResource( 15 )
 
 [connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]
