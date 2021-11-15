@@ -5,7 +5,7 @@
 [ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Item_Pickups/awp/awp.png" type="Texture" id=4]
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Entities/Attacks/Projectile/big_bullet/big_bullet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Effects/muzzle_flash/muzzle_flash.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Components/sound_player/sound/sound.gd" type="Script" id=7]
 [ext_resource path="res://Entities/player/item_thinkers/awp/awp_360.wav" type="AudioStream" id=8]
 [ext_resource path="res://Entities/player/item_thinkers/awp/awp_unscope.wav" type="AudioStream" id=9]
@@ -37,7 +37,7 @@ ads_dist_min = 0
 ads_zoom = 0.6
 ads_zoom_speed = 0.4
 mlg_time = 1.0
-mlg_damage_bonus = 10
+mlg_damage_bonus = 7
 
 [node name="cooldown" type="Timer" parent="."]
 one_shot = true

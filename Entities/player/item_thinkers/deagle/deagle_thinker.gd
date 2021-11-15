@@ -1,16 +1,16 @@
 extends Thinker
 
-const SHOOT_SOUND := preload("res://Entities/player/item_thinkers/assault_rifle/assault_rifle_shoot.wav")
+const SHOOT_SOUND: AudioStream = preload("res://Entities/player/item_thinkers/deagle/deagle_shoot.wav")
 
-export var max_ammo = 30
+export var max_ammo = 6
 var ammo = max_ammo
-export var cooldown_time = 0.11
-export var reload_time = 1.7
+export var cooldown_time = 0.3
+export var reload_time = 1.25
 export var ads_dist_ratio = 0.7
 export var ads_dist_max = 80
-export var ads_zoom = 0.90
+export var ads_zoom = 0.9
 export var ads_zoom_speed = 0.2
-export var recoil = 40
+export var bonus_damage = 1
 
 onready var cooldown = $cooldown
 onready var reload = $reload
@@ -71,9 +71,11 @@ func primary():
 		return
 	
 	var bullet := res.aquire_projectile("bullet")
-	bullet.RECOIL = recoil
-	bullet.setup(player, player.get_global_mouse_position())
+	bullet.ONHIT_SELF_DAMAGE = 1
+	bullet.find_node("stats").DAMAGE += bonus_damage
 	bullet.SPAWN_SOUND = SHOOT_SOUND
+	bullet.SPEED += 60
+	bullet.setup(player, player.get_global_mouse_position())
 	refs.ysort.get_ref().add_child(bullet)
 	ammo -= 1
 	cooldown.start()

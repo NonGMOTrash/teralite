@@ -59,4 +59,5 @@ func set_data():
 		"skeleton": get_used_cells_by_id(62),
 		"assault_rifle": get_used_cells_by_id(63),
 		"stalker": get_used_cells_by_id(64),
+		"deagle": get_used_cells_by_id(65),
 	}

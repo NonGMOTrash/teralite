@@ -5,7 +5,7 @@
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/Item_Pickups/shotgun/shotgun.png" type="Texture" id=5]
-[ext_resource path="res://Entities/Attacks/Projectile/small_bullet/small_bullet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Effects/muzzle_flash/muzzle_flash.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Entities/player/item_thinkers/shotgun/shotgun_shell.wav" type="AudioStream" id=8]
 [ext_resource path="res://Entities/player/item_thinkers/shotgun/shotgun_reload.wav" type="AudioStream" id=9]
@@ -32,7 +32,10 @@ one_shot = true
 one_shot = true
 
 [node name="spawner" parent="." instance=ExtResource( 4 )]
+standby_mode = true
 thing = ExtResource( 6 )
+spawn_on_free = false
+rotation_mode = 1
 
 [node name="sound_player" parent="." instance=ExtResource( 3 )]
 FREE_WHEN_EMPTY = false

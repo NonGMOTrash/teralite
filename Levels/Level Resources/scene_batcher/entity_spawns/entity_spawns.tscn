@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://Levels/Level Resources/scene_batcher/scene_batcher.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/pistol/pistol.png" type="Texture" id=2]
@@ -58,6 +58,7 @@
 [ext_resource path="res://Entities/skeleton/skeleton.png" type="Texture" id=56]
 [ext_resource path="res://Entities/Item_Pickups/assault_rifle/assault_rifle.png" type="Texture" id=57]
 [ext_resource path="res://Entities/stalker/stalker.png" type="Texture" id=58]
+[ext_resource path="res://Entities/Item_Pickups/deagle/deagle.png" type="Texture" id=59]
 
 [sub_resource type="TileSet" id=1]
 2/name = "player.png 2"
@@ -858,6 +859,20 @@
 64/shape_one_way_margin = 0.0
 64/shapes = [  ]
 64/z_index = 0
+65/name = "deagle.png 65"
+65/texture = ExtResource( 59 )
+65/tex_offset = Vector2( 0, 0 )
+65/modulate = Color( 1, 1, 1, 1 )
+65/region = Rect2( 0, 3, 16, 10 )
+65/tile_mode = 0
+65/occluder_offset = Vector2( 0, 0 )
+65/navigation_offset = Vector2( 0, 0 )
+65/shape_offset = Vector2( 0, 0 )
+65/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+65/shape_one_way = false
+65/shape_one_way_margin = 0.0
+65/shapes = [  ]
+65/z_index = 0
 
 [node name="entity_spawns" instance=ExtResource( 1 )]
 position = Vector2( 4, 4 )

@@ -103,7 +103,7 @@ func primary():
 		null, # item bar value 
 		null # bar timer duration
 	)
-	$spawner.spawn()
+	spawner.spawn()
 
 func secondary():
 	var camera = refs.camera.get_ref() as Camera2D

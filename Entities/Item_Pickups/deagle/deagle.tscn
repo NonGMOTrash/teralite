@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Entities/Item_Pickups/item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/player/item_thinkers/deagle/deagle_thinker.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Item_Pickups/deagle/deagle.png" type="Texture" id=3]
+
+[node name="deagle" instance=ExtResource( 1 )]
+SLOWDOWN = 800
+TOP_SPEED = 40
+truName = "deagle"
+thinker = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )
+
+[node name="sound_player" parent="." index="3"]
+FREE_WHEN_EMPTY = false

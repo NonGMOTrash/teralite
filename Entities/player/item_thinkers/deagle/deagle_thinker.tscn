@@ -1,0 +1,46 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Entities/player/item_thinkers/deagle/deagle_thinker.gd" type="Script" id=1]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Effects/muzzle_flash/muzzle_flash.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Item_Pickups/deagle/deagle.png" type="Texture" id=6]
+[ext_resource path="res://UI/cursors/cursor_deagle.png" type="Texture" id=7]
+[ext_resource path="res://Entities/player/item_thinkers/deagle/deagle_equip.wav" type="AudioStream" id=8]
+[ext_resource path="res://Entities/player/item_thinkers/deagle/deagle_reload.wav" type="AudioStream" id=9]
+
+[node name="deagle_thinker" type="Node"]
+script = ExtResource( 1 )
+auto_ready_check = false
+SECONDARY_ACTION_MODE = 3
+HELD_ITEM_TEXTURE = ExtResource( 6 )
+HELD_ITEM_ANCHOR = Vector2( 11, 0 )
+RELOAD_ANIM = "spin"
+my_item = "deagle"
+display_name = "Deagle"
+CURSOR = ExtResource( 7 )
+CURSOR_MODE = 1
+EQUIP_SOUND = ExtResource( 8 )
+
+[node name="cooldown" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="reload" type="Timer" parent="."]
+one_shot = true
+
+[node name="sound_player" parent="." instance=ExtResource( 2 )]
+FREE_WHEN_EMPTY = false
+
+[node name="reload" parent="sound_player" instance=ExtResource( 4 )]
+stream = ExtResource( 9 )
+MODE = 1
+AUTO_PLAY = false
+
+[node name="spawner" parent="." instance=ExtResource( 3 )]
+standby_mode = true
+thing = ExtResource( 5 )
+rotation_mode = 1
+
+[connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]
