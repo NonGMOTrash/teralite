@@ -7,3 +7,8 @@
 script = ExtResource( 2 )
 USE_TRIGGER = true
 TRIGGER_TIME = 0.7
+spread_time = 1.5
+
+[node name="spread" type="Timer" parent="." index="2"]
+
+[connection signal="timeout" from="spread" to="." method="_on_spread_timeout"]

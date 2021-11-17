@@ -70,6 +70,30 @@ tracks/4/keys = {
 "update": 1,
 "values": [ 0.0, 1.0 ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("area/body/damage:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( -200, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("area/body/time:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 376, 0 ), Vector2( 176, 0 ) ]
+}
 
 [node name="level_completed" type="ColorRect"]
 pause_mode = 2
@@ -169,23 +193,23 @@ size_flags_horizontal = 3
 alignment = 1
 
 [node name="icon" type="TextureRect" parent="area/body/time"]
-margin_left = 55.0
+margin_left = 54.0
 margin_top = 8.0
-margin_right = 113.0
+margin_right = 112.0
 margin_bottom = 71.0
 size_flags_horizontal = 4
 texture = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="area/body/time"]
 margin_top = 75.0
-margin_right = 168.0
+margin_right = 167.0
 margin_bottom = 91.0
 text = "Time: "
 align = 1
 
 [node name="comment" type="Label" parent="area/body/time"]
 margin_top = 95.0
-margin_right = 168.0
+margin_right = 167.0
 margin_bottom = 111.0
 align = 1
 

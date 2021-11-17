@@ -61,18 +61,17 @@ func _ready():
 	
 	global.connect("unpaused", self,"_update_cursor_on_unpause")
 	
-	if player.inventory[global.selection] == my_item: selected()
+	if global.selection == slot:
+		selected()
+		if EQUIP_SOUND != null:
+			sound_player.create_sound(EQUIP_SOUND)
+	
 	if player.get_name() == "player":
 		global.emit_signal("update_item_bar", player.inventory)
-	
-	if player.inventory[global.selection] == my_item.to_lower():
-		selected()
-	elif EQUIP_SOUND != null:
-		sound_player.create_sound(EQUIP_SOUND)
 
 # PROBLEM_NOTE: this is kinda bad because the name implies a return value
 func _check_if_selected(swapped_item) -> void:
-	if swapped_item == my_item.to_lower():
+	if global.selection == slot:
 		selected()
 	else:
 		unselected()

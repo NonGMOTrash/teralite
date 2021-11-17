@@ -4,7 +4,7 @@ class_name Status_Effect
 onready var duration = $duration
 onready var trigger = $trigger
 onready var stats = get_parent()
-onready var entity = stats.get_parent()
+onready var entity: Entity = stats.get_parent()
 
 export(float, 0.01, 999) var level := 1.0
 export(bool) var decimal_levels := true
@@ -43,7 +43,7 @@ func change_level(amount: float):
 	var x = level
 	if decimal_levels == false:
 		x = floor(level)
-		if x == 0: 
+		if x == 0:
 			x = 1
 	
 	trigger.wait_time = TRIGGER_TIME / x

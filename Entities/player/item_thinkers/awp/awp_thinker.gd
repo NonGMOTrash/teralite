@@ -175,7 +175,6 @@ func _physics_process(delta: float) -> void:
 	
 	# checks if you have done a 360
 	for i in range(0, 7):
-		print(i)
 		if (OS.get_ticks_msec() - last_visted[i]) / 1000.0 <= mlg_window:
 			if i == 6 and mlg_timer.time_left == 0:
 				mlg_timer.start()
