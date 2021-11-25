@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Entities/hunter/hunter.gd" type="Script" id=1]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Entities/Attacks/Projectile/big_bullet/big_bullet.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Entities/hunter/hunter_back.png" type="Texture" id=19]
 [ext_resource path="res://Entities/hunter/hunter.png" type="Texture" id=20]
+[ext_resource path="res://UI/cursors/cursor_awp.png" type="Texture" id=21]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -27,11 +28,11 @@ resource_local_to_scene = true
 [sub_resource type="CircleShape2D" id=2]
 radius = 6.89231
 
-[sub_resource type="CapsuleShape2D" id=7]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 3.34746
 height = 2.31895
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 4.64529
 height = 7.27429
 
@@ -100,13 +101,13 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 4 )
-shape = SubResource( 7 )
+shape = SubResource( 3 )
 
 [node name="hurtbox" parent="." instance=ExtResource( 5 )]
 visible = false
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
-shape = SubResource( 8 )
+shape = SubResource( 4 )
 
 [node name="sleeper" parent="." instance=ExtResource( 6 )]
 visible = false
@@ -159,6 +160,12 @@ TARGETING = 1
 [node name="sprite" parent="held_item/anchor" index="0"]
 texture = ExtResource( 13 )
 hframes = 1
+
+[node name="reticle" type="Sprite" parent="."]
+visible = false
+position = Vector2( -999, 0 )
+scale = Vector2( 0.333, 0.333 )
+texture = ExtResource( 21 )
 
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 
