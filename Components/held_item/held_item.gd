@@ -21,7 +21,7 @@ var original_texture: Texture
 onready var entity = get_parent()
 onready var sprite = $anchor/sprite
 onready var anchor = $anchor
-onready var animation = $AnimationPlayer
+onready var animation: AnimationPlayer = $AnimationPlayer
 
 signal cant_rotate
 
@@ -98,3 +98,4 @@ func facing_left() -> bool:
 		rotation_degrees > 0 and rotation_degrees < 180 and
 		not rotation_degrees < 90 and rotation_degrees > 0
 	)
+	
