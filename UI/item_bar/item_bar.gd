@@ -18,7 +18,8 @@ const SELECTED_COLOR := Color8(249, 194, 43)
 func _ready():
 	refs.item_bar = weakref(self)
 	global.connect("update_item_bar", self, "update_icons")
-	if global.settings["hide_bar"] == false: bar.visible = true
+	if global.settings["hide_bar"] == true:
+		bar.visible = false
 	visible = true
 
 func _input(_event: InputEvent):

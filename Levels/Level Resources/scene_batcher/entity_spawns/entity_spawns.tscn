@@ -794,7 +794,7 @@
 60/texture = ExtResource( 54 )
 60/tex_offset = Vector2( 0, 0 )
 60/modulate = Color( 1, 1, 1, 1 )
-60/region = Rect2( 1, 2, 8, 14 )
+60/region = Rect2( 1, 1, 8, 14 )
 60/tile_mode = 0
 60/occluder_offset = Vector2( 0, 0 )
 60/navigation_offset = Vector2( 0, 0 )

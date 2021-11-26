@@ -61,16 +61,17 @@ func get_ready():
 
 func selected():
 	.selected()
-	global.emit_signal("update_item_info", # set a condition to null to hide it
-		display_name, # current item
-		str(ammo) + " / " + str(max_ammo), # extra info 
-		null, # item bar max 
-		null, # item bar value 
-		null # bar timer duration
-	)
-	#update_cursor()
-	Input.set_custom_mouse_cursor(CURSOR, Input.CURSOR_ARROW, UNSCOPED_HOTSPOT)
-	_update_held_item()
+	if global.selection == slot:
+		global.emit_signal("update_item_info", # set a condition to null to hide it
+			display_name, # current item
+			str(ammo) + " / " + str(max_ammo), # extra info 
+			null, # item bar max 
+			null, # item bar value 
+			null # bar timer duration
+		)
+		#update_cursor()
+		Input.set_custom_mouse_cursor(CURSOR, Input.CURSOR_ARROW, UNSCOPED_HOTSPOT)
+		_update_held_item()
 	
 	# PROBLEM_NOTE: would be better if i could get this to inheireit \/
 	if EQUIP_SOUND != null:
