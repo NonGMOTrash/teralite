@@ -3,7 +3,9 @@ extends TextureProgress
 onready var entity = get_parent()
 onready var stats = entity.components["stats"]
 onready var bonus = $bonus
-onready var armor = $armor
+onready var armors = $armors
+onready var armors_missing = $armors_missing
+onready var armor_meter = $armor_meter
 onready var timer = $Timer
 
 export(Gradient) var PROGRESS_GRAD
@@ -54,14 +56,28 @@ func update_bar(_type, _result, _net) -> void:
 		bonus.visible = false
 	
 	# armor
-	if stats.DEFENCE > 0:
-		armor.visible = true
-		armor.max_value = stats.DEFENCE
-		#armor.step = 9.5 * (armor.max_value / 100)
-		armor.value = stats.armor
-		armor.tint_progress = ARMOR_GRAD.interpolate(armor.ratio)
-	else:
-		armor.visible = false
+	if stats.DEFENCE > 4: # armor meter
+		armor_meter.visible = true
+		armors.visible = false
+		armors_missing.visible = false
+		armor_meter.max_value = stats.DEFENCE
+		armor_meter.value = stats.armor
+		#armor_meter.tint_progress = ARMOR_GRAD.interpolate(armor_meter.ratio)
+	elif stats.DEFENCE > 0: # armor icons
+		armors_missing.visible = true
+		if stats.armor > 0:
+			armors.visible = true
+		else:
+			armors.visible = false
+		armor_meter.visible = false
+		armors.rect_position.x = (22 - stats.DEFENCE * 6) / 2
+		armors_missing.rect_position = armors.rect_position
+		armors.rect_size.x = stats.armor * 6
+		armors_missing.rect_size.x = stats.DEFENCE * 6
+	else: # no armor
+		armor_meter.visible = false
+		armors.visible = false
+		armors_missing.visible = false
 
 func _on_Timer_timeout() -> void:
 	visible = false

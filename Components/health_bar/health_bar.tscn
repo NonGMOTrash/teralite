@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Components/health_bar/health_bar.gd" type="Script" id=1]
 [ext_resource path="res://Components/health_bar/health_bar_under.png" type="Texture" id=2]
 [ext_resource path="res://Components/health_bar/health_bar_progress.png" type="Texture" id=3]
-[ext_resource path="res://Components/health_bar/health_bar_under2.png" type="Texture" id=4]
+[ext_resource path="res://Components/health_bar/armor_meter_over.png" type="Texture" id=4]
+[ext_resource path="res://Components/health_bar/armor_meter_under.png" type="Texture" id=5]
+[ext_resource path="res://Components/health_bar/armor.png" type="Texture" id=6]
+[ext_resource path="res://Components/health_bar/armor_missing.png" type="Texture" id=7]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.144928, 0.458937, 0.864734, 1 )
@@ -43,14 +46,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="armor" type="TextureProgress" parent="."]
-margin_top = -3.0
-margin_right = 40.0
-margin_bottom = 37.0
+[node name="armors_missing" type="TextureRect" parent="."]
+visible = false
+margin_left = -0.124714
+margin_top = -6.14211
+margin_right = 6.0
+margin_bottom = -0.142115
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 7 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="armors" type="TextureRect" parent="."]
+margin_left = 2.0
+margin_top = -6.0
+margin_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 6 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="armor_meter" type="TextureProgress" parent="."]
+visible = false
+margin_left = 5.48008
+margin_top = -12.8111
+margin_right = 45.4801
+margin_bottom = 27.1889
 step = 0.001
-value = 38.0
-texture_under = ExtResource( 4 )
-texture_progress = ExtResource( 3 )
+value = 60.0
+texture_under = ExtResource( 5 )
+texture_progress = ExtResource( 4 )
+fill_mode = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/knight.png-7275e8ec0fcdb021e29a044fd395a370.stex"
+path="res://.import/armor_meter_over.png-1fbf6f676b61d5bf094e95cf8cad1ed5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/knight.png"
-dest_files=[ "res://.import/knight.png-7275e8ec0fcdb021e29a044fd395a370.stex" ]
+source_file="res://Components/health_bar/armor_meter_over.png"
+dest_files=[ "res://.import/armor_meter_over.png-1fbf6f676b61d5bf094e95cf8cad1ed5.stex" ]
 
 [params]
 
