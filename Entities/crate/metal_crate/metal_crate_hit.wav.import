@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/metal_crate_hit.wav-fff454ef6b2428ccc733844db6f71690.sample"
+
+[deps]
+
+source_file="res://Entities/crate/metal_crate/metal_crate_hit.wav"
+dest_files=[ "res://.import/metal_crate_hit.wav-fff454ef6b2428ccc733844db6f71690.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Entities/crate/crate.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/crate/metal_crate/metal_crate.png" type="Texture" id=3]
+[ext_resource path="res://Entities/crate/metal_crate/metal_crate_hit.wav" type="AudioStream" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[node name="metal_crate" instance=ExtResource( 1 )]
+
+[node name="entity_sprite" parent="." index="0"]
+material = SubResource( 1 )
+texture = ExtResource( 3 )
+
+[node name="stats" parent="." index="1"]
+MAX_HEALTH = 24
+HEALTH = 24
+burning_modifier = -99.0
+
+[node name="hurtbox" parent="." index="2"]
+HURT_SOUND = ExtResource( 4 )
+KILLED_SOUND = ExtResource( 4 )
+
+[node name="sound_player" parent="." index="6"]
+FREE_WHEN_EMPTY = false
+
+[node name="health_bar" parent="." index="7" instance=ExtResource( 2 )]
+margin_left = -10.5
+margin_top = -16.866
+margin_right = 10.5
+margin_bottom = -12.8643
+
+[editable path="hurtbox"]
