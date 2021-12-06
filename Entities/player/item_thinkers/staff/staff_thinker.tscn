@@ -14,6 +14,7 @@ HELD_ITEM_ANCHOR = Vector2( 10, 0 )
 my_item = "staff"
 display_name = "Staff"
 CURSOR = ExtResource( 4 )
+CURSOR_MODE = 1
 SHOOT_COOLDOWN = 0.35
 SHINE_COOLDOWN = 0.3
 
