@@ -8,6 +8,7 @@ export var TOP_SPEED = 80
 #export var FRICTION = 50
 export(float, 0.0, 10.0) var FORCE_MULT = 1.0
 export(bool) var INANIMATE := false
+export(bool) var INVISIBLE := false
 
 var velocity: Vector2 = Vector2.ZERO
 var input_vector = Vector2.ZERO

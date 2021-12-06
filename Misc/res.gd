@@ -41,6 +41,7 @@ const data := {
 	"stalker": "res://Entities/stalker/stalker.tscn",
 	"soldier": "res://Entities/soldier/soldier.tscn",
 	"metal_crate": "res://Entities/crate/metal_crate/metal_crate.tscn",
+	"heart_mimic": "res://Entities/heart_mimic/heart_mimic.tscn",
 	
 	# items
 	"pistol": "res://Entities/Item_Pickups/pistol/pistol.tscn",

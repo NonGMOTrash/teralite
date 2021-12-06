@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://Levels/Level Resources/scene_batcher/scene_batcher.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/pistol/pistol.png" type="Texture" id=2]
@@ -61,6 +61,7 @@
 [ext_resource path="res://Entities/Item_Pickups/deagle/deagle.png" type="Texture" id=59]
 [ext_resource path="res://Entities/soldier/soldier.png" type="Texture" id=60]
 [ext_resource path="res://Entities/crate/metal_crate/metal_crate.png" type="Texture" id=61]
+[ext_resource path="res://Entities/heart_mimic/heart_mimic.png" type="Texture" id=62]
 
 [sub_resource type="TileSet" id=1]
 2/name = "player.png 2"
@@ -903,6 +904,20 @@
 67/shape_one_way_margin = 0.0
 67/shapes = [  ]
 67/z_index = 0
+68/name = "heart_mimic.png 68"
+68/texture = ExtResource( 62 )
+68/tex_offset = Vector2( 0, 0 )
+68/modulate = Color( 1, 1, 1, 1 )
+68/region = Rect2( 10, 8, 10, 10 )
+68/tile_mode = 0
+68/occluder_offset = Vector2( 0, 0 )
+68/navigation_offset = Vector2( 0, 0 )
+68/shape_offset = Vector2( 0, 0 )
+68/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+68/shape_one_way = false
+68/shape_one_way_margin = 0.0
+68/shapes = [  ]
+68/z_index = 0
 
 [node name="entity_spawns" instance=ExtResource( 1 )]
 position = Vector2( 4, 4 )

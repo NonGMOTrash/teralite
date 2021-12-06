@@ -3,7 +3,8 @@ extends Node
 enum ROTATIONS {
 	KEEP = -1,
 	TOWARD_HITBOX,
-	TOWARD_CURSOR
+	TOWARD_CURSOR,
+	TOWARD_BRAIN_TARGET
 }
 
 export(bool) var standby_mode = false # requires 'thing' to be set
@@ -141,7 +142,17 @@ func spawn():
 	
 	elif rotation_mode == ROTATIONS.TOWARD_CURSOR:
 		new_thing.rotation_degrees = rad2deg(
-				entity.global_position.direction_to(entity.get_global_mouse_position()).angle())
+				entity.global_position.direction_to(entity.get_global_mouse_position()).angle()
+		)
+	
+	elif rotation_mode == ROTATIONS.TOWARD_BRAIN_TARGET:
+		var brain = entity.components["brain"]
+		if brain.targets.size() > 0:
+			new_thing.rotation_degrees = rad2deg(
+				entity.components["brain"].get_closest_target().global_position.direction_to(
+					entity.global_position
+				)
+			)
 	
 	if new_thing is Effect:
 		var sprite: Sprite = new_thing.get_node(new_thing.sprite)

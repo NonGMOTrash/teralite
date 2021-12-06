@@ -45,11 +45,11 @@ height = 10.0
 radius = 5.06186
 height = 13.1492
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 7.53953
 height = 12.1883
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=6]
 
 [sub_resource type="Animation" id=7]
 length = 1.2
@@ -97,13 +97,27 @@ tracks/2/keys = {
 } ],
 "times": PoolRealArray( 0 )
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:INVISIBLE")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.95 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [node name="stalker" type="KinematicBody2D"]
+modulate = Color( 1, 1, 1, 0.327054 )
 collision_layer = 2
 script = ExtResource( 1 )
 ACCELERATION = 225
 SLOWDOWN = 200
 TOP_SPEED = 50
+INVISIBLE = true
 truName = "stalker"
 faction = "monster"
 REVEAL_SPEED_BOOST = 1.35
@@ -153,13 +167,13 @@ visible = false
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 position = Vector2( 0.529869, -0.645174 )
 rotation = 1.5708
-shape = SubResource( 8 )
+shape = SubResource( 5 )
 
 [node name="entity_push" parent="." instance=ExtResource( 9 )]
 visible = false
 
 [node name="CollisionShape2D" parent="entity_push" index="0"]
-shape = SubResource( 9 )
+shape = SubResource( 6 )
 
 [node name="brain" parent="." instance=ExtResource( 6 )]
 

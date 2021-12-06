@@ -18,7 +18,7 @@ export(bool) var SIGHT_EFFECTS := true
 export var COMMUNICATES = true
 export(float, 0.01, 10.0) var COMM_DELAY = 1.2
 export(float, 0.0, 5.0) var COMM_DELAY_VARIANCE = 0.5
-
+export(bool) var WALLHACKS := false # can see through walls
 export var IGNORE_ATTACKS := true
 export var IGNORE_INANIMATE := true
 export var IGNORE_UNFACTIONED := true
@@ -127,6 +127,9 @@ func is_target_valid(index: int) -> bool: # maybe make this work with the target
 		return true
 
 func los_check(target, ignore_low_barriers:=true):
+	if WALLHACKS == true:
+		return true
+	
 	var mask := 3
 	if ignore_low_barriers == false:
 		mask += 32
@@ -159,7 +162,7 @@ func los_check(target, ignore_low_barriers:=true):
 	if vision:
 		if vision.collider is TileMap:
 			return false
-		elif target is Entity and vision.collider == target:
+		elif target is Entity and vision.collider == target and target.INVISIBLE == false:
 			return true
 		elif target is Vector2 and vision.collider.global_position == target:
 			return true

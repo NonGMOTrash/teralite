@@ -97,7 +97,7 @@ func _on_idle_timer_timeout() -> void:
 		wander_pos = global_position + (Vector2(rand_range(-1,1),rand_range(-1,1)).normalized()*100)
 		position_tries += 1
 	if brain.los_check(wander_pos, false) == true:
-		entity.input_vector = global_position.direction_to(wander_pos).normalized()
+		entity.input_vector = global_position.direction_to(wander_pos).normalized() * WANDER_SPEED
 	elif wander_path == null:
 		wander_path = update_path(PoolVector2Array(), wander_pos)
 	elif wander_path is PoolVector2Array:
@@ -115,14 +115,12 @@ func _on_idle_timer_timeout() -> void:
 				wander_path = update_path(wander_path, wander_pos)
 		
 		if wander_path.size() > 1:
-			entity.input_vector = (
-				global_position.direction_to(wander_path[0]).normalized() * WANDER_SPEED
-			)
+			entity.input_vector = global_position.direction_to(wander_path[0]).normalized() * WANDER_SPEED
 	
 	if global_position.distance_to(guard_pos) > WANDER_RANGE: 
 		# wander back to guard pos
 		if brain.los_check(guard_pos, false) == true:
-			entity.input_vector = global_position.direction_to(guard_pos).normalized()
+			entity.input_vector = global_position.direction_to(guard_pos).normalized() * WANDER_SPEED
 			guard_path = null
 		else:
 			if guard_path == null:
@@ -131,7 +129,7 @@ func _on_idle_timer_timeout() -> void:
 				guard_path = update_path(guard_path, guard_pos)
 			
 			if guard_path.size() > 0:
-				entity.input_vector = global_position.direction_to(guard_path[0]).normalized()
+				entity.input_vector = global_position.direction_to(guard_path[0]).normalized() * WANDER_SPEED
 	else:
 		guard_path = null
 	

@@ -54,7 +54,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		area_entity == entity or
 		entity is Attack and area_entity == entity.SOURCE or
 		TEAM_ATTACK == false and global.get_relation(entity, area_entity) == "friendly" or
-		area in blacklist and area.processing_hit == false
+		area in blacklist and area.processing_hit == false or area_entity
 	):
 		return
 	

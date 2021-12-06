@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Entities/soldier/soldier.gd" type="Script" id=1]
 [ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=2]
@@ -19,6 +19,8 @@
 [ext_resource path="res://Components/held_item/held_item.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Entities/soldier/soldier_back.png" type="Texture" id=18]
 [ext_resource path="res://Entities/soldier/soldier.png" type="Texture" id=19]
+[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Effects/muzzle_flash/muzzle_flash.tscn" type="PackedScene" id=21]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -152,6 +154,14 @@ hframes = 1
 
 [node name="shoot_timer" type="Timer" parent="."]
 wait_time = 0.11
+
+[node name="muzzle_flash" parent="." instance=ExtResource( 20 )]
+standby_mode = true
+thing = ExtResource( 21 )
+spawn_on_free = false
+rotation_mode = 1
+custom_properties = {
+}
 
 [connection signal="lost_target" from="brain" to="." method="_on_brain_lost_target"]
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]

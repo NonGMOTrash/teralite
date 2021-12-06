@@ -62,4 +62,5 @@ func set_data():
 		"deagle": get_used_cells_by_id(65),
 		"soldier": get_used_cells_by_id(66),
 		"metal_crate": get_used_cells_by_id(67),
+		"heart_mimic": get_used_cells_by_id(68),
 	}
