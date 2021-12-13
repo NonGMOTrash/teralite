@@ -42,6 +42,7 @@ const data := {
 	"soldier": "res://Entities/soldier/soldier.tscn",
 	"metal_crate": "res://Entities/crate/metal_crate/metal_crate.tscn",
 	"heart_mimic": "res://Entities/heart_mimic/heart_mimic.tscn",
+	"landmine": "res://Entities/landmine/landmine.tscn",
 	
 	# items
 	"pistol": "res://Entities/Item_Pickups/pistol/pistol.tscn",
@@ -67,6 +68,7 @@ const data := {
 	"shotgun": "res://Entities/Item_Pickups/shotgun/shotgun.tscn",
 	"assault_rifle": "res://Entities/Item_Pickups/assault_rifle/assault_rifle.tscn",
 	"deagle": "res://Entities/Item_Pickups/deagle/deagle.tscn",
+	"landmines": "res://Entities/Item_Pickups/landmines/landmines.tscn",
 	
 	# melees
 	"slash": "res://Entities/Attacks/Melee/slash/slash.tscn",
@@ -165,6 +167,7 @@ const data := {
 	"shotgun_texture": "res://Entities/Item_Pickups/shotgun/shotgun.png",
 	"assault_rifle_texture": "res://Entities/Item_Pickups/assault_rifle/assault_rifle.png",
 	"deagle_texture": "res://Entities/Item_Pickups/deagle/deagle.png",
+	"landmines_texture": "res://Entities/Item_Pickups/landmines/landmine.png",
 }
 
 func allocate(asset:String) -> void:

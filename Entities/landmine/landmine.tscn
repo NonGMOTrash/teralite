@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Entities/landmine/landmine.gd" type="Script" id=1]
+[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/sound_player/sound/sound.gd" type="Script" id=3]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/landmine/landmine_warning.wav" type="AudioStream" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 25.0
+
+[node name="landmine" type="KinematicBody2D"]
+script = ExtResource( 1 )
+STATIC = true
+ACCELERATION = 0
+SLOWDOWN = 0
+TOP_SPEED = 0
+FORCE_MULT = 0.0
+INANIMATE = true
+INVISIBLE = true
+truName = "landmine"
+faction = "army"
+
+[node name="entity_sprite" parent="." instance=ExtResource( 2 )]
+material = SubResource( 1 )
+texture = null
+auto_flip_mode = 0
+
+[node name="detection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+shape = SubResource( 2 )
+
+[node name="delay" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="arm_delay" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="sound_player" parent="." instance=ExtResource( 4 )]
+FREE_WHEN_EMPTY = false
+
+[node name="warning" type="AudioStreamPlayer2D" parent="sound_player"]
+stream = ExtResource( 5 )
+script = ExtResource( 3 )
+
+[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
+[connection signal="timeout" from="delay" to="." method="_on_delay_timeout"]
+[connection signal="timeout" from="arm_delay" to="." method="_on_arm_delay_timeout"]

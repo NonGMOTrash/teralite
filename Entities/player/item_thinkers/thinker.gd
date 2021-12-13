@@ -37,6 +37,7 @@ var bar_value = 0.0
 var item_scene = res.aquire(my_item)
 var max_frame := HELD_ITEM_FRAMES.x * HELD_ITEM_FRAMES.y - 1
 var accurate_mouse_pos := Vector2.ZERO
+var times_used: int = 0
 
 # maybe make this a global signal??
 signal update_ui(bar_max, bar_value, info_string)
@@ -100,6 +101,7 @@ func _process(_delta: float):
 		var velo = dir_vector * 150
 		velo += player.velocity / 1.5
 		new_item_entity.velocity = velo
+		new_item_entity.times_used = times_used
 		refs.ysort.get_ref().add_child(new_item_entity)
 		
 		delete()
@@ -220,7 +222,6 @@ func quick_spawn(attack:String,deferred:=true,target_position:=player.get_global
 
 func _update_held_item():
 	if HELD_ITEM_TEXTURE == null:
-		push_error("HELD_ITEM_TEXTURE is null")
 		HELD_ITEM_TEXTURE = load("res://Misc/generic.png")
 	
 	var held_item: Node2D = player.components["held_item"]

@@ -12,10 +12,10 @@
 [ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=12]
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=2]
 resource_name = "duplicate"
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:frame")
@@ -45,10 +45,10 @@ tracks/0/keys = {
 "values": [ 2, 3, 4, 5, 6, 7, 8, 9, 1, 0 ]
 }
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=4]
 radius = 7.07107
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=5]
 radius = 8.59761
 
 [sub_resource type="CircleShape2D" id=6]
@@ -72,7 +72,7 @@ TRUE_DAMAGE = 1
 
 [node name="sprite" parent="." instance=ExtResource( 3 )]
 modulate = Color( 1, 1, 1, 0.847059 )
-material = SubResource( 2 )
+material = SubResource( 1 )
 position = Vector2( -0.445448, 4.58168 )
 scale = Vector2( 0.73, 0.73 )
 z_index = 99
@@ -87,7 +87,7 @@ position = Vector2( 0, 12 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "spawn"
-anims/duplicate = SubResource( 8 )
+anims/duplicate = SubResource( 2 )
 anims/spawn = SubResource( 3 )
 
 [node name="hitbox" parent="." instance=ExtResource( 4 )]
@@ -99,14 +99,14 @@ TEAM_ATTACK = false
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 position = Vector2( 0, -1 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="hurtbox" parent="." instance=ExtResource( 5 )]
 visible = false
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 position = Vector2( 0, 5 )
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 
 [node name="brain" parent="." instance=ExtResource( 7 )]
 WALLHACKS = true

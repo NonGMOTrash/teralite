@@ -13,8 +13,8 @@ export(item_types) var type = item_types.ACTIVE
 export(PackedScene) var thinker
 export(AudioStream) var pickup_sound
 export(bool) var player_only := true
-var SOURCE
-
+var SOURCE: Entity
+var times_used: int = 0
 var the_body = null
 var the_body_used = false
 
@@ -74,6 +74,7 @@ func _on_Area2D_body_entered(body: Node) -> void:
 				else:
 					var new_thinker: Thinker = thinker.instance()
 					new_thinker.slot = x
+					new_thinker.times_used = times_used
 					body.call_deferred("add_child", new_thinker)
 		
 		item_types.PASSIVE:
