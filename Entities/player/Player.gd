@@ -73,6 +73,8 @@ func _ready():
 	swapped_item(null)
 
 func _physics_process(_delta):
+	var infection: Status_Effect = stats.status_effects["infection"]
+	
 	if get_global_mouse_position().x > global_position.x:
 		sprite.flip_h = false
 	else:

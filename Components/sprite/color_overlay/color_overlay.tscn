@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://UI/Themes/Shaders and Materials/overlay.shader" type="Shader" id=1]
 [ext_resource path="res://Misc/generic.png" type="Texture" id=2]
@@ -208,6 +208,23 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=7]
+resource_name = "infect"
+length = 0.05
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.0196078, 0.647059, 0, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
 length = 0.25
 step = 0.025
 tracks/0/type = "value"
@@ -247,7 +264,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0.156863 ), Color( 1, 1, 1, 0.470588 ), Color( 1, 1, 1, 0.156863 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
@@ -262,7 +279,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.7
 step = 0.025
 tracks/0/type = "value"
@@ -303,8 +320,7 @@ tracks/2/keys = {
 }
 
 [node name="color_overlay" type="Sprite"]
-visible = false
-self_modulate = Color( 1, 1, 1, 0.156863 )
+self_modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 1 )
 texture = ExtResource( 2 )
 
@@ -315,6 +331,7 @@ anims/block = SubResource( 3 )
 anims/burn = SubResource( 4 )
 anims/heal = SubResource( 5 )
 anims/hurt = SubResource( 6 )
-anims/invincibility = SubResource( 7 )
-anims/off = SubResource( 8 )
-anims/poison = SubResource( 9 )
+anims/infect = SubResource( 7 )
+anims/invincibility = SubResource( 8 )
+anims/off = SubResource( 9 )
+anims/poison = SubResource( 10 )

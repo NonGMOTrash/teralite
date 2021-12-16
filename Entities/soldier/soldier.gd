@@ -47,7 +47,6 @@ func _on_brain_lost_target() -> void:
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "warn" and held_item.animation.get_queue().size() == 0 and brain.targets.size() != 0:
-		prints(held_item.animation.get_queue().size(), brain.targets.size())
 		shoot_timer.start()
 	elif anim_name == "load":
 		bullets = 30

@@ -64,5 +64,6 @@ func set_data():
 		"metal_crate": get_used_cells_by_id(67),
 		"heart_mimic": get_used_cells_by_id(68),
 		"landmines": get_used_cells_by_id(69),
-		"landmine": get_used_cells_by_id(70)
+		"landmine": get_used_cells_by_id(70),
+		"zombie": get_used_cells_by_id(71),
 	}

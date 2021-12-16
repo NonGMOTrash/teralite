@@ -19,7 +19,7 @@ EQUIP_SOUND = ExtResource( 5 )
 instant_healing = 1
 regen_level = 1.0
 regen_duration = 15.0
-delay = 3.0
+delay = 1.9
 delay_slowness = 2.0
 
 [node name="sound_player" parent="." instance=ExtResource( 1 )]

@@ -130,6 +130,14 @@ var faction_relationships = {
 			"blue_kingdom": "hostile",
 			"army": "friendly",
 		},
+	"my_entity": # special friendly to the same entity type, but hostile to everyone else
+		{
+			"solo": "hostile",
+			"player": "hostile",
+			"monster": "hostile",
+			"blue_kingdom": "hostile",
+			"army": "hostile",
+		},
 }
 
 const VER_INCOMPATIABILITY := []
@@ -185,6 +193,12 @@ func _ready():
 
 # PROBLEM_NOTE: should probably move this to the Entity class
 func get_relation(me:Entity, other:Entity) -> String:
+	if me.faction == "my_entity" or other.faction == "my_entity":
+		if me.truName == other.truName:
+			return "friendly"
+		else:
+			return "hostile"
+	
 	if me.marked_enemies.has(other):
 		return "hostile"
 	if me.marked_allies.has(other):

@@ -87,7 +87,7 @@ _global_script_class_icons={
 [application]
 
 config/name="teralite"
-config/description="an okay game"
+config/description="teralite"
 run/main_scene="res://UI/intro/intro.tscn"
 config/use_custom_user_dir=true
 boot_splash/image="res://UI/splashscreen.png"

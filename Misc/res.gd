@@ -43,6 +43,7 @@ const data := {
 	"metal_crate": "res://Entities/crate/metal_crate/metal_crate.tscn",
 	"heart_mimic": "res://Entities/heart_mimic/heart_mimic.tscn",
 	"landmine": "res://Entities/landmine/landmine.tscn",
+	"zombie": "res://Entities/zombie/zombie.tscn",
 	
 	# items
 	"pistol": "res://Entities/Item_Pickups/pistol/pistol.tscn",

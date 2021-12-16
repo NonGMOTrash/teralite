@@ -8,6 +8,7 @@ const speed = preload("res://Components/stats/status_effects/speed/speed.tscn")
 const slowness = preload("res://Components/stats/status_effects/speed/slowness/slowness.tscn")
 const regen = preload("res://Components/stats/status_effects/regeneration/regeneration.tscn")
 const resistance = preload("res://Components/stats/status_effects/resistance/resistance.tscn")
+const infection = preload("res://Components/stats/status_effects/infection/infection.tscn")
 
 var duration_timers = []
 var effect_timers = []
@@ -32,6 +33,7 @@ var status_effects = {
 	"slowness": null,
 	"regeneration": null,
 	"resistance": null,
+	"infection": null,
 }
 
 # PROBLEM_NOTE: should add a 'ALL' modifier
@@ -43,6 +45,7 @@ export(float) var speed_modifier: float = 0
 export(float) var slowness_modifier: float = 0
 export(float) var regeneration_modifier: float = 0
 export(float) var resistance_modifier: float = 0
+export(float) var infection_modifier: float = 0
 
 onready var entity = get_parent()
 
@@ -54,7 +57,7 @@ func _ready():
 		HEALTH = MAX_HEALTH
 	armor = DEFENCE
 
-func change_health(value, true_value, type: String = "hurt") -> String:
+func change_health(value: int, true_value: int, type: String = "hurt") -> String:
 	BONUS_HEALTH = clamp(BONUS_HEALTH, 0, 99)
 	var amount = value
 	var true_amount = true_value
@@ -87,6 +90,7 @@ func change_health(value, true_value, type: String = "hurt") -> String:
 		if sum == 0: 
 			match type:
 				"hurt": result_type = "block"
+				"infect": result_type = "block"
 				_: result_type = ""
 		
 		for _i in range (abs(sum)):
@@ -113,8 +117,18 @@ func change_health(value, true_value, type: String = "hurt") -> String:
 				"burn": msg = "burned to death"
 				"poison": msg = "died of poison"
 				"bleed": msg = "bleed out"
+				"infect": msg = "joined the horde"
 			entity.death_message = msg
 			entity.force_death_msg = true
+		
+		if type == "infect":
+			var zombie := res.aquire_entity("zombie")
+			zombie.global_position = entity.global_position
+			var stats = entity.components["stats"]
+			if stats != null:
+				zombie.find_node("stats").MAX_HEALTH = stats.MAX_HEALTH
+				zombie.find_node("stats").HEALTH = stats.HEALTH
+			refs.ysort.get_ref().call_deferred("add_child", zombie)
 		
 		entity.death()
 		return "killed"
@@ -130,6 +144,9 @@ func change_health(value, true_value, type: String = "hurt") -> String:
 		return ""
 
 func add_status_effect(new_status_effect:String, duration=2.5, level=1.0):
+	if entity.get_name() == "player":
+		prints(new_status_effect, duration, level)
+	
 	var status_effect = new_status_effect
 	match status_effect:
 		"burning": status_effect = burning.instance()
@@ -139,6 +156,7 @@ func add_status_effect(new_status_effect:String, duration=2.5, level=1.0):
 		"slowness": status_effect = slowness.instance()
 		"regeneration": status_effect = regen.instance()
 		"resistance": status_effect = resistance.instance()
+		"infection": status_effect = infection.instance()
 		_:
 			push_error("status effect '%s' does not exist" % status_effect)
 			return
@@ -159,9 +177,13 @@ func add_status_effect(new_status_effect:String, duration=2.5, level=1.0):
 		call_deferred("add_child", status_effect)
 	elif status_effects[status_name] != null:
 		status_effect = status_effects[status_name]
+		status_effect.level += modded_level
+		if status_effect.level <= 0:
+			status_effect.queue_free()
+			if entity.get_name() == "player": print("!!!!")
+			return
 		status_effect.duration.wait_time = max(status_effect.duration.wait_time + duration, 0.01)
 		status_effect.duration.start()
-		status_effect.level += modded_level
 
 func get_modifier(status:String) -> float:
 	match status:
@@ -172,6 +194,7 @@ func get_modifier(status:String) -> float:
 		"slowness": return slowness_modifier
 		"regeneration": return regeneration_modifier
 		"resistance": return resistance_modifier
+		"infection": return infection_modifier
 		_:
 			push_error("%s is not a valid status")
 			return 0.0

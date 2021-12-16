@@ -35,6 +35,9 @@ func primary():
 func _on_Timer_timeout() -> void:
 	player.components["stats"].change_health(instant_healing, 0, "heal")
 	player.components["stats"].add_status_effect("regeneration", regen_duration, regen_level)
+	player.components["stats"].add_status_effect("infection", -99, -99)
+	player.components["stats"].add_status_effect("bleed", -99, -99)
+	player.components["stats"].add_status_effect("poison", -99, -99)
 	delete()
 
 func unselected():

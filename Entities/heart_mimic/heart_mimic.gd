@@ -32,4 +32,3 @@ func _on_brain_found_target() -> void:
 	var newest_target: Entity = brain.targets[brain.targets.size()-1]
 	if newest_target.truName == "heart_mimic":
 		marked_allies.append(newest_target)
-		prints(get_name(), "added", newest_target.get_name())
