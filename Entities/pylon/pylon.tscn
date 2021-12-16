@@ -35,6 +35,7 @@ speed_modifier = -99.0
 slowness_modifier = -99.0
 regeneration_modifier = -99.0
 resistance_modifier = -99.0
+infection_modifier = -99.0
 
 [node name="delay" type="Timer" parent="."]
 wait_time = 0.7

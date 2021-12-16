@@ -88,7 +88,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	if global.get_relation(self, area.get_parent()) == "friendly": return
 	if "ONHIT_SELF_DAMAGE" in area.get_parent(): return
 	
-	stats.change_health(0, -(ONHIT_SELF_DAMAGE))
+	stats.change_health(0, -ONHIT_SELF_DAMAGE)
 	
 	# recoil
 	if get_node_or_null(SOURCE_PATH) != null and SOURCE.is_queued_for_deletion() == false and recoiled == false:

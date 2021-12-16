@@ -20,3 +20,4 @@ cooldown_time = 1.08
 one_shot = true
 
 [node name="sound_player" parent="." instance=ExtResource( 3 )]
+FREE_WHEN_EMPTY = false

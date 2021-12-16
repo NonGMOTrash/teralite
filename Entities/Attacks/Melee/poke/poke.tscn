@@ -1,12 +1,15 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Entities/Attacks/Melee/Melee.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/spear/spear.png" type="Texture" id=2]
-[ext_resource path="res://Entities/Attacks/Melee/poke/poke_miss.wav" type="AudioStream" id=3]
+[ext_resource path="res://Entities/Attacks/Melee/poke/poke.gd" type="Script" id=3]
 [ext_resource path="res://Entities/Attacks/Melee/poke/poke_collide.wav" type="AudioStream" id=4]
 [ext_resource path="res://Entities/Attacks/Melee/poke/poke_block.wav" type="AudioStream" id=5]
 [ext_resource path="res://Entities/Attacks/Melee/poke/poke_hit.wav" type="AudioStream" id=6]
 [ext_resource path="res://Entities/Attacks/Melee/poke/poke_kill.wav" type="AudioStream" id=7]
+[ext_resource path="res://Entities/Attacks/Melee/poke/poke_miss.wav" type="AudioStream" id=8]
+[ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/Attacks/Melee/poke/poke_tipper.wav" type="AudioStream" id=10]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 1.773
@@ -86,18 +89,22 @@ tracks/4/keys = {
 
 [node name="poke" instance=ExtResource( 1 )]
 visible = true
+script = ExtResource( 3 )
 truName = "poke"
 ONHIT_SELF_DAMAGE = 0
 RANGE = 8
-SPAWN_SOUND = ExtResource( 3 )
+SPAWN_SOUND = ExtResource( 8 )
 HIT_SOUND = ExtResource( 6 )
 KILL_SOUND = ExtResource( 7 )
 BLOCKED_SOUND = ExtResource( 5 )
 COLLIDE_SOUND = ExtResource( 4 )
+KILLED_SOUND = ExtResource( 4 )
 BOOST = 22
 RECOIL = 30
 ANIMATION_NEVER_BACKWARDS = true
 REVERSE_HELD_ITEM = false
+tipper_distance = 35.0
+tipper_damage = 1
 
 [node name="stats" parent="." index="0"]
 MAX_HEALTH = 3
@@ -133,6 +140,15 @@ visible = false
 position = Vector2( 4, 0 )
 rotation = 1.5708
 shape = SubResource( 3 )
+
+[node name="sound" parent="." index="5"]
+FREE_WHEN_EMPTY = false
+
+[node name="tipper" parent="sound" index="0" instance=ExtResource( 9 )]
+stream = ExtResource( 10 )
+volume_db = 6.0
+MODE = 1
+AUTO_PLAY = false
 
 [node name="animation" parent="." index="6"]
 anims/animation = SubResource( 4 )

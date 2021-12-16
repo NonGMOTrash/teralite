@@ -80,6 +80,8 @@ lunge_delay_scaling = 0.8
 [node name="stats" parent="." instance=ExtResource( 2 )]
 MAX_HEALTH = 5
 HEALTH = 5
+poison_modifier = -99.0
+infection_modifier = -99.0
 
 [node name="entity_sprite" parent="." instance=ExtResource( 3 )]
 modulate = Color( 1, 1, 1, 0.843137 )
@@ -106,7 +108,6 @@ shape = SubResource( 3 )
 
 [node name="hurtbox" parent="." instance=ExtResource( 5 )]
 visible = false
-SPAWN_INVINCIBILITY = 0.016
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 shape = SubResource( 3 )

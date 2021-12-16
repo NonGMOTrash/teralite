@@ -93,6 +93,7 @@ speed_modifier = -99.0
 slowness_modifier = -99.0
 regeneration_modifier = -99.0
 resistance_modifier = -99.0
+infection_modifier = -99.0
 
 [node name="entity_sprite" parent="." instance=ExtResource( 2 )]
 show_behind_parent = true
@@ -148,6 +149,7 @@ death_type = -1
 impact_particles = false
 
 [node name="sound_player" parent="." instance=ExtResource( 12 )]
+FREE_WHEN_EMPTY = false
 
 [node name="health_bar" parent="." instance=ExtResource( 13 )]
 margin_left = -9.86993
