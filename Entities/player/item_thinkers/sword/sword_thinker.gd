@@ -37,15 +37,14 @@ func secondary():
 	cooldown.wait_time = animation.get_animation("counter").length + counter_cooldown
 	cooldown.start()
 	
-	player.components["stats"].add_status_effect(
-		"slowness", # effect
-		animation.get_animation("counter").length, # duration
-		counter_slowness_lvl # level
-	)
-	
 	var hitboxes = counter.get_overlapping_areas()
 	if hitboxes.size() == 0:
 		animation.play("counter")
+		player.components["stats"].add_status_effect(
+			"slowness", # effect
+			animation.get_animation("counter").length, # duration
+			counter_slowness_lvl # level
+		)
 	else:
 		var closest_hitbox: Area2D
 		var distance: float = INF

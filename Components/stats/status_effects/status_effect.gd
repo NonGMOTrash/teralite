@@ -15,7 +15,7 @@ export(float, 0.01, 999) var DURATION_TIME := 5.0
 func _ready() -> void:
 	stats.status_effects[name] = self
 	
-	duration.wait_time = DURATION_TIME
+	duration.wait_time = max(DURATION_TIME, 0.01)
 	duration.start()
 	
 	var x = level
@@ -24,7 +24,7 @@ func _ready() -> void:
 		if x < 1: 
 			x = 1
 	
-	trigger.wait_time = TRIGGER_TIME / x
+	trigger.wait_time = max(TRIGGER_TIME / x, 0.01)
 	
 	if USE_TRIGGER == true:
 		trigger.start()

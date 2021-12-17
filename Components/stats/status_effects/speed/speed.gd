@@ -20,3 +20,6 @@ func depleted():
 	entity.TOP_SPEED -= top_speed_change
 	entity.ACCELERATION -= acceleration_change
 	entity.SLOWDOWN -= slowdown_change
+
+func _on_status_effect_tree_exiting() -> void:
+	stats.status_effects[name] = null

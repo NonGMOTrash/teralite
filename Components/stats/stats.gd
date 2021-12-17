@@ -143,50 +143,52 @@ func change_health(value: int, true_value: int, type: String = "hurt") -> String
 	else:
 		return ""
 
-func add_status_effect(new_status_effect:String, duration=2.5, level=1.0):
-	if entity.get_name() == "player":
-		prints(new_status_effect, duration, level)
+func add_status_effect(new_status_name:String, duration=2.5, level=1.0):
+	if entity.truName == "player":
+		prints("applied:", new_status_name, duration, level)
 	
-	var status_effect = new_status_effect
-	match status_effect:
-		"burning": status_effect = burning.instance()
-		"poison": status_effect = poison.instance()
-		"bleed": status_effect = bleed.instance()
-		"speed": status_effect = speed.instance()
-		"slowness": status_effect = slowness.instance()
-		"regeneration": status_effect = regen.instance()
-		"resistance": status_effect = resistance.instance()
-		"infection": status_effect = infection.instance()
-		_:
-			push_error("status effect '%s' does not exist" % status_effect)
-			return
+	var existing_status: Status_Effect = status_effects[new_status_name]
+	prints("existing_status:", existing_status)
 	
-	var status_name: String = status_effect.get_name()
-	
-	emit_signal("status_recieved", status_name)
-	
-	if not status_name in status_effects.keys():
-		push_error("status name '%s' not found in keys" % status_name)
+	if not new_status_name in status_effects.keys():
+		push_error("status name '%s' not found in keys" % new_status_name)
 		return
 	
-	var modded_level: float = level + get_modifier(status_name)
+	emit_signal("status_recieved", new_status_name)
+	var modded_level: float = level + get_modifier(new_status_name)
 	
-	if status_effects[status_name] == null and duration > 0 and modded_level > 0: 
+	if not is_instance_valid(existing_status):
+		print("no existing, creating new")
+		var status_effect: Status_Effect
+		# no existing status
+		match new_status_name:
+			"burning": status_effect = burning.instance()
+			"poison": status_effect = poison.instance()
+			"bleed": status_effect = bleed.instance()
+			"speed": status_effect = speed.instance()
+			"slowness": status_effect = slowness.instance()
+			"regeneration": status_effect = regen.instance()
+			"resistance": status_effect = resistance.instance()
+			"infection": status_effect = infection.instance()
+			_:
+				push_error("status effect '%s' does not exist" % status_effect)
+				return
+		
 		status_effect.DURATION_TIME = duration
 		status_effect.level = modded_level
 		call_deferred("add_child", status_effect)
 	else:
-		status_effect = status_effects[status_name]
-		if status_effect == null or not is_instance_valid(status_effect):
-			return
+		# existing status
+		existing_status.level += modded_level
+		prints("existing, level =", modded_level)
 		
-		status_effect.level += modded_level
-		if status_effect.level <= 0:
-			status_effect.queue_free()
-			if entity.get_name() == "player": print("!!!!")
+		if existing_status.level <= 0:
+			existing_status.depleted()
+			existing_status.queue_free()
+			if entity.get_name() == "player": print("status deleted")
 			return
-		status_effect.duration.wait_time = max(status_effect.duration.wait_time + duration, 0.01)
-		status_effect.duration.start()
+		existing_status.duration.wait_time = max(existing_status.duration.wait_time + duration, 0.01)
+		existing_status.duration.start()
 
 func get_modifier(status:String) -> float:
 	match status:
