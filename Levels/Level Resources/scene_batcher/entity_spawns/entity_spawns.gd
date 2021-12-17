@@ -66,4 +66,5 @@ func set_data():
 		"landmines": get_used_cells_by_id(69),
 		"landmine": get_used_cells_by_id(70),
 		"zombie": get_used_cells_by_id(71),
+		"rocket_launcher": get_used_cells_by_id(72),
 	}

@@ -70,6 +70,7 @@ const data := {
 	"assault_rifle": "res://Entities/Item_Pickups/assault_rifle/assault_rifle.tscn",
 	"deagle": "res://Entities/Item_Pickups/deagle/deagle.tscn",
 	"landmines": "res://Entities/Item_Pickups/landmines/landmines.tscn",
+	"rocket_launcher": "res://Entities/Item_Pickups/rocket_launcher/rocket_launcher.tscn",
 	
 	# melees
 	"slash": "res://Entities/Attacks/Melee/slash/slash.tscn",
@@ -88,6 +89,7 @@ const data := {
 	"blow_dart": "res://Entities/Attacks/Projectile/blow_dart/blow_dart.tscn",
 	"big_bullet": "res://Entities/Attacks/Projectile/big_bullet/big_bullet.tscn",
 	"shotgun_shell": "res://Entities/Attacks/Projectile/shotgun_shell/shotgun_shell.tscn",
+	"rocket": "res://Entities/Attacks/Projectile/rocket/rocket.tscn",
 	
 	# effects
 	"hit_effect": "res://Effects/hit_effect/hit_effect.tscn",
@@ -169,6 +171,7 @@ const data := {
 	"assault_rifle_texture": "res://Entities/Item_Pickups/assault_rifle/assault_rifle.png",
 	"deagle_texture": "res://Entities/Item_Pickups/deagle/deagle.png",
 	"landmines_texture": "res://Entities/Item_Pickups/landmines/landmine.png",
+	"rocket_launcher_texture": "res://Entities/Item_Pickups/rocket_launcher/rocket_launcher.png",
 }
 
 func allocate(asset:String) -> void:

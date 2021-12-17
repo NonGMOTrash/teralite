@@ -146,7 +146,7 @@ FREE_WHEN_EMPTY = false
 
 [node name="tipper" parent="sound" index="0" instance=ExtResource( 9 )]
 stream = ExtResource( 10 )
-volume_db = 6.0
+volume_db = 3.0
 MODE = 1
 AUTO_PLAY = false
 

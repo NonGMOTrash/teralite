@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://Levels/Level Resources/scene_batcher/scene_batcher.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/pistol/pistol.png" type="Texture" id=2]
@@ -65,6 +65,7 @@
 [ext_resource path="res://Entities/Item_Pickups/landmines/landmine.png" type="Texture" id=63]
 [ext_resource path="res://Components/sprite/shadow1.png" type="Texture" id=64]
 [ext_resource path="res://Entities/zombie/zombie.png" type="Texture" id=65]
+[ext_resource path="res://Entities/Item_Pickups/rocket_launcher/rocket_launcher.png" type="Texture" id=66]
 
 [sub_resource type="TileSet" id=1]
 2/name = "player.png 2"
@@ -963,6 +964,20 @@
 71/shape_one_way_margin = 0.0
 71/shapes = [  ]
 71/z_index = 0
+72/name = "rocket_launcher.png 72"
+72/texture = ExtResource( 66 )
+72/tex_offset = Vector2( 0, 0 )
+72/modulate = Color( 1, 1, 1, 1 )
+72/region = Rect2( 0, 2, 16, 11 )
+72/tile_mode = 0
+72/occluder_offset = Vector2( 0, 0 )
+72/navigation_offset = Vector2( 0, 0 )
+72/shape_offset = Vector2( 0, 0 )
+72/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+72/shape_one_way = false
+72/shape_one_way_margin = 0.0
+72/shapes = [  ]
+72/z_index = 0
 
 [node name="entity_spawns" instance=ExtResource( 1 )]
 position = Vector2( 4, 4 )

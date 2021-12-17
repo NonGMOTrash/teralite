@@ -9,7 +9,6 @@ export var FORCE_SLEEP_UNTIL_VISIBLE = false
 export(String) var WORLD := "A"
 const LEVEL_TYPE := 0 # PROBLEM_NOTE: make this a string
 
-var max_kills: int = 0
 var update_particles := true
 var has_particles := true
 var spawn_paused := false

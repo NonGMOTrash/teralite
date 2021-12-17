@@ -82,6 +82,7 @@ truName = "explosion"
 
 [node name="entity_sprite" parent="." instance=ExtResource( 3 )]
 material = SubResource( 1 )
+z_index = 999
 texture = ExtResource( 4 )
 hframes = 8
 auto_flip_mode = 0
@@ -93,6 +94,7 @@ visible = false
 COOLDOWN = 0.001
 DAMAGE = 5
 TRUE_DAMAGE = 2
+KNOCKBACK = 80
 STATUS_EFFECT = "burning"
 STATUS_DURATION = 3.0
 

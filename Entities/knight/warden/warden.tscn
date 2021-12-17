@@ -81,7 +81,7 @@ general_springs = {
 }
 
 [node name="spring" parent="brain/movement_lobe" index="4"]
-DISTANCE = 32
+DISTANCE = 30
 
 [node name="memory_lobe" parent="brain" index="3"]
 MEMORY_TIME = 8.0
@@ -108,7 +108,6 @@ death_type = 2
 
 [node name="sprite" parent="held_item/anchor" index="0"]
 texture = ExtResource( 6 )
-frame = 0
 
 [editable path="sprite"]
 [editable path="entityPush"]

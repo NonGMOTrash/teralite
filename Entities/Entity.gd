@@ -54,9 +54,6 @@ func _ready():
 	
 	if faction != "" and global.faction_relationships.get(faction) == null:
 		push_error(get_name()+"'s faction '"+faction+"' is invalid")
-	
-	if INANIMATE == false and get_tree().current_scene.LEVEL_TYPE == 0 and truName != "player":
-		get_tree().current_scene.max_kills += 1
 
 func _physics_process(delta: float): # physics logic
 	if STATIC == true: 

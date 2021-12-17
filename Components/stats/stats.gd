@@ -175,8 +175,11 @@ func add_status_effect(new_status_effect:String, duration=2.5, level=1.0):
 		status_effect.DURATION_TIME = duration
 		status_effect.level = modded_level
 		call_deferred("add_child", status_effect)
-	elif status_effects[status_name] != null:
+	else:
 		status_effect = status_effects[status_name]
+		if status_effect == null or not is_instance_valid(status_effect):
+			return
+		
 		status_effect.level += modded_level
 		if status_effect.level <= 0:
 			status_effect.queue_free()

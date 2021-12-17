@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/rocket_shoot.wav-5517d904220ca210d466e91dbf344bef.sample"
+
+[deps]
+
+source_file="res://Entities/Attacks/Projectile/rocket/rocket_shoot.wav"
+dest_files=[ "res://.import/rocket_shoot.wav-5517d904220ca210d466e91dbf344bef.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

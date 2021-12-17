@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Entities/player/item_thinkers/rocket_launcher/rocket_launcher_thinker.gd" type="Script" id=1]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/player/item_thinkers/rocket_launcher/rocket_launcher_load.wav" type="AudioStream" id=5]
+[ext_resource path="res://Entities/Item_Pickups/rocket_launcher/rocket_launcher.png" type="Texture" id=6]
+[ext_resource path="res://Effects/explosive_muzzle_flash/explosive_muzzle_flash.tscn" type="PackedScene" id=7]
+
+[node name="rocket_launcher_thinker" type="Node"]
+script = ExtResource( 1 )
+auto_ready_check = false
+HELD_ITEM_TEXTURE = ExtResource( 6 )
+RELOAD_ANIM = "load"
+my_item = "rocket_launcher"
+display_name = "Rocket Launcher"
+reload_time = 1.2
+
+[node name="sound_player" parent="." instance=ExtResource( 2 )]
+FREE_WHEN_EMPTY = false
+
+[node name="reload" parent="sound_player" instance=ExtResource( 4 )]
+stream = ExtResource( 5 )
+MODE = 1
+AUTO_PLAY = false
+
+[node name="reload" type="Timer" parent="."]
+one_shot = true
+
+[node name="spawner" parent="." instance=ExtResource( 3 )]
+standby_mode = true
+thing = ExtResource( 7 )
+spawn_on_free = false
+rotation_mode = 1
+effect_hframes = 5
+effect_inherit_flipping = false
+
+[connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]

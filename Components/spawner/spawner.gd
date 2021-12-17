@@ -35,6 +35,9 @@ export(float, 0, 64) var particle_speed_scale = 1.0
 export(bool) var entity_inherit_velocity := false
 export(float, 0, 1000) var entity_random_velocity := 0 
 
+export(int) var stats_damage_mod: int
+export(int) var stats_true_damage_mod: int
+
 export(Dictionary) var custom_properties := {
 	#property: value
 }
@@ -184,9 +187,20 @@ func spawn():
 				rand_range(-entity_random_velocity, entity_random_velocity),
 				rand_range(-entity_random_velocity, entity_random_velocity)
 			) * direction
+		
+		if stats_damage_mod != 0 or stats_true_damage_mod != 0:
+			var component: Node = new_thing.find_node("stats")
+			if component == null:
+				component = new_thing.find_node("hitbox")
+			if component != null:
+				component.DAMAGE += stats_damage_mod
+				component.TRUE_DAMAGE += stats_true_damage_mod
+			else:
+				push_error("spawner couldn't find stats or hitbox to apply damage mod to")
 	
 	for property in custom_properties.keys():
 		new_thing.set(property, custom_properties[property])
+		
 	
 	refs.ysort.get_ref().call_deferred("add_child", new_thing)
 	

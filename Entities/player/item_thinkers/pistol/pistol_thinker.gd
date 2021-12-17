@@ -11,7 +11,7 @@ export var ads_zoom_speed = 0.2
 
 onready var cooldown = $cooldown
 onready var reload = $reload
-onready var spawner = $spawner
+onready var spawner = $spawner # used for muzzle flash
 
 func _init() -> void:
 	res.allocate("bullet")
@@ -88,7 +88,8 @@ func secondary():
 
 func reload():
 	.reload()
-	if reload.time_left > 0: return
+	if reload.time_left > 0:
+		return
 	reload.start()
 	global.emit_signal("update_item_info", # set a condition to null to hide it
 		display_name, # current item
