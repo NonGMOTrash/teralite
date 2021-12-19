@@ -37,6 +37,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	fuel.start()
 
 func _on_spread_timeout() -> void:
+	return
 	var lowest_dist: float = 999.9
 	var entity: Entity
 	for detected_entity in detection.get_overlapping_bodies():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://Levels/Level Resources/scene_batcher/scene_batcher.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/pistol/pistol.png" type="Texture" id=2]
@@ -66,6 +66,8 @@
 [ext_resource path="res://Components/sprite/shadow1.png" type="Texture" id=64]
 [ext_resource path="res://Entities/zombie/zombie.png" type="Texture" id=65]
 [ext_resource path="res://Entities/Item_Pickups/rocket_launcher/rocket_launcher.png" type="Texture" id=66]
+[ext_resource path="res://Entities/berserker/berserker.png" type="Texture" id=67]
+[ext_resource path="res://Entities/Item_Pickups/flamethrower/flamethrower.png" type="Texture" id=68]
 
 [sub_resource type="TileSet" id=1]
 2/name = "player.png 2"
@@ -978,6 +980,34 @@
 72/shape_one_way_margin = 0.0
 72/shapes = [  ]
 72/z_index = 0
+73/name = "berserker.png 73"
+73/texture = ExtResource( 67 )
+73/tex_offset = Vector2( 0, 0 )
+73/modulate = Color( 1, 1, 1, 1 )
+73/region = Rect2( 0, 0, 9, 16 )
+73/tile_mode = 0
+73/occluder_offset = Vector2( 0, 0 )
+73/navigation_offset = Vector2( 0, 0 )
+73/shape_offset = Vector2( 0, 0 )
+73/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+73/shape_one_way = false
+73/shape_one_way_margin = 0.0
+73/shapes = [  ]
+73/z_index = 0
+74/name = "flamethrower.png 74"
+74/texture = ExtResource( 68 )
+74/tex_offset = Vector2( 0, 0 )
+74/modulate = Color( 1, 1, 1, 1 )
+74/region = Rect2( 0, 3, 16, 11 )
+74/tile_mode = 0
+74/occluder_offset = Vector2( 0, 0 )
+74/navigation_offset = Vector2( 0, 0 )
+74/shape_offset = Vector2( 0, 0 )
+74/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+74/shape_one_way = false
+74/shape_one_way_margin = 0.0
+74/shapes = [  ]
+74/z_index = 0
 
 [node name="entity_spawns" instance=ExtResource( 1 )]
 position = Vector2( 4, 4 )

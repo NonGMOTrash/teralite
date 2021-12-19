@@ -32,10 +32,10 @@ func triggered():
 	stats.change_health(0, -1, "burn")
 	
 	var fire = FIRE.instance()
-	fire.global_position = entity.global_position + Vector2(rand_range(-8,8), rand_range(-8,8))
+	fire.global_position = entity.global_position - entity.input_vector * entity.get_speed() / 7.0
 	fire.find_node("fuel").wait_time = 1.5
-	fire.velocity = Vector2(rand_range(0,1), rand_range(0,1)).normalized() * 50
-	stats.get_parent().call_deferred("add_child", fire)
+	fire.velocity = Vector2(rand_range(0,1), rand_range(0,1)).normalized() * 50.0
+	refs.ysort.get_ref().call_deferred("add_child", fire)
 	
 	# the fire that spawns would inflict fire inself, meaning the status effect would last forever
 	# to counteract this, I do this hack to reduce the status effect level and duration

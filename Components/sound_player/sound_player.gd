@@ -105,6 +105,15 @@ func play_sound(sound_name:String) -> void:
 	else:
 		push_error("could not find sound effect '"+sound_name+"' in sound_player")
 
+func stop_sound(sound_name:String) -> void:
+	var sfx = sounds.get(sound_name)
+	if sfx != null:
+		sfx.stop()
+		if sfx is Sound:
+			sfx.global_position = get_position_for(sfx)
+	else:
+		push_error("could not find sound effect '"+sound_name+"' in sound_player")
+
 func get_position_for(sound:Sound) -> Vector2:
 	var src = get_parent()
 	if not src is Entity: src = src.get_parent()

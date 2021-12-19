@@ -144,11 +144,7 @@ func change_health(value: int, true_value: int, type: String = "hurt") -> String
 		return ""
 
 func add_status_effect(new_status_name:String, duration=2.5, level=1.0):
-	if entity.truName == "player":
-		prints("applied:", new_status_name, duration, level)
-	
 	var existing_status: Status_Effect = status_effects[new_status_name]
-	prints("existing_status:", existing_status)
 	
 	if not new_status_name in status_effects.keys():
 		push_error("status name '%s' not found in keys" % new_status_name)
@@ -158,7 +154,6 @@ func add_status_effect(new_status_name:String, duration=2.5, level=1.0):
 	var modded_level: float = level + get_modifier(new_status_name)
 	
 	if not is_instance_valid(existing_status):
-		print("no existing, creating new")
 		var status_effect: Status_Effect
 		# no existing status
 		match new_status_name:
@@ -180,12 +175,10 @@ func add_status_effect(new_status_name:String, duration=2.5, level=1.0):
 	else:
 		# existing status
 		existing_status.level += modded_level
-		prints("existing, level =", modded_level)
 		
 		if existing_status.level <= 0:
 			existing_status.depleted()
 			existing_status.queue_free()
-			if entity.get_name() == "player": print("status deleted")
 			return
 		existing_status.duration.wait_time = max(existing_status.duration.wait_time + duration, 0.01)
 		existing_status.duration.start()

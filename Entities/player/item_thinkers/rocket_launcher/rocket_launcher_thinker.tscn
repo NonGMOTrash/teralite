@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Entities/player/item_thinkers/rocket_launcher/rocket_launcher_thinker.gd" type="Script" id=1]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Entities/player/item_thinkers/rocket_launcher/rocket_launcher_load.wav" type="AudioStream" id=5]
 [ext_resource path="res://Entities/Item_Pickups/rocket_launcher/rocket_launcher.png" type="Texture" id=6]
 [ext_resource path="res://Effects/explosive_muzzle_flash/explosive_muzzle_flash.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/cursors/cursor_rocket_launcher.png" type="Texture" id=8]
 
 [node name="rocket_launcher_thinker" type="Node"]
 script = ExtResource( 1 )
@@ -15,6 +16,7 @@ HELD_ITEM_TEXTURE = ExtResource( 6 )
 RELOAD_ANIM = "load"
 my_item = "rocket_launcher"
 display_name = "Rocket Launcher"
+CURSOR = ExtResource( 8 )
 reload_time = 1.2
 
 [node name="sound_player" parent="." instance=ExtResource( 2 )]

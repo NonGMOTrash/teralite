@@ -27,7 +27,6 @@ func _ready() -> void:
 		entity.dash_strength = max(entity.dash_strength - dash_change, 0)
 
 func depleted():
-	print("depleted")
 	entity.TOP_SPEED += top_speed_change
 	entity.ACCELERATION += acceleration_change
 	entity.SLOWDOWN -= slowdown_change

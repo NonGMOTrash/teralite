@@ -1,0 +1,172 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Entities/berserker/berserker.gd" type="Script" id=1]
+[ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Components/held_item/held_item.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Entities/Item_Pickups/shotgun/shotgun.png" type="Texture" id=13]
+[ext_resource path="res://Entities/berserker/berserker.png" type="Texture" id=14]
+[ext_resource path="res://Components/entity_push/entity_push.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Components/brain/movement_lobe/spring/spring.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Entities/berserker/berserker_back.png" type="Texture" id=19]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 8.39339
+
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 3.17859
+height = 3.77047
+
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 4.09399
+height = 7.03061
+
+[sub_resource type="Animation" id=5]
+resource_name = "stand"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "walk"
+length = 0.167
+loop = true
+step = 0.083
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.083 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 2 ]
+}
+
+[node name="berserker" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 1 )
+ACCELERATION = 380
+SLOWDOWN = 300
+TOP_SPEED = 62
+truName = "berserker"
+faction = "army"
+warnings = 2
+dash_strength = 100
+
+[node name="stats" parent="." instance=ExtResource( 16 )]
+MAX_HEALTH = 5
+HEALTH = 5
+DEFENCE = 2
+DAMAGE = 2
+TRUE_DAMAGE = 1
+
+[node name="entity_sprite" parent="." instance=ExtResource( 12 )]
+material = SubResource( 1 )
+texture = ExtResource( 14 )
+hframes = 3
+frame = 1
+auto_flip_mode = 2
+back_texture = ExtResource( 19 )
+
+[node name="entity_push" parent="." instance=ExtResource( 15 )]
+visible = false
+
+[node name="CollisionShape2D" parent="entity_push" index="0"]
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 3 )
+shape = SubResource( 7 )
+
+[node name="hurtbox" parent="." instance=ExtResource( 18 )]
+visible = false
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+shape = SubResource( 8 )
+
+[node name="sleeper" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="health_bar" parent="." instance=ExtResource( 10 )]
+margin_left = -11.0905
+margin_top = -14.3941
+margin_right = 10.9095
+margin_bottom = -10.3923
+
+[node name="brain" parent="." instance=ExtResource( 3 )]
+
+[node name="movement_lobe" parent="brain" instance=ExtResource( 4 )]
+general_springs = {
+"friendly": "",
+"hostile": "charge",
+"neutral": ""
+}
+
+[node name="charge" parent="brain/movement_lobe" instance=ExtResource( 17 )]
+DISTANCE = 36
+
+[node name="memory_lobe" parent="brain" instance=ExtResource( 8 )]
+
+[node name="action_lobe" parent="brain" instance=ExtResource( 6 )]
+PATIENCE = 0.1
+ACTION_WEIGHTING = 0.6
+ACTION_DEWEIGHTING = 0.3
+
+[node name="shoot" parent="brain/action_lobe" instance=ExtResource( 9 )]
+COOLDOWN = 0.7
+GLOBAL_COOLDOWN = true
+
+[node name="dash" parent="brain/action_lobe" instance=ExtResource( 9 )]
+tag = 2
+best_distance = 64
+COOLDOWN = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/stand = SubResource( 5 )
+anims/walk = SubResource( 6 )
+
+[node name="foot_stepper" parent="." instance=ExtResource( 5 )]
+FREE_WHEN_EMPTY = false
+
+[node name="entity_effects" parent="." instance=ExtResource( 11 )]
+death_type = 1
+
+[node name="held_item" parent="." instance=ExtResource( 7 )]
+TARGETING = 1
+
+[node name="sprite" parent="held_item/anchor" index="0"]
+texture = ExtResource( 13 )
+hframes = 1
+
+[connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
+
+[editable path="entity_push"]
+[editable path="hurtbox"]
+[editable path="held_item"]

@@ -7,6 +7,7 @@ export(MODES) var MODE = MODES.ONESHOT
 export(bool) var AUTO_PLAY = true
 export var SCENE_PERSIST = false
 export var AUTO_SET_PHYSICAL = true # auto set max_distance and attenuation
+export var TRACKING_TARGET: NodePath 
 
 func _init():
 	autoplay = false
@@ -41,3 +42,8 @@ func _ready() -> void:
 #	yield(get_tree().create_timer(0.1), "timeout")
 #	if global_position == Vector2.ZERO:
 #		push_warning("sound '"+get_name()+"' created at (0, 0), possibly an error.")
+
+func _physics_process(delta: float) -> void:
+	var target: Node = get_node_or_null(TRACKING_TARGET)
+	if target != null:
+		global_position = target.global_position

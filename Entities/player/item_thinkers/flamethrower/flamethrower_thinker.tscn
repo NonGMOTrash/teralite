@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Entities/player/item_thinkers/flamethrower/flamethrower_thinker.gd" type="Script" id=1]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Item_Pickups/flamethrower/flamethrower.png" type="Texture" id=3]
+[ext_resource path="res://UI/cursors/cursor_flamethrower.png" type="Texture" id=4]
+[ext_resource path="res://Components/sound_player/sound/sound.gd" type="Script" id=5]
+[ext_resource path="res://Entities/player/item_thinkers/flamethrower/flamethrower_start.wav" type="AudioStream" id=6]
+[ext_resource path="res://Entities/player/item_thinkers/flamethrower/flamethrower_shoot.wav" type="AudioStream" id=7]
+[ext_resource path="res://Entities/player/item_thinkers/flamethrower/flamethrower_stop.wav" type="AudioStream" id=8]
+
+[node name="flamethrower_thinker" type="Node"]
+script = ExtResource( 1 )
+PRIMARY_ACTION_MODE = 1
+HELD_ITEM_TEXTURE = ExtResource( 3 )
+my_item = "flamethrower"
+display_name = "Flamethrower"
+CURSOR = ExtResource( 4 )
+CURSOR_MODE = 1
+flame_speed = 200.0
+flame_duration = 0.5
+
+[node name="sound_player" parent="." instance=ExtResource( 2 )]
+FREE_WHEN_EMPTY = false
+
+[node name="start" type="AudioStreamPlayer2D" parent="sound_player"]
+stream = ExtResource( 6 )
+script = ExtResource( 5 )
+MODE = 1
+AUTO_PLAY = false
+
+[node name="shoot" type="AudioStreamPlayer2D" parent="sound_player"]
+stream = ExtResource( 7 )
+script = ExtResource( 5 )
+MODE = 1
+AUTO_PLAY = false
+
+[node name="stop" type="AudioStreamPlayer2D" parent="sound_player"]
+stream = ExtResource( 8 )
+script = ExtResource( 5 )
+MODE = 1
+AUTO_PLAY = false
+
+[node name="cooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

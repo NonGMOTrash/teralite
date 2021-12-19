@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/flamethrower_stop.wav-87c31dbd382855407f7c7c394fa443d2.sample"
+
+[deps]
+
+source_file="res://Entities/player/item_thinkers/flamethrower/flamethrower_stop.wav"
+dest_files=[ "res://.import/flamethrower_stop.wav-87c31dbd382855407f7c7c394fa443d2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
