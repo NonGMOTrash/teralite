@@ -17,6 +17,7 @@ var old_pos: Vector2
 
 onready var original_damage: int = stats.DAMAGE
 onready var original_true_damage: int = stats.TRUE_DAMAGE
+onready var src_collision: Area2D = $src_collision
 
 func _init():
 	visible = false
@@ -31,6 +32,11 @@ func _ready():
 		SOURCE.apply_force(target_pos.direction_to(SOURCE.global_position).normalized() * RECOIL)
 		
 		apply_force(SOURCE.velocity * VELOCITY_INHERITENCE)
+	
+	# destroy src_collision if not needed (which it shouldn't be now but who nows)
+	if not SOURCE in src_collision.get_overlapping_bodies():
+		src_collision.queue_free()
+		has_left_src = true
 
 func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	# base Attack.gd setup
@@ -47,7 +53,7 @@ func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	var ss = SOURCE.get_world_2d().direct_space_state
 	var raycast = ss.intersect_ray(start_pos, SOURCE.global_position.move_toward(start_pos,4), [], 1)
 	if raycast and not raycast.collider == SOURCE:
-		start_pos = SOURCE.global_position
+		start_pos = raycast.position
 	
 	DIRECTION = SOURCE.global_position.direction_to(target_pos).normalized()
 	velocity = Vector2(SPEED, SPEED) * DIRECTION
@@ -100,4 +106,5 @@ func _on_hitbox_hit(area: Area2D, type: String) -> void:
 func _on_src_collision_body_exited(body: Node) -> void:
 	if body == SOURCE:
 		has_left_src = true
+		print("!")
 		$src_collision.queue_free()

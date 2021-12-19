@@ -16,9 +16,14 @@ display_name = "Staff"
 CURSOR = ExtResource( 4 )
 CURSOR_MODE = 1
 SHOOT_COOLDOWN = 0.35
-SHINE_COOLDOWN = 0.3
+SHINE_COOLDOWN = 0.8
+SHINE_COOLDOWN_FOLLOWUP = 0.3
 
-[node name="cooldown" type="Timer" parent="."]
+[node name="shoot_cooldown" type="Timer" parent="."]
+wait_time = 0.42
+one_shot = true
+
+[node name="shine_cooldown" type="Timer" parent="."]
 wait_time = 0.42
 one_shot = true
 

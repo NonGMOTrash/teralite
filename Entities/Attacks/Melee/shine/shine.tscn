@@ -8,13 +8,13 @@
 [ext_resource path="res://Components/sound_player/sound/sound.gd" type="Script" id=6]
 [ext_resource path="res://Entities/Attacks/Melee/shine/shine_reflect.wav" type="AudioStream" id=7]
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=1]
 radius = 3.0
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=2]
 radius = 5.5
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=3]
 radius = 12.0
 
 [sub_resource type="Animation" id=4]
@@ -53,12 +53,13 @@ tracks/0/keys = {
 }
 
 [node name="shine" instance=ExtResource( 1 )]
+visible = true
 script = ExtResource( 2 )
 ACCELERATION = 0
 TOP_SPEED = 0
 FORCE_MULT = 0.02
 truName = "shine"
-ONHIT_SELF_DAMAGE = 999
+ONHIT_SELF_DAMAGE = 0
 RANGE = 0
 auto_rotate = false
 SPAWN_SOUND = ExtResource( 4 )
@@ -70,7 +71,7 @@ RECOIL = 0
 ANIMATION_NEVER_BACKWARDS = true
 HIDE_HELD_ITEM = false
 REVERSE_HELD_ITEM = false
-REFLECTION_MULT = 0.9
+REFLECTION_MULT = 1.1
 
 [node name="stats" parent="." index="0"]
 MAX_HEALTH = 99
@@ -79,36 +80,35 @@ DAMAGE = 0
 TRUE_DAMAGE = 1
 
 [node name="Sprite" parent="." index="1"]
-position = Vector2( 0, 0 )
 texture = ExtResource( 3 )
 hframes = 5
-frame = 4
 
 [node name="hurtbox" parent="." index="2"]
 visible = false
-iTime_multiplier = 0.0
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 disabled = true
 
 [node name="hitbox" parent="." index="3"]
-COOLDOWN = 0.22
-iTime = 0.0
+COOLDOWN = 0.3
 KNOCKBACK = 160
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="reflection" type="Area2D" parent="." index="4"]
 collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="reflection" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="collision" parent="." index="5"]
 visible = false
+
+[node name="sound" parent="." index="6"]
+FREE_WHEN_EMPTY = false
 
 [node name="reflect" type="AudioStreamPlayer2D" parent="sound" index="0"]
 stream = ExtResource( 7 )

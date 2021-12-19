@@ -114,43 +114,35 @@ func _process(_delta: float):
 		ACTION_MODES.SEMI:
 			if Input.is_action_just_pressed("primary_action"):
 				primary()
-				return
 		ACTION_MODES.AUTOMATIC:
 			if Input.is_action_pressed("primary_action"):
 				primary()
-				return
 		ACTION_MODES.RELEASE:
 			if Input.is_action_just_released("primary_action"):
 				primary()
-				return
 		ACTION_MODES.HOLD:
 			if (
 				Input.is_action_just_pressed("primary_action") or
 				Input.is_action_just_released("primary_action")
 			):
 				primary()
-				return
-
+	
 	match SECONDARY_ACTION_MODE:
 		ACTION_MODES.SEMI:
 			if Input.is_action_just_pressed("secondary_action"):
 				secondary()
-				return
 		ACTION_MODES.AUTOMATIC:
 			if Input.is_action_pressed("secondary_action"):
 				secondary()
-				return
 		ACTION_MODES.RELEASE:
 			if Input.is_action_just_released("secondary_action"):
 				secondary()
-				return
 		ACTION_MODES.HOLD:
 			if (
 				Input.is_action_just_pressed("secondary_action") or
 				Input.is_action_just_released("secondary_action")
 			):
 				secondary()
-				return
 
 func get_ready() -> bool:
 	return true

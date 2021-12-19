@@ -180,8 +180,8 @@ player_death = ExtResource( 14 )
 dash_strength = 170
 
 [node name="stats" parent="." instance=ExtResource( 4 )]
-MAX_HEALTH = 500
-HEALTH = 500
+MAX_HEALTH = 5
+HEALTH = 5
 DAMAGE = 0
 
 [node name="sprite" parent="." instance=ExtResource( 6 )]

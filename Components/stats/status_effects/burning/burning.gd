@@ -30,7 +30,8 @@ func entity_dies():
 
 func triggered():
 	stats.change_health(0, -1, "burn")
-	
+
+func _on_spread_timeout() -> void:
 	var fire = FIRE.instance()
 	fire.global_position = entity.global_position - entity.input_vector * entity.get_speed() / 7.0
 	fire.find_node("fuel").wait_time = 1.5
@@ -41,7 +42,3 @@ func triggered():
 	# to counteract this, I do this hack to reduce the status effect level and duration
 	var hitbox = fire.find_node("hitbox")
 	stats.add_status_effect("burning", hitbox.STATUS_DURATION*-1, hitbox.STATUS_LEVEL*-1)
-
-func _on_spread_timeout() -> void:
-	return
-	
