@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Entities/Attacks/Melee/Melee.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Attacks/Melee/syringe/syringe.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Attacks/Melee/syringe/syringe_miss.wav" type="AudioStream" id=3]
+[ext_resource path="res://Entities/Attacks/Melee/syringe/syringe_hit.wav" type="AudioStream" id=4]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 1.55339
+height = 7.47604
+
+[sub_resource type="Animation" id=1]
+resource_local_to_scene = true
+resource_name = "animation"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 0.2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 10, 0 ), Vector2( 10, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hitbox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 0.2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 11, 0 ), Vector2( 11, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("hitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("hurtbox:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 0.2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 10, 0 ), Vector2( 10, 0 ), Vector2( 0, 0 ) ]
+}
+
+[node name="syringe" instance=ExtResource( 1 )]
+visible = true
+truName = "syringe"
+SPAWN_SOUND = ExtResource( 3 )
+HIT_SOUND = ExtResource( 4 )
+BOOST = 30
+RECOIL = 0
+ANIMATION_NEVER_BACKWARDS = true
+REVERSE_HELD_ITEM = false
+
+[node name="stats" parent="." index="0"]
+MAX_HEALTH = 99
+HEALTH = 99
+
+[node name="Sprite" parent="." index="1"]
+position = Vector2( 0, -0.5 )
+rotation = 0.0
+texture = ExtResource( 2 )
+
+[node name="hitbox" parent="." index="3"]
+COOLDOWN = 1.0
+MULTIHITS = false
+KNOCKBACK = 10
+STATUS_EFFECT = "infection"
+STATUS_DURATION = 60.0
+STATUS_LEVEL = 2.0
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+rotation = 1.5708
+shape = SubResource( 2 )
+disabled = true
+
+[node name="sound" parent="." index="5"]
+FREE_WHEN_EMPTY = false
+
+[node name="animation" parent="." index="6"]
+anims/animation = SubResource( 1 )
+
+[editable path="hurtbox"]
+[editable path="hitbox"]

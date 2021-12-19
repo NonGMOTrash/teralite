@@ -42,5 +42,6 @@ func secondary():
 		shine_cooldown.start()
 
 func skip_shine_cooldown():
-	shine_cooldown.wait_time = SHINE_COOLDOWN_FOLLOWUP
-	shine_cooldown.start()
+	if shine_cooldown.time_left > SHINE_COOLDOWN_FOLLOWUP:
+		shine_cooldown.wait_time = SHINE_COOLDOWN_FOLLOWUP
+		shine_cooldown.start()

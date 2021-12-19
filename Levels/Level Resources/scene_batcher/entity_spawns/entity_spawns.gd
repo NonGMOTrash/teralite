@@ -70,4 +70,5 @@ func set_data():
 		"berserker": get_used_cells_by_id(73),
 		"flamethrower": get_used_cells_by_id(74),
 		"gold_spikes": get_used_cells_by_id(75),
+		"injection": get_used_cells_by_id(76),
 	}

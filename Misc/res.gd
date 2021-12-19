@@ -74,12 +74,14 @@ const data := {
 	"landmines": "res://Entities/Item_Pickups/landmines/landmines.tscn",
 	"rocket_launcher": "res://Entities/Item_Pickups/rocket_launcher/rocket_launcher.tscn",
 	"flamethrower": "res://Entities/Item_Pickups/flamethrower/flamethrower.tscn",
+	"injection": "res://Entities/Item_Pickups/injection/injection.tscn",
 	
 	# melees
 	"slash": "res://Entities/Attacks/Melee/slash/slash.tscn",
 	"swipe": "res://Entities/Attacks/Melee/swipe/swipe.tscn",
 	"shine": "res://Entities/Attacks/Melee/shine/shine.tscn",
 	"poke": "res://Entities/Attacks/Melee/poke/poke.tscn",
+	"syringe": "res://Entities/Attacks/Melee/syringe/syringe.tscn",
 	
 	# projectiles
 	"arrow": "res://Entities/Attacks/Projectile/arrow/arrow.tscn",
@@ -176,6 +178,7 @@ const data := {
 	"landmines_texture": "res://Entities/Item_Pickups/landmines/landmine.png",
 	"rocket_launcher_texture": "res://Entities/Item_Pickups/rocket_launcher/rocket_launcher.png",
 	"flamethrower_texture": "res://Entities/Item_Pickups/flamethrower/flamethrower.png",
+	"injection_texture": "res://Entities/Attacks/Melee/syringe/syringe.png",
 }
 
 func allocate(asset:String) -> void:

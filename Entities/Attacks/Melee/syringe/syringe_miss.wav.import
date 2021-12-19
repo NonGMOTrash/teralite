@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/syringe_miss.wav-17f9048c36905f5f9a1f4b5f597ad7cc.sample"
+
+[deps]
+
+source_file="res://Entities/Attacks/Melee/syringe/syringe_miss.wav"
+dest_files=[ "res://.import/syringe_miss.wav-17f9048c36905f5f9a1f4b5f597ad7cc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

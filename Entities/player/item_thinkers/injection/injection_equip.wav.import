@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/injection_equip.wav-d00bf72120c0665f2385fb6dd4963424.sample"
+
+[deps]
+
+source_file="res://Entities/player/item_thinkers/injection/injection_equip.wav"
+dest_files=[ "res://.import/injection_equip.wav-d00bf72120c0665f2385fb6dd4963424.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
