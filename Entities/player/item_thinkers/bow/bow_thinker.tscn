@@ -31,6 +31,7 @@ autostart = true
 one_shot = true
 
 [node name="sound_player" parent="." instance=ExtResource( 3 )]
+FREE_WHEN_EMPTY = false
 
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="buffer" to="." method="_on_buffer_timeout"]

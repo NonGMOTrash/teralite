@@ -45,6 +45,7 @@ const data := {
 	"landmine": "res://Entities/landmine/landmine.tscn",
 	"zombie": "res://Entities/zombie/zombie.tscn",
 	"berserker": "res://Entities/berserker/berserker.tscn",
+	"gold_spikes": "res://Entities/spikes/gold_spikes/gold_spikes.tscn",
 	
 	# items
 	"pistol": "res://Entities/Item_Pickups/pistol/pistol.tscn",

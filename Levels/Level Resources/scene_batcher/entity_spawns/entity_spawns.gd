@@ -69,4 +69,5 @@ func set_data():
 		"rocket_launcher": get_used_cells_by_id(72),
 		"berserker": get_used_cells_by_id(73),
 		"flamethrower": get_used_cells_by_id(74),
+		"gold_spikes": get_used_cells_by_id(75),
 	}

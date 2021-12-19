@@ -69,13 +69,13 @@ func get_ready():
 func primary():
 	.primary()
 	
-	var held_item = get_parent().components["held_item"]
+	var held_item = player.components["held_item"]
 	if held_item != null:
 		held_item.animation.stop()
 		held_item.sprite.texture = held_item.original_texture
-		held_item.sprite.hframes = 1
 		held_item.sprite.frame = 0
 		held_item.sprite.frame_coords = Vector2.ZERO
+		held_item.sprite.hframes = 1
 	
 	var charge_time = charge.wait_time - charge.time_left
 	if charge_time < min_charge_time and buffering_shot == false:
