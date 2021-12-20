@@ -33,6 +33,7 @@ MAX_HEALTH = 3
 HEALTH = 3
 DEFENCE = 2
 TRUE_DAMAGE = 1
+burning_modifier = -99.0
 
 [node name="Sprite" parent="." index="1"]
 rotation = 1.5708

@@ -1,0 +1,265 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://Entities/rocket_scorpian/rocket_scorpian.gd" type="Script" id=1]
+[ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/rocket_scorpian/rocket_scorpian.png" type="Texture" id=4]
+[ext_resource path="res://Components/sprite/shadow2.png" type="Texture" id=5]
+[ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Components/entity_push/entity_push.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Components/brain/movement_lobe/spring/spring.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=18]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 3.16717
+height = 14.7599
+
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 6.15018
+height = 16.0286
+
+[sub_resource type="Animation" id=6]
+resource_name = "attack"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 8, 9, 10, 11 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "lunge"
+} ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "shoot"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 13, 14, 15, 16, 1 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "stand"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "walk"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 1, 2, 3, 4, 5, 6 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=7]
+
+[node name="rocket_scorpian" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 1 )
+ACCELERATION = 300
+TOP_SPEED = 40
+FORCE_MULT = 0.3
+truName = "rocket_scorpian"
+faction = "solo"
+lunge_force = 1000.0
+rage_threshold = 180
+rage_speed_mult = 2.0
+
+[node name="stats" parent="." instance=ExtResource( 2 )]
+MAX_HEALTH = 300
+HEALTH = 300
+DAMAGE = 0
+poison_modifier = -99.0
+infection_modifier = -99.0
+
+[node name="entity_sprite" parent="." instance=ExtResource( 3 )]
+material = SubResource( 1 )
+texture = ExtResource( 4 )
+hframes = 17
+frame = 1
+auto_flip_mode = 2
+
+[node name="shadow" parent="entity_sprite" index="0"]
+position = Vector2( 0, 5 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 5 )
+
+[node name="entity_push" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[node name="CollisionShape2D" parent="entity_push" index="0"]
+position = Vector2( 2.65165, 2.47487 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.795492, 7.95495 )
+rotation = 1.5708
+shape = SubResource( 3 )
+
+[node name="hurtbox" parent="." instance=ExtResource( 8 )]
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+position = Vector2( 3.93725, 2.20486 )
+rotation = 1.5708
+shape = SubResource( 9 )
+
+[node name="sleeper" parent="." instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 1.04056, 0.891906 )
+scale = Vector2( 2.12231, 1.2973 )
+
+[node name="health_bar" parent="." instance=ExtResource( 9 )]
+margin_left = -6.98659
+margin_top = -14.2705
+margin_right = 15.0134
+margin_bottom = -10.2687
+
+[node name="brain" parent="." instance=ExtResource( 10 )]
+SIGHT_RANGE = 300.0
+
+[node name="movement_lobe" parent="brain" instance=ExtResource( 11 )]
+general_springs = {
+"friendly": "",
+"hostile": "spring",
+"neutral": ""
+}
+
+[node name="spring" parent="brain/movement_lobe" instance=ExtResource( 12 )]
+DISTANCE = 100
+
+[node name="memory_lobe" parent="brain" instance=ExtResource( 14 )]
+MEMORY_TIME = 10.0
+
+[node name="action_lobe" parent="brain" instance=ExtResource( 13 )]
+PATIENCE = 0.0
+
+[node name="attack" parent="brain/action_lobe" instance=ExtResource( 17 )]
+best_distance = 40
+default_score = 0.0
+GLOBAL_COOLDOWN = true
+
+[node name="shoot" parent="brain/action_lobe" instance=ExtResource( 17 )]
+best_distance = 100
+GLOBAL_COOLDOWN = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack = SubResource( 6 )
+anims/shoot = SubResource( 8 )
+anims/stand = SubResource( 4 )
+anims/walk = SubResource( 5 )
+
+[node name="foot_stepper" parent="." instance=ExtResource( 15 )]
+FREE_WHEN_EMPTY = false
+
+[node name="entity_effects" parent="." instance=ExtResource( 16 )]
+
+[node name="hitbox" parent="." instance=ExtResource( 18 )]
+visible = false
+COOLDOWN = 1.0
+DAMAGE = 5
+TRUE_DAMAGE = 2
+KNOCKBACK = 250
+STATUS_EFFECT = "poison"
+STATUS_DURATION = 12.0
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+position = Vector2( 5.82713, 3.1498 )
+rotation = 1.5708
+shape = SubResource( 7 )
+disabled = true
+
+[connection signal="got_hit" from="hurtbox" to="." method="_on_hurtbox_got_hit"]
+[connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+
+[editable path="entity_sprite"]
+[editable path="entity_push"]
+[editable path="hurtbox"]
+[editable path="hitbox"]

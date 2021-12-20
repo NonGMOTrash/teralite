@@ -71,7 +71,7 @@ func _on_action_timer_timeout() -> void:
 				break
 		
 		if last_action.COOLDOWN > 0 and actions.size() == 1 or last_action.GLOBAL_COOLDOWN == true:
-			action_timer.wait_time = last_action.COOLDOWN
+			action_timer.wait_time = max(last_action.COOLDOWN, 0.01)
 			return
 		
 		if last_action.ENERGY_COST != 0:

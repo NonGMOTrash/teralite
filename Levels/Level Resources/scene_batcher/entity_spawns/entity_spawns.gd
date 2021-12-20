@@ -71,4 +71,5 @@ func set_data():
 		"flamethrower": get_used_cells_by_id(74),
 		"gold_spikes": get_used_cells_by_id(75),
 		"injection": get_used_cells_by_id(76),
+		"rocket_scorpian": get_used_cells_by_id(77),
 	}

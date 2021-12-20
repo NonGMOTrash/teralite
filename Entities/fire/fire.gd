@@ -9,6 +9,7 @@ onready var hitbox = $hitbox
 onready var detection = $detection
 
 var smoke: Particles2D
+var smoke_path: NodePath
 
 func _ready():
 	sprite.scale = Vector2(1, 1)
@@ -19,9 +20,10 @@ func _ready():
 	refs.ysort.get_ref().call_deferred("add_child", smoke)
 	yield(smoke, "ready")
 	smoke.global_position = global_position
+	smoke_path = smoke.get_path()
 
 func death():
-	if smoke != null:
+	if get_node_or_null("smoke_path") != null:
 		smoke.stop()
 	$death.play("death")
 

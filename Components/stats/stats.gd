@@ -154,8 +154,11 @@ func add_status_effect(new_status_name:String, duration=2.5, level=1.0):
 	var modded_level: float = level + get_modifier(new_status_name)
 	
 	if not is_instance_valid(existing_status):
-		var status_effect: Status_Effect
 		# no existing status
+		if duration <= 0 or level <= 0:
+			return
+		
+		var status_effect: Status_Effect
 		match new_status_name:
 			"burning": status_effect = burning.instance()
 			"poison": status_effect = poison.instance()
