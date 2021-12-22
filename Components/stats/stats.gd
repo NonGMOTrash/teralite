@@ -121,7 +121,7 @@ func change_health(value: int, true_value: int, type: String = "hurt") -> String
 			entity.death_message = msg
 			entity.force_death_msg = true
 		
-		if type == "infect":
+		if type == "infect" and not entity is Attack:
 			var zombie := res.aquire_entity("zombie")
 			zombie.global_position = entity.global_position
 			var stats = entity.components["stats"]

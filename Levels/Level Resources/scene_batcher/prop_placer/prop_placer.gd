@@ -15,4 +15,9 @@ func set_data():
 		"stalagmite2": get_used_cells_by_id(10),
 		"water_stalagmite": get_used_cells_by_id(11),
 		"ore": get_used_cells_by_id(12),
+		"cactus": get_used_cells_by_id(13),
+		"campfire": get_used_cells_by_id(14),
+		"dead_bush": get_used_cells_by_id(15),
+		"dead_tree": get_used_cells_by_id(16),
+		"old_barrel": get_used_cells_by_id(17),
 	}

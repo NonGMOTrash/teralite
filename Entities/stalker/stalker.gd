@@ -22,6 +22,9 @@ func _on_hurtbox_got_hit(by_area, type) -> void:
 func _on_hitbox_hit(area, type) -> void:
 	reveal.play("animation")
 
+func _on_stats_status_recieved(status) -> void:
+	reveal.play("animation")
+
 func set_speed(mode: String):
 	if mode == "invis":
 		TOP_SPEED = original_top_speed * REVEAL_SPEED_BOOST

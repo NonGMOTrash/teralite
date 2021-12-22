@@ -9,13 +9,13 @@ func _init() -> void:
 	res.aquire_entity("explosion")
 
 func _on_detection_body_entered(body: Node) -> void:
-	if arm_delay.time_left == 0 and global.get_relation(self, body) != "friendly":
+	if arm_delay.time_left == 0 and global.get_relation(self, body) != "friendly" and !body.INANIMATE:
 		sound.play_sound("warning")
 		delay.start()
 
 func _on_arm_delay_timeout() -> void:
 	for body in detection.get_overlapping_bodies():
-		if body is Entity and global.get_relation(self, body) != "friendly":
+		if body is Entity and global.get_relation(self, body) != "friendly" and !body.INANIMATE:
 			sound.play_sound("warning")
 			delay.start()
 

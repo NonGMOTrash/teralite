@@ -4,7 +4,6 @@ const SHINE = preload("res://Entities/Attacks/Melee/shine/shine.tscn")
 
 export(float, 0.01, 1.0) var SHOOT_COOLDOWN: float
 export(float, 0.01, 10.0) var SHINE_COOLDOWN: float
-export(float, 0.01, 10.0) var SHINE_COOLDOWN_FOLLOWUP: float
 
 onready var shoot_cooldown = $shoot_cooldown
 onready var shine_cooldown = $shine_cooldown
@@ -32,7 +31,7 @@ func primary():
 
 func secondary():
 	if shine_cooldown.time_left == 0:
-		var shine: Melee = res.aquire_attack("shine")
+		shine = res.aquire_attack("shine")
 		shine.position = player.global_position
 		shine.setup(player, player.get_global_mouse_position())
 		shine.connect("reflect", self, "skip_shine_cooldown")
@@ -42,6 +41,6 @@ func secondary():
 		shine_cooldown.start()
 
 func skip_shine_cooldown():
-	if shine_cooldown.time_left > SHINE_COOLDOWN_FOLLOWUP:
-		shine_cooldown.wait_time = SHINE_COOLDOWN_FOLLOWUP
-		shine_cooldown.start()
+	var animation: AnimationPlayer = shine.animation
+	shine_cooldown.wait_time = animation.current_animation_length - animation.current_animation_position
+	shine_cooldown.start()

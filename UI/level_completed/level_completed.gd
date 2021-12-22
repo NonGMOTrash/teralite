@@ -93,7 +93,7 @@ func _on_proceed_pressed() -> void:
 		get_tree().change_scene("res://Levels/%s/%s-Hub.tscn" % [global.last_hub, global.last_hub])
 		return
 	
-	if lvl == "Duel":
+	if lvl == "Abomination":
 		get_tree().change_scene("res://Levels/thx.tscn")
 	elif global.last_hub == null or global.last_hub.length() != 1:
 			get_tree().change_scene("res://Levels/A/A-Hub.tscn")

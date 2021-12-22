@@ -54,7 +54,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.063, 0.126, 0.189, 0.252 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 6, 6 ), Vector2( 20, 20 ), Vector2( 22, 22 ), Vector2( 24, 24 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 6, 6 ), Vector2( 20, 20 ), Vector2( 23, 23 ), Vector2( 27, 27 ), Vector2( 0, 0 ) ]
 }
 tracks/3/type = "method"
 tracks/3/path = NodePath("sound_player")
@@ -85,6 +85,7 @@ material = SubResource( 1 )
 z_index = 999
 texture = ExtResource( 4 )
 hframes = 8
+frame = 7
 auto_flip_mode = 0
 
 [node name="shadow" parent="entity_sprite" index="0"]
@@ -99,7 +100,7 @@ STATUS_EFFECT = "burning"
 STATUS_DURATION = 3.0
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
-scale = Vector2( 6, 6 )
+scale = Vector2( 1e-05, 1e-05 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

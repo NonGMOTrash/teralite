@@ -3,10 +3,11 @@ extends Entity
 export(PackedScene) var smoke_particle
 
 onready var sprite = $Sprite
-onready var fuel = $fuel
+onready var animation = $animation
 onready var spread = $spread
 onready var hitbox = $hitbox
 onready var detection = $detection
+onready var fuel = $fuel
 
 var smoke: Particles2D
 var smoke_path: NodePath
@@ -14,7 +15,7 @@ var smoke_path: NodePath
 func _ready():
 	sprite.scale = Vector2(1, 1)
 	sprite.self_modulate.a = 1.0
-	$fire.playback_speed = rand_range(0.75, 1.25)
+	animation.playback_speed = rand_range(0.75, 1.25)
 	
 	smoke = smoke_particle.instance()
 	refs.ysort.get_ref().call_deferred("add_child", smoke)
@@ -25,7 +26,7 @@ func _ready():
 func death():
 	if get_node_or_null("smoke_path") != null:
 		smoke.stop()
-	$death.play("death")
+	animation.play("death")
 
 func _on_fuel_timeout() -> void:
 	death()
@@ -39,7 +40,6 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	fuel.start()
 
 func _on_spread_timeout() -> void:
-	return
 	var lowest_dist: float = 999.9
 	var entity: Entity
 	for detected_entity in detection.get_overlapping_bodies():

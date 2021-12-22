@@ -28,11 +28,11 @@ resource_local_to_scene = true
 radius = 3.16717
 height = 14.7599
 
-[sub_resource type="CapsuleShape2D" id=9]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 6.15018
 height = 16.0286
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "attack"
 length = 1.2
 tracks/0/type = "value"
@@ -74,7 +74,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 resource_name = "shoot"
 length = 0.7
 tracks/0/type = "value"
@@ -104,8 +104,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "stand"
+[sub_resource type="Animation" id=7]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("entity_sprite:frame")
@@ -120,8 +119,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "walk"
+[sub_resource type="Animation" id=8]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -137,7 +135,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 1, 2, 3, 4, 5, 6 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=7]
+[sub_resource type="CapsuleShape2D" id=9]
 
 [node name="rocket_scorpian" type="KinematicBody2D"]
 collision_layer = 2
@@ -148,8 +146,8 @@ FORCE_MULT = 0.3
 truName = "rocket_scorpian"
 faction = "solo"
 lunge_force = 1000.0
-rage_threshold = 180
-rage_speed_mult = 2.0
+rage_threshold = 150
+rage_speed_mult = 1.5
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
 MAX_HEALTH = 300
@@ -188,7 +186,7 @@ shape = SubResource( 3 )
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 position = Vector2( 3.93725, 2.20486 )
 rotation = 1.5708
-shape = SubResource( 9 )
+shape = SubResource( 4 )
 
 [node name="sleeper" parent="." instance=ExtResource( 6 )]
 visible = false
@@ -230,10 +228,10 @@ best_distance = 100
 GLOBAL_COOLDOWN = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 6 )
-anims/shoot = SubResource( 8 )
-anims/stand = SubResource( 4 )
-anims/walk = SubResource( 5 )
+anims/attack = SubResource( 5 )
+anims/shoot = SubResource( 6 )
+anims/stand = SubResource( 7 )
+anims/walk = SubResource( 8 )
 
 [node name="foot_stepper" parent="." instance=ExtResource( 15 )]
 FREE_WHEN_EMPTY = false
@@ -252,7 +250,7 @@ STATUS_DURATION = 12.0
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 position = Vector2( 5.82713, 3.1498 )
 rotation = 1.5708
-shape = SubResource( 7 )
+shape = SubResource( 9 )
 disabled = true
 
 [connection signal="got_hit" from="hurtbox" to="." method="_on_hurtbox_got_hit"]

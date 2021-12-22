@@ -69,6 +69,7 @@ MAX_HEALTH = 6
 HEALTH = 6
 DAMAGE = 2
 TRUE_DAMAGE = 1
+burning_modifier = 20.0
 
 [node name="sprite" parent="." instance=ExtResource( 3 )]
 modulate = Color( 1, 1, 1, 0.847059 )

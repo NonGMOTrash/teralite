@@ -125,6 +125,11 @@ const data := {
 	"stalagmite2": "res://Props/stalagmite2/stalagmite2.tscn",
 	"water_stalagmite": "res://Props/water_stalagmite/water_stalagmite.tscn",
 	"ore": "res://Props/ore/ore.tscn",
+	"cactus": "res://Props/cactus/cactus.tscn",
+	"campfire": "res://Props/campfire/campfire.tscn",
+	"dead_bush": "res://Props/dead_bush/dead_bush.tscn",
+	"dead_tree": "res://Props/dead_tree/dead_tree.tscn",
+	"old_barrel": "res://Props/old_barrel/old_barrel.tscn",
 	
 	# audio
 	"sword_clang": "res://Entities/Attacks/Melee/slash/sword_clang.wav",

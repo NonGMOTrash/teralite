@@ -99,7 +99,7 @@ shape = SubResource( 1 )
 
 [node name="hitbox" parent="." index="3"]
 position = Vector2( -4, -7 )
-COOLDOWN = 0.25
+COOLDOWN = 1.0
 STATUS_EFFECT = "bleed"
 STATUS_DURATION = 2.0
 
@@ -114,6 +114,9 @@ position = Vector2( -2, 0 )
 
 [node name="CollisionShape2D" parent="collision" index="0"]
 shape = SubResource( 3 )
+
+[node name="sound" parent="." index="5"]
+FREE_WHEN_EMPTY = false
 
 [node name="animation" parent="." index="6"]
 playback_speed = 1.6

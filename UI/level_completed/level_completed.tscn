@@ -193,23 +193,23 @@ size_flags_horizontal = 3
 alignment = 1
 
 [node name="icon" type="TextureRect" parent="area/body/time"]
-margin_left = 54.0
+margin_left = 55.0
 margin_top = 8.0
-margin_right = 112.0
+margin_right = 113.0
 margin_bottom = 71.0
 size_flags_horizontal = 4
 texture = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="area/body/time"]
 margin_top = 75.0
-margin_right = 167.0
+margin_right = 168.0
 margin_bottom = 91.0
 text = "Time: "
 align = 1
 
 [node name="comment" type="Label" parent="area/body/time"]
 margin_top = 95.0
-margin_right = 167.0
+margin_right = 168.0
 margin_bottom = 111.0
 align = 1
 

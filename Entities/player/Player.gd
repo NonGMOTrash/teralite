@@ -275,6 +275,8 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 		death_message = "betrayal!"
 	elif "spikes" in entity_name:
 		death_message = "impaled by some spikes"
+	elif entity_name == "explosion":
+		death_message = "blown to pieces"
 	else:
 		match entity_name:
 			"crate": death_message = "killed by a crate, somehow?"
@@ -293,6 +295,14 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 			"blow_dart": death_message = "incapicitated by %s's blowgun" % source_name
 			"slime": death_message = "killed by a slime"
 			"bullet": death_message = "shot by a %s" % source_name
+			"shotgun_shell": death_message = "shot by a %s" % source_name
+			"big_bullet": death_message = "shot by a %s" % source_name
+			"bullet": death_message = "shot by a %s" % source_name
+			"syringe": death_message = "injected by a %s" % source_name
+			"rocket": death_message = "blown up by a %s" % source_name
+			"zombie": death_message = "joined the horde"
+			"heart_mimic": death_message = "killed by %s" % source_name
+			"stalker": death_message = "trampled by a %s" % source_name
 			_: death_message = "death message messed up, report pls ;-;"
 	
 	death_message = death_message.replace("_", " ")

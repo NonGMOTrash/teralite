@@ -47,9 +47,6 @@ visible = false
 [node name="held_item" parent="YSort/player" index="9"]
 visible = false
 
-[node name="foot_stepper" parent="YSort/player" index="10"]
-FREE_WHEN_EMPTY = false
-
 [node name="Redwood" parent="YSort" index="3" instance=ExtResource( 3 )]
 position = Vector2( 640, 509.548 )
 LEVEL = "Redwood"

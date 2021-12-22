@@ -142,7 +142,6 @@ ACTION_DEWEIGHTING = 0.0
 
 [node name="shoot" parent="brain/action_lobe" instance=ExtResource( 16 )]
 best_distance = 50
-COOLDOWN = 1.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/stand = SubResource( 5 )
