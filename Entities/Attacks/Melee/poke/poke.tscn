@@ -103,7 +103,7 @@ BOOST = 22
 RECOIL = 30
 ANIMATION_NEVER_BACKWARDS = true
 REVERSE_HELD_ITEM = false
-tipper_distance = 35.0
+tipper_distance = 34.5
 tipper_damage = 1
 
 [node name="stats" parent="." index="0"]

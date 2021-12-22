@@ -10,7 +10,6 @@ func _on_hitbox_hit(area, type) -> void:
 		return
 	
 	var distance: float = area.get_parent().global_position.distance_to(SOURCE.global_position)
-	print(distance)
 	if distance >= tipper_distance:
 		sound.play_sound("tipper")
 		var area_entity: Entity = area.get_parent()

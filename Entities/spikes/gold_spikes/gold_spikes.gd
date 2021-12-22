@@ -16,8 +16,6 @@ func _on_detection_body_exited(body: Node) -> void:
 
 func _physics_process(delta: float) -> void:
 	for player in players:
-		print(player.get_speed())
 		if player.get_speed() > 100.0:
-			print("lowering!")
 			animation.play("spikes")
 

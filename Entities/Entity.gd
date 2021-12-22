@@ -13,6 +13,7 @@ export(bool) var INVISIBLE := false
 var velocity: Vector2 = Vector2.ZERO
 var input_vector = Vector2.ZERO
 var rooted := false
+var dead := false
 
 export var truName = ""
 export var faction = ""
@@ -75,6 +76,10 @@ func apply_force(force:Vector2):
 	velocity += force * FORCE_MULT
 
 func death():
+	if dead == true:
+		return
+	
+	dead = true
 	emit_signal("death")
 	queue_free()
 	visible = false

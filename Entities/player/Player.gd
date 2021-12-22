@@ -45,11 +45,7 @@ var force_death_msg := false
 var can_dash := true
 
 func _ready():
-#	var item = res.aquire_entity("xbow")
-#	item.global_position = global_position
-#	get_parent().call_deferred("add_child", item)
-	
-#	stats.add_status_effect("poison", 60, 1)
+	print("alive :)")
 	
 	dash_buffer *= (1.0/60.0)
 	global.selection = 0
@@ -162,11 +158,15 @@ func swapped_item(new_item):
 		held_item.reversed = false
 
 func death():
+	if dead == true:
+		return
+	
+	dead = true
 	emit_signal("death")
-
+	
 	if force_death_msg == false:
 		yield(self, "updated_death_message")
-
+	
 	for i in 6:
 		if inventory[i] != null:
 			var item = res.aquire(inventory[i]).instance()
@@ -174,10 +174,10 @@ func death():
 			item.global_position = global_position
 			item.velocity = Vector2(rand_range(-1.0, 1.0), rand_range(-1.0, 1.0)).normalized() * 100
 			get_parent().call_deferred("add_child", item)
-
+	
 	if name == "player":
 		var found_replacement = false
-
+		
 		for child in get_parent().get_children(): # PROBLEM_NOTE: kinda bad way to do this, use a group
 			if child is Entity and not child == self and child.is_queued_for_deletion() == false:
 				if child.truName == "player":

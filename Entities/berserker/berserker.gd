@@ -77,7 +77,6 @@ func attack(finished_animation:String):
 		actionable = true
 
 func _physics_process(delta: float) -> void:
-	print(shots)
 	if input_vector == Vector2.ZERO:
 		animation.play("stand")
 	else:
