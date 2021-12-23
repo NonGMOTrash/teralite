@@ -148,6 +148,9 @@ func awoken():
 		wander_timer.start()
 
 func get_spring(target:Entity):
+	if target == null:
+		return
+	
 	var spring = null
 	
 	if global.get_relation(entity, target) != "":

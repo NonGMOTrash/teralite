@@ -80,7 +80,6 @@ z_index = 99
 texture = ExtResource( 2 )
 hframes = 5
 vframes = 2
-frame = 2
 
 [node name="shadow" parent="sprite" index="0"]
 visible = false

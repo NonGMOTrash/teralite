@@ -42,6 +42,28 @@ const DEV_TIMES := {
 	"Poison": 22.3,
 	"Isolated": 11.2,
 	"Hex": 11.1,
+	"Ghastly": 27.7,
+	"Scrapyard": 14.3,
+	"Dusk": 17.0,
+	"Breakin": 20.0,
+	"Infected": 17.2,
+	"Longshot": 17.0,
+	"Fair": 15.2,
+	"Sincerity": 27.3,
+	"Maze": 20.4,
+	"Haunting": 16.6,
+	"Patrol": 9.7,
+	"Scavenge": 14.6,
+	"Doctor": 10.4,
+	"Scorch": 17.0,
+	"Outpost": 27.7,
+	"Outgunned": 5.08,
+	"Pinned": 20.4,
+	"Mined": 13.5,
+	"Boom": 33.1,
+	"Might": 6.2,
+	"Knight": 41.2,
+	"Abomination": 15.3,
 }
 
 #all the global variables
@@ -67,7 +89,7 @@ var speedrun_time = 0.0
 var icon = 0
 
 const ver_phase = "beta"
-const ver_num = 4.0
+const ver_num = 4.1
 const ver_hotfix = 0
 
 # for saving things
@@ -505,30 +527,38 @@ func quit():
 
 func sec_to_time(time: float) -> String:
 	var hours = int(floor(time / 3600))
-	var minute = int(floor(time / 60))
-	var second = int(floor(time - (minute * 60)))
-	var tenth = stepify(time - ((minute*60) + second), 0.1) * 10
+	var minutes = int(floor(time / 60))
+	var seconds = int(floor(time - (minutes * 60)))
+	var tenth = stepify(time - ((minutes*60) + seconds), 0.1) * 10
 	if tenth == 10: tenth = 0
 	
-	if second < 10: 
-		second = str(second)
-		second = "0"+second
+	if seconds < 10: 
+		seconds = str(seconds)
+		seconds = "0"+seconds
+	
+	prints(
+		"time:", time,
+		"hours:", hours,
+		"minutes:", minutes,
+		"seconds:", seconds,
+		"tenth:", tenth
+	)
 	
 	if hours > 1:
 		return (
 			str(hours) +
 			":" +
-			str(minute) +
+			str(minutes - hours * 60) +
 			":" +
-			str(second) +
+			str(seconds) +
 			"." +
 			str(tenth)
 		)
 	else:
 		return (
-			str(minute) +
+			str(minutes) +
 			":" +
-			str(second) +
+			str(seconds) +
 			"." +
 			str(tenth)
 		)

@@ -44,15 +44,18 @@ func attack(finished_animation:String):
 	if held_item.animation.get_queue().size() > 0:
 		return
 	if queued_action == "shoot":
-		if get_node_or_null(targit_path) == null:
+		var angle_to: float
+		if get_node_or_null(targit_path) == null or targit == null or !is_instance_valid(targit):
 			return
+		else:
+			angle_to = global_position.direction_to(targit.global_position).angle()
 		
 		var angles := []
 		var spread_step: float = (spread * 2) / pellets
 		var r: float = -(spread / 2) - (spread_step * floor(pellets/2.0))
 		for i in pellets:
 			r += spread_step
-			angles.append(rad2deg(global_position.direction_to(targit.global_position).angle()) + r)
+			angles.append(rad2deg(angle_to) + r)
 		
 		var bullets := []
 		for i in pellets:

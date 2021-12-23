@@ -1567,7 +1567,6 @@ process_priority = 1
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 16, 16 )
 cell_y_sort = true
-show_collision = true
 collision_friction = 0.0
 collision_mask = 34
 format = 1

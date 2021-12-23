@@ -43,7 +43,7 @@ const MESSAGES = [
 	"straight down to heck", "worst mistake of my life",
 	"proof that software is getting worse", 
 	"play project eclise!", "engineer gaming", 
-	"don't be the goblin of 2fort",
+	"don't be the goblin of 2fort", "no gamers allowed"
 ]
 const SAVE_ICONS := [
 	preload("res://UI/Icons/save.png"),

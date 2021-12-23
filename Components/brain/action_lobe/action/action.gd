@@ -81,6 +81,8 @@ func evaluate(warned = false) -> Array: #-> [score, target]
 	
 	for i in targets_to_check.size():
 		var target: Entity = targets_to_check[i]
+		if target == null:
+			continue
 		
 		if (
 			target_type == relations.myself and target == entity or

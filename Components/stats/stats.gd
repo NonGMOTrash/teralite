@@ -155,7 +155,7 @@ func add_status_effect(new_status_name:String, duration=2.5, level=1.0):
 	
 	if not is_instance_valid(existing_status):
 		# no existing status
-		if duration <= 0 or level <= 0:
+		if duration <= 0 or modded_level <= 0:
 			return
 		
 		var status_effect: Status_Effect
