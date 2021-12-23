@@ -8,8 +8,8 @@
 [ext_resource path="res://Effects/Particles/sparkle_particles.tscn" type="PackedScene" id=6]
 
 [node name="Doctor" instance=ExtResource( 1 )]
-AMBIANCE = 0
-GLOBAL_PARTICLES = 0
+AMBIANCE = 3
+GLOBAL_PARTICLES = 3
 WORLD = "C"
 
 [node name="background" parent="." index="0"]

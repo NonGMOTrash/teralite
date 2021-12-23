@@ -5,8 +5,10 @@
 
 [node name="foot_stepper" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+FREE_WHEN_EMPTY = false
 RATE = 3.2
 OFFSET = -3.2
 
 [node name="delay" type="Timer" parent="." index="0"]
+
 [connection signal="timeout" from="delay" to="." method="_on_delay_timeout"]

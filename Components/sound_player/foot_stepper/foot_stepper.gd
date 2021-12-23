@@ -5,6 +5,8 @@ const FOOTSTEP_WOOD = preload("res://Entities/footstep_wood.wav")
 const FOOTSTEP_STONE = preload("res://Entities/footstep_stone.wav")
 const FOOTSTEP_CARPET = preload("res://Entities/footstep_carpet.wav")
 const FOOTSTEP_DIRT = preload("res://Entities/footstep_dirt.wav")
+const FOOTSTEP_SAND = preload("res://Entities/footstep_sand.wav")
+const FOOTSTEP_METAL = preload("res://Entities/footstep_metal.wav")
 
 export(float, 0.0, 9.9) var RATE = 0.33
 export(float, -9.9, 9.9) var OFFSET = -0.33
@@ -77,9 +79,11 @@ func footstep():
 				-1: pass # nothing
 				0: audio = FOOTSTEP_GRASS # autumn
 				1: audio = FOOTSTEP_STONE # underground
+				2: audio = FOOTSTEP_SAND
 		0: audio = FOOTSTEP_DIRT
 		1: audio = FOOTSTEP_WOOD
 		2: audio = FOOTSTEP_CARPET
+		3: audio = FOOTSTEP_METAL
 	
 	if audio == null: return
 	

@@ -72,6 +72,7 @@ func _ready() -> void:
 	match AMBIANCE:
 		TYPES.AUTUMN: ambiance.stream = load("res://Levels/level/forest_ambiance.ogg")
 		TYPES.UNDERGROUND: ambiance.stream = load("res://Levels/level/cave_ambiance.ogg")
+		TYPES.WASTELAND: ambiance.stream = load("res://Levels/level/wasteland_ambience.ogg")
 		_: return
 	
 	global.add_child(ambiance)
