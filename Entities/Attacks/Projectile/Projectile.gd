@@ -106,5 +106,4 @@ func _on_hitbox_hit(area: Area2D, type: String) -> void:
 func _on_src_collision_body_exited(body: Node) -> void:
 	if body == SOURCE:
 		has_left_src = true
-		print("!")
 		$src_collision.queue_free()

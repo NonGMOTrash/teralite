@@ -11,7 +11,7 @@ radius = 4.0
 [sub_resource type="CircleShape2D" id=2]
 radius = 6.0
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 resource_name = "death"
 length = 0.5
 tracks/0/type = "value"
@@ -53,7 +53,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -101,8 +101,8 @@ shape = SubResource( 2 )
 
 [node name="animation" type="AnimationPlayer" parent="."]
 autoplay = "fire"
-anims/death = SubResource( 6 )
-anims/fire = SubResource( 3 )
+anims/death = SubResource( 3 )
+anims/fire = SubResource( 4 )
 
 [node name="fuel" type="Timer" parent="."]
 wait_time = 2.5

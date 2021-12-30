@@ -100,7 +100,7 @@ func _process(_delta: float):
 		new_item_entity.SOURCE = player
 		var velo = dir_vector * 150
 		velo += player.velocity / 1.5
-		new_item_entity.velocity = velo
+		new_item_entity.velocity = velo + player.velocity / 3
 		new_item_entity.times_used = times_used
 		refs.ysort.get_ref().add_child(new_item_entity)
 		

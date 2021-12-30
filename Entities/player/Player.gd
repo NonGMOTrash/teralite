@@ -45,8 +45,6 @@ var force_death_msg := false
 var can_dash := true
 
 func _ready():
-	print("alive :)")
-	
 	dash_buffer *= (1.0/60.0)
 	global.selection = 0
 	iTimer.start()

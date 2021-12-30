@@ -199,4 +199,5 @@ position = Vector2( 827, 252 )
 LEVEL = "Abomination"
 STAR_REQUIREMENT = 38
 
+[editable path="YSort/WorldTiles"]
 [editable path="YSort/Underground"]

@@ -24,8 +24,8 @@ func _ready():
 	smoke_path = smoke.get_path()
 
 func death():
-	if get_node_or_null("smoke_path") != null:
-		smoke.stop()
+	if get_node_or_null(smoke_path) != null:
+		smoke.queue_free()
 	animation.play("death")
 
 func _on_fuel_timeout() -> void:
