@@ -89,8 +89,8 @@ var speedrun_time = 0.0
 var icon = 0
 
 const ver_phase = "beta"
-const ver_num = 4.2
-const ver_hotfix = 0
+const ver_num = 4.1
+const ver_hotfix = 1
 
 # for saving things
 const SAVE_DIR := "user://saves/"
@@ -535,14 +535,6 @@ func sec_to_time(time: float) -> String:
 	if seconds < 10: 
 		seconds = str(seconds)
 		seconds = "0"+seconds
-	
-	prints(
-		"time:", time,
-		"hours:", hours,
-		"minutes:", minutes,
-		"seconds:", seconds,
-		"tenth:", tenth
-	)
 	
 	if hours > 1:
 		return (

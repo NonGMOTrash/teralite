@@ -77,10 +77,15 @@ func _on_memory_timer_timeout() -> void:
 
 func got_hit(body, _type):
 	var source = body.get_parent()
-	if source == self or brain.targets.has(source): return
-	if source is Attack: source = source.SOURCE
-	if not source is Entity: return
-	if brain.targets.has(source) == true: return
+	if !is_instance_valid(source) or source == self or brain.targets.has(source):
+		return
+	if source is Attack:
+		if get_node_or_null(source.SOURCE_PATH) == null:
+			return
+		else:
+			source = source.SOURCE
+	if not source is Entity or brain.targets.has(source):
+		return
 	
 	match global.get_relation(brain.get_parent(), source):
 		"neutral":
