@@ -97,6 +97,7 @@ tracks/6/keys = {
 
 [node name="level_completed" type="ColorRect"]
 pause_mode = 2
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
@@ -171,7 +172,7 @@ texture = ExtResource( 3 )
 margin_top = 74.0
 margin_right = 167.0
 margin_bottom = 90.0
-text = "Damage Taken: "
+text = "damage taken: "
 align = 1
 
 [node name="comment" type="Label" parent="area/body/damage"]
@@ -204,7 +205,7 @@ texture = ExtResource( 4 )
 margin_top = 75.0
 margin_right = 168.0
 margin_bottom = 91.0
-text = "Time: "
+text = "time: "
 align = 1
 
 [node name="comment" type="Label" parent="area/body/time"]
@@ -228,7 +229,7 @@ alignment = 1
 margin_left = 96.0
 margin_right = 175.0
 margin_bottom = 22.0
-text = "Proceed"
+text = "proceed"
 icon = ExtResource( 6 )
 flat = true
 
@@ -236,7 +237,7 @@ flat = true
 margin_left = 179.0
 margin_right = 247.0
 margin_bottom = 22.0
-text = "Replay"
+text = "replay"
 icon = ExtResource( 7 )
 flat = true
 

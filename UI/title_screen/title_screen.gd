@@ -38,7 +38,6 @@ const MESSAGES = [
 	"it really makes you feel orange", "t posing allowed",
 	"dont go to /r/dontgohere", "game of the year, fornever",
 	"100% based", "100% cringe", 
-	"i visit newgrounds.com everyday",
 	"a quircky new earthbound inspired RPG",
 	"straight down to heck", "worst mistake of my life",
 	"proof that software is getting worse", 
@@ -70,11 +69,11 @@ func _ready() -> void:
 		version.text = version.text + ".0"
 	if global.ver_hotfix > 0:
 		if global.ver_hotfix == 1:
-			version.text = version.text + " Hotfix"
+			version.text = version.text + " hotfix"
 		else:
-			version.text = version.text + " Hotfix #" + str(global.ver_hotfix)
+			version.text = version.text + " hotfix #" + str(global.ver_hotfix)
 	if OS.is_debug_build() == true:
-		version.text = version.text + " (Debug)"
+		version.text = version.text + " (debug)"
 	
 	msg.text = MESSAGES[OS.get_system_time_msecs() % MESSAGES.size()]
 	
@@ -205,7 +204,7 @@ func _on_create_pressed() -> void:
 	if new_save_name == "":
 		new_save_name = "untitled_save"
 	if not new_save_name.is_valid_filename():
-		$new_save/VBoxContainer/HBoxContainer/name.text = "not a valid filename"
+		$new_save/VBoxContainer/HBoxContainer/name.text = "invalid filename"
 		return
 	
 	global.save_name = new_save_name

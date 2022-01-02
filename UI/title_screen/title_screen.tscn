@@ -66,7 +66,7 @@ margin_right = 192.0
 margin_bottom = 126.0
 custom_constants/hseparation = -15
 shortcut_in_tooltip = false
-text = "Play"
+text = "play"
 icon = ExtResource( 4 )
 flat = true
 
@@ -76,7 +76,7 @@ margin_right = 192.0
 margin_bottom = 152.0
 custom_constants/hseparation = -15
 shortcut_in_tooltip = false
-text = "Options"
+text = "options"
 icon = ExtResource( 7 )
 flat = true
 
@@ -86,7 +86,7 @@ margin_right = 192.0
 margin_bottom = 178.0
 custom_constants/hseparation = -17
 shortcut_in_tooltip = false
-text = "Quit"
+text = "quit"
 icon = ExtResource( 5 )
 flat = true
 
@@ -101,7 +101,7 @@ margin_right = -2.0
 grow_horizontal = 0
 theme = ExtResource( 1 )
 custom_colors/font_color = Color( 0.905882, 0.87451, 0.129412, 1 )
-text = "Beta X.X Hotfix #0"
+text = "beta X.X hotfix #0"
 align = 2
 valign = 1
 __meta__ = {
@@ -163,7 +163,7 @@ margin_bottom = 196.0
 [node name="back" parent="saves/HBoxContainer" instance=ExtResource( 9 )]
 margin_right = 58.0
 margin_bottom = 22.0
-text = "Back"
+text = "back"
 icon = ExtResource( 5 )
 flat = true
 align = 0
@@ -183,7 +183,7 @@ __meta__ = {
 margin_left = 247.0
 margin_right = 364.0
 margin_bottom = 22.0
-text = "Create New Save"
+text = "create new save"
 flat = true
 align = 2
 
@@ -209,18 +209,18 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="new_save/VBoxContainer"]
 margin_right = 344.0
-margin_bottom = 26.0
+margin_bottom = 20.0
 
 [node name="name_label" type="Label" parent="new_save/VBoxContainer/HBoxContainer"]
-margin_top = 5.0
+margin_top = 2.0
 margin_right = 67.0
-margin_bottom = 21.0
-text = "Save Name:"
+margin_bottom = 18.0
+text = "save name:"
 
 [node name="name" type="LineEdit" parent="new_save/VBoxContainer/HBoxContainer"]
 margin_left = 71.0
 margin_right = 344.0
-margin_bottom = 26.0
+margin_bottom = 20.4988
 size_flags_horizontal = 3
 custom_constants/minimum_spaces = 0
 max_length = 40
@@ -234,26 +234,26 @@ __meta__ = {
 }
 
 [node name="HBoxContainer_2" type="HBoxContainer" parent="new_save/VBoxContainer"]
-margin_top = 30.0
+margin_top = 24.0
 margin_right = 344.0
-margin_bottom = 52.0
+margin_bottom = 46.0
 
 [node name="icon_label" type="Label" parent="new_save/VBoxContainer/HBoxContainer_2"]
 margin_top = 3.0
-margin_right = 65.0
+margin_right = 61.0
 margin_bottom = 19.0
-text = "Save Icon:"
+text = "save icon:"
 
 [node name="prev" parent="new_save/VBoxContainer/HBoxContainer_2" instance=ExtResource( 9 )]
-margin_left = 69.0
-margin_right = 127.0
+margin_left = 65.0
+margin_right = 123.0
 margin_bottom = 22.0
 text = "<< prev"
 flat = true
 
 [node name="icon" type="TextureRect" parent="new_save/VBoxContainer/HBoxContainer_2"]
-margin_left = 131.0
-margin_right = 147.0
+margin_left = 127.0
+margin_right = 143.0
 margin_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -261,8 +261,8 @@ texture = ExtResource( 2 )
 stretch_mode = 5
 
 [node name="next" parent="new_save/VBoxContainer/HBoxContainer_2" instance=ExtResource( 9 )]
-margin_left = 151.0
-margin_right = 210.0
+margin_left = 147.0
+margin_right = 206.0
 margin_bottom = 22.0
 text = "next >>"
 flat = true
@@ -276,7 +276,7 @@ margin_left = -117.0
 margin_top = -22.0
 margin_right = 0.0
 margin_bottom = 0.0
-text = "Create New Save"
+text = "create"
 flat = true
 
 [node name="cancel" parent="new_save" instance=ExtResource( 9 )]
@@ -285,7 +285,7 @@ anchor_bottom = 1.0
 margin_top = -22.0
 margin_right = 50.0
 margin_bottom = 0.0
-text = "Cancel"
+text = "cancel"
 flat = true
 
 [node name="Options" parent="." instance=ExtResource( 8 )]

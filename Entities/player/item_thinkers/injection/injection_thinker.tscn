@@ -10,7 +10,7 @@
 script = ExtResource( 2 )
 HELD_ITEM_TEXTURE = ExtResource( 3 )
 my_item = "injection"
-display_name = "Injection"
+display_name = "injection"
 CURSOR = ExtResource( 5 )
 CURSOR_MODE = 1
 EQUIP_SOUND = ExtResource( 4 )

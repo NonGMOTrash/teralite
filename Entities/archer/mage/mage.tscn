@@ -34,7 +34,6 @@ tracks/0/keys = {
 [node name="mage" instance=ExtResource( 1 )]
 ACCELERATION = 220
 SLOWDOWN = 600
-TOP_SPEED = 75
 FORCE_MULT = 1.02
 truName = "mage"
 PROJECTILE = ExtResource( 2 )
@@ -76,6 +75,9 @@ general_springs = {
 "neutral": ""
 }
 
+[node name="action_lobe" parent="brain" index="4"]
+PATIENCE = 0.15
+
 [node name="AnimationPlayer" parent="." index="8"]
 anims/walk = SubResource( 3 )
 
@@ -87,7 +89,6 @@ position = Vector2( 6, 0 )
 
 [node name="sprite" parent="held_item/anchor" index="0"]
 texture = ExtResource( 5 )
-flip_v = false
 hframes = 1
 frame = 0
 

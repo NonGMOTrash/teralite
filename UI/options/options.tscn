@@ -34,16 +34,16 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_neighbour_left = NodePath("General")
 focus_neighbour_right = NodePath("Exit")
+custom_constants/hseparation = 999
 custom_styles/tab_fg = ExtResource( 4 )
 custom_styles/tab_bg = ExtResource( 8 )
-custom_constants/hseparation = 999
 tab_align = 0
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Video" type="VBoxContainer" parent="tabs"]
+[node name="video" type="VBoxContainer" parent="tabs"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 6.0
@@ -55,62 +55,62 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="fullscreen" parent="tabs/Video" instance=ExtResource( 2 )]
+[node name="fullscreen" parent="tabs/video" instance=ExtResource( 2 )]
 margin_top = 11.0
 margin_right = 352.0
 margin_bottom = 35.0
 shortcut_in_tooltip = false
-text = "Fullscreen"
+text = "fullscreen"
 
-[node name="pixel" parent="tabs/Video" instance=ExtResource( 2 )]
+[node name="pixel" parent="tabs/video" instance=ExtResource( 2 )]
 margin_top = 39.0
 margin_right = 352.0
 margin_bottom = 63.0
-text = "Pixel perfect filter (not recomended)"
+text = "pixel perfect filter (not recomended)"
 
-[node name="gpu_snap" parent="tabs/Video" instance=ExtResource( 2 )]
+[node name="gpu_snap" parent="tabs/video" instance=ExtResource( 2 )]
 margin_top = 67.0
 margin_right = 352.0
 margin_bottom = 91.0
 text = "GPU pixel snap"
 
-[node name="vsync" parent="tabs/Video" instance=ExtResource( 2 )]
+[node name="vsync" parent="tabs/video" instance=ExtResource( 2 )]
 margin_top = 95.0
 margin_right = 352.0
 margin_bottom = 119.0
-text = "Vsync"
+text = "vsync"
 
-[node name="particles" type="HBoxContainer" parent="tabs/Video"]
+[node name="particles" type="HBoxContainer" parent="tabs/video"]
 margin_top = 123.0
 margin_right = 352.0
 margin_bottom = 143.0
 
-[node name="icon" type="TextureRect" parent="tabs/Video/particles"]
+[node name="icon" type="TextureRect" parent="tabs/video/particles"]
 margin_right = 16.0
 margin_bottom = 20.0
 texture = ExtResource( 10 )
 
-[node name="Label" type="Label" parent="tabs/Video/particles"]
+[node name="Label" type="Label" parent="tabs/video/particles"]
 margin_left = 20.0
 margin_top = 2.0
 margin_right = 78.0
 margin_bottom = 18.0
-text = "Particles:"
+text = "particles:"
 
-[node name="dropdown" type="OptionButton" parent="tabs/Video/particles"]
+[node name="dropdown" type="OptionButton" parent="tabs/video/particles"]
 margin_left = 82.0
 margin_right = 131.0
 margin_bottom = 20.4988
 theme = ExtResource( 7 )
+custom_constants/hseparation = -7
 custom_styles/hover = ExtResource( 8 )
 custom_styles/normal = ExtResource( 8 )
-custom_constants/hseparation = -7
-text = "None"
+text = "none"
 flat = true
-items = [ "None", null, false, 0, null, "Few", null, false, 1, null, "Most", null, false, 2, null, "All", null, false, 3, null ]
+items = [ "none", null, false, 0, null, "few", null, false, 1, null, "most", null, false, 2, null, "all", null, false, 3, null ]
 selected = 0
 
-[node name="Audio" type="VBoxContainer" parent="tabs"]
+[node name="audio" type="VBoxContainer" parent="tabs"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -120,15 +120,15 @@ margin_right = -6.0
 margin_bottom = -2.24938
 alignment = 1
 
-[node name="volume_label" type="Label" parent="tabs/Audio"]
+[node name="volume_label" type="Label" parent="tabs/audio"]
 margin_top = 58.0
 margin_right = 352.0
 margin_bottom = 74.0
-text = "Volume (50%)"
+text = "volume (50%)"
 align = 1
 valign = 1
 
-[node name="volume" type="HSlider" parent="tabs/Audio"]
+[node name="volume" type="HSlider" parent="tabs/audio"]
 margin_top = 78.0
 margin_right = 352.0
 margin_bottom = 96.0
@@ -141,7 +141,7 @@ value = 100.0
 allow_greater = true
 allow_lesser = true
 
-[node name="Game" type="VBoxContainer" parent="tabs"]
+[node name="game" type="VBoxContainer" parent="tabs"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -151,33 +151,33 @@ margin_right = -6.0
 margin_bottom = -2.24938
 alignment = 1
 
-[node name="perfection" parent="tabs/Game" instance=ExtResource( 2 )]
+[node name="perfection" parent="tabs/game" instance=ExtResource( 2 )]
 margin_top = 23.0
 margin_right = 352.0
 margin_bottom = 47.0
 shortcut_in_tooltip = false
-text = "Perfection Mode"
+text = "perfection mode (1 hit death)"
 
-[node name="hidebar" parent="tabs/Game" instance=ExtResource( 2 )]
+[node name="hidebar" parent="tabs/game" instance=ExtResource( 2 )]
 margin_top = 51.0
 margin_right = 352.0
 margin_bottom = 75.0
 shortcut_in_tooltip = false
-text = "Hide item bar when empty"
+text = "hide item bar when empty"
 
-[node name="smooth" parent="tabs/Game" instance=ExtResource( 2 )]
+[node name="smooth" parent="tabs/game" instance=ExtResource( 2 )]
 margin_top = 79.0
 margin_right = 352.0
 margin_bottom = 103.0
 shortcut_in_tooltip = false
-text = "Smooth camera"
+text = "smooth camera"
 
-[node name="spawn_pause" parent="tabs/Game" instance=ExtResource( 2 )]
+[node name="spawn_pause" parent="tabs/game" instance=ExtResource( 2 )]
 margin_top = 107.0
 margin_right = 352.0
 margin_bottom = 131.0
 pressed = true
-text = "Spawn Pause"
+text = "spawn pause"
 
 [node name="exit" parent="." instance=ExtResource( 3 )]
 anchor_left = 1.0
@@ -191,7 +191,7 @@ custom_styles/hover = ExtResource( 4 )
 custom_styles/pressed = ExtResource( 4 )
 custom_styles/focus = ExtResource( 4 )
 custom_styles/normal = ExtResource( 8 )
-text = "Exit"
+text = "exit"
 icon = ExtResource( 9 )
 
 [node name="sound_player" parent="." instance=ExtResource( 1 )]
@@ -199,5 +199,5 @@ FREE_WHEN_EMPTY = false
 
 [connection signal="tab_changed" from="tabs" to="." method="_on_tabs_tab_changed"]
 [connection signal="visibility_changed" from="tabs" to="." method="_on_tabs_visibility_changed"]
-[connection signal="value_changed" from="tabs/Audio/volume" to="." method="_on_volume_value_changed"]
+[connection signal="value_changed" from="tabs/audio/volume" to="." method="_on_volume_value_changed"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

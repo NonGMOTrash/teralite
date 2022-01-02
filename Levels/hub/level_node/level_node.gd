@@ -17,11 +17,11 @@ func _ready() -> void:
 	
 	if WORLD_ENTRANCE == true:
 		var missing_stars: int = STAR_REQUIREMENT - global.stars
-		if missing_stars < 1 : txt = "Press [E] to enter"
-		elif missing_stars == 1: txt = "You need 1 more star"
-		elif missing_stars > 1: txt = "You need %s more stars" % missing_stars
+		if missing_stars < 1 : txt = "press [E] to enter"
+		elif missing_stars == 1: txt = "you need 1 more star"
+		elif missing_stars > 1: txt = "you need %s more stars" % missing_stars
 		
-		label.text = LEVEL + "\n" + txt
+		label.text = LEVEL.to_lower() + "\n" + txt
 		return
 	
 	if global.stars < STAR_REQUIREMENT: 
@@ -39,22 +39,22 @@ func _ready() -> void:
 		0: 
 			var missing_stars = STAR_REQUIREMENT - global.stars
 			if missing_stars == 1:
-				txt = "You need 1 more star"
+				txt = "you need 1 more star"
 			else:
-				txt = "You need %s more stars" % missing_stars
+				txt = "you need %s more stars" % missing_stars
 			
-		1, 2, 3: txt = "Press [E] to enter"
+		1, 2, 3: txt = "press [E] to enter"
 	
-	var death_txt = "Deaths: NA"
+	var death_txt = "deaths: NA"
 	if LEVEL in global.level_deaths:
-		death_txt = "Deaths: %s" % global.level_deaths[LEVEL]
+		death_txt = "deaths: %s" % global.level_deaths[LEVEL]
 	
-	var time_txt = "Best Time: NA"
+	var time_txt = "best time: NA"
 	if LEVEL in global.level_times:
-		time_txt = "Best Time: %s" % global.sec_to_time(global.level_times[LEVEL])
+		time_txt = "best time: %s" % global.sec_to_time(global.level_times[LEVEL])
 	
 	label.text = (
-		LEVEL + "\n" +
+		LEVEL.to_lower() + "\n" +
 		txt + "\n" +
 		death_txt + "\n" +
 		time_txt

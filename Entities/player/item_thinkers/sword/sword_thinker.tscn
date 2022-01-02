@@ -37,7 +37,7 @@ script = ExtResource( 1 )
 HELD_ITEM_TEXTURE = ExtResource( 5 )
 HELD_ITEM_OFFSET = Vector2( 0, -4 )
 my_item = "sword"
-display_name = "Sword"
+display_name = "sword"
 CURSOR = ExtResource( 2 )
 CURSOR_MODE = 1
 EQUIP_SOUND = ExtResource( 3 )
@@ -61,9 +61,9 @@ MODE = 1
 AUTO_PLAY = false
 
 [node name="counter" type="Area2D" parent="."]
-monitorable = false
 collision_layer = 0
 collision_mask = 8
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="counter"]
 shape = SubResource( 1 )

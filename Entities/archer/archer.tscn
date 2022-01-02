@@ -151,7 +151,7 @@ USE_DEADZONE = true
 MEMORY_TIME = 6.5
 
 [node name="action_lobe" parent="brain" instance=ExtResource( 13 )]
-PATIENCE = 0.55
+PATIENCE = 0.3
 
 [node name="action" parent="brain/action_lobe" instance=ExtResource( 16 )]
 best_distance = 50
@@ -165,7 +165,6 @@ anims/stand = SubResource( 4 )
 anims/walk = SubResource( 5 )
 
 [node name="foot_stepper" parent="." instance=ExtResource( 17 )]
-FREE_WHEN_EMPTY = false
 
 [node name="entity_effects" parent="." instance=ExtResource( 5 )]
 death_type = 3

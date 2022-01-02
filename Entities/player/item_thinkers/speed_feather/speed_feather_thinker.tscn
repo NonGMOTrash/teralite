@@ -10,7 +10,7 @@
 script = ExtResource( 4 )
 HELD_ITEM_TEXTURE = ExtResource( 3 )
 my_item = "speed_feather"
-display_name = "Speed Feather"
+display_name = "speed feather"
 
 [node name="sound_player" parent="." instance=ExtResource( 2 )]
 

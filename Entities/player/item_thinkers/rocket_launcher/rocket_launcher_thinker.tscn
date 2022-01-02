@@ -15,7 +15,7 @@ auto_ready_check = false
 HELD_ITEM_TEXTURE = ExtResource( 6 )
 RELOAD_ANIM = "load"
 my_item = "rocket_launcher"
-display_name = "Rocket Launcher"
+display_name = "rocket launcher"
 CURSOR = ExtResource( 8 )
 reload_time = 1.2
 

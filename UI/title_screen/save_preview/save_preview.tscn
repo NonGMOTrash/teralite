@@ -16,6 +16,7 @@ margin_right = 185.0
 margin_bottom = 66.4988
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 theme = ExtResource( 3 )
 custom_styles/panel = ExtResource( 1 )
 script = ExtResource( 6 )
@@ -156,7 +157,7 @@ alignment = 1
 [node name="Label" type="Label" parent="delete_confirmation"]
 margin_right = 173.0
 margin_bottom = 35.0
-text = "are you sure you want to delete this save?"
+text = "are you sure?"
 align = 1
 autowrap = true
 

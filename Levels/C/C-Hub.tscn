@@ -27,8 +27,8 @@ tracks/0/keys = {
 radius = 40.0
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 8.22607
-height = 11.9624
+radius = 5.3728
+height = 11.9618
 
 [node name="C-Hub" instance=ExtResource( 1 )]
 AMBIANCE = 3

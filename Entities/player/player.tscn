@@ -116,18 +116,6 @@ tracks/2/keys = {
 "method": "footstep"
 } ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("sprite:rotation_degrees")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.0, 3.0, 0.0, 0.0, -3.0 ]
-}
 
 [sub_resource type="Animation" id=7]
 length = 5.0
@@ -186,6 +174,7 @@ DAMAGE = 0
 
 [node name="sprite" parent="." instance=ExtResource( 6 )]
 material = SubResource( 1 )
+scale = Vector2( 1.05, 0.95 )
 texture = ExtResource( 10 )
 hframes = 4
 vframes = 2
@@ -233,8 +222,10 @@ one_shot = true
 [node name="held_item" parent="." instance=ExtResource( 16 )]
 TARGETING = 2
 
+[node name="sprite" parent="held_item/anchor" index="0"]
+frame = 0
+
 [node name="foot_stepper" parent="." instance=ExtResource( 11 )]
-FREE_WHEN_EMPTY = false
 RATE = 0.0
 OFFSET = 0.0
 

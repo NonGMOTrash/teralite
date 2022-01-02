@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=16 format=2]
+[gd_resource type="Theme" load_steps=18 format=2]
 
 [ext_resource path="res://UI/Themes/Fonts/m6x11.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Themes/Styles/stylebox_full.tres" type="StyleBox" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://UI/Icons/option_empty.png" type="Texture" id=10]
 [ext_resource path="res://UI/Icons/dropdown.png" type="Texture" id=11]
 [ext_resource path="res://UI/Icons/option_selected.png" type="Texture" id=12]
+[ext_resource path="res://UI/Themes/Fonts/m6x11.ttf" type="DynamicFontData" id=13]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -19,6 +20,14 @@
 color = Color( 1, 1, 1, 1 )
 grow_begin = 0.0
 grow_end = 0.0
+
+[sub_resource type="DynamicFont" id=4]
+resource_local_to_scene = true
+outline_color = Color( 0.913725, 0.827451, 0.12549, 1 )
+extra_spacing_top = 4
+extra_spacing_bottom = -2
+extra_spacing_space = 1
+font_data = ExtResource( 13 )
 
 [sub_resource type="StyleBoxLine" id=3]
 color = Color( 1, 1, 1, 1 )
@@ -58,6 +67,10 @@ Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/fonts/font = ExtResource( 1 )
 Label/styles/normal = null
+LineEdit/fonts/font = SubResource( 4 )
+LineEdit/styles/focus = ExtResource( 5 )
+LineEdit/styles/normal = ExtResource( 4 )
+LineEdit/styles/read_only = ExtResource( 4 )
 OptionButton/colors/font_color = Color( 1, 1, 1, 1 )
 OptionButton/colors/font_color_disabled = Color( 0.901961, 0.901961, 0.901961, 0.2 )
 OptionButton/colors/font_color_hover = Color( 1, 1, 1, 1 )

@@ -72,11 +72,11 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Node2D/Control" index="0"]
-margin_left = 258.87
-margin_top = 357.654
-margin_right = 378.87
-margin_bottom = 411.654
-text = "Right click to throw your spear"
+margin_left = 263.324
+margin_top = 367.454
+margin_right = 383.324
+margin_bottom = 421.454
+text = "right click to throw your spear"
 align = 1
 autowrap = true
 __meta__ = {

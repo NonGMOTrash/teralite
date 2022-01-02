@@ -12,7 +12,7 @@
 script = ExtResource( 2 )
 HELD_ITEM_TEXTURE = ExtResource( 3 )
 my_item = "medkit"
-display_name = "Medkit"
+display_name = "medkit"
 CURSOR = ExtResource( 4 )
 CURSOR_MODE = 1
 EQUIP_SOUND = ExtResource( 5 )

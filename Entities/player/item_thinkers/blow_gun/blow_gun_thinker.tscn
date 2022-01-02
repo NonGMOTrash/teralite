@@ -9,7 +9,7 @@
 script = ExtResource( 1 )
 HELD_ITEM_TEXTURE = ExtResource( 3 )
 my_item = "blow_gun"
-display_name = "Blow Gun"
+display_name = "blow gun"
 CURSOR = ExtResource( 4 )
 CURSOR_MODE = 1
 cooldown_time = 1.6

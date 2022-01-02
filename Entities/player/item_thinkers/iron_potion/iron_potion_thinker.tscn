@@ -12,7 +12,7 @@
 script = ExtResource( 1 )
 HELD_ITEM_TEXTURE = ExtResource( 2 )
 my_item = "iron_potion"
-display_name = "Iron-Infused Potion"
+display_name = "iron infused potion"
 CURSOR = ExtResource( 7 )
 CURSOR_MODE = 1
 EQUIP_SOUND = ExtResource( 5 )

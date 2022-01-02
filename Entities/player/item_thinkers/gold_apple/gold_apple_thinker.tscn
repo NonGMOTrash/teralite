@@ -11,7 +11,7 @@
 script = ExtResource( 1 )
 HELD_ITEM_TEXTURE = ExtResource( 3 )
 my_item = "gold_apple"
-display_name = "Golden Apple"
+display_name = "golden apple"
 CURSOR = ExtResource( 6 )
 CURSOR_MODE = 1
 bonus_healing = 2

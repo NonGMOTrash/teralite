@@ -11,7 +11,7 @@
 script = ExtResource( 2 )
 HELD_ITEM_TEXTURE = ExtResource( 3 )
 my_item = "landmines"
-display_name = "Landmines"
+display_name = "landmines"
 CURSOR = ExtResource( 6 )
 CURSOR_MODE = 1
 max_mines = 4

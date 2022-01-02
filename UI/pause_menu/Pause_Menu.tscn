@@ -47,7 +47,7 @@ __meta__ = {
 margin_top = 22.0
 margin_right = 119.0
 margin_bottom = 38.0
-text = "Paused"
+text = "paused"
 align = 1
 valign = 1
 
@@ -60,7 +60,7 @@ margin_bottom = 43.0
 margin_top = 47.0
 margin_right = 119.0
 margin_bottom = 69.0
-text = "Resume"
+text = "resume"
 icon = ExtResource( 7 )
 flat = true
 
@@ -68,7 +68,7 @@ flat = true
 margin_top = 73.0
 margin_right = 119.0
 margin_bottom = 95.0
-text = "Options"
+text = "options"
 icon = ExtResource( 5 )
 flat = true
 
@@ -76,7 +76,7 @@ flat = true
 margin_top = 99.0
 margin_right = 119.0
 margin_bottom = 121.0
-text = "Quick Restart"
+text = "restart level"
 icon = ExtResource( 12 )
 flat = true
 
@@ -84,7 +84,7 @@ flat = true
 margin_top = 125.0
 margin_right = 119.0
 margin_bottom = 147.0
-text = "Return to Hub"
+text = "return to hub"
 icon = ExtResource( 8 )
 flat = true
 
@@ -92,11 +92,12 @@ flat = true
 margin_top = 151.0
 margin_right = 119.0
 margin_bottom = 173.0
-text = "Quit"
+text = "quit"
 icon = ExtResource( 6 )
 flat = true
 
 [node name="Options" parent="." instance=ExtResource( 1 )]
+visible = false
 
 [node name="sound_player" parent="." instance=ExtResource( 3 )]
 

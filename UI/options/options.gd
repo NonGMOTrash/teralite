@@ -2,17 +2,17 @@ extends Control
 
 onready var sound_player = $sound_player
 onready var tabs = $tabs
-onready var fullscreen = $tabs/Video/fullscreen
-onready var pixel = $tabs/Video/pixel
-onready var vsync = $tabs/Video/vsync
-onready var perfection = $tabs/Game/perfection
-onready var smooth = $tabs/Game/smooth
-onready var hidebar = $tabs/Game/hidebar
-onready var volume = $tabs/Audio/volume
-onready var volume_label = $tabs/Audio/volume_label
-onready var particles = $tabs/Video/particles/dropdown
-onready var gpu_snap = $tabs/Video/gpu_snap
-onready var spawn_pause = $tabs/Game/spawn_pause
+onready var fullscreen = $tabs/video/fullscreen
+onready var pixel = $tabs/video/pixel
+onready var vsync = $tabs/video/vsync
+onready var perfection = $tabs/game/perfection
+onready var smooth = $tabs/game/smooth
+onready var hidebar = $tabs/game/hidebar
+onready var volume = $tabs/audio/volume
+onready var volume_label = $tabs/audio/volume_label
+onready var particles = $tabs/video/particles/dropdown
+onready var gpu_snap = $tabs/video/gpu_snap
+onready var spawn_pause = $tabs/game/spawn_pause
 
 signal closed
 
