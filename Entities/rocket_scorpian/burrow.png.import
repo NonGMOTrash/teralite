@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rocket_scorpian.png-18f56de3693824b17a9dca35cea0fe25.stex"
+path="res://.import/burrow.png-2bd1d5c0fb50e3a578f6a1224936f553.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/rocket_scorpian/rocket_scorpian.png"
-dest_files=[ "res://.import/rocket_scorpian.png-18f56de3693824b17a9dca35cea0fe25.stex" ]
+source_file="res://Entities/rocket_scorpian/burrow.png"
+dest_files=[ "res://.import/burrow.png-2bd1d5c0fb50e3a578f6a1224936f553.stex" ]
 
 [params]
 

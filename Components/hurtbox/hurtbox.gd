@@ -19,6 +19,9 @@ func _on_hurtbox_tree_entered() -> void:
 	get_parent().components["hurtbox"] = self
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.IGNORE_ATTACKS == true and entity is Attack:
+		return
+	
 	var area_entity: Entity = area.entity
 	
 	if entity == area_entity:

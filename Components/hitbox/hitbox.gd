@@ -12,6 +12,7 @@ export(String) var STATUS_EFFECT = ""
 export var STATUS_DURATION = 5.0
 export var STATUS_LEVEL = 1.0
 export var TEAM_ATTACK = true
+export var IGNORE_ATTACKS := false
 export(AudioStream) var TRIGGERED_SOUND
 
 onready var entity = get_parent()

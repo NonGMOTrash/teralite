@@ -13,7 +13,7 @@ func _ready():
 	else:
 		label.text = ""
 		#OS.delay_msec((5/60.0) * 1000)
-		label.text = death_message + "\n" + "Press [E] to retry."
+		label.text = death_message + "\n" + "press [E] to retry"
 
 func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
 	waiting = true

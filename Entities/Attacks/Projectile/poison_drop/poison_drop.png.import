@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rocket_scorpian.png-18f56de3693824b17a9dca35cea0fe25.stex"
+path="res://.import/poison_drop.png-8f33896f2aa7d4562cd5437ed017e17b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/rocket_scorpian/rocket_scorpian.png"
-dest_files=[ "res://.import/rocket_scorpian.png-18f56de3693824b17a9dca35cea0fe25.stex" ]
+source_file="res://Entities/Attacks/Projectile/poison_drop/poison_drop.png"
+dest_files=[ "res://.import/poison_drop.png-8f33896f2aa7d4562cd5437ed017e17b.stex" ]
 
 [params]
 

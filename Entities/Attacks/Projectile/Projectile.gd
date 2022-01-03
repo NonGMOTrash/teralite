@@ -85,7 +85,7 @@ func death():
 	velocity = velocity * ONHIT_SPEED_MULTIPLIER
 	emit_signal("death")
 	
-	if components["hitbox"] != null:
+	if components["hitbox"] != null and is_instance_valid(components["hitbox"]):
 		hitbox.queue_free()
 
 func _on_hitbox_hit(area: Area2D, type: String) -> void:

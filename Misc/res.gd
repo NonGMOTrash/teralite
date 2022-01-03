@@ -96,6 +96,7 @@ const data := {
 	"big_bullet": "res://Entities/Attacks/Projectile/big_bullet/big_bullet.tscn",
 	"shotgun_shell": "res://Entities/Attacks/Projectile/shotgun_shell/shotgun_shell.tscn",
 	"rocket": "res://Entities/Attacks/Projectile/rocket/rocket.tscn",
+	"poison_drop": "res://Entities/Attacks/Projectile/poison_drop/poison_drop.tscn",
 	
 	# effects
 	"hit_effect": "res://Effects/hit_effect/hit_effect.tscn",
