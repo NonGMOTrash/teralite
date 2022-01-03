@@ -70,6 +70,7 @@ LEVEL = "Wasteland"
 STAR_REQUIREMENT = 24
 WORLD_ENTRANCE = true
 CUSTOM_SCENE_PATH = "res://Levels/C/C-Hub.tscn"
+REQUIRED_LEVEL = "Duel"
 
 [node name="Sprite" parent="YSort/Wasteland/Area2D" index="0"]
 texture = ExtResource( 7 )

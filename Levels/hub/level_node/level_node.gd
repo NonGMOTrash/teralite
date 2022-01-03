@@ -7,19 +7,30 @@ export var LEVEL := "level"
 export var STAR_REQUIREMENT = 0
 export var WORLD_ENTRANCE := false
 export var CUSTOM_SCENE_PATH := ""
+export var REQUIRED_LEVEL := ""
 
 var player = null
-var pressed = false
+var pressed := false
+var open := false
 
 func _ready() -> void:
+	if (
+		global.stars >= STAR_REQUIREMENT and
+		REQUIRED_LEVEL == "" or REQUIRED_LEVEL in global.cleared_levels
+	):
+		open = true
+	
 	label.visible = false
 	var txt: String
 	
 	if WORLD_ENTRANCE == true:
-		var missing_stars: int = STAR_REQUIREMENT - global.stars
-		if missing_stars < 1 : txt = "press [E] to enter"
-		elif missing_stars == 1: txt = "you need 1 more star"
-		elif missing_stars > 1: txt = "you need %s more stars" % missing_stars
+		if REQUIRED_LEVEL != "" and not REQUIRED_LEVEL in global.cleared_levels:
+			txt = "complete %s first" % REQUIRED_LEVEL
+		else:
+			var missing_stars: int = STAR_REQUIREMENT - global.stars
+			if missing_stars < 1: txt = "press [E] to enter"
+			elif missing_stars == 1: txt = "you need 1 more star"
+			elif missing_stars > 1: txt = "you need %s more stars" % missing_stars
 		
 		label.text = LEVEL.to_lower() + "\n" + txt
 		return
@@ -36,14 +47,17 @@ func _ready() -> void:
 			sprite.frame = 1
 	
 	match sprite.frame:
-		0: 
-			var missing_stars = STAR_REQUIREMENT - global.stars
-			if missing_stars == 1:
-				txt = "you need 1 more star"
+		0:
+			if REQUIRED_LEVEL != "" and not REQUIRED_LEVEL in global.cleared_levels:
+				txt = "complete %s first" % REQUIRED_LEVEL
 			else:
-				txt = "you need %s more stars" % missing_stars
-			
-		1, 2, 3: txt = "press [E] to enter"
+				var missing_stars = STAR_REQUIREMENT - global.stars
+				if missing_stars == 1:
+					txt = "you need 1 more star"
+				else:
+					txt = "you need %s more stars" % missing_stars
+		1, 2, 3:
+			txt = "press [E] to enter"
 	
 	var death_txt = "deaths: NA"
 	if LEVEL in global.level_deaths:
@@ -61,8 +75,8 @@ func _ready() -> void:
 	)
 
 func _input(event: InputEvent) -> void:
-	if player == null: return
-	if global.stars < STAR_REQUIREMENT: return
+	if player == null or not open:
+		return
 	
 	if Input.is_action_just_pressed("interact"): #and player.input_vector == Vector2.ZERO:
 		pressed = true
