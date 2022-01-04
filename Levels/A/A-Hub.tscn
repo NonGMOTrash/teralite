@@ -9,10 +9,10 @@
 resource_local_to_scene = true
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 40.0
+radius = 48.6294
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 18.0
+radius = 23.6895
 
 [node name="A_hub" instance=ExtResource( 1 )]
 

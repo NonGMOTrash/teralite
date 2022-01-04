@@ -1,5 +1,7 @@
 extends Entity 
 
+const DASH_EFFECT := preload("res://Effects/dash_effect/dash_effect.tscn")
+
 export var warnings: int
 export var dash_strength: int
 
@@ -38,7 +40,14 @@ func _on_action_lobe_action(action, target) -> void:
 		for _i in warnings:
 			held_item.animation.queue("warn")
 	elif action == "dash":
-		apply_force(global_position.direction_to(target.global_position).normalized() * dash_strength)
+		var dash_direction := global_position.direction_to(target.global_position).normalized()
+		apply_force(dash_direction * dash_strength)
+		
+		var dash_effect = DASH_EFFECT.instance()
+		dash_effect.rotation_degrees = rad2deg(dash_direction.angle())
+		refs.ysort.get_ref().call_deferred("add_child", dash_effect)
+		yield(dash_effect, "ready")
+		dash_effect.global_position = global_position + Vector2(0, 6)
 
 func attack(finished_animation:String):
 	if held_item.animation.get_queue().size() > 0:

@@ -162,18 +162,15 @@ func play_effect(effect: String, speed:=1.0):
 			texture_effect = texture_c_effect
 	
 	match effect:
-		"burn": 
+		"hurt": if not entity is Attack: color_effect.play("hurt", -1, speed)
+		"block": if not entity is Attack: color_effect.play("block", -1, speed)
+		"heal": if not entity is Attack: color_effect.play("heal", -1, speed)
+		"poison": if not entity is Attack: color_effect.play("poison", -1, speed)
+		"bleed": if not entity is Attack: color_effect.play("bleed", -1, speed)
+		"burn":
 			color_effect.play("burn", -1, speed)
 			texture_effect.play("fire", -1, speed)
-	if not entity is Attack:
-		match effect:
-			"hurt": color_effect.play("hurt", -1, speed)
-			"block": color_effect.play("block", -1, speed)
-			"heal": color_effect.play("heal", -1, speed)
-			"poison": color_effect.play("poison", -1, speed)
-			"bleed": color_effect.play("bleed", -1, speed)
-
-			"invincibility": color_a_effect.play("invincibility", -1, speed)
-			"infect": color_effect.play("infect", -1, speed)
-			_: push_error("'%s' is not a valid effect (entity_sprite.gd)" % effect)
+		"invincibility": if not entity is Attack: color_a_effect.play("invincibility", -1, speed)
+		"infect": if not entity is Attack: color_effect.play("infect", -1, speed)
+		_: push_error("'%s' is not a valid effect (entity_sprite.gd)" % effect)
 
