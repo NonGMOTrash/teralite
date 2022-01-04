@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/Attacks/Attack.gd" type="Script" id=3]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=6]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
 
 [node name="Attack" type="KinematicBody2D"]
 rotation = 1.5708
@@ -19,8 +23,13 @@ truName = "(attack)"
 
 [node name="stats" parent="." instance=ExtResource( 4 )]
 
-[node name="Sprite" type="Sprite" parent="."]
-rotation = 1.5708
+[node name="entity_sprite" parent="." instance=ExtResource( 6 )]
+material = SubResource( 1 )
+auto_flip_mode = 0
+
+[node name="shadow" parent="entity_sprite" index="0"]
+visible = false
+texture = null
 
 [node name="hurtbox" parent="." instance=ExtResource( 1 )]
 modulate = Color( 0.160784, 0.811765, 0.105882, 1 )
@@ -42,5 +51,6 @@ collision_layer = 2
 [connection signal="hit" from="hitbox" to="." method="_on_hitbox_hit"]
 [connection signal="body_entered" from="collision" to="." method="_on_collision_body_entered"]
 
+[editable path="entity_sprite"]
 [editable path="hurtbox"]
 [editable path="hitbox"]

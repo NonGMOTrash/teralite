@@ -22,16 +22,16 @@ var priority = -99
 var target_pos := Vector2.ZERO
 var auto_target := true
 
-func _on_camera_tree_entered() -> void:
+func _init() -> void:
 	refs.camera = weakref(self)
+	smoothing_enabled = false
 
-func _ready():
+# this is called by the player when it spawns so the camera instantly warps to you
+func startat(pos: Vector2):
+	global_position = pos
 	smoothing_enabled = global.settings["smooth_camera"]
 	limit_smoothed = global.settings["smooth_camera"]
-	
 	global.connect("update_camera", self, "update_fov")
-	
-	#global_position = get_global_mouse_position()
 
 func update_fov():
 	zoom = global.FOV
@@ -97,7 +97,7 @@ func _on_frequency_timeout() -> void:
 func _on_duration_timeout() -> void:
 	frequency_timer.stop()
 	stop_shaking()
-#                                                                               \/ ease is taken lel
+
 func zoom_to(new_zoom: Vector2, time: float = 0.2, trans:int = Tween.TRANS_LINEAR, eaze:int = DEFAULT_EASE):
-	zoom_tween.interpolate_property(self, "zoom", zoom, new_zoom, time, trans, eaze)
+	zoom_tween.interpolate_property(self, "zoom", zoom, new_zoom, time, trans, eaze) # ease is taken
 	zoom_tween.start()

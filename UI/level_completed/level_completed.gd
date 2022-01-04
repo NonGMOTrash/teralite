@@ -89,10 +89,15 @@ func _process(delta: float) -> void:
 
 func _on_proceed_pressed() -> void:
 	if lvl == "thx":
-		if global.last_hub == null: global.last_hub = "A"
+		if global.last_hub == null:
+			global.last_hub = "A"
+		refs.transition.get_ref().exit()
+		yield(refs.transition.get_ref(), "finished")
 		get_tree().change_scene("res://Levels/%s/%s-Hub.tscn" % [global.last_hub, global.last_hub])
 		return
 	
+	refs.transition.get_ref().exit()
+	yield(refs.transition.get_ref(), "finished")
 	if lvl == "Abomination":
 		get_tree().change_scene("res://Levels/thx.tscn")
 	elif global.last_hub == null or global.last_hub.length() != 1:

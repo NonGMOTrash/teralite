@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Entities/Attacks/Projectile/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Attacks/Projectile/blow_dart/blow_dart.png" type="Texture" id=2]
 [ext_resource path="res://Entities/Attacks/Projectile/blow_dart/blow_dart_hit.wav" type="AudioStream" id=3]
 [ext_resource path="res://Entities/Attacks/Projectile/blow_dart/blow_dart_shoot.wav" type="AudioStream" id=4]
 [ext_resource path="res://Entities/Attacks/Projectile/blow_dart/blow_dart_collide.wav" type="AudioStream" id=5]
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 1.33752
@@ -39,7 +42,8 @@ ONHIT_SPEED_MULTIPLIER = 0.2
 RECOIL = 0
 VELOCITY_INHERITENCE = 0.1
 
-[node name="Sprite" parent="." index="1"]
+[node name="entity_sprite" parent="." index="1"]
+material = SubResource( 5 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
@@ -59,11 +63,9 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D" parent="collision" index="0"]
 shape = SubResource( 3 )
 
-[node name="sound" parent="." index="6"]
-FREE_WHEN_EMPTY = false
-
 [node name="CollisionShape2D" parent="." index="7"]
 shape = SubResource( 4 )
 
+[editable path="entity_sprite"]
 [editable path="hurtbox"]
 [editable path="hitbox"]

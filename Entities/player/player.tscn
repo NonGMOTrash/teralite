@@ -236,6 +236,7 @@ death_effect = false
 wait_time = 0.1
 one_shot = true
 
+[connection signal="tree_entered" from="." to="." method="_on_player_tree_entered"]
 [connection signal="health_changed" from="stats" to="." method="_on_stats_health_changed"]
 [connection signal="got_hit" from="hurtbox" to="." method="_on_hurtbox_got_hit"]
 [connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown_timeout"]

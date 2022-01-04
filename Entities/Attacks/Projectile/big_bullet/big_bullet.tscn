@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Entities/Attacks/Projectile/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Attacks/Projectile/big_bullet/big_bullet.png" type="Texture" id=2]
 [ext_resource path="res://Entities/player/item_thinkers/awp/awp_shoot.wav" type="AudioStream" id=3]
+
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.31399
@@ -31,7 +34,9 @@ HEALTH = 180
 DAMAGE = 7
 TRUE_DAMAGE = 4
 
-[node name="Sprite" parent="." index="1"]
+[node name="entity_sprite" parent="." index="1"]
+material = SubResource( 4 )
+rotation = 4.71239
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
@@ -47,5 +52,6 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D" parent="collision" index="0"]
 shape = SubResource( 3 )
 
+[editable path="entity_sprite"]
 [editable path="hurtbox"]
 [editable path="hitbox"]

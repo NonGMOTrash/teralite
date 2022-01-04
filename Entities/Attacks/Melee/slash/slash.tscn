@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Entities/Attacks/Melee/Melee.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/sword/sword.png" type="Texture" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://Entities/Attacks/Melee/slash/sword_clang.wav" type="AudioStream" id=5]
 [ext_resource path="res://Entities/Attacks/Melee/slash/sword_miss.wav" type="AudioStream" id=6]
 [ext_resource path="res://Entities/Attacks/Melee/slash/sword_hit.wav" type="AudioStream" id=7]
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.0
@@ -25,19 +28,73 @@ resource_name = "animation"
 length = 0.3
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/path = NodePath("hitbox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -2, -5 ), Vector2( 4, 0 ), Vector2( -2, 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hitbox/CollisionShape2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.3 ),
+"transitions": PoolRealArray( 2, 1, 0.5 ),
+"update": 0,
+"values": [ 0.0, 90.0, 180.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("entity_sprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.3 ),
+"transitions": PoolRealArray( 2, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 90.0, 180.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("entity_sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.05, 0.3 ),
+"transitions": PoolRealArray( 2, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -4 ), Vector2( 5, 0 ), Vector2( 0, 4.5 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_local_to_scene = true
+resource_name = "animation_reverse"
+length = 0.3
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("hitbox:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.08, 0.3 ),
-"transitions": PoolRealArray( 2, 1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 90.0, 180.0 ]
+"values": [ Vector2( -2, 5 ), Vector2( 4, 0 ), Vector2( -2, -5 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:position")
+tracks/1/path = NodePath("hitbox/CollisionShape2D:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -46,35 +103,34 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.08, 0.3 ),
 "transitions": PoolRealArray( 2, 1, 0.5 ),
 "update": 0,
-"values": [ Vector2( 0, -4 ), Vector2( 5, 0 ), Vector2( 0, 4.5 ) ]
+"values": [ 0.0, -90.0, -180.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("hitbox:position")
+tracks/2/path = NodePath("entity_sprite:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0, 0.08, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"transitions": PoolRealArray( 2, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -2, -5 ), Vector2( 4, 0 ), Vector2( -2, 5 ) ]
+"values": [ 180.0, 90.0, 0.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("hitbox/CollisionShape2D:rotation_degrees")
+tracks/3/path = NodePath("entity_sprite:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0, 0.08, 0.3 ),
-"transitions": PoolRealArray( 2, 1, 0.5 ),
+"transitions": PoolRealArray( 2, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 90.0, 180.0 ]
+"values": [ Vector2( 0, 4 ), Vector2( 5, 0 ), Vector2( 0, -4.5 ) ]
 }
 
 [node name="slash" instance=ExtResource( 1 )]
-visible = true
 truName = "slash"
 ONHIT_SELF_DAMAGE = 0
 RANGE = 10
@@ -90,8 +146,10 @@ MAX_HEALTH = 4
 HEALTH = 4
 DEFENCE = 1
 
-[node name="Sprite" parent="." index="1"]
-position = Vector2( 0, 4.5 )
+[node name="entity_sprite" parent="." index="1"]
+material = SubResource( 5 )
+position = Vector2( 0, 4 )
+rotation = 3.14159
 texture = ExtResource( 2 )
 
 [node name="hurtbox" parent="." index="2"]
@@ -108,7 +166,7 @@ KNOCKBACK = 130
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 position = Vector2( 2, 0 )
-rotation = 3.14159
+rotation = 0.0
 shape = SubResource( 2 )
 
 [node name="collision" parent="." index="4"]
@@ -120,6 +178,8 @@ shape = SubResource( 3 )
 
 [node name="animation" parent="." index="6"]
 anims/animation = SubResource( 4 )
+anims/animation_reverse = SubResource( 6 )
 
+[editable path="entity_sprite"]
 [editable path="hurtbox"]
 [editable path="hitbox"]

@@ -3,34 +3,8 @@
 [ext_resource path="res://Entities/Attacks/Projectile/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Attacks/Projectile/poison_drop/poison_drop.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=3]
-resource_name = "New Anim"
-length = 0.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:flip_h")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, true, false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:flip_v")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ false, false, true, true ]
-}
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 3.50805
@@ -43,12 +17,9 @@ truName = "poison_drop"
 death_free = true
 SPEED = 180
 
-[node name="Sprite" parent="." index="1"]
+[node name="entity_sprite" parent="." index="1"]
+material = SubResource( 3 )
 texture = ExtResource( 2 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="0"]
-autoplay = "New Anim"
-"anims/New Anim" = SubResource( 3 )
 
 [node name="hurtbox" parent="." index="2"]
 visible = false
@@ -70,5 +41,6 @@ visible = false
 [node name="CollisionShape2D" parent="." index="7"]
 visible = false
 
+[editable path="entity_sprite"]
 [editable path="hurtbox"]
 [editable path="hitbox"]

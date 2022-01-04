@@ -13,7 +13,7 @@ export(bool) var REVERSE_HELD_ITEM := true
 var recoiled := false
 
 onready var animation: AnimationPlayer = $animation
-onready var sprite: Sprite = $Sprite
+onready var sprite: Sprite = $entity_sprite
 
 func setup(new_source := Entity.new(), new_target_pos := Vector2.ZERO):
 	.setup(new_source, new_target_pos)

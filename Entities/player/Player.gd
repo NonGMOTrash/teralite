@@ -44,6 +44,10 @@ onready var damage_pause_cooldown := $damage_pause_cooldown
 var force_death_msg := false
 var can_dash := true
 
+func _on_player_tree_entered() -> void:
+	if name == "player":
+		refs.camera.get_ref().startat(global_position)
+
 func _ready():
 	dash_buffer *= (1.0/60.0)
 	global.selection = 0
@@ -315,3 +319,4 @@ func _on_damge_pause_cooldown_timeout() -> void:
 	damage_pause_count -= 1
 	if damage_pause_count > 0:
 		damage_pause_cooldown.start()
+

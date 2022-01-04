@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Entities/Attacks/Melee/Melee.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/spear/spear.png" type="Texture" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://Entities/Attacks/Melee/poke/poke_miss.wav" type="AudioStream" id=8]
 [ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/Attacks/Melee/poke/poke_tipper.wav" type="AudioStream" id=10]
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 1.773
@@ -39,7 +42,7 @@ tracks/0/keys = {
 "values": [ Vector2( 6, 0 ), Vector2( 22, 0 ), Vector2( 24, 0 ), Vector2( 6, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:position")
+tracks/1/path = NodePath("hurtbox:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -51,7 +54,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 16, 0 ), Vector2( 18, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("hurtbox:position")
+tracks/2/path = NodePath("collision:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -63,32 +66,37 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 16, 0 ), Vector2( 18, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("collision:position")
+tracks/3/path = NodePath("hitbox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.7 ),
-"transitions": PoolRealArray( 2, 0.25, 0.5, 2 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 16, 0 ), Vector2( 18, 0 ), Vector2( 0, 0 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("hitbox/CollisionShape2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("entity_sprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.7 ),
+"transitions": PoolRealArray( 1, 0.25, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 16, 0 ), Vector2( 18, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_local_to_scene = true
+resource_name = "animation_reverse"
+length = 0.2
+step = 0.01
 
 [node name="poke" instance=ExtResource( 1 )]
-visible = true
 script = ExtResource( 3 )
 truName = "poke"
 ONHIT_SELF_DAMAGE = 0
@@ -111,7 +119,8 @@ MAX_HEALTH = 3
 HEALTH = 3
 DEFENCE = 1
 
-[node name="Sprite" parent="." index="1"]
+[node name="entity_sprite" parent="." index="1"]
+material = SubResource( 5 )
 rotation = 0.785398
 texture = ExtResource( 2 )
 
@@ -128,9 +137,7 @@ COOLDOWN = 0.4
 KNOCKBACK = 110
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
-rotation = -1.5708
 shape = SubResource( 2 )
-disabled = true
 one_way_collision = true
 
 [node name="collision" parent="." index="4"]
@@ -152,6 +159,8 @@ AUTO_PLAY = false
 
 [node name="animation" parent="." index="6"]
 anims/animation = SubResource( 4 )
+anims/animation_reverse = SubResource( 6 )
 
+[editable path="entity_sprite"]
 [editable path="hurtbox"]
 [editable path="hitbox"]

@@ -57,10 +57,15 @@ func _on_options_pressed() -> void:
 	options_menu.visible = true
 
 func _on_restart_pressed() -> void:
+	refs.transition.get_ref().exit()
+	yield(refs.transition.get_ref(), "finished")
 	get_tree().reload_current_scene()
 	get_tree().paused = false
 
 func _on_return_to_pressed() -> void:
+	refs.transition.get_ref().exit()
+	yield(refs.transition.get_ref(), "finished")
+	
 	get_tree().paused = false
 	if get_tree().current_scene.LEVEL_TYPE == 1:
 		var letter: String = get_tree().current_scene.LETTER

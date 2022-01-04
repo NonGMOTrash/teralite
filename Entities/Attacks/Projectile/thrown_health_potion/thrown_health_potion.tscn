@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Entities/Attacks/Projectile/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/health_potion/health_potion.png" type="Texture" id=2]
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Item_Pickups/heart/heart.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/Attacks/Projectile/thrown_health_potion/potion_break.wav" type="AudioStream" id=5]
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 7.55064
@@ -20,7 +23,7 @@ resource_name = "rotate"
 length = 0.2
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/path = NodePath("entity_sprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -39,15 +42,15 @@ truName = "thrown_health_potion"
 death_free = true
 HIT_SOUND = ExtResource( 5 )
 COLLIDE_SOUND = ExtResource( 5 )
-DEATH_SOUND = ExtResource( 5 )
 SPEED = 185
 RECOIL = -22
 
 [node name="stats" parent="." index="0"]
 DAMAGE = 0
 
-[node name="Sprite" parent="." index="1"]
-rotation = 6.28319
+[node name="entity_sprite" parent="." index="1"]
+material = SubResource( 5 )
+rotation = 6.2769
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
@@ -76,5 +79,6 @@ custom_properties = {
 "player_only": false
 }
 
+[editable path="entity_sprite"]
 [editable path="hurtbox"]
 [editable path="hitbox"]
