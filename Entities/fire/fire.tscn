@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Entities/fire/fire.gd" type="Script" id=1]
 [ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/fire/fire.png" type="Texture" id=3]
 [ext_resource path="res://Effects/Particles/smoke_particles.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/fire/fire.wav" type="AudioStream" id=6]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.0
@@ -122,6 +125,12 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
 shape = SubResource( 5 )
+
+[node name="sound_player" parent="." instance=ExtResource( 7 )]
+
+[node name="fire" parent="sound_player" instance=ExtResource( 5 )]
+stream = ExtResource( 6 )
+MODE = 2
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="fuel" to="." method="_on_fuel_timeout"]

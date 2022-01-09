@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Entities/Attacks/Projectile/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Attacks/Projectile/small_bullet/small bullet.png" type="Texture" id=2]
 [ext_resource path="res://Entities/player/item_thinkers/shotgun/shotgun_shoot.wav" type="AudioStream" id=3]
+[ext_resource path="res://Entities/Attacks/Projectile/small_bullet/bullet_collide.wav" type="AudioStream" id=4]
 
 [sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
@@ -24,6 +25,7 @@ truName = "shotgun_shell"
 RANGE = 65
 death_free = true
 SPAWN_SOUND = ExtResource( 3 )
+COLLIDE_SOUND = ExtResource( 4 )
 SPEED = 400
 RECOIL = 20
 
@@ -31,6 +33,14 @@ RECOIL = 20
 MAX_HEALTH = 5
 HEALTH = 5
 TRUE_DAMAGE = 1
+poison_modifier = -99.0
+burning_modifier = -99.0
+bleed_modifier = -99.0
+speed_modifier = -99.0
+slowness_modifier = -99.0
+regeneration_modifier = -99.0
+resistance_modifier = -99.0
+infection_modifier = -99.0
 
 [node name="entity_sprite" parent="." index="1"]
 material = SubResource( 5 )

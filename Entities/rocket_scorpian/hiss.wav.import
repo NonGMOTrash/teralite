@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hiss.wav-d89a8f06a41ee63205b188ad3a47a5d5.sample"
+
+[deps]
+
+source_file="res://Entities/rocket_scorpian/hiss.wav"
+dest_files=[ "res://.import/hiss.wav-d89a8f06a41ee63205b188ad3a47a5d5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

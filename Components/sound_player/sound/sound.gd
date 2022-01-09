@@ -10,7 +10,7 @@ export var AUTO_SET_PHYSICAL = true # auto set max_distance and attenuation
 export var TRACKING_TARGET: NodePath 
 
 func _init():
-	autoplay = false
+	autoplay = AUTO_PLAY
 	
 	if AUTO_SET_PHYSICAL == true:
 		max_distance = 400
@@ -24,6 +24,8 @@ func _init():
 			attenuation = 2.5 * mult
 
 func _ready() -> void:
+	autoplay = AUTO_PLAY
+	
 	if stream == null:
 		push_error("sound has no stream")
 	
@@ -31,9 +33,6 @@ func _ready() -> void:
 		connect("finished", self, "queue_free")
 	elif MODE == MODES.REPEATING:
 		connect("finished", self, "play")
-	
-	if AUTO_PLAY == true:
-		play()
 	
 	# moving to sound_player (putting it in here causes an error sometimes
 	# resume: Resumed function '_ready()' after yield, but class instance is gone. 

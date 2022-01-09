@@ -21,7 +21,7 @@ func setup(new_source := Entity.new(), new_target_pos := Vector2.ZERO):
 	visible = false
 
 func _ready():
-	if SOURCE == null: 
+	if SOURCE == null:
 		SOURCE = get_node_or_null(SOURCE_PATH)
 	
 	_physics_process(float())
@@ -66,6 +66,9 @@ func _ready():
 	visible = true
 
 func _physics_process(_delta):
+	#if truName == "slash" and animation.current_animation != null:
+	#	print(animation.current_animation_position)
+	
 	if get_node_or_null(SOURCE_PATH) != null and SOURCE.is_queued_for_deletion() == false:
 		global_position = SOURCE.global_position + RANGE * DIRECTION
 
@@ -119,7 +122,7 @@ func _on_collision_body_entered(body: Node) -> void:
 		death()
 
 func _on_Melee_tree_exiting() -> void:
-	animation.stop()
+	#animation.stop()
 	
 	# make held item visible agian
 	if get_node_or_null(SOURCE_PATH) != null and SOURCE.is_queued_for_deletion() == false:

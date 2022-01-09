@@ -102,8 +102,11 @@ func _on_hitbox_hit(area, type) -> void:
 			sfx.name = truName+"_hit"
 			sfx.stream = HIT_SOUND
 		"killed":
-			sfx.name = truName+"_kill"
-			sfx.stream = KILL_SOUND
+			if area.entity.INANIMATE:
+				return
+			else:
+				sfx.name = truName+"_kill"
+				sfx.stream = KILL_SOUND
 		"block":
 			sfx.name = truName+"_blocked"
 			sfx.stream = BLOCKED_SOUND

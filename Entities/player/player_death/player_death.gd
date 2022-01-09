@@ -5,7 +5,7 @@ var simple_mode = true # just plays the animation; for the death of other player
 var death_message: String
 var pressed := false
 
-onready var label = $CanvasLayer/Label
+onready var label: Label = $CanvasLayer/Label
 
 func _ready():
 	if simple_mode == true:
@@ -31,6 +31,10 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
 		pressed = true
 	elif Input.is_action_just_released("interact") and pressed == true:
+		set_process(false)
+		label.visible = false
+		refs.transition.get_ref().exit()
+		yield(refs.transition.get_ref(), "finished")
 		get_tree().reload_current_scene()
 
 func _process(_delta):

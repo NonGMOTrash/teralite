@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Entities/fire/fire.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/fire/timber_pot/timber_pot.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Entities/fire/timber_pot/timber_pot.gd" type="Script" id=6]
+[ext_resource path="res://Entities/fire/timber_pot/timber_pot_break.wav" type="AudioStream" id=7]
 [ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -19,11 +20,6 @@ MAX_HEALTH = 2
 HEALTH = 2
 DEFENCE = 2
 DAMAGE = 0
-modifiers = {
-"bleeding": -999,
-"burning": -999,
-"poison": -999
-}
 
 [node name="pot" type="Sprite" parent="." index="2"]
 texture = ExtResource( 2 )
@@ -46,12 +42,16 @@ disabled = true
 [node name="fuel" parent="." index="7"]
 wait_time = 200.0
 
-[node name="spread" parent="." index="9"]
+[node name="spread" parent="." index="8"]
 wait_time = 999.0
+
+[node name="detection" parent="." index="9"]
+visible = false
 
 [node name="hurtbox" parent="." index="10" instance=ExtResource( 5 )]
 visible = false
 position = Vector2( 0, -1 )
+KILLED_SOUND = ExtResource( 7 )
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 position = Vector2( 0, 3 )
@@ -63,14 +63,7 @@ margin_top = -11.7998
 margin_right = 10.526
 margin_bottom = -7.79811
 
-[node name="entity_push" parent="." index="12"]
-visible = false
-
-[node name="detection" parent="." index="13"]
-visible = false
-
 [connection signal="status_recieved" from="stats" to="." method="_on_stats_status_recieved"]
 
 [editable path="hitbox"]
 [editable path="hurtbox"]
-[editable path="entity_push"]

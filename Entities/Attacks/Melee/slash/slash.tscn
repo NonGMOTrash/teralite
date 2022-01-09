@@ -37,7 +37,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.05, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -2, -5 ), Vector2( 4, 0 ), Vector2( -2, 5 ) ]
+"values": [ Vector2( -2, -5 ), Vector2( 6, 0 ), Vector2( -2, 5 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("hitbox/CollisionShape2D:rotation_degrees")
@@ -91,7 +91,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.08, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -2, 5 ), Vector2( 4, 0 ), Vector2( -2, -5 ) ]
+"values": [ Vector2( -2, 5 ), Vector2( 6, 0 ), Vector2( -2, -5 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("hitbox/CollisionShape2D:rotation_degrees")
@@ -133,7 +133,7 @@ tracks/3/keys = {
 [node name="slash" instance=ExtResource( 1 )]
 truName = "slash"
 ONHIT_SELF_DAMAGE = 0
-RANGE = 10
+RANGE = 8
 SPAWN_SOUND = ExtResource( 6 )
 HIT_SOUND = ExtResource( 7 )
 KILL_SOUND = ExtResource( 4 )

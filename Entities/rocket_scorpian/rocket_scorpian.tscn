@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Entities/rocket_scorpian/rocket_scorpian.gd" type="Script" id=1]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=2]
@@ -18,6 +18,9 @@
 [ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Entities/rocket_scorpian/hiss.wav" type="AudioStream" id=19]
+[ext_resource path="res://Entities/rocket_scorpian/burrow.wav" type="AudioStream" id=20]
+[ext_resource path="res://Entities/rocket_scorpian/poison_shoot.wav" type="AudioStream" id=21]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -74,10 +77,24 @@ tracks/2/keys = {
 "method": "lunge"
 } ]
 }
+tracks/3/type = "audio"
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 19 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "burrow"
-length = 2.9
+length = 1.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("entity_sprite:frame")
 tracks/0/interp = 1
@@ -85,7 +102,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 2.3, 2.5, 2.7 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 1.1, 1.2, 1.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 17, 18, 19, 19, 18, 17 ]
@@ -97,10 +114,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 2.3, 2.5, 2.6, 2.7, 2.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 1.1, 1.2, 1.3, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 1.5, 1.5 ), Vector2( 2.25, 1 ), Vector2( 3, 3.5 ), Vector2( 0, 2 ), Vector2( 3, 2 ), Vector2( 2.25, 1 ), Vector2( 1.5, 0 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 1.5, 1.5 ), Vector2( 2.25, 1 ), Vector2( 3, 3.5 ), Vector2( 3, 2 ), Vector2( 2.25, 1 ), Vector2( 1.5, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath(".")
@@ -109,7 +126,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.6 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -123,7 +140,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.6, 2.3, 2.9 ),
+"times": PoolRealArray( 0.3, 1.1, 1.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, true ]
@@ -135,7 +152,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.6, 2.3 ),
+"times": PoolRealArray( 0, 0.3, 1.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -147,7 +164,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.6, 0.9, 1.1, 2.3 ),
+"times": PoolRealArray( 0, 0.3, 0.6, 0.7, 1.1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.333333 ), Color( 1, 1, 1, 0.333333 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.133333 ), Color( 1, 1, 1, 0.333333 ) ]
@@ -159,7 +176,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.6, 2.3 ),
+"times": PoolRealArray( 0, 0.3, 1.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -171,10 +188,24 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0.6, 2.3 ),
+"times": PoolRealArray( 0.3, 1.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
+}
+tracks/8/type = "audio"
+tracks/8/path = NodePath("AudioStreamPlayer2D")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 20 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=11]
@@ -205,6 +236,20 @@ tracks/1/keys = {
 "method": "poison"
 } ]
 }
+tracks/2/type = "audio"
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 21 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "shoot"
@@ -233,6 +278,18 @@ tracks/1/keys = {
 "args": [  ],
 "method": "shoot"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("entity_sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -277,13 +334,13 @@ FORCE_MULT = 0.3
 truName = "rocket_scorpian"
 faction = "solo"
 lunge_force = 1000.0
-rage_threshold = 150
-rage_speed_mult = 1.5
+rage_threshold = 200
+rage_speed_mult = 1.0
 burrow_speed_mult = 2.5
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
-MAX_HEALTH = 300
-HEALTH = 300
+MAX_HEALTH = 400
+HEALTH = 400
 DAMAGE = 0
 poison_modifier = -99.0
 infection_modifier = -99.0
@@ -292,11 +349,10 @@ infection_modifier = -99.0
 material = SubResource( 1 )
 texture = ExtResource( 4 )
 hframes = 23
-frame = 17
+frame = 13
 auto_flip_mode = 2
 
 [node name="shadow" parent="entity_sprite" index="0"]
-self_modulate = Color( 1, 1, 1, 0.333333 )
 position = Vector2( 0, 5 )
 scale = Vector2( 2, 1 )
 texture = ExtResource( 5 )
@@ -354,24 +410,27 @@ MEMORY_TIME = 10.0
 
 [node name="action_lobe" parent="brain" instance=ExtResource( 13 )]
 PATIENCE = 0.0
+ACTION_WEIGHTING = 0.4
 AUTO_ACTION_WEIGHTING = true
 
 [node name="attack" parent="brain/action_lobe" instance=ExtResource( 17 )]
-best_distance = 30
+best_distance = 50
 default_score = 0.0
+COOLDOWN = 1.0
 GLOBAL_COOLDOWN = true
 
 [node name="shoot" parent="brain/action_lobe" instance=ExtResource( 17 )]
-best_distance = 75
+best_distance = 110
+COOLDOWN = 1.0
 GLOBAL_COOLDOWN = true
 
 [node name="burrow" parent="brain/action_lobe" instance=ExtResource( 17 )]
-best_distance = 110
-COOLDOWN = 3.5
+best_distance = 200
+COOLDOWN = 1.45
 GLOBAL_COOLDOWN = true
 
 [node name="poison" parent="brain/action_lobe" instance=ExtResource( 17 )]
-best_distance = 50
+best_distance = 75
 COOLDOWN = 1.0
 GLOBAL_COOLDOWN = true
 
@@ -403,7 +462,11 @@ rotation = 1.5708
 shape = SubResource( 9 )
 disabled = true
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 19 )
+
 [connection signal="got_hit" from="hurtbox" to="." method="_on_hurtbox_got_hit"]
+[connection signal="lost_target" from="brain" to="." method="_on_brain_lost_target"]
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 

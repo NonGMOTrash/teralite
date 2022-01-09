@@ -187,14 +187,13 @@ func _ready():
 		v = v + ".0"
 	if ver_hotfix > 0:
 		if ver_hotfix == 1:
-			v = v + " Hotfix"
+			v = v + " hotfix"
 		else:
-			v = v + " Hotfix #" + str(global.ver_hotfix)
+			v = v + " hotfix #" + str(global.ver_hotfix)
 	if OS.is_debug_build() == true:
-		v = v + " (Debug)"
+		v = v + " (debug)"
 	prints("teralite", v)
-	prints("seed:", the_seed)
-	prints("hashed seed:", the_seed.hash())
+	prints("seed:", the_seed, "(%s)" % the_seed.hash())
 	
 	Input.set_custom_mouse_cursor(CURSOR_NORMAL, Input.CURSOR_ARROW, Vector2(0, 0))
 	
@@ -209,22 +208,22 @@ func _ready():
 	print("")
 	
 	# debug stuffz:
-	Engine.time_scale = 1.0
+	Engine.time_scale = 1
 	#if get_tree().current_scene.get_name() != "test_level":
 	#	get_tree().change_scene("res://Levels/test_level.tscn")
 
 # PROBLEM_NOTE: should probably move this to the Entity class
 func get_relation(me:Entity, other:Entity) -> String:
+	if me.marked_enemies.has(other):
+		return "hostile"
+	if me.marked_allies.has(other):
+		return "friendly"
+	
 	if me.faction == "my_entity" or other.faction == "my_entity":
 		if me.truName == other.truName:
 			return "friendly"
 		else:
 			return "hostile"
-	
-	if me.marked_enemies.has(other):
-		return "hostile"
-	if me.marked_allies.has(other):
-		return "friendly"
 	
 	var faction_one = me.faction
 	var faction_two = other.faction

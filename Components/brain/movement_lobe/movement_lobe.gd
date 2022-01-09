@@ -211,7 +211,11 @@ func _on_movement_timer_timeout() -> void:
 				var target_to_me = this_memory.direction_to(global_position).normalized()
 				var best_position = this_memory + target_to_me * spring.DISTANCE
 				
-				var strength = brain.SIGHT_RANGE / global_position.distance_to(best_position)
+				var strength: float
+				if global_position.distance_to(best_position) != 0:
+					strength = brain.SIGHT_RANGE / global_position.distance_to(best_position)
+				else: 
+					strength = brain.SIGHT_RANGE / 0.01
 				
 				if brain.los_check(best_position, false) == true:
 					brain.memory_lobe.memory_paths[i] = null

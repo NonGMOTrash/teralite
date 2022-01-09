@@ -31,9 +31,9 @@ PAUSE_SOUND = ExtResource( 9 )
 UNPAUSE_SOUND = ExtResource( 10 )
 
 [node name="items" type="VBoxContainer" parent="."]
-margin_left = 142.0
+margin_left = 102.0
 margin_top = 10.0
-margin_right = 241.0
+margin_right = 281.0
 margin_bottom = 206.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -45,7 +45,7 @@ __meta__ = {
 
 [node name="title" type="Label" parent="items"]
 margin_top = 22.0
-margin_right = 119.0
+margin_right = 179.0
 margin_bottom = 38.0
 text = "paused"
 align = 1
@@ -53,45 +53,50 @@ valign = 1
 
 [node name="HSeparator" type="HSeparator" parent="items"]
 margin_top = 42.0
-margin_right = 119.0
+margin_right = 179.0
 margin_bottom = 43.0
 
 [node name="resume" parent="items" instance=ExtResource( 2 )]
 margin_top = 47.0
-margin_right = 119.0
+margin_right = 179.0
 margin_bottom = 69.0
+custom_constants/hseparation = -16
 text = "resume"
 icon = ExtResource( 7 )
 flat = true
 
 [node name="options" parent="items" instance=ExtResource( 2 )]
 margin_top = 73.0
-margin_right = 119.0
+margin_right = 179.0
 margin_bottom = 95.0
+custom_constants/hseparation = -16
 text = "options"
 icon = ExtResource( 5 )
 flat = true
 
 [node name="restart" parent="items" instance=ExtResource( 2 )]
 margin_top = 99.0
-margin_right = 119.0
+margin_right = 179.0
 margin_bottom = 121.0
+custom_constants/hseparation = -13
 text = "restart level"
 icon = ExtResource( 12 )
 flat = true
 
 [node name="return_to" parent="items" instance=ExtResource( 2 )]
 margin_top = 125.0
-margin_right = 119.0
+margin_right = 179.0
 margin_bottom = 147.0
+custom_constants/hseparation = -10
 text = "return to hub"
 icon = ExtResource( 8 )
 flat = true
 
 [node name="quit" parent="items" instance=ExtResource( 2 )]
 margin_top = 151.0
-margin_right = 119.0
+margin_right = 179.0
 margin_bottom = 173.0
+custom_constants/hseparation = -16
 text = "quit"
 icon = ExtResource( 6 )
 flat = true

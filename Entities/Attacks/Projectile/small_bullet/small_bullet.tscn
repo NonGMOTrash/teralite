@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Entities/Attacks/Projectile/small_bullet/small bullet.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Attacks/Projectile/Projectile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/Attacks/Projectile/small_bullet/pistol_fire.wav" type="AudioStream" id=3]
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Effects/Particles/smoke_particles.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Attacks/Projectile/small_bullet/bullet_collide.wav" type="AudioStream" id=6]
 
 [sub_resource type="ShaderMaterial" id=4]
 resource_local_to_scene = true
@@ -27,6 +28,7 @@ ONHIT_SELF_DAMAGE = 6
 RANGE = 200
 death_free = true
 SPAWN_SOUND = ExtResource( 3 )
+COLLIDE_SOUND = ExtResource( 6 )
 SPEED = 400
 RECOIL = 40
 VELOCITY_INHERITENCE = 0.0

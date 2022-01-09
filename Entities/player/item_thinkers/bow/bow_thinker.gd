@@ -70,6 +70,8 @@ func primary():
 	.primary()
 	
 	var held_item = player.components["held_item"]
+	if held_item == null:
+		held_item = player.find_node("held_item")
 	if held_item != null:
 		held_item.animation.stop()
 		held_item.sprite.texture = held_item.original_texture

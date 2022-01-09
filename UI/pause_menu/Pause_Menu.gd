@@ -20,7 +20,7 @@ signal unpaused
 func _ready():
 	refs.pause_menu = weakref(self)
 	if get_tree().current_scene.LEVEL_TYPE == 1: 
-		return_to.text = "Return to Titlescreen"
+		return_to.text = "return to title"
 		restart.visible = false
 	
 	visible = false

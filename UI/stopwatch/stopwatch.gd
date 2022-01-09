@@ -3,15 +3,22 @@ extends Label
 onready var timer = $Timer
 
 var time = 0.0
-var paused = false
+var paused = true
+
+func _init() -> void:
+	refs.stopwatch = weakref(self)
 
 func _ready():
-	refs.stopwatch = weakref(self)
 	visible = true
+	refs.transition.get_ref().connect("finished", self, "start")
+
+func start():
+	timer.start()
+	paused = false
 
 func _process(_delta):
 	if paused == false:
-		time = 999.9 - timer.time_left
+		time = timer.wait_time - timer.time_left
 	
 	text = global.sec_to_time(time)
 

@@ -22,4 +22,4 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 999.0
-autostart = true
+one_shot = true

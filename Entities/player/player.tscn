@@ -85,7 +85,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5 ]
+"values": [ 1, 2, 3, 4, 5, 0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:scale")
@@ -174,10 +174,11 @@ DAMAGE = 0
 
 [node name="sprite" parent="." instance=ExtResource( 6 )]
 material = SubResource( 1 )
-scale = Vector2( 1.05, 0.95 )
+scale = Vector2( 0.964637, 1.03536 )
 texture = ExtResource( 10 )
 hframes = 4
 vframes = 2
+frame = 4
 auto_flip_mode = 0
 back_texture = ExtResource( 15 )
 
@@ -223,7 +224,7 @@ one_shot = true
 TARGETING = 2
 
 [node name="sprite" parent="held_item/anchor" index="0"]
-frame = 0
+frame = 1
 
 [node name="foot_stepper" parent="." instance=ExtResource( 11 )]
 RATE = 0.0

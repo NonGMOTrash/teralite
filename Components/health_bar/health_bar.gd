@@ -6,7 +6,6 @@ onready var bonus = $bonus
 onready var armors = $armors
 onready var armors_missing = $armors_missing
 onready var armor_meter = $armor_meter
-onready var timer = $Timer
 
 export(Gradient) var PROGRESS_GRAD
 export(Gradient) var BONUS_GRAD
@@ -36,7 +35,6 @@ func update_bar(_type, _result, _net) -> void:
 		return
 	else:
 		visible = true
-		timer.start()
 	
 	# health
 	max_value = stats.MAX_HEALTH
@@ -78,6 +76,3 @@ func update_bar(_type, _result, _net) -> void:
 		armor_meter.visible = false
 		armors.visible = false
 		armors_missing.visible = false
-
-func _on_Timer_timeout() -> void:
-	visible = false

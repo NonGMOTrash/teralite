@@ -9,9 +9,10 @@ func _on_hitbox_hit(area, type) -> void:
 	if get_node_or_null(SOURCE_PATH) == null:
 		return
 	
-	var distance: float = area.get_parent().global_position.distance_to(SOURCE.global_position)
+	var area_entity: Entity = area.entity
+	var distance: float = area_entity.global_position.distance_to(SOURCE.global_position)
 	if distance >= tipper_distance:
+		print(area_entity.get_name())
 		sound.play_sound("tipper")
-		var area_entity: Entity = area.get_parent()
 		if area_entity.components["stats"] != null:
 			area_entity.components["stats"].change_health(0, -tipper_damage)

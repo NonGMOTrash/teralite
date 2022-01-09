@@ -87,9 +87,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 25.0
-one_shot = true
-
 [connection signal="tree_entered" from="." to="." method="_on_healthBar_tree_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

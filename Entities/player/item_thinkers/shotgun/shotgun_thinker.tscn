@@ -23,7 +23,7 @@ CURSOR = ExtResource( 11 )
 CURSOR_MODE = 1
 EQUIP_SOUND = ExtResource( 10 )
 cooldown_time = 0.2
-reload_time = 1.15
+reload_time = 1.0
 
 [node name="cooldown" type="Timer" parent="."]
 one_shot = true
