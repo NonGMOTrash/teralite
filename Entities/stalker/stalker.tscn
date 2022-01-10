@@ -111,13 +111,11 @@ tracks/3/keys = {
 }
 
 [node name="stalker" type="KinematicBody2D"]
-modulate = Color( 1, 1, 1, 0.327054 )
 collision_layer = 2
 script = ExtResource( 1 )
 ACCELERATION = 225
 SLOWDOWN = 200
 TOP_SPEED = 50
-INVISIBLE = true
 truName = "stalker"
 faction = "monster"
 REVEAL_SPEED_BOOST = 1.35
@@ -132,7 +130,6 @@ material = SubResource( 1 )
 texture = ExtResource( 14 )
 offset = Vector2( 3, -3 )
 hframes = 5
-frame = 2
 
 [node name="shadow" parent="entity_sprite" index="0"]
 visible = false
@@ -197,7 +194,6 @@ margin_bottom = -9.85739
 death_type = 4
 
 [node name="foot_stepper" parent="." instance=ExtResource( 12 )]
-FREE_WHEN_EMPTY = false
 VOLUME_ADJUST = 8.0
 
 [node name="reveal" type="AnimationPlayer" parent="."]

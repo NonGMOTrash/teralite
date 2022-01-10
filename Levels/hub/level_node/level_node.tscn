@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/Themes/general_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Levels/hub/level_node/level_node.png" type="Texture" id=2]
 [ext_resource path="res://Levels/hub/level_node/level_node.gd" type="Script" id=3]
+[ext_resource path="res://UI/Icons/deaths.png" type="Texture" id=4]
+[ext_resource path="res://UI/Icons/hourglass.png" type="Texture" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 32.0
@@ -34,20 +36,72 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Label" type="Label" parent="Node2D"]
-visible = false
-margin_left = -80.0
+[node name="info" type="VBoxContainer" parent="Node2D"]
+margin_left = -50.0
 margin_top = -80.0
-margin_right = 80.0
+margin_right = 50.0
+margin_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 5
 theme = ExtResource( 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "text"
-align = 1
-valign = 1
-autowrap = true
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="header" type="Label" parent="Node2D/info"]
+margin_right = 119.0
+margin_bottom = 35.0
+theme = ExtResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "level
+press [E] to enter"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="Node2D/info"]
+margin_top = 39.0
+margin_right = 119.0
+margin_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Node2D/info"]
+margin_top = 44.0
+margin_right = 119.0
+margin_bottom = 60.0
+alignment = 1
+
+[node name="deaths_icon" type="TextureRect" parent="Node2D/info/HBoxContainer"]
+margin_left = 22.0
+margin_right = 37.0
+margin_bottom = 16.0
+texture = ExtResource( 4 )
+
+[node name="deaths" type="Label" parent="Node2D/info/HBoxContainer"]
+margin_left = 41.0
+margin_right = 55.0
+margin_bottom = 16.0
+text = "NA"
+
+[node name="VSeparator" type="VSeparator" parent="Node2D/info/HBoxContainer"]
+margin_left = 59.0
+margin_right = 60.0
+margin_bottom = 16.0
+
+[node name="time_icon" type="TextureRect" parent="Node2D/info/HBoxContainer"]
+margin_left = 64.0
+margin_right = 79.0
+margin_bottom = 16.0
+texture = ExtResource( 5 )
+
+[node name="time" type="Label" parent="Node2D/info/HBoxContainer"]
+margin_left = 83.0
+margin_right = 97.0
+margin_bottom = 16.0
+text = "NA"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

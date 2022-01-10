@@ -48,14 +48,17 @@ func start():
 	
 	var time_value: float = refs.stopwatch.get_ref().time
 	time.text = time.text + global.sec_to_time(time_value)
+	
+	# PB check
 	if global.level_times.has(lvl):
 		if time_value < global.level_times[lvl]:
 			time.set("custom_colors/font_color", YELLOW)
 			time_comment.set("custom_colors/font_color", YELLOW)
 			time_comment.text = "personal best!"
-		if lvl in global.DEV_TIMES and time_value < global.DEV_TIMES[lvl]:
-			time_comment.set("custom_colors/font_color", Color.cyan)
-			time_comment.text = "speedrunner!"
+	# devtime check
+	if lvl in global.DEV_TIMES and time_value < global.DEV_TIMES[lvl]:
+		time_comment.set("custom_colors/font_color", Color.cyan)
+		time_comment.text = "better than the dev!"
 	
 	if lvl == "thx": return
 	
@@ -73,8 +76,6 @@ func start():
 	
 	if not lvl in global.level_deaths:
 		global.level_deaths[lvl] = 0
-	else:
-		global.level_deaths[lvl] += 1
 	
 	Input.set_custom_mouse_cursor(NORMAL_CURSOR, CURSOR_ARROW, Vector2(0, 0))
 

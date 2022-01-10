@@ -27,6 +27,9 @@ func _ready():
 	pause_menu.visible = false
 
 func _input(event: InputEvent) -> void:
+	if refs.transition.get_ref().visible:
+		return
+	
 	if Input.is_action_just_pressed("pause"):
 		get_tree().paused = not get_tree().paused
 		visible = not visible
@@ -59,8 +62,8 @@ func _on_options_pressed() -> void:
 func _on_restart_pressed() -> void:
 	refs.transition.get_ref().exit()
 	yield(refs.transition.get_ref(), "finished")
-	get_tree().reload_current_scene()
 	get_tree().paused = false
+	get_tree().reload_current_scene()
 
 func _on_return_to_pressed() -> void:
 	refs.transition.get_ref().exit()

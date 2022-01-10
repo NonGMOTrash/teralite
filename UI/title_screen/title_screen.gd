@@ -14,6 +14,7 @@ onready var options_menu = $Options
 onready var new = $saves/HBoxContainer/new
 onready var create = $new_save/create
 onready var saves_list := $saves/ScrollContainer/saves_list
+onready var no_saves := $saves/ScrollContainer/no_saves
 onready var save_icon := $new_save/VBoxContainer/HBoxContainer_2/icon
 
 var locked_input = true
@@ -27,7 +28,7 @@ const MESSAGES = [
 	"less bugs than something something 76!",
 	"worse than league", "don't play project epsilon", 
 	"downward spiral", "amo", "goblins are reeeeeal",
-	"im NOT waiting for godot 4.0",
+	"im NOT waiting for godot 4.0", "aaaaaaaaaaaaaaaaaaaa",
 	"loading a rocket launcher", "pls enjoy", "welcome",
 	"0% political", "a deep polticial statement",
 	"blebsome", "a little something for everyone",
@@ -44,6 +45,7 @@ const MESSAGES = [
 	"play project eclise!", "engineer gaming", 
 	"don't be the goblin of 2fort", "no gamers allowed",
 	"play satyrn!", "play better half!", "play brogue maybe",
+	"12.345.789.69 doxxed lmao",
 ]
 const SAVE_ICONS := [
 	preload("res://UI/Icons/save.png"),
@@ -120,6 +122,13 @@ func load_saves_list_items(): # add items from the saves directory into here
 	# sets saves var to all the files in the saves directory
 	global.update_saves()
 	
+	if global.saves.size() == 0:
+		no_saves.visible = true
+		return
+	else:
+		no_saves.visible = false
+	
+	
 	for save in global.saves:
 		var save_preview := SAVE_PREVIEW.instance()
 		saves_list.call_deferred("add_child", save_preview)
@@ -137,6 +146,8 @@ func load_saves_list_items(): # add items from the saves directory into here
 				save_preview.icon.texture = SAVE_ICONS[data["icon"]]
 			if "ver_num" in data:
 				save_preview.version.text = str(data["ver_num"])
+				if data["ver_num"] == floor(data["ver_num"]):
+					save_preview.version.text = save_preview.version.text + ".0"
 				if data["ver_num"] < global.ver_num:
 					if floor(data["ver_num"]) < 1.0:
 						save_preview.version.set_deferred("custom_colors/font_color", Color.yellow)
@@ -151,7 +162,7 @@ func load_saves_list_items(): # add items from the saves directory into here
 			save_preview.deaths.text = str(deaths)
 			
 			if "total_time" in data:
-				save_preview.time.text = global.sec_to_time(data["total_time"])
+				save_preview.time.text = global.sec_to_time(data["total_time"], false)
 			else:
 				save_preview.time.text = "0:00.0"
 		else:

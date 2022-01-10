@@ -32,4 +32,3 @@ func set_speed(mode: String):
 	else:
 		TOP_SPEED = original_top_speed * REVEAL_SPEED_BOOST
 		ACCELERATION = original_acceleration * REVEAL_SPEED_BOOST
-

@@ -27,7 +27,6 @@ extents = Vector2( 6, 6 )
 
 [sub_resource type="Animation" id=4]
 resource_name = "slam"
-length = 1.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:position")
 tracks/0/interp = 1
@@ -35,7 +34,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 1, 1.2, 1.4, 1.5 ),
+"times": PoolRealArray( 0, 0.1, 0.5, 0.7, 0.9, 1 ),
 "transitions": PoolRealArray( 1, 0.3, 1, 0.3, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, -16 ), Vector2( 0, 0 ), Vector2( 0, 3 ), Vector2( 0, 0 ) ]
@@ -47,10 +46,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 1, 1.4, 1.5 ),
+"times": PoolRealArray( 0, 0.1, 0.5, 0.9, 1 ),
 "transitions": PoolRealArray( 1, 1, 0.3, 1, 2 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.1, 0.9 ), Vector2( 0.8, 1.2 ), Vector2( 1.4, 0.6 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1.15, 0.85 ), Vector2( 0.8, 1.2 ), Vector2( 1.4, 0.6 ), Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("hitbox/CollisionShape2D:disabled")
@@ -59,7 +58,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1.1, 1.3 ),
+"times": PoolRealArray( 0, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, true ]
@@ -71,10 +70,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.2, 1.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 540, 0 ]
+"times": PoolRealArray( 0, 0.2, 0.8 ),
+"transitions": PoolRealArray( 99999, 1, 1 ),
+"update": 0,
+"values": [ 0, 540, 0 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -112,7 +111,7 @@ radius = 9.78275
 [node name="king" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 2 )
-ACCELERATION = 250
+ACCELERATION = 0
 FORCE_MULT = 0.45
 truName = "king"
 faction = "blue_kingdom"
@@ -207,7 +206,6 @@ block_effect = false
 [node name="hitbox" parent="." instance=ExtResource( 14 )]
 visible = false
 COOLDOWN = 0.01
-COOLDOWN_ON_START = false
 KNOCKBACK = 400
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]

@@ -24,3 +24,5 @@ duration = 30.0
 
 [node name="drink" parent="sound_player" instance=ExtResource( 4 )]
 stream = ExtResource( 6 )
+MODE = 1
+AUTO_PLAY = false

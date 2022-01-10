@@ -40,8 +40,7 @@ func _ready():
 		spawner.thing = HIT_EFFECT
 		spawner.spawn_on_free = false
 		spawner.spawn_on_hurt = true
-		spawner.effect_hframes = 5
-		spawner.effect_vframes = 1
+		spawner.effect_frames = Vector2(5, 1)
 		entity.call_deferred("add_child", spawner)
 	
 	if death_effect == true:
@@ -50,8 +49,7 @@ func _ready():
 		match death_type:
 			DEATHS.HIT_EFFECT: 
 				spawner.thing = HIT_EFFECT
-				spawner.effect_hframes = 5
-				spawner.effect_vframes = 1
+				spawner.effect_frames = Vector2(5, 1)
 			DEATHS.DISSOVE_FADE: spawner.thing = DISSOLVE_FADE
 			DEATHS.FLIP_FADE: spawner.thing = FLIP_FADE
 			DEATHS.LEFT_FADE: spawner.thing = LEFT_FADE
@@ -66,8 +64,7 @@ func _ready():
 			
 			spawner.effect_inherit_texture = true
 			var sprite: Sprite = entity.components["entity_sprite"]
-			spawner.effect_hframes = sprite.hframes
-			spawner.effect_vframes = sprite.vframes
+			spawner.effect_frames = Vector2(sprite.hframes, sprite.vframes)
 			
 			if sprite.modulate != Color8(255, 255, 255, 255):
 				spawner.use_modulate = true
@@ -84,8 +81,7 @@ func _ready():
 		spawner.spawn_on_block = true
 		spawner.thing = BLOCK_SPARK
 		spawner.rotation_mode = spawner.ROTATIONS.TOWARD_HITBOX
-		spawner.effect_hframes = 4
-		spawner.effect_vframes = 1
+		spawner.effect_frames = Vector2(4, 1)
 		entity.call_deferred("add_child", spawner)
 	
 	if impact_particles == true:

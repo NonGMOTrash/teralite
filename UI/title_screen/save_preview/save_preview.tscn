@@ -80,41 +80,43 @@ texture = ExtResource( 4 )
 margin_left = 20.0
 margin_right = 34.0
 margin_bottom = 16.0
-text = "-1"
+text = "60"
 
 [node name="VSeparator" type="VSeparator" parent="main/HBoxContainer2"]
 margin_left = 38.0
-margin_right = 39.0
+margin_right = 38.0
 margin_bottom = 16.0
+custom_constants/separation = 0
 
 [node name="deaths_icon" type="TextureRect" parent="main/HBoxContainer2"]
-margin_left = 43.0
-margin_right = 58.0
+margin_left = 42.0
+margin_right = 57.0
 margin_bottom = 16.0
 texture = ExtResource( 8 )
 
 [node name="deaths" type="Label" parent="main/HBoxContainer2"]
-margin_left = 62.0
-margin_right = 76.0
+margin_left = 61.0
+margin_right = 82.0
 margin_bottom = 16.0
-text = "-1"
+text = "333"
 
 [node name="VSeparator_2" type="VSeparator" parent="main/HBoxContainer2"]
-margin_left = 80.0
-margin_right = 81.0
+margin_left = 86.0
+margin_right = 86.0
 margin_bottom = 16.0
+custom_constants/separation = 0
 
 [node name="time_icon" type="TextureRect" parent="main/HBoxContainer2"]
-margin_left = 85.0
-margin_right = 100.0
+margin_left = 90.0
+margin_right = 105.0
 margin_bottom = 16.0
 texture = ExtResource( 5 )
 
 [node name="time" type="Label" parent="main/HBoxContainer2"]
-margin_left = 104.0
-margin_right = 145.0
+margin_left = 109.0
+margin_right = 150.0
 margin_bottom = 16.0
-text = "00:00.0"
+text = "2:22:22"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="main"]
 margin_top = 40.0
@@ -155,16 +157,18 @@ size_flags_horizontal = 5
 alignment = 1
 
 [node name="Label" type="Label" parent="delete_confirmation"]
+margin_top = 10.0
 margin_right = 173.0
-margin_bottom = 35.0
-text = "are you sure?"
+margin_bottom = 26.0
+text = "are you sure?
+no undo"
 align = 1
 autowrap = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="delete_confirmation"]
-margin_top = 39.0
+margin_top = 30.0
 margin_right = 173.0
-margin_bottom = 61.0
+margin_bottom = 52.0
 
 [node name="final_delete" parent="delete_confirmation/HBoxContainer" instance=ExtResource( 7 )]
 margin_right = 50.0

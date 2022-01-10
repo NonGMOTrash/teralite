@@ -23,9 +23,8 @@ export(Vector2) var position_offset := Vector2.ZERO
 export(int) var random_position_offset = 0
 
 export(Texture) var effect_texture
-export(bool) var effect_inherit_texture := false
-export(int) var effect_hframes = 1
-export(int) var effect_vframes = 1
+export var effect_inherit_texture := false
+export(Vector2) var effect_frames := Vector2(-1, -1)
 export(bool) var effect_inherit_flipping = true
 
 export(bool) var particle_one_shot = true
@@ -168,9 +167,10 @@ func spawn():
 			sprite.texture = effect_texture
 		elif effect_inherit_texture == true:
 			sprite.texture = entity.components["entity_sprite"].texture
-	
-		sprite.hframes = effect_hframes
-		sprite.vframes = effect_vframes
+		
+		if effect_frames != Vector2(-1, -1):
+			sprite.hframes = effect_frames.x
+			sprite.vframes = effect_frames.y
 		
 		var my_sprite = entity.components["entity_sprite"] as Sprite
 		if my_sprite != null and effect_inherit_flipping == true:

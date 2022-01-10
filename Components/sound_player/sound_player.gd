@@ -50,7 +50,7 @@ func sound_finished(sound_name):
 	if sound.MODE == MODES.ONESHOT:
 		sound.queue_free()
 		sounds.erase(sound_name)
-	elif sound.MODE == MODES.REPEAT:
+	elif sound.MODE == MODES.REPEATING:
 		sound.play()
 
 	if FREE_WHEN_EMPTY == true and sounds.size() == 0:

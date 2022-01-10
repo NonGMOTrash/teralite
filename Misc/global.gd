@@ -55,7 +55,7 @@ const DEV_TIMES := {
 	"Patrol": 9.7,
 	"Scavenge": 14.6,
 	"Doctor": 10.4,
-	"Scorch": 17.0,
+	"Scorch": 14.9,
 	"Outpost": 27.7,
 	"Outgunned": 5.08,
 	"Pinned": 20.4,
@@ -524,32 +524,21 @@ func quit():
 #	self.queue_free()
 	get_tree().quit()
 
-func sec_to_time(time: float) -> String:
+func sec_to_time(time: float, round_seconds := false) -> String:
 	var hours = int(floor(time / 3600))
-	var minutes = int(floor(time / 60))
-	var seconds = int(floor(time - (minutes * 60)))
-	var tenth = stepify(time - ((minutes*60) + seconds), 0.1) * 10
+	var minutes = int(floor((time - hours * 3600) / 60))
+	var seconds = int(floor(time - (minutes * 60) - (hours * 3600)))
+	var tenth = stepify(time - ((hours * 3600) + (minutes*60) + seconds), 0.1) * 10
 	if tenth == 10: tenth = 0
 	
 	if seconds < 10: 
 		seconds = str(seconds)
 		seconds = "0"+seconds
 	
+	var text: String
 	if hours > 1:
-		return (
-			str(hours) +
-			":" +
-			str(minutes - hours * 60) +
-			":" +
-			str(seconds) +
-			"." +
-			str(tenth)
-		)
-	else:
-		return (
-			str(minutes) +
-			":" +
-			str(seconds) +
-			"." +
-			str(tenth)
-		)
+		text = "%s:" % str(hours)
+	text = text + "%s:%s" % [str(minutes), str(seconds)]
+	if round_seconds == false:
+		text = text + ".%s" % str(tenth)
+	return text

@@ -27,7 +27,7 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1.25, 1 ),
+"transitions": PoolRealArray( 2, 1 ),
 "update": 0,
 "values": [ 0, 390 ]
 }
@@ -63,10 +63,11 @@ tracks/1/keys = {
 
 [node name="transition" type="TextureRect"]
 pause_mode = 2
-visible = false
 modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -2.0
+margin_bottom = 2.0
 texture = ExtResource( 1 )
 stretch_mode = 2
 flip_h = true

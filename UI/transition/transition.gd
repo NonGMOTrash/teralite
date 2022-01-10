@@ -6,6 +6,9 @@ signal finished
 
 func _init() -> void:
 	refs.transition = weakref(self)
+	margin_left = 0
+	margin_right = 0
+	visible = true
 
 func _ready():
 	visible = true

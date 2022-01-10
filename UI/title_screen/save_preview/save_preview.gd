@@ -9,7 +9,7 @@ onready var version := $main/HBoxContainer/version
 onready var stars := $main/HBoxContainer2/stars
 onready var deaths := $main/HBoxContainer2/deaths
 onready var time := $main/HBoxContainer2/time
-onready var saves_list: GridContainer = get_parent()
+onready var saves_list := get_parent()
 
 signal play(save_name)
 signal delete()
