@@ -8,6 +8,7 @@ onready var spread = $spread
 onready var hitbox = $hitbox
 onready var detection = $detection
 onready var fuel = $fuel
+onready var light: Light2D = $light
 
 var smoke: Particles2D
 var smoke_path: NodePath
@@ -22,11 +23,35 @@ func _ready():
 	yield(smoke, "ready")
 	smoke.global_position = global_position
 	smoke_path = smoke.get_path()
+	
+	# toggle light visibility if other fires nearby
+	if truName == "timber_pot":
+		light.visible = true
+		return
+	for detected_entity in detection.get_overlapping_bodies():
+		if detected_entity.truName != "fire":
+			continue
+		elif detected_entity.get_instance_id() > get_instance_id():
+			light.queue_free()
+			prints(get_name(), detected_entity.get_name())
+			return
+	light.visible = true
 
 func death():
 	if get_node_or_null(smoke_path) != null:
 		smoke.queue_free()
 	animation.play("death")
+	
+	
+	# give light to nearby fire with highest id
+	if light.visible == false:
+		return
+	var highest_id: int = -1
+	var highest_fire: Entity
+	for detected_entity in detection.get_overlapping_bodies():
+		if detected_entity.truName == "fire" and detected_entity.get_instance_id() > highest_id:
+			highest_fire = detected_entity
+			highest_id = detected_entity.get_instance_id()
 
 func _on_fuel_timeout() -> void:
 	death()
@@ -56,3 +81,14 @@ func _on_spread_timeout() -> void:
 	
 	new_fire.find_node("fuel").wait_time = 1.0
 	get_parent().call_deferred("add_child", new_fire)
+	yield(new_fire, "ready")
+	new_fire.fuel.start()
+
+func _on_detection_body_entered(body: Node) -> void:
+	if truName == "timber_pot":
+		return
+	
+	body = body as Entity
+	if body.truName == "fire" and body.get_instance_id() > get_instance_id():
+		light.visible = false
+

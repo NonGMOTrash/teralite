@@ -11,13 +11,14 @@
 [node name="Outpost" instance=ExtResource( 1 )]
 AMBIANCE = 3
 GLOBAL_PARTICLES = 3
+AMBIENT_LIGHTING = 3
 WORLD = "C"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )
 ID = 2
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 3539161, 15, 0, 3604622, 15, 0, 3932335, 15, 0, 4980814, 13, 0, 5963828, 13, 0, 6553813, 13, 0, 7209003, 15, 0, 9175104, 15, 0, 9568449, 7, 0, 9699506, 15, 0, 11993304, 15, 0, 12320832, 13, 0, 13107367, 13, 0, 13107395, 15, 0, 13434978, 8, 0 )
 
 [node name="background_tiles" parent="YSort" index="0"]

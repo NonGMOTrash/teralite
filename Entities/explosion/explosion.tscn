@@ -2,14 +2,12 @@
 
 [ext_resource path="res://Entities/Entity.gd" type="Script" id=1]
 [ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/explosion/explosion.png" type="Texture" id=4]
 [ext_resource path="res://Components/sound_player/sound/sound.gd" type="Script" id=5]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Entities/explosion/explosion.wav" type="AudioStream" id=7]
-
-[sub_resource type="ShaderMaterial" id=1]
-resource_local_to_scene = true
+[ext_resource path="res://Effects/light.png" type="Texture" id=8]
+[ext_resource path="res://Effects/Light.gd" type="Script" id=9]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 1.0
@@ -33,42 +31,54 @@ tracks/0/keys = {
 } ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("entity_sprite:frame")
+tracks/1/path = NodePath("hitbox/CollisionShape2D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.063, 0.126, 0.189, 0.252, 0.315, 0.378, 0.441 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("hitbox/CollisionShape2D:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0, 0.063, 0.126, 0.189, 0.252 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 6, 6 ), Vector2( 20, 20 ), Vector2( 23, 23 ), Vector2( 27, 27 ), Vector2( 0, 0 ) ]
 }
-tracks/3/type = "method"
-tracks/3/path = NodePath("sound_player")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/2/type = "method"
+tracks/2/path = NodePath("sound_player")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ "explosion" ],
 "method": "play_sound"
 } ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("light:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.189, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 2.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.063, 0.126, 0.189, 0.252, 0.315, 0.378, 0.441 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
 [node name="explosion" type="KinematicBody2D"]
@@ -80,16 +90,10 @@ FORCE_MULT = 0.1
 INANIMATE = true
 truName = "explosion"
 
-[node name="entity_sprite" parent="." instance=ExtResource( 3 )]
-material = SubResource( 1 )
-z_index = 999
+[node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 4 )
 hframes = 8
 frame = 7
-auto_flip_mode = 0
-
-[node name="shadow" parent="entity_sprite" index="0"]
-visible = false
 
 [node name="hitbox" parent="." instance=ExtResource( 2 )]
 COOLDOWN = 0.001
@@ -117,5 +121,13 @@ script = ExtResource( 5 )
 SCENE_PERSIST = true
 AUTO_SET_PHYSICAL = false
 
-[editable path="entity_sprite"]
+[node name="light" type="Light2D" parent="."]
+texture = ExtResource( 8 )
+texture_scale = 0.8
+color = Color( 0.929412, 0.266667, 0.137255, 1 )
+energy = 0.0
+shadow_enabled = true
+shadow_buffer_size = 512
+script = ExtResource( 9 )
+
 [editable path="hitbox"]

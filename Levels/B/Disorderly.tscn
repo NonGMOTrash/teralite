@@ -7,13 +7,14 @@
 [node name="Disorderly" instance=ExtResource( 2 )]
 AMBIANCE = 2
 GLOBAL_PARTICLES = 2
+AMBIENT_LIGHTING = 2
 WORLD = "B"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 3 )
 ID = 1
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 5177417, 10, 0, 5767214, 7, 0, 7798883, 7, 0, 8388729, 10, 0, 9175076, 8, 0, 10092734, 7, 0, 10879181, 7, 0, 10944661, 7, 0, 11206745, 12, 0, 11337941, 7, 0, 11403392, 9, 0, 12189754, 10, 0, 13107369, 7, 0, 13238490, 9, 0, 13959249, 8, 0, 14614571, 8, 0, 14811181, 7, 0, 15401152, 7, 0, 15597683, 7, 0 )
 
 [node name="entity_spawns" parent="YSort" index="1"]

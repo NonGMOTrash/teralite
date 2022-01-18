@@ -14,8 +14,9 @@
 [node name="hub" type="Node2D"]
 script = ExtResource( 6 )
 
-[node name="Background" parent="." instance=ExtResource( 2 )]
-visible = false
+[node name="background" parent="." instance=ExtResource( 2 )]
+
+[node name="ambient_lighting" type="CanvasModulate" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

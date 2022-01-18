@@ -6,13 +6,14 @@
 [node name="Infected" instance=ExtResource( 1 )]
 AMBIANCE = 3
 GLOBAL_PARTICLES = 3
+AMBIENT_LIGHTING = 3
 FORCE_SLEEP_UNTIL_VISIBLE = true
 WORLD = "C"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 589942, 16, 0, 720976, 15, 0, 2555919, 16, 0, 3670025, 17, 0, 4718620, 15, 0, 5308482, 15, 0, 5439556, 15, 0, 5505176, 15, 0, 6684818, 15, 0, 6946928, 15, 0, 8650847, 15, 0, 8781994, 15, 0, 9830481, 16, 0, 10682525, 15, 0 )
 
 [node name="entity_spawns" parent="YSort" index="1"]

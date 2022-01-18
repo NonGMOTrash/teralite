@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Components/stats/status_effects/status_effect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Components/stats/status_effects/burning/burning.gd" type="Script" id=2]
+[ext_resource path="res://Effects/light.png" type="Texture" id=3]
+[ext_resource path="res://Effects/Light.gd" type="Script" id=4]
 
 [node name="burning" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -10,5 +12,12 @@ TRIGGER_TIME = 0.7
 spread_time = 1.5
 
 [node name="spread" type="Timer" parent="." index="2"]
+
+[node name="light" type="Light2D" parent="." index="3"]
+texture = ExtResource( 3 )
+color = Color( 0.976471, 0.396078, 0.168627, 1 )
+shadow_enabled = true
+shadow_buffer_size = 512
+script = ExtResource( 4 )
 
 [connection signal="timeout" from="spread" to="." method="_on_spread_timeout"]

@@ -4,7 +4,8 @@ enum TYPES {NONE, AUTUMN, UNDERGROUND, WASTELAND}
 
 export(TYPES) var AMBIANCE = TYPES.AUTUMN
 export(TYPES) var GLOBAL_PARTICLES = TYPES.AUTUMN
-export(String) var LETTER := "A" 
+export(TYPES) var AMBIENT_LIGHTING = TYPES.AUTUMN
+export(String) var LETTER := "A"
 
 var update_particles := true
 var has_particles := true
@@ -14,12 +15,13 @@ const LEVEL_TYPE = 1
 onready var particle_anchor: Node2D = $particle_anchor
 onready var particles: Particles2D = $particle_anchor/particles
 onready var timer: Timer = $Timer
+onready var ambient_lighting: CanvasModulate = $ambient_lighting
 
 func _ready() -> void:
 	refs.level = weakref(self)
 	refs.canvas_layer = weakref($CanvasLayer)
 	refs.ysort = weakref($YSort)
-	refs.background = weakref($Background)
+	refs.background = weakref($background)
 	refs.background_tiles = weakref($YSort/background_tiles)
 	
 	$Camera.pause_mode = PAUSE_MODE_INHERIT
@@ -56,8 +58,7 @@ func _ready() -> void:
 			particle_anchor.queue_free()
 			has_particles = false
 	
-	if global.last_ambiance == AMBIANCE: return
-	else: 
+	if global.last_ambiance != AMBIANCE:
 		# PROBLEM_NOTE: not sure why i have to do this instead of find_node(), maybe a bug with godot
 		# (this same thing is also done in level.gd)
 		var old_ambiance
@@ -81,7 +82,15 @@ func _ready() -> void:
 		TYPES.AUTUMN: ambiance.stream = load("res://Levels/level/forest_ambiance.ogg")
 		TYPES.UNDERGROUND: ambiance.stream = load("res://Levels/level/cave_ambiance.ogg")
 		TYPES.WASTELAND: ambiance.stream = load("res://Levels/level/wasteland_ambience.ogg")
-		_: return
+	
+	match AMBIENT_LIGHTING:
+		TYPES.NONE, TYPES.AUTUMN:
+			ambient_lighting.color = Color(1, 1, 1)
+		TYPES.UNDERGROUND:
+			print("!!")
+			ambient_lighting.color = Color(0.5, 0.5, 0.5)
+		TYPES.WASTELAND:
+			ambient_lighting.color = Color(1, 1, 0.7)
 	
 	global.add_child(ambiance)
 	refs.ambiance = weakref(ambiance)

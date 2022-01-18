@@ -12,13 +12,14 @@
 [node name="Duel" instance=ExtResource( 1 )]
 AMBIANCE = 2
 GLOBAL_PARTICLES = 2
+AMBIENT_LIGHTING = 2
 WORLD = "B"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )
 ID = 1
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 6422678, 8, 0, 7274670, 5, 0, 7471282, 7, 0, 7536759, 9, 0, 9568413, 10, 0, 12189868, 7, 0 )
 
 [node name="entity_spawns" parent="YSort" index="1"]

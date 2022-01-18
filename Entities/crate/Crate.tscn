@@ -42,6 +42,7 @@ speed_modifier = -99.0
 slowness_modifier = -99.0
 regeneration_modifier = -99.0
 resistance_modifier = -99.0
+infection_modifier = -99.0
 
 [node name="hurtbox" parent="." instance=ExtResource( 1 )]
 visible = false
@@ -59,7 +60,6 @@ shape = SubResource( 5 )
 
 [node name="death_spawn" parent="." instance=ExtResource( 6 )]
 thing = ExtResource( 9 )
-effect_hframes = 5
 
 [node name="sleeper" parent="." instance=ExtResource( 7 )]
 visible = false

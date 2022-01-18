@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/Item_Pickups/item.gd"
 }, {
+"base": "Light2D",
+"class": "LightSource",
+"language": "GDScript",
+"path": "res://Effects/Light.gd"
+}, {
 "base": "Attack",
 "class": "Melee",
 "language": "GDScript",
@@ -76,6 +81,7 @@ _global_script_class_icons={
 "Entity": "",
 "Global_Sound": "",
 "Item": "",
+"LightSource": "",
 "Melee": "",
 "Projectile": "",
 "Prop": "",

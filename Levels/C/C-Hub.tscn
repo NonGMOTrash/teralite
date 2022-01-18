@@ -33,14 +33,14 @@ height = 11.9618
 [node name="C-Hub" instance=ExtResource( 1 )]
 AMBIANCE = 3
 GLOBAL_PARTICLES = 3
+AMBIENT_LIGHTING = 3
 LETTER = "C"
 
-[node name="Background" parent="." index="0"]
-visible = true
+[node name="background" parent="." index="0"]
 texture = ExtResource( 2 )
 ID = 2
 
-[node name="prop_placer" parent="." index="2"]
+[node name="prop_placer" parent="." index="3"]
 tile_data = PoolIntArray( 1507541, 15, 0, 2031799, 12, 0, 2425030, 15, 0, 2556086, 15, 0, 5963949, 15, 0, 6357238, 17, 0, 7143576, 13, 0, 7405732, 15, 0, 7667965, 15, 0, 7733356, 15, 0, 7798962, 15, 0, 7864491, 17, 0, 8257687, 14, 0, 10420438, 17, 0, 10748111, 17, 0, 10748155, 7, 0, 11206718, 13, 0, 11337879, 7, 0, 11468939, 15, 0, 11665657, 13, 0, 11796673, 13, 0, 12845132, 8, 0, 14221508, 15, 0, 14221557, 15, 0, 14745842, 15, 0, 15138928, 7, 0, 15270009, 7, 0, 15466702, 13, 0, 15663229, 15, 0, 15663250, 13, 0, 15990938, 15, 0 )
 
 [node name="WorldTiles" parent="YSort" index="0"]

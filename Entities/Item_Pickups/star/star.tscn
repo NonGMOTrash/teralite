@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Entities/Item_Pickups/star/star_pickup.wav" type="AudioStream" id=1]
 [ext_resource path="res://Entities/Item_Pickups/item.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/Item_Pickups/star/star.png" type="Texture" id=3]
 [ext_resource path="res://Entities/Item_Pickups/star/star.gd" type="Script" id=4]
+[ext_resource path="res://Effects/light.png" type="Texture" id=5]
+[ext_resource path="res://Effects/Light.gd" type="Script" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "collected"
@@ -103,3 +105,10 @@ vframes = 3
 autoplay = "shine"
 anims/collected = SubResource( 1 )
 anims/shine = SubResource( 2 )
+
+[node name="light" type="Light2D" parent="." index="5"]
+texture = ExtResource( 5 )
+texture_scale = 0.3
+color = Color( 0.882353, 0.737255, 0.172549, 1 )
+energy = 0.6
+script = ExtResource( 6 )

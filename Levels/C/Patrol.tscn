@@ -6,13 +6,14 @@
 [node name="Patrol" instance=ExtResource( 2 )]
 AMBIANCE = 3
 GLOBAL_PARTICLES = 3
+AMBIENT_LIGHTING = 3
 WORLD = "C"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 1 )
 ID = -1
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 2752655, 7, 0, 3145905, 13, 0, 3145923, 8, 0, 3539044, 14, 0, 3801155, 15, 0, 4587574, 13, 0, 4587745, 15, 0, 6029514, 15, 0, 6946985, 16, 0, 7012391, 7, 0, 7209137, 13, 0, 8388661, 15, 0, 8388766, 13, 0, 8978554, 7, 0 )
 
 [node name="background_tiles" parent="YSort" index="0"]

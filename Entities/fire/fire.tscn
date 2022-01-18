@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Entities/fire/fire.gd" type="Script" id=1]
 [ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Entities/fire/fire.wav" type="AudioStream" id=6]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Effects/light.png" type="Texture" id=8]
+[ext_resource path="res://Effects/Light.gd" type="Script" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.0
@@ -54,6 +56,18 @@ tracks/2/keys = {
 "args": [  ],
 "method": "queue_free"
 } ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("light:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -132,8 +146,17 @@ shape = SubResource( 5 )
 stream = ExtResource( 6 )
 MODE = 2
 
+[node name="light" type="Light2D" parent="."]
+visible = false
+texture = ExtResource( 8 )
+color = Color( 0.976471, 0.396078, 0.168627, 1 )
+shadow_enabled = true
+shadow_buffer_size = 512
+script = ExtResource( 9 )
+
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="fuel" to="." method="_on_fuel_timeout"]
 [connection signal="timeout" from="spread" to="." method="_on_spread_timeout"]
+[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
 
 [editable path="hitbox"]

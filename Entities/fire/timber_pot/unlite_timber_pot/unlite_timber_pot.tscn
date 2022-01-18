@@ -7,17 +7,10 @@ resource_local_to_scene = true
 
 [node name="unlite_timber_pot" instance=ExtResource( 1 )]
 
-[node name="stats" parent="." index="0"]
-modifiers = {
-"bleeding": -999,
-"burning": -999,
-"poison": -999
-}
-
 [node name="pot" parent="." index="2"]
 material = SubResource( 1 )
 
-[node name="hitbox" parent="." index="4"]
+[node name="hitbox" parent="." index="5"]
 iTime = 0.1
 STATUS_EFFECT = {
 "duration": 1.8,
@@ -25,9 +18,11 @@ STATUS_EFFECT = {
 "type": "burning"
 }
 
-[node name="fuel" parent="." index="6"]
+[node name="fuel" parent="." index="7"]
 wait_time = 0.01
 
-[editable path="hitbox"]
+[node name="light" parent="." index="13"]
+visible = false
 
+[editable path="hitbox"]
 [editable path="hurtbox"]

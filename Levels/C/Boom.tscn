@@ -6,6 +6,7 @@
 [node name="Boom" instance=ExtResource( 2 )]
 AMBIANCE = 3
 GLOBAL_PARTICLES = 3
+AMBIENT_LIGHTING = 3
 WORLD = "C"
 
 [node name="background" parent="." index="0"]

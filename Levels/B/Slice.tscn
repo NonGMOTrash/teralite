@@ -6,12 +6,13 @@
 [node name="Slice" instance=ExtResource( 2 )]
 AMBIANCE = 2
 GLOBAL_PARTICLES = 2
+AMBIENT_LIGHTING = 2
 WORLD = "B"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 1 )
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 721021, 7, 0, 1835069, 7, 0, 2097318, 7, 0, 3473499, 9, 0, 4391063, 10, 0, 4849830, 12, 0, 5439523, 7, 0, 5832780, 10, 0, 6029381, 6, 0, 6160422, 6, 0, 6422599, 5, 0, 6553641, 5, 0, 6946885, 6, 0, 7209001, 6, 0, 8126539, 8, 0, 8323219, 7, 0, 8388681, 8, 0, 9109646, 9, 0, 10289265, 7, 0 )
 
 [node name="entity_spawns" parent="YSort" index="1"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Entities/pylon/pylon.gd" type="Script" id=1]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Entities/pylon/pylon_destroyed.wav" type="AudioStream" id=11]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Effects/light.png" type="Texture" id=13]
+[ext_resource path="res://Effects/Light.gd" type="Script" id=14]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -52,6 +54,7 @@ auto_flip_mode = 0
 [node name="shadow" parent="entity_sprite" index="0"]
 position = Vector2( 0, 0 )
 texture = ExtResource( 8 )
+offset = Vector2( 0, -1 )
 
 [node name="brain" parent="." instance=ExtResource( 6 )]
 TOLERANCE = 20
@@ -85,6 +88,13 @@ margin_right = 10.7354
 margin_bottom = -6.49886
 
 [node name="sound_player" parent="." instance=ExtResource( 12 )]
+
+[node name="light" type="Light2D" parent="."]
+texture = ExtResource( 13 )
+texture_scale = 0.23
+color = Color( 0.592157, 0.92549, 0.854902, 1 )
+energy = 0.5
+script = ExtResource( 14 )
 
 [connection signal="timeout" from="delay" to="." method="_on_delay_timeout"]
 [connection signal="found_target" from="brain" to="." method="_on_brain_found_target"]

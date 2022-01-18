@@ -37,6 +37,7 @@ __meta__ = {
 }
 
 [node name="info" type="VBoxContainer" parent="Node2D"]
+visible = false
 margin_left = -50.0
 margin_top = -80.0
 margin_right = 50.0

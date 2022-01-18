@@ -10,13 +10,37 @@
 [node name="Across" instance=ExtResource( 6 )]
 AMBIANCE = 2
 GLOBAL_PARTICLES = 2
+AMBIENT_LIGHTING = 2
 WORLD = "B"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 3 )
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 4325484, 7, 0, 5308510, 7, 0, 5767334, 9, 0, 6422589, 12, 0, 7012423, 11, 0, 7471139, 11, 0, 7798889, 4, 0, 7798929, 4, 0, 7864479, 7, 0, 8323162, 9, 0, 8847424, 8, 0, 10485853, 8, 0, 10551363, 10, 0, 10879025, 7, 0 )
+
+[node name="Node2D" type="Node2D" parent="." index="5"]
+z_index = 4096
+
+[node name="Control" type="Control" parent="Node2D" index="0"]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Node2D/Control" index="0"]
+margin_left = 263.324
+margin_top = 367.454
+margin_right = 383.324
+margin_bottom = 421.454
+text = "right click to throw your spear"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="background_tiles" parent="YSort" index="0"]
 tile_data = PoolIntArray( 2031647, 1, 0, 2097180, 1, 0, 2097181, 1, 0, 2097182, 1, 0, 2097183, 1, 0, 2097184, 1, 0, 2097185, 1, 0, 2097186, 1, 0, 2162716, 1, 0, 2162717, 1, 0, 2162718, 1, 0, 2162719, 1, 0, 2162720, 1, 0, 2162721, 1, 0, 2162722, 1, 0, 2228252, 1, 0, 2228253, 1, 0, 2228254, 1, 0, 2228255, 1, 0, 2228256, 1, 0, 2228257, 1, 0, 2228258, 1, 0, 2293788, 1, 0, 2293789, 1, 0, 2293790, 1, 0, 2293791, 1, 0, 2293792, 1, 0, 2293793, 1, 0, 2293794, 1, 0, 2359324, 1, 0, 2359325, 1, 0, 2359326, 1, 0, 2359327, 1, 0, 2359328, 1, 0, 2359329, 1, 0, 2359330, 1, 0, 2424860, 1, 0, 2424861, 1, 0, 2424862, 1, 0, 2424863, 1, 0, 2424864, 1, 0, 2424865, 1, 0, 2424866, 1, 0, 2490396, 1, 0, 2490397, 1, 0, 2490398, 1, 0, 2490399, 1, 0, 2490400, 1, 0, 2490401, 1, 0, 2490402, 1, 0, 2555932, 1, 0, 2555933, 1, 0, 2555934, 1, 0, 2555935, 1, 0, 2555936, 1, 0, 2555937, 1, 0, 2555938, 1, 0, 2621468, 1, 0, 2621469, 1, 0, 2621470, 1, 0, 2621471, 1, 0, 2621472, 1, 0, 2621473, 1, 0, 2621474, 1, 0 )
@@ -58,29 +82,6 @@ position = Vector2( 161.068, 529.771 )
 [node name="spawner" parent="YSort/crate_4" index="7" instance=ExtResource( 1 )]
 thing = ExtResource( 4 )
 custom_properties = {
-}
-
-[node name="Node2D" type="Node2D" parent="." index="5"]
-z_index = 4096
-
-[node name="Control" type="Control" parent="Node2D" index="0"]
-margin_right = 40.0
-margin_bottom = 40.0
-theme = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Node2D/Control" index="0"]
-margin_left = 263.324
-margin_top = 367.454
-margin_right = 383.324
-margin_bottom = 421.454
-text = "right click to throw your spear"
-align = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
 }
 
 [editable path="YSort/world_tiles"]

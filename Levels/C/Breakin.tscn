@@ -11,13 +11,14 @@
 [node name="Breakin" instance=ExtResource( 1 )]
 AMBIANCE = 3
 GLOBAL_PARTICLES = 3
+AMBIENT_LIGHTING = 3
 WORLD = "C"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )
 ID = 2
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 6291517, 15, 0, 6750361, 15, 0, 9699412, 7, 0, 9830546, 15, 0 )
 
 [node name="background_tiles" parent="YSort" index="0"]

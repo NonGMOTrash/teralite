@@ -7,8 +7,6 @@
 [ext_resource path="res://UI/health_ui/empty_health_ui.png" type="Texture" id=5]
 [ext_resource path="res://UI/health_ui/healthUI.png" type="Texture" id=6]
 
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "blue"
 step = 0.025
@@ -27,7 +25,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "flash"
-length = 0.5
+length = 0.1
 step = 0.025
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -36,14 +34,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.025, 0.5 ),
+"times": PoolRealArray( 0, 0.025, 0.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1.5, 1.5, 1.5, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="health_ui" type="Control"]
-visible = false
 self_modulate = Color( 1, 1, 1, 0.784314 )
 margin_right = 319.0
 margin_bottom = 32.0

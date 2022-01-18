@@ -6,13 +6,14 @@
 [node name="Maze" instance=ExtResource( 1 )]
 AMBIANCE = 3
 GLOBAL_PARTICLES = 3
+AMBIENT_LIGHTING = 3
 WORLD = "C"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )
 ID = 2
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 3080292, 6, 0, 3670161, 6, 0, 4128885, 6, 0, 4718745, 6, 0, 5111889, 6, 0, 5111909, 6, 0, 5439625, 6, 0, 6291573, 6, 0, 6488153, 6, 0, 6881425, 6, 0, 7798892, 6, 0 )
 
 [node name="entity_spawns" parent="YSort" index="1"]

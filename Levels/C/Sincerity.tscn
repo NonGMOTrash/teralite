@@ -6,13 +6,14 @@
 [node name="Sincerity" instance=ExtResource( 1 )]
 AMBIANCE = 3
 GLOBAL_PARTICLES = 3
+AMBIENT_LIGHTING = 3
 WORLD = "C"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )
 ID = 2
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 3539105, 13, 0, 4128880, 15, 0, 4587661, 16, 0, 5767337, 15, 0, 7929957, 15, 0 )
 
 [node name="background_tiles" parent="YSort" index="0"]

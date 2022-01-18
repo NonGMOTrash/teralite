@@ -9,11 +9,12 @@
 [node name="Mythical" instance=ExtResource( 2 )]
 AMBIANCE = 2
 GLOBAL_PARTICLES = 2
+AMBIENT_LIGHTING = 2
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 1 )
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 196659, 5, 0, 196698, 5, 0, 4522078, 12, 0, 5242980, 7, 0, 5636246, 9, 0, 5767210, 7, 0, 6029363, 5, 0, 6029376, 4, 0, 6029386, 4, 0, 6029402, 5, 0, 6029431, 6, 0, 6160582, 8, 0, 6226094, 9, 0, 7274547, 7, 0, 7536761, 5, 0, 8060936, 9, 0, 8323272, 9, 0, 8454265, 5, 0, 10027127, 6, 0, 10420394, 8, 0, 11075635, 8, 0 )
 
 [node name="background_tiles" parent="YSort" index="0"]

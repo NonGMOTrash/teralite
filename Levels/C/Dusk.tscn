@@ -10,12 +10,13 @@
 [node name="Dusk" instance=ExtResource( 1 )]
 AMBIANCE = 3
 GLOBAL_PARTICLES = 3
+AMBIENT_LIGHTING = 3
 WORLD = "C"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 3145919, 15, 0, 3932292, 15, 0, 4784327, 8, 0, 6094973, 7, 0, 6160549, 15, 0, 8192154, 15, 0, 8650892, 15, 0, 9830539, 7, 0, 10616997, 15, 0 )
 
 [node name="background_tiles" parent="YSort" index="0"]

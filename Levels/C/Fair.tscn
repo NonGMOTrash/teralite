@@ -10,13 +10,14 @@
 [node name="Fair" instance=ExtResource( 1 )]
 AMBIANCE = 3
 GLOBAL_PARTICLES = 3
+AMBIENT_LIGHTING = 3
 WORLD = "C"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )
 ID = 2
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 2031752, 15, 0, 3604594, 15, 0, 3932338, 8, 0, 6226096, 15, 0, 6488176, 13, 0, 8388763, 15, 0 )
 
 [node name="entity_spawns" parent="YSort" index="1"]

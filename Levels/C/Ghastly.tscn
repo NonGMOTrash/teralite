@@ -6,13 +6,14 @@
 [node name="Ghastly" instance=ExtResource( 2 )]
 AMBIANCE = 3
 GLOBAL_PARTICLES = 3
+AMBIENT_LIGHTING = 3
 WORLD = "C"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 1 )
 ID = 2
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 1704041, 16, 0, 2031686, 15, 0, 3801126, 15, 0, 4128842, 13, 0, 4522100, 7, 0, 5439585, 15, 0, 6488137, 15, 0, 7012445, 15, 0, 10027150, 15, 0, 10092696, 13, 0, 11206821, 15, 0, 11272262, 15, 0, 11272311, 13, 0, 12583019, 7, 0, 12648601, 15, 0 )
 
 [node name="entity_spawns" parent="YSort" index="1"]

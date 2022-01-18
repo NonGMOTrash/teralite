@@ -6,12 +6,13 @@
 [node name="Pathway" instance=ExtResource( 1 )]
 AMBIANCE = 2
 GLOBAL_PARTICLES = 2
+AMBIENT_LIGHTING = 2
 WORLD = "B"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 3735740, 9, 0, 4063404, 7, 0, 4194415, 8, 0, 4980845, 9, 0, 6946911, 10, 0, 7078104, 7, 0, 7209125, 7, 0, 7798942, 9, 0, 7995558, 9, 0, 8192151, 8, 0, 10158278, 10, 0, 10616928, 9, 0, 11599962, 8, 0, 11665590, 8, 0, 11731072, 9, 0, 12386421, 7, 0, 13893705, 7, 0, 15138935, 10, 0, 16056448, 8, 0 )
 
 [node name="entity_spawns" parent="YSort" index="1"]

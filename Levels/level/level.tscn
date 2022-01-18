@@ -28,6 +28,8 @@ __meta__ = {
 pause_mode = 1
 show_behind_parent = true
 
+[node name="ambient_lighting" type="CanvasModulate" parent="."]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 pause_mode = 1
 

@@ -41,3 +41,6 @@ func _on_stats_status_recieved(status) -> void:
 	if status == "burning":
 		fuel.wait_time += 15
 		fuel.start()
+
+func _on_detection_body_entered(body: Node) -> void:
+	return # don't want to inherit the light disable from fire.gd

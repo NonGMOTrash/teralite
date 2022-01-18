@@ -11,11 +11,12 @@
 [node name="Poison" instance=ExtResource( 1 )]
 AMBIANCE = 2
 GLOBAL_PARTICLES = 2
+AMBIENT_LIGHTING = 2
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 5570700, 10, 0, 8323149, 6, 0, 8519836, 6, 0, 8781863, 8, 0, 9699506, 6, 0, 10485884, 4, 0, 10485898, 4, 0, 10682469, 6, 0, 10879222, 7, 0, 11993228, 9, 0, 12058828, 12, 0, 12189915, 5, 0, 12255361, 7, 0, 12910789, 7, 0, 13041730, 8, 0, 14745772, 7, 0 )
 
 [node name="background_tiles" parent="YSort" index="0"]

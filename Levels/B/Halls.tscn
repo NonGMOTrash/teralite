@@ -11,12 +11,13 @@
 [node name="Halls" instance=ExtResource( 5 )]
 AMBIANCE = 2
 GLOBAL_PARTICLES = 2
+AMBIENT_LIGHTING = 2
 WORLD = "B"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 6422643, 6, 0, 6488251, 6, 0, 6619225, 4, 0, 7536729, 4, 0, 7995507, 6, 0, 8126623, 6, 0, 8716292, 6, 0, 8716331, 6, 0, 8716379, 6, 0, 9240763, 6, 0, 9371807, 6, 0, 9699419, 6, 0, 10223732, 4, 0, 10223749, 4, 0, 14549035, 6, 0, 14549075, 6, 0, 15466501, 6, 0, 15466539, 6, 0 )
 
 [node name="background_tiles" parent="YSort" index="0"]

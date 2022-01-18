@@ -6,12 +6,13 @@
 [node name="Outgunned" instance=ExtResource( 2 )]
 AMBIANCE = 3
 GLOBAL_PARTICLES = 3
+AMBIENT_LIGHTING = 3
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 1 )
 ID = 2
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 2556021, 15, 0, 3342507, 17, 0, 4849834, 8, 0, 5243011, 13, 0, 5439564, 7, 0, 5701782, 17, 0, 6095009, 15, 0, 6488137, 15, 0, 6750309, 15, 0, 7471244, 15, 0, 8978524, 16, 0 )
 
 [node name="entity_spawns" parent="YSort" index="1"]

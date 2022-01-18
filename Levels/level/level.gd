@@ -1,9 +1,10 @@
 extends Navigation2D
 
-enum TYPES {NONE, AUTUMN, UNDERGROUND, WASTELAND}
+enum TYPES {CUSTOM = -1, NONE, AUTUMN, UNDERGROUND, WASTELAND}
 
 export(TYPES) var AMBIANCE = TYPES.AUTUMN
 export(TYPES) var GLOBAL_PARTICLES = TYPES.AUTUMN
+export(TYPES) var AMBIENT_LIGHTING = TYPES.AUTUMN
 export var FORCE_SLEEP_UNTIL_VISIBLE = false
 
 export(String) var WORLD := "A"
@@ -15,6 +16,7 @@ var spawn_paused := false
 
 onready var particle_anchor: Node2D = $particle_anchor
 onready var particles: Particles2D = $particle_anchor/particles
+onready var ambient_lighting: CanvasModulate = $ambient_lighting
 
 func _ready() -> void:
 	if name != "test_level":
@@ -77,6 +79,14 @@ func _ready() -> void:
 	
 	global.add_child(ambiance)
 	refs.ambiance = weakref(ambiance)
+	
+	match AMBIENT_LIGHTING:
+		TYPES.NONE, TYPES.AUTUMN:
+			ambient_lighting.color = Color(1, 1, 1)
+		TYPES.UNDERGROUND:
+			ambient_lighting.color = Color(0.5, 0.5, 0.5)
+		TYPES.WASTELAND:
+			ambient_lighting.color = Color(1, 1, 0.7)
 	
 	# prevent freeze when this is loaded
 	res.allocate("hit_effect")

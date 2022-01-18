@@ -6,13 +6,14 @@
 [node name="Tailend" instance=ExtResource( 1 )]
 AMBIANCE = 3
 GLOBAL_PARTICLES = 3
+AMBIENT_LIGHTING = 3
 WORLD = "C"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )
 ID = 2
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 2162844, 13, 0, 2818213, 7, 0, 3014668, 15, 0, 3145817, 15, 0, 3997704, 15, 0, 3997795, 15, 0, 4063344, 15, 0, 4260006, 7, 0, 5308516, 15, 0, 5636191, 15, 0, 5636205, 15, 0, 5963870, 15, 0, 6029415, 15, 0, 6356991, 15, 0, 7667777, 14, 0, 8257615, 13, 0, 8585378, 8, 0, 9896013, 15, 0, 10289211, 16, 0, 11141268, 15, 0, 11206715, 15, 0, 11403279, 7, 0, 11730945, 13, 0, 12189825, 15, 0, 12517493, 17, 0, 12714135, 16, 0, 13107276, 15, 0, 14811314, 15, 0, 15269928, 16, 0, 15925391, 15, 0 )
 
 [node name="background_tiles" parent="YSort" index="0"]

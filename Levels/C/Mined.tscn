@@ -6,13 +6,14 @@
 [node name="Mined" instance=ExtResource( 1 )]
 AMBIANCE = 3
 GLOBAL_PARTICLES = 3
+AMBIENT_LIGHTING = 3
 WORLD = "C"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )
 ID = 2
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 2162856, 15, 0, 2490502, 15, 0, 3014766, 15, 0, 3342449, 15, 0, 4391075, 17, 0, 5242975, 15, 0, 6094989, 15, 0, 6815890, 15, 0, 6881371, 15, 0, 8913013, 16, 0 )
 
 [node name="entity_spawns" parent="YSort" index="1"]

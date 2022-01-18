@@ -6,12 +6,13 @@
 [node name="Scrapyard" instance=ExtResource( 2 )]
 AMBIANCE = 3
 GLOBAL_PARTICLES = 3
+AMBIENT_LIGHTING = 3
 WORLD = "C"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 1 )
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 4653149, 17, 0, 4849730, 15, 0, 4915315, 16, 0, 4915369, 17, 0, 5046441, 17, 0, 5439514, 17, 0, 5570776, 15, 0, 5898278, 17, 0, 6553827, 17, 0, 6553835, 15, 0, 8454190, 17, 0, 9109557, 15, 0, 9306178, 14, 0, 9437222, 17, 0, 10485802, 15, 0, 10813678, 15, 0, 10879093, 17, 0, 11141224, 13, 0, 11796693, 15, 0, 12255412, 17, 0, 12583099, 15, 0, 12779702, 17, 0, 13172829, 15, 0, 14090398, 16, 0 )
 
 [node name="background_tiles" parent="YSort" index="0"]
