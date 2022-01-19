@@ -30,7 +30,7 @@ tracks/0/keys = {
 [node name="test_level" instance=ExtResource( 1 )]
 AMBIANCE = 0
 GLOBAL_PARTICLES = 0
-AMBIENT_LIGHTING = -1
+AMBIENT_LIGHTING = 2
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 5 )

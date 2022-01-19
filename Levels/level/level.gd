@@ -27,6 +27,7 @@ func _ready() -> void:
 	refs.ysort = weakref($YSort)
 	refs.background = weakref($background)
 	refs.background_tiles = weakref($YSort/background_tiles)
+	refs.ambient_lighting = weakref($ambient_lighting)
 	
 	if global.settings["spawn_pause"] == true:
 		refs.camera.get_ref().pause_mode = PAUSE_MODE_PROCESS
@@ -80,13 +81,16 @@ func _ready() -> void:
 	global.add_child(ambiance)
 	refs.ambiance = weakref(ambiance)
 	
-	match AMBIENT_LIGHTING:
-		TYPES.NONE, TYPES.AUTUMN:
-			ambient_lighting.color = Color(1, 1, 1)
-		TYPES.UNDERGROUND:
-			ambient_lighting.color = Color(0.5, 0.5, 0.5)
-		TYPES.WASTELAND:
-			ambient_lighting.color = Color(1, 1, 0.7)
+	if global.settings["ambient_lighting"] == false:
+		ambient_lighting.visible = false
+	else:
+		match AMBIENT_LIGHTING:
+			TYPES.NONE, TYPES.AUTUMN:
+				ambient_lighting.color = Color(1, 1, 1)
+			TYPES.UNDERGROUND:
+				ambient_lighting.color = Color(0.5, 0.5, 0.5)
+			TYPES.WASTELAND:
+				ambient_lighting.color = Color(1, 1, 0.7)
 	
 	# prevent freeze when this is loaded
 	res.allocate("hit_effect")

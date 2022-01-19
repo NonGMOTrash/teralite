@@ -32,3 +32,13 @@ func _on_SmartCheckbox_mouse_entered() -> void:
 func _on_SmartCheckbox_button_down() -> void:
 	if click_sound != null:
 		sound_player.create_sound(click_sound, true, Sound.MODES.ONESHOT, true, true)
+#
+#func _make_custom_tooltip(for_text: String) -> Control:
+#	var container := Panel.new()
+#	container.size_flags_horizontal = container.SIZE_EXPAND_FILL
+#	container.size_flags_vertical = container.SIZE_FILL
+#	var label := Label.new()
+#	label.text = hint_tooltip
+#	label.autowrap = true
+#	container.add_child(label)
+#	return container

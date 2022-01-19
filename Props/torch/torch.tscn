@@ -3,7 +3,7 @@
 [ext_resource path="res://Props/Prop.gd" type="Script" id=1]
 [ext_resource path="res://Props/torch/torch.png" type="Texture" id=2]
 [ext_resource path="res://Effects/light.png" type="Texture" id=3]
-[ext_resource path="res://Effects/Light.gd" type="Script" id=4]
+[ext_resource path="res://Effects/LightSource.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "New Anim"
@@ -42,4 +42,3 @@ color = Color( 0.745098, 0.309804, 0.137255, 1 )
 shadow_buffer_size = 512
 shadow_item_cull_mask = 2
 script = ExtResource( 4 )
-CUSTOM_PROPERTIES = true

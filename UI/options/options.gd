@@ -2,17 +2,21 @@ extends Control
 
 onready var sound_player = $sound_player
 onready var tabs = $tabs
-onready var fullscreen = $tabs/video/fullscreen
-onready var pixel = $tabs/video/pixel
-onready var vsync = $tabs/video/vsync
-onready var perfection = $tabs/game/perfection
-onready var smooth = $tabs/game/smooth
-onready var hidebar = $tabs/game/hidebar
-onready var volume = $tabs/audio/volume
-onready var volume_label = $tabs/audio/volume_label
-onready var particles = $tabs/video/particles/dropdown
-onready var gpu_snap = $tabs/video/gpu_snap
-onready var spawn_pause = $tabs/game/spawn_pause
+onready var fullscreen = $tabs/video/VBox/fullscreen
+onready var pixel = $tabs/video/VBox/pixel
+onready var vsync = $tabs/video/VBox/vsync
+onready var perfection = $tabs/game/VBox/perfection
+onready var smooth = $tabs/game/VBox/smooth
+onready var hidebar = $tabs/game/VBox/hidebar
+onready var master_volume = $tabs/audio/VBox/master_volume
+onready var particles = $tabs/video/VBox/particles/dropdown
+onready var gpu_snap = $tabs/video/VBox/gpu_snap
+onready var spawn_pause = $tabs/game/VBox/spawn_pause
+onready var lighting = $tabs/video/VBox/lighting
+onready var combine_lights = $tabs/video/VBox/combine_lights
+onready var shadows = $tabs/video/VBox/shadows
+onready var shadow_buffer = $tabs/video/VBox/shadow_buffer
+onready var ambient_lighting = $tabs/video/VBox/ambient_lighting
 
 signal closed
 
@@ -30,17 +34,22 @@ func _on_tabs_visibility_changed() -> void:
 	fullscreen.pressed = global.settings["fullscreen"]
 	perfection.pressed = global.settings["perfection_mode"]
 	pixel.pressed = global.settings["pixel_perfect"]
-	volume.value = global.settings["volume"] * 100
+	master_volume.value = global.settings["volume"] * 100
 	vsync.pressed = global.settings["vsync"]
 	particles.selected = global.settings["particles"]
 	spawn_pause.pressed = global.settings["spawn_pause"]
+	lighting.pressed = global.settings["lighting"]
+	combine_lights.pressed = global.settings["combine_lights"]
+	shadows.pressed = global.settings["shadows"]
+	shadow_buffer.value = global.settings["shadow_buffer"]
+	ambient_lighting.pressed = global.settings["ambient_lighting"]
 	
 	if visible == false: return
 	tabs.current_tab = 0
 	smooth.grab_focus()
 
 func _on_volume_value_changed(value: float) -> void:
-	volume_label.text = "Volume ("+str(value)+"%)"
+	master_volume.label.text = "Volume ("+str(value)+"%)"
 	# PROBLEM_NOTE: maybe make a smart_slider that does the above line automatically
 	# maybe it could also use a texture progress somehow to look a little nicer
 	AudioServer.set_bus_volume_db(0, linear2db(value/100))
@@ -51,11 +60,16 @@ func _on_exit_pressed() -> void:
 	global.settings["fullscreen"] = fullscreen.pressed
 	global.settings["perfection_mode"] = perfection.pressed
 	global.settings["pixel_perfect"] = pixel.pressed
-	global.settings["volume"] = volume.value / 100
+	global.settings["volume"] = master_volume.value / 100
 	global.settings["vsync"] = vsync.pressed
 	global.settings["particles"] = particles.selected
 	global.settings["gpu_snap"] = gpu_snap.pressed
 	global.settings["spawn_pause"] = spawn_pause.pressed
+	global.settings["lighting"] = lighting.pressed
+	global.settings["combine_lights"] = combine_lights.pressed
+	global.settings["shadows"] = shadows.pressed
+	global.settings["shadow_buffer"] = shadow_buffer.value
+	global.settings["ambient_lighting"] = ambient_lighting.pressed
 	
 	global.update_settings()
 	

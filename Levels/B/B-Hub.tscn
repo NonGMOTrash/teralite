@@ -8,7 +8,7 @@
 [ext_resource path="res://Levels/B/lightshaft.png" type="Texture" id=6]
 [ext_resource path="res://Levels/B/wasteland_entrance.png" type="Texture" id=7]
 [ext_resource path="res://Effects/light.png" type="Texture" id=8]
-[ext_resource path="res://Effects/Light.gd" type="Script" id=9]
+[ext_resource path="res://Effects/LightSource.gd" type="Script" id=9]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true

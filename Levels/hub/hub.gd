@@ -23,6 +23,7 @@ func _ready() -> void:
 	refs.ysort = weakref($YSort)
 	refs.background = weakref($background)
 	refs.background_tiles = weakref($YSort/background_tiles)
+	refs.ambient_lighting = weakref($ambient_lighting)
 	
 	$Camera.pause_mode = PAUSE_MODE_INHERIT
 	
@@ -83,17 +84,19 @@ func _ready() -> void:
 		TYPES.UNDERGROUND: ambiance.stream = load("res://Levels/level/cave_ambiance.ogg")
 		TYPES.WASTELAND: ambiance.stream = load("res://Levels/level/wasteland_ambience.ogg")
 	
-	match AMBIENT_LIGHTING:
-		TYPES.NONE, TYPES.AUTUMN:
-			ambient_lighting.color = Color(1, 1, 1)
-		TYPES.UNDERGROUND:
-			print("!!")
-			ambient_lighting.color = Color(0.5, 0.5, 0.5)
-		TYPES.WASTELAND:
-			ambient_lighting.color = Color(1, 1, 0.7)
-	
 	global.add_child(ambiance)
 	refs.ambiance = weakref(ambiance)
+	
+	if global.settings["ambient_lighting"] == false:
+		ambient_lighting.visible = false
+	else:
+		match AMBIENT_LIGHTING:
+			TYPES.NONE, TYPES.AUTUMN:
+				ambient_lighting.color = Color(1, 1, 1)
+			TYPES.UNDERGROUND:
+				ambient_lighting.color = Color(0.5, 0.5, 0.5)
+			TYPES.WASTELAND:
+				ambient_lighting.color = Color(1, 1, 0.7)
 
 func _physics_process(_delta: float) -> void:
 	if update_particles == true:

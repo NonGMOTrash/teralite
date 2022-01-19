@@ -1,15 +1,14 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/smart_ui_nodes/smart_checkbox/smart_checkbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/smart_ui_nodes/smart_button/smart_button.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/Themes/Styles/stylebox_selected_box.tres" type="StyleBox" id=4]
-[ext_resource path="res://UI/Themes/grabber.png" type="Texture" id=5]
+[ext_resource path="res://UI/smart_ui_nodes/smart_slider/smart_slider.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/options/options.gd" type="Script" id=6]
 [ext_resource path="res://UI/Themes/general_theme.tres" type="Theme" id=7]
 [ext_resource path="res://UI/Themes/Styles/stylebox_box.tres" type="StyleBox" id=8]
 [ext_resource path="res://UI/Icons/x.png" type="Texture" id=9]
-[ext_resource path="res://UI/Icons/particles.png" type="Texture" id=10]
 
 [node name="options" type="Control"]
 modulate = Color( 1, 1, 1, 0.784314 )
@@ -43,63 +42,102 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="video" type="VBoxContainer" parent="tabs"]
+[node name="video" type="ScrollContainer" parent="tabs"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 6.0
 margin_top = 23.2494
 margin_right = -6.0
 margin_bottom = -2.24938
-alignment = 1
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="fullscreen" parent="tabs/video" instance=ExtResource( 2 )]
-margin_top = 11.0
-margin_right = 352.0
-margin_bottom = 35.0
+[node name="VBox" type="VBoxContainer" parent="tabs/video"]
+margin_right = 336.0
+margin_bottom = 266.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="fullscreen" parent="tabs/video/VBox" instance=ExtResource( 2 )]
+margin_right = 336.0
 shortcut_in_tooltip = false
 text = "fullscreen"
 
-[node name="pixel" parent="tabs/video" instance=ExtResource( 2 )]
-margin_top = 39.0
-margin_right = 352.0
-margin_bottom = 63.0
-text = "pixel perfect filter (not recomended)"
-
-[node name="gpu_snap" parent="tabs/video" instance=ExtResource( 2 )]
-margin_top = 67.0
-margin_right = 352.0
-margin_bottom = 91.0
-text = "GPU pixel snap"
-
-[node name="vsync" parent="tabs/video" instance=ExtResource( 2 )]
-margin_top = 95.0
-margin_right = 352.0
-margin_bottom = 119.0
+[node name="vsync" parent="tabs/video/VBox" instance=ExtResource( 2 )]
+margin_top = 28.0
+margin_right = 336.0
+margin_bottom = 52.0
+hint_tooltip = "fixes screen tearing but causes higher input latency"
 text = "vsync"
 
-[node name="particles" type="HBoxContainer" parent="tabs/video"]
-margin_top = 123.0
-margin_right = 352.0
-margin_bottom = 143.0
+[node name="lighting" parent="tabs/video/VBox" instance=ExtResource( 2 )]
+margin_top = 56.0
+margin_right = 336.0
+margin_bottom = 80.0
+text = "enable lighting"
 
-[node name="icon" type="TextureRect" parent="tabs/video/particles"]
-margin_right = 16.0
-margin_bottom = 20.0
-texture = ExtResource( 10 )
+[node name="combine_lights" parent="tabs/video/VBox" instance=ExtResource( 2 )]
+margin_top = 84.0
+margin_right = 336.0
+margin_bottom = 108.0
+hint_tooltip = "combines nearby fire lights for optimization"
+text = "combine fire lights"
 
-[node name="Label" type="Label" parent="tabs/video/particles"]
-margin_left = 20.0
+[node name="shadows" parent="tabs/video/VBox" instance=ExtResource( 2 )]
+margin_top = 112.0
+margin_right = 336.0
+margin_bottom = 136.0
+text = "enable shadows"
+
+[node name="shadow_buffer" parent="tabs/video/VBox" instance=ExtResource( 5 )]
+anchor_right = 0.0
+margin_top = 140.0
+margin_right = 336.0
+margin_bottom = 158.0
+hint_tooltip = "accuracy of shadows, higher is better but more resource intensive"
+min_value = 64.0
+max_value = 4096.0
+value = 512.0
+TEXT = "shadow buffer size"
+PROGRESS = 1
+
+[node name="ambient_lighting" parent="tabs/video/VBox" instance=ExtResource( 2 )]
+margin_top = 162.0
+margin_right = 336.0
+margin_bottom = 186.0
+hint_tooltip = "natural lighting of the environment"
+text = "enable ambient lighting"
+
+[node name="pixel" parent="tabs/video/VBox" instance=ExtResource( 2 )]
+margin_top = 190.0
+margin_right = 336.0
+margin_bottom = 214.0
+hint_tooltip = "pixels are snapped to the game resolution instead of native resolution"
+text = "pixel perfect filter (not recomended)"
+
+[node name="gpu_snap" parent="tabs/video/VBox" instance=ExtResource( 2 )]
+margin_top = 218.0
+margin_right = 336.0
+margin_bottom = 242.0
+hint_tooltip = "fixes tilemap artifacts, but makes camera movement a bit jittery"
+text = "GPU pixel snap"
+
+[node name="particles" type="HBoxContainer" parent="tabs/video/VBox"]
+margin_top = 246.0
+margin_right = 336.0
+margin_bottom = 266.0
+
+[node name="Label" type="Label" parent="tabs/video/VBox/particles"]
 margin_top = 2.0
-margin_right = 78.0
+margin_right = 58.0
 margin_bottom = 18.0
 text = "particles:"
 
-[node name="dropdown" type="OptionButton" parent="tabs/video/particles"]
-margin_left = 82.0
-margin_right = 131.0
+[node name="dropdown" type="OptionButton" parent="tabs/video/VBox/particles"]
+margin_left = 62.0
+margin_right = 111.0
 margin_bottom = 20.4988
 theme = ExtResource( 7 )
 custom_constants/hseparation = -7
@@ -110,7 +148,7 @@ flat = true
 items = [ "none", null, false, 0, null, "few", null, false, 1, null, "most", null, false, 2, null, "all", null, false, 3, null ]
 selected = 0
 
-[node name="audio" type="VBoxContainer" parent="tabs"]
+[node name="audio" type="ScrollContainer" parent="tabs"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -118,30 +156,22 @@ margin_left = 6.0
 margin_top = 23.2494
 margin_right = -6.0
 margin_bottom = -2.24938
+
+[node name="VBox" type="VBoxContainer" parent="tabs/audio"]
+margin_right = 352.0
+margin_bottom = 155.501
+size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 1
 
-[node name="volume_label" type="Label" parent="tabs/audio"]
-margin_top = 58.0
+[node name="master_volume" parent="tabs/audio/VBox" instance=ExtResource( 5 )]
+anchor_right = 0.0
+margin_top = 75.0
 margin_right = 352.0
-margin_bottom = 74.0
-text = "volume (50%)"
-align = 1
-valign = 1
+margin_bottom = 75.0
+TEXT = "master volume"
 
-[node name="volume" type="HSlider" parent="tabs/audio"]
-margin_top = 78.0
-margin_right = 352.0
-margin_bottom = 96.0
-custom_icons/grabber_highlight = ExtResource( 5 )
-custom_icons/grabber = ExtResource( 5 )
-custom_styles/slider = ExtResource( 8 )
-custom_styles/grabber_area_highlight = ExtResource( 4 )
-custom_styles/grabber_area = ExtResource( 4 )
-value = 100.0
-allow_greater = true
-allow_lesser = true
-
-[node name="game" type="VBoxContainer" parent="tabs"]
+[node name="game" type="ScrollContainer" parent="tabs"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -149,33 +179,41 @@ margin_left = 6.0
 margin_top = 23.2494
 margin_right = -6.0
 margin_bottom = -2.24938
+
+[node name="VBox" type="VBoxContainer" parent="tabs/game"]
+margin_right = 352.0
+margin_bottom = 155.501
+size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 1
 
-[node name="perfection" parent="tabs/game" instance=ExtResource( 2 )]
-margin_top = 23.0
+[node name="perfection" parent="tabs/game/VBox" instance=ExtResource( 2 )]
+margin_top = 21.0
 margin_right = 352.0
-margin_bottom = 47.0
+margin_bottom = 45.0
+hint_tooltip = "useful if you're going for perfects on levels"
 shortcut_in_tooltip = false
 text = "perfection mode (1 hit death)"
 
-[node name="hidebar" parent="tabs/game" instance=ExtResource( 2 )]
-margin_top = 51.0
+[node name="hidebar" parent="tabs/game/VBox" instance=ExtResource( 2 )]
+margin_top = 49.0
 margin_right = 352.0
-margin_bottom = 75.0
+margin_bottom = 73.0
 shortcut_in_tooltip = false
 text = "hide item bar when empty"
 
-[node name="smooth" parent="tabs/game" instance=ExtResource( 2 )]
-margin_top = 79.0
+[node name="smooth" parent="tabs/game/VBox" instance=ExtResource( 2 )]
+margin_top = 77.0
 margin_right = 352.0
-margin_bottom = 103.0
+margin_bottom = 101.0
 shortcut_in_tooltip = false
 text = "smooth camera"
 
-[node name="spawn_pause" parent="tabs/game" instance=ExtResource( 2 )]
-margin_top = 107.0
+[node name="spawn_pause" parent="tabs/game/VBox" instance=ExtResource( 2 )]
+margin_top = 105.0
 margin_right = 352.0
-margin_bottom = 131.0
+margin_bottom = 129.0
+hint_tooltip = "pauses the level until you start moving"
 pressed = true
 text = "spawn pause"
 
@@ -199,5 +237,4 @@ FREE_WHEN_EMPTY = false
 
 [connection signal="tab_changed" from="tabs" to="." method="_on_tabs_tab_changed"]
 [connection signal="visibility_changed" from="tabs" to="." method="_on_tabs_visibility_changed"]
-[connection signal="value_changed" from="tabs/audio/volume" to="." method="_on_volume_value_changed"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

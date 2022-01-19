@@ -89,7 +89,7 @@ var speedrun_time = 0.0
 var icon = 0
 
 const ver_phase = "beta"
-const ver_num = 4.2
+const ver_num = 4.3
 const ver_hotfix = 0
 
 # for saving things
@@ -108,6 +108,11 @@ var settings := {
 	"particles": 3, # 0 = none, 1 = low, 2 = medium, 3 = all
 	"gpu_snap": false,
 	"spawn_pause": false,
+	"lighting": true,
+	"combine_lights": true,
+	"shadows": true,
+	"shadow_buffer": 512,
+	"ambient_lighting": true,
 }
 
 # should move this and get_relation to Entity.gd probably
@@ -430,13 +435,12 @@ func delete_save(entered_save_name):
 		# file not found
 		push_warning("could not find save on delete")
 		OS.alert("could not find save on delete", "reportpls.jpg")
-		
 
 func update_settings(save_settings_config:=true):
 	OS.window_fullscreen = settings["fullscreen"]
-	ProjectSettings.set_setting("rendering/2d/snapping/use_gpu_pixel_snap", settings["gpu_snap"])
-	
 	OS.vsync_enabled = settings["vsync"]
+	ProjectSettings.set_setting("rendering/2d/snapping/use_gpu_pixel_snap", settings["gpu_snap"])
+	AudioServer.set_bus_volume_db(0, linear2db(settings["volume"]))
 	
 	if global.settings["pixel_perfect"] == true:
 		# PROBLEM_NOTE: should use a screen_size var in global.gd instead of just having a vector2 
@@ -448,15 +452,32 @@ func update_settings(save_settings_config:=true):
 					SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, Vector2(384, 216)
 				)
 	
-	if get_tree().current_scene is Navigation2D:
-		# is map
-		
+	print("TYPES" in get_tree().current_scene)
+	if "TYPES" in get_tree().current_scene: # is map
 		var camera = refs.camera.get_ref()
 		if not camera is Camera2D:
 			push_warning("could not find camera")
 		else:
 			camera.smoothing_enabled = global.settings["smooth_camera"]
 			camera.limit_smoothed = global.settings["smooth_camera"]
+		
+		for light in get_tree().get_nodes_in_group("lights"):
+			light.enabled = global.settings["lighting"]
+			light.shadow_enabled = global.settings["shadows"]
+			light.shadow_buffer_size = global.settings["shadow_buffer"]
+		
+		var ambient_lighting: CanvasModulate = refs.ambient_lighting.get_ref()
+		var level: Node2D = refs.level.get_ref()
+		if global.settings["ambient_lighting"] == true:
+			match level.AMBIENT_LIGHTING:
+				level.TYPES.NONE, level.TYPES.AUTUMN:
+					ambient_lighting.color = Color(1, 1, 1)
+				level.TYPES.UNDERGROUND:
+					ambient_lighting.color = Color(0.5, 0.5, 0.5)
+				level.TYPES.WASTELAND:
+					ambient_lighting.color = Color(1, 1, 0.7)
+		else:
+			ambient_lighting.color = Color(1, 1, 1)
 		
 		var item_bar = refs.item_bar.get_ref()
 		if item_bar == null: 
@@ -487,8 +508,6 @@ func update_settings(save_settings_config:=true):
 			get_tree().current_scene.set_physics_process(enabled)
 			particles.visible = enabled
 			particles.emitting = enabled
-	
-	AudioServer.set_bus_volume_db(0, linear2db(settings["volume"]))
 	
 	if save_settings_config == false:
 		return

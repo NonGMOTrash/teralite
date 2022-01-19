@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/Themes/general_theme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/smart_ui_nodes/smart_slider/smart_slider.gd" type="Script" id=2]
+
+[node name="smart_slider" type="HSlider"]
+anchor_right = 1.0
+margin_right = -2.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+theme = ExtResource( 1 )
+scrollable = false
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="."]
+anchor_right = 1.0
+size_flags_horizontal = 3
+text = "slider"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="value_changed" from="." to="." method="_on_smart_slider_value_changed"]

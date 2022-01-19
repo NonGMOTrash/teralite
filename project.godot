@@ -42,7 +42,7 @@ _global_script_classes=[ {
 "base": "Light2D",
 "class": "LightSource",
 "language": "GDScript",
-"path": "res://Effects/Light.gd"
+"path": "res://Effects/LightSource.gd"
 }, {
 "base": "Attack",
 "class": "Melee",
@@ -144,6 +144,7 @@ framerate=false
 "visibility rect"=false
 uv_contact=false
 "gpu pixel snap"=false
+vsync=false
 
 [importer_defaults]
 

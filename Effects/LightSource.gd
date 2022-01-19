@@ -7,12 +7,17 @@ const LIGHT_TEXTURE := preload("res://Effects/light.png")
 
 export var CUSTOM_PROPERTIES := false
 
+func _init() -> void:
+	add_to_group("lights")
+
 func _ready() -> void:
+	enabled = global.settings["lighting"]
+	
 	if CUSTOM_PROPERTIES == true:
 		return
 	
 	if texture == null:
 		texture = LIGHT_TEXTURE
 	
-	shadow_buffer_size = 512
-	shadow_enabled = true
+	shadow_enabled = global.settings["shadows"]
+	shadow_buffer_size = global.settings["shadow_buffer"]

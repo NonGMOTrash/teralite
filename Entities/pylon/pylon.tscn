@@ -13,7 +13,7 @@
 [ext_resource path="res://Entities/pylon/pylon_destroyed.wav" type="AudioStream" id=11]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Effects/light.png" type="Texture" id=13]
-[ext_resource path="res://Effects/Light.gd" type="Script" id=14]
+[ext_resource path="res://Effects/LightSource.gd" type="Script" id=14]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true

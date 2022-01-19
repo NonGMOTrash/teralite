@@ -7,7 +7,7 @@
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Entities/explosion/explosion.wav" type="AudioStream" id=7]
 [ext_resource path="res://Effects/light.png" type="Texture" id=8]
-[ext_resource path="res://Effects/Light.gd" type="Script" id=9]
+[ext_resource path="res://Effects/LightSource.gd" type="Script" id=9]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 1.0
@@ -93,7 +93,6 @@ truName = "explosion"
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 4 )
 hframes = 8
-frame = 7
 
 [node name="hitbox" parent="." instance=ExtResource( 2 )]
 COOLDOWN = 0.001
@@ -104,7 +103,7 @@ STATUS_EFFECT = "burning"
 STATUS_DURATION = 3.0
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
-scale = Vector2( 1e-05, 1e-05 )
+scale = Vector2( 6, 6 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -125,9 +124,8 @@ AUTO_SET_PHYSICAL = false
 texture = ExtResource( 8 )
 texture_scale = 0.8
 color = Color( 0.929412, 0.266667, 0.137255, 1 )
-energy = 0.0
 shadow_enabled = true
-shadow_buffer_size = 512
+shadow_buffer_size = 4096
 script = ExtResource( 9 )
 
 [editable path="hitbox"]

@@ -99,7 +99,9 @@ func _ready() -> void:
 			return
 		
 		for i in global.settings.keys().size():
-			var key = global.settings.keys()[i]
+			var key: String = global.settings.keys()[i]
+			if key == "perfection_mode":
+				continue # i don't want people to accidentally leave it on and wonder why their dying
 			if new_settings.has(key):
 				global.settings[key] = new_settings[key]
 		

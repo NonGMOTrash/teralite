@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=18 format=2]
+[gd_resource type="Theme" load_steps=20 format=2]
 
 [ext_resource path="res://UI/Themes/Fonts/m6x11.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Themes/Styles/stylebox_full.tres" type="StyleBox" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://UI/Icons/dropdown.png" type="Texture" id=11]
 [ext_resource path="res://UI/Icons/option_selected.png" type="Texture" id=12]
 [ext_resource path="res://UI/Themes/Fonts/m6x11.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://UI/Themes/grabber.png" type="Texture" id=14]
+[ext_resource path="res://UI/Themes/Fonts/smallest_pixel_7.tres" type="DynamicFont" id=15]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -57,6 +59,11 @@ CheckBox/styles/normal = null
 CheckBox/styles/pressed = null
 HSeparator/constants/separation = 1
 HSeparator/styles/separator = SubResource( 2 )
+HSlider/icons/grabber = ExtResource( 14 )
+HSlider/icons/grabber_highlight = ExtResource( 14 )
+HSlider/styles/grabber_area = ExtResource( 5 )
+HSlider/styles/grabber_area_highlight = ExtResource( 5 )
+HSlider/styles/slider = ExtResource( 4 )
 Icons/icons/close = ExtResource( 9 )
 Label/colors/font_color = Color( 1, 1, 1, 1 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -100,7 +107,7 @@ PopupMenu/icons/radio_checked = ExtResource( 12 )
 PopupMenu/icons/radio_unchecked = ExtResource( 10 )
 PopupMenu/icons/submenu = null
 PopupMenu/icons/unchecked = ExtResource( 10 )
-PopupMenu/styles/hover = null
+PopupMenu/styles/hover = ExtResource( 5 )
 PopupMenu/styles/labeled_separator_left = null
 PopupMenu/styles/labeled_separator_right = null
 PopupMenu/styles/panel = ExtResource( 4 )
@@ -131,10 +138,10 @@ TabContainer/styles/tab_bg = ExtResource( 4 )
 TabContainer/styles/tab_disabled = ExtResource( 4 )
 TabContainer/styles/tab_fg = ExtResource( 4 )
 TooltipLabel/colors/font_color = Color( 1, 1, 1, 1 )
-TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.1 )
+TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.101961 )
 TooltipLabel/constants/shadow_offset_x = 1
 TooltipLabel/constants/shadow_offset_y = 1
-TooltipLabel/fonts/font = null
+TooltipLabel/fonts/font = ExtResource( 15 )
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null

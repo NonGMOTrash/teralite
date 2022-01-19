@@ -25,7 +25,7 @@ func _ready():
 	smoke_path = smoke.get_path()
 	
 	# toggle light visibility if other fires nearby
-	if truName == "timber_pot":
+	if truName == "timber_pot" or global.settings["combine_lights"] == false:
 		light.visible = true
 		return
 	for detected_entity in detection.get_overlapping_bodies():
@@ -33,7 +33,6 @@ func _ready():
 			continue
 		elif detected_entity.get_instance_id() > get_instance_id():
 			light.queue_free()
-			prints(get_name(), detected_entity.get_name())
 			return
 	light.visible = true
 
@@ -85,7 +84,7 @@ func _on_spread_timeout() -> void:
 	new_fire.fuel.start()
 
 func _on_detection_body_entered(body: Node) -> void:
-	if truName == "timber_pot":
+	if truName == "timber_pot" or global.settings["combine_lights"] == false:
 		return
 	
 	body = body as Entity

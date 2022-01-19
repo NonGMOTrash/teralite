@@ -8,7 +8,7 @@
 [ext_resource path="res://Components/sound_player/sound/sound.gd" type="Script" id=6]
 [ext_resource path="res://Entities/Attacks/Melee/shine/shine_reflect.wav" type="AudioStream" id=7]
 [ext_resource path="res://Effects/light.png" type="Texture" id=8]
-[ext_resource path="res://Effects/Light.gd" type="Script" id=9]
+[ext_resource path="res://Effects/LightSource.gd" type="Script" id=9]
 
 [sub_resource type="ShaderMaterial" id=6]
 resource_local_to_scene = true
