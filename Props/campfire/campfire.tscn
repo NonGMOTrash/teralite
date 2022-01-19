@@ -38,7 +38,7 @@ autoplay = "New Anim"
 [node name="light" type="Light2D" parent="."]
 texture = ExtResource( 3 )
 texture_scale = 0.5
-color = Color( 0.890196, 0.627451, 0.439216, 1 )
+color = Color( 0.933333, 0.423529, 0.266667, 1 )
 energy = 0.85
 shadow_enabled = true
 shadow_buffer_size = 512

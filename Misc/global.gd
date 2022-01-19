@@ -104,6 +104,10 @@ var settings := {
 	"smooth_camera": true,
 	"hide_bar": false,
 	"volume": 0.50,
+	"sound_volume": 0.50,
+	"menu_volume": 0.50,
+	"ambiance_volume": 0.50,
+	"footsteps_volume": 0.50,
 	"vsync": true,
 	"particles": 3, # 0 = none, 1 = low, 2 = medium, 3 = all
 	"gpu_snap": false,
@@ -201,6 +205,7 @@ func _ready():
 	prints("seed:", the_seed, "(%s)" % the_seed.hash())
 	
 	Input.set_custom_mouse_cursor(CURSOR_NORMAL, Input.CURSOR_ARROW, Vector2(0, 0))
+	AudioServer.set_bus_layout(load("res://UI/audio_bus_layout.tres"))
 	
 	var hr = OS.get_time()["hour"]
 	if hr > 12: hr -= 12
@@ -441,6 +446,10 @@ func update_settings(save_settings_config:=true):
 	OS.vsync_enabled = settings["vsync"]
 	ProjectSettings.set_setting("rendering/2d/snapping/use_gpu_pixel_snap", settings["gpu_snap"])
 	AudioServer.set_bus_volume_db(0, linear2db(settings["volume"]))
+	AudioServer.set_bus_volume_db(1, linear2db(settings["sound_volume"]))
+	AudioServer.set_bus_volume_db(2, linear2db(settings["menu_volume"]))
+	AudioServer.set_bus_volume_db(3, linear2db(settings["ambiance_volume"]))
+	AudioServer.set_bus_volume_db(4, linear2db(settings["footsteps_volume"]))
 	
 	if global.settings["pixel_perfect"] == true:
 		# PROBLEM_NOTE: should use a screen_size var in global.gd instead of just having a vector2 

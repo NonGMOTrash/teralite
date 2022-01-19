@@ -166,10 +166,38 @@ alignment = 1
 
 [node name="master_volume" parent="tabs/audio/VBox" instance=ExtResource( 5 )]
 anchor_right = 0.0
-margin_top = 75.0
+margin_top = 35.0
+margin_right = 352.0
+margin_bottom = 53.0
+TEXT = "master volume"
+
+[node name="sound_volume" parent="tabs/audio/VBox" instance=ExtResource( 5 )]
+anchor_right = 0.0
+margin_top = 57.0
 margin_right = 352.0
 margin_bottom = 75.0
-TEXT = "master volume"
+TEXT = "sound effects volume"
+
+[node name="menu_volume" parent="tabs/audio/VBox" instance=ExtResource( 5 )]
+anchor_right = 0.0
+margin_top = 79.0
+margin_right = 352.0
+margin_bottom = 97.0
+TEXT = "menu volume"
+
+[node name="ambiance_volume" parent="tabs/audio/VBox" instance=ExtResource( 5 )]
+anchor_right = 0.0
+margin_top = 101.0
+margin_right = 352.0
+margin_bottom = 119.0
+TEXT = "ambiance volume"
+
+[node name="footsteps_volume" parent="tabs/audio/VBox" instance=ExtResource( 5 )]
+anchor_right = 0.0
+margin_top = 101.0
+margin_right = 352.0
+margin_bottom = 119.0
+TEXT = "footsteps volume"
 
 [node name="game" type="ScrollContainer" parent="tabs"]
 visible = false
@@ -231,6 +259,8 @@ custom_styles/focus = ExtResource( 4 )
 custom_styles/normal = ExtResource( 8 )
 text = "exit"
 icon = ExtResource( 9 )
+hover_sound = null
+click_sound = null
 
 [node name="sound_player" parent="." instance=ExtResource( 1 )]
 FREE_WHEN_EMPTY = false

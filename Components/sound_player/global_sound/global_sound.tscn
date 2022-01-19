@@ -4,4 +4,5 @@
 
 [node name="global_sound" type="AudioStreamPlayer"]
 autoplay = true
+bus = "sound"
 script = ExtResource( 1 )

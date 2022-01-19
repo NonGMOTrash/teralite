@@ -91,4 +91,5 @@ func footstep():
 	sfx.stream = AudioStreamRandomPitch.new()
 	sfx.stream.audio_stream = audio
 	sfx.volume_db = VOLUME_ADJUST
+	sfx.bus = "footsteps"
 	add_sound(sfx)

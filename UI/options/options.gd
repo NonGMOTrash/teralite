@@ -5,18 +5,24 @@ onready var tabs = $tabs
 onready var fullscreen = $tabs/video/VBox/fullscreen
 onready var pixel = $tabs/video/VBox/pixel
 onready var vsync = $tabs/video/VBox/vsync
-onready var perfection = $tabs/game/VBox/perfection
-onready var smooth = $tabs/game/VBox/smooth
-onready var hidebar = $tabs/game/VBox/hidebar
-onready var master_volume = $tabs/audio/VBox/master_volume
-onready var particles = $tabs/video/VBox/particles/dropdown
-onready var gpu_snap = $tabs/video/VBox/gpu_snap
-onready var spawn_pause = $tabs/game/VBox/spawn_pause
 onready var lighting = $tabs/video/VBox/lighting
 onready var combine_lights = $tabs/video/VBox/combine_lights
 onready var shadows = $tabs/video/VBox/shadows
 onready var shadow_buffer = $tabs/video/VBox/shadow_buffer
 onready var ambient_lighting = $tabs/video/VBox/ambient_lighting
+onready var particles = $tabs/video/VBox/particles/dropdown
+onready var gpu_snap = $tabs/video/VBox/gpu_snap
+
+onready var master_volume = $tabs/audio/VBox/master_volume
+onready var sound_volume = $tabs/audio/VBox/sound_volume
+onready var menu_volume = $tabs/audio/VBox/menu_volume
+onready var ambiance_volume = $tabs/audio/VBox/ambiance_volume
+onready var footsteps_volume = $tabs/audio/VBox/footsteps_volume
+
+onready var perfection = $tabs/game/VBox/perfection
+onready var smooth = $tabs/game/VBox/smooth
+onready var hidebar = $tabs/game/VBox/hidebar
+onready var spawn_pause = $tabs/game/VBox/spawn_pause
 
 signal closed
 
@@ -35,6 +41,10 @@ func _on_tabs_visibility_changed() -> void:
 	perfection.pressed = global.settings["perfection_mode"]
 	pixel.pressed = global.settings["pixel_perfect"]
 	master_volume.value = global.settings["volume"] * 100
+	sound_volume.value = global.settings["sound_volume"] * 100
+	menu_volume.value = global.settings["menu_volume"] * 100
+	ambiance_volume.value = global.settings["ambiance_volume"] * 100
+	footsteps_volume.value = global.settings["footsteps_volume"] * 100
 	vsync.pressed = global.settings["vsync"]
 	particles.selected = global.settings["particles"]
 	spawn_pause.pressed = global.settings["spawn_pause"]
@@ -61,6 +71,10 @@ func _on_exit_pressed() -> void:
 	global.settings["perfection_mode"] = perfection.pressed
 	global.settings["pixel_perfect"] = pixel.pressed
 	global.settings["volume"] = master_volume.value / 100
+	global.settings["sound_volume"] = sound_volume.value / 100
+	global.settings["menu_volume"] = menu_volume.value / 100
+	global.settings["ambiance_volume"] = ambiance_volume.value / 100
+	global.settings["footsteps_volume"] = footsteps_volume.value / 100
 	global.settings["vsync"] = vsync.pressed
 	global.settings["particles"] = particles.selected
 	global.settings["gpu_snap"] = gpu_snap.pressed

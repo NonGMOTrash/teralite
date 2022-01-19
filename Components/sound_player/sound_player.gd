@@ -82,11 +82,14 @@ func create_sound(
 	auto_play = true,
 	scene_persist = false,
 	auto_set_physical = true,
-	volume = 0.0
+	volume = 0.0,
+	audio_bus = "sound"
 	):
 		var sfx
-		if global_sound == false: sfx = Sound.new()
-		else: sfx = Global_Sound.new()
+		if global_sound == false:
+			sfx = Sound.new()
+		else:
+			sfx = Global_Sound.new()
 		sfx.stream = stream
 		sfx.MODE = mode
 		sfx.AUTO_PLAY = auto_play
@@ -94,6 +97,7 @@ func create_sound(
 		if global_sound == false:
 			sfx.AUTO_SET_PHYSICAL = auto_set_physical
 		sfx.volume_db = volume
+		sfx.bus = audio_bus
 		add_sound(sfx)
 
 func play_sound(sound_name:String) -> void:
@@ -134,7 +138,7 @@ func _on_sound_player_tree_exiting() -> void:
 		if sound.is_inside_tree() == false:
 			sound.queue_free()
 			continue
-	
+		
 		if not sound.is_connected("finished", sound, "queue_free") and not sound.MODE == sound.MODES.REPEATING:
 			sound.connect("finished", sound, "queue_free")
 		elif sound.MODE == sound.MODES.STANDBY and sound.playing == false:

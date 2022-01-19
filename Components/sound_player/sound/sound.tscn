@@ -4,4 +4,5 @@
 
 [node name="sound" type="AudioStreamPlayer2D"]
 attenuation = 2.67943
+bus = "sound"
 script = ExtResource( 1 )

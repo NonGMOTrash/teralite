@@ -78,6 +78,7 @@ func _ready() -> void:
 	ambiance.autoplay = true
 	ambiance.pause_mode = PAUSE_MODE_PROCESS
 	ambiance.MODE = Sound.MODES.REPEATING
+	ambiance.bus = "ambiance"
 	
 	match AMBIANCE:
 		TYPES.AUTUMN: ambiance.stream = load("res://Levels/level/forest_ambiance.ogg")
