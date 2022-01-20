@@ -4,7 +4,6 @@ class_name Melee
 const BLOCK_SPARK := preload("res://Effects/block_spark/block_spark.tscn")
 
 export(bool) var HOLDS := false
-export(int, 0, 200) var BOOST := 50
 export(int, 0, 200) var RECOIL := 70
 export(bool) var ANIMATION_NEVER_BACKWARDS := false
 export(bool) var HIDE_HELD_ITEM := true
@@ -25,12 +24,6 @@ func _ready():
 		SOURCE = get_node_or_null(SOURCE_PATH)
 	
 	_physics_process(float())
-	
-	# boost
-	if get_node_or_null(SOURCE_PATH) != null and SOURCE.is_queued_for_deletion() == false:
-		SOURCE.apply_force(SOURCE.global_position.direction_to(target_pos).normalized() * BOOST)
-	
-	RECOIL += BOOST # < so the boost doesn't cancel out the RECOIL
 	
 	var held_item = SOURCE.components["held_item"]
 	

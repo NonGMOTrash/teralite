@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UI/vignette/vignette.tres" type="Shader" id=1]
+[ext_resource path="res://UI/vignette/vignette.gd" type="Script" id=2]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 1 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/multiplier = 0.0
+shader_param/softness = 3.0
+
+[node name="vignette" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="rect_a" type="ColorRect" parent="."]
+visible = false
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="timer_a" type="Timer" parent="rect_a"]
+
+[node name="rect_b" type="ColorRect" parent="."]
+visible = false
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="timer_b" type="Timer" parent="rect_b"]
+
+[node name="rect_c" type="ColorRect" parent="."]
+visible = false
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="timer_c" type="Timer" parent="rect_c"]
+
+[connection signal="timeout" from="rect_a/timer_a" to="." method="_on_timer_a_timeout"]
+[connection signal="timeout" from="rect_b/timer_b" to="." method="_on_timer_b_timeout"]
+[connection signal="timeout" from="rect_c/timer_c" to="rect_c" method="_on_Timer_timeout"]
+[connection signal="timeout" from="rect_c/timer_c" to="." method="_on_timer_c_timeout"]

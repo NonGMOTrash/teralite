@@ -28,6 +28,7 @@ func _ready() -> void:
 	refs.background = weakref($background)
 	refs.background_tiles = weakref($YSort/background_tiles)
 	refs.ambient_lighting = weakref($ambient_lighting)
+	refs.vignette = weakref($CanvasLayer/vignette)
 	
 	if global.settings["spawn_pause"] == true:
 		refs.camera.get_ref().pause_mode = PAUSE_MODE_PROCESS

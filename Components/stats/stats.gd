@@ -150,7 +150,6 @@ func add_status_effect(new_status_name:String, duration=2.5, level=1.0):
 		push_error("status name '%s' not found in keys" % new_status_name)
 		return
 	
-	emit_signal("status_recieved", new_status_name)
 	var modded_level: float = level + get_modifier(new_status_name)
 	
 	if not is_instance_valid(existing_status):
@@ -175,6 +174,8 @@ func add_status_effect(new_status_name:String, duration=2.5, level=1.0):
 		status_effect.DURATION_TIME = duration
 		status_effect.level = modded_level
 		call_deferred("add_child", status_effect)
+		yield(status_effect, "ready")
+		emit_signal("status_recieved", new_status_name)
 	else:
 		# existing status
 		existing_status.level += modded_level
