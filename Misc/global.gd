@@ -89,7 +89,7 @@ var speedrun_time = 0.0
 var icon = 0
 
 const ver_phase = "beta"
-const ver_num = 4.3
+const ver_num = 4.4
 const ver_hotfix = 0
 
 # for saving things
@@ -117,6 +117,7 @@ var settings := {
 	"shadows": true,
 	"shadow_buffer": 512,
 	"ambient_lighting": true,
+	"damage_numbers": true,
 }
 
 # should move this and get_relation to Entity.gd probably

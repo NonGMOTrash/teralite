@@ -1,6 +1,7 @@
 extends Node
 
 # PROBLEM_NOTE: add these to global.gd, and have them preloaded in hitboxes instead of here
+const DAMAGE_NUMBER := preload("res://UI/damage_number/damage_number.tscn")
 const burning = preload("res://Components/stats/status_effects/burning/burning.tscn")
 const poison = preload("res://Components/stats/status_effects/poison/poison.tscn")
 const bleed = preload("res://Components/stats/status_effects/bleed/bleed.tscn")
@@ -80,9 +81,8 @@ func change_health(value: int, true_value: int, type: String = "hurt") -> String
 					continue
 				else:
 					armor -= 1
-					new_amount += 1
+					new_amount += 1 # adding because damage is negative
 			amount = new_amount
-			
 		
 		sum = amount + true_amount
 		net = sum
@@ -109,6 +109,25 @@ func change_health(value: int, true_value: int, type: String = "hurt") -> String
 		HEALTH = clamp(HEALTH, 0, MAX_HEALTH)
 		BONUS_HEALTH += true_value
 		result_type = "heal"
+	
+	# damage number
+	if global.settings["damage_numbers"] == true and not entity is Attack:
+		var number := DAMAGE_NUMBER.instance()
+		number.amount = abs(amount + true_amount)
+		number.type = result_type
+		number.position = entity.global_position
+		
+		var blocked: int = abs((value + true_value) - (amount + true_amount))
+		if blocked > 0:
+			number.position.x -= 8
+			number.type = "hurt"
+			var blocked_number := DAMAGE_NUMBER.instance()
+			blocked_number.amount = abs(blocked)
+			blocked_number.type = "block"
+			blocked_number.position = entity.global_position + Vector2(8, 0)
+			refs.ysort.get_ref().add_child(blocked_number)
+		
+		refs.ysort.get_ref().add_child(number)
 	
 	if HEALTH <= 0:
 		if entity.truName == "player" and type != "hurt":

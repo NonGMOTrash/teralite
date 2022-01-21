@@ -13,6 +13,7 @@ const TRIPLE_SHRINK = preload("res://Effects/triple_shrink/triple_shrink.tscn")
 const WIGGLE_FADE = preload("res://Effects/wiggle_fade/wiggle_fade.tscn")
 const BLOCK_SPARK = preload("res://Effects/block_spark/block_spark.tscn")
 const HIT_PARTICLES = preload("res://Effects/Particles/hit_particles.tscn")
+const DAMAGE_NUMBER = preload("res://UI/damage_number/damage_number.tscn")
 
 enum DEATHS {
 	HIT_EFFECT = -1,
