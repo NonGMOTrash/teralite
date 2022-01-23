@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Entities/Attacks/Projectile/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Attacks/Projectile/magic/magic.png" type="Texture" id=2]
@@ -16,14 +16,10 @@ radius = 1.85369
 [sub_resource type="CircleShape2D" id=2]
 radius = 2.27152
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 2.24665
-
 [sub_resource type="CircleShape2D" id=4]
-radius = 1.0
+radius = 1.5
 
 [node name="magic" instance=ExtResource( 1 )]
-collision_mask = 0
 FORCE_MULT = 0.2
 truName = "magic"
 ONHIT_SELF_DAMAGE = 1
@@ -62,16 +58,10 @@ MULTIHITS = true
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 shape = SubResource( 2 )
 
-[node name="collision" parent="." index="4"]
-visible = false
-
-[node name="CollisionShape2D" parent="collision" index="0"]
-shape = SubResource( 3 )
-
-[node name="CollisionShape2D" parent="." index="7"]
+[node name="CollisionShape2D" parent="." index="6"]
 shape = SubResource( 4 )
 
-[node name="LightSource" type="Light2D" parent="." index="8"]
+[node name="LightSource" type="Light2D" parent="." index="7"]
 show_behind_parent = true
 texture = ExtResource( 5 )
 texture_scale = 0.08

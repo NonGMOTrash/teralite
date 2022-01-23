@@ -22,9 +22,9 @@ height = 18.7395
 radius = 2.0
 height = 3.5
 
-[sub_resource type="CapsuleShape2D" id=3]
-radius = 0.582588
-height = 9.07045
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 1.0
+height = 4.0
 
 [sub_resource type="Animation" id=4]
 resource_local_to_scene = true
@@ -54,40 +54,40 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 16, 0 ), Vector2( 18, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("collision:position")
+tracks/2/path = NodePath("hitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.7 ),
-"transitions": PoolRealArray( 2, 0.25, 0.5, 2 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 16, 0 ), Vector2( 18, 0 ), Vector2( 0, 0 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("hitbox/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("entity_sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.7 ),
+"transitions": PoolRealArray( 1, 0.25, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 16, 0 ), Vector2( 18, 0 ), Vector2( 0, 0 ) ]
+}
 tracks/4/type = "value"
-tracks/4/path = NodePath("entity_sprite:position")
+tracks/4/path = NodePath("CollisionShape2D:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.7 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.8 ),
 "transitions": PoolRealArray( 1, 0.25, 0.5, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 16, 0 ), Vector2( 18, 0 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 5, 0 ), Vector2( 21, 0 ), Vector2( 23, 0 ), Vector2( 5, 0 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -107,7 +107,6 @@ KILL_SOUND = ExtResource( 7 )
 BLOCKED_SOUND = ExtResource( 5 )
 COLLIDE_SOUND = ExtResource( 4 )
 KILLED_SOUND = ExtResource( 4 )
-BOOST = 22
 RECOIL = 30
 ANIMATION_NEVER_BACKWARDS = true
 REVERSE_HELD_ITEM = false
@@ -124,9 +123,6 @@ material = SubResource( 5 )
 rotation = 0.785398
 texture = ExtResource( 2 )
 
-[node name="hurtbox" parent="." index="2"]
-visible = false
-
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 rotation = 1.5708
 shape = SubResource( 1 )
@@ -138,24 +134,24 @@ KNOCKBACK = 110
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 shape = SubResource( 2 )
+disabled = true
 one_way_collision = true
 
-[node name="collision" parent="." index="4"]
-visible = false
-
-[node name="CollisionShape2D" parent="collision" index="0"]
-position = Vector2( 4, 0 )
-rotation = 1.5708
-shape = SubResource( 3 )
-
-[node name="sound" parent="." index="5"]
+[node name="sound" parent="." index="4"]
 FREE_WHEN_EMPTY = false
 
 [node name="tipper" parent="sound" index="0" instance=ExtResource( 9 )]
 stream = ExtResource( 10 )
 volume_db = 3.0
+bus = "Master"
 MODE = 1
 AUTO_PLAY = false
+
+[node name="CollisionShape2D" parent="." index="5"]
+visible = false
+position = Vector2( 5, 0 )
+rotation = 1.5708
+shape = SubResource( 7 )
 
 [node name="animation" parent="." index="6"]
 anims/animation = SubResource( 4 )

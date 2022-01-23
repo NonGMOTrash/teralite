@@ -32,10 +32,14 @@ RANGE = 4
 [node name="entity_sprite" parent="." index="1"]
 material = SubResource( 5 )
 
+[node name="hurtbox" parent="." index="2"]
+visible = false
+
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 shape = SubResource( 1 )
 
 [node name="hitbox" parent="." index="3"]
+visible = false
 position = Vector2( 4, 0 )
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]

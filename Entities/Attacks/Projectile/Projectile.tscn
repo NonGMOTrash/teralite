@@ -13,7 +13,6 @@ radius = 5.0
 radius = 1.0
 
 [node name="Projectile" instance=ExtResource( 1 )]
-collision_mask = 1
 script = ExtResource( 2 )
 truName = ""
 MIN_DAM_SPEED = 0
@@ -25,8 +24,8 @@ material = SubResource( 3 )
 COOLDOWN = 0.001
 MULTIHITS = false
 
-[node name="collision" parent="." index="4"]
-input_pickable = false
+[node name="sound" parent="." index="4"]
+FREE_WHEN_EMPTY = false
 
 [node name="src_collision" type="Area2D" parent="." index="5"]
 visible = false
@@ -34,10 +33,7 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="src_collision" index="0"]
 shape = SubResource( 1 )
 
-[node name="sound" parent="." index="6"]
-FREE_WHEN_EMPTY = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="7"]
+[node name="CollisionShape2D" parent="." index="6"]
 shape = SubResource( 2 )
 
 [connection signal="body_exited" from="src_collision" to="." method="_on_src_collision_body_exited"]

@@ -14,8 +14,8 @@ resource_local_to_scene = true
 radius = 2.19433
 height = 11.6113
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 2.0
+[sub_resource type="CircleShape2D" id=5]
+radius = 3.0
 
 [node name="arrow" instance=ExtResource( 1 )]
 rotation = 0.0
@@ -60,16 +60,10 @@ KNOCKBACK = 65
 rotation = 1.5708
 shape = SubResource( 2 )
 
-[node name="collision" parent="." index="4"]
-visible = false
-
-[node name="CollisionShape2D" parent="collision" index="0"]
-position = Vector2( 4, 0 )
-shape = SubResource( 3 )
-
-[node name="CollisionShape2D" parent="." index="7"]
+[node name="CollisionShape2D" parent="." index="6"]
 visible = false
 position = Vector2( 4, 0 )
+shape = SubResource( 5 )
 
 [editable path="entity_sprite"]
 [editable path="hurtbox"]

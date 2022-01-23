@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Entities/Attacks/Projectile/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=2]
@@ -12,9 +12,6 @@ radius = 7.55064
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 5.58823
-
-[sub_resource type="CircleShape2D" id=4]
-radius = 5.0
 
 [sub_resource type="Animation" id=6]
 resource_name = "New Anim"
@@ -65,13 +62,7 @@ STATUS_LEVEL = 2.0
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 shape = SubResource( 3 )
 
-[node name="collision" parent="." index="5"]
-visible = false
-
-[node name="CollisionShape2D" parent="collision" index="0"]
-shape = SubResource( 4 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
 autoplay = "New Anim"
 "anims/New Anim" = SubResource( 6 )
 

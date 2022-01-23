@@ -18,7 +18,7 @@ func _ready() -> void:
 	
 	label.text = str(amount)
 	match type:
-		"hurt":
+		_: # hurt
 			label.add_color_override("font_color", HURT_COLOR)
 			label.add_color_override("font_color_shadow", HURT_SHADOW)
 		"block":

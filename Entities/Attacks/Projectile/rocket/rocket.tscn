@@ -13,8 +13,9 @@ resource_local_to_scene = true
 radius = 2.00123
 height = 4.00344
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 1.59701
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 2.0
+height = 6.0
 
 [sub_resource type="Animation" id=4]
 resource_name = "New Anim"
@@ -72,16 +73,16 @@ position = Vector2( 1.5, 0 )
 rotation = 1.5708
 shape = SubResource( 5 )
 
-[node name="CollisionShape2D" parent="collision" index="0"]
-position = Vector2( 2, 0 )
-shape = SubResource( 3 )
+[node name="CollisionShape2D" parent="." index="6"]
+rotation = 1.5708
+shape = SubResource( 7 )
 
-[node name="spawner" parent="." index="8" instance=ExtResource( 2 )]
+[node name="spawner" parent="." index="7" instance=ExtResource( 2 )]
 thing = ExtResource( 3 )
 stats_damage_mod = -3
 stats_true_damage_mod = -1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
 autoplay = "New Anim"
 "anims/New Anim" = SubResource( 4 )
 

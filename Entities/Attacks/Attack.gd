@@ -23,7 +23,6 @@ var SOURCE_PATH: NodePath
 var hit_pause_count: int = 0
 
 onready var hitbox: Area2D = $hitbox
-onready var collision: Area2D = $collision
 onready var stats: Node = $stats
 onready var sound = $sound
 
@@ -78,24 +77,9 @@ func _physics_process(delta: float) -> void:
 			sfx.stream = COLLIDE_SOUND
 			sound.add_sound(sfx)
 			
-			death_free = true
-			death()
-			print("augfsjkdg")
-
-func _on_collision_body_entered(body: Node) -> void:
-	return
-	if visible == false:
-		return
-	
-	if body.get_name() == "world_tiles":
-		if COLLIDE_SOUND != null:
-			var sfx = Sound.new()
-			sfx.name = truName+"_collide"
-			sfx.stream = COLLIDE_SOUND
-			sound.add_sound(sfx)
-		
 		death_free = true
 		death()
+		print("augfsjkdg")
 
 func _on_hitbox_hit(area, type) -> void:
 	# PROBLEM_NOTE: maybe find some way to put this in the player script or something

@@ -303,7 +303,7 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 			"zombie": death_message = "joined the horde"
 			"heart_mimic": death_message = "killed by a %s" % source_name
 			"stalker": death_message = "trampled by a %s" % source_name
-			"rocket_scorpian": death_message = "mauled by a completely normal scorpian"
+			"rocket_scorpian": death_message = "mauled by a rocket scorpian"
 			"king": death_message = "crushed by a %s" % source_name
 			_: death_message = "death message messed up, report pls ;-;"
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Entities/Attacks/Projectile/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Attacks/Projectile/big_bullet/big_bullet.png" type="Texture" id=2]
@@ -13,9 +13,6 @@ radius = 6.31399
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 4.92061
-
-[sub_resource type="CircleShape2D" id=3]
-radius = 1.85296
 
 [node name="big_bullet" instance=ExtResource( 1 )]
 TOP_SPEED = 500
@@ -50,9 +47,6 @@ MULTIHITS = true
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 shape = SubResource( 2 )
-
-[node name="CollisionShape2D" parent="collision" index="0"]
-shape = SubResource( 3 )
 
 [editable path="entity_sprite"]
 [editable path="hurtbox"]

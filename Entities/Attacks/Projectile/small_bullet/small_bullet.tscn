@@ -50,7 +50,7 @@ iTime = 0.07
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 shape = SubResource( 2 )
 
-[node name="smoke" parent="." index="8" instance=ExtResource( 4 )]
+[node name="smoke" parent="." index="7" instance=ExtResource( 4 )]
 thing = ExtResource( 5 )
 particle_amount = 1
 particle_speed_scale = 4.0

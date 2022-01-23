@@ -87,7 +87,6 @@ SPAWN_SOUND = ExtResource( 4 )
 HIT_SOUND = ExtResource( 5 )
 KILL_SOUND = ExtResource( 5 )
 BLOCKED_SOUND = ExtResource( 5 )
-BOOST = 0
 RECOIL = 0
 ANIMATION_NEVER_BACKWARDS = true
 HIDE_HELD_ITEM = false
@@ -105,9 +104,6 @@ material = SubResource( 6 )
 texture = ExtResource( 3 )
 hframes = 5
 frame = 4
-
-[node name="hurtbox" parent="." index="2"]
-visible = false
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 shape = SubResource( 1 )
@@ -127,10 +123,7 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="reflection" index="0"]
 shape = SubResource( 3 )
 
-[node name="collision" parent="." index="5"]
-visible = false
-
-[node name="sound" parent="." index="6"]
+[node name="sound" parent="." index="5"]
 FREE_WHEN_EMPTY = false
 
 [node name="reflect" type="AudioStreamPlayer2D" parent="sound" index="0"]
@@ -138,6 +131,9 @@ stream = ExtResource( 7 )
 script = ExtResource( 6 )
 MODE = 1
 AUTO_PLAY = false
+
+[node name="CollisionShape2D" parent="." index="6"]
+visible = false
 
 [node name="animation" parent="." index="7"]
 anims/animation = SubResource( 4 )
