@@ -103,8 +103,6 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		
 	area.emit_signal("hit", self, result_type)
 	
-	
-	
 	# applies status effect
 	
 	if area.STATUS_EFFECT != "":

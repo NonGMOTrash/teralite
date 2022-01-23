@@ -49,6 +49,8 @@ export(float) var resistance_modifier: float = 0
 export(float) var infection_modifier: float = 0
 
 onready var entity = get_parent()
+var damage_number: Node2D
+var damage_number_block: Node2D
 
 func _on_stats_tree_entered():
 	get_parent().components["stats"] = self
@@ -112,22 +114,37 @@ func change_health(value: int, true_value: int, type: String = "hurt") -> String
 	
 	# damage number
 	if global.settings["damage_numbers"] == true and not entity is Attack:
-		var number := DAMAGE_NUMBER.instance()
-		number.amount = abs(amount + true_amount)
-		number.type = result_type
-		number.position = entity.global_position
+		if is_instance_valid(damage_number) and damage_number.type == result_type:
+			damage_number.animation.seek(0, true)
+			damage_number.amount += abs(amount + true_amount)
+			damage_number._ready()
+			damage_number.global_position = entity.global_position
+		else:
+			var number := DAMAGE_NUMBER.instance()
+			number.amount = abs(amount + true_amount)
+			number.type = result_type
+			number.position = entity.global_position
+			damage_number = number
+			refs.ysort.get_ref().add_child(number)
 		
 		var blocked: int = abs((value + true_value) - (amount + true_amount))
 		if blocked > 0:
-			number.position.x -= 8
-			number.type = "hurt"
-			var blocked_number := DAMAGE_NUMBER.instance()
-			blocked_number.amount = abs(blocked)
-			blocked_number.type = "block"
-			blocked_number.position = entity.global_position + Vector2(8, 0)
-			refs.ysort.get_ref().add_child(blocked_number)
-		
-		refs.ysort.get_ref().add_child(number)
+			damage_number.position.x -= 8
+			damage_number.type = "hurt"
+			damage_number._ready()
+			
+			if is_instance_valid(damage_number_block):
+				damage_number_block.animation.seek(0, true)
+				damage_number_block.amount += abs(blocked)
+				damage_number_block._ready()
+				damage_number_block.global_position = entity.global_position + Vector2(8, 0)
+			else:
+				var blocked_number := DAMAGE_NUMBER.instance()
+				blocked_number.amount = abs(blocked)
+				blocked_number.type = "block"
+				blocked_number.position = entity.global_position + Vector2(8, 0)
+				damage_number_block = blocked_number
+				refs.ysort.get_ref().add_child(blocked_number)
 	
 	if HEALTH <= 0:
 		if entity.truName == "player" and type != "hurt":

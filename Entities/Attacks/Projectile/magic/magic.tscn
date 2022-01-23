@@ -35,6 +35,7 @@ SPEED = 180
 VELOCITY_ARMOR = 3
 ONHIT_SPEED_MULTIPLIER = 1.0
 RECOIL = 10
+VELOCITY_INHERITENCE = 0.2
 
 [node name="stats" parent="." index="0"]
 MAX_HEALTH = 2
@@ -68,7 +69,6 @@ visible = false
 shape = SubResource( 3 )
 
 [node name="CollisionShape2D" parent="." index="7"]
-visible = false
 shape = SubResource( 4 )
 
 [node name="LightSource" type="Light2D" parent="." index="8"]

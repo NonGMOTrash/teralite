@@ -67,7 +67,23 @@ func _ready():
 	if not "recoiled" in self: # check if im a Melee
 		visible = true
 
+func _physics_process(delta: float) -> void:
+	if is_on_wall():
+		if visible == false:
+			return
+		
+		if COLLIDE_SOUND != null:
+			var sfx = Sound.new()
+			sfx.name = truName+"_collide"
+			sfx.stream = COLLIDE_SOUND
+			sound.add_sound(sfx)
+			
+			death_free = true
+			death()
+			print("augfsjkdg")
+
 func _on_collision_body_entered(body: Node) -> void:
+	return
 	if visible == false:
 		return
 	

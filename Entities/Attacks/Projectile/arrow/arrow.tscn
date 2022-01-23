@@ -5,10 +5,7 @@
 [ext_resource path="res://Entities/Attacks/Projectile/arrow/arrow_collide.wav" type="AudioStream" id=3]
 [ext_resource path="res://Entities/Attacks/Projectile/arrow/bow_shoot.wav" type="AudioStream" id=4]
 [ext_resource path="res://Entities/Attacks/Projectile/arrow/arrow_hit.wav" type="AudioStream" id=5]
-
-[sub_resource type="AudioStreamRandomPitch" id=1]
-audio_stream = ExtResource( 3 )
-random_pitch = 1.02
+[ext_resource path="res://Entities/Attacks/Projectile/arrow/arrow_block.wav" type="AudioStream" id=6]
 
 [sub_resource type="ShaderMaterial" id=4]
 resource_local_to_scene = true
@@ -30,7 +27,7 @@ death_free = true
 SPAWN_SOUND = ExtResource( 4 )
 HIT_SOUND = ExtResource( 5 )
 KILL_SOUND = ExtResource( 5 )
-BLOCKED_SOUND = SubResource( 1 )
+BLOCKED_SOUND = ExtResource( 6 )
 COLLIDE_SOUND = ExtResource( 3 )
 SPEED = 200
 ONHIT_SPEED_MULTIPLIER = 0.45
@@ -69,6 +66,10 @@ visible = false
 [node name="CollisionShape2D" parent="collision" index="0"]
 position = Vector2( 4, 0 )
 shape = SubResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="7"]
+visible = false
+position = Vector2( 4, 0 )
 
 [editable path="entity_sprite"]
 [editable path="hurtbox"]

@@ -11,9 +11,10 @@ var type: String = "hurt"
 var amount: int = 1
 
 onready var label: Label = $Label
+onready var animation: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
-	$AnimationPlayer.playback_speed = 1.0 + (amount / 8.0)
+	#animation.playback_speed = 1.0 + (amount / 8.0)
 	
 	label.text = str(amount)
 	match type:
