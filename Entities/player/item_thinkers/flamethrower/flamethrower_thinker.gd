@@ -16,7 +16,7 @@ func get_ready():
 
 func primary():
 	var flame := res.aquire_entity("fire")
-	var direction := player.global_position.direction_to(player.get_global_mouse_position()).normalized()
+	var direction := player.global_position.direction_to(global.get_look_pos()).normalized()
 	flame.global_position = player.global_position + (direction * 16)
 	flame.apply_force(direction * flame_speed + player.velocity * 0.4)
 	refs.ysort.get_ref().add_child(flame)

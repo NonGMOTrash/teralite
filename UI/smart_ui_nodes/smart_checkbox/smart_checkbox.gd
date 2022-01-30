@@ -13,6 +13,7 @@ func _ready() -> void:
 	
 func color_set(color):
 	set_deferred("custom_colors/font_color", color)
+	set_deferred("custom_colors/font_color_focus", color)
 	set_deferred("custom_colors/font_color_pressed", color)
 	set_deferred("custom_colors/font_color_hover", color)
 

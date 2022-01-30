@@ -2,6 +2,8 @@ extends Control
 
 onready var sound_player = $sound_player
 onready var tabs = $tabs
+onready var exit = $exit
+
 onready var fullscreen = $tabs/video/VBox/fullscreen
 onready var pixel = $tabs/video/VBox/pixel
 onready var vsync = $tabs/video/VBox/vsync
@@ -58,7 +60,7 @@ func _on_tabs_visibility_changed() -> void:
 	
 	if visible == false: return
 	tabs.current_tab = 0
-	smooth.grab_focus()
+	fullscreen.grab_focus()
 
 func _on_volume_value_changed(value: float) -> void:
 	master_volume.label.text = "Volume ("+str(value)+"%)"
@@ -95,3 +97,25 @@ func _on_exit_pressed() -> void:
 
 func _on_tabs_tab_changed(tab: int) -> void:
 	sound_player.create_sound(smooth.click_sound, true, Sound.MODES.ONESHOT, true, true)
+	match tabs.current_tab:
+		0: fullscreen.grab_focus()
+		1: master_volume.grab_focus()
+		2: perfection.grab_focus()
+
+func _input(event: InputEvent) -> void:
+	var next_tab: int = tabs.current_tab
+	
+	if Input.is_action_just_pressed("ui_focus_next"):
+		next_tab += 1
+	elif Input.is_action_just_pressed("ui_focus_prev"):
+		next_tab -= 1
+	
+	if next_tab > 3:
+		next_tab = 0
+	elif next_tab < 0:
+		next_tab = 3
+	
+	if next_tab == 3:
+		exit.grab_focus()
+	else:
+		tabs.current_tab = next_tab

@@ -68,18 +68,7 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	if is_on_wall():
-		if visible == false:
-			return
-		
-		if COLLIDE_SOUND != null:
-			var sfx = Sound.new()
-			sfx.name = truName+"_collide"
-			sfx.stream = COLLIDE_SOUND
-			sound.add_sound(sfx)
-			
-		death_free = true
-		death()
-		print("augfsjkdg")
+		collided()
 
 func _on_hitbox_hit(area, type) -> void:
 	# PROBLEM_NOTE: maybe find some way to put this in the player script or something
@@ -127,3 +116,16 @@ func _on_stats_health_changed(type, result, net) -> void:
 
 func death():
 	emit_signal("death")
+
+func collided():
+	if visible == false:
+			return
+	
+	if COLLIDE_SOUND != null:
+		var sfx = Sound.new()
+		sfx.name = truName+"_collide"
+		sfx.stream = COLLIDE_SOUND
+		sound.add_sound(sfx)
+	
+	death_free = true
+	death()

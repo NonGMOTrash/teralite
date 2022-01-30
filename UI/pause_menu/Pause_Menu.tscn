@@ -21,6 +21,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_clip_content = true
+focus_mode = 2
 theme = ExtResource( 4 )
 color = Color( 0, 0, 0, 0.705882 )
 script = ExtResource( 11 )
@@ -37,6 +38,7 @@ margin_right = 281.0
 margin_bottom = 206.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 __meta__ = {
@@ -60,6 +62,7 @@ margin_bottom = 43.0
 margin_top = 47.0
 margin_right = 179.0
 margin_bottom = 69.0
+focus_neighbour_top = NodePath("../quit")
 custom_constants/hseparation = -16
 text = "resume"
 icon = ExtResource( 7 )
@@ -96,13 +99,13 @@ flat = true
 margin_top = 151.0
 margin_right = 179.0
 margin_bottom = 173.0
+focus_neighbour_bottom = NodePath("../resume")
 custom_constants/hseparation = -16
 text = "quit"
 icon = ExtResource( 6 )
 flat = true
 
 [node name="Options" parent="." instance=ExtResource( 1 )]
-visible = false
 
 [node name="sound_player" parent="." instance=ExtResource( 3 )]
 

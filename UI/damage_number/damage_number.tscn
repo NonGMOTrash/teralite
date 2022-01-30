@@ -47,7 +47,7 @@ tracks/2/keys = {
 }
 
 [node name="damage_number" type="Node2D"]
-rotation = 0.15708
+rotation = -0.15708
 scale = Vector2( 1e-05, 1e-05 )
 z_index = 4096
 script = ExtResource( 2 )

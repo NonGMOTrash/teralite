@@ -57,7 +57,7 @@ func _ready():
 func _physics_process(_delta: float) -> void:
 	if TARGETING != TT.MANUAL and visible == true:
 		if TARGETING == TT.CURSOR:
-			target_pos = get_global_mouse_position()
+			target_pos = global.get_look_pos()
 		
 		elif TARGETING == TT.INPUT_VECTOR or source.components["brain"].targets.size() == 0:
 			if source.input_vector != Vector2.ZERO:

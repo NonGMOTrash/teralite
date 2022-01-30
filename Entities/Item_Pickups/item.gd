@@ -1,8 +1,6 @@
 extends Entity
 class_name Item
 
-const ITEM_PICKUP_EFFECT = preload("res://Effects/item_pickup_effect/item_pickup_effect.tscn")
-
 enum item_types {
 	ACTIVE,
 	PASSIVE,
@@ -10,9 +8,10 @@ enum item_types {
 }
 
 export(item_types) var type = item_types.ACTIVE
-export(PackedScene) var thinker
-export(AudioStream) var pickup_sound
+export var thinker: PackedScene
+export var pickup_sound: AudioStream
 export(bool) var player_only := true
+export var ITEM_PICKUP_EFFECT: PackedScene
 var SOURCE: Entity
 var times_used: int = 0
 var the_body = null
@@ -34,21 +33,21 @@ func _on_Area2D_body_entered(body: Node) -> void:
 		body.truName != "player" and player_only == true
 	):
 		return
-
+	
 	if the_body == null: the_body = body
 	
 	if body != the_body: return
 	if the_body_used == true: return
 	
 	the_body_used = true
-
+	
 	if pickup_sound != null:
 		$sound_player.create_sound(pickup_sound, true, Sound.MODES.ONESHOT, true, true)
-
-	var effect = ITEM_PICKUP_EFFECT.instance()
+	
+	var effect: Effect = ITEM_PICKUP_EFFECT.instance()
 	effect.global_position = global_position
 	get_parent().call_deferred("add_child", effect)
-
+	
 	match type:
 		item_types.POWERUP:
 			on_pickup(body)

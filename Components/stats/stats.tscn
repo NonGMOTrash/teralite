@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Components/stats/stats.gd" type="Script" id=1]
+[ext_resource path="res://UI/damage_number/damage_number.tscn" type="PackedScene" id=2]
 
 [node name="stats" type="Node"]
 script = ExtResource( 1 )
+DAMAGE_NUMBER = ExtResource( 2 )
+
 [connection signal="tree_entered" from="." to="." method="_on_stats_tree_entered"]

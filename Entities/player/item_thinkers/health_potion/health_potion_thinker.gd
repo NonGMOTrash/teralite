@@ -1,6 +1,7 @@
 extends Thinker
 
 export(int, 0, 99) var healing: int
+export var THROWN_HEALTH_POTION: PackedScene
 
 func _init() -> void:
 	res.allocate("thrown_health_potion")
@@ -24,7 +25,9 @@ func primary():
 	sound_player.play_sound("drink")
 
 func secondary():
-	quick_spawn("thrown_health_potion")
+	var thrown_health_potion: Projectile = THROWN_HEALTH_POTION.instance()
+	thrown_health_potion.setup(player, global.get_look_pos())
+	refs.ysort.get_ref().add_child(thrown_health_potion)
 	
 	queue_free()
 	player.inventory[global.selection] = null

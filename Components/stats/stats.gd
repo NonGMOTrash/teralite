@@ -1,7 +1,6 @@
 extends Node
 
 # PROBLEM_NOTE: add these to global.gd, and have them preloaded in hitboxes instead of here
-const DAMAGE_NUMBER := preload("res://UI/damage_number/damage_number.tscn")
 const burning = preload("res://Components/stats/status_effects/burning/burning.tscn")
 const poison = preload("res://Components/stats/status_effects/poison/poison.tscn")
 const bleed = preload("res://Components/stats/status_effects/bleed/bleed.tscn")
@@ -38,7 +37,6 @@ var status_effects = {
 }
 
 # PROBLEM_NOTE: should add a 'ALL' modifier
-# PROBLEM_NOTE: this should not be a dictionary (bad exporting)
 export(float) var poison_modifier: float = 0
 export(float) var burning_modifier: float = 0
 export(float) var bleed_modifier: float = 0
@@ -47,6 +45,8 @@ export(float) var slowness_modifier: float = 0
 export(float) var regeneration_modifier: float = 0
 export(float) var resistance_modifier: float = 0
 export(float) var infection_modifier: float = 0
+
+export var DAMAGE_NUMBER: PackedScene
 
 onready var entity = get_parent()
 var damage_number: Node2D
@@ -113,12 +113,14 @@ func change_health(value: int, true_value: int, type: String = "hurt") -> String
 		result_type = "heal"
 	
 	# damage number
-	if global.settings["damage_numbers"] == true and not entity is Attack:
+	if entity.name != "player" and global.settings["damage_numbers"] == true and not entity is Attack:
 		if is_instance_valid(damage_number) and damage_number.type == result_type:
 			damage_number.animation.seek(0, true)
 			damage_number.amount += abs(amount + true_amount)
 			damage_number._ready()
 			damage_number.global_position = entity.global_position
+			if is_instance_valid(damage_number_block):
+				damage_number.global_position.x -= 8
 		else:
 			var number := DAMAGE_NUMBER.instance()
 			number.amount = abs(amount + true_amount)

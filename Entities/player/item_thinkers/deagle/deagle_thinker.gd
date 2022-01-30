@@ -69,7 +69,7 @@ func primary():
 	bullet.find_node("stats").DAMAGE += bonus_damage
 	bullet.SPAWN_SOUND = SHOOT_SOUND
 	bullet.SPEED += 60
-	bullet.setup(player, player.get_global_mouse_position())
+	bullet.setup(player, global.get_look_pos())
 	refs.ysort.get_ref().add_child(bullet)
 	ammo -= 1
 	cooldown.start()

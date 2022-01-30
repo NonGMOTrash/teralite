@@ -17,14 +17,15 @@ func _ready() -> void:
 	#animation.playback_speed = 1.0 + (amount / 8.0)
 	
 	label.text = str(amount)
+	
 	match type:
-		_: # hurt
-			label.add_color_override("font_color", HURT_COLOR)
-			label.add_color_override("font_color_shadow", HURT_SHADOW)
 		"block":
 			label.add_color_override("font_color", BLOCK_COLOR)
 			label.add_color_override("font_color_shadow", BLOCK_SHADOW)
 		"heal":
 			label.add_color_override("font_color", HEAL_COLOR)
 			label.add_color_override("font_color_shadow", HEAL_SHADOW)
-	
+		_: # hurt
+			label.add_color_override("font_color", HURT_COLOR)
+			label.add_color_override("font_color_shadow", HURT_SHADOW)
+

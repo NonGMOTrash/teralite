@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Entities/player/item_thinkers/iron_potion/iron_potion_thinker.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Item_Pickups/iron_potion/iron_potion.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Entities/player/item_thinkers/health_potion/potion_equip.wav" type="AudioStream" id=5]
 [ext_resource path="res://Entities/player/item_thinkers/health_potion/potion_drink.wav" type="AudioStream" id=6]
 [ext_resource path="res://UI/cursors/cursor_iron_potion.png" type="Texture" id=7]
+[ext_resource path="res://Entities/Attacks/Projectile/thrown_iron_potion/thrown_iron_potion.tscn" type="PackedScene" id=8]
 
 [node name="iron_potion_thinker" type="Node"]
 script = ExtResource( 1 )
@@ -19,10 +20,12 @@ EQUIP_SOUND = ExtResource( 5 )
 resistance_level = 2
 slowness_level = 1.0
 duration = 30.0
+THROWN_IRON_POTION = ExtResource( 8 )
 
 [node name="sound_player" parent="." instance=ExtResource( 3 )]
 
 [node name="drink" parent="sound_player" instance=ExtResource( 4 )]
 stream = ExtResource( 6 )
+bus = "Master"
 MODE = 1
 AUTO_PLAY = false

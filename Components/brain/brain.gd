@@ -24,6 +24,8 @@ export var IGNORE_INANIMATE := true
 export var IGNORE_UNFACTIONED := true
 export var IGNORE_ALLIES := true
 export var BLACKLIST := []
+export var EXCLAIMATION: PackedScene
+export var QUESTION: PackedScene
 var excluded := [] # list of entities that can never be targets
 
 # PROBLEM_NOTE: it would be better to use a dictionary for targets and target_paths because the targets
@@ -272,7 +274,6 @@ func _on_sight_body_exited(body: Node) -> void:
 	remove_target(body)
 
 func _on_think_timer_timeout() -> void:
-	#return
 	think_timer.wait_time = THINK_TIME + rand_range(-0.1, 0.1)
 	
 	if entity.components["sleeper"] != null:
@@ -299,10 +300,10 @@ func spawn_effect(effect: String, pos: Vector2):
 	if SIGHT_EFFECTS == false:
 		return
 	
-	var new_effect = res.aquire_effect(effect)
-	if not new_effect is Effect:
-		push_warning("effect was invalid")
-		return
+	var new_effect: Effect
+	match effect:
+		"exclaimation": new_effect = EXCLAIMATION.instance()
+		"question": new_effect = QUESTION.instance()
 	
 	refs.ysort.get_ref().call_deferred("add_child", new_effect)
 	new_effect.global_position = pos

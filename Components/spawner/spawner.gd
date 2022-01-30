@@ -10,6 +10,7 @@ enum ROTATIONS {
 export(bool) var standby_mode = false # requires 'thing' to be set
 
 export(PackedScene) var thing
+export var thing_path: String
 export(bool) var spawn_on_free = true
 export(bool) var spawn_on_hurt = false
 export(bool) var spawn_on_block = false
@@ -56,6 +57,9 @@ func _on_spawner_tree_entered():
 	entity = test
 	
 	entity.components["spawner"] = self
+	
+	if thing == null and thing_path != null:
+		thing = load(thing_path)
 
 func _ready() -> void:
 	if (
@@ -68,13 +72,6 @@ func _ready() -> void:
 		push_error("spawner has no spawn conditions")
 		queue_free()
 		return
-	
-#	if thing == null:
-#		if get_child_count() == 0:
-#			push_error("spawner has no spawn")
-#		elif get_child_count() > 1:
-#			push_warning("spawner has multiple children, but can only use the first child")
-#		thing = get_child(0)
 	
 	if spawn_on_free == true:
 		entity.connect("tree_exiting", self, "spawn")
@@ -144,7 +141,7 @@ func spawn():
 	
 	elif rotation_mode == ROTATIONS.TOWARD_CURSOR:
 		new_thing.rotation_degrees = rad2deg(
-				entity.global_position.direction_to(entity.get_global_mouse_position()).angle()
+				entity.global_position.direction_to(global.get_look_pos()).angle()
 		)
 	
 	elif rotation_mode == ROTATIONS.TOWARD_BRAIN_TARGET:

@@ -25,6 +25,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -8.9407e-08
+focus_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -64,6 +65,7 @@ size_flags_vertical = 4
 margin_top = 104.0
 margin_right = 192.0
 margin_bottom = 126.0
+focus_neighbour_top = NodePath("../quit")
 custom_constants/hseparation = -15
 shortcut_in_tooltip = false
 text = "play"
@@ -84,6 +86,7 @@ flat = true
 margin_top = 156.0
 margin_right = 192.0
 margin_bottom = 178.0
+focus_neighbour_bottom = NodePath("../play")
 custom_constants/hseparation = -17
 shortcut_in_tooltip = false
 text = "quit"
@@ -172,6 +175,8 @@ margin_bottom = 196.0
 [node name="back" parent="saves/HBoxContainer" instance=ExtResource( 9 )]
 margin_right = 58.0
 margin_bottom = 22.0
+focus_neighbour_left = NodePath("../new")
+focus_neighbour_right = NodePath("../new")
 text = "back"
 icon = ExtResource( 5 )
 flat = true
@@ -192,6 +197,8 @@ __meta__ = {
 margin_left = 257.0
 margin_right = 374.0
 margin_bottom = 22.0
+focus_neighbour_left = NodePath("../back")
+focus_neighbour_right = NodePath("../back")
 text = "create new save"
 flat = true
 align = 2
@@ -285,6 +292,8 @@ margin_left = -117.0
 margin_top = -22.0
 margin_right = 0.0
 margin_bottom = 0.0
+focus_neighbour_left = NodePath("../cancel")
+focus_neighbour_right = NodePath("../cancel")
 text = "create"
 flat = true
 
@@ -294,17 +303,15 @@ anchor_bottom = 1.0
 margin_top = -22.0
 margin_right = 50.0
 margin_bottom = 0.0
+focus_neighbour_left = NodePath("../create")
+focus_neighbour_right = NodePath("../create")
 text = "cancel"
 flat = true
 
 [node name="Options" parent="." instance=ExtResource( 8 )]
-visible = false
 
 [node name="tabs" parent="Options" index="0"]
 theme = ExtResource( 1 )
-
-[node name="dropdown" parent="Options/tabs/video/particles" index="2"]
-items = [ "none", null, false, 0, null, "few", null, false, 1, null, "most", null, false, 2, null, "all", null, false, 3, null ]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
@@ -318,6 +325,7 @@ wait_time = 0.5
 [connection signal="pressed" from="new_save/VBoxContainer/HBoxContainer_2/next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="new_save/create" to="." method="_on_create_pressed"]
 [connection signal="pressed" from="new_save/cancel" to="." method="_on_cancel_pressed"]
+[connection signal="closed" from="Options" to="." method="_on_Options_closed"]
 [connection signal="visibility_changed" from="Options" to="." method="_on_Options_visibility_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 

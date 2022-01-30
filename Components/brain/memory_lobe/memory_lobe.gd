@@ -5,6 +5,8 @@ onready var entity = brain.get_parent()
 onready var memory_timer = $memory_timer
 
 export(float, 0, 25.0) var MEMORY_TIME = 4.0
+export var EXCLAIMATION: PackedScene
+export var QUESTION: PackedScene
 
 var memory = []
 var memory_id = []
@@ -97,7 +99,7 @@ func got_hit(body, _type):
 					add_memory(source.global_position, 
 						brain.movement_lobe.get_spring(source), source.get_instance_id())
 				
-				var effect = res.aquire("question").instance()
+				var effect = QUESTION.instance()
 				entity.call_deferred("add_child", effect)
 				effect.global_position = brain.global_position.move_toward(source.global_position, 32)
 		

@@ -134,6 +134,7 @@ AUTO_PLAY = false
 
 [node name="CollisionShape2D" parent="." index="6"]
 visible = false
+disabled = true
 
 [node name="animation" parent="." index="7"]
 anims/animation = SubResource( 4 )

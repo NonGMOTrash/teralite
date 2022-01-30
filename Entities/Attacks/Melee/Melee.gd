@@ -59,9 +59,6 @@ func _ready():
 	visible = true
 
 func _physics_process(_delta):
-	#if truName == "slash" and animation.current_animation != null:
-	#	print(animation.current_animation_position)
-	
 	if get_node_or_null(SOURCE_PATH) != null and SOURCE.is_queued_for_deletion() == false:
 		global_position = SOURCE.global_position + RANGE * DIRECTION
 
@@ -91,28 +88,17 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		SOURCE.apply_force(global_position.direction_to(SOURCE.global_position).normalized() * RECOIL)
 		recoiled = true
 
-func _on_collision_body_entered(body: Node) -> void:
+func collided():
+	.collided()
 	if visible == false:
 		return
-	if body.get_name() == "world_tiles":
-		if COLLIDE_SOUND != null:
-			var sfx = Sound.new()
-			sfx.stream = COLLIDE_SOUND
-			sound.add_sound(sfx)
-		
-		if get_node_or_null(SOURCE_PATH) != null:
-			var spark: Effect = BLOCK_SPARK.instance()
-			spark.rotation_degrees = rad2deg(SOURCE.global_position.direction_to(global_position).angle())
-			refs.ysort.get_ref().call_deferred("add_child", spark)
-			yield(spark, "ready")
-			spark.global_position = global_position
-		
-		# recoil
-		#if get_node_or_null(SOURCE_PATH) != null and SOURCE.is_queued_for_deletion() == false:
-		#	SOURCE.apply_force(global_position.direction_to(SOURCE.global_position).normalized() * RECOIL)
-		
-		death_free = true
-		death()
+	
+	if get_node_or_null(SOURCE_PATH) != null:
+		var spark: Effect = BLOCK_SPARK.instance()
+		spark.rotation_degrees = rad2deg(SOURCE.global_position.direction_to(global_position).angle())
+		refs.ysort.get_ref().call_deferred("add_child", spark)
+		yield(spark, "ready")
+		spark.global_position = global_position.move_toward(target_pos, RANGE)
 
 func _on_Melee_tree_exiting() -> void:
 	#animation.stop()

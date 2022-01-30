@@ -24,5 +24,6 @@ FREE_WHEN_EMPTY = false
 
 [connection signal="focus_entered" from="." to="." method="_on_SmartButton_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_SmartButton_focus_exited"]
+[connection signal="gui_input" from="." to="." method="_on_SmartButton_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_SmartButton_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_SmartButton_pressed"]

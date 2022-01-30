@@ -1,12 +1,10 @@
 extends Thinker
 
 export(float, 0.01, 2.0) var cooldown_time: float
+export var POKE: PackedScene
+export var THROWN_SPEAR: PackedScene
 
 onready var cooldown := $cooldown as Timer
-
-func _init():
-	res.allocate("poke")
-	res.allocate("thrown_spear")
 
 func _ready() -> void:
 	cooldown.wait_time = cooldown_time
@@ -20,12 +18,16 @@ func get_ready():
 
 func primary():
 	.primary()
-	quick_spawn("poke")
+	var poke: Melee = POKE.instance()
+	poke.setup(player, global.get_look_pos())
+	refs.ysort.get_ref().add_child(poke)
 	cooldown.start()
 
 func secondary():
 	.secondary()
-	quick_spawn("thrown_spear")
+	var thrown_spear: Projectile = THROWN_SPEAR.instance()
+	thrown_spear.setup(player, global.get_look_pos())
+	refs.ysort.get_ref().add_child(thrown_spear)
 	player.inventory[global.selection] = null
 	player.held_item.sprite.texture = null
 	player.held_item.sprite.rotation_degrees = 0

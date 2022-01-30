@@ -38,7 +38,7 @@ func update_fov():
 
 func _input(event: InputEvent):
 	if event is InputEventMouseMotion:
-		set_mouse_pos = get_global_mouse_position()
+		set_mouse_pos = global.get_look_pos()
 
 func _physics_process(_delta: float) -> void:
 	var player: Entity
@@ -57,15 +57,15 @@ func _physics_process(_delta: float) -> void:
 	
 	old_player_pos = player.global_position
 	
-	if distance_min > 0 and global_position.distance_to(player.get_local_mouse_position()) < 8:
+	if distance_min > 0 and global_position.distance_to(to_local(global.get_look_pos())) < 8:
 		return
 	
-	global_position = player.global_position + (player.get_local_mouse_position() * distance_ratio)
+	global_position = player.global_position + (to_local(global.get_look_pos()) * distance_ratio)
 	
 	if global_position.distance_to(player.global_position) > distance_max:
 		global_position = player.global_position.move_toward(global_position, distance_max)
 	elif global_position.distance_to(player.global_position) < distance_min:
-		global_position = player.global_position.move_toward(get_local_mouse_position() * 99, distance_min)
+		global_position = player.global_position.move_toward(to_local(global.get_look_pos()) * 99, distance_min)
 
 func shake(power=10, frequency=10, duration=0.2):
 	if not (power * frequency * duration) > priority: 

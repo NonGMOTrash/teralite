@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Entities/player/item_thinkers/sword/sword_thinker.gd" type="Script" id=1]
 [ext_resource path="res://UI/cursors/cursor_sword.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Entities/player/item_thinkers/sword/counter_ready.wav" type="AudioStream" id=6]
 [ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Entities/player/item_thinkers/sword/counter_success.wav" type="AudioStream" id=8]
+[ext_resource path="res://Entities/Attacks/Melee/slash/slash.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 14.0
@@ -42,6 +43,7 @@ CURSOR = ExtResource( 2 )
 CURSOR_MODE = 1
 EQUIP_SOUND = ExtResource( 3 )
 counter_slowness_lvl = 3.0
+SLASH = ExtResource( 9 )
 
 [node name="cooldown" type="Timer" parent="."]
 wait_time = 0.1
@@ -52,11 +54,13 @@ one_shot = true
 [node name="counter_ready" parent="sound_player" instance=ExtResource( 7 )]
 stream = ExtResource( 6 )
 volume_db = 16.0
+bus = "Master"
 MODE = 1
 AUTO_PLAY = false
 
 [node name="counter_success" parent="sound_player" instance=ExtResource( 7 )]
 stream = ExtResource( 8 )
+bus = "Master"
 MODE = 1
 AUTO_PLAY = false
 

@@ -10,7 +10,7 @@ onready var rect_c: ColorRect = $rect_c
 onready var timer_c: Timer = $rect_c/timer_c
 
 func _ready() -> void:
-	yield(get_tree().create_timer(0.1), "timeout")
+	yield(get_tree().create_timer(0.01667), "timeout")
 	set_player()
 	player.stats.connect("status_recieved", self, "stats_status_recieved")
 

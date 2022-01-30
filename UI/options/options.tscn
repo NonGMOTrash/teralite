@@ -50,6 +50,9 @@ margin_left = 6.0
 margin_top = 23.2494
 margin_right = -6.0
 margin_bottom = -2.24938
+focus_next = NodePath("../audio")
+focus_previous = NodePath("../../exit")
+follow_focus = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -98,8 +101,9 @@ margin_top = 140.0
 margin_right = 336.0
 margin_bottom = 158.0
 hint_tooltip = "accuracy of shadows, higher is better but more resource intensive"
-min_value = 64.0
+min_value = 256.0
 max_value = 4096.0
+step = 64.0
 value = 512.0
 TEXT = "shadow buffer size"
 PROGRESS = 1
@@ -157,6 +161,9 @@ margin_left = 6.0
 margin_top = 23.2494
 margin_right = -6.0
 margin_bottom = -2.24938
+focus_next = NodePath("../game")
+focus_previous = NodePath("../video")
+follow_focus = true
 
 [node name="VBox" type="VBoxContainer" parent="tabs/audio"]
 margin_right = 352.0
@@ -208,6 +215,9 @@ margin_left = 6.0
 margin_top = 23.2494
 margin_right = -6.0
 margin_bottom = -2.24938
+focus_next = NodePath("../../exit")
+focus_previous = NodePath("../audio")
+follow_focus = true
 
 [node name="VBox" type="VBoxContainer" parent="tabs/game"]
 margin_right = 352.0

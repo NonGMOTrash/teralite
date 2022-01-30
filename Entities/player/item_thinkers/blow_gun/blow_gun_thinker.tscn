@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Entities/player/item_thinkers/blow_gun/blow_gun_thinker.gd" type="Script" id=1]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/Item_Pickups/blow_gun/blow_gun.png" type="Texture" id=3]
 [ext_resource path="res://UI/cursors/cursor_blow_gun.png" type="Texture" id=4]
+[ext_resource path="res://Entities/Attacks/Projectile/blow_dart/blow_dart.tscn" type="PackedScene" id=5]
 
 [node name="blow_gun_thinker" type="Node"]
 script = ExtResource( 1 )
@@ -13,6 +14,7 @@ display_name = "blow gun"
 CURSOR = ExtResource( 4 )
 CURSOR_MODE = 1
 cooldown_time = 1.6
+BLOW_DART = ExtResource( 5 )
 
 [node name="sound_player" parent="." instance=ExtResource( 2 )]
 

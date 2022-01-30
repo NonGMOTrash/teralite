@@ -59,7 +59,6 @@ func _ready():
 		push_warning("%s does not have a cursor" % get_name())
 	
 	player.connect("swapped_item", self, "_check_if_selected")
-	
 	global.connect("unpaused", self,"_update_cursor_on_unpause")
 	
 	if global.selection == slot:
@@ -95,7 +94,7 @@ func _process(_delta: float):
 		var new_item_entity = res.aquire_entity(my_item)
 		
 		if new_item_entity == null: return
-		var dir_vector = player.global_position.direction_to(player.get_global_mouse_position())
+		var dir_vector = player.global_position.direction_to(global.get_look_pos())
 		new_item_entity.global_position = player.global_position #+ dir_vector * 16
 		new_item_entity.SOURCE = player
 		var velo = dir_vector * 150
@@ -203,15 +202,6 @@ func reload():
 	if RELOAD_ANIM != "":
 		player.components["held_item"].animation.play(RELOAD_ANIM)
 
-func quick_spawn(attack:String,deferred:=true,target_position:=player.get_global_mouse_position())->void:
-	var new_attack := res.aquire_attack(attack)
-	new_attack.setup(player, target_position)
-	
-	if deferred == true:
-		refs.ysort.get_ref().call_deferred("add_child", new_attack)
-	else:
-		refs.ysort.get_ref().add_child(new_attack)
-
 func _update_held_item():
 	if HELD_ITEM_TEXTURE == null:
 		HELD_ITEM_TEXTURE = load("res://Misc/generic.png")
@@ -249,4 +239,4 @@ func delete():
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouse:
-		accurate_mouse_pos = player.get_global_mouse_position()
+		accurate_mouse_pos = global.get_look_pos()

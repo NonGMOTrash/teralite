@@ -71,12 +71,12 @@ func _ready():
 	swapped_item(null)
 
 func _physics_process(_delta):
-	if get_global_mouse_position().x > global_position.x:
+	if global.get_look_pos().x > global_position.x:
 		sprite.flip_h = false
 	else:
 		sprite.flip_h = true
 		
-	if get_global_mouse_position().y > global_position.y:
+	if global.get_look_pos().y > global_position.y:
 		if sprite.texture != sprite.front_texture:
 			sprite.texture = sprite.front_texture
 	else:
@@ -242,7 +242,7 @@ func death():
 	queue_free()
 
 func _on_stats_health_changed(_type, result, net) -> void:
-	if result != "heal" and result != "blocked":
+	if result != "heal" and result != "block":
 		if result == "hurt" and name == "player" and damage_pause_count < 2:
 			refs.camera.get_ref().shake(5, 15, 0.2)
 			#OS.delay_msec((2/60.0) * 1000)

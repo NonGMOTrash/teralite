@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Entities/player/item_thinkers/dagger/dagger_thinker.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Item_Pickups/dagger/dagger.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Entities/player/item_thinkers/dagger/dagger_dash.wav" type="AudioStream" id=7]
 [ext_resource path="res://Components/sound_player/sound/sound.gd" type="Script" id=8]
 [ext_resource path="res://Entities/player/item_thinkers/dagger/dagger_dash_hit.wav" type="AudioStream" id=9]
+[ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Entities/Attacks/Melee/swipe/swipe.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Curve" id=1]
 max_value = 3.0
@@ -57,6 +59,8 @@ display_name = "dagger"
 CURSOR = ExtResource( 4 )
 CURSOR_MODE = 1
 EQUIP_SOUND = ExtResource( 6 )
+HITBOX = ExtResource( 10 )
+SWIPE = ExtResource( 11 )
 
 [node name="sound_player" parent="." instance=ExtResource( 3 )]
 

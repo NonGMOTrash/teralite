@@ -72,7 +72,7 @@ func primary():
 	
 	var bullet := res.aquire_projectile("bullet")
 	bullet.RECOIL = recoil
-	bullet.setup(player, player.get_global_mouse_position())
+	bullet.setup(player, global.get_look_pos())
 	bullet.SPAWN_SOUND = SHOOT_SOUND
 	refs.ysort.get_ref().add_child(bullet)
 	ammo -= 1

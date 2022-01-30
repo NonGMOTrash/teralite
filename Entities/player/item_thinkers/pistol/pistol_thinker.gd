@@ -8,6 +8,7 @@ export var ads_dist_ratio = 0.6
 export var ads_dist_max = 70
 export var ads_zoom = 0.92
 export var ads_zoom_speed = 0.2
+export var BULLET: PackedScene
 
 onready var cooldown = $cooldown
 onready var reload = $reload
@@ -61,7 +62,9 @@ func primary():
 			reload()
 		return
 	
-	quick_spawn("bullet")
+	var bullet: Projectile = BULLET.instance()
+	bullet.setup(player, global.get_look_pos())
+	refs.ysort.get_ref().add_child(bullet)
 	ammo -= 1
 	cooldown.start()
 	reload.stop()

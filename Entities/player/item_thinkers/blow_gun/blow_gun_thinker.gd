@@ -1,6 +1,7 @@
 extends Thinker
 
 export var cooldown_time: float
+export var BLOW_DART: PackedScene
 
 onready var cooldown := $cooldown
 
@@ -15,8 +16,10 @@ func get_ready():
 
 func primary():
 	cooldown.start()
-	quick_spawn("blow_dart")
-
+	var blow_dart: Projectile = BLOW_DART.instance()
+	blow_dart.setup(player, global.get_look_pos())
+	refs.ysort.get_ref().add_child(blow_dart)
+	
 	global.emit_signal("update_item_info", # set a condition to null to hide it
 		display_name, # current item
 		null, # extra info

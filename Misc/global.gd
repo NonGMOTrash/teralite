@@ -72,6 +72,8 @@ var the_seed = "downwardspiral"
 
 # PROBLEM_NOTE: this should probably be in the player
 var selection = 0 # <-- for the item bar (0 1 2)
+var joy_connected := false
+var look_pos := Vector2.RIGHT
 var FOV = Vector2(1, 1)
 var previous_scene = null # PROBLEM_NOTE i don't think this is used
 var player_hub_pos = {"A":Vector2(0, 0)}
@@ -121,7 +123,7 @@ var settings := {
 }
 
 # should move this and get_relation to Entity.gd probably
-var faction_relationships = {
+const faction_relationships = {
 	"player": 
 		{
 			"solo": "hostile",
@@ -176,11 +178,7 @@ const VER_INCOMPATIABILITY := []
 
 # cursor sprites preloaded:
 const CURSOR_NORMAL = preload("res://UI/cursors/cursor_normal.png")
-const CURSOR_EMPTY = preload("res://UI/cursors/cursor_empty.png")
-const CURSOR_SWORD = preload("res://UI/cursors/cursor_sword.png")
-const CURSOR_PISTOL = preload("res://UI/cursors/cursor_pistol.png")
-const CURSOR_BOW = preload("res://UI/cursors/cursor_bow.png")
-# PROBLEM_NOTE: not sure if i should do this ^
+const CURSOR_IBEAM := preload("res://UI/cursors/cursor_ibeam.png")
 
 signal update_item_info(current_item, extra_info, item_bar_max, item_bar_value, bar_timer_duration)
 signal update_item_bar(inventory)
@@ -206,6 +204,8 @@ func _ready():
 	prints("seed:", the_seed, "(%s)" % the_seed.hash())
 	
 	Input.set_custom_mouse_cursor(CURSOR_NORMAL, Input.CURSOR_ARROW, Vector2(0, 0))
+	Input.set_custom_mouse_cursor(CURSOR_IBEAM, Input.CURSOR_IBEAM, Vector2(22.5, 22.5))
+	Input.connect("joy_connection_changed", self, "_on_joy_connection_changed")
 	AudioServer.set_bus_layout(load("res://UI/audio_bus_layout.tres"))
 	
 	var hr = OS.get_time()["hour"]
@@ -222,6 +222,13 @@ func _ready():
 	Engine.time_scale = 1
 	#if get_tree().current_scene.get_name() != "test_level":
 	#	get_tree().change_scene("res://Levels/test_level.tscn")
+
+func _on_joy_connection_changed(_device_id, connected):
+	joy_connected = connected
+	if connected:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 # PROBLEM_NOTE: should probably move this to the Entity class
 func get_relation(me:Entity, other:Entity) -> String:
@@ -462,7 +469,6 @@ func update_settings(save_settings_config:=true):
 					SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, Vector2(384, 216)
 				)
 	
-	print("TYPES" in get_tree().current_scene)
 	if "TYPES" in get_tree().current_scene: # is map
 		var camera = refs.camera.get_ref()
 		if not camera is Camera2D:
@@ -571,3 +577,9 @@ func sec_to_time(time: float, round_seconds := false) -> String:
 	if round_seconds == false:
 		text = text + ".%s" % str(tenth)
 	return text
+
+func get_look_pos() -> Vector2:
+	if joy_connected:
+		return look_pos
+	else:
+		return get_tree().current_scene.get_global_mouse_position()

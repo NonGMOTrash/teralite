@@ -98,7 +98,7 @@ func primary():
 		bullet.RECOIL = 50
 		bullet.get_node("stats").DAMAGE += mlg_damage_bonus
 		bullet.SPAWN_SOUND = CRIT_SOUND
-	bullet.setup(player, player.get_global_mouse_position())
+	bullet.setup(player, global.get_look_pos())
 	refs.ysort.get_ref().call_deferred("add_child", bullet)
 	
 	ammo -= 1
@@ -166,7 +166,7 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	# 360 shananigans
-	var angle := rad2deg(player.global_position.direction_to(player.get_global_mouse_position()).angle()) + 180
+	var angle := rad2deg(player.global_position.direction_to(global.get_look_pos()).angle()) + 180
 	old_angle = angle
 	sector = stepify(angle, 45) / 45
 	if sector == 8: sector = 0

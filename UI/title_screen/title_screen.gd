@@ -18,6 +18,7 @@ onready var no_saves := $saves/ScrollContainer/no_saves
 onready var save_icon := $new_save/VBoxContainer/HBoxContainer_2/icon
 
 var locked_input = true
+signal loaded_save_previews
 
 const yellow := Color8(247, 150, 23)
 const white := Color8(255, 255, 255)
@@ -62,9 +63,9 @@ var save_icon_id: int = 0
 onready var SAVE_ICON = preload("res://UI/Icons/save.png")
 
 func _ready() -> void:
-	play.grab_focus()
 	visible = true
-	load_saves_list_items()
+	#load_saves_list_items()
+	play.grab_focus()
 	
 	# set display version
 	version.text = global.ver_phase + " " + str(global.ver_num)
@@ -117,9 +118,14 @@ func multi_color_set(target:Control, color:Color):
 	target.set_deferred("custom_colors/font_color_pressed", color)
 	target.set_deferred("custom_colors/font_color_hover", color)
 
-func load_saves_list_items(): # add items from the saves directory into here
+func load_saves_list_items(): # add save previews from the saves directory into here
+	# clear old save previews
+	var i: int = 0
 	for child in saves_list.get_children():
 		child.queue_free()
+		#if i == saves_list.get_child_count():
+		yield(child, "tree_exited")
+		i += 0
 	
 	# sets saves var to all the files in the saves directory
 	global.update_saves()
@@ -129,7 +135,6 @@ func load_saves_list_items(): # add items from the saves directory into here
 		return
 	else:
 		no_saves.visible = false
-	
 	
 	for save in global.saves:
 		var save_preview := SAVE_PREVIEW.instance()
@@ -174,15 +179,23 @@ func load_saves_list_items(): # add items from the saves directory into here
 			save_preview.get_node("main/HBoxContainer2/stars_icon").visible = false
 			save_preview.get_node("main/HBoxContainer2/time_icon").visible = false
 			save_preview.stars = "error, data couldn't be loaded :("
+	
+	emit_signal("loaded_save_previews")
 
 func _on_Timer_timeout() -> void:
 	locked_input = false
 
 func _on_play_pressed() -> void:
 	load_saves_list_items()
+	yield(self, "loaded_save_previews")
 	title_menu.visible = false
 	saves_menu.visible = true
-	new.grab_focus()
+	saves_list.get_child(0).play.grab_focus()
+	print(get_focus_owner())
+	prints(saves_list.get_children())
+	print("")
+	var focus_owner = get_focus_owner()
+	
 
 func _on_options_pressed() -> void:
 	if title_menu.visible == false: return
@@ -244,3 +257,7 @@ func _on_prev_pressed() -> void:
 	if save_icon_id < 0:
 		save_icon_id = SAVE_ICONS.size()-1
 	save_icon.texture = SAVE_ICONS[save_icon_id]
+
+#func _process(delta: float) -> void:
+#	print(get_focus_owner())
+

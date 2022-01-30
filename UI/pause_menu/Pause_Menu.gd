@@ -36,9 +36,9 @@ func _input(event: InputEvent) -> void:
 		pause_menu.visible = visible
 		if visible == true:
 			global.emit_signal("paused")
-			resume.grab_focus()
 			Input.set_custom_mouse_cursor(global.CURSOR_NORMAL, Input.CURSOR_ARROW, Vector2(0, 0))
 			sound_player.create_sound(PAUSE_SOUND, true)
+			resume.grab_focus()
 		else:
 			global.emit_signal("unpaused")
 			sound_player.create_sound(UNPAUSE_SOUND, true, Sound.MODES.ONESHOT, true, true)

@@ -16,6 +16,7 @@ margin_right = 185.0
 margin_bottom = 66.4988
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource( 3 )
 custom_styles/panel = ExtResource( 1 )
@@ -153,6 +154,7 @@ margin_right = 179.0
 margin_bottom = 64.2494
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 2
 size_flags_horizontal = 5
 alignment = 1
 
@@ -169,6 +171,7 @@ autowrap = true
 margin_top = 30.0
 margin_right = 173.0
 margin_bottom = 52.0
+focus_mode = 2
 
 [node name="final_delete" parent="delete_confirmation/HBoxContainer" instance=ExtResource( 7 )]
 margin_right = 50.0
@@ -192,6 +195,7 @@ margin_bottom = 22.0
 text = "cancel"
 flat = true
 
+[connection signal="focus_entered" from="." to="." method="_on_save_preview_focus_entered"]
 [connection signal="pressed" from="main/HBoxContainer3/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="main/HBoxContainer3/delete" to="." method="_on_delete_pressed"]
 [connection signal="pressed" from="delete_confirmation/HBoxContainer/final_delete" to="." method="_on_final_delete_pressed"]

@@ -144,6 +144,7 @@ shape = SubResource( 5 )
 
 [node name="fire" parent="sound_player" instance=ExtResource( 5 )]
 stream = ExtResource( 6 )
+bus = "Master"
 MODE = 2
 
 [node name="light" type="Light2D" parent="."]

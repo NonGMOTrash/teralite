@@ -4,6 +4,7 @@ export var attack_cooldown := 0.45
 export var counter_duration := 0.6
 export var counter_slowness_lvl := 1.0
 export var counter_cooldown := 0.2
+export var SLASH: PackedScene
 
 onready var cooldown := $cooldown as Timer
 onready var counter := $counter as Area2D
@@ -27,7 +28,9 @@ func get_ready():
 
 func primary():
 	.primary()
-	quick_spawn("slash")
+	var slash: Melee = SLASH.instance()
+	slash.setup(player, global.get_look_pos())
+	refs.ysort.get_ref().add_child(slash)
 	cooldown.wait_time = attack_cooldown
 	cooldown.start()
 

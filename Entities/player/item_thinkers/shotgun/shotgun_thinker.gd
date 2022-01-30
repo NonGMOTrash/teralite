@@ -73,7 +73,7 @@ func primary():
 	var r: float = -(spread / 2) - (spread_step * floor(pellets/2.0))
 	for i in pellets:
 		r += spread_step
-		angles.append(rad2deg(player.global_position.direction_to(player.get_global_mouse_position()).angle()) + r)
+		angles.append(rad2deg(player.global_position.direction_to(global.get_look_pos()).angle()) + r)
 	
 	var bullets := []
 	for i in pellets:
@@ -83,7 +83,7 @@ func primary():
 		var angle: float = deg2rad(angles[i])
 		var direction := Vector2(cos(angle), sin(angle))
 		var this_bullet: Projectile = bullets[i]
-		this_bullet.setup(player, player.get_global_mouse_position())
+		this_bullet.setup(player, global.get_look_pos())
 		this_bullet.DIRECTION = direction
 		this_bullet.velocity = Vector2(this_bullet.SPEED, this_bullet.SPEED) * direction
 		for bullet in bullets:

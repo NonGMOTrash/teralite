@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Entities/player/item_thinkers/pistol/pistol_thinker.gd" type="Script" id=1]
 [ext_resource path="res://UI/cursors/cursor_pistol.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Entities/Item_Pickups/pistol/pistol.png" type="Texture" id=7]
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Effects/muzzle_flash/muzzle_flash.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/Attacks/Projectile/small_bullet/small_bullet.tscn" type="PackedScene" id=10]
 
 [node name="pistol thinker" type="Node"]
 script = ExtResource( 1 )
@@ -23,6 +24,7 @@ CURSOR = ExtResource( 2 )
 CURSOR_MODE = 1
 EQUIP_SOUND = ExtResource( 4 )
 reload_time = 1.1
+BULLET = ExtResource( 10 )
 
 [node name="cooldown" type="Timer" parent="."]
 one_shot = true
@@ -35,6 +37,7 @@ FREE_WHEN_EMPTY = false
 
 [node name="reload" parent="sound_player" instance=ExtResource( 6 )]
 stream = ExtResource( 5 )
+bus = "Master"
 MODE = 1
 AUTO_PLAY = false
 

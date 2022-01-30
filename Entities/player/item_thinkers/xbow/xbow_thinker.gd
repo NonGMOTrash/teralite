@@ -3,6 +3,7 @@ extends Thinker
 export(float) var reload_time := 1.6
 export(float) var reload_slow := 1.5
 export(AudioStream) var reload_sound: AudioStream
+export var BOLT: PackedScene
 
 onready var reload: Timer = $reload
 onready var held_item_sprite: Sprite = player.components["held_item"].sprite
@@ -29,7 +30,9 @@ func primary():
 			reload()
 		return
 	
-	quick_spawn("bolt")
+	var bolt: Projectile = BOLT.instance()
+	bolt.setup(player, global.get_look_pos())
+	refs.ysort.get_ref().add_child(bolt)
 	loaded = false
 	global.emit_signal("update_item_info", # set a condition to null to hide it
 		display_name, # current item

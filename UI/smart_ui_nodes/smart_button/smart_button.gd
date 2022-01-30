@@ -14,6 +14,7 @@ func _ready() -> void:
 	
 func color_set(color):
 	set_deferred("custom_colors/font_color", color)
+	set_deferred("custom_colors/font_color_focus", color)
 	set_deferred("custom_colors/font_color_pressed", color)
 	set_deferred("custom_colors/font_color_hover", color)
 
@@ -26,6 +27,9 @@ func _on_SmartButton_focus_exited() -> void:
 	color_set(normal_color)
 
 func _on_SmartButton_mouse_entered() -> void:
+	grab_focus()
+
+func _on_SmartButton_gui_input(event: InputEvent) -> void:
 	grab_focus()
 
 func _on_SmartButton_pressed() -> void:

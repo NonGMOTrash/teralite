@@ -3,6 +3,7 @@ extends Thinker
 export var resistance_level: int
 export var slowness_level: float
 export var duration: float
+export var THROWN_IRON_POTION: PackedScene
 
 func primary():
 	player.components["stats"].add_status_effect("resistance", duration, resistance_level)
@@ -25,7 +26,9 @@ func primary():
 	sound_player.play_sound("drink")
 
 func secondary():
-	quick_spawn("thrown_iron_potion")
+	var thrown_iron_potion: Projectile = THROWN_IRON_POTION.instance()
+	thrown_iron_potion.setup(player, global.get_look_pos())
+	refs.ysort.get_ref().add_child(thrown_iron_potion)
 	
 	queue_free()
 	player.inventory[global.selection] = null

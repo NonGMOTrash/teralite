@@ -20,7 +20,7 @@ func get_ready():
 func primary():
 	var syringe: Melee = res.aquire_attack("syringe")
 	syringe.global_position = player.global_position
-	syringe.setup(player, player.get_global_mouse_position())
+	syringe.setup(player, global.get_look_pos())
 	syringe.find_node("hitbox").connect("hit", self, "syringe_hit")
 	refs.ysort.get_ref().add_child(syringe)
 	cooldown.start()

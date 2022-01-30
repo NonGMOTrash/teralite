@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Entities/player/item_thinkers/health_potion/health_potion_thinker.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Item_Pickups/health_potion/health_potion.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Entities/player/item_thinkers/health_potion/potion_equip.wav" type="AudioStream" id=5]
 [ext_resource path="res://Entities/player/item_thinkers/health_potion/potion_drink.wav" type="AudioStream" id=6]
 [ext_resource path="res://UI/cursors/cursor_health_potion.png" type="Texture" id=7]
+[ext_resource path="res://Entities/Attacks/Projectile/thrown_health_potion/thrown_health_potion.tscn" type="PackedScene" id=8]
 
 [node name="health_potion" type="Node"]
 script = ExtResource( 1 )
@@ -18,10 +19,12 @@ CURSOR = ExtResource( 7 )
 CURSOR_MODE = 1
 EQUIP_SOUND = ExtResource( 5 )
 healing = 3
+THROWN_HEALTH_POTION = ExtResource( 8 )
 
 [node name="sound_player" parent="." instance=ExtResource( 3 )]
 
 [node name="drink" parent="sound_player" instance=ExtResource( 4 )]
 stream = ExtResource( 6 )
+bus = "Master"
 MODE = 1
 AUTO_PLAY = false

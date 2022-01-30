@@ -17,6 +17,7 @@ visible = false
 material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -28,6 +29,7 @@ visible = false
 material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -39,6 +41,7 @@ visible = false
 material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -47,5 +50,5 @@ __meta__ = {
 
 [connection signal="timeout" from="rect_a/timer_a" to="." method="_on_timer_a_timeout"]
 [connection signal="timeout" from="rect_b/timer_b" to="." method="_on_timer_b_timeout"]
-[connection signal="timeout" from="rect_c/timer_c" to="rect_c" method="_on_Timer_timeout"]
 [connection signal="timeout" from="rect_c/timer_c" to="." method="_on_timer_c_timeout"]
+[connection signal="timeout" from="rect_c/timer_c" to="rect_c" method="_on_Timer_timeout"]

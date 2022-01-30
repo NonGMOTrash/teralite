@@ -1,12 +1,13 @@
 extends Thinker
 
-const HITBOX := preload("res://Components/hitbox/hitbox.tscn")
-
 export(float) var attack_cooldown := 0.55
 export(float) var dash_cooldown := 1.2
 export(float) var dash_startup := 0.2
 export(float) var dash_distance := 100.0
 export(float) var dash_damage := 1
+
+export var HITBOX: PackedScene
+export var SWIPE: PackedScene
 
 onready var cooldown: Timer = $cooldown
 onready var tween: Tween = $Tween
@@ -14,7 +15,7 @@ onready var timer: Timer = $Timer
 onready var particles: Particles2D = $particles
 onready var after_image: Particles2D = $after_image
 onready var hitbox: Area2D = HITBOX.instance()
-# /\ i have to add the hitbox as a child of the player because there's get_parent() checks in hurtbox.gd
+# /\ i have to add the hitbox as a child of the player because of get_parent() checks in hurtbox.gd
 
 var dash_recovering := false
 
@@ -26,8 +27,6 @@ func _ready() -> void:
 	hitbox.COOLDOWN_ON_START = false
 	hitbox.DAMAGE = dash_damage
 	player.add_child(hitbox)
-	
-	assert(dash_cooldown > dash_startup)
 
 func get_ready() -> bool:
 	if cooldown.time_left > 0:
@@ -37,7 +36,9 @@ func get_ready() -> bool:
 
 func primary():
 	.primary()
-	quick_spawn("swipe")
+	var swipe: Melee = SWIPE.instance()
+	swipe.setup(player, global.get_look_pos())
+	refs.ysort.get_ref().add_child(swipe)
 	cooldown.wait_time = attack_cooldown
 	cooldown.start()
 
@@ -62,10 +63,21 @@ func _on_Timer_timeout() -> void:
 		player.components["entity_sprite"].scale = Vector2(1, 1)
 		
 		var start := player.global_position
+		var original_layer: int = player.collision_layer
+		var original_mask: int  = player.collision_mask
+		player.collision_layer = 0
+		player.collision_mask = 1
 		player.move_and_slide(
-				player.global_position.direction_to(player.get_global_mouse_position()).normalized() 
+				player.global_position.direction_to(global.get_look_pos()).normalized() 
 				* dash_distance / get_physics_process_delta_time()
 		)
+		var low_walls: TileMap = refs.world_tiles.get_ref().low_walls
+		while low_walls.get_cellv(low_walls.world_to_map(player.global_position)) != -1:
+			player.global_position = player.global_position.move_toward(start, 4)
+			if player.global_position == start:
+				break
+		player.collision_layer = original_layer
+		player.collision_mask = original_mask
 		
 		after_image.global_position = start
 		after_image.emitting = true

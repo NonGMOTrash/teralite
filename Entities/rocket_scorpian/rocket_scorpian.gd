@@ -57,7 +57,7 @@ func burrow():
 		var target_pos: Vector2 = global_position.move_toward(target.global_position, 110)
 		var ss := get_world_2d().direct_space_state
 		while true:
-			var test := ss.intersect_ray(target_pos.move_toward(global_position, 16), target_pos,[], 1)
+			var test := ss.intersect_ray(target_pos.move_toward(global_position, 20), target_pos,[], 1)
 			if test.has("collider"):
 				target_pos = target_pos.move_toward(global_position, 16)
 			else:

@@ -15,6 +15,7 @@ var original_text: String
 
 func _ready() -> void:
 	label.text = TEXT
+	_on_smart_slider_value_changed(value)
 
 func _on_smart_slider_value_changed(value: float) -> void:
 	if PROGRESS == PTYPES.NONE:

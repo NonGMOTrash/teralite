@@ -189,6 +189,10 @@ const data := {
 }
 
 func allocate(asset:String) -> void:
+	if not asset in data.keys():
+		if not asset == "":
+			push_error("asset '%s' no found" % asset)
+		return
 	# overwrites paths with the packed scene
 	if data.get(asset.to_lower()) is String:
 		data[asset.to_lower()] = load(data.get(asset.to_lower()))

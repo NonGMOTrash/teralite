@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Entities/player/item_thinkers/spear/spear_thinker.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Item_Pickups/spear/spear.png" type="Texture" id=2]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/cursors/cursor_spear.png" type="Texture" id=4]
+[ext_resource path="res://Entities/Attacks/Melee/poke/poke.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Attacks/Projectile/thrown_spear/thrown_spear.tscn" type="PackedScene" id=6]
 
 [node name="spear_thinker" type="Node"]
 script = ExtResource( 1 )
@@ -14,6 +16,8 @@ display_name = "spear"
 CURSOR = ExtResource( 4 )
 CURSOR_MODE = 1
 cooldown_time = 1.08
+POKE = ExtResource( 5 )
+THROWN_SPEAR = ExtResource( 6 )
 
 [node name="cooldown" type="Timer" parent="."]
 one_shot = true
