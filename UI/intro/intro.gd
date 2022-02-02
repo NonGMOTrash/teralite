@@ -20,9 +20,7 @@ func _input(event: InputEvent):
 func _ready() -> void:
 	animation.play(animation_queue[0])
 	animation_queue.pop_front()
-#	for i in range(0, 10):
-#		yield(get_tree().create_timer(rand_range(0.1, 0.5)), "timeout")
-#		wtf()
+	global.set_discord_activity("opening the game")
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if animation_queue.size() == 0:

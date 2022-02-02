@@ -99,6 +99,9 @@ const SAVE_DIR := "user://saves/"
 var save_name: String = "untitled_save"
 var saves = []
 
+var discord: Discord.Core
+var discord_activities: Discord.ActivityManager
+
 var settings := {
 	"fullscreen": false,
 	"perfection_mode": false,
@@ -216,6 +219,18 @@ func _ready():
 		OS.shell_open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 	
 	push_warning("quality_of_this_game == -999")
+	
+	# initialize discord
+	discord = Discord.Core.new()
+	var result: int = discord.create(937572744365748334,
+			Discord.CreateFlags.DEFAULT)
+	if result != Discord.Result.OK:
+		print("failed to initialize discord core")
+		discord = null
+	else:
+		print("discord initialized")
+		discord_activities = discord.get_activity_manager()
+	
 	print("")
 	
 	# debug stuffz:
@@ -583,3 +598,26 @@ func get_look_pos() -> Vector2:
 		return look_pos
 	else:
 		return get_tree().current_scene.get_global_mouse_position()
+
+func set_discord_activity(details: String, state:="") -> void:
+	var activity := Discord.Activity.new()
+	activity.details = details
+	if state != "":
+		activity.state = state
+	var assets := Discord.ActivityAssets.new()
+	assets.large_image = "teralite"
+	assets.large_text = "teralite"
+	activity.assets = assets
+	discord_activities.update_activity(activity, self, "_update_activity_callback")
+
+func _update_activity_callback(result: int):
+	if result != Discord.Result.OK:
+		push_error("failed to update discord activity: %s" % result)
+
+func _process(_delta: float) -> void:
+	if discord:
+		var result: int = discord.run_callbacks()
+		if result != Discord.Result.OK:
+			discord = null
+			discord_activities = null
+			push_error("failed to run discord callbacks: %s" % result)

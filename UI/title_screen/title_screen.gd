@@ -112,6 +112,8 @@ func _ready() -> void:
 		# load failed
 		push_error("could not load settings_config")
 		OS.alert("could not load settings_config", "reportpls.jpg")
+	
+	global.set_discord_activity("staring at the title screen", "(very intently)")
 
 func multi_color_set(target:Control, color:Color):
 	target.set_deferred("custom_colors/font_color", color)
@@ -191,11 +193,7 @@ func _on_play_pressed() -> void:
 	title_menu.visible = false
 	saves_menu.visible = true
 	saves_list.get_child(0).play.grab_focus()
-	print(get_focus_owner())
-	prints(saves_list.get_children())
-	print("")
 	var focus_owner = get_focus_owner()
-	
 
 func _on_options_pressed() -> void:
 	if title_menu.visible == false: return
@@ -257,7 +255,3 @@ func _on_prev_pressed() -> void:
 	if save_icon_id < 0:
 		save_icon_id = SAVE_ICONS.size()-1
 	save_icon.texture = SAVE_ICONS[save_icon_id]
-
-#func _process(delta: float) -> void:
-#	print(get_focus_owner())
-

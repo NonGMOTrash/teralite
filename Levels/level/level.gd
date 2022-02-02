@@ -30,6 +30,18 @@ func _ready() -> void:
 	refs.ambient_lighting = weakref($ambient_lighting)
 	refs.vignette = weakref($CanvasLayer/vignette)
 	
+	var deaths: int = 1
+	if get_name() in global.level_deaths:
+		deaths = global.level_deaths[get_name()] + 1
+	deaths = 69
+	var suffix: String = "th"
+	match deaths % 10:
+		1: suffix = "st"
+		2: suffix = "nd"
+		3: suffix = "rd"
+	global.set_discord_activity("in " + get_name().to_lower(),
+			"dying for the " + str(deaths) + suffix + " time")
+	
 	if global.settings["spawn_pause"] == true:
 		refs.camera.get_ref().pause_mode = PAUSE_MODE_PROCESS
 		get_tree().paused = true

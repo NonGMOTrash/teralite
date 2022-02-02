@@ -100,7 +100,7 @@ func _on_hitbox_hit(area, type) -> void:
 			sfx.name = truName+"_blocked"
 			sfx.stream = BLOCKED_SOUND
 		_:
-			sfx.name == truName+"_invalid_type"
+			sfx.name = truName+"_invalid_type"
 			return
 	
 	if sfx.stream == null:
