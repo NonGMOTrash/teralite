@@ -123,6 +123,7 @@ var settings := {
 	"shadow_buffer": 512,
 	"ambient_lighting": true,
 	"damage_numbers": true,
+	"discord": false,
 }
 
 # should move this and get_relation to Entity.gd probably
@@ -223,7 +224,7 @@ func _ready():
 	# initialize discord
 	discord = Discord.Core.new()
 	var result: int = discord.create(937572744365748334,
-			Discord.CreateFlags.DEFAULT)
+			Discord.CreateFlags.NO_REQUIRE_DISCORD)
 	if result != Discord.Result.OK:
 		print("failed to initialize discord core")
 		discord = null
@@ -600,6 +601,8 @@ func get_look_pos() -> Vector2:
 		return get_tree().current_scene.get_global_mouse_position()
 
 func set_discord_activity(details: String, state:="") -> void:
+	if settings["discord"] == false:
+		return
 	var activity := Discord.Activity.new()
 	activity.details = details
 	if state != "":

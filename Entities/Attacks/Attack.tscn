@@ -21,6 +21,7 @@ __meta__ = {
 "_edit_vertical_guides_": [ -573.0 ]
 }
 INANIMATE = true
+FLYING = true
 truName = "(attack)"
 
 [node name="stats" parent="." instance=ExtResource( 4 )]

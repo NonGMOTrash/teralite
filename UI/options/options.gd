@@ -26,6 +26,7 @@ onready var smooth = $tabs/game/VBox/smooth
 onready var hidebar = $tabs/game/VBox/hidebar
 onready var spawn_pause = $tabs/game/VBox/spawn_pause
 onready var damage_numbers = $tabs/game/VBox/damage_numbers
+onready var discord = $tabs/game/VBox/discord
 
 signal closed
 
@@ -57,6 +58,7 @@ func _on_tabs_visibility_changed() -> void:
 	shadow_buffer.value = global.settings["shadow_buffer"]
 	ambient_lighting.pressed = global.settings["ambient_lighting"]
 	damage_numbers.pressed = global.settings["damage_numbers"]
+	discord.pressed = global.settings["discord"]
 	
 	if visible == false: return
 	tabs.current_tab = 0
@@ -89,6 +91,7 @@ func _on_exit_pressed() -> void:
 	global.settings["shadow_buffer"] = shadow_buffer.value
 	global.settings["ambient_lighting"] = ambient_lighting.pressed
 	global.settings["damage_numbers"] = damage_numbers.pressed
+	global.settings["discord"] = discord.pressed
 	
 	global.update_settings()
 	

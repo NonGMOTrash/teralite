@@ -26,6 +26,8 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	
 	if entity == area_entity:
 		return
+	if entity.FLYING == true and not area_entity.FLYING:
+		return
 	
 	# los check
 	var ss = get_world_2d().direct_space_state
