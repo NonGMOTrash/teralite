@@ -19,3 +19,5 @@ var ambiance := weakref(Object())
 var ambient_lighting := weakref(Object())
 var transition := weakref(Object())
 var vignette := weakref(Object())
+
+signal got_player

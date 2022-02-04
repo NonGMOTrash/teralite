@@ -54,6 +54,7 @@ func _ready():
 	iTimer.start()
 	if get_name() == "player":
 		refs.player = weakref(self)
+		refs.emit_signal("got_player")
 	else:
 		health_bar.update_bar(0, 0, 0)
 		health_bar.visible = true
@@ -190,6 +191,7 @@ func death():
 					child.name = "player"
 					child.components["health_bar"].visible = false
 					refs.player = weakref(child)
+					refs.emit_signal("got_player")
 					global.emit_signal("update_health")
 					global.emit_signal("update_item_bar", child.inventory)
 					global.emit_signal("update_item_info", # set a condition to null to hide it

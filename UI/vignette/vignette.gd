@@ -10,14 +10,14 @@ onready var rect_c: ColorRect = $rect_c
 onready var timer_c: Timer = $rect_c/timer_c
 
 func _ready() -> void:
-	yield(get_tree().create_timer(0.01667), "timeout")
-	set_player()
-	player.stats.connect("status_recieved", self, "stats_status_recieved")
+	refs.connect("got_player", self, "set_player")
 
 func set_player():
 	player = refs.player.get_ref()
 	if not player.is_connected("tree_exited", self, "set_player"):
 		player.connect("tree_exited", self, "set_player")
+	if not player.stats.is_connected("status_recieved", self, "stats_status_recieved"):
+		player.stats.connect("status_recieved", self, "stats_status_recieved")
 
 func stats_status_recieved(status: String):
 	var rect: ColorRect

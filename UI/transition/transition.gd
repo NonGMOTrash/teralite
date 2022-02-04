@@ -20,4 +20,5 @@ func exit():
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	emit_signal("finished")
-	visible = false
+	if anim_name == "enter":
+		visible = false

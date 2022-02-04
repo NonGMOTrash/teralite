@@ -82,12 +82,10 @@ func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_released("interact") and pressed == true:
 		global.player_hub_pos[get_tree().current_scene.LETTER] = global_position + Vector2(0, 16)
-		refs.transition.get_ref().exit()
-		yield(refs.transition.get_ref(), "finished")
 		if CUSTOM_SCENE_PATH == "":
-			get_tree().change_scene("res://Levels/%s/%s.tscn" % [get_tree().current_scene.LETTER, LEVEL])
+			global.goto_scene("res://Levels/%s/%s.tscn" % [get_tree().current_scene.LETTER, LEVEL])
 		else:
-			get_tree().change_scene(CUSTOM_SCENE_PATH)
+			global.goto_scene(CUSTOM_SCENE_PATH)
 
 func _on_Area2D_body_entered(body: Node) -> void:
 	if refs.player.get_ref() == null: return

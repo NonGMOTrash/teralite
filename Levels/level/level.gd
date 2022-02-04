@@ -33,7 +33,6 @@ func _ready() -> void:
 	var deaths: int = 1
 	if get_name() in global.level_deaths:
 		deaths = global.level_deaths[get_name()] + 1
-	deaths = 69
 	var suffix: String = "th"
 	match deaths % 10:
 		1: suffix = "st"

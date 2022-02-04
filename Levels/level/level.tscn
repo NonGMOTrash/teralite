@@ -13,7 +13,7 @@
 [ext_resource path="res://Levels/Level Resources/background_tiles/background_tiles.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/level/level.gd" type="Script" id=12]
 [ext_resource path="res://UI/stopwatch/stopwatch.tscn" type="PackedScene" id=13]
-[ext_resource path="res://UI/transition/transition.tscn" type="PackedScene" id=14]
+[ext_resource path="res://UI/transition.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Levels/level/leaf.png" type="Texture" id=15]
 [ext_resource path="res://UI/vignette/vignette.tscn" type="PackedScene" id=16]
 

@@ -9,7 +9,7 @@
 [ext_resource path="res://Levels/Level Resources/scene_batcher/prop_placer/prop_placer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/Level Resources/background_tiles/background_tiles.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/level/leaf.png" type="Texture" id=9]
-[ext_resource path="res://UI/transition/transition.tscn" type="PackedScene" id=10]
+[ext_resource path="res://UI/transition.tscn" type="PackedScene" id=10]
 
 [node name="hub" type="Node2D"]
 script = ExtResource( 6 )

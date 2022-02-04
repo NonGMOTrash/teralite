@@ -78,6 +78,10 @@ var FOV = Vector2(1, 1)
 var previous_scene = null # PROBLEM_NOTE i don't think this is used
 var player_hub_pos = {"A":Vector2(0, 0)}
 var last_ambiance = 0 # PROBLEM_NOTE: this isn't used i don't think
+var discord: Discord.Core
+var discord_activities: Discord.ActivityManager
+var loader
+var thread := Thread.new()
 
 # data vars
 var stars = 0
@@ -98,9 +102,6 @@ const ver_hotfix = 0
 const SAVE_DIR := "user://saves/"
 var save_name: String = "untitled_save"
 var saves = []
-
-var discord: Discord.Core
-var discord_activities: Discord.ActivityManager
 
 var settings := {
 	"fullscreen": false,
@@ -601,7 +602,7 @@ func get_look_pos() -> Vector2:
 		return get_tree().current_scene.get_global_mouse_position()
 
 func set_discord_activity(details: String, state:="") -> void:
-	if settings["discord"] == false:
+	if settings["discord"] == false or not discord:
 		return
 	var activity := Discord.Activity.new()
 	activity.details = details
@@ -624,3 +625,21 @@ func _process(_delta: float) -> void:
 			discord = null
 			discord_activities = null
 			push_error("failed to run discord callbacks: %s" % result)
+
+func goto_scene(scene_path: String):
+	refs.transition.get_ref().exit()
+	thread.start(self, "_prep_scene", ResourceLoader.load_interactive(scene_path))
+
+func _prep_scene(loader):
+	while true:
+		var poll = loader.poll()
+		if poll == ERR_FILE_EOF:
+			call_deferred("_prep_finished")
+			return loader.get_resource()
+
+func _prep_finished():
+	var scene: PackedScene = thread.wait_to_finish()
+	print(refs.transition.get_ref().animation.current_animation_position)
+	if refs.transition.get_ref().animation.is_playing():
+		yield(refs.transition.get_ref(), "finished")
+	get_tree().change_scene_to(scene)
