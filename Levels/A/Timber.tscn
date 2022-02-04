@@ -7,7 +7,7 @@
 
 [node name="Timber" instance=ExtResource( 1 )]
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 5701757, 4, 0, 8192088, 5, 0, 9240701, 4, 0 )
 
 [node name="background_tiles" parent="YSort" index="0"]

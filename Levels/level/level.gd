@@ -65,7 +65,8 @@ func _ready() -> void:
 			particle_anchor.queue_free()
 			has_particles = false
 	
-	if global.last_ambiance == AMBIANCE: return
+	if global.last_ambiance == AMBIANCE:
+		return
 	else:
 		var old_ambiance
 		for global_sound in global.get_children():

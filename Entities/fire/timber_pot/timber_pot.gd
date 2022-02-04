@@ -44,3 +44,6 @@ func _on_stats_status_recieved(status) -> void:
 
 func _on_detection_body_entered(body: Node) -> void:
 	return # don't want to inherit the light disable from fire.gd
+
+func _on_fire_tree_exited() -> void:
+	return # don't want to inherit the light disable from fire.gd

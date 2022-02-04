@@ -7,11 +7,10 @@ onready var animation = $animation
 onready var spread = $spread
 onready var hitbox = $hitbox
 onready var detection = $detection
-onready var fuel = $fuel
+onready var fuel: Timer = $fuel
 onready var light: Light2D = $light
 
 var smoke: Particles2D
-var smoke_path: NodePath
 
 func _ready():
 	sprite.scale = Vector2(1, 1)
@@ -22,28 +21,29 @@ func _ready():
 	refs.ysort.get_ref().call_deferred("add_child", smoke)
 	yield(smoke, "ready")
 	smoke.global_position = global_position
-	smoke_path = smoke.get_path()
-	
-	# toggle light visibility if other fires nearby
-	if truName == "timber_pot" or global.settings["combine_lights"] == false:
-		light.visible = true
+
+# toggle light visibility if other fires nearby
+# checking this every frame is kinda bad, but it seems to be the only (?) way to reliablely get
+# the light combining to work which improves preformance overall
+func _physics_process(delta: float) -> void:
+	if global.settings["lighting"] == false or global.settings["combine_lights"] == false:
+		set_physics_process(false)
 		return
+	
 	for detected_entity in detection.get_overlapping_bodies():
 		if detected_entity.truName != "fire":
 			continue
-		elif detected_entity.get_instance_id() > get_instance_id():
-			light.queue_free()
+		elif detected_entity.get_instance_id() < get_instance_id():
+			light.visible = false
+			set_physics_process(false)
 			return
 	light.visible = true
 
 func death():
-	if get_node_or_null(smoke_path) != null:
-		smoke.queue_free()
 	animation.play("death")
 	
-	
 	# give light to nearby fire with highest id
-	if light.visible == false:
+	if not light or light.visible == false:
 		return
 	var highest_id: int = -1
 	var highest_fire: Entity
@@ -83,11 +83,5 @@ func _on_spread_timeout() -> void:
 	yield(new_fire, "ready")
 	new_fire.fuel.start()
 
-func _on_detection_body_entered(body: Node) -> void:
-	if truName == "timber_pot" or global.settings["combine_lights"] == false:
-		return
-	
-	body = body as Entity
-	if body.truName == "fire" and body.get_instance_id() > get_instance_id():
-		light.visible = false
-
+func _on_fire_tree_exited() -> void:
+	smoke.queue_free()
