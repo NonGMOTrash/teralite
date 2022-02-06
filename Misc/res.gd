@@ -76,6 +76,7 @@ const data := {
 	"rocket_launcher": "res://Entities/Item_Pickups/rocket_launcher/rocket_launcher.tscn",
 	"flamethrower": "res://Entities/Item_Pickups/flamethrower/flamethrower.tscn",
 	"injection": "res://Entities/Item_Pickups/injection/injection.tscn",
+	"blaster": "res://Entities/Item_Pickups/blaster/blaster.tscn",
 	
 	# melees
 	"slash": "res://Entities/Attacks/Melee/slash/slash.tscn",
@@ -186,6 +187,7 @@ const data := {
 	"rocket_launcher_texture": "res://Entities/Item_Pickups/rocket_launcher/rocket_launcher.png",
 	"flamethrower_texture": "res://Entities/Item_Pickups/flamethrower/flamethrower.png",
 	"injection_texture": "res://Entities/Attacks/Melee/syringe/syringe.png",
+	"blaster_texture": "res://Entities/Item_Pickups/blaster/blaster.png",
 }
 
 func allocate(asset:String) -> void:

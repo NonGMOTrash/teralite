@@ -43,7 +43,6 @@ standby_mode = true
 thing = ExtResource( 9 )
 spawn_on_free = false
 rotation_mode = 1
-custom_properties = {
-}
+effect_inherit_flipping = false
 
 [connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]

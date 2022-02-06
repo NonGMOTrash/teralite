@@ -17,7 +17,6 @@ margin_bottom = 66.4988
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
-size_flags_horizontal = 3
 theme = ExtResource( 3 )
 custom_styles/panel = ExtResource( 1 )
 script = ExtResource( 6 )
@@ -127,6 +126,7 @@ margin_bottom = 62.0
 [node name="play" parent="main/HBoxContainer3" instance=ExtResource( 7 )]
 margin_right = 36.0
 margin_bottom = 22.0
+focus_neighbour_right = NodePath("../delete")
 text = "play"
 flat = true
 
@@ -142,6 +142,7 @@ custom_styles/panel = SubResource( 1 )
 margin_left = 123.0
 margin_right = 173.0
 margin_bottom = 22.0
+focus_neighbour_left = NodePath("../play")
 text = "delete"
 flat = true
 selected_color = Color( 0.972549, 0.101961, 0.101961, 1 )

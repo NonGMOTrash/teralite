@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Entities/player/item_thinkers/blaster_thinker/blaster_thinker.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Attacks/Projectile/blast/blast.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Item_Pickups/blaster/blaster.png" type="Texture" id=4]
+[ext_resource path="res://Effects/energy_burst/energy_burst.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/player/item_thinkers/blaster_thinker/overheat.wav" type="AudioStream" id=8]
+
+[node name="blaster_thinker" type="Node"]
+script = ExtResource( 1 )
+PRIMARY_ACTION_MODE = 1
+HELD_ITEM_TEXTURE = ExtResource( 4 )
+my_item = "blaster"
+display_name = "blaster"
+BLAST = ExtResource( 2 )
+MAX_HEAT = 40
+COOL_SPEED = 24.0
+
+[node name="cooldown_timer" type="Timer" parent="."]
+wait_time = 0.14
+one_shot = true
+
+[node name="shot_timer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="sound_player" parent="." instance=ExtResource( 3 )]
+
+[node name="overheat" parent="sound_player" instance=ExtResource( 7 )]
+stream = ExtResource( 8 )
+bus = "Master"
+MODE = 1
+AUTO_PLAY = false
+
+[node name="spawner" parent="." instance=ExtResource( 6 )]
+standby_mode = true
+thing = ExtResource( 5 )
+spawn_on_free = false
+rotation_mode = 1
+effect_inherit_flipping = false

@@ -163,8 +163,8 @@ margin_bottom = 170.0
 grow_horizontal = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/vseparation = -2
-custom_constants/hseparation = -2
+custom_constants/vseparation = 3
+custom_constants/hseparation = 3
 columns = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="saves"]

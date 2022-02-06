@@ -47,12 +47,14 @@ tracks/2/keys = {
 }
 
 [node name="muzzle_flash" instance=ExtResource( 1 )]
+visible = false
 
 [node name="Sprite" parent="." index="0"]
 self_modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 27, 0 )
 texture = ExtResource( 2 )
 hframes = 4
+frame = 3
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "animation"
@@ -65,6 +67,7 @@ texture = ExtResource( 3 )
 offset = Vector2( 30, 0 )
 texture_scale = 0.2
 color = Color( 0.945098, 0.560784, 0.278431, 1 )
+energy = 0.0
 shadow_enabled = true
 shadow_buffer_size = 128
 script = ExtResource( 4 )

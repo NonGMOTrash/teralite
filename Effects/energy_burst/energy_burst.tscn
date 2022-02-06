@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Effects/Effect.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Effects/energy_burst/energy_burst.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "energy_burst"
+length = 0.167
+step = 0.033
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.033, 0.066, 0.099, 0.132 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[node name="energy_burst" instance=ExtResource( 1 )]
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 18, 0 )
+texture = ExtResource( 2 )
+hframes = 5
+frame = 4
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "energy_burst"
+anims/energy_burst = SubResource( 1 )
