@@ -1,6 +1,7 @@
 extends Entity 
 
 const DASH_EFFECT := preload("res://Effects/dash_effect/dash_effect.tscn")
+const SHOTGUN_SHELL := preload("res://Entities/Attacks/Projectile/shotgun_shell/shotgun_shell.tscn")
 
 export var warnings: int
 export var dash_strength: int
@@ -68,7 +69,7 @@ func attack(finished_animation:String):
 		
 		var bullets := []
 		for i in pellets:
-			bullets.append(res.aquire_attack("shotgun_shell"))
+			bullets.append(SHOTGUN_SHELL.instance() as Projectile)
 		
 		for i in pellets:
 			var angle: float = deg2rad(angles[i])

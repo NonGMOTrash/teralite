@@ -13,11 +13,6 @@ export(float, 0.01, 1.0) var anger_cooldown_multiplier = 0.5
 
 var stored_input
 
-func _init() -> void:
-	res.allocate("knight")
-	res.allocate("archer")
-	res.allocate("rogue")
-
 func _ready():
 	cooldown.wait_time = cooldown_time
 

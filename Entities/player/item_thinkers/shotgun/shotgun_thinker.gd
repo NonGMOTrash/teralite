@@ -1,5 +1,7 @@
 extends Thinker
 
+const SHOTGUN_SHELL := preload("res://Entities/Attacks/Projectile/shotgun_shell/shotgun_shell.tscn")
+
 export var max_ammo = 2
 var ammo = max_ammo
 export var cooldown_time = 0.175
@@ -14,9 +16,6 @@ export var spread:int = 40
 onready var cooldown = $cooldown
 onready var reload = $reload
 onready var spawner = $spawner
-
-func _init() -> void:
-	res.allocate("shotgun_shell")
 
 func _ready() -> void:
 	cooldown.wait_time = cooldown_time
@@ -77,7 +76,7 @@ func primary():
 	
 	var bullets := []
 	for i in pellets:
-		bullets.append(res.aquire_attack("shotgun_shell"))
+		bullets.append(SHOTGUN_SHELL.instance())
 	
 	for i in pellets:
 		var angle: float = deg2rad(angles[i])

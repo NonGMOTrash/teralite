@@ -14,9 +14,6 @@ onready var cooldown = $cooldown
 onready var reload = $reload
 onready var spawner = $spawner # used for muzzle flash
 
-func _init() -> void:
-	res.allocate("bullet")
-
 func _ready() -> void:
 	cooldown.wait_time = cooldown_time
 	reload.wait_time = reload_time

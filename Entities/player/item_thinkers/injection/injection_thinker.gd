@@ -1,5 +1,7 @@
 extends Thinker
 
+const SYRINGE := preload("res://Entities/Attacks/Melee/syringe/syringe.tscn")
+
 export var cooldown_time: float
 export var doses: int
 
@@ -18,7 +20,7 @@ func get_ready():
 		return true
 
 func primary():
-	var syringe: Melee = res.aquire_attack("syringe")
+	var syringe: Melee = SYRINGE.instance()
 	syringe.global_position = player.global_position
 	syringe.setup(player, global.get_look_pos())
 	syringe.find_node("hitbox").connect("hit", self, "syringe_hit")

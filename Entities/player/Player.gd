@@ -168,14 +168,6 @@ func death():
 	if force_death_msg == false:
 		yield(self, "updated_death_message")
 	
-	for i in 6:
-		if inventory[i] != null:
-			var item = res.aquire(inventory[i]).instance()
-			item.SOURCE = self
-			item.global_position = global_position
-			item.velocity = Vector2(rand_range(-1.0, 1.0), rand_range(-1.0, 1.0)).normalized() * 100
-			get_parent().call_deferred("add_child", item)
-	
 	if name == "player":
 		var found_replacement = false
 		

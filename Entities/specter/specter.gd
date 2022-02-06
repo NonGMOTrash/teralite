@@ -18,7 +18,7 @@ func _on_dup_timer_timeout() -> void:
 		return
 	
 	dup_limit -= 1
-	var clone: Entity = res.aquire_entity("specter")
+	var clone: Entity = self.duplicate()
 	clone.global_position = (
 		global_position + Vector2(rand_range(-1,1),rand_range(-1,1)).normalized() * 16
 		)

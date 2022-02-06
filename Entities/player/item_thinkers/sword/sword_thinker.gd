@@ -14,9 +14,6 @@ onready var player_sprite: Sprite = player.components["entity_sprite"]
 
 var can_counter := false
 
-func _init():
-	res.allocate("slash")
-
 func _physics_process(_delta):
 	counter.global_position = player.global_position + player.input_vector.normalized() * 4
 
@@ -88,7 +85,7 @@ func _on_counter_area_entered(area: Area2D) -> void:
 		area_entity.velocity *= -3
 		area_entity.components["stats"].change_health(-5, 0)
 	
-	var slash := res.aquire_melee("slash")
+	var slash: Melee = SLASH.instance()
 	slash.setup(player, area.global_position)
 	refs.ysort.get_ref().call_deferred("add_child", slash)
 	

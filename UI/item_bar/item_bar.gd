@@ -17,12 +17,22 @@ const SELECTED_COLOR := Color8(249, 194, 43)
 
 func _ready():
 	refs.item_bar = weakref(self)
-	global.connect("update_item_bar", self, "update_icons")
 	if global.settings["hide_bar"] == true:
 		bar.visible = false
 	visible = true
 
 func _input(_event: InputEvent):
+	var player: Entity = refs.player.get_ref()
+	if (
+		global.settings["hide_bar"] == true and
+		player.inventory[0] == null and
+		player.inventory[1] == null and
+		player.inventory[2] == null
+	):
+		bar.visible = false
+	else:
+		bar.visible = true
+	
 	match global.selection:
 		0:
 			bar.texture = ITEM_BAR_0
@@ -40,51 +50,11 @@ func _input(_event: InputEvent):
 			mid_icon.get_material().set_shader_param("color", NORMAL_COLOR)
 			right_icon.get_material().set_shader_param("color", SELECTED_COLOR)
 
-func update_icons(inventory):
-	for i in 6:
-		match_icon(i, inventory[i])
-	
-	if (
-		global.settings["hide_bar"] == true and
-		inventory[0] == null and
-		inventory[1] == null and
-		inventory[2] == null
-	):
-		bar.visible = false
-	else:
-		bar.visible = true
-
-func match_icon(slot, item):
-	if item == null:
-		replace_icon(slot, null)
-	else:
-		if not res.data.has(item+"_texture"):
-			push_warning("res.gd does not have %s_texture" % item)
-			replace_icon(slot, GENERIC)
-		else:
-			replace_icon(slot, res.aquire_texture(item+"_texture"))
-#	match item:
-#		null:
-#			replace_icon(slot, null)
-#		"pistol":
-#			replace_icon(slot, PISTOL)
-#		"white_armor":
-#			replace_icon(slot, WHITE_ARMOR)
-#		"sword":
-#			replace_icon(slot, SWORD)
-#		"bow":
-#			replace_icon(slot, BOW)
-
-func replace_icon(slot, texture: Texture):
-	if slot == 0:
-		left_icon.texture = texture
-	elif slot == 1:
-		mid_icon.texture = texture
-	elif slot == 2:
-		right_icon.texture = texture
-	elif slot == 3:
-		passive1.texture = texture
-	elif slot == 4:
-		passive2.texture = texture
-	elif slot == 5:
-		passive3.texture = texture
+func replace_icon(slot: int, texture: Texture):
+	match slot:
+		0: left_icon.texture = texture
+		1: mid_icon.texture = texture
+		2: right_icon.texture = texture
+		3: passive1.texture = texture
+		4: passive2.texture = texture
+		5: passive3.texture = texture

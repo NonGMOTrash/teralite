@@ -3,9 +3,6 @@ extends Thinker
 export(int, 0, 99) var healing: int
 export var THROWN_HEALTH_POTION: PackedScene
 
-func _init() -> void:
-	res.allocate("thrown_health_potion")
-
 func primary():
 	player.components["stats"].change_health(healing, 0, "heal")
 	queue_free()

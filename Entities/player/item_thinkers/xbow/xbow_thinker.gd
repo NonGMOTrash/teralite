@@ -11,9 +11,6 @@ onready var held_item_sprite: Sprite = player.components["held_item"].sprite
 var loaded := true
 var slowness: Status_Effect
 
-func _init() -> void:
-	res.allocate("bolt")
-
 func _ready() -> void:
 	reload.wait_time = reload_time
 	held_item_sprite.hframes = 2

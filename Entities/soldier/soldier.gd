@@ -1,5 +1,6 @@
 extends Entity
 
+const BULLET := preload("res://Entities/Attacks/Projectile/small_bullet/small_bullet.tscn")
 const SHOOT_SOUND := preload("res://Entities/player/item_thinkers/assault_rifle/assault_rifle_shoot.wav")
 
 export var warnings: int
@@ -15,9 +16,6 @@ onready var held_item: Node2D = $held_item
 onready var brain: Node2D = $brain
 onready var animation: AnimationPlayer = $AnimationPlayer
 
-func _ready() -> void:
-	res.aquire_projectile("bullet")
-
 func _on_action_lobe_action(action, target) -> void:
 	current_target = target
 	current_target_path = target.get_path()
@@ -29,7 +27,7 @@ func _on_shoot_timer_timeout() -> void:
 	if held_item.animation.is_playing():
 		return
 	
-	var bullet: Projectile = res.aquire_projectile("bullet")
+	var bullet: Projectile = BULLET.instance()
 	bullet.find_node("stats").DAMAGE = stats.DAMAGE
 	bullet.find_node("stats").TRUE_DAMAGE = stats.TRUE_DAMAGE
 	bullet.SPAWN_SOUND = SHOOT_SOUND

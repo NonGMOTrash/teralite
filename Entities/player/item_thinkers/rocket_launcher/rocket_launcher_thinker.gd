@@ -8,9 +8,6 @@ onready var spawner: Node = $spawner # used for muzzle flash
 
 var loaded := true
 
-func _init() -> void:
-	res.aquire_projectile("rocket")
-
 func _ready() -> void:
 	reload.wait_time = reload_time
 

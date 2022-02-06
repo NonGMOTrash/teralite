@@ -1,5 +1,8 @@
 extends Entity
 
+const SKELETON_PATH := "res://Entities/skeleton/skeleton.tscn"
+# /\ this is terrible but i have to do it to prevent cyclic reference
+
 export var ressurect_delay: float
 
 onready var ressurect := $ressurrect
@@ -18,7 +21,7 @@ func ressurect():
 		if "spawner" in child.name:
 			child.queue_free()
 	
-	var skeleton: Entity = res.aquire_entity("skeleton")
+	var skeleton: Entity = load(SKELETON_PATH).instance()
 	skeleton.global_position = global_position
 	refs.ysort.get_ref().add_child(skeleton)
 	queue_free()

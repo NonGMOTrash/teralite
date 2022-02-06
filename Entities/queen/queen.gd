@@ -1,5 +1,8 @@
 extends Entity
 
+const SLASH := preload("res://Entities/Attacks/Melee/slash/slash.tscn")
+const ARROW := preload("res://Entities/Attacks/Projectile/arrow/arrow.tscn")
+const BOLT := preload("res://Entities/Attacks/Projectile/bolt/bolt.tscn")
 const SWORD_TEXTURE := preload("res://Entities/Item_Pickups/sword/sword.png")
 const POTION_TEXTURE := preload("res://Entities/Item_Pickups/health_potion/health_potion.png")
 
@@ -16,10 +19,6 @@ onready var animation := $AnimationPlayer
 onready var held_item := $held_item
 onready var movement_lobe := $brain/movement_lobe
 onready var stats := $stats
-
-func _init() -> void:
-	res.allocate("slash")
-	res.allocate("arrow")
 
 func _ready() -> void:
 	held_item.animation.connect("animation_finished", self, "attack")
@@ -38,7 +37,7 @@ func _on_action_lobe_action(action, target) -> void:
 	stored_path = target.get_path()
 	
 	if action == "slash":
-		stored_attack = res.aquire_melee("slash")
+		stored_attack = SLASH.instance() as Melee
 		held_item.sprite.texture = SWORD_TEXTURE
 		held_item.sprite.hframes = 1
 		held_item.sprite.vframes = 1
@@ -48,12 +47,12 @@ func _on_action_lobe_action(action, target) -> void:
 		held_item.animation.play("warn")
 		held_item.animation.queue("warn")
 	elif action == "shoot":
-		stored_attack = res.aquire_projectile("arrow") 
+		stored_attack = ARROW.instance() as Projectile
 		held_item.animation.play("bow_charge")
 		held_item.sprite.offset = Vector2(0, 0)
 		held_item.original_offset = Vector2(0, 0)
 	elif action == "snipe":
-		stored_attack = res.aquire_projectile("bolt")
+		stored_attack = BOLT.instance() as Projectile
 		held_item.animation.play("xbow_charge")
 		held_item.sprite.offset = Vector2(0, 0)
 		held_item.original_offset = Vector2(0, 0)

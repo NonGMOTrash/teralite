@@ -1,19 +1,18 @@
 extends Node
 
-var CACHE = [
-	load("res://Components/spawner/spawner.tscn"),
-	load("res://Effects/dissolve_fade/dissolve_fade.tscn"),
-	load("res://Effects/flip_fade/flip_fade.tscn"),
-	load("res://Effects/left_fade/left_fade.tscn"),
-	load("res://Effects/right_fade/right_fade.tscn"),
-	load("res://Effects/spin_fade/spin_fade.tscn"),
-	load("res://Effects/squish_fade/squish_fade.tscn"),
-	load("res://Effects/triple_shrink/triple_shrink.tscn"),
-	load("res://Effects/wiggle_fade/wiggle_fade.tscn"),
-	load("res://Effects/hit_effect/hit_effect.tscn"),
-	load("res://Effects/Particles/hit_particles.tscn"),
-	load("res://Effects/block_spark/block_spark.tscn"),
-]
+const SPAWNER := preload("res://Components/spawner/spawner.tscn")
+const DISSOLVE_FADE := preload("res://Effects/dissolve_fade/dissolve_fade.tscn")
+const FLIP_FADE := preload("res://Effects/flip_fade/flip_fade.tscn")
+const LEFT_FADE := preload("res://Effects/left_fade/left_fade.tscn")
+const RIGHT_FADE := preload("res://Effects/right_fade/right_fade.tscn")
+const SPIN_FADE := preload("res://Effects/spin_fade/spin_fade.tscn")
+const SQUISH_FADE := preload("res://Effects/squish_fade/squish_fade.tscn")
+const TRIPLE_SHRINK := preload("res://Effects/triple_shrink/triple_shrink.tscn")
+const WIGGLE_FADE := preload("res://Effects/wiggle_fade/wiggle_fade.tscn")
+const HIT_EFFECT := preload("res://Effects/hit_effect/hit_effect.tscn")
+const HIT_PARTICLES := preload("res://Effects/Particles/hit_particles.tscn")
+const BLOCK_SPARK := preload("res://Effects/block_spark/block_spark.tscn")
+
 
 enum DEATHS {
 	HIT_EFFECT = -1,
@@ -37,28 +36,28 @@ onready var entity: Entity = get_parent()
 
 func _ready():
 	if hit_effect == true:
-		var spawner = load("res://Components/spawner/spawner.tscn").instance()
-		spawner.thing = load("res://Effects/hit_effect/hit_effect.tscn")
+		var spawner: Node = SPAWNER.instance()
+		spawner.thing = HIT_EFFECT
 		spawner.spawn_on_free = false
 		spawner.spawn_on_hurt = true
 		spawner.effect_frames = Vector2(5, 1)
 		entity.call_deferred("add_child", spawner)
 	
 	if death_effect == true:
-		var spawner = load("res://Components/spawner/spawner.tscn").instance()
+		var spawner: Node = SPAWNER.instance()
 		
 		match death_type:
 			DEATHS.HIT_EFFECT: 
-				spawner.thing = load("res://Effects/hit_effect/hit_effect.tscn")
+				spawner.thing = HIT_EFFECT
 				spawner.effect_frames = Vector2(5, 1)
-			DEATHS.DISSOVE_FADE: spawner.thing = load("res://Effects/dissolve_fade/dissolve_fade.tscn")
-			DEATHS.FLIP_FADE: spawner.thing = load("res://Effects/flip_fade/flip_fade.tscn")
-			DEATHS.LEFT_FADE: spawner.thing = load("res://Effects/left_fade/left_fade.tscn")
-			DEATHS.RIGHT_FADE: spawner.thing = load("res://Effects/right_fade/right_fade.tscn")
-			DEATHS.SPIN_FADE: spawner.thing = load("res://Effects/spin_fade/spin_fade.tscn")
-			DEATHS.SQUISH_FADE: spawner.thing = load("res://Effects/squish_fade/squish_fade.tscn")
-			DEATHS.TRIPLE_SHRINK: spawner.thing = load("res://Effects/triple_shrink/triple_shrink.tscn")
-			DEATHS.WIGGLE_FADE: spawner.thing = load("res://Effects/wiggle_fade/wiggle_fade.tscn")
+			DEATHS.DISSOVE_FADE: spawner.thing = DISSOLVE_FADE
+			DEATHS.FLIP_FADE: spawner.thing = FLIP_FADE
+			DEATHS.LEFT_FADE: spawner.thing = LEFT_FADE
+			DEATHS.RIGHT_FADE: spawner.thing = RIGHT_FADE
+			DEATHS.SPIN_FADE: spawner.thing = SPIN_FADE
+			DEATHS.SQUISH_FADE: spawner.thing = SQUISH_FADE
+			DEATHS.TRIPLE_SHRINK: spawner.thing = TRIPLE_SHRINK
+			DEATHS.WIGGLE_FADE: spawner.thing = WIGGLE_FADE
 			_: push_error("%s is not a valid death_type" % death_type)
 		
 		if death_type != DEATHS.HIT_EFFECT:
@@ -77,18 +76,18 @@ func _ready():
 		entity.call_deferred("add_child", spawner)
 	
 	if block_effect == true:
-		var spawner = load("res://Components/spawner/spawner.tscn").instance()
+		var spawner: Node = SPAWNER.instance()
 		spawner.spawn_on_free = false
 		spawner.spawn_on_block = true
-		spawner.thing = load("res://Effects/block_spark/block_spark.tscn")
+		spawner.thing = BLOCK_SPARK
 		spawner.rotation_mode = spawner.ROTATIONS.TOWARD_HITBOX
 		spawner.effect_frames = Vector2(4, 1)
 		entity.call_deferred("add_child", spawner)
 	
 	if impact_particles == true:
-		var spawner = load("res://Components/spawner/spawner.tscn").instance()
+		var spawner: Node = SPAWNER.instance()
 		spawner.spawn_on_hurt = true
-		spawner.thing = load("res://Effects/Particles/hit_particles.tscn")
+		spawner.thing = HIT_PARTICLES
 		entity.call_deferred("add_child", spawner)
 	
 	queue_free()

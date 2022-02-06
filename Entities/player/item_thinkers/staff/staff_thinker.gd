@@ -13,10 +13,6 @@ onready var player_hurtbox: Area2D = player.components["hurtbox"]
 
 var shine: Melee
 
-func _init():
-	res.allocate("magic")
-	res.allocate("shine")
-
 func _ready():
 	shoot_cooldown.wait_time = SHOOT_COOLDOWN
 	shine_cooldown.wait_time = SHINE_COOLDOWN
@@ -34,7 +30,7 @@ func primary():
 
 func secondary():
 	if shine_cooldown.time_left == 0:
-		shine = res.aquire_attack("shine")
+		shine = SHINE.instance()
 		shine.position = player.global_position
 		shine.setup(player, global.get_look_pos())
 		shine.connect("reflect", self, "skip_shine_cooldown")

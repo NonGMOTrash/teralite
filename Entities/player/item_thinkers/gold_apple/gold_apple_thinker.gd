@@ -6,9 +6,6 @@ export var regen_lvl: float
 
 var used := false
 
-func _init() -> void:
-	res.allocate("gold_apple")
-
 func get_ready() -> bool:
 	return not used
 

@@ -19,9 +19,6 @@ onready var hitbox: Area2D = HITBOX.instance()
 
 var dash_recovering := false
 
-func _init() -> void:
-	res.allocate("swipe")
-
 func _ready() -> void:
 	hitbox.COOLDOWN = 0.001
 	hitbox.COOLDOWN_ON_START = false

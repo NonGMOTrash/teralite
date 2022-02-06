@@ -1,6 +1,7 @@
 extends Thinker
 
 const CRIT_SOUND: AudioStream = preload("res://Entities/player/item_thinkers/awp/awp_shoot_crit.wav")
+const BIG_BULLET := preload("res://Entities/Attacks/Projectile/big_bullet/big_bullet.tscn")
 const UNSCOPED_HOTSPOT := Vector2(40.5, 40.5)
 const SCOPED_HOTSPOT := Vector2(13.5, 13.5)
 
@@ -33,9 +34,6 @@ var old_sector: int = 0
 var sectors: int = 8
 var scoped := false
 var regular_smooth_speed = 10
-
-func _init() -> void:
-	res.allocate("bullet")
 
 func _ready() -> void:
 	cooldown.wait_time = cooldown_time
@@ -92,7 +90,7 @@ func primary():
 			reload()
 		return
 	
-	var bullet: Projectile = res.aquire_attack("big_bullet")
+	var bullet: Projectile = BIG_BULLET.instance()
 	bullet.RECOIL = 0 #                   \/ gets the sector opposite from the current one
 	if mlg_timer.time_left > 0:
 		bullet.RECOIL = 50

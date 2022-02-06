@@ -1,5 +1,6 @@
 extends Thinker
 
+const BULLET := preload("res://Entities/Attacks/Projectile/small_bullet/small_bullet.tscn")
 const SHOOT_SOUND: AudioStream = preload("res://Entities/player/item_thinkers/deagle/deagle_shoot.wav")
 
 export var max_ammo = 6
@@ -15,9 +16,6 @@ export var bonus_damage = 1
 onready var cooldown = $cooldown
 onready var reload = $reload
 onready var spawner = $spawner
-
-func _init() -> void:
-	res.allocate("bullet")
 
 func _ready() -> void:
 	cooldown.wait_time = cooldown_time
@@ -64,7 +62,7 @@ func primary():
 			reload()
 		return
 	
-	var bullet := res.aquire_projectile("bullet")
+	var bullet: Projectile = BULLET.instance()
 	bullet.ONHIT_SELF_DAMAGE = 1
 	bullet.find_node("stats").DAMAGE += bonus_damage
 	bullet.SPAWN_SOUND = SHOOT_SOUND

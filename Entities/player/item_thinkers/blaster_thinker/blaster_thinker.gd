@@ -39,13 +39,13 @@ func primary():
 		sound_player.play_sound("overheat")
 
 func _physics_process(_delta: float) -> void:
-	if global.selection != slot:
-		return
-	
 	if heat > 0 and shot_timer.time_left == 0:
 		heat -= 1
 		shot_timer.wait_time = 1.0 / COOL_SPEED
 		shot_timer.start()
+	
+	if global.selection != slot:
+		return
 	
 	var held_item: Node2D = player.components["held_item"]
 	held_item.modulate = lerp(Color.white, HEAT_COLOR, float(heat) / MAX_HEAT)
@@ -57,3 +57,6 @@ func _physics_process(_delta: float) -> void:
 		heat + 0.01, # item bar value 
 		null # bar timer duration
 	)
+
+func unselected():
+	player.components["held_item"].modulate = Color.white

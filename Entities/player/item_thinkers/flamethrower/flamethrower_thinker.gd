@@ -1,5 +1,7 @@
 extends Thinker
 
+const FIRE := preload("res://Entities/fire/fire.tscn")
+
 export var flame_speed: float
 export var flame_duration: float
 
@@ -15,7 +17,7 @@ func get_ready():
 		return true
 
 func primary():
-	var flame := res.aquire_entity("fire")
+	var flame: Entity = FIRE.instance()
 	var direction := player.global_position.direction_to(global.get_look_pos()).normalized()
 	flame.global_position = player.global_position + (direction * 16)
 	flame.apply_force(direction * flame_speed + player.velocity * 0.4)

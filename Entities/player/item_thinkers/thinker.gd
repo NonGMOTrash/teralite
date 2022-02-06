@@ -34,7 +34,7 @@ onready var player := get_parent() as Entity
 var slot := 0
 var bar_max = 0.0
 var bar_value = 0.0
-var item_scene = res.aquire(my_item)
+var item_scene: Entity
 var max_frame := HELD_ITEM_FRAMES.x * HELD_ITEM_FRAMES.y - 1
 var accurate_mouse_pos := Vector2.ZERO
 var times_used: int = 0
@@ -47,18 +47,14 @@ func _ready():
 	if my_item == "":
 		push_error("my_item was not set")
 		queue_free()
-	
-	if not my_item in res.data:
-		push_error("%s is not in res.gd" % my_item)
-	
 	if player.truName != "player":
 		push_error("thinker's parent was not a player")
 		queue_free()
-	
 	if CURSOR == null:
 		push_warning("%s does not have a cursor" % get_name())
 	
 	player.connect("swapped_item", self, "_check_if_selected")
+	player.connect("death", self, "_death_drop")
 	global.connect("unpaused", self,"_update_cursor_on_unpause")
 	
 	if global.selection == slot:
@@ -68,6 +64,8 @@ func _ready():
 	
 	if player.get_name() == "player":
 		global.emit_signal("update_item_bar", player.inventory)
+	
+	refs.item_bar.get_ref().replace_icon(slot, HELD_ITEM_TEXTURE)
 
 # PROBLEM_NOTE: this is kinda bad because the name implies a return value
 func _check_if_selected(swapped_item) -> void:
@@ -91,7 +89,7 @@ func _process(_delta: float):
 	
 	if Input.is_action_pressed("drop_item"):
 		if player.inventory[global.selection] == null: return
-		var new_item_entity = res.aquire_entity(my_item)
+		var new_item_entity: Entity = item_scene.duplicate()
 		
 		if new_item_entity == null: return
 		var dir_vector = player.global_position.direction_to(global.get_look_pos())
@@ -151,7 +149,7 @@ func update_cursor(texture: Texture = null):
 		CURSOR = texture
 	var hotspot
 	match CURSOR_MODE:
-		CURSOR_MODES.CENTERED: hotspot = Vector2(22.5, 22.5)
+		CURSOR_MODES.CENTERED: hotspot = Vector2(13.5, 13.5)
 		CURSOR_MODES.POINTER: hotspot = Vector2.ZERO
 	Input.set_custom_mouse_cursor(CURSOR, Input.CURSOR_ARROW, hotspot)
 
@@ -235,8 +233,17 @@ func delete():
 	if player.get_name() == "player":
 		global.emit_signal("update_item_bar", player.inventory)
 	
+	refs.item_bar.get_ref().replace_icon(slot, null)
+	
 	queue_free()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouse:
 		accurate_mouse_pos = global.get_look_pos()
+
+func _death_drop():
+	var item = item_scene.duplicate()
+	item.SOURCE = player
+	item.global_position = player.global_position
+	item.velocity = Vector2(rand_range(-1.0, 1.0), rand_range(-1.0, 1.0)).normalized() * 100
+	refs.ysort.get_ref().call_deferred("add_child", item)

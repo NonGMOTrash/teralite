@@ -72,6 +72,7 @@ func _on_Area2D_body_entered(body: Node) -> void:
 					push_warning("item was not given a thinker")
 				else:
 					var new_thinker: Thinker = thinker.instance()
+					new_thinker.item_scene = self.duplicate()
 					new_thinker.slot = x
 					new_thinker.times_used = times_used
 					body.call_deferred("add_child", new_thinker)

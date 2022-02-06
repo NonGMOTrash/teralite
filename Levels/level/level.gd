@@ -105,10 +105,6 @@ func _ready() -> void:
 				ambient_lighting.color = Color(0.5, 0.5, 0.5)
 			TYPES.WASTELAND:
 				ambient_lighting.color = Color(1, 1, 0.7)
-	
-	# prevent freeze when this is loaded
-	res.allocate("hit_effect")
-	res.allocate("item_pickup_effect")
 
 func pathfind(start:Vector2, end:Vector2) -> PoolVector2Array:
 	var path := get_simple_path(start, get_closest_point(end), true)

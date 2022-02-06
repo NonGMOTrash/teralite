@@ -1,14 +1,13 @@
 extends Entity
 
+const BLOW_DART := preload("res://Entities/Attacks/Projectile/blow_dart/blow_dart.tscn")
+
 export var attack_cooldown: float
 
 var stored_target_pos: Vector2
 
 onready var animation := $AnimationPlayer
 onready var held_item := $held_item
-
-func _init() -> void:
-	res.allocate("blow_dart")
 
 func _ready() -> void:
 	$brain/action_lobe/attack.COOLDOWN = attack_cooldown
@@ -26,7 +25,7 @@ func _on_action_lobe_action(action, target) -> void:
 	held_item.animation.play("warn")
 
 func attack(_finished_animation: String) -> void:
-	var blow_dart := res.aquire_projectile("blow_dart")
+	var blow_dart: Projectile = BLOW_DART.instance()
 	blow_dart.setup(self, stored_target_pos)
 	blow_dart.global_position = self.global_position
 	refs.ysort.get_ref().call_deferred("add_child", blow_dart)

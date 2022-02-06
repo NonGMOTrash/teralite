@@ -1,5 +1,7 @@
 extends "res://Components/stats/status_effects/speed/speed.gd"
 
+var ZOMBIE := load("res://Entities/zombie/zombie.tscn")
+
 export var infection_color: Color
 
 onready var tween: Tween = $Tween
@@ -16,7 +18,7 @@ func _ready() -> void:
 		tween.start()
 
 func triggered():
-	var zombie := res.aquire_entity("zombie")
+	var zombie: Entity = ZOMBIE.instance()
 	zombie.global_position = entity.global_position
 	var zombie_stats: Node = zombie.find_node("stats")
 	if stats != null and zombie_stats != null:

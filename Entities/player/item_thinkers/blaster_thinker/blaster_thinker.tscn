@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Entities/player/item_thinkers/blaster_thinker/blaster_thinker.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Attacks/Projectile/blast/blast.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Entities/player/item_thinkers/blaster_thinker/overheat.wav" type="AudioStream" id=8]
+[ext_resource path="res://UI/cursors/cursor_blaster.png" type="Texture" id=9]
 
 [node name="blaster_thinker" type="Node"]
 script = ExtResource( 1 )
@@ -15,6 +16,8 @@ PRIMARY_ACTION_MODE = 1
 HELD_ITEM_TEXTURE = ExtResource( 4 )
 my_item = "blaster"
 display_name = "blaster"
+CURSOR = ExtResource( 9 )
+CURSOR_MODE = 1
 BLAST = ExtResource( 2 )
 MAX_HEAT = 40
 COOL_SPEED = 24.0

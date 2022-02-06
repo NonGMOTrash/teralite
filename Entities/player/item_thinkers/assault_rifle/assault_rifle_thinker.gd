@@ -1,6 +1,7 @@
 extends Thinker
 
 const SHOOT_SOUND := preload("res://Entities/player/item_thinkers/assault_rifle/assault_rifle_shoot.wav")
+const BULLET := preload("res://Entities/Attacks/Projectile/small_bullet/small_bullet.tscn")
 
 export var max_ammo = 30
 var ammo = max_ammo
@@ -15,9 +16,6 @@ export var recoil = 40
 onready var cooldown = $cooldown
 onready var reload = $reload
 onready var spawner = $spawner
-
-func _init() -> void:
-	res.allocate("bullet")
 
 func _ready() -> void:
 	cooldown.wait_time = cooldown_time
@@ -70,7 +68,7 @@ func primary():
 			reload()
 		return
 	
-	var bullet := res.aquire_projectile("bullet")
+	var bullet: Projectile = BULLET.instance()
 	bullet.RECOIL = recoil
 	bullet.setup(player, global.get_look_pos())
 	bullet.SPAWN_SOUND = SHOOT_SOUND

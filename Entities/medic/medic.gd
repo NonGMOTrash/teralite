@@ -1,12 +1,11 @@
 extends Entity
 
+const HEART := preload("res://Entities/Item_Pickups/heart/heart.tscn")
+
 export(float, 0.0, 1000.0) var throw_strength := 150.0
 
 onready var stats = $stats
 onready var animation := $AnimationPlayer
-
-func _init():
-	res.allocate("heart")
 
 func _physics_process(delta: float) -> void:
 	if input_vector == Vector2.ZERO:
@@ -18,7 +17,7 @@ func _on_action_lobe_action(action, target) -> void:
 	if target.components["stats"].HEALTH == target.components["stats"].MAX_HEALTH:
 		return
 	
-	var heart = res.aquire_entity("heart")
+	var heart: Entity = HEART.instance()
 	heart.player_only = false
 	heart.healing = stats.DAMAGE * -1
 	refs.ysort.get_ref().call_deferred("add_child", heart)

@@ -1,14 +1,16 @@
 extends Node
 
 # PROBLEM_NOTE: add these to global.gd, and have them preloaded in hitboxes instead of here
-const burning = preload("res://Components/stats/status_effects/burning/burning.tscn")
-const poison = preload("res://Components/stats/status_effects/poison/poison.tscn")
-const bleed = preload("res://Components/stats/status_effects/bleed/bleed.tscn")
-const speed = preload("res://Components/stats/status_effects/speed/speed.tscn")
-const slowness = preload("res://Components/stats/status_effects/speed/slowness/slowness.tscn")
-const regen = preload("res://Components/stats/status_effects/regeneration/regeneration.tscn")
-const resistance = preload("res://Components/stats/status_effects/resistance/resistance.tscn")
-const infection = preload("res://Components/stats/status_effects/infection/infection.tscn")
+const burning := preload("res://Components/stats/status_effects/burning/burning.tscn")
+const poison := preload("res://Components/stats/status_effects/poison/poison.tscn")
+const bleed := preload("res://Components/stats/status_effects/bleed/bleed.tscn")
+const speed := preload("res://Components/stats/status_effects/speed/speed.tscn")
+const slowness := preload("res://Components/stats/status_effects/speed/slowness/slowness.tscn")
+const regen := preload("res://Components/stats/status_effects/regeneration/regeneration.tscn")
+const resistance := preload("res://Components/stats/status_effects/resistance/resistance.tscn")
+const infection := preload("res://Components/stats/status_effects/infection/infection.tscn")
+const ZOMBIE_PATH := "res://Entities/zombie/zombie.tscn"
+# /\ this is terrible, but i have to do it to prevent cyclic reference
 
 var duration_timers = []
 var effect_timers = []
@@ -160,7 +162,7 @@ func change_health(value: int, true_value: int, type: String = "hurt") -> String
 			entity.force_death_msg = true
 		
 		if type == "infect" and not entity.INANIMATE:
-			var zombie := res.aquire_entity("zombie")
+			var zombie: Entity = load(ZOMBIE_PATH).instance()
 			zombie.global_position = entity.global_position
 			var stats = entity.components["stats"]
 			if stats != null:

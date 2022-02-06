@@ -1,12 +1,11 @@
 extends Thinker
 
+const LANDMINE := preload("res://Entities/landmine/landmine.tscn")
+
 export var max_mines: int
 export var mines: int
 
 onready var sound: Node = $sound_player
-
-func _init() -> void:
-	res.aquire_entity("landmine")
 
 func _ready() -> void:
 	mines -= times_used
@@ -22,7 +21,7 @@ func primary():
 	if mines == 0:
 		return
 	
-	var landmine: Entity = res.aquire_entity("landmine")
+	var landmine: Entity = LANDMINE.instance()
 	landmine.position = player.global_position
 	landmine.faction = "player"
 	refs.ysort.get_ref().add_child(landmine)

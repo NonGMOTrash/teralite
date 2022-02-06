@@ -1,5 +1,9 @@
 extends Entity
 
+const ROCKET := preload("res://Entities/Attacks/Projectile/rocket/rocket.tscn")
+const SKELETON := preload("res://Entities/skeleton/skeleton.tscn")
+const POISON_DROP := preload("res://Components/stats/status_effects/poison/poison.tscn")
+
 export var lunge_force: float
 export var rage_threshold: int
 export var rage_speed_mult: float
@@ -41,12 +45,12 @@ func lunge():
 func shoot():
 	var target: Entity = get_node_or_null(target_path)
 	if target != null:
-		var rocket := res.aquire_projectile("rocket")
+		var rocket: Projectile = ROCKET.instance()
 		rocket.setup(self, target.global_position)
 		refs.ysort.get_ref().add_child(rocket)
 
 func burrow():
-	var skele := res.aquire_entity("skeleton")
+	var skele: Entity = SKELETON.instance()
 	skele.position = global_position
 	skele.marked_allies.append(self)
 	marked_allies.append(skele)
@@ -70,7 +74,7 @@ func poison():
 		Vector2(-1, 0), Vector2(-1, 1)
 	]
 	for i in 8:
-		var poison := res.aquire_projectile("poison_drop")
+		var poison: Projectile = POISON_DROP.instance()
 		poison.setup(self, global_position + directions[i] * 99)
 		refs.ysort.get_ref().add_child(poison)
 
