@@ -33,13 +33,13 @@ func _input(_event: InputEvent) -> void:
 	elif Input.is_action_just_released("interact") and pressed == true:
 		set_process(false)
 		label.visible = false
-		refs.transition.get_ref().exit()
-		yield(refs.transition.get_ref(), "finished")
+		refs.transition.exit()
+		yield(refs.transition, "finished")
 		get_tree().reload_current_scene()
 
 func _process(_delta):
 	# PROBLEM_NOTE: this is kinda bad because it's checked every frame
-	if refs.pause_menu.get_ref().visible == true:
+	if refs.pause_menu.visible == true:
 		label.visible = false
 	elif simple_mode == false:
 		label.visible = true

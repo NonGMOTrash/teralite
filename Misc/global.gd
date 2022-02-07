@@ -487,7 +487,7 @@ func update_settings(save_settings_config:=true):
 				)
 	
 	if "TYPES" in get_tree().current_scene: # is map
-		var camera = refs.camera.get_ref()
+		var camera = refs.camera
 		if not camera is Camera2D:
 			push_warning("could not find camera")
 		else:
@@ -499,8 +499,8 @@ func update_settings(save_settings_config:=true):
 			light.shadow_enabled = global.settings["shadows"]
 			light.shadow_buffer_size = global.settings["shadow_buffer"]
 		
-		var ambient_lighting: CanvasModulate = refs.ambient_lighting.get_ref()
-		var level: Node2D = refs.level.get_ref()
+		var ambient_lighting: CanvasModulate = refs.ambient_lighting
+		var level: Node2D = refs.level
 		if global.settings["ambient_lighting"] == true:
 			match level.AMBIENT_LIGHTING:
 				level.TYPES.NONE, level.TYPES.AUTUMN:
@@ -512,11 +512,11 @@ func update_settings(save_settings_config:=true):
 		else:
 			ambient_lighting.color = Color(1, 1, 1)
 		
-		var item_bar = refs.item_bar.get_ref()
+		var item_bar = refs.item_bar
 		if item_bar == null: 
 			push_warning("could not find item_bar")
 		else:
-			var player = refs.player.get_ref()
+			var player = refs.player
 			if player == null: return
 			
 			var inventory = player.inventory
@@ -627,7 +627,7 @@ func _process(_delta: float) -> void:
 			push_error("failed to run discord callbacks: %s" % result)
 
 func goto_scene(scene_path: String):
-	refs.transition.get_ref().exit()
+	refs.transition.exit()
 	thread.start(self, "_prep_scene", ResourceLoader.load_interactive(scene_path))
 
 func _prep_scene(loader):
@@ -639,7 +639,7 @@ func _prep_scene(loader):
 
 func _prep_finished():
 	var scene: PackedScene = thread.wait_to_finish()
-	print(refs.transition.get_ref().animation.current_animation_position)
-	if refs.transition.get_ref().animation.is_playing():
-		yield(refs.transition.get_ref(), "finished")
+	print(refs.transition.animation.current_animation_position)
+	if refs.transition.animation.is_playing():
+		yield(refs.transition, "finished")
 	get_tree().change_scene_to(scene)

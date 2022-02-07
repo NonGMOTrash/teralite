@@ -27,6 +27,6 @@ func _on_action_lobe_action(action, target) -> void:
 	
 	var dash_effect = DASH_EFFECT.instance()
 	dash_effect.rotation_degrees = rad2deg(dash_direction.angle())
-	refs.ysort.get_ref().call_deferred("add_child", dash_effect)
+	refs.ysort.call_deferred("add_child", dash_effect)
 	yield(dash_effect, "ready")
 	dash_effect.global_position = global_position + Vector2(0, 6)

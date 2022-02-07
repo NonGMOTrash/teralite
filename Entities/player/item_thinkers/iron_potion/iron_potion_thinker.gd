@@ -28,7 +28,7 @@ func primary():
 func secondary():
 	var thrown_iron_potion: Projectile = THROWN_IRON_POTION.instance()
 	thrown_iron_potion.setup(player, global.get_look_pos())
-	refs.ysort.get_ref().add_child(thrown_iron_potion)
+	refs.ysort.add_child(thrown_iron_potion)
 	
 	queue_free()
 	player.inventory[global.selection] = null

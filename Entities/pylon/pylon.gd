@@ -21,7 +21,7 @@ func _on_delay_timeout() -> void:
 	
 	var magic = MAGIC.instance()
 	magic.setup(self, pos)
-	refs.ysort.get_ref().add_child(magic)
+	refs.ysort.add_child(magic)
 	if stats.DAMAGE != 0 and stats.TRUE_DAMAGE != 1:
 		yield(magic, "ready")
 		magic.components["stats"].DAMAGE = stats.DAMAGE

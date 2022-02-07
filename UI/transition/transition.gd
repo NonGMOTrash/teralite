@@ -5,7 +5,7 @@ onready var animation: AnimationPlayer = $AnimationPlayer
 signal finished
 
 func _init() -> void:
-	refs.transition = weakref(self)
+	refs.update_ref("transition", self)
 	margin_left = 0
 	margin_right = 0
 	visible = true

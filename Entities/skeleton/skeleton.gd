@@ -40,7 +40,7 @@ func attack(finished_animation):
 	elif finished_animation == "bow_charge":
 		var projectile: Projectile = PROJECTILE.instance()
 		projectile.setup(self, target_pos)
-		refs.ysort.get_ref().add_child(projectile)
+		refs.ysort.add_child(projectile)
 		projectile.SOURCE_PATH = self.get_path()
 		attack_cooldown.wait_time = shoot_cooldown
 	

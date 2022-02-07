@@ -4,7 +4,7 @@ var navigation: TileMap
 var cell_pos: Vector2
 
 func _ready() -> void:
-	navigation = refs.navigation.get_ref()
+	navigation = refs.navigation
 	
 	if navigation == null:
 		push_error("navigation == null")

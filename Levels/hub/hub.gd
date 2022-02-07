@@ -18,12 +18,12 @@ onready var timer: Timer = $Timer
 onready var ambient_lighting: CanvasModulate = $ambient_lighting
 
 func _ready() -> void:
-	refs.level = weakref(self)
-	refs.canvas_layer = weakref($CanvasLayer)
-	refs.ysort = weakref($YSort)
-	refs.background = weakref($background)
-	refs.background_tiles = weakref($YSort/background_tiles)
-	refs.ambient_lighting = weakref($ambient_lighting)
+	refs.update_ref("level", self)
+	refs.update_ref("canvas_layer", $CanvasLayer)
+	refs.update_ref("ysort", $YSort)
+	refs.update_ref("background", $background)
+	refs.update_ref("background_tiles", $YSort/background_tiles)
+	refs.update_ref("ambient_lighting", $ambient_lighting)
 	
 	$Camera.pause_mode = PAUSE_MODE_INHERIT
 	
@@ -86,7 +86,7 @@ func _ready() -> void:
 		TYPES.WASTELAND: ambiance.stream = load("res://Levels/level/wasteland_ambience.ogg")
 	
 	global.add_child(ambiance)
-	refs.ambiance = weakref(ambiance)
+	refs.update_ref("ambiance", ambiance)
 	
 	if global.settings["ambient_lighting"] == false:
 		ambient_lighting.visible = false
@@ -106,7 +106,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if update_particles == true:
-		var player = refs.player.get_ref()
+		var player = refs.player
 		if player != null:
 			particle_anchor.position = to_local(player.global_position)
 			if player.velocity != Vector2.ZERO:

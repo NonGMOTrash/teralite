@@ -18,6 +18,6 @@ func _on_reflection_area_entered(area: Area2D) -> void:
 	sound.play_sound("reflect")
 	
 	var particles: Particles2D = SHINE_PARTICLES.instance()
-	refs.ysort.get_ref().call_deferred("add_child", particles)
+	refs.ysort.call_deferred("add_child", particles)
 	yield(particles, "tree_entered")
 	particles.global_position = global_position

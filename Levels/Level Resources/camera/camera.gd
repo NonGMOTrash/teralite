@@ -23,7 +23,7 @@ var target_pos := Vector2.ZERO
 var auto_target := true
 
 func _init() -> void:
-	refs.camera = weakref(self)
+	refs.update_ref("camera", self)
 	smoothing_enabled = false
 
 # this is called by the player when it spawns so the camera instantly warps to you
@@ -41,9 +41,9 @@ func _input(event: InputEvent):
 		set_mouse_pos = global.get_look_pos()
 
 func _physics_process(_delta: float) -> void:
-	var player: Entity
-	if refs.player.get_ref() == null: return
-	player = refs.player.get_ref()
+	var player := refs.player
+	if not is_instance_valid(player):
+		return
 	
 	if player == null:
 		if old_player_pos == null: return

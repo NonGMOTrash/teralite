@@ -17,8 +17,10 @@ onready var sound_player = $sound_player
 signal paused
 signal unpaused
 
+func _init() -> void:
+	refs.update_ref("pause_menu", self)
+
 func _ready():
-	refs.pause_menu = weakref(self)
 	if get_tree().current_scene.LEVEL_TYPE == 1: 
 		return_to.text = "return to title"
 		restart.visible = false
@@ -27,7 +29,7 @@ func _ready():
 	pause_menu.visible = false
 
 func _input(event: InputEvent) -> void:
-	if refs.transition.get_ref().visible:
+	if refs.transition.visible:
 		return
 	
 	if Input.is_action_just_pressed("pause"):
@@ -60,19 +62,19 @@ func _on_options_pressed() -> void:
 	options_menu.visible = true
 
 func _on_restart_pressed() -> void:
-	refs.transition.get_ref().exit()
-	yield(refs.transition.get_ref(), "finished")
+	refs.transition.exit()
+	yield(refs.transition, "finished")
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 func _on_return_to_pressed() -> void:
-	refs.transition.get_ref().exit()
-	yield(refs.transition.get_ref(), "finished")
+	refs.transition.exit()
+	yield(refs.transition, "finished")
 	
 	get_tree().paused = false
 	if get_tree().current_scene.LEVEL_TYPE == 1:
 		var letter: String = get_tree().current_scene.LETTER
-		global.player_hub_pos[letter] = refs.player.get_ref().global_position
+		global.player_hub_pos[letter] = refs.player.global_position
 		global.write_save(global.save_name, global.get_save_data_dict())
 		
 		for sound in global.get_children():
@@ -88,7 +90,7 @@ func _on_return_to_pressed() -> void:
 func _on_quit_pressed() -> void:
 	if get_tree().current_scene.LEVEL_TYPE == 1: 
 		var letter: String = get_tree().current_scene.LETTER
-		global.player_hub_pos[letter] = refs.player.get_ref().global_position
+		global.player_hub_pos[letter] = refs.player.global_position
 		global.write_save(global.save_name, global.get_save_data_dict())
 	global.quit()
 

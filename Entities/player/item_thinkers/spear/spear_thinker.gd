@@ -20,14 +20,14 @@ func primary():
 	.primary()
 	var poke: Melee = POKE.instance()
 	poke.setup(player, global.get_look_pos())
-	refs.ysort.get_ref().add_child(poke)
+	refs.ysort.add_child(poke)
 	cooldown.start()
 
 func secondary():
 	.secondary()
 	var thrown_spear: Projectile = THROWN_SPEAR.instance()
 	thrown_spear.setup(player, global.get_look_pos())
-	refs.ysort.get_ref().add_child(thrown_spear)
+	refs.ysort.add_child(thrown_spear)
 	player.inventory[global.selection] = null
 	player.held_item.sprite.texture = null
 	player.held_item.sprite.rotation_degrees = 0

@@ -18,7 +18,7 @@ func _ready():
 	animation.playback_speed = rand_range(0.75, 1.25)
 	
 	smoke = smoke_particle.instance()
-	refs.ysort.get_ref().call_deferred("add_child", smoke)
+	refs.ysort.call_deferred("add_child", smoke)
 	yield(smoke, "ready")
 	smoke.global_position = global_position
 

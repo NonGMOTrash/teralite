@@ -22,7 +22,7 @@ func shoot():
 	
 	var arrow = ARROW.instance()
 	arrow.setup(self, pos)
-	refs.ysort.get_ref().add_child(arrow)
+	refs.ysort.add_child(arrow)
 	if stats.DAMAGE != 2 and stats.TRUE_DAMAGE != 0:
 		yield(arrow, "ready")
 		arrow.components["stats"].DAMAGE = stats.DAMAGE

@@ -22,13 +22,13 @@ func _ready() -> void:
 	if name != "test_level":
 		global.write_save(global.save_name, global.get_save_data_dict())
 	
-	refs.level = weakref(self)
-	refs.canvas_layer = weakref($CanvasLayer)
-	refs.ysort = weakref($YSort)
-	refs.background = weakref($background)
-	refs.background_tiles = weakref($YSort/background_tiles)
-	refs.ambient_lighting = weakref($ambient_lighting)
-	refs.vignette = weakref($CanvasLayer/vignette)
+	refs.update_ref("level", self)
+	refs.update_ref("canvas_layer", $CanvasLayer)
+	refs.update_ref("ysort", $YSort)
+	refs.update_ref("background", $background)
+	refs.update_ref("background_tiles", $YSort/background_tiles)
+	refs.update_ref("ambient_lighting", $ambient_lighting)
+	refs.update_ref("vignette", $CanvasLayer/vignette)
 	
 	var deaths: int = 1
 	if get_name() in global.level_deaths:
@@ -42,7 +42,7 @@ func _ready() -> void:
 			"dying for the " + str(deaths) + suffix + " time")
 	
 	if global.settings["spawn_pause"] == true:
-		refs.camera.get_ref().pause_mode = PAUSE_MODE_PROCESS
+		refs.camera.pause_mode = PAUSE_MODE_PROCESS
 		get_tree().paused = true
 		spawn_paused = true
 	
@@ -93,7 +93,7 @@ func _ready() -> void:
 		_: return
 	
 	global.add_child(ambiance)
-	refs.ambiance = weakref(ambiance)
+	refs.update_ref("ambiance", ambiance)
 	
 	if global.settings["ambient_lighting"] == false:
 		ambient_lighting.visible = false
@@ -116,7 +116,7 @@ func pathfind(start:Vector2, end:Vector2) -> PoolVector2Array:
 
 func _physics_process(delta: float) -> void:
 	if update_particles == true:
-		var player = refs.player.get_ref()
+		var player = refs.player
 		if player != null:
 			particle_anchor.position = to_local(player.global_position)
 			if player.velocity != Vector2.ZERO:
@@ -124,8 +124,8 @@ func _physics_process(delta: float) -> void:
 			particle_anchor.position.y -= 216
 
 func _on_level_tree_exiting() -> void:
-	global.total_time += refs.stopwatch.get_ref().time
-	global.speedrun_time += refs.stopwatch.get_ref().time
+	global.total_time += refs.stopwatch.time
+	global.speedrun_time += refs.stopwatch.time
 
 func _input(event: InputEvent) -> void:
 	if spawn_paused == false:
@@ -133,4 +133,4 @@ func _input(event: InputEvent) -> void:
 	elif not event is InputEventMouse and not event is InputEventJoypadMotion:
 		get_tree().paused = false
 		spawn_paused = false
-		refs.camera.get_ref().pause_mode = PAUSE_MODE_STOP
+		refs.camera.pause_mode = PAUSE_MODE_STOP

@@ -46,20 +46,19 @@ var can_dash := true
 
 func _on_player_tree_entered() -> void:
 	if name == "player":
-		refs.camera.get_ref().startat(global_position)
+		refs.camera.startat(global_position)
 
 func _ready():
 	dash_buffer *= (1.0/60.0)
 	global.selection = 0
 	iTimer.start()
 	if get_name() == "player":
-		refs.player = weakref(self)
-		refs.emit_signal("got_player")
+		refs.update_ref("player", self)
 	else:
 		health_bar.update_bar(0, 0, 0)
 		health_bar.visible = true
 	
-	var camera = refs.camera.get_ref()
+	var camera = refs.camera
 	camera.smoothing_enabled = false
 	camera.global_position = global_position
 	camera.smoothing_enabled = true
@@ -104,7 +103,7 @@ func dash(direction: Vector2 = input_vector) -> void:
 		# particle effect
 		var effect = dash_effect.instance()
 		effect.rotation_degrees = rad2deg(direction.angle())
-		refs.ysort.get_ref().call_deferred("add_child", effect)
+		refs.ysort.call_deferred("add_child", effect)
 		yield(effect, "ready")
 		effect.global_position = global_position + Vector2(0, 6)
 
@@ -182,7 +181,7 @@ func death():
 					name = "dedplayer"
 					child.name = "player"
 					child.components["health_bar"].visible = false
-					refs.player = weakref(child)
+					refs.update_ref("player", child)
 					refs.emit_signal("got_player")
 					global.emit_signal("update_health")
 					global.emit_signal("update_item_bar", child.inventory)
@@ -213,12 +212,12 @@ func death():
 		global.level_deaths[get_tree().current_scene.get_name()] += 1
 		
 		# hide ui
-		refs.stopwatch.get_ref().set_pause(true)
+		refs.stopwatch.set_pause(true)
 		
 		var elements = [
-			refs.health_ui.get_ref(),
-			refs.item_bar.get_ref(),
-			refs.item_info.get_ref(),
+			refs.health_ui,
+			refs.item_bar,
+			refs.item_info,
 		]
 		
 		for element in elements:
@@ -226,7 +225,7 @@ func death():
 				element.visible = false
 	
 	var my_death = player_death.instance()
-	if name == "player" and refs.level_completion.get_ref().visible == false:
+	if name == "player" and refs.level_completion.visible == false:
 		my_death.simple_mode = false
 	my_death.flip_h = sprite.flip_h
 	my_death.death_message = death_message
@@ -238,7 +237,7 @@ func death():
 func _on_stats_health_changed(_type, result, net) -> void:
 	if result != "heal" and result != "block":
 		if result == "hurt" and name == "player" and damage_pause_count < 2:
-			refs.camera.get_ref().shake(5, 15, 0.2)
+			refs.camera.shake(5, 15, 0.2)
 			#OS.delay_msec((2/60.0) * 1000)
 			damage_pause_count += 1
 			damage_pause_cooldown.start()

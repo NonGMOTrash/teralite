@@ -24,7 +24,7 @@ func triggered():
 	if stats != null and zombie_stats != null:
 		zombie_stats.MAX_HEALTH = stats.MAX_HEALTH
 		zombie_stats.HEALTH = stats.HEALTH
-	refs.ysort.get_ref().call_deferred("add_child", zombie)
+	refs.ysort.call_deferred("add_child", zombie)
 	entity.death()
 	depleted()
 

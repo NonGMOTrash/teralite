@@ -16,9 +16,7 @@ var level_completed := false
 
 func _init():
 	visible = false
-
-func _ready():
-	refs.level_completion = weakref(self)
+	refs.update_ref("level_completion", self)
 
 func start():
 	if level_completed == true:
@@ -28,25 +26,25 @@ func start():
 	visible = true
 	level_completed = true
 	
-	refs.stopwatch.get_ref().visible = false
-	refs.stopwatch.get_ref().set_pause(true)
-	refs.item_info.get_ref().visible = false
-	refs.item_bar.get_ref().visible = false
-	refs.health_ui.get_ref().visible = false
+	refs.stopwatch.visible = false
+	refs.stopwatch.set_pause(true)
+	refs.item_info.visible = false
+	refs.item_bar.visible = false
+	refs.health_ui.visible = false
 	
 	header.text = "%s completed" % lvl.to_lower()
 	
-	if refs.player.get_ref() == null:
+	if refs.player == null:
 		damage.text = damage.text + "? (this is a bug, pls report)"
 	else:
-		damage.text = damage.text + str(refs.player.get_ref().damage_taken)
-		if refs.player.get_ref().damage_taken == 0:
+		damage.text = damage.text + str(refs.player.damage_taken)
+		if refs.player.damage_taken == 0:
 			damage.set("custom_colors/font_color", YELLOW)
 			damage_comment.set("custom_colors/font_color", YELLOW)
 			damage_comment.text = "perfect!"
 			perfected = true
 	
-	var time_value: float = refs.stopwatch.get_ref().time
+	var time_value: float = refs.stopwatch.time
 	time.text = time.text + global.sec_to_time(time_value)
 	
 	# PB check
@@ -68,7 +66,7 @@ func start():
 	if perfected == true:
 		global.perfected_levels.push_back(lvl)
 	
-	var stopwatch = refs.stopwatch.get_ref()
+	var stopwatch = refs.stopwatch
 	if stopwatch == null: 
 		push_warning("could not find stopwatch")
 	elif not lvl in global.level_times or global.level_times[lvl] > stopwatch.time:
@@ -86,19 +84,19 @@ func _input(_event):
 # PROBLEM_NOTE: this is bad because it's checked every frame
 func _process(delta: float) -> void:
 	if level_completed:
-		visible = not refs.pause_menu.get_ref().visible
+		visible = not refs.pause_menu.visible
 
 func _on_proceed_pressed() -> void:
 	if lvl == "thx":
 		if global.last_hub == null:
 			global.last_hub = "A"
-		refs.transition.get_ref().exit()
-		yield(refs.transition.get_ref(), "finished")
+		refs.transition.exit()
+		yield(refs.transition, "finished")
 		get_tree().change_scene("res://Levels/%s/%s-Hub.tscn" % [global.last_hub, global.last_hub])
 		return
 	
-	refs.transition.get_ref().exit()
-	yield(refs.transition.get_ref(), "finished")
+	refs.transition.exit()
+	yield(refs.transition, "finished")
 	if lvl == "Abomination":
 		get_tree().change_scene("res://Levels/thx.tscn")
 	elif global.last_hub == null or global.last_hub.length() != 1:

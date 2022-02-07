@@ -98,7 +98,7 @@ func attack(finished_animation:String):
 	else:
 		stored_attack.setup(self, stored_target.global_position)
 	stored_attack.SOURCE_PATH = get_path()
-	refs.ysort.get_ref().add_child(stored_attack)
+	refs.ysort.add_child(stored_attack)
 	yield(stored_attack, "tree_entered")
 	stored_attack.global_position = global_position
 

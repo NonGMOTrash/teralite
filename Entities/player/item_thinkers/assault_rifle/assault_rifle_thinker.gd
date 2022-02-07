@@ -56,7 +56,7 @@ func selected():
 
 func unselected():
 	reload.stop()
-	var camera: Camera2D = refs.camera.get_ref()
+	var camera: Camera2D = refs.camera
 	camera.distance_ratio = camera.DEFAULT_DISTANCE_RATIO
 	camera.distance_max = camera.DEFAULT_DISTANCE_MAX
 	camera.zoom_to(Vector2(1, 1), ads_zoom_speed)
@@ -72,7 +72,7 @@ func primary():
 	bullet.RECOIL = recoil
 	bullet.setup(player, global.get_look_pos())
 	bullet.SPAWN_SOUND = SHOOT_SOUND
-	refs.ysort.get_ref().add_child(bullet)
+	refs.ysort.add_child(bullet)
 	ammo -= 1
 	cooldown.start()
 	reload.stop()
@@ -86,7 +86,7 @@ func primary():
 	spawner.spawn()
 
 func secondary():
-	var camera = refs.camera.get_ref() as Camera2D
+	var camera = refs.camera as Camera2D
 	
 	if Input.is_action_pressed("secondary_action"):
 		camera.distance_ratio = ads_dist_ratio

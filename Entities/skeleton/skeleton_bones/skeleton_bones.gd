@@ -23,5 +23,5 @@ func ressurect():
 	
 	var skeleton: Entity = load(SKELETON_PATH).instance()
 	skeleton.global_position = global_position
-	refs.ysort.get_ref().add_child(skeleton)
+	refs.ysort.add_child(skeleton)
 	queue_free()

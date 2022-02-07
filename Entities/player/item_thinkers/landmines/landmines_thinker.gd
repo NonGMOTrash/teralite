@@ -24,7 +24,7 @@ func primary():
 	var landmine: Entity = LANDMINE.instance()
 	landmine.position = player.global_position
 	landmine.faction = "player"
-	refs.ysort.get_ref().add_child(landmine)
+	refs.ysort.add_child(landmine)
 	mines -= 1
 	times_used += 1
 	sound_player.play_sound("place")

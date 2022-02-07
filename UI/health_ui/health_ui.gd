@@ -11,19 +11,23 @@ var remHealth = 10
 var remMaxHealth = 10
 var remBonusHealth = 10
 
+func _init() -> void:
+	refs.update_ref("health_ui", self)
+
 func _ready():
-	refs.health_ui = weakref(self)
 	global.connect("update_health", self, "update")
 	update()
 	effect.play("blue")
 	visible = true
 
 func update():
-	if refs.player.get_ref() == null: return
-	var player = refs.player.get_ref()
-	if player == null: return
+	var player = refs.player
+	if not is_instance_valid(refs.player):
+		return
+	
 	player = player.components["stats"]
-	if player == null: return
+	if player == null:
+		return
 	maxHealth.rect_size.x = 10 * player.MAX_HEALTH
 	health.rect_size.x = 10 * player.HEALTH
 	bonusHealth.rect_size.x = 10 * player.BONUS_HEALTH

@@ -88,13 +88,13 @@ func _input(event: InputEvent) -> void:
 			global.goto_scene(CUSTOM_SCENE_PATH)
 
 func _on_Area2D_body_entered(body: Node) -> void:
-	if refs.player.get_ref() == null: return
-	elif body != refs.player.get_ref(): return
+	if refs.player == null: return
+	elif body != refs.player: return
 	player = body
 	info.visible = true
 
 func _on_Area2D_body_exited(body: Node) -> void:
-	if refs.player.get_ref() == null: return
-	elif body != refs.player.get_ref(): return
+	if refs.player == null: return
+	elif body != refs.player: return
 	player = null
 	info.visible = false

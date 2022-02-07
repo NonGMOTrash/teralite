@@ -53,7 +53,7 @@ func attack(finished_animation:String):
 		bullet.marked_allies.append(self)
 		marked_allies.append(bullet)
 		bullet.setup(self, targit.global_position)
-		refs.ysort.get_ref().add_child(bullet)
+		refs.ysort.add_child(bullet)
 		bullets -= 1
 	elif queued_action == "reload":
 		bullets = 10

@@ -28,5 +28,5 @@ func attack(_finished_animation: String) -> void:
 	var blow_dart: Projectile = BLOW_DART.instance()
 	blow_dart.setup(self, stored_target_pos)
 	blow_dart.global_position = self.global_position
-	refs.ysort.get_ref().call_deferred("add_child", blow_dart)
+	refs.ysort.call_deferred("add_child", blow_dart)
 	held_item.TARGETING = held_item.TT.BRAIN_TARGET

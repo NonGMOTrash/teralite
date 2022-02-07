@@ -6,11 +6,11 @@ var time = 0.0
 var paused = true
 
 func _init() -> void:
-	refs.stopwatch = weakref(self)
+	refs.update_ref("stopwatch", self)
 
 func _ready():
 	visible = true
-	refs.transition.get_ref().connect("finished", self, "start")
+	refs.transition.connect("finished", self, "start")
 
 func start():
 	timer.start()

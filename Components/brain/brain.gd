@@ -305,7 +305,7 @@ func spawn_effect(effect: String, pos: Vector2):
 		"exclaimation": new_effect = EXCLAIMATION.instance()
 		"question": new_effect = QUESTION.instance()
 	
-	refs.ysort.get_ref().call_deferred("add_child", new_effect)
+	refs.ysort.call_deferred("add_child", new_effect)
 	new_effect.global_position = pos
 
 func get_target_names() -> Array:

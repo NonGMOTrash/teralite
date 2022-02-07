@@ -24,7 +24,7 @@ func primary():
 	syringe.global_position = player.global_position
 	syringe.setup(player, global.get_look_pos())
 	syringe.find_node("hitbox").connect("hit", self, "syringe_hit")
-	refs.ysort.get_ref().add_child(syringe)
+	refs.ysort.add_child(syringe)
 	cooldown.start()
 
 func selected():

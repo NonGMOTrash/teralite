@@ -38,7 +38,7 @@ func attack(finished_animation:String):
 	
 	var projectile = PROJECTILE.instance()
 	projectile.setup(self, pos)
-	refs.ysort.get_ref().add_child(projectile)
+	refs.ysort.add_child(projectile)
 
 func _on_action_lobe_action(action, target: Entity) -> void:
 	targit = target

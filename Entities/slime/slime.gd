@@ -31,7 +31,7 @@ func _on_hurtbox_got_hit(by_area, type) -> void:
 	
 	var slime: Entity = self.duplicate()
 	slime.velocity = velocity
-	refs.ysort.get_ref().call_deferred("add_child", slime)
+	refs.ysort.call_deferred("add_child", slime)
 	yield(slime, "tree_entered")
 	slime.global_position = global_position - input_vector * 3
 	yield(slime, "ready")

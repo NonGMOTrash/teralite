@@ -114,7 +114,7 @@ func primary():
 	arrow.RANGE = arrow.SPEED / 1.8
 	arrow.ACCELERATION = -((100 - charge_percent) * 1.8)
 	arrow.setup(player, global.get_look_pos())
-	refs.ysort.get_ref().add_child(arrow)
+	refs.ysort.add_child(arrow)
 	cooldown.start()
 	
 	state = IDLE

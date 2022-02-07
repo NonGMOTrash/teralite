@@ -26,7 +26,7 @@ func primary():
 	
 	var blast: Projectile = BLAST.instance()
 	blast.setup(player, global.get_look_pos())
-	refs.ysort.get_ref().add_child(blast)
+	refs.ysort.add_child(blast)
 	
 	heat += 1
 	shot_timer.wait_time = 1.2

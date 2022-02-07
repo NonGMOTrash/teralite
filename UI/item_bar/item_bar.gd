@@ -15,14 +15,16 @@ const GENERIC = preload("res://Misc/generic.png")
 const NORMAL_COLOR := Color8(46, 34, 47)
 const SELECTED_COLOR := Color8(249, 194, 43)
 
+func _init() -> void:
+	refs.update_ref("item_bar", self)
+
 func _ready():
-	refs.item_bar = weakref(self)
 	if global.settings["hide_bar"] == true:
 		bar.visible = false
 	visible = true
 
 func _input(_event: InputEvent):
-	var player: Entity = refs.player.get_ref()
+	var player: Entity = refs.player
 	if (
 		global.settings["hide_bar"] == true and
 		player.inventory[0] == null and

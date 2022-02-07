@@ -29,7 +29,7 @@ func primary():
 	
 	var bolt: Projectile = BOLT.instance()
 	bolt.setup(player, global.get_look_pos())
-	refs.ysort.get_ref().add_child(bolt)
+	refs.ysort.add_child(bolt)
 	loaded = false
 	global.emit_signal("update_item_info", # set a condition to null to hide it
 		display_name, # current item

@@ -129,7 +129,7 @@ func change_health(value: int, true_value: int, type: String = "hurt") -> String
 			number.type = result_type
 			number.position = entity.global_position
 			damage_number = number
-			refs.ysort.get_ref().add_child(number)
+			refs.ysort.add_child(number)
 		
 		var blocked: int = abs((value + true_value) - (amount + true_amount))
 		if blocked > 0:
@@ -148,7 +148,7 @@ func change_health(value: int, true_value: int, type: String = "hurt") -> String
 				blocked_number.type = "block"
 				blocked_number.position = entity.global_position + Vector2(8, 0)
 				damage_number_block = blocked_number
-				refs.ysort.get_ref().add_child(blocked_number)
+				refs.ysort.add_child(blocked_number)
 	
 	if HEALTH <= 0:
 		if entity.truName == "player" and type != "hurt":
@@ -168,7 +168,7 @@ func change_health(value: int, true_value: int, type: String = "hurt") -> String
 			if stats != null:
 				zombie.find_node("stats").MAX_HEALTH = stats.MAX_HEALTH
 				zombie.find_node("stats").HEALTH = stats.HEALTH
-			refs.ysort.get_ref().call_deferred("add_child", zombie)
+			refs.ysort.call_deferred("add_child", zombie)
 		
 		entity.death()
 		return "killed"

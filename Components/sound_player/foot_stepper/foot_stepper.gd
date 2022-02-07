@@ -60,11 +60,11 @@ func _on_delay_timeout() -> void:
 
 func footstep():
 	var audio
-	var bg = refs.background.get_ref()
+	var bg := refs.background
 	if bg == null:
 		push_warning("bg == null")
 		return
-	var bg_tiles = refs.background_tiles.get_ref()
+	var bg_tiles = refs.background_tiles
 	if bg_tiles == null:
 		push_warning("bg_tiles == null")
 		return

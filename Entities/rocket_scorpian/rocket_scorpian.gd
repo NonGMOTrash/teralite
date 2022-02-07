@@ -47,14 +47,14 @@ func shoot():
 	if target != null:
 		var rocket: Projectile = ROCKET.instance()
 		rocket.setup(self, target.global_position)
-		refs.ysort.get_ref().add_child(rocket)
+		refs.ysort.add_child(rocket)
 
 func burrow():
 	var skele: Entity = SKELETON.instance()
 	skele.position = global_position
 	skele.marked_allies.append(self)
 	marked_allies.append(skele)
-	refs.ysort.get_ref().add_child(skele)
+	refs.ysort.add_child(skele)
 	
 	var target: Entity = get_node_or_null(target_path)
 	if target != null:
@@ -76,7 +76,7 @@ func poison():
 	for i in 8:
 		var poison: Projectile = POISON_DROP.instance()
 		poison.setup(self, global_position + directions[i] * 99)
-		refs.ysort.get_ref().add_child(poison)
+		refs.ysort.add_child(poison)
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if queued_burrow == false:

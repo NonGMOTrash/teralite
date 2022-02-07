@@ -1589,5 +1589,3 @@ cell_size = Vector2( 16, 16 )
 collision_layer = 32
 collision_mask = 2
 format = 1
-
-[connection signal="tree_entered" from="." to="." method="_on_WorldTiles_tree_entered"]

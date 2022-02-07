@@ -65,7 +65,7 @@ func _ready():
 	if player.get_name() == "player":
 		global.emit_signal("update_item_bar", player.inventory)
 	
-	refs.item_bar.get_ref().replace_icon(slot, HELD_ITEM_TEXTURE)
+	refs.item_bar.replace_icon(slot, HELD_ITEM_TEXTURE)
 
 # PROBLEM_NOTE: this is kinda bad because the name implies a return value
 func _check_if_selected(swapped_item) -> void:
@@ -99,7 +99,7 @@ func _process(_delta: float):
 		velo += player.velocity / 1.5
 		new_item_entity.velocity = velo + player.velocity / 3
 		new_item_entity.times_used = times_used
-		refs.ysort.get_ref().add_child(new_item_entity)
+		refs.ysort.add_child(new_item_entity)
 		
 		delete()
 		return
@@ -233,7 +233,7 @@ func delete():
 	if player.get_name() == "player":
 		global.emit_signal("update_item_bar", player.inventory)
 	
-	refs.item_bar.get_ref().replace_icon(slot, null)
+	refs.item_bar.replace_icon(slot, null)
 	
 	queue_free()
 
@@ -246,4 +246,4 @@ func _death_drop():
 	item.SOURCE = player
 	item.global_position = player.global_position
 	item.velocity = Vector2(rand_range(-1.0, 1.0), rand_range(-1.0, 1.0)).normalized() * 100
-	refs.ysort.get_ref().call_deferred("add_child", item)
+	refs.ysort.call_deferred("add_child", item)

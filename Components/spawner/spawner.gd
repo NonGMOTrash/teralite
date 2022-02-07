@@ -112,7 +112,7 @@ func spawn():
 		queue_free()
 		return
 	
-	if refs.ysort.get_ref() == null:
+	if refs.ysort == null:
 		push_error("ysort == null")
 		return
 	
@@ -199,7 +199,7 @@ func spawn():
 		new_thing.set(property, custom_properties[property])
 		
 	
-	refs.ysort.get_ref().call_deferred("add_child", new_thing)
+	refs.ysort.call_deferred("add_child", new_thing)
 	
 	spawns -= 1
 	

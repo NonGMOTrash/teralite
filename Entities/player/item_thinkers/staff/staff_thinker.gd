@@ -24,7 +24,7 @@ func primary():
 	if shoot_cooldown.time_left == 0:
 		var magic: Projectile = MAGIC.instance()
 		magic.setup(player, global.get_look_pos())
-		refs.ysort.get_ref().add_child(magic)
+		refs.ysort.add_child(magic)
 		shoot_cooldown.start()
 		held_item.animation.play("test_slash", -1, -2, true)
 
@@ -34,7 +34,7 @@ func secondary():
 		shine.position = player.global_position
 		shine.setup(player, global.get_look_pos())
 		shine.connect("reflect", self, "skip_shine_cooldown")
-		refs.ysort.get_ref().call_deferred("add_child", shine)
+		refs.ysort.call_deferred("add_child", shine)
 		yield(shine, "ready")
 		shine.hitbox.connect("hit", self, "skip_shine_cooldown_hit")
 		

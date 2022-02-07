@@ -23,7 +23,7 @@ onready var cooldown = $cooldown
 onready var reload = $reload
 onready var spawner = $spawner
 onready var dot =  $dot
-onready var camera: Camera2D = refs.camera.get_ref()
+onready var camera: Camera2D = refs.camera
 onready var mlg_timer = $mlg_time
 
 var old_angle: float = 0.0
@@ -77,7 +77,7 @@ func selected():
 
 func unselected():
 	reload.stop()
-	var camera: Camera2D = refs.camera.get_ref()
+	var camera: Camera2D = refs.camera
 	camera.distance_ratio = camera.DEFAULT_DISTANCE_RATIO
 	camera.distance_max = camera.DEFAULT_DISTANCE_MAX
 	camera.distance_min = camera.DEFAULT_DISTANCE_MIN
@@ -97,7 +97,7 @@ func primary():
 		bullet.get_node("stats").DAMAGE += mlg_damage_bonus
 		bullet.SPAWN_SOUND = CRIT_SOUND
 	bullet.setup(player, global.get_look_pos())
-	refs.ysort.get_ref().call_deferred("add_child", bullet)
+	refs.ysort.call_deferred("add_child", bullet)
 	
 	ammo -= 1
 	cooldown.start()
@@ -112,7 +112,7 @@ func primary():
 	spawner.spawn()
 
 func secondary():
-	var camera = refs.camera.get_ref() as Camera2D
+	var camera := refs.camera
 	
 	if Input.is_action_pressed("secondary_action"):
 		scoped = true
@@ -192,7 +192,7 @@ func _physics_process(delta: float) -> void:
 		if ray:
 			dot.global_position = ray.position
 			dot.visible = true
-			refs.camera.get_ref().global_position = dot.global_position
+			refs.camera.global_position = dot.global_position
 			# sets camera smoothing to be higher, amplified the farther you are scoped
 			camera.smoothing_speed = (
 				(regular_smooth_speed / 2) / max(player.global_position.distance_to(ray.position) / 150, 1)

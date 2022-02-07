@@ -47,7 +47,7 @@ func primary():
 	
 	var rocket: Projectile = ROCKET.instance()
 	rocket.setup(player, global.get_look_pos())
-	refs.ysort.get_ref().add_child(rocket)
+	refs.ysort.add_child(rocket)
 	loaded = false
 	reload.stop()
 	global.emit_signal("update_item_info", # set a condition to null to hide it

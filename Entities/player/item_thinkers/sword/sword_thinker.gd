@@ -27,7 +27,7 @@ func primary():
 	.primary()
 	var slash: Melee = SLASH.instance()
 	slash.setup(player, global.get_look_pos())
-	refs.ysort.get_ref().add_child(slash)
+	refs.ysort.add_child(slash)
 	cooldown.wait_time = attack_cooldown
 	cooldown.start()
 
@@ -87,7 +87,7 @@ func _on_counter_area_entered(area: Area2D) -> void:
 	
 	var slash: Melee = SLASH.instance()
 	slash.setup(player, area.global_position)
-	refs.ysort.get_ref().call_deferred("add_child", slash)
+	refs.ysort.call_deferred("add_child", slash)
 	
 	sound_player.skip_sound()
 	sound_player.play_sound("counter_success")

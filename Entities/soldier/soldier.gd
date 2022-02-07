@@ -32,7 +32,7 @@ func _on_shoot_timer_timeout() -> void:
 	bullet.find_node("stats").TRUE_DAMAGE = stats.TRUE_DAMAGE
 	bullet.SPAWN_SOUND = SHOOT_SOUND
 	bullet.setup(self, current_target.global_position)
-	refs.ysort.get_ref().add_child(bullet)
+	refs.ysort.add_child(bullet)
 	
 	bullets -= 1
 	if bullets <= 0:

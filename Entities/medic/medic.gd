@@ -20,7 +20,7 @@ func _on_action_lobe_action(action, target) -> void:
 	var heart: Entity = HEART.instance()
 	heart.player_only = false
 	heart.healing = stats.DAMAGE * -1
-	refs.ysort.get_ref().call_deferred("add_child", heart)
+	refs.ysort.call_deferred("add_child", heart)
 	
 	yield(heart, "tree_entered")
 	

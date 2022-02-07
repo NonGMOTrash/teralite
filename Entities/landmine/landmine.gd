@@ -29,5 +29,5 @@ func _on_arm_delay_timeout() -> void:
 func _on_delay_timeout() -> void:
 	var explosion: Entity = EXPLOSION.instance()
 	explosion.position = global_position
-	refs.ysort.get_ref().add_child(explosion)
+	refs.ysort.add_child(explosion)
 	queue_free()

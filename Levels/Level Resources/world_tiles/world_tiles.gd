@@ -13,9 +13,9 @@ const _half_nav = 1
 onready var nav = $nav
 onready var low_walls = $low_walls
 
-func _on_WorldTiles_tree_entered() -> void:
-	refs.world_tiles = weakref(self)
-	refs.navigation = weakref($nav)
+func _init() -> void:
+	refs.update_ref("world_tiles", self)
+	refs.update_ref("navigation", self)
 
 func _ready() -> void:
 	if generate_navigation == false: 
