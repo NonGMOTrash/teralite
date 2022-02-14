@@ -44,27 +44,20 @@ DAMAGE = 2
 material = SubResource( 4 )
 texture = ExtResource( 2 )
 
-[node name="hurtbox" parent="." index="2"]
-visible = false
-
-[node name="CollisionShape2D" parent="hurtbox" index="0"]
-rotation = 1.5708
-shape = SubResource( 2 )
-
-[node name="hitbox" parent="." index="3"]
+[node name="hitbox" parent="." index="2"]
 visible = false
 COOLDOWN = 99.0
+DAMAGE = 2
 KNOCKBACK = 65
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 rotation = 1.5708
 shape = SubResource( 2 )
 
-[node name="CollisionShape2D" parent="." index="6"]
+[node name="CollisionShape2D" parent="." index="4"]
 visible = false
 position = Vector2( 4, 0 )
 shape = SubResource( 5 )
 
 [editable path="entity_sprite"]
-[editable path="hurtbox"]
 [editable path="hitbox"]

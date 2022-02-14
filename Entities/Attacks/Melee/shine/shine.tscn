@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Entities/Attacks/Melee/Melee.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Attacks/Melee/shine/shine.gd" type="Script" id=2]
@@ -12,9 +12,6 @@
 
 [sub_resource type="ShaderMaterial" id=6]
 resource_local_to_scene = true
-
-[sub_resource type="CircleShape2D" id=1]
-radius = 3.0
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 5.5
@@ -105,25 +102,16 @@ texture = ExtResource( 3 )
 hframes = 5
 frame = 4
 
-[node name="CollisionShape2D" parent="hurtbox" index="0"]
-shape = SubResource( 1 )
-disabled = true
-
-[node name="hitbox" parent="." index="3"]
+[node name="hitbox" parent="." index="2"]
+modulate = Color( 0.937255, 0.231373, 0.117647, 1 )
 COOLDOWN = 0.3
+TRUE_DAMAGE = 1
 KNOCKBACK = 160
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 shape = SubResource( 2 )
 
-[node name="reflection" type="Area2D" parent="." index="4"]
-collision_layer = 0
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="reflection" index="0"]
-shape = SubResource( 3 )
-
-[node name="sound" parent="." index="5"]
+[node name="sound" parent="." index="3"]
 FREE_WHEN_EMPTY = false
 
 [node name="reflect" type="AudioStreamPlayer2D" parent="sound" index="0"]
@@ -132,16 +120,23 @@ script = ExtResource( 6 )
 MODE = 1
 AUTO_PLAY = false
 
-[node name="CollisionShape2D" parent="." index="6"]
+[node name="reflection" type="Area2D" parent="." index="4"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="reflection" index="0"]
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="5"]
 visible = false
 disabled = true
 
-[node name="animation" parent="." index="7"]
+[node name="animation" parent="." index="6"]
 anims/animation = SubResource( 4 )
 anims/animation_reverse = SubResource( 7 )
 anims/hold = SubResource( 5 )
 
-[node name="light" type="Light2D" parent="." index="8"]
+[node name="light" type="Light2D" parent="." index="7"]
 texture = ExtResource( 8 )
 texture_scale = 0.35
 color = Color( 0.470588, 0.819608, 0.827451, 1 )
@@ -151,5 +146,4 @@ script = ExtResource( 9 )
 [connection signal="area_entered" from="reflection" to="." method="_on_reflection_area_entered"]
 
 [editable path="entity_sprite"]
-[editable path="hurtbox"]
 [editable path="hitbox"]

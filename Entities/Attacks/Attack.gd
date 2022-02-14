@@ -38,6 +38,9 @@ func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	SOURCE_PATH = SOURCE.get_path()
 
 func _ready():
+	print(self)
+	print(hitbox.get_incoming_connections())
+	print("")
 	global_position = start_pos
 	global_position.move_toward(target_pos, 6)
 	
@@ -56,9 +59,6 @@ func _ready():
 		sfx.name = truName+"_spawn"
 		sfx.stream = SPAWN_SOUND
 		sound.add_sound(sfx)
-		
-		#if HIT_SOUND != null or KILL_SOUND != null  or BLOCKED_SOUND != null:
-		#	hitbox.connect("hit", self, "hitbox_hit")
 	
 	if auto_rotate == true:
 		look_at(target_pos)

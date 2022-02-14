@@ -109,7 +109,7 @@ func primary():
 	if charge_percent > 98: damage += 1
 	
 	#       \/ can't check components because arrow isn't in the scene tree yet
-	arrow.find_node("stats").DAMAGE = damage
+	arrow.find_node("hitbox").DAMAGE = damage
 	arrow.SPEED = 50 + charge_percent * 3.5
 	arrow.RANGE = arrow.SPEED / 1.8
 	arrow.ACCELERATION = -((100 - charge_percent) * 1.8)

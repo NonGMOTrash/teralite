@@ -32,8 +32,14 @@ position = Vector2( 934, 918 )
 [node name="blue_portal" parent="YSort/portal" index="0"]
 position = Vector2( 2, 17 )
 
+[node name="teleport" parent="YSort/portal/blue_portal/sound_player" index="0"]
+bus = "Master"
+
 [node name="orange_portal" parent="YSort/portal" index="1"]
 position = Vector2( -366, -610 )
+
+[node name="teleport" parent="YSort/portal/orange_portal/sound_player" index="0"]
+bus = "Master"
 
 [node name="ultra_chaser" parent="YSort" index="4" instance=ExtResource( 6 )]
 position = Vector2( 137, 708 )

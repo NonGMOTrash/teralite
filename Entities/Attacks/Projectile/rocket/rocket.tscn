@@ -59,13 +59,10 @@ texture = ExtResource( 4 )
 hframes = 3
 frame = 1
 
-[node name="CollisionShape2D" parent="hurtbox" index="0"]
-position = Vector2( 1.5, 0 )
-rotation = 1.5708
-shape = SubResource( 5 )
-
-[node name="hitbox" parent="." index="3"]
+[node name="hitbox" parent="." index="2"]
 visible = false
+DAMAGE = 1
+TRUE_DAMAGE = 2
 KNOCKBACK = 0
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
@@ -73,19 +70,18 @@ position = Vector2( 1.5, 0 )
 rotation = 1.5708
 shape = SubResource( 5 )
 
-[node name="CollisionShape2D" parent="." index="6"]
+[node name="CollisionShape2D" parent="." index="4"]
 rotation = 1.5708
 shape = SubResource( 7 )
 
-[node name="spawner" parent="." index="7" instance=ExtResource( 2 )]
+[node name="spawner" parent="." index="6" instance=ExtResource( 2 )]
 thing = ExtResource( 3 )
 stats_damage_mod = -3
 stats_true_damage_mod = -1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
 autoplay = "New Anim"
 "anims/New Anim" = SubResource( 4 )
 
 [editable path="entity_sprite"]
-[editable path="hurtbox"]
 [editable path="hitbox"]

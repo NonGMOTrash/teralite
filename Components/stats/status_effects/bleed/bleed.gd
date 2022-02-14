@@ -9,7 +9,7 @@ func _ready():
 	
 	if global.settings["particles"] >= 2:
 		particles = blood_particles.instance()
-		particles.amount *= max(round(level), 1)
+		particles.amount *= max(round(level), 1.0)
 		stats.get_parent().add_child(particles)
 
 func triggered():
