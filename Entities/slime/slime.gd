@@ -13,6 +13,7 @@ export(float) var lunge_delay_scaling: float
 onready var lunge_timer: Timer = $lunge_timer
 onready var stats: Node = $stats
 onready var animation: AnimationPlayer = $AnimationPlayer
+onready var sprite: Sprite = $entity_sprite
 
 func _ready() -> void:
 	lunge_timer.wait_time = lunge_delay
@@ -27,23 +28,25 @@ func _on_hurtbox_got_hit(by_area, type) -> void:
 		return
 	
 	animation.play("squish")
-	lunge_timer.wait_time *= lunge_delay_scaling
+	lunge_timer.wait_time = (
+			lunge_delay * pow(lunge_delay_scaling, stats.MAX_HEALTH-stats.HEALTH))
 	
-	var slime: Entity = self.duplicate()
+	match stats.HEALTH:
+		4: sprite.texture = SLIME_2
+		3: sprite.texture = SLIME_3
+		2: sprite.texture = SLIME_4
+		1: sprite.texture = SLIME_5
+	sprite.front_texture = sprite.texture
+	
+	var slime: Entity = load("res://Entities/slime/slime.tscn").instance()
 	slime.velocity = velocity
 	refs.ysort.call_deferred("add_child", slime)
 	yield(slime, "tree_entered")
 	slime.global_position = global_position - input_vector * 3
 	yield(slime, "ready")
 	slime.stats.HEALTH = stats.HEALTH
-	for i in stats.MAX_HEALTH - stats.HEALTH:
-		slime.lunge_timer.wait_time *= lunge_delay_scaling
+	slime.lunge_timer.wait_time = lunge_timer.wait_time
+	slime.components["entity_sprite"].texture = sprite.texture
+	slime.components["health_bar"].update_bar(0, 0, 0)
 	
-	var slime_sprite: Sprite = slime.components["entity_sprite"]
-	match stats.HEALTH:
-		4: slime_sprite.front_texture = SLIME_2
-		3: slime_sprite.front_texture = SLIME_3
-		2: slime_sprite.front_texture = SLIME_4
-		1: slime_sprite.front_texture = SLIME_5
-	
-	slime.apply_force(global_position.direction_to(by_area.global_position).normalized() * -200)
+	slime.apply_force(global_position.direction_to(by_area.global_position).normalized() * -225)

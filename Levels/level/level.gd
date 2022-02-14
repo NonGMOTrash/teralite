@@ -117,7 +117,7 @@ func pathfind(start:Vector2, end:Vector2) -> PoolVector2Array:
 func _physics_process(delta: float) -> void:
 	if update_particles == true:
 		var player = refs.player
-		if player != null:
+		if is_instance_valid(player):
 			particle_anchor.position = to_local(player.global_position)
 			if player.velocity != Vector2.ZERO:
 				particle_anchor.position += player.velocity * 2

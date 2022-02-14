@@ -127,7 +127,7 @@ func v_flip():
 		texture = back_texture
 
 func v_unflip():
-	if texture != front_texture:
+	if texture != front_texture and back_texture != null:
 		texture = front_texture
 
 func animate_overlay():

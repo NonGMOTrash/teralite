@@ -15,9 +15,11 @@ onready var low_walls = $low_walls
 
 func _init() -> void:
 	refs.update_ref("world_tiles", self)
-	refs.update_ref("navigation", self)
 
 func _ready() -> void:
+	refs.update_ref("navigation", nav)
+	refs.update_ref("low_walls", low_walls)
+	
 	if generate_navigation == false: 
 		nav.queue_free()
 		return

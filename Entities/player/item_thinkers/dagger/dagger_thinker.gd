@@ -68,7 +68,7 @@ func _on_Timer_timeout() -> void:
 				player.global_position.direction_to(global.get_look_pos()).normalized() 
 				* dash_distance / get_physics_process_delta_time()
 		)
-		var low_walls: TileMap = refs.world_tiles.low_walls
+		var low_walls: TileMap = refs.low_walls
 		while low_walls.get_cellv(low_walls.world_to_map(player.global_position)) != -1:
 			player.global_position = player.global_position.move_toward(start, 4)
 			if player.global_position == start:

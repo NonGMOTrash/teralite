@@ -12,7 +12,7 @@
 [node name="Entrance" instance=ExtResource( 6 )]
 FORCE_SLEEP_UNTIL_VISIBLE = true
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 6094961, 3, 0, 6226064, 3, 0, 6553674, 3, 0, 6881383, 3, 0, 7405675, 6, 0, 7667891, 3, 0, 8257689, 3, 0, 8388655, 3, 0, 8650852, 5, 0, 8781965, 6, 0, 9044020, 3, 0, 9306345, 3, 0, 9371881, 3, 0, 9437251, 6, 0, 9961561, 4, 0, 9961581, 4, 0, 10027138, 6, 0, 10289358, 5, 0, 10551336, 3, 0, 10682545, 3, 0, 11075791, 1, 0, 12058653, 3, 0, 12779612, 3, 0, 13828187, 2, 0 )
 
 [node name="background_tiles" parent="YSort" index="0"]

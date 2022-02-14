@@ -11,12 +11,13 @@ var pause_menu: ColorRect
 var camera: Camera2D
 var ysort: YSort
 var world_tiles: TileMap
+var navigation: TileMap
+var low_walls: TileMap
 var background_tiles: TileMap
 var background: Sprite
-var navigation: TileMap
 var level_completion: ColorRect
 var ambiance: Global_Sound
-var ambient_lighting: ColorRect
+var ambient_lighting: CanvasModulate
 var transition: TextureRect
 var vignette: CanvasLayer
 
@@ -51,5 +52,3 @@ func update_ref(ref: String, node: Node):
 	set(ref, node)
 	safe.set(ref, weakref(node))
 	emit_signal("recieved_ref", ref)
-	if ref == "background":
-		prints(node, background, set(ref, node))

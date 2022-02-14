@@ -134,6 +134,7 @@ func load_saves_list_items(): # add save previews from the saves directory into 
 	
 	if global.saves.size() == 0:
 		no_saves.visible = true
+		emit_signal("loaded_save_previews")
 		return
 	else:
 		no_saves.visible = false
@@ -192,8 +193,8 @@ func _on_play_pressed() -> void:
 	yield(self, "loaded_save_previews")
 	title_menu.visible = false
 	saves_menu.visible = true
-	saves_list.get_child(0).play.grab_focus()
-	var focus_owner = get_focus_owner()
+	if saves_list.get_child_count() > 0:
+		saves_list.get_child(0).play.grab_focus()
 
 func _on_options_pressed() -> void:
 	if title_menu.visible == false: return

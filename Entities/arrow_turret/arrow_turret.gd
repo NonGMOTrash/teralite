@@ -20,7 +20,7 @@ func shoot():
 		pos = global_position + Vector2(cos(held_item.rotation), sin(held_item.rotation))
 		#                         /\ converts the held_item.rotation from radians to a vector2
 	
-	var arrow = ARROW.instance()
+	var arrow: Projectile = ARROW.instance()
 	arrow.setup(self, pos)
 	refs.ysort.add_child(arrow)
 	if stats.DAMAGE != 2 and stats.TRUE_DAMAGE != 0:

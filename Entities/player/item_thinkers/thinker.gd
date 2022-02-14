@@ -240,6 +240,7 @@ func delete():
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouse:
 		accurate_mouse_pos = global.get_look_pos()
+	refs.item_bar.replace_icon(slot, HELD_ITEM_TEXTURE)
 
 func _death_drop():
 	var item = item_scene.duplicate()

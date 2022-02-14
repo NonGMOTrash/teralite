@@ -43,7 +43,7 @@ export(Dictionary) var custom_properties := {
 }
 
 var stats
-var trigger_pos
+var trigger_pos: Vector2
 var entity: Entity
 
 func _on_spawner_tree_entered():
@@ -78,13 +78,8 @@ func _ready() -> void:
 	
 	stats = entity.components["stats"]
 	
-	if stats == null:
-		push_warning("spawner could not find stats")
-		if spawn_on_free == false:
-			queue_free()
-		return
-	
-	stats.connect("health_changed", self, "on_health_changed")
+	if stats != null:
+		stats.connect("health_changed", self, "on_health_changed")
 	
 	if rotation_mode == ROTATIONS.TOWARD_HITBOX:
 		var hurtbox = entity.components["hurtbox"]
@@ -135,14 +130,10 @@ func spawn():
 		if trigger_pos != null:
 			new_thing.rotation_degrees = rad2deg(
 					entity.global_position.direction_to(trigger_pos).angle())
-			
-		else:
-			push_warning("spawner could not do rotate towards hitbox because trigger_pos == null")
 	
 	elif rotation_mode == ROTATIONS.TOWARD_CURSOR:
 		new_thing.rotation_degrees = rad2deg(
-				entity.global_position.direction_to(global.get_look_pos()).angle()
-		)
+				entity.global_position.direction_to(global.get_look_pos()).angle())
 	
 	elif rotation_mode == ROTATIONS.TOWARD_BRAIN_TARGET:
 		var brain = entity.components["brain"]

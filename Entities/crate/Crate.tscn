@@ -45,7 +45,6 @@ resistance_modifier = -99.0
 infection_modifier = -99.0
 
 [node name="hurtbox" parent="." instance=ExtResource( 1 )]
-visible = false
 position = Vector2( 0, 4 )
 KILLED_SOUND = ExtResource( 5 )
 
