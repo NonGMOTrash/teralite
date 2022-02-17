@@ -91,6 +91,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="knight_2" parent="YSort" index="6" instance=ExtResource( 3 )]
+position = Vector2( 93.8882, 110.847 )
+
+[node name="knight_3" parent="YSort" index="7" instance=ExtResource( 3 )]
+position = Vector2( 103.81, 111.244 )
+faction = "monster"
+
 [editable path="background"]
 [editable path="YSort/world_tiles"]
 [editable path="YSort/knight"]

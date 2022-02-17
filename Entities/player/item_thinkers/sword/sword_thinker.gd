@@ -81,7 +81,7 @@ func _on_counter_area_entered(area: Area2D) -> void:
 	
 	can_counter = false
 	
-	if area_entity is Attack and area_entity.components["stats"].TRUE_DAMAGE <= 0:
+	if area_entity is Attack and area_entity.components["hitbox"].TRUE_DAMAGE <= 0:
 		area_entity.velocity *= -3
 		area_entity.components["stats"].change_health(-5, 0)
 	

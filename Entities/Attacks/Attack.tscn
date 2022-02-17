@@ -1,15 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/Attacks/Attack.gd" type="Script" id=3]
-[ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=7]
 radius = 5.0
 
 [node name="Attack" type="KinematicBody2D"]
@@ -23,8 +22,6 @@ INANIMATE = true
 FLYING = true
 truName = "(attack)"
 
-[node name="stats" parent="." instance=ExtResource( 4 )]
-
 [node name="entity_sprite" parent="." instance=ExtResource( 6 )]
 material = SubResource( 1 )
 auto_flip_mode = 0
@@ -36,15 +33,13 @@ texture = null
 [node name="hitbox" parent="." instance=ExtResource( 2 )]
 modulate = Color( 0.937255, 0.231373, 0.117647, 1 )
 COOLDOWN = 0.01
+DAMAGE = 1
 KNOCKBACK = 100
 
 [node name="sound" parent="." instance=ExtResource( 5 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 5 )
-
-[connection signal="health_changed" from="stats" to="." method="_on_stats_health_changed"]
-[connection signal="hit" from="hitbox" to="." method="_on_hitbox_hit"]
+shape = SubResource( 7 )
 
 [editable path="entity_sprite"]
 [editable path="hitbox"]

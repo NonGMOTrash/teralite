@@ -1,6 +1,8 @@
 extends Entity
 class_name Attack
 
+const BLOCK_SPARK := preload("res://Effects/block_spark/block_spark.tscn")
+
 export var ONHIT_SELF_DAMAGE = 99
 export var RANGE = 100
 
@@ -23,8 +25,7 @@ var SOURCE_PATH: NodePath
 var hit_pause_count: int = 0
 
 onready var hitbox: Area2D = $hitbox
-onready var stats: Node = $stats
-onready var sound = $sound
+onready var sound: Node = $sound
 
 func _init():
 	visible = false
@@ -38,9 +39,6 @@ func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	SOURCE_PATH = SOURCE.get_path()
 
 func _ready():
-	print(self)
-	print(hitbox.get_incoming_connections())
-	print("")
 	global_position = start_pos
 	global_position.move_toward(target_pos, 6)
 	

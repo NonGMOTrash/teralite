@@ -4,7 +4,7 @@
 
 [node name="hitbox" type="Area2D"]
 collision_layer = 8
-collision_mask = 4
+collision_mask = 12
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""

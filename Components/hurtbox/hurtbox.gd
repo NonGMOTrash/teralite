@@ -19,14 +19,13 @@ func _on_hurtbox_tree_entered() -> void:
 	get_parent().components["hurtbox"] = self
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	if area.IGNORE_ATTACKS == true and entity is Attack:
-		return
-	
 	var area_entity: Entity = area.entity
 	
-	if entity == area_entity:
-		return
-	if entity.FLYING == true and not area_entity.FLYING:
+	if (
+		entity == area_entity or
+		(entity.FLYING == true and not area_entity.FLYING) or
+		area.has_clanked == true
+	):
 		return
 	
 	# los check
@@ -104,6 +103,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 				push_warning("hurtbox can not play sounds because "+entity.truName+" has no sound_player")
 		
 	area.emit_signal("hit", self, result_type)
+	prints(area.get_parent().get_name(), "hit")
 	
 	# applies status effect
 	

@@ -26,17 +26,17 @@ script = ExtResource( 2 )
 truName = "(melee)"
 RANGE = 4
 
-[node name="entity_sprite" parent="." index="1"]
+[node name="entity_sprite" parent="." index="0"]
 material = SubResource( 5 )
 
-[node name="hitbox" parent="." index="2"]
+[node name="hitbox" parent="." index="1"]
 visible = false
 position = Vector2( 4, 0 )
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 rotation = -1.5708
 
-[node name="animation" type="AnimationPlayer" parent="." index="5"]
+[node name="animation" type="AnimationPlayer" parent="." index="4"]
 anims/animation = SubResource( 2 )
 anims/animation_reverse = SubResource( 3 )
 anims/hold = SubResource( 4 )

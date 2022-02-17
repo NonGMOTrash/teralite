@@ -15,8 +15,8 @@ var original_force_mult
 var distance_traveled := 0.0
 var old_pos: Vector2
 
-onready var original_damage: int = stats.DAMAGE
-onready var original_true_damage: int = stats.TRUE_DAMAGE
+onready var original_damage: int = hitbox.DAMAGE
+onready var original_true_damage: int = hitbox.TRUE_DAMAGE
 onready var src_collision: Area2D = $src_collision
 
 func _init():
@@ -95,8 +95,6 @@ func _on_hitbox_hit(area: Area2D, type: String) -> void:
 	if global.get_relation(self, area.get_parent()) == "friendly": return
 	#if get_speed() < MIN_DAM_SPEED: return
 	if "ONHIT_SELF_DAMAGE" in area.get_parent(): return
-	
-	stats.change_health(0, -(ONHIT_SELF_DAMAGE))
 	
 	VELOCITY_ARMOR -= ONHIT_SELF_DAMAGE
 	if VELOCITY_ARMOR < 1:

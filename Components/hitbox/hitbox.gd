@@ -12,7 +12,7 @@ export(String) var STATUS_EFFECT = ""
 export var STATUS_DURATION = 5.0
 export var STATUS_LEVEL = 1.0
 export var TEAM_ATTACK = true
-export var IGNORE_ATTACKS := false
+export var CLANKS := true
 export(AudioStream) var TRIGGERED_SOUND
 
 onready var entity = get_parent()
@@ -21,8 +21,9 @@ var stats: Node
 
 var other_hitboxes := []
 var blacklist := []
-
 var ready := false
+var clank_priority: float = 0
+var has_clanked := false
 
 signal hit(area, type)
 
@@ -38,11 +39,15 @@ func _ready():
 		timer.start()
 	
 	var node = entity.components["stats"]
-	if node == null: return
-	else: stats = node
+	if node == null:
+		clank_priority = DAMAGE + (TRUE_DAMAGE * 1.5)
+		return
+	else:
+		stats = node
 	
 	DAMAGE += stats.DAMAGE
 	TRUE_DAMAGE += stats.TRUE_DAMAGE
+	clank_priority = DAMAGE + (TRUE_DAMAGE * 1.5)
 	
 	for child in entity.get_children():
 		if child is Area2D and "COOLDOWN" in child:
@@ -50,6 +55,16 @@ func _ready():
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	var area_entity = area.get_parent()
+	
+	if area.collision_layer == 8: # is hitbox check
+		if area.clank_priority == clank_priority:
+			clank(area.global_position)
+			area.clank(global_position)
+		elif area.clank_priority > clank_priority:
+			area.clank(global_position)
+		
+		return
+	
 	if (
 		area_entity is Attack or
 		area_entity == entity or
@@ -83,3 +98,16 @@ func _on_Timer_timeout() -> void:
 			if "the_area" in area:
 				_on_hitbox_area_entered(area)
 				area._on_hurtbox_area_entered(self)
+
+func clank(hit_pos: Vector2):
+	has_clanked = true
+	set_deferred("monitorable", false)
+	timer.start()
+	if entity is Attack:
+		entity.collided()
+		var spark: Effect = entity.BLOCK_SPARK.instance()
+		spark.rotation_degrees = rad2deg(entity.global_position.direction_to(hit_pos).angle()) + 180
+		refs.ysort.call_deferred("add_child", spark)
+		#if entity is Melee:
+		#	yield(spark, "ready")
+		#	spark.global_position = entity.global_position.move_toward(hit_pos, entity.RANGE)
