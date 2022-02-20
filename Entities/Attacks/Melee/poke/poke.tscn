@@ -38,48 +38,36 @@ tracks/0/keys = {
 "values": [ Vector2( 6, 0 ), Vector2( 22, 0 ), Vector2( 24, 0 ), Vector2( 6, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("hurtbox:position")
+tracks/1/path = NodePath("hitbox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.7 ),
-"transitions": PoolRealArray( 2, 0.25, 0.5, 2 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 16, 0 ), Vector2( 18, 0 ), Vector2( 0, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("hitbox/CollisionShape2D:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("entity_sprite:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("entity_sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.7 ),
 "transitions": PoolRealArray( 1, 0.25, 0.5, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 16, 0 ), Vector2( 18, 0 ), Vector2( 0, 0 ) ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("CollisionShape2D:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.8 ),
 "transitions": PoolRealArray( 1, 0.25, 0.5, 1 ),
 "update": 0,
@@ -115,12 +103,14 @@ rotation = 0.785398
 texture = ExtResource( 2 )
 
 [node name="hitbox" parent="." index="1"]
+visible = true
 position = Vector2( 6, 0 )
 COOLDOWN = 0.4
 KNOCKBACK = 110
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 shape = SubResource( 2 )
+disabled = true
 one_way_collision = true
 
 [node name="sound" parent="." index="2"]

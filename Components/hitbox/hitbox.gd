@@ -23,7 +23,6 @@ var other_hitboxes := []
 var blacklist := []
 var ready := false
 var clank_priority: float = 0
-var has_clanked := false
 
 signal hit(area, type)
 
@@ -56,7 +55,8 @@ func _ready():
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	var area_entity = area.get_parent()
 	
-	if area.collision_layer == 8: # is hitbox check
+	# clanking
+	if CLANKS and area.collision_layer == 8 and area.CLANKS: # is hitbox check
 		if area.clank_priority == clank_priority:
 			clank(area.global_position)
 			area.clank(global_position)
@@ -100,7 +100,6 @@ func _on_Timer_timeout() -> void:
 				area._on_hurtbox_area_entered(self)
 
 func clank(hit_pos: Vector2):
-	has_clanked = true
 	set_deferred("monitorable", false)
 	timer.start()
 	if entity is Attack:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://Levels/Level Resources/scene_batcher/scene_batcher.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/pistol/pistol.png" type="Texture" id=2]
@@ -72,6 +72,7 @@
 [ext_resource path="res://Entities/Attacks/Melee/syringe/syringe.png" type="Texture" id=70]
 [ext_resource path="res://Entities/rocket_scorpian/rocket_scorpian.png" type="Texture" id=71]
 [ext_resource path="res://Entities/Item_Pickups/blaster/blaster.png" type="Texture" id=72]
+[ext_resource path="res://Entities/Item_Pickups/saber/saber.png" type="Texture" id=73]
 
 [sub_resource type="TileSet" id=1]
 2/name = "player.png 2"
@@ -1068,6 +1069,20 @@
 78/shape_one_way_margin = 0.0
 78/shapes = [  ]
 78/z_index = 0
+79/name = "saber.png 79"
+79/texture = ExtResource( 73 )
+79/tex_offset = Vector2( 0, 0 )
+79/modulate = Color( 1, 1, 1, 1 )
+79/region = Rect2( 1, 1, 14, 14 )
+79/tile_mode = 0
+79/occluder_offset = Vector2( 0, 0 )
+79/navigation_offset = Vector2( 0, 0 )
+79/shape_offset = Vector2( 0, 0 )
+79/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+79/shape_one_way = false
+79/shape_one_way_margin = 0.0
+79/shapes = [  ]
+79/z_index = 0
 
 [node name="entity_spawns" instance=ExtResource( 1 )]
 position = Vector2( 4, 4 )

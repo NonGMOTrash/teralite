@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/saber_equip.wav-264a4a3ac4d873a67d69c7ab91b3bcca.sample"
+
+[deps]
+
+source_file="res://Entities/player/item_thinkers/saber/saber_equip.wav"
+dest_files=[ "res://.import/saber_equip.wav-264a4a3ac4d873a67d69c7ab91b3bcca.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

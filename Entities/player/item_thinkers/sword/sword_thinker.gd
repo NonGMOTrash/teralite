@@ -83,7 +83,7 @@ func _on_counter_area_entered(area: Area2D) -> void:
 	
 	if area_entity is Attack and area_entity.components["hitbox"].TRUE_DAMAGE <= 0:
 		area_entity.velocity *= -3
-		area_entity.components["stats"].change_health(-5, 0)
+		area.clank(player_hurtbox.global_position)
 	
 	var slash: Melee = SLASH.instance()
 	slash.setup(player, area.global_position)

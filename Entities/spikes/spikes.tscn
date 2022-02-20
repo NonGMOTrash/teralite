@@ -99,6 +99,7 @@ scale = Vector2( 0.9, 0.9 )
 COOLDOWN = 0.05
 iTime = 0.4
 KNOCKBACK = 50
+CLANKS = false
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 shape = SubResource( 1 )
@@ -112,6 +113,7 @@ anims/spikes = SubResource( 2 )
 [node name="sound" parent="sound_player" instance=ExtResource( 6 )]
 stream = SubResource( 3 )
 volume_db = -0.2
+bus = "Master"
 MODE = 1
 AUTO_PLAY = false
 

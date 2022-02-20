@@ -449,12 +449,11 @@ anims/walk = SubResource( 8 )
 [node name="hitbox" parent="." instance=ExtResource( 18 )]
 visible = false
 COOLDOWN = 1.0
-DAMAGE = 5
-TRUE_DAMAGE = 2
+DAMAGE = 7
 KNOCKBACK = 250
 STATUS_EFFECT = "poison"
 STATUS_DURATION = 12.0
-IGNORE_ATTACKS = true
+CLANKS = false
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 position = Vector2( 5.82713, 3.1498 )

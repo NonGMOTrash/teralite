@@ -111,6 +111,7 @@ shape = SubResource( 3 )
 visible = false
 COOLDOWN = 0.6
 TEAM_ATTACK = false
+CLANKS = false
 TRIGGERED_SOUND = ExtResource( 13 )
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
@@ -159,7 +160,6 @@ death_type = 5
 block_effect = false
 
 [node name="foot_stepper" parent="." instance=ExtResource( 16 )]
-FREE_WHEN_EMPTY = false
 RATE = 0.0
 OFFSET = 0.0
 

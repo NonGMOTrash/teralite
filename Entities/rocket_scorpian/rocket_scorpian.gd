@@ -2,7 +2,7 @@ extends Entity
 
 const ROCKET := preload("res://Entities/Attacks/Projectile/rocket/rocket.tscn")
 const SKELETON := preload("res://Entities/skeleton/skeleton.tscn")
-const POISON_DROP := preload("res://Components/stats/status_effects/poison/poison.tscn")
+const POISON_DROP := preload("res://Entities/Attacks/Projectile/poison_drop/poison_drop.tscn")
 
 export var lunge_force: float
 export var rage_threshold: int

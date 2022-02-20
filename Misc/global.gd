@@ -124,7 +124,7 @@ var settings := {
 	"shadow_buffer": 512,
 	"ambient_lighting": true,
 	"damage_numbers": true,
-	"discord": false,
+	"discord": true,
 }
 
 # should move this and get_relation to Entity.gd probably
@@ -169,7 +169,7 @@ const faction_relationships = {
 			"blue_kingdom": "hostile",
 			"army": "friendly",
 		},
-	"my_entity": # special friendly to the same entity type, but hostile to everyone else
+	"my_entity": # special: friendly to the same entities (truName), but hostile to everyone else
 		{
 			"solo": "hostile",
 			"player": "hostile",
@@ -477,8 +477,7 @@ func update_settings(save_settings_config:=true):
 	AudioServer.set_bus_volume_db(4, linear2db(settings["footsteps_volume"]))
 	
 	if global.settings["pixel_perfect"] == true:
-		# PROBLEM_NOTE: should use a screen_size var in global.gd instead of just having a vector2 
-			get_tree().set_screen_stretch(#                                                \/
+			get_tree().set_screen_stretch(
 					SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_KEEP, Vector2(384, 216)
 				)
 	else:

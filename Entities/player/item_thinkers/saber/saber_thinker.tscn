@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Entities/player/item_thinkers/saber/saber_thinker.gd" type="Script" id=1]
+[ext_resource path="res://Entities/player/item_thinkers/saber/saber_equip.wav" type="AudioStream" id=2]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Attacks/Melee/beam/beam.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Item_Pickups/saber/saber.png" type="Texture" id=5]
+[ext_resource path="res://UI/cursors/cursor_saber.png" type="Texture" id=6]
+
+[node name="saber_thinker" type="Node"]
+script = ExtResource( 1 )
+PRIMARY_ACTION_MODE = 1
+SECONDARY_ACTION_MODE = 1
+HELD_ITEM_TEXTURE = ExtResource( 5 )
+RESET_HELD_ITEM_FLIPPING = false
+my_item = "saber"
+display_name = "saber"
+CURSOR = ExtResource( 6 )
+EQUIP_SOUND = ExtResource( 2 )
+attack_cooldown = 0.14
+BEAM = ExtResource( 4 )
+
+[node name="cooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="sound_player" parent="." instance=ExtResource( 3 )]

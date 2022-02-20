@@ -30,13 +30,6 @@ ONHIT_SPEED_MULTIPLIER = 1.0
 RECOIL = 10
 VELOCITY_INHERITENCE = 0.2
 
-[node name="stats" parent="." index="0"]
-MAX_HEALTH = 2
-HEALTH = 2
-DEFENCE = 99
-DAMAGE = 0
-TRUE_DAMAGE = 1
-
 [node name="entity_sprite" parent="." index="1"]
 material = SubResource( 5 )
 texture = ExtResource( 2 )

@@ -1,8 +1,24 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Components/held_item/held_item.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Item_Pickups/bow/bow_charging.png" type="Texture" id=2]
 [ext_resource path="res://Entities/Item_Pickups/xbow/xbow.png" type="Texture" id=3]
+[ext_resource path="res://Components/held_item/saber_spin.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("anchor/sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "bow_charge"
@@ -185,11 +201,11 @@ script = ExtResource( 1 )
 position = Vector2( 8, 0 )
 
 [node name="sprite" type="Sprite" parent="anchor"]
-texture = ExtResource( 2 )
-hframes = 3
-frame = 2
+texture = ExtResource( 4 )
+hframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 7 )
 anims/bow_charge = SubResource( 1 )
 anims/load = SubResource( 2 )
 anims/spin = SubResource( 3 )

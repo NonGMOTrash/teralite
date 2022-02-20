@@ -27,7 +27,7 @@ func _ready() -> void:
 	autoplay = AUTO_PLAY
 	
 	if stream == null:
-		push_error("sound has no stream")
+		push_error("%s (Sound) has no stream" % name)
 	
 	if MODE == MODES.ONESHOT:
 		connect("finished", self, "queue_free")
