@@ -98,4 +98,3 @@ func facing_left() -> bool:
 		rotation_degrees > 0 and rotation_degrees < 180 and
 		not rotation_degrees < 90 and rotation_degrees > 0
 	)
-	

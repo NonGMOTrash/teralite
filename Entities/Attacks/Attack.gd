@@ -3,7 +3,7 @@ class_name Attack
 
 const BLOCK_SPARK := preload("res://Effects/block_spark/block_spark.tscn")
 
-export var ONHIT_SELF_DAMAGE = 99
+export var PENS: int = 1
 export var RANGE = 100
 
 var start_pos = Vector2.ZERO
@@ -116,10 +116,7 @@ func death():
 	emit_signal("death")
 
 func collided():
-	if visible == false:
-			return
-	
-	if COLLIDE_SOUND != null:
+	if COLLIDE_SOUND != null and visible:
 		var sfx = Sound.new()
 		sfx.name = truName+"_collide"
 		sfx.stream = COLLIDE_SOUND

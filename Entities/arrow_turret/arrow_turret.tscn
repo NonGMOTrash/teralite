@@ -60,12 +60,13 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="CircleShape2D" id=4]
-radius = 6.41872
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 1.29523
+height = 6.91156
 
 [sub_resource type="CapsuleShape2D" id=5]
-radius = 2.38894
-height = 2.94664
+radius = 3.08213
+height = 4.16797
 
 [node name="arrow_turret" type="KinematicBody2D"]
 collision_layer = 2
@@ -122,16 +123,13 @@ MAX_TARGETS = 1
 COMMUNICATES = false
 
 [node name="hurtbox" parent="." instance=ExtResource( 7 )]
-visible = false
 KILLED_SOUND = ExtResource( 8 )
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2( 0, 4.7247 )
-rotation = 1.5708
 shape = SubResource( 5 )
 
 [node name="entity_push" parent="." instance=ExtResource( 10 )]

@@ -23,10 +23,6 @@ func shoot():
 	var arrow: Projectile = ARROW.instance()
 	arrow.setup(self, pos)
 	refs.ysort.add_child(arrow)
-	if stats.DAMAGE != 2 and stats.TRUE_DAMAGE != 0:
-		yield(arrow, "ready")
-		arrow.components["stats"].DAMAGE = stats.DAMAGE
-		arrow.components["stats"].TRUE_DAMAGE = stats.TRUE_DAMAGE
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if brain.get_closest_target() is Entity:

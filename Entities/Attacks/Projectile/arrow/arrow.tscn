@@ -35,16 +35,11 @@ MIN_DAM_SPEED = 15
 RECOIL = 10
 VELOCITY_INHERITENCE = 0.25
 
-[node name="stats" parent="." index="0"]
-MAX_HEALTH = 3
-HEALTH = 3
-DAMAGE = 2
-
-[node name="entity_sprite" parent="." index="1"]
+[node name="entity_sprite" parent="." index="0"]
 material = SubResource( 4 )
 texture = ExtResource( 2 )
 
-[node name="hitbox" parent="." index="2"]
+[node name="hitbox" parent="." index="1"]
 visible = false
 COOLDOWN = 99.0
 DAMAGE = 2
@@ -54,7 +49,7 @@ KNOCKBACK = 65
 rotation = 1.5708
 shape = SubResource( 2 )
 
-[node name="CollisionShape2D" parent="." index="4"]
+[node name="CollisionShape2D" parent="." index="3"]
 visible = false
 position = Vector2( 4, 0 )
 shape = SubResource( 5 )

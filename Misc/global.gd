@@ -38,7 +38,7 @@ const DEV_TIMES := {
 	"Mythical": 21.8,
 	"Ranger": 16.6,
 	"Breach": 26.7,
-	"Duel": 61.0,
+	"Duel": 27.3,
 	"Poison": 22.3,
 	"Isolated": 11.2,
 	"Hex": 11.1,
@@ -136,6 +136,7 @@ const faction_relationships = {
 			"monster": "hostile",
 			"blue_kingdom": "hostile",
 			"army": "hostile",
+			"colonist": "hostile",
 		},
 	"monster":
 		{
@@ -144,6 +145,7 @@ const faction_relationships = {
 			"monster": "friendly",
 			"blue_kingdom": "hostile",
 			"army": "hostile",
+			"colonist": "hostile",
 		},
 	"blue_kingdom":
 		{
@@ -152,6 +154,7 @@ const faction_relationships = {
 			"monster": "hostile",
 			"blue_kingdom": "friendly",
 			"army": "hostile",
+			"colonist": "hostile",
 		},
 	"solo":
 		{
@@ -160,6 +163,7 @@ const faction_relationships = {
 			"monster": "hostile",
 			"blue_kingdom": "hostile",
 			"army": "hostile",
+			"colonist": "hostile",
 		},
 	"army":
 		{
@@ -168,6 +172,16 @@ const faction_relationships = {
 			"monster": "hostile",
 			"blue_kingdom": "hostile",
 			"army": "friendly",
+			"colonist": "hostile",
+		},
+	"colonist":
+		{
+			"solo": "hostile",
+			"player": "hostile",
+			"monster": "hostile",
+			"blue_kingdom": "hostile",
+			"army": "hostile",
+			"colonist": "friendly",
 		},
 	"my_entity": # special: friendly to the same entities (truName), but hostile to everyone else
 		{
@@ -176,6 +190,7 @@ const faction_relationships = {
 			"monster": "hostile",
 			"blue_kingdom": "hostile",
 			"army": "hostile",
+			"colonist": "hostile",
 		},
 }
 

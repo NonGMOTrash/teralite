@@ -14,6 +14,7 @@ export(Vector2) var HELD_ITEM_ANCHOR = Vector2(8, 0)
 export(float, -360.0, 360.0) var HELD_ITEM_ROTATION := 0.0
 export(Vector2) var HELD_ITEM_FRAMES := Vector2(1, 1)
 export(bool) var RESET_HELD_ITEM_FLIPPING := true
+export var ITEM_BAR_TEXTURE: Texture
 
 export(String) var PRIMARY_ANIM
 export(String) var SECONDARY_ANIM
@@ -65,7 +66,10 @@ func _ready():
 	if player.get_name() == "player":
 		global.emit_signal("update_item_bar", player.inventory)
 	
-	refs.item_bar.replace_icon(slot, HELD_ITEM_TEXTURE)
+	if ITEM_BAR_TEXTURE != null:
+		refs.item_bar.replace_icon(slot, ITEM_BAR_TEXTURE)
+	else:
+		refs.item_bar.replace_icon(slot, HELD_ITEM_TEXTURE)
 
 # PROBLEM_NOTE: this is kinda bad because the name implies a return value
 func _check_if_selected(swapped_item) -> void:

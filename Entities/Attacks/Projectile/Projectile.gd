@@ -49,13 +49,15 @@ func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	visible = true
 	
 	# los check to the center of the player, prevents projectiles from spawning through walls
-	start_pos = SOURCE.global_position.move_toward(target_pos, SPAWN_OFFSET)
+	DIRECTION = SOURCE.global_position.direction_to(target_pos).normalized()
+	start_pos = SOURCE.global_position + SPAWN_OFFSET * DIRECTION
+	
 	var ss = SOURCE.get_world_2d().direct_space_state
 	var raycast = ss.intersect_ray(start_pos, SOURCE.global_position.move_toward(start_pos,4), [], 1)
 	if raycast and not raycast.collider == SOURCE:
-		start_pos = raycast.position
+		yield(self, "ready")
+		collided()
 	
-	DIRECTION = SOURCE.global_position.direction_to(target_pos).normalized()
 	velocity = Vector2(SPEED, SPEED) * DIRECTION
 
 func _physics_process(delta):
@@ -94,9 +96,9 @@ func _on_hitbox_hit(area: Area2D, type: String) -> void:
 	if visible == false: return
 	if global.get_relation(self, area.get_parent()) == "friendly": return
 	#if get_speed() < MIN_DAM_SPEED: return
-	if "ONHIT_SELF_DAMAGE" in area.get_parent(): return
+	if "PENS" in area.get_parent(): return
 	
-	VELOCITY_ARMOR -= ONHIT_SELF_DAMAGE
+	VELOCITY_ARMOR -= 1
 	if VELOCITY_ARMOR < 1:
 		FORCE_MULT = original_force_mult
 		velocity = velocity * ONHIT_SPEED_MULTIPLIER

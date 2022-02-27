@@ -27,6 +27,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	):
 		return
 	
+	
 	# los check
 	var ss = get_world_2d().direct_space_state
 	var raycast = ss.intersect_ray(global_position, area.global_position, [], 1)
@@ -102,7 +103,6 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 				push_warning("hurtbox can not play sounds because "+entity.truName+" has no sound_player")
 		
 	area.emit_signal("hit", self, result_type)
-	prints(area.get_parent().get_name(), "hit")
 	
 	# applies status effect
 	

@@ -32,17 +32,12 @@ ONHIT_SPEED_MULTIPLIER = 0.3
 RECOIL = -10
 ROTATION_OFFSET = 90.0
 
-[node name="stats" parent="." index="0"]
-MAX_HEALTH = 2
-HEALTH = 2
-DAMAGE = 4
-
-[node name="entity_sprite" parent="." index="1"]
+[node name="entity_sprite" parent="." index="0"]
 material = SubResource( 4 )
 rotation = 5.49779
 texture = ExtResource( 2 )
 
-[node name="hitbox" parent="." index="2"]
+[node name="hitbox" parent="." index="1"]
 COOLDOWN = 0.1
 DAMAGE = 4
 KNOCKBACK = 150
@@ -51,7 +46,7 @@ KNOCKBACK = 150
 position = Vector2( -1.81198e-05, -5 )
 shape = SubResource( 2 )
 
-[node name="item_spawn" parent="." index="6" instance=ExtResource( 3 )]
+[node name="item_spawn" parent="." index="5" instance=ExtResource( 3 )]
 standby_mode = true
 thing_path = "res://Entities/Item_Pickups/spear/spear.tscn"
 

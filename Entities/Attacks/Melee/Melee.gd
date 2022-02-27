@@ -77,7 +77,7 @@ func death():
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if visible == false: return
 	if global.get_relation(self, area.get_parent()) == "friendly": return
-	if "ONHIT_SELF_DAMAGE" in area.get_parent(): return
+	if "PENS" in area.get_parent(): return
 	
 	# recoil
 	if get_node_or_null(SOURCE_PATH) != null and SOURCE.is_queued_for_deletion() == false and recoiled == false:

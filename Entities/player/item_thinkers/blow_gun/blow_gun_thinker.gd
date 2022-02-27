@@ -36,3 +36,6 @@ func _on_cooldown_timeout() -> void:
 		null, # item bar value
 		null # bar timer duration
 	)
+
+func unselected():
+	cooldown.stop()

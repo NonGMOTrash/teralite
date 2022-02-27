@@ -84,7 +84,6 @@ TRUE_DAMAGE = 1
 material = SubResource( 1 )
 texture = ExtResource( 19 )
 hframes = 4
-frame = 1
 back_texture = ExtResource( 18 )
 
 [node name="entity_push" parent="." instance=ExtResource( 3 )]
@@ -140,7 +139,6 @@ anims/stand = SubResource( 4 )
 anims/walk = SubResource( 5 )
 
 [node name="foot_stepper" parent="." instance=ExtResource( 15 )]
-FREE_WHEN_EMPTY = false
 
 [node name="entity_effects" parent="." instance=ExtResource( 14 )]
 death_type = 7
@@ -159,7 +157,7 @@ wait_time = 0.11
 standby_mode = true
 thing = ExtResource( 21 )
 spawn_on_free = false
-rotation_mode = 1
+rotation_mode = 2
 custom_properties = {
 }
 

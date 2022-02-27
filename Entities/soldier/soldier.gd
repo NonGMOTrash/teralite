@@ -15,6 +15,7 @@ onready var stats: Node = $stats
 onready var held_item: Node2D = $held_item
 onready var brain: Node2D = $brain
 onready var animation: AnimationPlayer = $AnimationPlayer
+onready var muzzle_flash: Node = $muzzle_flash
 
 func _on_action_lobe_action(action, target) -> void:
 	current_target = target
@@ -28,11 +29,12 @@ func _on_shoot_timer_timeout() -> void:
 		return
 	
 	var bullet: Projectile = BULLET.instance()
-	bullet.find_node("stats").DAMAGE = stats.DAMAGE
-	bullet.find_node("stats").TRUE_DAMAGE = stats.TRUE_DAMAGE
 	bullet.SPAWN_SOUND = SHOOT_SOUND
 	bullet.setup(self, current_target.global_position)
 	refs.ysort.add_child(bullet)
+	
+	if brain.get_closest_target() != null:
+		muzzle_flash.spawn()
 	
 	bullets -= 1
 	if bullets <= 0:
@@ -42,6 +44,7 @@ func _on_brain_lost_target() -> void:
 	shoot_timer.stop()
 	held_item.animation.stop()
 	held_item.animation.clear_queue()
+	held_item.sprite.scale = Vector2(1, 1)
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "warn" and held_item.animation.get_queue().size() == 0 and brain.targets.size() != 0:

@@ -141,8 +141,8 @@ func spawn():
 			new_thing.rotation_degrees = rad2deg(
 				entity.components["brain"].get_closest_target().global_position.direction_to(
 					entity.global_position
-				)
-			)
+				).angle()
+			) + 180
 	
 	if new_thing is Effect:
 		var sprite: Sprite = new_thing.get_node(new_thing.sprite)

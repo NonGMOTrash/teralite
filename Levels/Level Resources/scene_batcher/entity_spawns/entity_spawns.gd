@@ -74,4 +74,5 @@ func set_data():
 		"rocket_scorpian": get_used_cells_by_id(77),
 		"blaster": get_used_cells_by_id(78),
 		"saber": get_used_cells_by_id(79),
+		"trooper": get_used_cells_by_id(80),
 	}
