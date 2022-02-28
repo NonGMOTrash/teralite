@@ -125,7 +125,7 @@ tracks/3/keys = {
 
 [node name="slash" instance=ExtResource( 1 )]
 truName = "slash"
-ONHIT_SELF_DAMAGE = 0
+PENETRATES = 2
 RANGE = 8
 SPAWN_SOUND = ExtResource( 6 )
 HIT_SOUND = ExtResource( 7 )

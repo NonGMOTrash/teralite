@@ -1,9 +1,15 @@
 extends Entity
 class_name Attack
 
+enum PEN_TYPE {
+	NEVER,
+	ON_KILL,
+	ALWAYS
+}
+
 const BLOCK_SPARK := preload("res://Effects/block_spark/block_spark.tscn")
 
-export var PENS: int = 1
+export(PEN_TYPE) var PENETRATES: int = 0
 export var RANGE = 100
 
 var start_pos = Vector2.ZERO
@@ -63,6 +69,11 @@ func _ready():
 	
 	if not "recoiled" in self: # check if im a Melee
 		visible = true
+	
+	# connecting in GUI causes it to be connected twice in inherieted scenes
+	# so i have to do this instead
+	if not hitbox.is_connected("hit", self, "_on_hitbox_hit"):
+		hitbox.connect("hit", self, "_on_hitbox_hit")
 
 func _physics_process(delta: float) -> void:
 	if is_on_wall():
@@ -76,8 +87,14 @@ func _on_hitbox_hit(area, type) -> void:
 		SOURCE.truName == "player" and
 		hit_pause_count < 2
 	):
-		#OS.delay_msec((1 / 60.0) * 1000)
+		OS.delay_msec((1 / 60.0) * 1000)
 		hit_pause_count += 1
+	
+	if (
+		PENETRATES == PEN_TYPE.NEVER or
+		(PENETRATES == PEN_TYPE.ON_KILL and type != "killed")
+	):
+		death()
 	
 	if HIT_SOUND == null and BLOCKED_SOUND == null and KILL_SOUND == null:
 		return

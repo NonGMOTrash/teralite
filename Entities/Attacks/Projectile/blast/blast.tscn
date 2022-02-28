@@ -13,23 +13,18 @@ radius = 4.26105
 [node name="blast" instance=ExtResource( 1 )]
 FORCE_MULT = 0.0
 truName = "blast"
+PENETRATES = 2
 RANGE = 300
 SPAWN_SOUND = ExtResource( 3 )
 SPEED = 310
 RECOIL = 5
 VELOCITY_INHERITENCE = 0.0
 
-[node name="stats" parent="." index="0"]
-MAX_HEALTH = 7
-HEALTH = 7
-DAMAGE = 3
-TRUE_DAMAGE = 3
-
-[node name="entity_sprite" parent="." index="1"]
+[node name="entity_sprite" parent="." index="0"]
 material = SubResource( 3 )
 texture = ExtResource( 2 )
 
-[node name="hitbox" parent="." index="2"]
+[node name="hitbox" parent="." index="1"]
 DAMAGE = 3
 TRUE_DAMAGE = 3
 

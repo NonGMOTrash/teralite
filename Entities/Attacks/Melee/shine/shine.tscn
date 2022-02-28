@@ -77,7 +77,7 @@ ACCELERATION = 0
 TOP_SPEED = 0
 FORCE_MULT = 0.02
 truName = "shine"
-ONHIT_SELF_DAMAGE = 0
+PENETRATES = 2
 RANGE = 0
 auto_rotate = false
 SPAWN_SOUND = ExtResource( 4 )
@@ -90,28 +90,22 @@ HIDE_HELD_ITEM = false
 REVERSE_HELD_ITEM = false
 REFLECTION_MULT = 1.1
 
-[node name="stats" parent="." index="0"]
-MAX_HEALTH = 99
-HEALTH = 99
-DAMAGE = 0
-TRUE_DAMAGE = 1
-
-[node name="entity_sprite" parent="." index="1"]
+[node name="entity_sprite" parent="." index="0"]
 material = SubResource( 6 )
 texture = ExtResource( 3 )
 hframes = 5
 frame = 4
 
-[node name="hitbox" parent="." index="2"]
-modulate = Color( 0.937255, 0.231373, 0.117647, 1 )
+[node name="hitbox" parent="." index="1"]
 COOLDOWN = 0.3
+DAMAGE = 0
 TRUE_DAMAGE = 1
 KNOCKBACK = 160
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 shape = SubResource( 2 )
 
-[node name="sound" parent="." index="3"]
+[node name="sound" parent="." index="2"]
 FREE_WHEN_EMPTY = false
 
 [node name="reflect" type="AudioStreamPlayer2D" parent="sound" index="0"]
@@ -120,6 +114,10 @@ script = ExtResource( 6 )
 MODE = 1
 AUTO_PLAY = false
 
+[node name="CollisionShape2D" parent="." index="3"]
+visible = false
+disabled = true
+
 [node name="reflection" type="Area2D" parent="." index="4"]
 collision_layer = 0
 collision_mask = 8
@@ -127,16 +125,12 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="reflection" index="0"]
 shape = SubResource( 3 )
 
-[node name="CollisionShape2D" parent="." index="5"]
-visible = false
-disabled = true
-
-[node name="animation" parent="." index="6"]
+[node name="animation" parent="." index="5"]
 anims/animation = SubResource( 4 )
 anims/animation_reverse = SubResource( 7 )
 anims/hold = SubResource( 5 )
 
-[node name="light" type="Light2D" parent="." index="7"]
+[node name="light" type="Light2D" parent="." index="6"]
 texture = ExtResource( 8 )
 texture_scale = 0.35
 color = Color( 0.470588, 0.819608, 0.827451, 1 )

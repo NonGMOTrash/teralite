@@ -63,6 +63,7 @@ tracks/0/keys = {
 
 [node name="beam" instance=ExtResource( 1 )]
 truName = "beam"
+PENETRATES = 2
 RANGE = 8
 SPAWN_SOUND = ExtResource( 3 )
 HIT_SOUND = ExtResource( 4 )

@@ -1,0 +1,98 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Entities/speed_pad/speed_pad.gd" type="Script" id=1]
+[ext_resource path="res://Entities/speed_pad/speed_pad_bottom.png" type="Texture" id=2]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/speed_pad/speed_pad.wav" type="AudioStream" id=5]
+[ext_resource path="res://Entities/speed_pad/speed_pad_back.png" type="Texture" id=6]
+[ext_resource path="res://Entities/speed_pad/speed_pad_front.png" type="Texture" id=7]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 14, 6 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 6 )
+region = Rect2( 14, 0, 14, 6 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 6 )
+region = Rect2( 28, 0, 14, 6 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 14, 4 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 7 )
+region = Rect2( 14, 0, 14, 4 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 7 )
+region = Rect2( 28, 0, 14, 4 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[node name="speed_pad" type="KinematicBody2D"]
+position = Vector2( 0, -2 )
+script = ExtResource( 1 )
+STATIC = true
+ACCELERATION = 0
+SLOWDOWN = 0
+TOP_SPEED = 0
+FORCE_MULT = 0.0
+INANIMATE = true
+truName = "speed_pad"
+speed_level = 2.2
+speed_duration = 2.0
+
+[node name="boost" type="Area2D" parent="."]
+visible = false
+position = Vector2( 0, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boost"]
+shape = SubResource( 1 )
+
+[node name="sound_player" parent="." instance=ExtResource( 3 )]
+
+[node name="sound" parent="sound_player" instance=ExtResource( 4 )]
+stream = ExtResource( 5 )
+bus = "Master"
+MODE = 1
+AUTO_PLAY = false
+
+[node name="bottom" type="Sprite" parent="."]
+position = Vector2( 0, 2 )
+z_index = -6
+texture = ExtResource( 2 )
+
+[node name="back" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -2 )
+z_index = -1
+frames = SubResource( 5 )
+frame = 2
+playing = true
+
+[node name="front" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 4 )
+frames = SubResource( 9 )
+playing = true
+
+[connection signal="body_entered" from="boost" to="." method="_on_boost_body_entered"]

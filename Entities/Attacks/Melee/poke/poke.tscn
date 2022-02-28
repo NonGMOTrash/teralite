@@ -83,7 +83,7 @@ step = 0.01
 [node name="poke" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 truName = "poke"
-ONHIT_SELF_DAMAGE = 0
+PENETRATES = 1
 RANGE = 8
 SPAWN_SOUND = ExtResource( 8 )
 HIT_SOUND = ExtResource( 6 )

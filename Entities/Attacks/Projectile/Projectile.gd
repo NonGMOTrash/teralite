@@ -96,7 +96,7 @@ func _on_hitbox_hit(area: Area2D, type: String) -> void:
 	if visible == false: return
 	if global.get_relation(self, area.get_parent()) == "friendly": return
 	#if get_speed() < MIN_DAM_SPEED: return
-	if "PENS" in area.get_parent(): return
+	if "PENETRATES" in area.get_parent(): return
 	
 	VELOCITY_ARMOR -= 1
 	if VELOCITY_ARMOR < 1:

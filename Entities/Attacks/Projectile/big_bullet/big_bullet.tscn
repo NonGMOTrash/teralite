@@ -15,7 +15,7 @@ radius = 4.92061
 TOP_SPEED = 500
 FORCE_MULT = 0.2
 truName = "big_bullet"
-ONHIT_SELF_DAMAGE = 9
+PENETRATES = 2
 RANGE = 800
 death_free = true
 SPAWN_SOUND = ExtResource( 3 )
@@ -24,18 +24,12 @@ SPEED = 1000
 VELOCITY_ARMOR = 5
 ONHIT_SPEED_MULTIPLIER = 0.95
 
-[node name="stats" parent="." index="0"]
-MAX_HEALTH = 180
-HEALTH = 180
-DAMAGE = 7
-TRUE_DAMAGE = 4
-
-[node name="entity_sprite" parent="." index="1"]
+[node name="entity_sprite" parent="." index="0"]
 material = SubResource( 4 )
 rotation = 4.71239
 texture = ExtResource( 2 )
 
-[node name="hitbox" parent="." index="2"]
+[node name="hitbox" parent="." index="1"]
 COOLDOWN = 0.1
 MULTIHITS = true
 DAMAGE = 7

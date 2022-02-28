@@ -19,7 +19,7 @@ radius = 1.5
 [node name="magic" instance=ExtResource( 1 )]
 FORCE_MULT = 0.2
 truName = "magic"
-ONHIT_SELF_DAMAGE = 1
+PENETRATES = 2
 RANGE = 160
 death_free = true
 SPAWN_SOUND = ExtResource( 3 )
@@ -30,23 +30,24 @@ ONHIT_SPEED_MULTIPLIER = 1.0
 RECOIL = 10
 VELOCITY_INHERITENCE = 0.2
 
-[node name="entity_sprite" parent="." index="1"]
+[node name="entity_sprite" parent="." index="0"]
 material = SubResource( 5 )
 texture = ExtResource( 2 )
 
-[node name="hitbox" parent="." index="2"]
+[node name="hitbox" parent="." index="1"]
 visible = false
 COOLDOWN = 1.0
 MULTIHITS = true
+DAMAGE = 0
 TRUE_DAMAGE = 1
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 shape = SubResource( 2 )
 
-[node name="CollisionShape2D" parent="." index="4"]
+[node name="CollisionShape2D" parent="." index="3"]
 shape = SubResource( 4 )
 
-[node name="LightSource" type="Light2D" parent="." index="6"]
+[node name="LightSource" type="Light2D" parent="." index="5"]
 show_behind_parent = true
 texture = ExtResource( 5 )
 texture_scale = 0.08
