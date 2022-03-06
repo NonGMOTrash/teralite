@@ -19,7 +19,7 @@ func death():
 	new_fire.global_position = global_position
 	refs.ysort.call_deferred("add_child", new_fire)
 	
-	for i in 5:
+	for i in 1:
 		var newer_fire = FIRE.instance()
 		newer_fire.global_position = global_position
 		newer_fire.velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() * 150

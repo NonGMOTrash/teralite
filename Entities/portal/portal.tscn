@@ -4,7 +4,7 @@
 [ext_resource path="res://Entities/portal/portal.gd" type="Script" id=2]
 [ext_resource path="res://Entities/portal/orange_portal.png" type="Texture" id=3]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Entities/portal/teleport.wav" type="AudioStream" id=5]
+[ext_resource path="res://Entities/portal/warp.wav" type="AudioStream" id=5]
 [ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Entities/portal/orange_particles.tres" type="Material" id=7]
 [ext_resource path="res://Entities/portal/blue_particles.tres" type="Material" id=8]
@@ -73,6 +73,7 @@ __meta__ = {
 
 [node name="teleport" parent="blue_portal/sound_player" instance=ExtResource( 6 )]
 stream = ExtResource( 5 )
+bus = "Master"
 MODE = 1
 AUTO_PLAY = false
 
@@ -116,6 +117,7 @@ __meta__ = {
 
 [node name="teleport" parent="orange_portal/sound_player" instance=ExtResource( 6 )]
 stream = ExtResource( 5 )
+bus = "Master"
 MODE = 1
 AUTO_PLAY = false
 

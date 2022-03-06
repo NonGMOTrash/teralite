@@ -96,7 +96,7 @@ func _on_Timer_timeout() -> void:
 				
 				if collider is Entity:
 					if collider is Item:
-						collider._on_Area2D_body_entered(player) # simulte pickup
+						collider._on_Area2D_body_entered(player) # force item pickup
 					elif collider.components["hurtbox"] != null:
 						# damage entity
 						collider.components["hurtbox"]._on_hurtbox_area_entered(hitbox)

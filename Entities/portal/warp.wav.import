@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/teleport.wav-ee978c2fcee866db4c89c35cb737b35c.sample"
+path="res://.import/warp.wav-1b3c1c519cfe34099a00857722f6b7ab.sample"
 
 [deps]
 
-source_file="res://Entities/portal/teleport.wav"
-dest_files=[ "res://.import/teleport.wav-ee978c2fcee866db4c89c35cb737b35c.sample" ]
+source_file="res://Entities/portal/warp.wav"
+dest_files=[ "res://.import/warp.wav-1b3c1c519cfe34099a00857722f6b7ab.sample" ]
 
 [params]
 

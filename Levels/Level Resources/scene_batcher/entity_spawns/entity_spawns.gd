@@ -75,4 +75,5 @@ func set_data():
 		"blaster": get_used_cells_by_id(78),
 		"saber": get_used_cells_by_id(79),
 		"trooper": get_used_cells_by_id(80),
+		"speed_pad": get_used_cells_by_id(81),
 	}
