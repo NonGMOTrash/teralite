@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Entities/player/item_thinkers/pulse_rifle/pulse_rifle_thinker.gd" type="Script" id=1]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Attacks/Projectile/pulse/pulse.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Effects/energy_burst/energy_burst.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/player/item_thinkers/blaster_thinker/overheat.wav" type="AudioStream" id=7]
+[ext_resource path="res://Entities/Item_Pickups/pulse_rifle/pulse_rifle.png" type="Texture" id=8]
+[ext_resource path="res://UI/cursors/cursor_pulse_rifle.png" type="Texture" id=9]
+
+[node name="pulse_rifle_thinker" type="Node"]
+script = ExtResource( 1 )
+HELD_ITEM_TEXTURE = ExtResource( 8 )
+HELD_ITEM_ROTATION = 45.0
+my_item = "pulse_rifle"
+display_name = "pulse rifle"
+CURSOR = ExtResource( 9 )
+CURSOR_MODE = 1
+PULSE = ExtResource( 3 )
+MAX_HEAT = 20
+SHOOT_HEAT = 15
+COOL_SPEED = 12.0
+
+[node name="sound_player" parent="." instance=ExtResource( 2 )]
+
+[node name="overheat" parent="sound_player" instance=ExtResource( 6 )]
+stream = ExtResource( 7 )
+bus = "Master"
+MODE = 1
+AUTO_PLAY = false
+
+[node name="shot_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="cooldown_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="spawner" parent="." instance=ExtResource( 4 )]
+standby_mode = true
+thing = ExtResource( 5 )
+spawn_on_free = false
+rotation_mode = 1
+effect_inherit_flipping = false
+
+[connection signal="timeout" from="cooldown_timer" to="." method="_on_cooldown_timer_timeout"]

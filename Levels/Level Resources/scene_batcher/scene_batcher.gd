@@ -94,6 +94,8 @@ const SCENES := {
 	"saber": "res://Entities/Item_Pickups/saber/saber.tscn",
 	"trooper": "res://Entities/trooper/trooper.tscn",
 	"speed_pad": "res://Entities/speed_pad/speed_pad.tscn",
+	"teleporter": "res://Entities/Item_Pickups/teleporter/teleporter.tscn",
+	"pulse_rifle": "res://Entities/Item_Pickups/pulse_rifle/pulse_rifle.tscn",
 }
 
 export var placement_offset: Vector2 = Vector2.ZERO

@@ -2,8 +2,9 @@ extends Thinker
 
 const HEAT_COLOR := Color(0.94, 0.35, 0.35)
 
-export var BLAST: PackedScene
+export var PULSE: PackedScene
 export var MAX_HEAT: int
+export var SHOOT_HEAT: int
 export var COOL_SPEED: float
 
 var heat: int = 0
@@ -13,11 +14,8 @@ onready var original_cooldown_time: float = cooldown_timer.wait_time
 onready var shot_timer: Timer = $shot_timer
 onready var spawner: Node = $spawner
 
-func _ready() -> void:
-	pass
-
 func get_ready() -> bool:
-	if heat >= MAX_HEAT or cooldown_timer.time_left != 0: 
+	if heat >= MAX_HEAT or cooldown_timer.time_left != 0:
 		return false
 	else:
 		return true
@@ -25,18 +23,18 @@ func get_ready() -> bool:
 func primary():
 	.primary()
 	
-	var blast: Projectile = BLAST.instance()
+	var blast: Projectile = PULSE.instance()
 	blast.setup(player, global.get_look_pos())
 	refs.ysort.add_child(blast)
 	
-	heat += 1
+	heat += SHOOT_HEAT
 	if heat >= MAX_HEAT:
 		sound_player.play_sound("overheat")
 		heat = MAX_HEAT
 		# force the weapon to fully cool if at max heat
 		cooldown_timer.wait_time = MAX_HEAT * (1.0 / COOL_SPEED)
 	
-	shot_timer.wait_time = 1.2
+	shot_timer.wait_time = 0.15
 	shot_timer.start()
 	cooldown_timer.start()
 	

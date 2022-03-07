@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pulse_bounce.wav-9a3ab20418bdbe2ad34479b0115574b0.sample"
+
+[deps]
+
+source_file="res://Entities/Attacks/Projectile/pulse/pulse_bounce.wav"
+dest_files=[ "res://.import/pulse_bounce.wav-9a3ab20418bdbe2ad34479b0115574b0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

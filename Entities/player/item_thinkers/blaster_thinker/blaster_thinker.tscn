@@ -44,3 +44,5 @@ thing = ExtResource( 5 )
 spawn_on_free = false
 rotation_mode = 1
 effect_inherit_flipping = false
+
+[connection signal="timeout" from="cooldown_timer" to="." method="_on_cooldown_timer_timeout"]

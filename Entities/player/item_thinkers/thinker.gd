@@ -85,6 +85,12 @@ func _process(_delta: float):
 	if global.selection != slot:
 		return
 	
+	var held_item: Node2D = player.components["held_item"]
+	if held_item.sprite.flip_v == false:
+		held_item.sprite.rotation_degrees = HELD_ITEM_ROTATION
+	else:
+		held_item.sprite.rotation_degrees = -HELD_ITEM_ROTATION
+	
 	pre_input_action()
 	
 	if Input.is_action_just_pressed("reload_item"):
@@ -210,12 +216,13 @@ func _update_held_item():
 	
 	var held_item: Node2D = player.components["held_item"]
 	held_item.sprite.texture = HELD_ITEM_TEXTURE
-	held_item.sprite.rotation_degrees = HELD_ITEM_ROTATION
 	held_item.original_offset = HELD_ITEM_OFFSET
 	if held_item.sprite.flip_v == false:
 		held_item.sprite.offset = HELD_ITEM_OFFSET
+		held_item.sprite.rotation_degrees = HELD_ITEM_ROTATION
 	else:
 		held_item.sprite.offset = -HELD_ITEM_OFFSET
+		held_item.sprite.rotation_degrees = -HELD_ITEM_ROTATION
 	held_item.anchor.position = HELD_ITEM_ANCHOR
 
 func _update_cursor_on_unpause():

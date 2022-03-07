@@ -1,0 +1,91 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Entities/Attacks/Projectile/Projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Attacks/Projectile/pulse/pulse.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Attacks/Projectile/pulse/pulse.gd" type="Script" id=3]
+[ext_resource path="res://Entities/Attacks/Projectile/pulse/pulse_shoot.wav" type="AudioStream" id=4]
+[ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Attacks/Projectile/pulse/pulse_bounce.wav" type="AudioStream" id=6]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 1.54398
+height = 6.21817
+
+[sub_resource type="Animation" id=2]
+resource_name = "New Anim"
+length = 0.119
+loop = true
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0166667, 0.0333333, 0.05, 0.0666667, 0.0833333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[node name="pulse" instance=ExtResource( 1 )]
+rotation = 0.0
+script = ExtResource( 3 )
+FORCE_MULT = 0.0
+truName = "pulse"
+PENETRATES = 2
+RANGE = 999
+SPAWN_SOUND = ExtResource( 4 )
+SPEED = 800
+VELOCITY_ARMOR = 999
+ONHIT_SPEED_MULTIPLIER = 1.0
+RECOIL = 100
+VELOCITY_INHERITENCE = 0.0
+bounces = 2
+
+[node name="entity_sprite" parent="." index="0"]
+material = SubResource( 1 )
+texture = ExtResource( 2 )
+hframes = 7
+
+[node name="hitbox" parent="." index="1"]
+DAMAGE = 8
+TRUE_DAMAGE = 15
+KNOCKBACK = 0
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+rotation = 1.5708
+shape = SubResource( 4 )
+
+[node name="bounce" parent="sound" index="0" instance=ExtResource( 5 )]
+stream = ExtResource( 6 )
+bus = "Master"
+MODE = 1
+AUTO_PLAY = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+
+[editable path="entity_sprite"]
+[editable path="hitbox"]

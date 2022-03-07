@@ -21,6 +21,7 @@ resource_local_to_scene = true
 [sub_resource type="CircleShape2D" id=2]
 
 [node name="pylon" type="KinematicBody2D"]
+collision_layer = 2
 script = ExtResource( 1 )
 STATIC = true
 INANIMATE = true
