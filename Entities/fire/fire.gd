@@ -22,35 +22,8 @@ func _ready():
 	yield(smoke, "ready")
 	smoke.global_position = global_position
 
-# toggle light visibility if other fires nearby
-# checking this every frame is kinda bad, but it seems to be the only (?) way to reliablely get
-# the light combining to work which improves preformance overall
-func _physics_process(delta: float) -> void:
-	if global.settings["lighting"] == false or global.settings["combine_lights"] == false:
-		set_physics_process(false)
-		return
-	
-	for detected_entity in detection.get_overlapping_bodies():
-		if detected_entity.truName != "fire":
-			continue
-		elif detected_entity.get_instance_id() < get_instance_id():
-			light.visible = false
-			set_physics_process(false)
-			return
-	light.visible = true
-
 func death():
 	animation.play("death")
-	
-	# give light to nearby fire with highest id
-	if not light or light.visible == false:
-		return
-	var highest_id: int = -1
-	var highest_fire: Entity
-	for detected_entity in detection.get_overlapping_bodies():
-		if detected_entity.truName == "fire" and detected_entity.get_instance_id() > highest_id:
-			highest_fire = detected_entity
-			highest_id = detected_entity.get_instance_id()
 
 func _on_fuel_timeout() -> void:
 	death()

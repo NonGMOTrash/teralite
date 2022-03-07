@@ -37,8 +37,9 @@ playback_speed = 2.7
 
 [node name="light" type="Light2D" parent="."]
 texture = ExtResource( 3 )
-texture_scale = 0.5
-color = Color( 0.745098, 0.309804, 0.137255, 1 )
+color = Color( 0.980392, 0.619608, 0.458824, 1 )
+energy = 1.4
+mode = 2
 shadow_buffer_size = 512
 shadow_item_cull_mask = 2
 script = ExtResource( 4 )

@@ -94,7 +94,8 @@ margin_bottom = -6.49886
 texture = ExtResource( 13 )
 texture_scale = 0.23
 color = Color( 0.592157, 0.92549, 0.854902, 1 )
-energy = 0.5
+energy = 1.5
+mode = 2
 script = ExtResource( 14 )
 
 [connection signal="timeout" from="delay" to="." method="_on_delay_timeout"]

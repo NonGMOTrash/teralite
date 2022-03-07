@@ -8,7 +8,6 @@ onready var fullscreen = $tabs/video/VBox/fullscreen
 onready var pixel = $tabs/video/VBox/pixel
 onready var vsync = $tabs/video/VBox/vsync
 onready var lighting = $tabs/video/VBox/lighting
-onready var combine_lights = $tabs/video/VBox/combine_lights
 onready var shadows = $tabs/video/VBox/shadows
 onready var shadow_buffer = $tabs/video/VBox/shadow_buffer
 onready var ambient_lighting = $tabs/video/VBox/ambient_lighting
@@ -53,7 +52,6 @@ func _on_tabs_visibility_changed() -> void:
 	particles.selected = global.settings["particles"]
 	spawn_pause.pressed = global.settings["spawn_pause"]
 	lighting.pressed = global.settings["lighting"]
-	combine_lights.pressed = global.settings["combine_lights"]
 	shadows.pressed = global.settings["shadows"]
 	shadow_buffer.value = global.settings["shadow_buffer"]
 	ambient_lighting.pressed = global.settings["ambient_lighting"]
@@ -86,7 +84,6 @@ func _on_exit_pressed() -> void:
 	global.settings["gpu_snap"] = gpu_snap.pressed
 	global.settings["spawn_pause"] = spawn_pause.pressed
 	global.settings["lighting"] = lighting.pressed
-	global.settings["combine_lights"] = combine_lights.pressed
 	global.settings["shadows"] = shadows.pressed
 	global.settings["shadow_buffer"] = shadow_buffer.value
 	global.settings["ambient_lighting"] = ambient_lighting.pressed

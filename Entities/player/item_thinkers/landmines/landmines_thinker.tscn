@@ -22,5 +22,6 @@ FREE_WHEN_EMPTY = false
 
 [node name="place" parent="sound_player" instance=ExtResource( 4 )]
 stream = ExtResource( 5 )
+bus = "Master"
 MODE = 1
 AUTO_PLAY = false

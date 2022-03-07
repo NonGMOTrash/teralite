@@ -95,14 +95,14 @@ func _ready() -> void:
 			TYPES.NONE, TYPES.AUTUMN:
 				ambient_lighting.color = Color(1, 1, 1)
 			TYPES.UNDERGROUND:
-				ambient_lighting.color = Color(0.5, 0.5, 0.5)
+				ambient_lighting.color = Color(0.6, 0.6, 0.6)
 			TYPES.WASTELAND:
 				ambient_lighting.color = Color(1, 1, 0.7)
 	
 	match LETTER:
-		"A": global.set_discord_activity("in Autumn hub", "(chillin)")
-		"B": global.set_discord_activity("in Underground hub", "(calm before the storm)")
-		"C": global.set_discord_activity("in Wasteland hub", "(contemplating life)")
+		"A": global.set_discord_activity("in autumn hub", "(chillin)")
+		"B": global.set_discord_activity("in underground hub", "(calm before the storm)")
+		"C": global.set_discord_activity("in wasteland hub", "(contemplating life)")
 
 func _physics_process(_delta: float) -> void:
 	if update_particles == true:

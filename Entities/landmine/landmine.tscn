@@ -50,6 +50,7 @@ FREE_WHEN_EMPTY = false
 [node name="warning" type="AudioStreamPlayer2D" parent="sound_player"]
 stream = ExtResource( 5 )
 script = ExtResource( 3 )
+AUTO_PLAY = false
 
 [connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
 [connection signal="timeout" from="delay" to="." method="_on_delay_timeout"]

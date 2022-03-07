@@ -95,6 +95,7 @@ texture = ExtResource( 4 )
 hframes = 8
 
 [node name="hitbox" parent="." instance=ExtResource( 2 )]
+visible = false
 COOLDOWN = 0.001
 DAMAGE = 5
 TRUE_DAMAGE = 2
@@ -124,6 +125,8 @@ AUTO_SET_PHYSICAL = false
 texture = ExtResource( 8 )
 texture_scale = 0.8
 color = Color( 0.929412, 0.266667, 0.137255, 1 )
+energy = 1.5
+mode = 2
 shadow_enabled = true
 shadow_buffer_size = 4096
 script = ExtResource( 9 )

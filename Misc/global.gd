@@ -119,7 +119,6 @@ var settings := {
 	"gpu_snap": false,
 	"spawn_pause": false,
 	"lighting": true,
-	"combine_lights": true,
 	"shadows": true,
 	"shadow_buffer": 512,
 	"ambient_lighting": true,
@@ -520,7 +519,7 @@ func update_settings(save_settings_config:=true):
 				level.TYPES.NONE, level.TYPES.AUTUMN:
 					ambient_lighting.color = Color(1, 1, 1)
 				level.TYPES.UNDERGROUND:
-					ambient_lighting.color = Color(0.5, 0.5, 0.5)
+					ambient_lighting.color = Color(0.6, 0.6, 0.6)
 				level.TYPES.WASTELAND:
 					ambient_lighting.color = Color(1, 1, 0.7)
 		else:

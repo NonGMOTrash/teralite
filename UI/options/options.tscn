@@ -82,13 +82,6 @@ margin_right = 336.0
 margin_bottom = 80.0
 text = "enable lighting"
 
-[node name="combine_lights" parent="tabs/video/VBox" instance=ExtResource( 2 )]
-margin_top = 84.0
-margin_right = 336.0
-margin_bottom = 108.0
-hint_tooltip = "combines nearby fire lights for optimization"
-text = "combine fire lights"
-
 [node name="shadows" parent="tabs/video/VBox" instance=ExtResource( 2 )]
 margin_top = 112.0
 margin_right = 336.0

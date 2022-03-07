@@ -102,7 +102,7 @@ func _ready() -> void:
 			TYPES.NONE, TYPES.AUTUMN:
 				ambient_lighting.color = Color(1, 1, 1)
 			TYPES.UNDERGROUND:
-				ambient_lighting.color = Color(0.5, 0.5, 0.5)
+				ambient_lighting.color = Color(0.6, 0.6, 0.6)
 			TYPES.WASTELAND:
 				ambient_lighting.color = Color(1, 1, 0.7)
 

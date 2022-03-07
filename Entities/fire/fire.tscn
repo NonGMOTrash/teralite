@@ -103,10 +103,12 @@ hframes = 3
 vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 modulate = Color( 0.121569, 0.352941, 0.964706, 1 )
 shape = SubResource( 1 )
 
 [node name="hitbox" parent="." instance=ExtResource( 2 )]
+visible = false
 COOLDOWN = 1.0
 DAM_TYPE = "burn"
 KNOCKBACK = 0
@@ -134,6 +136,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="detection" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -149,9 +152,10 @@ bus = "Master"
 MODE = 2
 
 [node name="light" type="Light2D" parent="."]
-visible = false
 texture = ExtResource( 8 )
 color = Color( 0.976471, 0.396078, 0.168627, 1 )
+energy = 2.0
+mode = 2
 shadow_enabled = true
 shadow_buffer_size = 512
 script = ExtResource( 9 )
