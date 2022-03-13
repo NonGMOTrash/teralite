@@ -96,6 +96,7 @@ const SCENES := {
 	"speed_pad": "res://Entities/speed_pad/speed_pad.tscn",
 	"teleporter": "res://Entities/Item_Pickups/teleporter/teleporter.tscn",
 	"pulse_rifle": "res://Entities/Item_Pickups/pulse_rifle/pulse_rifle.tscn",
+	"portal_gun": "res://Entities/Item_Pickups/portal_gun/portal_gun.tscn",
 }
 
 export var placement_offset: Vector2 = Vector2.ZERO

@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Effects/Effect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Effects/explosive_muzzle_flash/explosive_muzzle_flash.png" type="Texture" id=2]
+[ext_resource path="res://Effects/light.png" type="Texture" id=3]
+[ext_resource path="res://Effects/LightSource.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "animation"
@@ -31,3 +33,11 @@ frame = 4
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "animation"
 anims/animation = SubResource( 1 )
+
+[node name="light" type="Light2D" parent="." index="2"]
+texture = ExtResource( 3 )
+texture_scale = 0.4
+color = Color( 0.937255, 0.403922, 0.243137, 1 )
+energy = 3.5
+mode = 2
+script = ExtResource( 4 )

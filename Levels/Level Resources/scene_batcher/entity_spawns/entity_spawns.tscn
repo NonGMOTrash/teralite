@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=80 format=2]
 
 [ext_resource path="res://Levels/Level Resources/scene_batcher/scene_batcher.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/pistol/pistol.png" type="Texture" id=2]
@@ -77,6 +77,7 @@
 [ext_resource path="res://Entities/speed_pad/speed_pad.png" type="Texture" id=75]
 [ext_resource path="res://Entities/Item_Pickups/teleporter/teleporter.png" type="Texture" id=76]
 [ext_resource path="res://Entities/Item_Pickups/pulse_rifle/pulse_rifle.png" type="Texture" id=77]
+[ext_resource path="res://Entities/Item_Pickups/portal_gun/portal_gun.png" type="Texture" id=78]
 
 [sub_resource type="TileSet" id=1]
 2/name = "player.png 2"
@@ -1143,6 +1144,20 @@
 83/shape_one_way_margin = 0.0
 83/shapes = [  ]
 83/z_index = 0
+84/name = "portal_gun.png 84"
+84/texture = ExtResource( 78 )
+84/tex_offset = Vector2( 0, 0 )
+84/modulate = Color( 1, 1, 1, 1 )
+84/region = Rect2( 0, 0, 15, 7 )
+84/tile_mode = 0
+84/occluder_offset = Vector2( 0, 0 )
+84/navigation_offset = Vector2( 0, 0 )
+84/shape_offset = Vector2( 0, 0 )
+84/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+84/shape_one_way = false
+84/shape_one_way_margin = 0.0
+84/shapes = [  ]
+84/z_index = 0
 
 [node name="entity_spawns" instance=ExtResource( 1 )]
 position = Vector2( 4, 4 )

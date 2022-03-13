@@ -45,7 +45,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1.2, 1 ),
 "update": 0,
-"values": [ 0.7, 0.0 ]
+"values": [ 1.5, 0.0 ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -73,26 +73,17 @@ tracks/0/keys = {
 
 [node name="shine" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-STATIC = false
 ACCELERATION = 0
-SLOWDOWN = 500
 TOP_SPEED = 0
 FORCE_MULT = 0.02
-INVISIBLE = false
 truName = "shine"
-faction = ""
 PENETRATES = 2
 RANGE = 0
-auto_setup = true
 auto_rotate = false
-death_free = false
 SPAWN_SOUND = ExtResource( 4 )
 HIT_SOUND = ExtResource( 5 )
 KILL_SOUND = ExtResource( 5 )
 BLOCKED_SOUND = ExtResource( 5 )
-COLLIDE_SOUND = null
-KILLED_SOUND = null
-HOLDS = false
 RECOIL = 0
 ANIMATION_NEVER_BACKWARDS = true
 HIDE_HELD_ITEM = false
@@ -103,7 +94,7 @@ REFLECTION_MULT = 1.1
 material = SubResource( 6 )
 texture = ExtResource( 3 )
 hframes = 5
-frame = 4
+frame = 2
 
 [node name="hitbox" parent="." index="1"]
 COOLDOWN = 0.3
@@ -143,7 +134,7 @@ anims/hold = SubResource( 5 )
 texture = ExtResource( 8 )
 texture_scale = 0.35
 color = Color( 0.470588, 0.819608, 0.827451, 1 )
-energy = 1.5
+energy = 0.269683
 mode = 2
 script = ExtResource( 9 )
 
