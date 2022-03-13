@@ -151,7 +151,13 @@ func los_check(target, ignore_low_barriers:=true) -> bool:
 	var ss = get_world_2d().direct_space_state
 	var vision = ss.intersect_ray(target_pos, global_position, excludes, mask)
 	
-	while vision and vision.collider is Entity and vision.collider.global_position != target_pos:
+	
+	while (
+		vision and
+		vision.collider is Entity and
+		vision.collider.get_collision_mask_bit(1) == false and # prevents sight through crates
+		vision.collider.global_position != target_pos
+	):
 		excludes.append(vision.collider)
 		
 		vision = ss.intersect_ray(target_pos, global_position, excludes, mask)

@@ -139,5 +139,11 @@ func collided():
 		sfx.stream = COLLIDE_SOUND
 		sound.add_sound(sfx)
 	
+	# fixes crates sometimes not breaking
+	for i in get_slide_count():
+		var collider := get_slide_collision(i).collider
+		if collider is Entity and collider.truName == "crate":
+			collider.death()
+	
 	death_free = true
 	death()

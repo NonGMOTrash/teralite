@@ -15,13 +15,13 @@
 resource_local_to_scene = true
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 9, 9 )
+extents = Vector2( 10, 9 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 8, 5 )
 
 [node name="crate" type="KinematicBody2D"]
-collision_layer = 3
+collision_mask = 2
 script = ExtResource( 3 )
 STATIC = true
 INANIMATE = true
