@@ -209,6 +209,7 @@ func secondary():
 func reload():
 	if RELOAD_ANIM != "":
 		player.components["held_item"].animation.play(RELOAD_ANIM)
+		print(player.components["held_item"].animation.current_animation)
 
 func _update_held_item():
 	if HELD_ITEM_TEXTURE == null:

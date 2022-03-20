@@ -97,6 +97,7 @@ const SCENES := {
 	"teleporter": "res://Entities/Item_Pickups/teleporter/teleporter.tscn",
 	"pulse_rifle": "res://Entities/Item_Pickups/pulse_rifle/pulse_rifle.tscn",
 	"portal_gun": "res://Entities/Item_Pickups/portal_gun/portal_gun.tscn",
+	"laser_pistol": "res://Entities/Item_Pickups/laser_pistol/laser_pistol.tscn",
 }
 
 export var placement_offset: Vector2 = Vector2.ZERO
@@ -125,7 +126,7 @@ func _ready(): # converts tiles to their respective scenes
 		if data.values()[i].size() > 0:
 			convert_tile(data.values()[i], data.keys()[i])
 	
-	clear() #remove all the tiles
+	clear() # remove all the tiles
 	emit_signal("finished_batching")
 
 func convert_tile(tiles, entity_name: String): # deletes the tile and places the entity

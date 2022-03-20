@@ -87,9 +87,10 @@ func secondary():
 		camera.zoom_to(Vector2(1, 1), ads_zoom_speed)
 
 func reload():
-	.reload()
 	if reload.time_left > 0:
 		return
+	
+	.reload()
 	reload.start()
 	global.emit_signal("update_item_info", # set a condition to null to hide it
 		display_name, # current item

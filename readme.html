@@ -1,155 +1,150 @@
 <!DOCTYPE html>
-  <head>
-    <style>
-      body {
-        background-color: black;
-      }
 
-      .content {
-        color: white;
-        background-color: black;
-        margin: 100px;
-        font-family: Verdana, sans-serif;
-      }
+<head>
+	<style>
+	body {
+		background-color: black;
+	}
+	
+	.content {
+		color: white;
+		background-color: black;
+		margin: 100px;
+		font-family: Verdana, sans-serif;
+	}
+	
+	.content a {
+		color: orange;
+		font-style: normal;
+		text-decoration: unset;
+	}
+	
+	.content a:hover {
+		color: orange;
+		font-style: italic;
+		text-decoration: underline;
+	}
+	
+	.code {
+		font-size: 14px;
+		color: lightgray;
+	}
+	
+	.ascii-art {
+		font: monospace;
+		font-weight: bolder;
+		color: orange;
+		margin-left: auto;
+		margin-right: auto;
+		width: 100%;
+	}
+	
+	hr.major {
+		border-top: 3px solid white;
+	}
+	
+	hr.minor {
+		border-top: 1px solid grey;
+	}
+	
+	nav {
+		width: 100%;
+		background-color: rgba(0, 0, 0, 0);
+		position: fixed;
+		top: 0px;
+		background-image: linear-gradient(orange, rgba(0, 0, 0, 0.5))
+	}
+	
+	nav ul {
+		float: left;
+	}
+	
+	nav ul li {
+		float: left;
+		list-style: none;
+		position: relative;
+	}
+	
+	nav ul li a {
+		font-size: 16px;
+		font-weight: bold;
+		display: block;
+		padding: 4px 14px;
+		color: white;
+		text-decoration: none;
+	}
+	
+	nav ul li a:hover {
+		color: white;
+		text-decoration: underline;
+		background-color: orange;
+	}
+	
+	nav ul li ul {
+		display: none;
+		position: absolute;
+		background-color: darkorange;
+		padding: 10px;
+	}
+	
+	nav ul li:hover ul {
+		display: block;
+		background-color: orange;
+	}
+	
+	nav ul li ul li {
+		width: 180px;
+	}
+	
+	nav ul li ul li a {
+		padding: 8px 14px;
+		font-weight: normal;
+		background-color: darkorange;
+	}
+	
+	nav ul li ul li a:hover {
+		background-color: orange;
+		border-radius: 0px 0px 2px 2px;
+	}
+	</style>
+</head>
 
-      .content a {
-        color: orange;
-        font-style: normal;
-        text-decoration: unset;
-      }
-      .content a:hover {
-        color: orange;
-        font-style: italic;
-        text-decoration: underline;
-      }
-
-      .code {
-        font-size: 14px;
-        color: lightgray;
-      }
-
-      .ascii-art {
-        font: monospace;
-        font-weight: bolder;
-        color: orange;
-        margin-left: auto;
-        margin-right: auto;
-        width: 100%;
-      }
-
-      hr.major {
-        border-top: 3px solid white;
-      }
-      hr.minor {
-        border-top: 1px solid grey;
-      }
-
-      nav {
-        width: 100%;
-        background-color: rgba(0,0,0,0);
-        position: fixed;
-        top: 0px;
-        background-image: linear-gradient(orange, rgba(0, 0, 0, 0.5))
-      }
-
-      nav ul {
-        float: left;
-      }
-
-      nav ul li {
-        float: left;
-        list-style: none;
-        position: relative;
-      }
-
-      nav ul li a {
-        font-size: 16px;
-        font-weight: bold;
-        display: block;
-        padding: 4px 14px;
-        color: white;
-        text-decoration: none;
-      }
-      nav ul li a:hover {
-        color: white;
-        text-decoration: underline;
-        background-color: orange;
-
-      }
-
-      nav ul li ul {
-        display: none;
-        position: absolute;
-        background-color: darkorange;
-        padding: 10px;
-      }
-      nav ul li:hover ul {
-        display: block;
-        background-color: orange;
-      }
-
-      nav ul li ul li {
-        width: 180px;
-      }
-
-      nav ul li ul li a {
-        padding: 8px 14px;
-        font-weight: normal;
-        background-color: darkorange;
-      }
-
-      nav ul li ul li a:hover {
-        background-color:orange;
-        border-radius: 0px 0px 2px 2px;
-      }
-
-    </style>
-  </head>
-
-  <body>
-
-    <nav>
-      <ul>
-        <li>
-          <a href="#faq">faq</a>
-          <ul>
-            <li><a href="#can-i-share">can i share?</a></li>
-            <li><a href="#pck-not-found">.pck not found</a></li>
-            <li><a href="#particles-not-working">where particles?</a></li>
-            <li><a href="#old-saves-dissappeared">old saves missing</a></li>
-            <li><a href="#compatiability-with-older-saves">save compatiability</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#credits">credits</a>
-          <ul>
-            <li><a href="#developer">developer</a></li>
-            <li><a href="#play-testers">play testers</a></li>
-            <li><a href="#engine">engine</a></li>
-            <li><a href="#font-credits">fonts</a></li>
-            <li><a href="#sound-credits">sound effects</a></li>
-            <li><a href="#shader-credits">shaders</a></li>
-			<li><a href="#discord-integration">discord integration</a></li>
-            <li><a href="#license">license</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#patchnotes">patchnotes</a>
-          <ul>
-            <li><a href="#beta-5-0">beta 5.0 (latest)</a></li>
-			<li><a href="#beta-4-0">beta 4.0</a></li>
-            <li><a href="#beta-3-0">beta 3.0</a></li>
-            <li><a href="#beta-2-0">beta 2.0</a></li>
-            <li><a href="#beta-1-0">beta 1.0</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-
-    <div class="content">
-
-      <pre>
-        <code class="ascii-art">
+<body>
+	<nav>
+		<ul>
+			<li> <a href="#faq">faq</a>
+				<ul>
+					<li><a href="#can-i-share">can i share?</a></li>
+					<li><a href="#pck-not-found">.pck not found</a></li>
+					<li><a href="#particles-not-working">where particles?</a></li>
+					<li><a href="#old-saves-dissappeared">old saves missing</a></li>
+					<li><a href="#compatiability-with-older-saves">save compatiability</a></li>
+				</ul>
+			</li>
+			<li> <a href="#credits">credits</a>
+				<ul>
+					<li><a href="#developer">developer</a></li>
+					<li><a href="#play-testers">play testers</a></li>
+					<li><a href="#engine">engine</a></li>
+					<li><a href="#font-credits">fonts</a></li>
+					<li><a href="#sound-credits">sound effects</a></li>
+					<li><a href="#shader-credits">shaders</a></li>
+					<li><a href="#discord-integration">discord integration</a></li>
+					<li><a href="#license">license</a></li>
+				</ul>
+			</li>
+			<li> <a href="#patchnotes">patchnotes</a>
+				<ul>
+					<li><a href="#beta-5-0">beta 5.0 (latest)</a></li>
+					<li><a href="#beta-4-0">beta 4.0</a></li>
+					<li><a href="#beta-3-0">beta 3.0</a></li>
+					<li><a href="#beta-2-0">beta 2.0</a></li>
+					<li><a href="#beta-1-0">beta 1.0</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	<div class="content"> <pre> <code class="ascii-art">
                         ###########
                         ###########
                         ###,   ,###
@@ -179,1062 +174,765 @@
                               ,###....
                                   ....
                                   ....
-        </code>
-      </pre>
-      <br>
-      <p>hello, thanks for downloading</p>
-
-      <hr class="major">
-      <h1 id="faq">(un)frequently asked questions</h1>
-
-      <hr class="minor">
-      <h2 id="can-i-share">can i share this game with other people?</h2>
-      <p>
-        please don't, i wanna keep this game sorta secret for now. if you violate this policy, i will do absolutely nothing except be very very sad. however when the game is out, please share this game with EVERYONE. just like, constantly
-      </p>
-
-      <hr class="minor">
-      <h2 id="pck-not-found">.pck not found at path '.' error</h2>
-      <p>
-        teralite.exe has to be in the same folder as the teralite.pck or it won't work. if you want to have access to the game somewhere else, just make a shortcut of teralite.exe
-      </p>
-
-      <hr class="minor">
-      <h2 id="particles-not-working">particles not working</h2>
-      <p>
-        if you're using a CPU with integrated graphics that doesn't support OpenGL ES 3, the game will fallback to OpenGL ES 2. this mostly works okay, but the game will run worse and particle effects won't work. sorry! i might make a "CPU particles" option in the future, but it would be a hassle because i would have to make a 2nd version of every particle effect
-      </p>
-
-      <hr class="minor">
-      <h2 id="old-saves-dissappeared">old saves dissappeared</h2>
-      <p>
-        due to the name change from project epsilon to teralite in beta 2.12, the game won't be able to find the folder where old game data was stored because it was renamed. <br>
-        it&#39;s pretty easy to fix tho, just follow these steps:
-      </p>
-      <ol>
-        <li>go to the search bar on windows and search "%APPDATA%" (should take you to a file folder)</li>
-        <li>find the folder named &quot;Project Epsilon&quot; and rename it to &quot;Teralite&quot;</li>
-        <li>if it asks you if you want to replace the folder that&#39;s already named Teralite, click Yes</li>
-        <li>
-          reopen teralite, and you should see your saves <br>
-          (you can also just cut and paste the actual save files from Project Epsilon into Teralite)
-        </li>
-      </ol>
-
-      <hr class="minor">
-      <h2 id="compatiability-with-older-saves">compatiability with older saves</h2>
-	  <p>currently all save versions are compatiable with eachother. however, if you still somehow have a save from aaaaall the way back at 1.X, i recomend you just start over (besides you'll only lose like 5 minutes of progress lol). there shouldn't be any compatiability breaking changes, except for possibily the full release</p>
-
-      <hr class="major">
-      <h1 id="credits">credits</h1>
-
-      <hr class="minor">
-      <h3 id="developer">developer:</h3>
-
-      <p>NonGMOTrash</p>
-      <ul>
-        <li>itch: <a href="https://nongmotrash.itch.io">https://nongmotrash.itch.io</a></li>
-        <li>youtube: <a href="https://www.youtube.com/channel/UCeM_Vg53GAkVPdgEmPfPAsw">https://www.youtube.com/channel/UCeM_Vg53GAkVPdgEmPfPAsw</a></li>
-        <li>discord: <strong>NonGMOTrash#9437</strong></li>
-        <li>email: <strong>nongmotrash@gmail.com</strong></li>
-        <li>github: <a href="https://github.com/NonGMOTrash">https://github.com/NonGMOTrash</a></li>
-		<li>newgrounds: <a href="https://nongmotrash.newgrounds.com">https://nongmotrash.newgrounds.com</a></li>
-      </ul>
-
-      <hr class="minor">
-      <h3 id="play-testers">play testers:</h3>
-      <p>
-        you!<br>
-        will add all the people later<br>
-        (you&#39;ll be in the credits of the game itself aswell)
-      </p>
-
-      <hr class="minor">
-      <h3 id="engine">engine:</h3>
-
-      <p>teralite was created with Godot Engine, it's license reads as follows:</p>
-
-      <code>
-        <pre>
-          Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur. Copyright (c) 2014-2021 Godot Engine contributors.
-
-          Permission is hereby granted, free of charge, to any person obtaining a copy
-          of this software and associated documentation files (the "Software"), to deal
-          in the Software without restriction, including without limitation the rights
-          to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-          copies of the Software, and to permit persons to whom the Software is
-          furnished to do so, subject to the following conditions:
-
-          The above copyright notice and this permission notice shall be included in all
-          copies or substantial portions of the Software.
-
-          THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-          IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-          FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-          AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-          LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-          OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-          SOFTWARE.
-        </pre>
-      </code>
-      <p>addtionally,</p>
-      <code>
-        <pre>
-          Portions of this software are copyright ©2021 The FreeType Project (www.freetype.org). All rights reserved.
-        </pre>
-      </code>
-
-      <hr class="minor">
-      <h3 id="font-credits-">font credits:</h3>
-	  
-	  <ul>
-		<li>main font: &quot;m6x11&quot; by Managore (<a href="https://managore.itch.io/m6x11">itch.io link</a>)</li>
-		<li>hover font: &quot;Smallest Pixel-7&quot; by Style 7 (<a href="https://www.dafont.com/smallest-pixel-7.font?text=s">dafont.com link</a>)</li>
-	  </ul>
-
-      <hr class="minor">
-      <h3 id="sound-credits">sound credits:</h3>
-
-      <ul>
-        <li>sword_hit: &quot;slashkut&quot; by Abyssmal (<a href="https://freesound.org/people/Abyssmal/sounds/35213/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>sword_clank: &quot;Sword clash 1&quot; by spycrah (<a href="https://freesound.org/people/spycrah/sounds/471095/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>sword_miss: &quot;Sword Swipe11&quot; by LukeSharples (<a href="https://freesound.org/people/LukeSharples/sounds/209121/">freesound.org link</a>) licensed under CC BY 3.0</li>
-
-        <li>sword_equip: &quot;Drawing sword from scabbard&quot; by giddster (<a href="https://freesound.org/people/giddster/sounds/484298/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>sword_kill: &quot;Sword Attack&quot; by Saviraz (<a href="https://freesound.org/people/Saviraz/sounds/547600/">freesound.org link</a>) licensed under CC BY 3.0</li>
-
-        <li>sword_tint: &quot;sword against sword&quot; by Fenodyrie (<a href="https://freesound.org/people/Fenodyrie/sounds/568790/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>counter_ready: &quot;Medieval metal shield set down on stone floor&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/medieval-metal-shield-set-down-on-stone-floor/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
-
-        <li>counter_success: &quot;Heavy metal bar impact, with a clang, cluck, thump 3&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/heavy-metal-bar-impact-with-a-clang-cluck-thump-3/">zapslat.com link</a>) licensed under ZapSplat standard license</li>
-
-        <li>forest_ambiance: &quot;Ambiance_Wind_Forest_Calm_Loop&quot; by Nox_Sound (<a href="https://freesound.org/people/Nox_Sound/sounds/506910/">freesound.com link</a>) licensed under CC0</li>
-
-        <li>cave_ambiance: &quot;cave_ambience_with_water_drips&quot; by seanmorrissey96 (<a href="https://freesound.org/people/seanmorrissey96/sounds/509423/">freesound.com link</a>) licensed under CC BY-NC 3.0</li>
-
-        <li>footstep_grass: &quot;Rustling Grass 2&quot; by morganpurkis (<a href="https://freesound.org/people/morganpurkis/sounds/396013/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>footstep_wood: &quot;Footstep_Wood_Heel_1&quot; by GiocoSound (<a href="https://freesound.org/people/GiocoSound/sounds/421150/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>footstep_stone: &quot;Footsteps Stone (1)&quot; by Wdomino (<a href="https://freesound.org/people/Wdomino/sounds/517118/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>footstep_carpet: &quot;footstep-carpet&quot; by swuing (<a href="https://freesound.org/people/swuing/sounds/38872/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>footstep_dirt: &quot;A_Step_On_Dirt&quot; by MATRIXXX_ (<a href="https://freesound.org/people/MATRIXXX_/sounds/370367/">freesound.org link</a>) licensed under CC BY 3.0</li>
-
-		<li>footstep_sand: &quot;Footsteps on Sand&quot; by BrendanSound12 (<a href="https://freesound.org/people/BrendanSound12/sounds/445155/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>star_pickup: &quot;Get Item 4 8 Bit&quot; by Mrthenoronha (<a href="https://freesound.org/people/Mrthenoronha/sounds/516824/">freesound.org link</a>) licensed under CC BY-NC 3.0</li>
-
-        <li>armor_pickup: &quot;armor10&quot; by pepingrillin (<a href="https://freesound.org/people/pepingrillin/sounds/252144/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>forest_ambiance: &quot;Ambiance_Wind_Forest_Calm_Loop&quot; by Nox_Sound (<a href="https://freesound.org/people/Nox_Sound/sounds/506910/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>pistol_fire: &quot;9mm gunside&quot; by cedarstudios (<a href="https://freesound.org/people/cedarstudios/sounds/148839/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>pistol_pickup: &quot;Pistol Cock&quot; by nebulasnails (<a href="https://freesound.org/people/nebulasnails/sounds/405538/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>pistol_reload: &quot;AR15 pistol load and chamber&quot; by michorvath (<a href="https://freesound.org/people/michorvath/sounds/427599/">freesound.org link</a>) licensed under CC0</li>
-
-		<li>bullet_collide: &quot;bullet ricochet&quot; by aust_paul (<a href="https://freesound.org/people/aust_paul/sounds/30932/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>damage: &quot;Hit 4 8 Bit&quot; by Mrthenoronha (<a href="https://freesound.org/people/Mrthenoronha/sounds/507702/">freesound.org link</a>) licensed under CC BY-NC 3.0</li>
-
-        <li>arrow_shoot: &quot;bow01&quot; by Erdie (<a href="https://freesound.org/people/Erdie/sounds/65733/">freesound.org link</a>) licensed under CC BY 3.0</li>
-
-        <li>arrow_collide: &quot;Arrow strike&quot; by plantmonkey (<a href="https://freesound.org/people/plantmonkey/sounds/410751/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>arrow_hit: &quot;arrow_damage&quot; by braqoon (<a href="https://freesound.org/people/braqoon/sounds/161098/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>arrow_block: &quot;Arrow Impact 2&quot; by LiamG_SFX (<a href="https://freesound.org/people/LiamG_SFX/sounds/322219/">freesound.org link</a>) licensed under CC BY-NC 3.0</li>
-		
-        <li>bow_drawn: &quot;Regular Arrow Shot with rattle slow draw&quot; by brendan89 (<a href="https://freesound.org/people/brendan89/sounds/321554/">freesound.org link</a>) licensed under CC BY 3.0</li>
-
-        <li>bow_equip: &quot;Wooden Creak&quot; by Mafon2 (<a href="https://freesound.org/people/Mafon2/sounds/377552/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>menu_hover: &quot;CLICK_143&quot; by Jaszunio15 (<a href="https://freesound.org/people/Jaszunio15/sounds/421475/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>menu_click: &quot;Wooden Hover&quot; by BenjaminNelan (<a href="https://freesound.org/people/BenjaminNelan/sounds/321082/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>menu_pause <i>and</i> menu_unpause: &quot;Access Denied&quot; by suntemple (<a href="https://freesound.org/people/suntemple/sounds/249300/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>spike_rise: &quot;Spiketrap&quot; by Deathscyp (<a href="https://freesound.org/people/Deathscyp/sounds/443806/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>crate_destroy: &quot; Wood Break&quot; by Deathscyp (<a href="https://freesound.org/people/Deathscyp/sounds/443293/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>player_death: &quot;Retro Video Game Death&quot; by SRJA_Gaming ( <a href="https://freesound.org/people/SRJA_Gaming/sounds/543255/">freesound.org link</a> ) licensed under CC0</li>
-
-        <li>heal: &quot;Healing 2 (Tranquillity)&quot; by SilverIllusionist (<a href="https://freesound.org/people/SilverIllusionist/sounds/518800/">freesound.org link</a>) licensed under CC BY 3.0</li>
-
-        <li>super_heal: &quot;healpop&quot; by shyguy014 (<a href="https://freesound.org/people/shyguy014/sounds/458533/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>os_error: &quot;Error&quot; by Isaac200000 (<a href="https://freesound.org/people/Isaac200000/sounds/188013/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>shine: ripped from <a href="https://20xx.io">20xx.io</a> (great game btw), thanks InfernoPlus for letting me use it!</li>
-
-        <li>shine_reflect: &quot;hvyelec&quot; by inferno (<a href="https://freesound.org/people/inferno/sounds/18381/">freesound.org link</a>) licensed under CC Sampling+</li>
-
-        <li>shine_hit: &quot;Electricity spark (sound design) 2&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/electricity-spark-sound-design-2/">zapslat.com link</a>) licensed under ZapSplat standard license</li>
-
-        <li>magic_shoot: &quot;Enchant&quot; by qubodup (<a href="https://freesound.org/people/qubodup/sounds/202147/">freesound.org link</a>) licensed under CC BY 3.0</li>
-
-        <li>magic_collide: &quot;Menu FX 03&quot; (normal) by NightFlame (<a href="https://freesound.org/people/Nightflame/sounds/422514/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>bow_equip: &quot;Wooden Object Take&quot; by Kostas17 (<a href="https://freesound.org/people/Kostas17/sounds/537765/">freesound.org link</a>) licensed under CC BY 3.0</li>
-
-        <li>spear_throw: &quot;Medieval spear swing 2&quot; by Still North Media (<a href="https://www.zapsplat.com/music/medieval-spear-swing-2/">zapslat.com link</a>) licesned under CC0</li>
-
-        <li>spear_kill: &quot;Gore, beheading, chopping off head&quot; by 344 Audio (<a href="https://www.zapsplat.com/music/gore-beheading-chopping-off-head/">zapslat.com link</a>) licensed under ZapSplat standard license</li>
-
-        <li>
-          thrown_spear_hit: &quot;Spear thrown and stick into ground with slight vibration of the wooden spear pole on impact. Version 1&quot; by ZapSplat (
-          <a href="https://www.zapsplat.com/music/spear-thrown-and-stick-into-ground-with-slight-vibration-of-the-wooden-spear-pole-on-impact-version-1/">zapslat.com link</a>) licensed under ZapSplat standard license
-        </li>
-
-        <li>
-          thrown_spear_collide: &quot;Sharp wooden post, stake, dig into soil, ground 4&quot; by ZapSplat ( <a href="https://www.zapsplat.com/music/sharp-wooden-post-stake-dig-into-soil-ground-4/">zapslat.com link</a> ) licensed under
-          ZapSplat standard license
-        </li>
-
-        <li>
-          thrown_spear_blocked: &quot;Axe swing, hit body against wood, metal clang, impact squelch 3&quot; by ZapSplat (
-          <a href="https://www.zapsplat.com/music/axe-swing-hit-body-against-wood-metal-clang-impact-squelch-3/">zapslat.com link</a>) licensed under ZapSplat standard license
-        </li>
-
-        <li>
-          poke_miss <i>and</i> poke_collide: &quot;Spear thrown and stick into ground with slight vibration of the wooden spear pole on impact. Version 5&quot; by ZapSplat (
-          <a href="https://www.zapsplat.com/music/spear-thrown-and-stick-into-ground-with-slight-vibration-of-the-wooden-spear-pole-on-impact-version-5/">zapslat.com link</a> ) licensed under ZapSplat standard license
-        </li>
-
-        <li>
-          poke_hit: &quot;Sword, stab through chain mail into flesh, sharp, metallic scrape followed by a quick, crunchy slash / impact, close perspective&quot; by Audio Hero (
-          <a href="https://www.zapsplat.com/music/sword-stab-through-chain-mail-into-flesh-sharp-metallic-scrape-followed-by-a-quick-crunchy-slash-impact-close-perspective/">zapslat.com link</a> ) licensed under ZapSplat standard license
-        </li>
-
-        <li>poke_blocked: &quot;2 x swords hit, impact 1&quot; by ZapSplat ( <a href="https://www.zapsplat.com/music/2-x-swords-hit-impact-1/">zapslat.com link</a> ) licensed under ZapSplat standard license</li>
-
-		<li>poke_tipper: &quot;Whoosh Heavy Spear Hammer Large&quot; by EminYILDIRIM(<a href="https://freesound.org/people/EminYILDIRIM/sounds/540300/">freesound.org link</a>) licensed under CC-BY 3.0</li>
-
-        <li>
-          swipe_miss: &quot;Knife, swish, swipe through air, slashing movements 3&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/knife-swish-swipe-through-air-slashing-movements-3/">zapslat.com link</a>) licensed under ZapSplat
-          standard license
-        </li>
-
-        <li>
-          swipe_collide: &quot;Large knife hit, strike another with a clunk 1&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/large-knife-hit-strike-another-with-a-clunk-1/">zapslat.com link</a>) licensed under ZapSplat standard
-          license
-        </li>
-
-        <li>
-          dagger_equip: &quot;Knife, dagger blade draw, pull from sheath 7&quot; by ZapSplat ( <a href="https://www.zapsplat.com/music/knife-dagger-blade-draw-pull-from-sheath-7/">zapslat.com link</a> ) licensed under ZapSplat standard
-          license
-        </li>
-
-        <li>dagger_dash: &quot;Bullet pass, whizz by 2&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/bullet-pass-whizz-by-2/">zapslat.com link</a>) licensed under ZapSplat standard license</li>
-
-        <li>
-          dagger_dash_hit: &quot;Bullet whizz into person, body with an impact and light splat. Version 1&quot; by ZapSplat (
-          <a href="https://www.zapsplat.com/music/bullet-whizz-into-person-body-with-an-impact-and-light-splat-version-1/">zapslat.com link</a> ) licensed under ZapSplat standard license
-        </li>
-
-        <li>swipe_blocked: &quot;Metal hit, impact, sharp flick, tinny 1&quot; by ZapSplat ( <a href="https://www.zapsplat.com/music/metal-hit-impact-sharp-flick-tinny-1/">zapslat.com link</a> ) licensed under ZapSplat standard license</li>
-
-        <li>
-          swipe_hit: &quot;Horror, knife stab into flesh then pull out, very squelchy 3&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/horror-knife-stab-into-flesh-then-pull-out-very-squelchy-3/">zapslat.com link</a>) licensed
-          under ZapSplat standard license
-        </li>
-
-        <li>xbow_equip: &quot;Bolt Cutter&quot; by jameswrowles (<a href="https://freesound.org/people/jameswrowles/sounds/516590/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>xbow_reload: &quot;mini crossbow foley&quot; by nettimato (<a href="https://freesound.org/people/nettimato/sounds/350345/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>bolt_shoot: &quot;bow02&quot; by Erdie (<a href="https://freesound.org/people/Erdie/sounds/65734/">freesound.org link</a>) licensed under CC-BY 3.0</li>
-
-        <li>bolt_hit: &quot;Medieval crossbow bolt pass by 1&quot; by Still North Media (<a href="https://www.zapsplat.com/music/medieval-crossbow-bolt-pass-by-1/">zapslat.com link</a>) licensed under CC0</li>
-
-        <li>
-          bolt_blocked: &quot;Fast swing, whoosh into a metal hit, thud or clunk, could be sword hitting shield or armor. Version 1&quot; by ZapSplat (
-          <a href="https://www.zapsplat.com/music/fast-swing-whoosh-into-a-metal-hit-thud-or-clunk-could-be-sword-hitting-shield-or-armor-version-1/">zapslat.com link</a>) licensed under ZapSplat standard license
-        </li>
-
-        <li>potion_equip: &quot;PotionDrinkLONG&quot; by Jamius (<a href="https://freesound.org/people/Jamius/sounds/41529/">freesound.org link</a>) licensed under CC BY 3.0</li>
-
-        <li>potion_drink: &quot;Potion - drink - swallow&quot; by vlnpetiteau (<a href="https://freesound.org/people/vlnpetiteau/sounds/574077/#comments">freesound.org link</a>) licensed under CC0</li>
-
-        <li>potion_break: &quot;Bottle Shattering&quot; by spookymodem (<a href="https://freesound.org/people/spookymodem/sounds/202093/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>speed_feather_use: &quot;Soft Wind&quot; by Animate_42 (<a href="https://freesound.org/people/Animate_42/sounds/502883/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>warp: &quot;teleport&quot; by Leszek_Szary (<a href="https://freesound.org/people/Leszek_Szary/sounds/172206/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>blow_dart_shoot: &quot;Blowpipe&quot; by loudernoises (<a href="https://freesound.org/people/loudernoises/sounds/334168/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>blow_dart_collide: &quot;Dart strikes dartboard 5&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/dart-strikes-dartboard-5/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
-
-        <li>blow_dart_hit: &quot;Blood Impact&quot; by EminYILDIRIM (<a href="https://freesound.org/people/EminYILDIRIM/sounds/554284/">freesound.org link</a>) licensed under CC BY 3.0</li>
-
-        <li>gold_apple_eat: &quot;Keys17&quot; by egolessdub (<a href="https://freesound.org/people/egolessdub/sounds/97468/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>key_equip: &quot;Eating an apple&quot; by domvoice (<a href="https://freesound.org/people/domvoice/sounds/150228/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>lock_open: &quot;Door_Unlocking&quot; by IPaddeh (<a href="https://freesound.org/people/IPaddeh/sounds/422852/">freesound.org link</a>) licensed under CC0</li>
-
-        <li>watcher_lock_rise: &quot;Block of unused staples drop on table&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/block-of-unused-staples-drop-on-table/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
-
-        <li>watcher_lock_lower: &quot;Breeze block drop on hard ground 4&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/breeze-block-drop-on-hard-ground-4/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
-		
-		<li>medkit_equip: &quot;Fabric first aid medical kit with cellophane wrapped bandages inside, open, velcro 2&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/fabric-first-aid-medical-kit-with-cellophane-wrapped-bandages-inside-open-velcro-2/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
-		
-		<li>medkit_use: &quot;Fabric first aid medical kit with cellophane wrapped bandages inside, handling, movement&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/fabric-first-aid-medical-kit-with-cellophane-wrapped-bandages-inside-handling-movement/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
-		
-		<li>explosion: &quot;Explosion 2&quot; by LiamG_SFX (<a href="https://freesound.org/people/LiamG_SFX/sounds/322509/">freesound.org link</a>) licensed under CC BY-NC 3.0</li>
-		
-		<li>awp_equip: &quot;Sniper Scope zoom in 1&quot; by Supakid13 (<a href="https://freesound.org/people/Supakid13/sounds/210018/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>awp_scope: &quot;Scope Click - Sniper Rifle (4)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522319/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>awp_unscope: &quot;Scope Click - Sniper Rifle (5)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522318/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>awp_shoot: &quot;Sniper Rifle Firing Shot (4)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522359/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>awp_shoot_crit: &quot;Sniper Rifle Firing Shot (4)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522429/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>awp_eject: &quot;shot and reload&quot; by deathnsorrow (<a href="https://freesound.org/people/deathnsorrow/sounds/149177/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>awp_reload: &quot;Sniper Rifle - Loading Ammo (3)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522336/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>awp_360: &quot;Soft-Notifications - Bell - LowDing.mp3&quot; by LegitCheese (<a href="https://freesound.org/people/LegitCheese/sounds/571511/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>shotgun_equip: &quot;SXP_SHOTGUN_RACK_01&quot; by dasBUTCHER84 (<a href="https://freesound.org/people/dasBUTCHER84/sounds/449614/#comments">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>shotgun_shoot: &quot;Shotgun - Firing (2)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522484/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>shotgun_shell: &quot;Shell Hitting Ground (17)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522295/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>shotgun_reload: &quot;Winchester, Model 12, shotgun, pump action, 12 gauge, load mag&quot; by Still North Media (<a href="https://www.zapsplat.com/music/winchester-model-12-shotgun-pump-action-12-gauge-load-mag/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
-		
-		<li>skeleton_death <i>and</i> skeleton_resurrect: &quot;Skeleton bones (game)&quot; by cribbler(<a href="https://freesound.org/people/cribbler/sounds/381859/">zapsplat.com link</a>) licensed under CC0</li>
-		
-		<li>assault_rifle_equip: &quot;AK 47 Action&quot; by dwightsabeast(<a href="https://freesound.org/people/dwightsabeast/sounds/543594/#comments">freesound.org link</a>) licensed under CC BY 3.0</li>
-		
-		<li>assault_rifle_shoot: &quot;Gun, rifle, single shot, designed&quot; by ZapSplat(<a href="https://www.zapsplat.com/music/gun-rifle-single-shot-designed/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
-		
-		<li>assault_rifle_reload: &quot;AKManipulation&quot; by Mittelmorder(<a href="https://freesound.org/people/Mittelmorder/sounds/122690/">freesound.org link</a>) licensed under CC BY 3.0</li>
-		
-		<li>stalker_reveal: &quot;Dissonant Piano Sting 5&quot; by nomiqbomi(<a href="https://freesound.org/people/nomiqbomi/sounds/578356/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>deagle_equip: &quot;close gun&quot; by nettimato(<a href="https://freesound.org/people/nettimato/sounds/350348/">zapsplat.com link</a>) licensed under CC0</li>
-		
-		<li>deagle_shoot: &quot;Desert Eagle .50AE shot&quot; by vabadus(<a href="https://www.zapsplat.com/music/gunshot-handgun-single-shot-exterior-1-2/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>deagle_reload: &quot;CP99 Reload&quot; by Kruf(<a href="https://freesound.org/people/Kruf/sounds/528709/">zapsplat.com link</a>) licensed under CC0</li>
-		
-		<li>metal_crate_hit: &quot;Anvil Hit 2&quot; by michorvath(<a href="https://freesound.org/people/michorvath/sounds/270588/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>heart_mimic_reveal: &quot;Small bones crush and break, could be hand, fingers or foot 3&quot; by ZapSplat(<a href="https://www.zapsplat.com/music/small-bones-crush-and-break-could-be-hand-fingers-or-foot-3/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
-		
-		<li>landmine_place: &quot;Digging, Ice, Hammer, A.wav&quot; by InspectorJ(<a href="https://freesound.org/people/InspectorJ/sounds/420878/">freesound.org link</a>) licensed under CC-BY 3.0</li>
-		
-		<li>landmine_warning: &quot;Double Beep&quot; by andersmmg(<a href="https://freesound.org/people/andersmmg/sounds/511492/">freesound.org link</a>) licensed under CC-BY 3.0</li>
-	  
-		<li>rocket_shoot: &quot;Firework rocket launch&quot; by ZapSplat(<a href="https://www.zapsplat.com/music/firework-rocket-launch/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
-		
-		<li>rocket_launcher_load: &quot;Very small tin, circular, lid open 2&quot; by ZapSplat(<a href="https://www.zapsplat.com/music/very-small-tin-circular-lid-open-2/">zapslat.com link</a>) licensed under ZapSplat standard license</li>
-	  
-		<li>flamethrower_start <i>and</i> flamethrower_shoot <i>and</i> flamethrower_end: &quot;Heavy flame burst.&quot; by SmartSound(<a href="https://www.zapsplat.com/music/heavy-flame-burst/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
-		
-		<li>injection_equip: &quot;Syringe squirt liquid out into air. Version 4&quot; by ZapSplat(<a href="https://www.zapsplat.com/music/syringe-squirt-liquid-out-into-air-short-and-fast-version-2/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
-		
-		<li>syringe_hit: &quot;Syringe squirt liquid out into air, short and fast. Version 2&quot; by ZapSplat(<a href="https://www.zapsplat.com/music/syringe-squirt-liquid-out-into-air-short-and-fast-version-2/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
-		
-		<li>syringe_miss: &quot;Syringe squirt liquid, short squelch. Version 2&quot; by ZapSplat(<a href="https://www.zapsplat.com/music/syringe-squirt-liquid-short-squelch-version-2/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
-		
-		<li>footstep_metal: &quot;Walking on Metal Floor&quot; by NachtmahrTV(<a href="https://freesound.org/people/NachtmahrTV/sounds/556715/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>wasteland_ambience: &quot;Rural Australian bush ambience, summer, midday, lots of loud insects, cicada, crickets and birds. Version 1&quot; by ZapSplat(<a href="https://www.zapsplat.com/music/rural-australian-bush-ambience-summer-midday-lots-of-loud-insects-cicada-crickets-and-birds-version-1/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
-		
-		<li>fire: &quot;bonfire flames sizzling&quot; by florianreichelt(<a href="https://freesound.org/people/florianreichelt/sounds/563764/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>timber_pot_ignite: &quot;Ignite, 01-01&quot; by InspectorJ(<a href="https://freesound.org/people/InspectorJ/sounds/484266/">freesound.org link</a>) licensed under CC BY 3.0 <i>and</i>  &quot;Cracking, snapping, and clanging (metal can)&quot; by Ashley12275(<a href="https://freesound.org/people/Ashley12275/sounds/518731/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>arrow_turret_destroy: &quot;Wood Crate Destory 2&quot; by Bertsz(<a href="https://freesound.org/people/Bertsz/sounds/500901/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>pylon_destroy: &quot;Hard Glass Impact&quot; by deleted_user_3656686(<a href="https://freesound.org/people/deleted_user_3656686/sounds/418194/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>burrow: &quot;Digging in Dirt&quot; by Anandthethird(<a href="https://freesound.org/people/Anandthethird/sounds/366713/">freesound.org link</a>) licensed under CC BY-NC 3.0</li>
-		
-		<li>poison_shoot: &quot;Poison Spell Magic&quot; by qubodup(<a href="https://freesound.org/people/qubodup/sounds/219566/">freesound.org link</a>) licensed under CC BY 3.0</li>
-		
-		<li>hiss: &quot;hissing snake sound effect&quot; by Garuda1982(<a href="https://freesound.org/people/Garuda1982/sounds/541656/">freesound.org link</a>) licensed under CC BY 3.0</li>
-		
-		<li>blast_shoot: &quot;blaster shot single 5&quot; by MikeE63(<a href="https://freesound.org/people/MikeE63/sounds/466867/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>overheat: &quot;minigun_Overheat&quot; by Marregheriti(<a href="https://freesound.org/people/Marregheriti/sounds/266102/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>saber_whoosh: &quot;Futuristic Woosh sound&quot; by Mega-X-stream(<a href="https://freesound.org/people/Mega-X-stream/sounds/546278/">freesound.org link</a>) licensed under CC BY-NC 3.0</li>
-		
-		<li>saber_equip: &quot;Lightsaber Ignition&quot; by pip_ (<a href="https://freesound.org/people/pip_/sounds/557194/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>saber_hit: &quot;lightsaber clash&quot; by reesewong8 (<a href="https://freesound.org/people/reesewong8/sounds/181863/">freesound.org link</a>) licensed under CC0</li>
-		
-		<li>teleport: &quot;port&quot; by reesewong8 (<a href="https://freesound.org/people/Sergenious/sounds/55843/">freesound.org link</a>) licensed under CC BY 3.0</li>
-   	 
-      <li>pulse_shoot: &quot;port&quot; by reesewong8 (<a href="https://freesound.org/people/SeanSecret/sounds/440660/">freesound.org link</a>) licensed under CC0</li>
-
-      <li>pulse_bounce: &quot;Impact_010&quot; by reesewong8 (<a href="https://freesound.org/people/AlienXXX/sounds/196223/">freesound.org link</a>) licensed under CC BY 3.0</li>
-
-      <li>portal_ray: &quot;Teleport&quot; by Fupicat (<a href="https://freesound.org/people/AlienXXX/sounds/196223/">freesound.org link</a>) licensed under CC0</li>
-      </ul>
-
-      <p>a big thanks to all the sound authors for letting me legally steal your hard work to use in my game &lt;3</p>
-
-	  <hr class="minor">
-
-	  <h3 id="shader-credits">shader credits</h3>
+        </code> </pre>
+		<br>
+		<p>hello, thanks for downloading</p>
+		<hr class="major">
+		<h1 id="faq">(un)frequently asked questions</h1>
+		<hr class="minor">
+		<h2 id="can-i-share">can i share this game with other people?</h2>
+		<p> please don't, i wanna keep this game sorta secret for now. if you violate this policy, i will do absolutely nothing except be very very sad. however when the game is out, please share this game with EVERYONE. just like, constantly </p>
+		<hr class="minor">
+		<h2 id="pck-not-found">.pck not found at path '.' error</h2>
+		<p> teralite.exe has to be in the same folder as the teralite.pck or it won't work. if you want to have access to the game somewhere else, just make a shortcut of teralite.exe </p>
+		<hr class="minor">
+		<h2 id="particles-not-working">particles not working</h2>
+		<p> if you're using a CPU with integrated graphics that doesn't support OpenGL ES 3, the game will fallback to OpenGL ES 2. this mostly works okay, but the game will run worse and particle effects won't work. sorry! i might make a "CPU particles" option in the future, but it would be a hassle because i would have to make a 2nd version of every particle effect </p>
+		<hr class="minor">
+		<h2 id="old-saves-dissappeared">old saves dissappeared</h2>
+		<p> due to the name change from project epsilon to teralite in beta 2.12, the game won't be able to find the folder where old game data was stored because it was renamed.
+			<br> it&#39;s pretty easy to fix tho, just follow these steps: </p>
+		<ol>
+			<li>go to the search bar on windows and search "%APPDATA%" (should take you to a file folder)</li>
+			<li>find the folder named &quot;Project Epsilon&quot; and rename it to &quot;Teralite&quot;</li>
+			<li>if it asks you if you want to replace the folder that&#39;s already named Teralite, click Yes</li>
+			<li> reopen teralite, and you should see your saves
+				<br> (you can also just cut and paste the actual save files from Project Epsilon into Teralite) </li>
+		</ol>
+		<hr class="minor">
+		<h2 id="compatiability-with-older-saves">compatiability with older saves</h2>
+		<p>currently all save versions are compatiable with eachother. however, if you still somehow have a save from aaaaall the way back at 1.X, i recomend you just start over (besides you'll only lose like 5 minutes of progress lol). there shouldn't be any compatiability breaking changes, except for possibily the full release</p>
+		<hr class="major">
+		<h1 id="credits">credits</h1>
+		<hr class="minor">
+		<h3 id="developer">developer:</h3>
+		<p>NonGMOTrash</p>
 		<ul>
-			<li>
-			<strong>color_overlay.shader</strong> by heartbeast (<a href="https://www.youtube.com/watch?v=Ot9M0TlxApU=1500">from action rpg tutorial)</a></li>
+			<li>itch: <a href="https://nongmotrash.itch.io">https://nongmotrash.itch.io</a></li>
+			<li>youtube: <a href="https://www.youtube.com/channel/UCeM_Vg53GAkVPdgEmPfPAsw">https://www.youtube.com/channel/UCeM_Vg53GAkVPdgEmPfPAsw</a></li>
+			<li>discord: <strong>NonGMOTrash#9437</strong></li>
+			<li>email: <strong>nongmotrash@gmail.com</strong></li>
+			<li>github: <a href="https://github.com/NonGMOTrash">https://github.com/NonGMOTrash</a></li>
+			<li>newgrounds: <a href="https://nongmotrash.newgrounds.com">https://nongmotrash.newgrounds.com</a></li>
+		</ul>
+		<hr class="minor">
+		<h3 id="play-testers">play testers:</h3>
+		<p> you!
+			<br> will add all the people later
+			<br> (you&#39;ll be in the credits of the game itself aswell) </p>
+		<hr class="minor">
+		<h3 id="engine">engine:</h3>
+		<p>teralite was created with Godot Engine, it's license reads as follows:</p> <code> <pre> Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur. Copyright (c) 2014-2021 Godot Engine contributors. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. </pre> </code>
+		<p>addtionally,</p> <code> <pre> Portions of this software are copyright ©2021 The FreeType Project (www.freetype.org). All rights reserved. </pre> </code>
+		<hr class="minor">
+		<h3 id="font-credits-">font credits:</h3>
+		<ul>
+			<li>main font: &quot;m6x11&quot; by Managore (<a href="https://managore.itch.io/m6x11">itch.io link</a>)</li>
+			<li>hover font: &quot;Smallest Pixel-7&quot; by Style 7 (<a href="https://www.dafont.com/smallest-pixel-7.font?text=s">dafont.com link</a>)</li>
+		</ul>
+		<hr class="minor">
+		<h3 id="sound-credits">sound credits:</h3>
+		<ul>
+			<li>sword_hit: &quot;slashkut&quot; by Abyssmal (<a href="https://freesound.org/people/Abyssmal/sounds/35213/">freesound.org link</a>) licensed under CC0</li>
+			<li>sword_clank: &quot;Sword clash 1&quot; by spycrah (<a href="https://freesound.org/people/spycrah/sounds/471095/">freesound.org link</a>) licensed under CC0</li>
+			<li>sword_miss: &quot;Sword Swipe11&quot; by LukeSharples (<a href="https://freesound.org/people/LukeSharples/sounds/209121/">freesound.org link</a>) licensed under CC BY 3.0</li>
+			<li>sword_equip: &quot;Drawing sword from scabbard&quot; by giddster (<a href="https://freesound.org/people/giddster/sounds/484298/">freesound.org link</a>) licensed under CC0</li>
+			<li>sword_kill: &quot;Sword Attack&quot; by Saviraz (<a href="https://freesound.org/people/Saviraz/sounds/547600/">freesound.org link</a>) licensed under CC BY 3.0</li>
+			<li>sword_tint: &quot;sword against sword&quot; by Fenodyrie (<a href="https://freesound.org/people/Fenodyrie/sounds/568790/">freesound.org link</a>) licensed under CC0</li>
+			<li>counter_ready: &quot;Medieval metal shield set down on stone floor&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/medieval-metal-shield-set-down-on-stone-floor/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
+			<li>counter_success: &quot;Heavy metal bar impact, with a clang, cluck, thump 3&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/heavy-metal-bar-impact-with-a-clang-cluck-thump-3/">zapslat.com link</a>) licensed under ZapSplat standard license</li>
+			<li>forest_ambiance: &quot;Ambiance_Wind_Forest_Calm_Loop&quot; by Nox_Sound (<a href="https://freesound.org/people/Nox_Sound/sounds/506910/">freesound.com link</a>) licensed under CC0</li>
+			<li>cave_ambiance: &quot;cave_ambience_with_water_drips&quot; by seanmorrissey96 (<a href="https://freesound.org/people/seanmorrissey96/sounds/509423/">freesound.com link</a>) licensed under CC BY-NC 3.0</li>
+			<li>footstep_grass: &quot;Rustling Grass 2&quot; by morganpurkis (<a href="https://freesound.org/people/morganpurkis/sounds/396013/">freesound.org link</a>) licensed under CC0</li>
+			<li>footstep_wood: &quot;Footstep_Wood_Heel_1&quot; by GiocoSound (<a href="https://freesound.org/people/GiocoSound/sounds/421150/">freesound.org link</a>) licensed under CC0</li>
+			<li>footstep_stone: &quot;Footsteps Stone (1)&quot; by Wdomino (<a href="https://freesound.org/people/Wdomino/sounds/517118/">freesound.org link</a>) licensed under CC0</li>
+			<li>footstep_carpet: &quot;footstep-carpet&quot; by swuing (<a href="https://freesound.org/people/swuing/sounds/38872/">freesound.org link</a>) licensed under CC0</li>
+			<li>footstep_dirt: &quot;A_Step_On_Dirt&quot; by MATRIXXX_ (<a href="https://freesound.org/people/MATRIXXX_/sounds/370367/">freesound.org link</a>) licensed under CC BY 3.0</li>
+			<li>footstep_sand: &quot;Footsteps on Sand&quot; by BrendanSound12 (<a href="https://freesound.org/people/BrendanSound12/sounds/445155/">freesound.org link</a>) licensed under CC0</li>
+			<li>star_pickup: &quot;Get Item 4 8 Bit&quot; by Mrthenoronha (<a href="https://freesound.org/people/Mrthenoronha/sounds/516824/">freesound.org link</a>) licensed under CC BY-NC 3.0</li>
+			<li>armor_pickup: &quot;armor10&quot; by pepingrillin (<a href="https://freesound.org/people/pepingrillin/sounds/252144/">freesound.org link</a>) licensed under CC0</li>
+			<li>forest_ambiance: &quot;Ambiance_Wind_Forest_Calm_Loop&quot; by Nox_Sound (<a href="https://freesound.org/people/Nox_Sound/sounds/506910/">freesound.org link</a>) licensed under CC0</li>
+			<li>pistol_fire: &quot;9mm gunside&quot; by cedarstudios (<a href="https://freesound.org/people/cedarstudios/sounds/148839/">freesound.org link</a>) licensed under CC0</li>
+			<li>pistol_pickup: &quot;Pistol Cock&quot; by nebulasnails (<a href="https://freesound.org/people/nebulasnails/sounds/405538/">freesound.org link</a>) licensed under CC0</li>
+			<li>pistol_reload: &quot;AR15 pistol load and chamber&quot; by michorvath (<a href="https://freesound.org/people/michorvath/sounds/427599/">freesound.org link</a>) licensed under CC0</li>
+			<li>bullet_collide: &quot;bullet ricochet&quot; by aust_paul (<a href="https://freesound.org/people/aust_paul/sounds/30932/">freesound.org link</a>) licensed under CC0</li>
+			<li>damage: &quot;Hit 4 8 Bit&quot; by Mrthenoronha (<a href="https://freesound.org/people/Mrthenoronha/sounds/507702/">freesound.org link</a>) licensed under CC BY-NC 3.0</li>
+			<li>arrow_shoot: &quot;bow01&quot; by Erdie (<a href="https://freesound.org/people/Erdie/sounds/65733/">freesound.org link</a>) licensed under CC BY 3.0</li>
+			<li>arrow_collide: &quot;Arrow strike&quot; by plantmonkey (<a href="https://freesound.org/people/plantmonkey/sounds/410751/">freesound.org link</a>) licensed under CC0</li>
+			<li>arrow_hit: &quot;arrow_damage&quot; by braqoon (<a href="https://freesound.org/people/braqoon/sounds/161098/">freesound.org link</a>) licensed under CC0</li>
+			<li>arrow_block: &quot;Arrow Impact 2&quot; by LiamG_SFX (<a href="https://freesound.org/people/LiamG_SFX/sounds/322219/">freesound.org link</a>) licensed under CC BY-NC 3.0</li>
+			<li>bow_drawn: &quot;Regular Arrow Shot with rattle slow draw&quot; by brendan89 (<a href="https://freesound.org/people/brendan89/sounds/321554/">freesound.org link</a>) licensed under CC BY 3.0</li>
+			<li>bow_equip: &quot;Wooden Creak&quot; by Mafon2 (<a href="https://freesound.org/people/Mafon2/sounds/377552/">freesound.org link</a>) licensed under CC0</li>
+			<li>menu_hover: &quot;CLICK_143&quot; by Jaszunio15 (<a href="https://freesound.org/people/Jaszunio15/sounds/421475/">freesound.org link</a>) licensed under CC0</li>
+			<li>menu_click: &quot;Wooden Hover&quot; by BenjaminNelan (<a href="https://freesound.org/people/BenjaminNelan/sounds/321082/">freesound.org link</a>) licensed under CC0</li>
+			<li>menu_pause <i>and</i> menu_unpause: &quot;Access Denied&quot; by suntemple (<a href="https://freesound.org/people/suntemple/sounds/249300/">freesound.org link</a>) licensed under CC0</li>
+			<li>spike_rise: &quot;Spiketrap&quot; by Deathscyp (<a href="https://freesound.org/people/Deathscyp/sounds/443806/">freesound.org link</a>) licensed under CC0</li>
+			<li>crate_destroy: &quot; Wood Break&quot; by Deathscyp (<a href="https://freesound.org/people/Deathscyp/sounds/443293/">freesound.org link</a>) licensed under CC0</li>
+			<li>player_death: &quot;Retro Video Game Death&quot; by SRJA_Gaming ( <a href="https://freesound.org/people/SRJA_Gaming/sounds/543255/">freesound.org link</a> ) licensed under CC0</li>
+			<li>heal: &quot;Healing 2 (Tranquillity)&quot; by SilverIllusionist (<a href="https://freesound.org/people/SilverIllusionist/sounds/518800/">freesound.org link</a>) licensed under CC BY 3.0</li>
+			<li>super_heal: &quot;healpop&quot; by shyguy014 (<a href="https://freesound.org/people/shyguy014/sounds/458533/">freesound.org link</a>) licensed under CC0</li>
+			<li>os_error: &quot;Error&quot; by Isaac200000 (<a href="https://freesound.org/people/Isaac200000/sounds/188013/">freesound.org link</a>) licensed under CC0</li>
+			<li>shine: ripped from <a href="https://20xx.io">20xx.io</a> (great game btw), thanks InfernoPlus for letting me use it!</li>
+			<li>shine_reflect: &quot;hvyelec&quot; by inferno (<a href="https://freesound.org/people/inferno/sounds/18381/">freesound.org link</a>) licensed under CC Sampling+</li>
+			<li>shine_hit: &quot;Electricity spark (sound design) 2&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/electricity-spark-sound-design-2/">zapslat.com link</a>) licensed under ZapSplat standard license</li>
+			<li>magic_shoot: &quot;Enchant&quot; by qubodup (<a href="https://freesound.org/people/qubodup/sounds/202147/">freesound.org link</a>) licensed under CC BY 3.0</li>
+			<li>magic_collide: &quot;Menu FX 03&quot; (normal) by NightFlame (<a href="https://freesound.org/people/Nightflame/sounds/422514/">freesound.org link</a>) licensed under CC0</li>
+			<li>bow_equip: &quot;Wooden Object Take&quot; by Kostas17 (<a href="https://freesound.org/people/Kostas17/sounds/537765/">freesound.org link</a>) licensed under CC BY 3.0</li>
+			<li>spear_throw: &quot;Medieval spear swing 2&quot; by Still North Media (<a href="https://www.zapsplat.com/music/medieval-spear-swing-2/">zapslat.com link</a>) licesned under CC0</li>
+			<li>spear_kill: &quot;Gore, beheading, chopping off head&quot; by 344 Audio (<a href="https://www.zapsplat.com/music/gore-beheading-chopping-off-head/">zapslat.com link</a>) licensed under ZapSplat standard license</li>
+			<li> thrown_spear_hit: &quot;Spear thrown and stick into ground with slight vibration of the wooden spear pole on impact. Version 1&quot; by ZapSplat ( <a href="https://www.zapsplat.com/music/spear-thrown-and-stick-into-ground-with-slight-vibration-of-the-wooden-spear-pole-on-impact-version-1/">zapslat.com link</a>) licensed under ZapSplat standard license </li>
+			<li> thrown_spear_collide: &quot;Sharp wooden post, stake, dig into soil, ground 4&quot; by ZapSplat ( <a href="https://www.zapsplat.com/music/sharp-wooden-post-stake-dig-into-soil-ground-4/">zapslat.com link</a> ) licensed under ZapSplat standard license </li>
+			<li> thrown_spear_blocked: &quot;Axe swing, hit body against wood, metal clang, impact squelch 3&quot; by ZapSplat ( <a href="https://www.zapsplat.com/music/axe-swing-hit-body-against-wood-metal-clang-impact-squelch-3/">zapslat.com link</a>) licensed under ZapSplat standard license </li>
+			<li> poke_miss <i>and</i> poke_collide: &quot;Spear thrown and stick into ground with slight vibration of the wooden spear pole on impact. Version 5&quot; by ZapSplat ( <a href="https://www.zapsplat.com/music/spear-thrown-and-stick-into-ground-with-slight-vibration-of-the-wooden-spear-pole-on-impact-version-5/">zapslat.com link</a> ) licensed under ZapSplat standard license </li>
+			<li> poke_hit: &quot;Sword, stab through chain mail into flesh, sharp, metallic scrape followed by a quick, crunchy slash / impact, close perspective&quot; by Audio Hero ( <a href="https://www.zapsplat.com/music/sword-stab-through-chain-mail-into-flesh-sharp-metallic-scrape-followed-by-a-quick-crunchy-slash-impact-close-perspective/">zapslat.com link</a> ) licensed under ZapSplat standard license </li>
+			<li>poke_blocked: &quot;2 x swords hit, impact 1&quot; by ZapSplat ( <a href="https://www.zapsplat.com/music/2-x-swords-hit-impact-1/">zapslat.com link</a> ) licensed under ZapSplat standard license</li>
+			<li>poke_tipper: &quot;Whoosh Heavy Spear Hammer Large&quot; by EminYILDIRIM(<a href="https://freesound.org/people/EminYILDIRIM/sounds/540300/">freesound.org link</a>) licensed under CC-BY 3.0</li>
+			<li> swipe_miss: &quot;Knife, swish, swipe through air, slashing movements 3&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/knife-swish-swipe-through-air-slashing-movements-3/">zapslat.com link</a>) licensed under ZapSplat standard license </li>
+			<li> swipe_collide: &quot;Large knife hit, strike another with a clunk 1&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/large-knife-hit-strike-another-with-a-clunk-1/">zapslat.com link</a>) licensed under ZapSplat standard license </li>
+			<li> dagger_equip: &quot;Knife, dagger blade draw, pull from sheath 7&quot; by ZapSplat ( <a href="https://www.zapsplat.com/music/knife-dagger-blade-draw-pull-from-sheath-7/">zapslat.com link</a> ) licensed under ZapSplat standard license </li>
+			<li>dagger_dash: &quot;Bullet pass, whizz by 2&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/bullet-pass-whizz-by-2/">zapslat.com link</a>) licensed under ZapSplat standard license</li>
+			<li> dagger_dash_hit: &quot;Bullet whizz into person, body with an impact and light splat. Version 1&quot; by ZapSplat ( <a href="https://www.zapsplat.com/music/bullet-whizz-into-person-body-with-an-impact-and-light-splat-version-1/">zapslat.com link</a> ) licensed under ZapSplat standard license </li>
+			<li>swipe_blocked: &quot;Metal hit, impact, sharp flick, tinny 1&quot; by ZapSplat ( <a href="https://www.zapsplat.com/music/metal-hit-impact-sharp-flick-tinny-1/">zapslat.com link</a> ) licensed under ZapSplat standard license</li>
+			<li> swipe_hit: &quot;Horror, knife stab into flesh then pull out, very squelchy 3&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/horror-knife-stab-into-flesh-then-pull-out-very-squelchy-3/">zapslat.com link</a>) licensed under ZapSplat standard license </li>
+			<li>xbow_equip: &quot;Bolt Cutter&quot; by jameswrowles (<a href="https://freesound.org/people/jameswrowles/sounds/516590/">freesound.org link</a>) licensed under CC0</li>
+			<li>xbow_reload: &quot;mini crossbow foley&quot; by nettimato (<a href="https://freesound.org/people/nettimato/sounds/350345/">freesound.org link</a>) licensed under CC0</li>
+			<li>bolt_shoot: &quot;bow02&quot; by Erdie (<a href="https://freesound.org/people/Erdie/sounds/65734/">freesound.org link</a>) licensed under CC-BY 3.0</li>
+			<li>bolt_hit: &quot;Medieval crossbow bolt pass by 1&quot; by Still North Media (<a href="https://www.zapsplat.com/music/medieval-crossbow-bolt-pass-by-1/">zapslat.com link</a>) licensed under CC0</li>
+			<li> bolt_blocked: &quot;Fast swing, whoosh into a metal hit, thud or clunk, could be sword hitting shield or armor. Version 1&quot; by ZapSplat ( <a href="https://www.zapsplat.com/music/fast-swing-whoosh-into-a-metal-hit-thud-or-clunk-could-be-sword-hitting-shield-or-armor-version-1/">zapslat.com link</a>) licensed under ZapSplat standard license </li>
+			<li>potion_equip: &quot;PotionDrinkLONG&quot; by Jamius (<a href="https://freesound.org/people/Jamius/sounds/41529/">freesound.org link</a>) licensed under CC BY 3.0</li>
+			<li>potion_drink: &quot;Potion - drink - swallow&quot; by vlnpetiteau (<a href="https://freesound.org/people/vlnpetiteau/sounds/574077/#comments">freesound.org link</a>) licensed under CC0</li>
+			<li>potion_break: &quot;Bottle Shattering&quot; by spookymodem (<a href="https://freesound.org/people/spookymodem/sounds/202093/">freesound.org link</a>) licensed under CC0</li>
+			<li>speed_feather_use: &quot;Soft Wind&quot; by Animate_42 (<a href="https://freesound.org/people/Animate_42/sounds/502883/">freesound.org link</a>) licensed under CC0</li>
+			<li>warp: &quot;teleport&quot; by Leszek_Szary (<a href="https://freesound.org/people/Leszek_Szary/sounds/172206/">freesound.org link</a>) licensed under CC0</li>
+			<li>blow_dart_shoot: &quot;Blowpipe&quot; by loudernoises (<a href="https://freesound.org/people/loudernoises/sounds/334168/">freesound.org link</a>) licensed under CC0</li>
+			<li>blow_dart_collide: &quot;Dart strikes dartboard 5&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/dart-strikes-dartboard-5/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
+			<li>blow_dart_hit: &quot;Blood Impact&quot; by EminYILDIRIM (<a href="https://freesound.org/people/EminYILDIRIM/sounds/554284/">freesound.org link</a>) licensed under CC BY 3.0</li>
+			<li>gold_apple_eat: &quot;Keys17&quot; by egolessdub (<a href="https://freesound.org/people/egolessdub/sounds/97468/">freesound.org link</a>) licensed under CC0</li>
+			<li>key_equip: &quot;Eating an apple&quot; by domvoice (<a href="https://freesound.org/people/domvoice/sounds/150228/">freesound.org link</a>) licensed under CC0</li>
+			<li>lock_open: &quot;Door_Unlocking&quot; by IPaddeh (<a href="https://freesound.org/people/IPaddeh/sounds/422852/">freesound.org link</a>) licensed under CC0</li>
+			<li>watcher_lock_rise: &quot;Block of unused staples drop on table&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/block-of-unused-staples-drop-on-table/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
+			<li>watcher_lock_lower: &quot;Breeze block drop on hard ground 4&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/breeze-block-drop-on-hard-ground-4/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
+			<li>medkit_equip: &quot;Fabric first aid medical kit with cellophane wrapped bandages inside, open, velcro 2&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/fabric-first-aid-medical-kit-with-cellophane-wrapped-bandages-inside-open-velcro-2/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
+			<li>medkit_use: &quot;Fabric first aid medical kit with cellophane wrapped bandages inside, handling, movement&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/fabric-first-aid-medical-kit-with-cellophane-wrapped-bandages-inside-handling-movement/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
+			<li>explosion: &quot;Explosion 2&quot; by LiamG_SFX (<a href="https://freesound.org/people/LiamG_SFX/sounds/322509/">freesound.org link</a>) licensed under CC BY-NC 3.0</li>
+			<li>awp_equip: &quot;Sniper Scope zoom in 1&quot; by Supakid13 (<a href="https://freesound.org/people/Supakid13/sounds/210018/">freesound.org link</a>) licensed under CC0</li>
+			<li>awp_scope: &quot;Scope Click - Sniper Rifle (4)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522319/">freesound.org link</a>) licensed under CC0</li>
+			<li>awp_unscope: &quot;Scope Click - Sniper Rifle (5)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522318/">freesound.org link</a>) licensed under CC0</li>
+			<li>awp_shoot: &quot;Sniper Rifle Firing Shot (4)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522359/">freesound.org link</a>) licensed under CC0</li>
+			<li>awp_shoot_crit: &quot;Sniper Rifle Firing Shot (4)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522429/">freesound.org link</a>) licensed under CC0</li>
+			<li>awp_eject: &quot;shot and reload&quot; by deathnsorrow (<a href="https://freesound.org/people/deathnsorrow/sounds/149177/">freesound.org link</a>) licensed under CC0</li>
+			<li>awp_reload: &quot;Sniper Rifle - Loading Ammo (3)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522336/">freesound.org link</a>) licensed under CC0</li>
+			<li>awp_360: &quot;Soft-Notifications - Bell - LowDing.mp3&quot; by LegitCheese (<a href="https://freesound.org/people/LegitCheese/sounds/571511/">freesound.org link</a>) licensed under CC0</li>
+			<li>shotgun_equip: &quot;SXP_SHOTGUN_RACK_01&quot; by dasBUTCHER84 (<a href="https://freesound.org/people/dasBUTCHER84/sounds/449614/#comments">freesound.org link</a>) licensed under CC0</li>
+			<li>shotgun_shoot: &quot;Shotgun - Firing (2)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522484/">freesound.org link</a>) licensed under CC0</li>
+			<li>shotgun_shell: &quot;Shell Hitting Ground (17)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522295/">freesound.org link</a>) licensed under CC0</li>
+			<li>shotgun_reload: &quot;Winchester, Model 12, shotgun, pump action, 12 gauge, load mag&quot; by Still North Media (<a href="https://www.zapsplat.com/music/winchester-model-12-shotgun-pump-action-12-gauge-load-mag/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
+			<li>skeleton_death <i>and</i> skeleton_resurrect: &quot;Skeleton bones (game)&quot; by cribbler(<a href="https://freesound.org/people/cribbler/sounds/381859/">zapsplat.com link</a>) licensed under CC0</li>
+			<li>assault_rifle_equip: &quot;AK 47 Action&quot; by dwightsabeast(<a href="https://freesound.org/people/dwightsabeast/sounds/543594/#comments">freesound.org link</a>) licensed under CC BY 3.0</li>
+			<li>assault_rifle_shoot: &quot;Gun, rifle, single shot, designed&quot; by ZapSplat(<a href="https://www.zapsplat.com/music/gun-rifle-single-shot-designed/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
+			<li>assault_rifle_reload: &quot;AKManipulation&quot; by Mittelmorder(<a href="https://freesound.org/people/Mittelmorder/sounds/122690/">freesound.org link</a>) licensed under CC BY 3.0</li>
+			<li>stalker_reveal: &quot;Dissonant Piano Sting 5&quot; by nomiqbomi(<a href="https://freesound.org/people/nomiqbomi/sounds/578356/">freesound.org link</a>) licensed under CC0</li>
+			<li>deagle_equip: &quot;close gun&quot; by nettimato(<a href="https://freesound.org/people/nettimato/sounds/350348/">zapsplat.com link</a>) licensed under CC0</li>
+			<li>deagle_shoot: &quot;Desert Eagle .50AE shot&quot; by vabadus(<a href="https://www.zapsplat.com/music/gunshot-handgun-single-shot-exterior-1-2/">freesound.org link</a>) licensed under CC0</li>
+			<li>deagle_reload: &quot;CP99 Reload&quot; by Kruf(<a href="https://freesound.org/people/Kruf/sounds/528709/">zapsplat.com link</a>) licensed under CC0</li>
+			<li>metal_crate_hit: &quot;Anvil Hit 2&quot; by michorvath(<a href="https://freesound.org/people/michorvath/sounds/270588/">freesound.org link</a>) licensed under CC0</li>
+			<li>heart_mimic_reveal: &quot;Small bones crush and break, could be hand, fingers or foot 3&quot; by ZapSplat(<a href="https://www.zapsplat.com/music/small-bones-crush-and-break-could-be-hand-fingers-or-foot-3/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
+			<li>landmine_place: &quot;Digging, Ice, Hammer, A.wav&quot; by InspectorJ(<a href="https://freesound.org/people/InspectorJ/sounds/420878/">freesound.org link</a>) licensed under CC-BY 3.0</li>
+			<li>landmine_warning: &quot;Double Beep&quot; by andersmmg(<a href="https://freesound.org/people/andersmmg/sounds/511492/">freesound.org link</a>) licensed under CC-BY 3.0</li>
+			<li>rocket_shoot: &quot;Firework rocket launch&quot; by ZapSplat(<a href="https://www.zapsplat.com/music/firework-rocket-launch/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
+			<li>rocket_launcher_load: &quot;Very small tin, circular, lid open 2&quot; by ZapSplat(<a href="https://www.zapsplat.com/music/very-small-tin-circular-lid-open-2/">zapslat.com link</a>) licensed under ZapSplat standard license</li>
+			<li>flamethrower_start <i>and</i> flamethrower_shoot <i>and</i> flamethrower_end: &quot;Heavy flame burst.&quot; by SmartSound(<a href="https://www.zapsplat.com/music/heavy-flame-burst/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
+			<li>injection_equip: &quot;Syringe squirt liquid out into air. Version 4&quot; by ZapSplat(<a href="https://www.zapsplat.com/music/syringe-squirt-liquid-out-into-air-short-and-fast-version-2/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
+			<li>syringe_hit: &quot;Syringe squirt liquid out into air, short and fast. Version 2&quot; by ZapSplat(<a href="https://www.zapsplat.com/music/syringe-squirt-liquid-out-into-air-short-and-fast-version-2/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
+			<li>syringe_miss: &quot;Syringe squirt liquid, short squelch. Version 2&quot; by ZapSplat(<a href="https://www.zapsplat.com/music/syringe-squirt-liquid-short-squelch-version-2/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
+			<li>footstep_metal: &quot;Walking on Metal Floor&quot; by NachtmahrTV(<a href="https://freesound.org/people/NachtmahrTV/sounds/556715/">freesound.org link</a>) licensed under CC0</li>
+			<li>wasteland_ambience: &quot;Rural Australian bush ambience, summer, midday, lots of loud insects, cicada, crickets and birds. Version 1&quot; by ZapSplat(<a href="https://www.zapsplat.com/music/rural-australian-bush-ambience-summer-midday-lots-of-loud-insects-cicada-crickets-and-birds-version-1/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
+			<li>fire: &quot;bonfire flames sizzling&quot; by florianreichelt(<a href="https://freesound.org/people/florianreichelt/sounds/563764/">freesound.org link</a>) licensed under CC0</li>
+			<li>timber_pot_ignite: &quot;Ignite, 01-01&quot; by InspectorJ(<a href="https://freesound.org/people/InspectorJ/sounds/484266/">freesound.org link</a>) licensed under CC BY 3.0 <i>and</i> &quot;Cracking, snapping, and clanging (metal can)&quot; by Ashley12275(<a href="https://freesound.org/people/Ashley12275/sounds/518731/">freesound.org link</a>) licensed under CC0</li>
+			<li>arrow_turret_destroy: &quot;Wood Crate Destory 2&quot; by Bertsz(<a href="https://freesound.org/people/Bertsz/sounds/500901/">freesound.org link</a>) licensed under CC0</li>
+			<li>pylon_destroy: &quot;Hard Glass Impact&quot; by deleted_user_3656686(<a href="https://freesound.org/people/deleted_user_3656686/sounds/418194/">freesound.org link</a>) licensed under CC0</li>
+			<li>burrow: &quot;Digging in Dirt&quot; by Anandthethird(<a href="https://freesound.org/people/Anandthethird/sounds/366713/">freesound.org link</a>) licensed under CC BY-NC 3.0</li>
+			<li>poison_shoot: &quot;Poison Spell Magic&quot; by qubodup(<a href="https://freesound.org/people/qubodup/sounds/219566/">freesound.org link</a>) licensed under CC BY 3.0</li>
+			<li>hiss: &quot;hissing snake sound effect&quot; by Garuda1982(<a href="https://freesound.org/people/Garuda1982/sounds/541656/">freesound.org link</a>) licensed under CC BY 3.0</li>
+			<li>blast_shoot: &quot;blaster shot single 5&quot; by MikeE63(<a href="https://freesound.org/people/MikeE63/sounds/466867/">freesound.org link</a>) licensed under CC0</li>
+			<li>overheat: &quot;minigun_Overheat&quot; by Marregheriti(<a href="https://freesound.org/people/Marregheriti/sounds/266102/">freesound.org link</a>) licensed under CC0</li>
+			<li>saber_whoosh: &quot;Futuristic Woosh sound&quot; by Mega-X-stream(<a href="https://freesound.org/people/Mega-X-stream/sounds/546278/">freesound.org link</a>) licensed under CC BY-NC 3.0</li>
+			<li>saber_equip: &quot;Lightsaber Ignition&quot; by pip_ (<a href="https://freesound.org/people/pip_/sounds/557194/">freesound.org link</a>) licensed under CC0</li>
+			<li>saber_hit: &quot;lightsaber clash&quot; by reesewong8 (<a href="https://freesound.org/people/reesewong8/sounds/181863/">freesound.org link</a>) licensed under CC0</li>
+			<li>teleport: &quot;port&quot; by reesewong8 (<a href="https://freesound.org/people/Sergenious/sounds/55843/">freesound.org link</a>) licensed under CC BY 3.0</li>
+			<li>pulse_shoot: &quot;port&quot; by reesewong8 (<a href="https://freesound.org/people/SeanSecret/sounds/440660/">freesound.org link</a>) licensed under CC0</li>
+			<li>pulse_bounce: &quot;Impact_010&quot; by reesewong8 (<a href="https://freesound.org/people/AlienXXX/sounds/196223/">freesound.org link</a>) licensed under CC BY 3.0</li>
+			<li>portal_ray: &quot;Teleport&quot; by Fupicat (<a href="https://freesound.org/people/AlienXXX/sounds/196223/">freesound.org link</a>) licensed under CC0</li>
+         <li>laser_shoot: &quot;Game sound, high pitched laser gun fire, single shot 3&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/game-sound-high-pitched-laser-gun-fire-single-shot-3/">freesound.org link</a>) licensed under ZapSplat standard license</li>
+		</ul>
+		<p>a big thanks to all the sound authors for letting me legally steal your hard work to use in my game &lt;3</p>
+		<hr class="minor">
+		<h3 id="shader-credits">shader credits</h3>
+		<ul>
+			<li><strong>color_overlay.shader</strong> by heartbeast (<a href="https://www.youtube.com/watch?v=Ot9M0TlxApU=1500">from action rpg tutorial)</a></li>
 			<li><strong>outline.shader</strong> by Juulpower (<a href="https://godotshaders.com/shader/2d-outline-inline/">on godotshaders.com</a>)</li>
 			<li><strong>vignette.tres</strong> by Arcane Energy <a href="https://www.youtube.com/watch?v=IGtQwsNDVLM">from youtube</a></li>
 		</ul>
-
-	  <hr class="minor">
-
-	  <h3 id="discord-integration">discord rich pressence</h3>
-	  <p>my job was pretty much done for my thanks to <a href="https://github.com/LennyPhoenix/GodotDiscordSDK">GodotDiscordSDK</a> by LennyPheonix, JezSonic, and ITZPROGamerDieYT</p>
-      
-      <hr class="minor">
-      <h3 id="license">license</h3>
-      
-      <p>note that this is not the license for the engine, only the game's source code and art assests</p>
-      
-      <code>
-        <pre>
-          Copyright (c) 2021 NonGMOTrash
-            
-              This program is free software: you can redistribute it and/or modify
-          it under the terms of the GNU General Public License as published by
-          the Free Software Foundation, either version 3 of the License, or
-          (at your option) any later version.
-            
-          This program is distributed in the hope that it will be useful,
-          but WITHOUT ANY WARRANTY; without even the implied warranty of
-          MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-          GNU General Public License for more details.
-            
-          You should have received a copy of the GNU General Public License
-          along with this program. If not, see &lt;https://www.gnu.org/licenses/&gt;.
-        </pre>
-      </code>
-
-	  <p>
-		i didn't include a copy of the GNU license because i believe in the power of the interwebz (just look it up)<br>
-		also if you wanna gaze upon the horrible abominaton that is teralite's source code, the github repo <strike>is</strike>isn't here: <em>(private until full release)</em>
-	  </p>
-      
-      <hr class="major">
-      <h1 id="patchnotes">patchnotes</h1>
-      <hr class="minor">
-	 
-	 <h3 id="beta-5-0">beta 5.0 (3/6/2022)</h3>
-	  <ul>
-		<li>added blaster</li>
-      <li>added pulse rifle</li>
-      <li>added portal gun</li>
-		<li>added saber</li>
-      <li>added teleporter</li>
-      <li>added speed pads</li>
-      <li>fixed enemies being able to see through crates</li>
-      <li>fixed creates sometimes not breaking</li>
-	  </ul>
-	 
-     <h3 id="beta-4-5">beta 4.5 (3/10/2022)</h3>
-     <ul>
-      <li>redid lighting (light sources don't layer on top of eachother), looks better and is less laggy</li>
-      <li>melee attacks can now clank (higher damage attacks have priority over lower damage ones)</li>
-	  <li>fixed tiles above crates being broken</li>
-	  <li>fixed aim not being centered properly on cursor</li>
-	  <li>fixed buggy behavior regarding slimes</li>
-	  <li>fixed item bar sometimes not updating</li>
-	  <li>discord integration is now enabled by default</li>
-      <li>fixed being able to shoot yourself if your up against a wall (also fixed suicidal arrow turrets)</li>
-      <li>fixed item bar issues</li>
-     </ul>
-
-	  <h3 id="beta-4-4">beta 4.4 (2/3/2022)</h3>
-	  <ul>
-		<li>added discord integration (note: you have to turn it on in the options)</li>
-		<li>added damage numbers</li>
-		<li>added controller support</li>
-		<li>fixed rapid fire spreading sometimes causing supernova of light and lag</li>
-		<li>fixed fire sounds persisting after they sizzle out</li>
-		<li>fixed projectiles sometimes bouncing off walls</li>
-		<li>dagger dash can now cross water</li>
-		<li>levels now load in the background during the transition (faster)</li>
-	  </ul>
-	  
-	  <h3 id="beta-4-3">beta 4.3 (1/19/2022)</h3>
-	  <ul>
-		<li>added lighting</li>
-		<li>added vignette effects for status effects</li>
-		<li>added volume categories</li>
-		<li>removed melee lunge (small forward boost upon meleeing)</li>
-		<li>fixed zombies infecting crates</li>
-	  </ul>
-	  
-	  <h3 id="beta-4-2">beta 4.2 (1/9/2022)</h3>
-	  <ul>
-		<li>overhauled rocket launcher scorpian to be more challenging</li>
-		<li>added scene transitions</li>
-		<li>you are now required to beat the boss of a world before proceeding to the next one</li>
-		<li>made all text lowercase</li>
-		<li>added / changed many sounds</li>
-		<li>thrown spear damage 3 -> 4 sence it's so difficult to hit</li>
-		<li>better normalized sound effects like ambiance and footsteps</li>
-		<li>better level preview</li>
-		<li>removed the AWP from Timber that i accidentally left there hehe</li>
-		<li>fixed level timer starting before loading finished and starting with 0.9 seconds</li>
-		<li>fixed deaths being added on level completion</li>
-		<li>added dash effect for enemy dashing</li>
-	  </ul>
-	  
-	  <h4 id="beta-4-1-1">beta 4.1 Hotfix (12/29/2021)</h4>
-	  <ul>
-		<li>fixed random crashes hopefully????</li>
-		<li>ported to godot 3.4.2</li>
-		<li>some minor changes to Sprint, Fortified, Disorderly, Halls, Vault, and Breach (mostly made easier)</li> 
-		<li>improved water tilesets to blend better with the background</li>
-	  </ul>
-	  
-	  <h3 id="beta-4-1">beta 4.1 (12/22/2021)</h3>
-	  <ul>
-		<li>added 3 new levels</li>
-		<li>added props to the wasteland area (seems like i always forget about these)</li>
-		<li>made E the interact button again (having interact and dash on the same key seemed too clunky)</li>
-		<li>fixed Patrol being on two levels for some reason (also another level was inaccessable because of this lol)</li>
-		<li>fixed some levels not being completed after you beat them</li>
-		<li>slightly increased the radius of explosions</li>
-		<li>fixed fire spreading not working</li>
-		<li>made new sprites for the wasteland entrance and exit</li>
-		<li>improved the cooldown reduction on successful shines so there's not a gap in between where you're vulnerable</li>
-		<li>slightly increased firerate of hunters</li>
-		<li>added speedrun times for the wasteland levels</li>
-		<li>added footsteps and ambience for the wasteland</li>
-		<li>flamethrower flames are now partially influenced by your velocity (so you won't burn yourself as easily)</li>
-		<li>fixed landmines being triggered by inanimate objects (excluding fire)</li>
-		<li>fixed minutes being displayed weirdly on saves if you had over an hour</li>
-		<li>sliiiightly increased the window for spear tipper</li>
-	  </ul>
-	  
-	  <h3 id="beta-4-0">beta 4.0 (12/19/2021)</h3>
-	  <ul>
-		<li>added shotgun</li>
-		<li>added rocket launcher</li>
-		<li>added assault rifle</li>
-		<li>added flamethrower</li>
-		<li>added awp</li>
-		<li>added stalkers</li>
-		<li>added soldiers</li>
-		<li>added hunters</li>
-		<li>added survivors</li>
-		<li>added heart mimics</li>
-		<li>added landmines</li>
-		<li>added explosive barrels</li>
-		<li>added skeletons</li>
-		<li>added desert eagle</li>
-		<li>added specters</li>
-		<li>added medkit</li>
-		<li>added injection</li>
-		<li>added rocket scorpian</li>
-		<li>added 21 new levels</li>
-		<li>added spawn pause option (game is paused until you start moving)</li>
-		<li>made space the interact button instead of E (experimental)</li>
-		<li>fixed projectiles spawning from your center instead of your weapon (also fixes some projectiles not working if you're up against a wall)</li>
-		<li>spear now does +1 damage if you hit with the very tip (also applies to enemy wardens using it on you)</li>
-		<li>remade the enemy armor bar into icons, less confusing (esspecially with 1 defence)</li>
-		<li>fixed fire spreading on burning entities not working and causing massive amounts of lag</li>
-		<li>fixed the same save appearing multiple times on the save selection menu</li> 
-		<li>fixed key not showing in your hand</li>
-		<li>queen now has only 6 health potions instead of an unlimited supply</li>
-		<li>staff's shine (reflect) can now be used while shooting, but it has a much higher cooldown if you miss</li>
-		<li>prevented frame freeze effect from stacking, which caused artificial lag</li>
-		<li>made Breach a little easier</li>
-		<li>added gold spikes (that lower when you dash) and remade Brick</li>
-		<li>fixed staff cursor being offset from the actual cursor position</li>
-		<li>fixed slowness giving a permanent speed boost after it's duration</li>
-		<li>halved the number of enemies on Conflict to reduce lag</li>
-		<li>fixed duplicate guns sharing ammo and reloads</li>
-		<li>a bunch of misc stuff that doesn't matter at all</li>
-	  </ul>
-	  <hr class="minor">
-	  
-	  <h3 id="beta-3-6">beta 3.6 (9/4/2021)</h3>
-	  <ul>
-		<li>remade save selection menu</li>
-		<li>color changes in the autumn levels to add more visual clarity</li>
-		<li>adjusted some sounds to reduce ear bleeding</li>
-		<li>thrown spear now does 3 damage instead of 2</li>
-		<li>improved melee animations</li>
-		<li>prevented or limited the multihitting (pierce) of some attacks, mainly projectiles</li>
-		<li>replaced hurtbox invincibility with hitbox cooldowns (with some exceptions)</li>
-		<li>added GPU pixel snap toggle</li>
-		<li>made keys a little less clunky to use</li>
-		<li>fixed rogue death message being bugged</li>
-	  </ul>
-	  
-	  <h3 id="beta-3-5">beta 3.5 (8/8/2021)</h3>
-	  <ul>
-		<li>added leaf particles to autumn areas</li>
-		<li>particles can now be disabled in the settings</li>
-		<li>fixed melee flicker when attacking to the left (i guess i only tested it with the right side)</li>
-		<li>gave the king a slam attack</li>
-		<li>gave the queen a xbow attack and the ability to heal with a health potion</li>
-		<li>fixed counter only triggering after the animation</li>
-		<li>fixed the spear cursor being offset from the actual cursor position</li>
-		<li>fixed bow charging even after you switch items</li>
-		<li>fixed high damage attacks penetrating through armor when they shouldn't</li>
-		<li>made some minor improvements to the options menu</li>
-	  </ul>
-	  
-	  <h4 id="beta-3-4-2">beta 3.4 Hotfix #2 (8/2/2021)</h4>
-	  <ul>
-		<li>fixed the first slot in the item bar mysteriously having a sword in it</li>
-	  </ul>
-      
-	  <h4 id="beta-3-4-1">beta 3.4 Hotfix (8/1/2021)</h4>
-	  <ul>
-        <li>changed item bar to have the items outlined</li>
-        <li>fixed background props in the underground blending into the background</li>
-        <li>added tutorial message to the level Vault</li>
-        <li>medics now heal faster, and avoid healing other medics</li>
-	  </ul>
-
-	  <h3 id="beta-3-4">beta 3.4 (7/31/2021)</h3>
-      <ul>
-        <li>graphics overhaul: every sprite and tile has been touched up or redone</li>
+		<hr class="minor">
+		<h3 id="discord-integration">discord rich pressence</h3>
+		<p>my job was pretty much done for my thanks to <a href="https://github.com/LennyPhoenix/GodotDiscordSDK">GodotDiscordSDK</a> by LennyPheonix, JezSonic, and ITZPROGamerDieYT</p>
+		<hr class="minor">
+		<h3 id="license">license</h3>
+		<p>note that this is not the license for the engine, only the game's source code and art assests</p> <code> <pre> Copyright (c) 2021 NonGMOTrash This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program. If not, see &lt;https://www.gnu.org/licenses/&gt;. </pre> </code>
+		<p>i didn't include a copy of the GNU license because i believe in the power of the interwebz (just look it up)
+			<br>also if you wanna gaze upon the horrible abominaton that is teralite's source code, the github repo <strike>is</strike>isn't here: <em>(private until full release)</em> </p>
+		<hr class="major">
+		<h1 id="patchnotes">patchnotes</h1>
+		<hr class="minor">
+		<h3 id="beta-5-0">beta 5.0 (3/6/2022)</h3>
 		<ul>
-			<li>actual walking animations for many enemies</li>
-			<li>back facing versions of sprites</li>
-			<li>enemies now have held items like the player</li>
-			<li>64 color pallete (up from 32)</li>
-			<li>better spritework probably lol</li>
+			<li>added blaster</li>
+			<li>added pulse rifle</li>
+			<li>added portal gun</li>
+         <li>added laser pistol</li>
+			<li>added saber</li>
+			<li>added teleporter</li>
+			<li>added speed pads</li>
+         <li>added troopers</li>
+			<li>fixed enemies being able to see through crates</li>
+			<li>fixed crates sometimes not breaking</li>
+         <li>fixed item spinning animation not working</li>
 		</ul>
-		<li>fixed level completion screen showing weird results</li>
-		<li>held melee items now rotate around the handle</li>
-		<li>fixed sword flicker that happened every other swing</li>
-		<li>archers and arrow turrets shoot faster and further</li>
-      </ul>
+		<h3 id="beta-4-5">beta 4.5 (3/10/2022)</h3>
+		<ul>
+			<li>redid lighting (light sources don't layer on top of eachother), looks better and is less laggy</li>
+			<li>melee attacks can now clank (higher damage attacks have priority over lower damage ones)</li>
+			<li>fixed tiles above crates being broken</li>
+			<li>fixed aim not being centered properly on cursor</li>
+			<li>fixed buggy behavior regarding slimes</li>
+			<li>fixed item bar sometimes not updating</li>
+			<li>discord integration is now enabled by default</li>
+			<li>fixed being able to shoot yourself if your up against a wall (also fixed suicidal arrow turrets)</li>
+			<li>fixed item bar issues</li>
+		</ul>
+		<h3 id="beta-4-4">beta 4.4 (2/3/2022)</h3>
+		<ul>
+			<li>added discord integration (note: you have to turn it on in the options)</li>
+			<li>added damage numbers</li>
+			<li>added controller support</li>
+			<li>fixed rapid fire spreading sometimes causing supernova of light and lag</li>
+			<li>fixed fire sounds persisting after they sizzle out</li>
+			<li>fixed projectiles sometimes bouncing off walls</li>
+			<li>dagger dash can now cross water</li>
+			<li>levels now load in the background during the transition (faster)</li>
+		</ul>
+		<h3 id="beta-4-3">beta 4.3 (1/19/2022)</h3>
+		<ul>
+			<li>added lighting</li>
+			<li>added vignette effects for status effects</li>
+			<li>added volume categories</li>
+			<li>removed melee lunge (small forward boost upon meleeing)</li>
+			<li>fixed zombies infecting crates</li>
+		</ul>
+		<h3 id="beta-4-2">beta 4.2 (1/9/2022)</h3>
+		<ul>
+			<li>overhauled rocket launcher scorpian to be more challenging</li>
+			<li>added scene transitions</li>
+			<li>you are now required to beat the boss of a world before proceeding to the next one</li>
+			<li>made all text lowercase</li>
+			<li>added / changed many sounds</li>
+			<li>thrown spear damage 3 -> 4 sence it's so difficult to hit</li>
+			<li>better normalized sound effects like ambiance and footsteps</li>
+			<li>better level preview</li>
+			<li>removed the AWP from Timber that i accidentally left there hehe</li>
+			<li>fixed level timer starting before loading finished and starting with 0.9 seconds</li>
+			<li>fixed deaths being added on level completion</li>
+			<li>added dash effect for enemy dashing</li>
+		</ul>
+		<h4 id="beta-4-1-1">beta 4.1 Hotfix (12/29/2021)</h4>
+		<ul>
+			<li>fixed random crashes hopefully????</li>
+			<li>ported to godot 3.4.2</li>
+			<li>some minor changes to Sprint, Fortified, Disorderly, Halls, Vault, and Breach (mostly made easier)</li>
+			<li>improved water tilesets to blend better with the background</li>
+		</ul>
+		<h3 id="beta-4-1">beta 4.1 (12/22/2021)</h3>
+		<ul>
+			<li>added 3 new levels</li>
+			<li>added props to the wasteland area (seems like i always forget about these)</li>
+			<li>made E the interact button again (having interact and dash on the same key seemed too clunky)</li>
+			<li>fixed Patrol being on two levels for some reason (also another level was inaccessable because of this lol)</li>
+			<li>fixed some levels not being completed after you beat them</li>
+			<li>slightly increased the radius of explosions</li>
+			<li>fixed fire spreading not working</li>
+			<li>made new sprites for the wasteland entrance and exit</li>
+			<li>improved the cooldown reduction on successful shines so there's not a gap in between where you're vulnerable</li>
+			<li>slightly increased firerate of hunters</li>
+			<li>added speedrun times for the wasteland levels</li>
+			<li>added footsteps and ambience for the wasteland</li>
+			<li>flamethrower flames are now partially influenced by your velocity (so you won't burn yourself as easily)</li>
+			<li>fixed landmines being triggered by inanimate objects (excluding fire)</li>
+			<li>fixed minutes being displayed weirdly on saves if you had over an hour</li>
+			<li>sliiiightly increased the window for spear tipper</li>
+		</ul>
+		<h3 id="beta-4-0">beta 4.0 (12/19/2021)</h3>
+		<ul>
+			<li>added shotgun</li>
+			<li>added rocket launcher</li>
+			<li>added assault rifle</li>
+			<li>added flamethrower</li>
+			<li>added awp</li>
+			<li>added stalkers</li>
+			<li>added soldiers</li>
+			<li>added hunters</li>
+			<li>added survivors</li>
+			<li>added heart mimics</li>
+			<li>added landmines</li>
+			<li>added explosive barrels</li>
+			<li>added skeletons</li>
+			<li>added desert eagle</li>
+			<li>added specters</li>
+			<li>added medkit</li>
+			<li>added injection</li>
+			<li>added rocket scorpian</li>
+			<li>added 21 new levels</li>
+			<li>added spawn pause option (game is paused until you start moving)</li>
+			<li>made space the interact button instead of E (experimental)</li>
+			<li>fixed projectiles spawning from your center instead of your weapon (also fixes some projectiles not working if you're up against a wall)</li>
+			<li>spear now does +1 damage if you hit with the very tip (also applies to enemy wardens using it on you)</li>
+			<li>remade the enemy armor bar into icons, less confusing (esspecially with 1 defence)</li>
+			<li>fixed fire spreading on burning entities not working and causing massive amounts of lag</li>
+			<li>fixed the same save appearing multiple times on the save selection menu</li>
+			<li>fixed key not showing in your hand</li>
+			<li>queen now has only 6 health potions instead of an unlimited supply</li>
+			<li>staff's shine (reflect) can now be used while shooting, but it has a much higher cooldown if you miss</li>
+			<li>prevented frame freeze effect from stacking, which caused artificial lag</li>
+			<li>made Breach a little easier</li>
+			<li>added gold spikes (that lower when you dash) and remade Brick</li>
+			<li>fixed staff cursor being offset from the actual cursor position</li>
+			<li>fixed slowness giving a permanent speed boost after it's duration</li>
+			<li>halved the number of enemies on Conflict to reduce lag</li>
+			<li>fixed duplicate guns sharing ammo and reloads</li>
+			<li>a bunch of misc stuff that doesn't matter at all</li>
+		</ul>
+		<hr class="minor">
+		<h3 id="beta-3-6">beta 3.6 (9/4/2021)</h3>
+		<ul>
+			<li>remade save selection menu</li>
+			<li>color changes in the autumn levels to add more visual clarity</li>
+			<li>adjusted some sounds to reduce ear bleeding</li>
+			<li>thrown spear now does 3 damage instead of 2</li>
+			<li>improved melee animations</li>
+			<li>prevented or limited the multihitting (pierce) of some attacks, mainly projectiles</li>
+			<li>replaced hurtbox invincibility with hitbox cooldowns (with some exceptions)</li>
+			<li>added GPU pixel snap toggle</li>
+			<li>made keys a little less clunky to use</li>
+			<li>fixed rogue death message being bugged</li>
+		</ul>
+		<h3 id="beta-3-5">beta 3.5 (8/8/2021)</h3>
+		<ul>
+			<li>added leaf particles to autumn areas</li>
+			<li>particles can now be disabled in the settings</li>
+			<li>fixed melee flicker when attacking to the left (i guess i only tested it with the right side)</li>
+			<li>gave the king a slam attack</li>
+			<li>gave the queen a xbow attack and the ability to heal with a health potion</li>
+			<li>fixed counter only triggering after the animation</li>
+			<li>fixed the spear cursor being offset from the actual cursor position</li>
+			<li>fixed bow charging even after you switch items</li>
+			<li>fixed high damage attacks penetrating through armor when they shouldn't</li>
+			<li>made some minor improvements to the options menu</li>
+		</ul>
+		<h4 id="beta-3-4-2">beta 3.4 Hotfix #2 (8/2/2021)</h4>
+		<ul>
+			<li>fixed the first slot in the item bar mysteriously having a sword in it</li>
+		</ul>
+		<h4 id="beta-3-4-1">beta 3.4 Hotfix (8/1/2021)</h4>
+		<ul>
+			<li>changed item bar to have the items outlined</li>
+			<li>fixed background props in the underground blending into the background</li>
+			<li>added tutorial message to the level Vault</li>
+			<li>medics now heal faster, and avoid healing other medics</li>
+		</ul>
+		<h3 id="beta-3-4">beta 3.4 (7/31/2021)</h3>
+		<ul>
+			<li>graphics overhaul: every sprite and tile has been touched up or redone</li>
+			<ul>
+				<li>actual walking animations for many enemies</li>
+				<li>back facing versions of sprites</li>
+				<li>enemies now have held items like the player</li>
+				<li>64 color pallete (up from 32)</li>
+				<li>better spritework probably lol</li>
+			</ul>
+			<li>fixed level completion screen showing weird results</li>
+			<li>held melee items now rotate around the handle</li>
+			<li>fixed sword flicker that happened every other swing</li>
+			<li>archers and arrow turrets shoot faster and further</li>
+		</ul>
+		<h3 id="beta-3-3">beta 3.3 (7/19/2021)</h3>
+		<ul>
+			<li>fixed enemies spontaneously giving up on life</li>
+			<li>fixed locks being pushable</li>
+			<li>fully fixed watcher locks being dumb</li>
+			<li>fixed counter not working</li>
+			<li>added a vsync toggle</li>
+			<li>added more keybinds (IJKL now works)</li>
+			<li>fixed shine making you immune to melee attacks</li>
+			<li>improved fire spreading</li>
+			<li>fixed friction being reduced while slowed (counter dashing)</li>
+			<li>fixed mouse cursor sometimes not updating</li>
+			<li>save errors now have a popup error message instead of just silently failing</li>
+			<li>potentially fixed entities building up velocity offscreen (hard to reproduce so idk for sure)</li>
+		</ul>
+		<h3 id="beta-3-2">beta 3.2 (7/12/2021)</h3>
+		<ul>
+			<li>improved level completion screen (also removed kills counter)</li>
+			<li>improved line-of-sight detection (watcher locks are now a little less dumb)</li>
+			<li>fixed ultra chasers not dashing (not sure why this keeps happening)</li>
+			<li>fixed saving issues with older saves</li>
+			<li>brute chasers now slowly regenerate health</li>
+			<li>fixed arrow turrets being multihit</li>
+			<li>fixed not being able to drop the bow</li>
+			<li>pausing on the level completion screen now works properly</li>
+			<li>fixed some AI pathing bugs</li>
+			<li>improved death messages</li>
+			<li>projectiles now partially inherit their shooter's velocity when shot (experimental)</li>
+			<li>minor script optimizations</li>
+			<li>fixed saved settings not able to be loaded</li>
+			<li>fixed some missing sound effects</li>
+			<li>fixed annoying little lag spike when you first dash</li>
+		</ul>
+		<h3 id="beta-3-1">beta 3.1 (7/5/2021)</h3>
+		<ul>
+			<li>added props to the underground</li>
+			<li>added carpet background</li>
+			<li>added 4 new levels</li>
+			<li>some improvements to level design and progression</li>
+			<li>arrow turrets now shoot 40% slower</li>
+			<li>added footstep sounds for dirt, stone, and carpet</li>
+			<li>added cave ambiance</li>
+			<li>reduced the king's summon cooldown</li>
+			<li>fixed returning to the wrong world from the pause menu</li>
+			<li>fixed titlescreen messages not actually being random</li>
+			<li>removed the "3.0 coming in 2024" titlescreen message >:|</li>
+		</ul>
+		<hr class="minor">
+		<h2 id="beta-3-0">beta 3.0 (7/1/2021)</h2>
+		<ul>
+			<li>added the staff</li>
+			<li>added mages</li>
+			<li>added the spear</li>
+			<li>added wardens</li>
+			<li>added the dagger (rogues use it)</li>
+			<li>added medics</li>
+			<li>added the crossbow</li>
+			<li>added the queen</li>
+			<li>added water tiles</li>
+			<li>added slimes</li>
+			<li>added arrow turrets and pylons</li>
+			<li>added health potions</li>
+			<li>added iron-infused potions</li>
+			<li>added portals</li>
+			<li>added blow gun</li>
+			<li>added witchs</li>
+			<li>added locks and keys</li>
+			<li>added watcher locks (clear all enemy doors)</li>
+			<li>added golden apples</li>
+			<li>added green hearts</li>
+			<li>added speed feathers</li>
+			<li>the sword now as a counter (right click)</li>
+			<li>added the underground</li>
+			<li>added 13 new levels</li>
+			<li>added a kills counter to level completion screen</li>
+			<li>fixed hitboxes and spike activation going through walls</li>
+			<li>added speed, slowness, regeneration, and resistance status effects</li>
+			<li>fixed level times and perfections not saving properly</li>
+			<li>renabled GPU snap to fix weird visual artifacts with tilemaps</li>
+			<li>fixed status effect stacking not working</li>
+			<li>fixed the bow being capped at 2 damage instead of 3</li>
+			<li>made the pistol reload much shorter</li>
+			<li>some old levels have been changed slightly or remade</li>
+			<li>fixed some death effects not playing</li>
+			<li>converted the readme into a HTML page (even fancier than markdown!!1!)</li>
+		</ul>
+		<hr class="minor">
+		<h4 id="beta-2-14-2">beta 2.14 hotfix #2 (5/23/2021)</h4>
+		<ul>
+			<li>fixed the hitbox bug</li>
+			<li>fixed weird damage scaling with arrows that caused them to sometimes deal 0 damage</li>
+			<li>fixed healthbar issue on Duo</li>
+		</ul>
+		<h4 id="beta-2-14-1">beta 2.14 hotfix (5/22/2021)</h4>
+		<ul>
+			<li>fixed levels not loading (so the game is actually playable)</li>
+			<li>fixed options sometimes not saving</li>
+		</ul>
+		<h3 id="beta-2-14">beta 2.14 (5/20/2021)</h3>
+		<ul>
+			<li>completely remade intro</li>
+			<li>better level completion screen</li>
+			<li>added zooming to the pistol (with right click)</li>
+			<li>fixed return to title screen not working</li>
+			<li>added weapons to the level Caged making it much easier</li>
+			<li>fixed sword hitboxes (it didn&#39;t even go to the tip of the blade before lel)</li>
+			<li>fixed bullets often having reversed knockback</li>
+			<li>changed the star requirements for some levels to better match the difficulty</li>
+			<li>fixed death messages being a little broken with multiple players</li>
+			<li>added bow equip sound</li>
+			<li>slightly improved improved memory management for better load times and reduced lag spikes</li>
+			<li>changed the camera system a bit so you can't see quite as far if you put your mouse to the edge of the screen</li>
+			<li>some behind the scenes improvements</li>
+		</ul>
+		<h4 id="beta-2-13-3">beta 2.13 hotfix #3 (5/2/2021)</h4>
+		<ul>
+			<li>made the 2nd level easier (ur welcome nathan)</li>
+			<li>(half) fixed a hitbox bug with arrows</li>
+		</ul>
+		<h4 id="beta-2-13-2">beta 2.13 hotfix #2 (5/2/2021)</h4>
+		<ul>
+			<li>ported to godot 3.3</li>
+			<li>fixed a common crash that sometimes happens when you are killed by a projectile</li>
+			<li>disabled pixel and GPU snap, intended to reduce jitter (experimental)</li>
+			<li>enabled fallback to OpenGL ES 2.0 for older systems (experimental)</li>
+		</ul>
+		<h4 id="beta-2-13-1">beta 2.13 hotfix (4/27/2021)</h4>
+		<ul>
+			<li>fixed various issues with UI assets not loading and thus being broken</li>
+		</ul>
+		<h3 id="beta-2-13">beta 2.13 (4/25/2021)</h3>
+		<ul>
+			<li>added animations for held items (the sword no longer looks poopoo)</li>
+			<li>added many particle effects (impacts, smoke, blood, more)</li>
+			<li>added a level completed screen (WIP)</li>
+			<li>changed slash hitboxes to better match the animation</li>
+			<li>changed king summoning: it summons groups of 3 now, but at 1/3rd the speed</li>
+			<li>fixed depth sorting issues with spikes (after like 5 months lolol)</li>
+			<li>fixed options not being saved or defaulting to weird things</li>
+			<li>fixed a bug where you couldn&#39;t die from bleeding</li>
+			<li>lots of behind the scenes improvements</li>
+		</ul>
+		<h3 id="beta-2-12">beta 2.12 (4/1/2021)</h3>
+		<ul>
+			<li>renamed the game from project epsilon to teralite</li>
+			<li>the player&#39;s held item is now visible (WIP, animations planned)</li>
+			<li>fixed pathfinding crash (finally)</li>
+			<li>the player now faces toward the mouse</li>
+			<li>removed pitch shifting on most sound effects</li>
+			<li>fixed settings config not saving</li>
+			<li>made the mouse cursor smaller</li>
+			<li>added a minimum charge time to the bow</li>
+			<li>lots of behind the scenes improvements</li>
+		</ul>
+		<h3 id="beta-2-11">beta 2.11 (3/14/2021)</h3>
+		<ul>
+			<li>added more sound effects (death, spikes, crates, +more)</li>
+			<li>added pitch shifting to sound effects</li>
+			<li>half fixed issues with ! and ? spam from groups of AIs (still WIP)</li>
+			<li>the pistol now has a much longer cooldown (temporary)</li>
+		</ul>
+		<h3 id="beta-2-10">beta 2.10 (3/7/2021)</h3>
+		<ul>
+			<li>added player death animation</li>
+			<li>added volume slider</li>
+			<li>added weapon equip sounds for the sword and pistol</li>
+			<li>added menu and pause sounds</li>
+			<li>fixed some navpoly issues (this also fixed some crashes)</li>
+			<li>fixed ultra chaser dashing (it&#39;s been broken for awhile, whoops) and added an animation</li>
+			<li>footstep sounds are no longer cut off when you stop walking</li>
+			<li>added footstep sound for wood</li>
+			<li>other enemies now also emit footstep sounds</li>
+			<li>a few behind the scenes improvements</li>
+		</ul>
+		<h3 id="beta-2-9">beta 2.9 (2/21/2021)</h3>
+		<ul>
+			<li>added sound effects (very WIP)</li>
+			<li>melee and projectile attacks now have recoil</li>
+			<li>added screen shake</li>
+			<li>added frame freeze</li>
+			<li>melee attacks now boost you forwards slightly</li>
+			<li>greatly updated README</li>
+			<li>a few behind the scenes improvements</li>
+		</ul>
+		<h3 id="beta-2-8">beta 2.8 (1/31/2021)</h3>
+		<ul>
+			<li>added an armor break mechanic (entities with defense now have a separate armor bar and they will become vulnerable once it&#39;s depleted)</li>
+			<li>knights now have less health, but 1 defense</li>
+			<li>improved entity health bars (now displays bonus health and armor)</li>
+			<li>options menu is now split into tabs</li>
+			<li>projectiles now have a minimum speed they need to deal damage (WIP, feels a little wrong on arrows)</li>
+			<li>some behind the scenes improvements</li>
+		</ul>
+		<h3 id="beta-2-7">beta 2.7 (1/17/2021)</h3>
+		<ul>
+			<li>fixed the .exe icon</li>
+			<li>added an armor break mechanic (entities with defense now have a separate armor bar and they will become vulnerable once it&#39;s depleted)</li>
+			<li>knights now have less health, but 1 defense</li>
+			<li>improved entity health bars (now displays bonus health and armor)</li>
+			<li>options menu is now split into tabs</li>
+			<li>projectiles now have a minimum speed they need to deal damage (WIP, feels a little wrong on arrows)</li>
+			<li>some behind the scenes improvements</li>
+		</ul>
+		<h3 id="beta-2-6">beta 2.6 (1/11/2021)</h3>
+		<ul>
+			<li>chaser sprite improvements</li>
+			<li>minor-ish level design improvements</li>
+			<li>spikes can now be placed individually instead of in pairs</li>
+			<li>changed some animations to be more bouncy (experimental, not sure how I feel about it yet)</li>
+			<li>menus use the pointer cursor and a new cursor was added for an empty hand</li>
+			<li>bleeding now works differently: the duration is increased each time you take any physical damage while bleeding</li>
+			<li>a big behind the scenes improvement (singular)</li>
+		</ul>
+		<h3 id="beta-2-5">beta 2.5 (12/30/2020)</h3>
+		<ul>
+			<li>entities can now kill their target without crashing the game (this also fixed all known crashes previously in the game)</li>
+			<li>added entity pathfinding</li>
+			<li>entities can now have multiple targets at once</li>
+			<li>entities can now space a certain distance away from their target</li>
+			<li>attacks can now hurt allies of the same faction</li>
+			<li>added entity infighting</li>
+			<li>improved action selection</li>
+			<li>entities now wander back to their starting position if they are too far away</li>
+			<li>added support for neutral enemies</li>
+			<li>fixed item duplication on Duo</li>
+			<li>a ton of behind the scenes improvements</li>
+		</ul>
+		<h3 id="beta-2-4">beta 2.4 (11/29/2020)</h3>
+		<ul>
+			<li>remade the level Brick</li>
+			<li>tutorial and HUD text now has a shadow for better clarity</li>
+			<li>fixed weird issues with hitbox cooldowns</li>
+			<li>fixed issues with collisions</li>
+			<li>a bunch of miscellaneous improvements</li>
+		</ul>
+		<h3 id="beta-2-3">beta 2.3 (11/25/2020)</h3>
+		<ul>
+			<li>levels now track your best time</li>
+			<li>added a stopwatch timer</li>
+			<li>adjusted entity collisions</li>
+			<li>some miscellaneous improvements</li>
+		</ul>
+		<h3 id="beta-2-2">beta 2.2 (11/23/2020)</h3>
+		<ul>
+			<li>added a new level (Duo)</li>
+			<li>added an intro (WIP)</li>
+			<li>the item bar will now be hidden if it&#39;s empty (experimental, you can disable this)</li>
+			<li>added item pickup effect</li>
+			<li>multiple effects can now play on a sprite at once, so they won&#39;t override eachother</li>
+			<li>some changes to physics (should feel about the same)</li>
+			<li>changed the look of the health bar (similar to how it was pre 1.6)</li>
+		</ul>
+		<h3 id="beta-2-1">beta 2.1 (11/17/2020)</h3>
+		<ul>
+			<li>options are now saved automatically (so they don&#39;t reset every time you play)</li>
+			<li>levels now track your deaths</li>
+			<li>knockback has been adjusted and increased</li>
+			<li>improved bow (you don&#39;t have to wait out the cooldown before you start charging)</li>
+			<li>regular pink chasers now have 2 health, but take a ton of knockback</li>
+			<li>knights have 5 health instead of 6</li>
+			<li>improved the fire status effect</li>
+			<li>you can see the amount of stars on a save by hovering over it</li>
+			<li>fixed aNOTHER potential crash on Entrance (can&#39;t have 2 enemies that fight i guess)</li>
+			<li>some small fixes and improvements</li>
+		</ul>
+		<h4 id="beta-2-0-1">beta 2.0 Hotfix (11/11/2020)</h4>
+		<ul>
+			<li>fixed the crash on the level Entrance</li>
+		</ul>
+		<hr class="minor">
+		<h2 id="beta-2-0">beta 2.0 (11/11/2020)</h2>
+		<ul>
+			<li>added the dash</li>
+			<li>added the bow</li>
+			<li>added castle tiles and props</li>
+			<li>added knights</li>
+			<li>added archers</li>
+			<li>added rogues</li>
+			<li>added the king</li>
+			<li>added status effects (bleeding, poison, and burning)</li>
+			<li>added fire and timber pots</li>
+			<li>added blue ultra chasers</li>
+			<li>added 9 new levels</li>
+			<li>made some changes to the old levels</li>
+			<li>made big changes and expansions to the hub</li>
+			<li>made a new unique death effect for every enemy</li>
+			<li>entity optimizations (offscreen entities are paused)</li>
+			<li>gave the levels actual names</li>
+			<li>gold chasers now chase the again and have 1 health and 3 damage, like they used to be pre 1.6</li>
+			<li>pistol does 2 damage again</li>
+			<li>a few sprite improvements</li>
+		</ul>
+		<hr class="minor">
+		<h3 id="beta-1-6">beta 1.6 (10/4/2020)</h3>
+		<ul>
+			<li>graphics overhaul, almost every sprite and tile has been redone</li>
+			<li>gold chasers work differently, they now have more health, no damage, and run away</li>
+			<li>some miscellaneous fixes and improvements</li>
+		</ul>
+		<h4 id="beta-1-5-1">beta 1.5 hotfix (9/28/2020)</h4>
+		<ul>
+			<li>fixed a bug very minor bug where levels wouldn&#39;t load</li>
+		</ul>
+		<h3 id="beta-1-5">beta 1.5 (9/27/2020)</h3>
+		<ul>
+			<li>added saving and loading</li>
+			<li>menus now work with the mouse and are much less janky overall</li>
+			<li>removed keyboard only mode</li>
+			<li>remade all levels (they are still a little rough)</li>
+			<li>added perfection mode</li>
+			<li>added a fullscreen option</li>
+			<li>added dirt paths</li>
+			<li>improvements to entity pushing</li>
+			<li>gold chasers drop gold hearts again</li>
+			<li>pistol bullets now only do 1 damage (this is temporary until 2.0)</li>
+			<li>a few miscellaneous fixes and improvements</li>
+		</ul>
+		<h3 id="beta-1-4">beta 1.4 (9/20/2020)</h3>
+		<ul>
+			<li>added knockback</li>
+			<li>fixed a bug where you could get double hit if you were damaged twice on the same frame</li>
+			<li>added entity pushing</li>
+			<li>gold chasers no longer drop gold hearts (this is temporary)</li>
+			<li>improvements to the UI and progress bar</li>
+			<li>some miscellaneous fixes and improvements</li>
+		</ul>
+		<h3 id="beta-1-3">beta 1.3 (9/7/2020)</h3>
+		<ul>
+			<li>added a hub world</li>
+			<li>added a title screen</li>
+			<li>added shadows</li>
+			<li>fixed many bugs with the settings menu (still no UI aesthetic overhaul sorry)</li>
+			<li>fixes for effects</li>
+			<li>fixes for depth sorting with spikes (still not perfect, im working on it)</li>
+			<li>a few miscellaneous fixes</li>
+		</ul>
+		<h3 id="beta-1-2">beta 1.2 (8/30/2020)</h3>
+		<ul>
+			<li>settings menu overhaul (UI aesthetic will be overhauled soon as well</li>
+			<li>reload bar is the right size now</li>
+			<li>added a hit effect</li>
+			<li>improved item pickup system</li>
+			<li>lots of miscellaneous fixes and improvements</li>
+		</ul>
+		<h3 id="beta-1-1">beta 1.1 (8/23/2020)</h3>
+		<ul>
+			<li>major improvements to the sword, it is much less janky now</li>
+			<li>fixed a bug with the enemy AI that would severely stunt their reaction time</li>
+			<li>added 2 more levels</li>
+			<li>added a death effect</li>
+			<li>increased player acceleration (it should feel less &quot;slippery&quot; now)</li>
+			<li>fixed the floating bullets bug</li>
+			<li>gold chasers now drop gold hearts</li>
+			<li>other small miscellaneous fixes and improvements</li>
+		</ul>
+		<hr class="minor">
+		<h2 id="beta-1-0">beta 1.0 (8/16/2020)</h2>
+		<ul>
+			<li>uhhh, everything</li>
+		</ul>
+		<hr class="minor">
+		<h3 id="version-numbering">how the version numbering works</h3>
+		<p>i don&#39;t use semantic versioning because im just too cool for that, i guess</p>
+		<p>instead, its:</p>
+		<p><em>Phase</em> <strong>content</strong>.<strong>patch</strong> <em>Hotfix</em></p>
+		<p> <em>Phase</em> is Alpha or Beta. if the version is after the official release, <em>Phase</em> is ommited
+			<br> <strong>content</strong> is only incremented for big content updates (starts at 1)
+			<br> <strong>patch</strong> is incremented for minor polish updates
+			<br> <em>Hotfix</em> is for "oh no there's some terrible bug i didn't notice!!!1!" updates. it isn&#39;t displayed unless there&#39;s a hotfix for that version. if there&#39;s multiple hotfixes for a version, a counter is added (i.e. hotfix #2) </p>
+	</div>
+</body>
 
-      <h3 id="beta-3-3">beta 3.3 (7/19/2021)</h3>
-      <ul>
-        <li>fixed enemies spontaneously giving up on life</li>
-        <li>fixed locks being pushable</li>
-		<li>fully fixed watcher locks being dumb</li>
-		<li>fixed counter not working</li>
-		<li>added a vsync toggle</li>
-        <li>added more keybinds (IJKL now works)</li>
-		<li>fixed shine making you immune to melee attacks</li>
-		<li>improved fire spreading</li>
-		<li>fixed friction being reduced while slowed (counter dashing)</li>
-		<li>fixed mouse cursor sometimes not updating</li>
-		<li>save errors now have a popup error message instead of just silently failing</li>
-		<li>potentially fixed entities building up velocity offscreen (hard to reproduce so idk for sure)</li>
-      </ul>
-
-      <h3 id="beta-3-2">beta 3.2 (7/12/2021)</h3>
-      <ul>
-        <li>improved level completion screen (also removed kills counter)</li>
-        <li>improved line-of-sight detection (watcher locks are now a little less dumb)</li>
-        <li>fixed ultra chasers not dashing (not sure why this keeps happening)</li>
-        <li>fixed saving issues with older saves</li>
-        <li>brute chasers now slowly regenerate health</li>
-        <li>fixed arrow turrets being multihit</li>
-        <li>fixed not being able to drop the bow</li>
-        <li>pausing on the level completion screen now works properly</li>
-        <li>fixed some AI pathing bugs</li>
-        <li>improved death messages</li>
-        <li>projectiles now partially inherit their shooter's velocity when shot (experimental)</li>
-        <li>minor script optimizations</li>
-        <li>fixed saved settings not able to be loaded</li>
-        <li>fixed some missing sound effects</li>
-        <li>fixed annoying little lag spike when you first dash</li>
-      </ul>
-
-      <h3 id="beta-3-1">beta 3.1 (7/5/2021)</h3>
-      <ul>
-        <li>added props to the underground</li>
-        <li>added carpet background</li>
-        <li>added 4 new levels</li>
-        <li>some improvements to level design and progression</li>
-        <li>arrow turrets now shoot 40% slower</li>
-        <li>added footstep sounds for dirt, stone, and carpet</li>
-        <li>added cave ambiance</li>
-        <li>reduced the king's summon cooldown</li>
-        <li>fixed returning to the wrong world from the pause menu</li>
-        <li>fixed titlescreen messages not actually being random</li>
-        <li>removed the "3.0 coming in 2024" titlescreen message >:|</li>
-      </ul>
-
-      <hr class="minor">
-      <h2 id="beta-3-0">beta 3.0 (7/1/2021)</h2>
-      <ul>
-        <li>added the staff</li>
-        <li>added mages</li>
-        <li>added the spear</li>
-        <li>added wardens</li>
-        <li>added the dagger (rogues use it)</li>
-        <li>added medics</li>
-        <li>added the crossbow</li>
-        <li>added the queen</li>
-        <li>added water tiles</li>
-        <li>added slimes</li>
-        <li>added arrow turrets and pylons</li>
-        <li>added health potions</li>
-        <li>added iron-infused potions</li>
-        <li>added portals</li>
-        <li>added blow gun</li>
-        <li>added witchs</li>
-        <li>added locks and keys</li>
-        <li>added watcher locks (clear all enemy doors)</li>
-        <li>added golden apples</li>
-        <li>added green hearts</li>
-        <li>added speed feathers</li>
-        <li>the sword now as a counter (right click)</li>
-        <li>added the underground</li>
-        <li>added 13 new levels</li>
-        <li>added a kills counter to level completion screen</li>
-        <li>fixed hitboxes and spike activation going through walls</li>
-        <li>added speed, slowness, regeneration, and resistance status effects</li>
-        <li>fixed level times and perfections not saving properly</li>
-        <li>renabled GPU snap to fix weird visual artifacts with tilemaps</li>
-        <li>fixed status effect stacking not working</li>
-        <li>fixed the bow being capped at 2 damage instead of 3</li>
-        <li>made the pistol reload much shorter</li>
-        <li>some old levels have been changed slightly or remade</li>
-        <li>fixed some death effects not playing</li>
-        <li>converted the readme into a HTML page (even fancier than markdown!!1!)</li>
-      </ul>
-      <hr class="minor">
-
-      <h4 id="beta-2-14-2">beta 2.14 hotfix #2 (5/23/2021)</h4>
-      <ul>
-        <li>fixed the hitbox bug</li>
-        <li>fixed weird damage scaling with arrows that caused them to sometimes deal 0 damage</li>
-        <li>fixed healthbar issue on Duo</li>
-      </ul>
-
-      <h4 id="beta-2-14-1">beta 2.14 hotfix (5/22/2021)</h4>
-      <ul>
-        <li>fixed levels not loading (so the game is actually playable)</li>
-        <li>fixed options sometimes not saving</li>
-      </ul>
-
-      <h3 id="beta-2-14">beta 2.14 (5/20/2021)</h3>
-      <ul>
-        <li>completely remade intro</li>
-        <li>better level completion screen</li>
-        <li>added zooming to the pistol (with right click)</li>
-        <li>fixed return to title screen not working</li>
-        <li>added weapons to the level Caged making it much easier</li>
-        <li>fixed sword hitboxes (it didn&#39;t even go to the tip of the blade before lel)</li>
-        <li>fixed bullets often having reversed knockback</li>
-        <li>changed the star requirements for some levels to better match the difficulty</li>
-        <li>fixed death messages being a little broken with multiple players</li>
-        <li>added bow equip sound</li>
-        <li>slightly improved improved memory management for better load times and reduced lag spikes</li>
-        <li>changed the camera system a bit so you can't see quite as far if you put your mouse to the edge of the screen</li>
-        <li>some behind the scenes improvements</li>
-      </ul>
-
-      <h4 id="beta-2-13-3">beta 2.13 hotfix #3 (5/2/2021)</h4>
-      <ul>
-        <li>made the 2nd level easier (ur welcome nathan)</li>
-        <li>(half) fixed a hitbox bug with arrows</li>
-      </ul>
-
-      <h4 id="beta-2-13-2">beta 2.13 hotfix #2 (5/2/2021)</h4>
-      <ul>
-        <li>ported to godot 3.3</li>
-        <li>fixed a common crash that sometimes happens when you are killed by a projectile</li>
-        <li>disabled pixel and GPU snap, intended to reduce jitter (experimental)</li>
-        <li>enabled fallback to OpenGL ES 2.0 for older systems (experimental)</li>
-      </ul>
-      <h4 id="beta-2-13-1">beta 2.13 hotfix (4/27/2021)</h4>
-      <ul>
-        <li>fixed various issues with UI assets not loading and thus being broken</li>
-      </ul>
-
-      <h3 id="beta-2-13">beta 2.13 (4/25/2021)</h3>
-      <ul>
-        <li>added animations for held items (the sword no longer looks poopoo)</li>
-        <li>added many particle effects (impacts, smoke, blood, more)</li>
-        <li>added a level completed screen (WIP)</li>
-        <li>changed slash hitboxes to better match the animation</li>
-        <li>changed king summoning: it summons groups of 3 now, but at 1/3rd the speed</li>
-        <li>fixed depth sorting issues with spikes (after like 5 months lolol)</li>
-        <li>fixed options not being saved or defaulting to weird things</li>
-        <li>fixed a bug where you couldn&#39;t die from bleeding</li>
-        <li>lots of behind the scenes improvements</li>
-      </ul>
-
-      <h3 id="beta-2-12">beta 2.12 (4/1/2021)</h3>
-      <ul>
-        <li>renamed the game from project epsilon to teralite</li>
-        <li>the player&#39;s held item is now visible (WIP, animations planned)</li>
-        <li>fixed pathfinding crash (finally)</li>
-        <li>the player now faces toward the mouse</li>
-        <li>removed pitch shifting on most sound effects</li>
-        <li>fixed settings config not saving</li>
-        <li>made the mouse cursor smaller</li>
-        <li>added a minimum charge time to the bow</li>
-        <li>lots of behind the scenes improvements</li>
-      </ul>
-
-      <h3 id="beta-2-11">beta 2.11 (3/14/2021)</h3>
-      <ul>
-        <li>added more sound effects (death, spikes, crates, +more)</li>
-        <li>added pitch shifting to sound effects</li>
-        <li>half fixed issues with ! and ? spam from groups of AIs (still WIP)</li>
-        <li>the pistol now has a much longer cooldown (temporary)</li>
-      </ul>
-
-      <h3 id="beta-2-10">beta 2.10 (3/7/2021)</h3>
-      <ul>
-        <li>added player death animation</li>
-        <li>added volume slider</li>
-        <li>added weapon equip sounds for the sword and pistol</li>
-        <li>added menu and pause sounds</li>
-        <li>fixed some navpoly issues (this also fixed some crashes)</li>
-        <li>fixed ultra chaser dashing (it&#39;s been broken for awhile, whoops) and added an animation</li>
-        <li>footstep sounds are no longer cut off when you stop walking</li>
-        <li>added footstep sound for wood</li>
-        <li>other enemies now also emit footstep sounds</li>
-        <li>a few behind the scenes improvements</li>
-      </ul>
-
-      <h3 id="beta-2-9">beta 2.9 (2/21/2021)</h3>
-      <ul>
-        <li>added sound effects (very WIP)</li>
-        <li>melee and projectile attacks now have recoil</li>
-        <li>added screen shake</li>
-        <li>added frame freeze</li>
-        <li>melee attacks now boost you forwards slightly</li>
-        <li>greatly updated README</li>
-        <li>a few behind the scenes improvements</li>
-      </ul>
-
-      <h3 id="beta-2-8">beta 2.8 (1/31/2021)</h3>
-      <ul>
-        <li>added an armor break mechanic (entities with defense now have a separate armor bar and they will become vulnerable once it&#39;s depleted)</li>
-        <li>knights now have less health, but 1 defense</li>
-        <li>improved entity health bars (now displays bonus health and armor)</li>
-        <li>options menu is now split into tabs</li>
-        <li>projectiles now have a minimum speed they need to deal damage (WIP, feels a little wrong on arrows)</li>
-        <li>some behind the scenes improvements</li>
-      </ul>
-
-      <h3 id="beta-2-7">beta 2.7 (1/17/2021)</h3>
-      <ul>
-        <li>fixed the .exe icon</li>
-        <li>added an armor break mechanic (entities with defense now have a separate armor bar and they will become vulnerable once it&#39;s depleted)</li>
-        <li>knights now have less health, but 1 defense</li>
-        <li>improved entity health bars (now displays bonus health and armor)</li>
-        <li>options menu is now split into tabs</li>
-        <li>projectiles now have a minimum speed they need to deal damage (WIP, feels a little wrong on arrows)</li>
-        <li>some behind the scenes improvements</li>
-      </ul>
-
-      <h3 id="beta-2-6">beta 2.6 (1/11/2021)</h3>
-      <ul>
-        <li>chaser sprite improvements</li>
-        <li>minor-ish level design improvements</li>
-        <li>spikes can now be placed individually instead of in pairs</li>
-        <li>changed some animations to be more bouncy (experimental, not sure how I feel about it yet)</li>
-        <li>menus use the pointer cursor and a new cursor was added for an empty hand</li>
-        <li>bleeding now works differently: the duration is increased each time you take any physical damage while bleeding</li>
-        <li>a big behind the scenes improvement (singular)</li>
-      </ul>
-
-      <h3 id="beta-2-5">beta 2.5 (12/30/2020)</h3>
-      <ul>
-        <li>entities can now kill their target without crashing the game (this also fixed all known crashes previously in the game)</li>
-        <li>added entity pathfinding</li>
-        <li>entities can now have multiple targets at once</li>
-        <li>entities can now space a certain distance away from their target</li>
-        <li>attacks can now hurt allies of the same faction</li>
-        <li>added entity infighting</li>
-        <li>improved action selection</li>
-        <li>entities now wander back to their starting position if they are too far away</li>
-        <li>added support for neutral enemies</li>
-        <li>fixed item duplication on Duo</li>
-        <li>a ton of behind the scenes improvements</li>
-      </ul>
-
-      <h3 id="beta-2-4">beta 2.4 (11/29/2020)</h3>
-      <ul>
-        <li>remade the level Brick</li>
-        <li>tutorial and HUD text now has a shadow for better clarity</li>
-        <li>fixed weird issues with hitbox cooldowns</li>
-        <li>fixed issues with collisions</li>
-        <li>a bunch of miscellaneous improvements</li>
-      </ul>
-
-      <h3 id="beta-2-3">beta 2.3 (11/25/2020)</h3>
-      <ul>
-        <li>levels now track your best time</li>
-        <li>added a stopwatch timer</li>
-        <li>adjusted entity collisions</li>
-        <li>some miscellaneous improvements</li>
-      </ul>
-
-      <h3 id="beta-2-2">beta 2.2 (11/23/2020)</h3>
-      <ul>
-        <li>added a new level (Duo)</li>
-        <li>added an intro (WIP)</li>
-        <li>the item bar will now be hidden if it&#39;s empty (experimental, you can disable this)</li>
-        <li>added item pickup effect</li>
-        <li>multiple effects can now play on a sprite at once, so they won&#39;t override eachother</li>
-        <li>some changes to physics (should feel about the same)</li>
-        <li>changed the look of the health bar (similar to how it was pre 1.6)</li>
-      </ul>
-
-      <h3 id="beta-2-1">beta 2.1 (11/17/2020)</h3>
-      <ul>
-        <li>options are now saved automatically (so they don&#39;t reset every time you play)</li>
-        <li>levels now track your deaths</li>
-        <li>knockback has been adjusted and increased</li>
-        <li>improved bow (you don&#39;t have to wait out the cooldown before you start charging)</li>
-        <li>regular pink chasers now have 2 health, but take a ton of knockback</li>
-        <li>knights have 5 health instead of 6</li>
-        <li>improved the fire status effect</li>
-        <li>you can see the amount of stars on a save by hovering over it</li>
-        <li>fixed aNOTHER potential crash on Entrance (can&#39;t have 2 enemies that fight i guess)</li>
-        <li>some small fixes and improvements</li>
-      </ul>
-
-      <h4 id="beta-2-0-1">beta 2.0 Hotfix (11/11/2020)</h4>
-      <ul>
-        <li>fixed the crash on the level Entrance</li>
-      </ul>
-
-      <hr class="minor">
-      <h2 id="beta-2-0">beta 2.0 (11/11/2020)</h2>
-      <ul>
-        <li>added the dash</li>
-        <li>added the bow</li>
-        <li>added castle tiles and props</li>
-        <li>added knights</li>
-        <li>added archers</li>
-        <li>added rogues</li>
-        <li>added the king</li>
-        <li>added status effects (bleeding, poison, and burning)</li>
-        <li>added fire and timber pots</li>
-        <li>added blue ultra chasers</li>
-        <li>added 9 new levels</li>
-        <li>made some changes to the old levels</li>
-        <li>made big changes and expansions to the hub</li>
-        <li>made a new unique death effect for every enemy</li>
-        <li>entity optimizations (offscreen entities are paused)</li>
-        <li>gave the levels actual names</li>
-        <li>gold chasers now chase the again and have 1 health and 3 damage, like they used to be pre 1.6</li>
-        <li>pistol does 2 damage again</li>
-        <li>a few sprite improvements</li>
-      </ul>
-      <hr class="minor">
-
-      <h3 id="beta-1-6">beta 1.6 (10/4/2020)</h3>
-      <ul>
-        <li>graphics overhaul, almost every sprite and tile has been redone</li>
-        <li>gold chasers work differently, they now have more health, no damage, and run away</li>
-        <li>some miscellaneous fixes and improvements</li>
-      </ul>
-
-      <h4 id="beta-1-5-1">beta 1.5 hotfix (9/28/2020)</h4>
-      <ul>
-        <li>fixed a bug very minor bug where levels wouldn&#39;t load</li>
-      </ul>
-
-      <h3 id="beta-1-5">beta 1.5 (9/27/2020)</h3>
-      <ul>
-        <li>added saving and loading</li>
-        <li>menus now work with the mouse and are much less janky overall</li>
-        <li>removed keyboard only mode</li>
-        <li>remade all levels (they are still a little rough)</li>
-        <li>added perfection mode</li>
-        <li>added a fullscreen option</li>
-        <li>added dirt paths</li>
-        <li>improvements to entity pushing</li>
-        <li>gold chasers drop gold hearts again</li>
-        <li>pistol bullets now only do 1 damage (this is temporary until 2.0)</li>
-        <li>a few miscellaneous fixes and improvements</li>
-      </ul>
-
-      <h3 id="beta-1-4">beta 1.4 (9/20/2020)</h3>
-      <ul>
-        <li>added knockback</li>
-        <li>fixed a bug where you could get double hit if you were damaged twice on the same frame</li>
-        <li>added entity pushing</li>
-        <li>gold chasers no longer drop gold hearts (this is temporary)</li>
-        <li>improvements to the UI and progress bar</li>
-        <li>some miscellaneous fixes and improvements</li>
-      </ul>
-
-      <h3 id="beta-1-3">beta 1.3 (9/7/2020)</h3>
-      <ul>
-        <li>added a hub world</li>
-        <li>added a title screen</li>
-        <li>added shadows</li>
-        <li>fixed many bugs with the settings menu (still no UI aesthetic overhaul sorry)</li>
-        <li>fixes for effects</li>
-        <li>fixes for depth sorting with spikes (still not perfect, im working on it)</li>
-        <li>a few miscellaneous fixes</li>
-      </ul>
-
-      <h3 id="beta-1-2">beta 1.2 (8/30/2020)</h3>
-      <ul>
-        <li>settings menu overhaul (UI aesthetic will be overhauled soon as well</li>
-        <li>reload bar is the right size now</li>
-        <li>added a hit effect</li>
-        <li>improved item pickup system</li>
-        <li>lots of miscellaneous fixes and improvements</li>
-      </ul>
-
-      <h3 id="beta-1-1">beta 1.1 (8/23/2020)</h3>
-      <ul>
-        <li>major improvements to the sword, it is much less janky now</li>
-        <li>fixed a bug with the enemy AI that would severely stunt their reaction time</li>
-        <li>added 2 more levels</li>
-        <li>added a death effect</li>
-        <li>increased player acceleration (it should feel less &quot;slippery&quot; now)</li>
-        <li>fixed the floating bullets bug</li>
-        <li>gold chasers now drop gold hearts</li>
-        <li>other small miscellaneous fixes and improvements</li>
-      </ul>
-
-      <hr class="minor">
-      <h2 id="beta-1-0">beta 1.0 (8/16/2020)</h2>
-      <ul>
-        <li>uhhh, everything</li>
-      </ul>
-      <hr class="minor">
-
-      <h3 id="version-numbering">how the version numbering works</h3>
-      <p>i don&#39;t use semantic versioning because im just too cool for that, i guess</p>
-      <p>instead, its:</p>
-
-      <p><em>Phase</em> <strong>content</strong>.<strong>patch</strong> <em>Hotfix</em></p>
-
-      <p>
-        <em>Phase</em> is Alpha or Beta. if the version is after the official release, <em>Phase</em> is ommited<br>
-        <strong>content</strong> is only incremented for big content updates (starts at 1)<br>
-        <strong>patch</strong> is incremented for minor polish updates<br>
-        <em>Hotfix</em> is for "oh no there's some terrible bug i didn't notice!!!1!" updates. it isn&#39;t displayed unless there&#39;s a hotfix for that version. if there&#39;s multiple hotfixes for a version, a counter is added (i.e. hotfix #2)
-      </p>
-    </div>
-
-  </body>
 </html>

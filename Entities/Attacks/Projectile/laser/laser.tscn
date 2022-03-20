@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Entities/Attacks/Projectile/Projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Attacks/Projectile/laser/laser.png" type="Texture" id=2]
+[ext_resource path="res://Effects/LightSource.gd" type="Script" id=3]
+[ext_resource path="res://Effects/light.png" type="Texture" id=4]
+[ext_resource path="res://Entities/Attacks/Projectile/laser/laser_shoot.wav" type="AudioStream" id=5]
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 5.88936
+
+[sub_resource type="Animation" id=3]
+resource_name = "New Anim"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 10, 10, 10, 1 ) ]
+}
+
+[node name="laser" instance=ExtResource( 1 )]
+rotation = 0.0
+FORCE_MULT = 0.0
+truName = "laser"
+PENETRATES = 2
+RANGE = 999
+SPAWN_SOUND = ExtResource( 5 )
+ONHIT_SPEED_MULTIPLIER = 1.0
+RECOIL = 0
+VELOCITY_INHERITENCE = 0.0
+
+[node name="entity_sprite" parent="." index="0"]
+self_modulate = Color( 10, 10, 10, 1 )
+material = SubResource( 2 )
+texture = ExtResource( 2 )
+
+[node name="hitbox" parent="." index="1"]
+COOLDOWN = 0.1
+MULTIHITS = true
+TRUE_DAMAGE = 2
+KNOCKBACK = 80
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 3 )
+
+[node name="light" type="Light2D" parent="." index="6"]
+scale = Vector2( 2, 1 )
+texture = ExtResource( 4 )
+texture_scale = 0.03
+color = Color( 0.203922, 0.894118, 0.831373, 1 )
+script = ExtResource( 3 )
+
+[editable path="entity_sprite"]
+[editable path="hitbox"]

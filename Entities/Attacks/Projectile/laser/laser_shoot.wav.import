@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/laser_shoot.wav-3ac3557236d54d3d8f5eba8f1e99d677.sample"
+
+[deps]
+
+source_file="res://Entities/Attacks/Projectile/laser/laser_shoot.wav"
+dest_files=[ "res://.import/laser_shoot.wav-3ac3557236d54d3d8f5eba8f1e99d677.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

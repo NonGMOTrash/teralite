@@ -35,18 +35,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("light:energy")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1.2, 1 ),
-"update": 0,
-"values": [ 1.5, 0.0 ]
-}
 
 [sub_resource type="Animation" id=7]
 resource_local_to_scene = true
@@ -94,7 +82,6 @@ REFLECTION_MULT = 1.1
 material = SubResource( 6 )
 texture = ExtResource( 3 )
 hframes = 5
-frame = 2
 
 [node name="hitbox" parent="." index="1"]
 COOLDOWN = 0.3
@@ -134,7 +121,7 @@ anims/hold = SubResource( 5 )
 texture = ExtResource( 8 )
 texture_scale = 0.35
 color = Color( 0.470588, 0.819608, 0.827451, 1 )
-energy = 0.269683
+energy = 1.5
 mode = 2
 script = ExtResource( 9 )
 

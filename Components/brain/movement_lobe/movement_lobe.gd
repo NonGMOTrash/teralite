@@ -317,4 +317,8 @@ func _on_movement_timer_timeout() -> void:
 	
 	intention = intention.normalized()
 	
+	# eight way movement
+	if EIGHT_WAY_MOVEMENT:
+		intention = Vector2(stepify(intention.x, 1), stepify(intention.y, 1))
+	
 	entity.input_vector = intention

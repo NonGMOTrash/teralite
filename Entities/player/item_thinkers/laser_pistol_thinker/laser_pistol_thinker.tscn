@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/player/item_thinkers/laser_pistol_thinker/laser_pistol_thinker.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Item_Pickups/laser_pistol/laser_pistol.png" type="Texture" id=3]
+[ext_resource path="res://UI/cursors/cursor_laser_pistol.png" type="Texture" id=4]
+
+[node name="laser_pistol" type="Node"]
+script = ExtResource( 2 )
+PRIMARY_ACTION_MODE = 1
+HELD_ITEM_TEXTURE = ExtResource( 3 )
+HELD_ITEM_ANCHOR = Vector2( 10, 0 )
+RELOAD_ANIM = "spin"
+my_item = "laser_pistol"
+display_name = "laser pistol"
+CURSOR = ExtResource( 4 )
+CURSOR_MODE = 1
+
+[node name="sound_player" parent="." instance=ExtResource( 1 )]
+
+[node name="cooldown" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true

@@ -79,4 +79,5 @@ func set_data():
 		"teleporter": get_used_cells_by_id(82),
 		"pulse_rifle": get_used_cells_by_id(83),
 		"portal_gun": get_used_cells_by_id(84),
+		"laser_pistol": get_used_cells_by_id(85),
 	}

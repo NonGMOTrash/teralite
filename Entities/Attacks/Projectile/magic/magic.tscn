@@ -47,12 +47,12 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D" parent="." index="3"]
 shape = SubResource( 4 )
 
-[node name="LightSource" type="Light2D" parent="." index="5"]
+[node name="light" type="Light2D" parent="." index="5"]
 show_behind_parent = true
 texture = ExtResource( 5 )
 texture_scale = 0.08
 color = Color( 0.211765, 0.937255, 0.937255, 1 )
-energy = 1.25
+energy = 1.5
 mode = 2
 shadow_enabled = true
 shadow_buffer_size = 512

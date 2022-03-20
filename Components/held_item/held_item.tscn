@@ -88,7 +88,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=3]
 tracks/0/type = "value"
-tracks/0/path = NodePath("anchor/sprite:rotation_degrees")
+tracks/0/path = NodePath("anchor:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -198,8 +198,10 @@ script = ExtResource( 1 )
 
 [node name="anchor" type="Node2D" parent="."]
 position = Vector2( 8, 0 )
+rotation = 6.28319
 
 [node name="sprite" type="Sprite" parent="anchor"]
+rotation = 6.28319
 texture = ExtResource( 2 )
 flip_v = true
 hframes = 3

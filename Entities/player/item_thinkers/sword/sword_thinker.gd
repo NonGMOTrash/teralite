@@ -4,6 +4,7 @@ export var attack_cooldown := 0.45
 export var counter_duration := 0.6
 export var counter_slowness_lvl := 1.0
 export var counter_cooldown := 0.2
+export var counter_damage := 2
 export var SLASH: PackedScene
 
 onready var cooldown := $cooldown as Timer
@@ -87,6 +88,7 @@ func _on_counter_area_entered(area: Area2D) -> void:
 	
 	var slash: Melee = SLASH.instance()
 	slash.setup(player, area.global_position)
+	slash.find_node("hitbox").DAMAMGE = counter_damage
 	refs.ysort.call_deferred("add_child", slash)
 	
 	sound_player.skip_sound()

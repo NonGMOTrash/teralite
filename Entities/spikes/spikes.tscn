@@ -96,7 +96,6 @@ frame = 1
 
 [node name="hitbox" parent="." instance=ExtResource( 2 )]
 scale = Vector2( 0.9, 0.9 )
-COOLDOWN = 0.05
 iTime = 0.4
 KNOCKBACK = 50
 CLANKS = false

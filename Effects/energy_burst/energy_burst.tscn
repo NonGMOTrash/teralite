@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Effects/Effect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Effects/energy_burst/energy_burst.png" type="Texture" id=2]
+[ext_resource path="res://Effects/LightSource.gd" type="Script" id=3]
+[ext_resource path="res://Effects/light.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "energy_burst"
@@ -19,6 +21,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../light:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.165 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
 
 [node name="energy_burst" instance=ExtResource( 1 )]
 
@@ -26,8 +40,15 @@ tracks/0/keys = {
 position = Vector2( 18, 0 )
 texture = ExtResource( 2 )
 hframes = 5
-frame = 4
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "energy_burst"
 anims/energy_burst = SubResource( 1 )
+
+[node name="light" type="Light2D" parent="." index="2"]
+position = Vector2( 18, 0 )
+texture = ExtResource( 4 )
+texture_scale = 0.2
+color = Color( 0.337255, 0.917647, 0.768627, 1 )
+energy = 2.0
+script = ExtResource( 3 )
