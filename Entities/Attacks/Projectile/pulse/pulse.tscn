@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Entities/Attacks/Projectile/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Attacks/Projectile/pulse/pulse.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Entities/Attacks/Projectile/pulse/pulse_shoot.wav" type="AudioStream" id=4]
 [ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Entities/Attacks/Projectile/pulse/pulse_bounce.wav" type="AudioStream" id=6]
+[ext_resource path="res://Effects/LightSource.gd" type="Script" id=7]
+[ext_resource path="res://Effects/light.png" type="Texture" id=8]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -86,6 +88,15 @@ AUTO_PLAY = false
 autoplay = "New Anim"
 "anims/New Anim" = SubResource( 2 )
 anims/RESET = SubResource( 3 )
+
+[node name="light" type="Light2D" parent="." index="6"]
+scale = Vector2( 1.2, 1 )
+texture = ExtResource( 8 )
+texture_scale = 0.1
+color = Color( 0.490196, 0.960784, 0.917647, 1 )
+energy = 1.25
+mode = 2
+script = ExtResource( 7 )
 
 [editable path="entity_sprite"]
 [editable path="hitbox"]

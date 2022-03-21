@@ -46,7 +46,7 @@ material = SubResource( 2 )
 texture = ExtResource( 2 )
 
 [node name="hitbox" parent="." index="1"]
-COOLDOWN = 0.1
+COOLDOWN = 0.15
 MULTIHITS = true
 TRUE_DAMAGE = 2
 KNOCKBACK = 80

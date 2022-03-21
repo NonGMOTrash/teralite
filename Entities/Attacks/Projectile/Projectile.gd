@@ -48,17 +48,18 @@ func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	# Projectile.gd setup
 	visible = true
 	
-	# los check to the center of the player, prevents projectiles from spawning through walls
 	DIRECTION = SOURCE.global_position.direction_to(target_pos).normalized()
 	start_pos = SOURCE.global_position + SPAWN_OFFSET * DIRECTION
+	velocity = Vector2(SPEED, SPEED) * DIRECTION
 	
+	# los check to the center of the source entity, prevents projectiles from spawning through walls
+	if collision_mask == 0:
+		return
 	var ss = SOURCE.get_world_2d().direct_space_state
-	var raycast = ss.intersect_ray(start_pos, SOURCE.global_position.move_toward(start_pos,4), [], 1)
+	var raycast = ss.intersect_ray(start_pos,SOURCE.global_position.move_toward(start_pos, 4), [], 1)
 	if raycast and not raycast.collider == SOURCE:
 		yield(self, "ready")
 		collided()
-	
-	velocity = Vector2(SPEED, SPEED) * DIRECTION
 
 func _physics_process(delta):
 	if visible == false: return

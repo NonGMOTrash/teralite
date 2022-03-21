@@ -60,7 +60,8 @@ margin_right = 10.526
 margin_bottom = -7.79811
 
 [node name="light" parent="." index="13"]
-color = Color( 0.976471, 0.396078, 0.168627, 1 )
+color = Color( 0.968627, 0.560784, 0.4, 1 )
+energy = 1.5
 
 [connection signal="status_recieved" from="stats" to="." method="_on_stats_status_recieved"]
 

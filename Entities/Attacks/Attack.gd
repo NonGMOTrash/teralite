@@ -76,7 +76,7 @@ func _ready():
 		hitbox.connect("hit", self, "_on_hitbox_hit")
 
 func _physics_process(delta: float) -> void:
-	if is_on_wall():
+	if is_on_wall() and collision_mask != 0:
 		collided()
 
 func _on_hitbox_hit(area, type) -> void:

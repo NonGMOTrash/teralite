@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Entities/speed_pad/speed_pad.gd" type="Script" id=1]
 [ext_resource path="res://Entities/speed_pad/speed_pad_bottom.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Entities/speed_pad/speed_pad.wav" type="AudioStream" id=5]
 [ext_resource path="res://Entities/speed_pad/speed_pad_back.png" type="Texture" id=6]
 [ext_resource path="res://Entities/speed_pad/speed_pad_front.png" type="Texture" id=7]
+[ext_resource path="res://Effects/LightSource.gd" type="Script" id=8]
+[ext_resource path="res://Effects/light.png" type="Texture" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -87,12 +89,20 @@ texture = ExtResource( 2 )
 position = Vector2( 0, -2 )
 z_index = -1
 frames = SubResource( 5 )
-frame = 2
 playing = true
 
 [node name="front" type="AnimatedSprite" parent="."]
 position = Vector2( 0, 4 )
 frames = SubResource( 9 )
+frame = 1
 playing = true
+
+[node name="light" type="Light2D" parent="."]
+texture = ExtResource( 9 )
+texture_scale = 0.2
+color = Color( 0.764706, 0.92549, 0.933333, 1 )
+energy = 1.2
+mode = 2
+script = ExtResource( 8 )
 
 [connection signal="body_entered" from="boost" to="." method="_on_boost_body_entered"]

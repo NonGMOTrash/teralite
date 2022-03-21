@@ -203,7 +203,6 @@ rotation = 6.28319
 [node name="sprite" type="Sprite" parent="anchor"]
 rotation = 6.28319
 texture = ExtResource( 2 )
-flip_v = true
 hframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

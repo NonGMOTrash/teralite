@@ -1,0 +1,158 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Entities/drone/drone.gd" type="Script" id=1]
+[ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/entity_push/entity_push.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Components/brain/movement_lobe/spring/spring.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Entities/drone/drone.png" type="Texture" id=13]
+[ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=15]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="CircleShape2D" id=2]
+
+[sub_resource type="CircleShape2D" id=4]
+
+[sub_resource type="Animation" id=5]
+resource_name = "warning"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "New Anim"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[node name="drone" type="KinematicBody2D"]
+script = ExtResource( 1 )
+ACCELERATION = 200
+SLOWDOWN = 200
+TOP_SPEED = 100
+FORCE_MULT = 1.1
+FLYING = true
+truName = "drone"
+faction = "colonist"
+
+[node name="stats" parent="." instance=ExtResource( 2 )]
+MAX_HEALTH = 7
+HEALTH = 7
+DEFENCE = 1
+DAMAGE = 0
+poison_modifier = -99.0
+burning_modifier = -99.0
+bleed_modifier = -99.0
+speed_modifier = -99.0
+slowness_modifier = -99.0
+regeneration_modifier = -99.0
+resistance_modifier = -99.0
+infection_modifier = -99.0
+
+[node name="entity_sprite" parent="." instance=ExtResource( 4 )]
+material = SubResource( 1 )
+z_index = 5
+texture = ExtResource( 13 )
+hframes = 2
+auto_flip_mode = 2
+
+[node name="shadow" parent="entity_sprite" index="0"]
+position = Vector2( 0, 15 )
+
+[node name="entity_push" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="CollisionShape2D" parent="entity_push" index="0"]
+shape = SubResource( 2 )
+
+[node name="hurtbox" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+shape = SubResource( 4 )
+
+[node name="sleeper" parent="." instance=ExtResource( 6 )]
+position = Vector2( 0.445448, 0.59681 )
+scale = Vector2( 1.31181, 2.09849 )
+
+[node name="health_bar" parent="." instance=ExtResource( 7 )]
+margin_left = -10.8323
+margin_top = -8.85315
+margin_right = 11.1677
+margin_bottom = -4.85138
+
+[node name="brain" parent="." instance=ExtResource( 9 )]
+SIGHT_RANGE = 200.0
+WALLHACKS = true
+
+[node name="movement_lobe" parent="brain" instance=ExtResource( 10 )]
+WANDER_SPEED = 0.0
+EIGHT_WAY_MOVEMENT = true
+MOVEMENT_EFFICIENCY = 20
+general_springs = {
+"friendly": "",
+"hostile": "spring",
+"neutral": ""
+}
+
+[node name="spring" parent="brain/movement_lobe" instance=ExtResource( 11 )]
+DISTANCE_MIN = 40
+DISTANCE_MAX = 80
+USE_DISTANCE_RANGE = true
+
+[node name="memory_lobe" parent="brain" instance=ExtResource( 8 )]
+MEMORY_TIME = 16.0
+
+[node name="action_lobe" parent="brain" instance=ExtResource( 15 )]
+PATIENCE = 0.0
+
+[node name="shoot" parent="brain/action_lobe" instance=ExtResource( 14 )]
+best_distance = 1
+COOLDOWN = 0.8
+
+[node name="entity_effects" parent="." instance=ExtResource( 12 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/warning = SubResource( 5 )
+
+[node name="AnimationPlayer_2" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 6 )
+
+[connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+
+[editable path="entity_sprite"]
+[editable path="entity_push"]
+[editable path="hurtbox"]

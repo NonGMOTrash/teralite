@@ -80,4 +80,5 @@ func set_data():
 		"pulse_rifle": get_used_cells_by_id(83),
 		"portal_gun": get_used_cells_by_id(84),
 		"laser_pistol": get_used_cells_by_id(85),
+		"drone": get_used_cells_by_id(86),
 	}
