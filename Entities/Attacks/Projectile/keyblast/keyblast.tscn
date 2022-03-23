@@ -1,0 +1,124 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Entities/Attacks/Projectile/Projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Attacks/Projectile/keyblast/keyblast.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Attacks/Projectile/keyblast/keyblast.png" type="Texture" id=3]
+[ext_resource path="res://Entities/Attacks/Projectile/keyblast/keyblast_shoot.wav" type="AudioStream" id=4]
+[ext_resource path="res://Entities/Attacks/Projectile/keyblast/keyblast_collide.wav" type="AudioStream" id=5]
+[ext_resource path="res://Entities/Attacks/Projectile/keyblast/keyblast_zap.wav" type="AudioStream" id=6]
+[ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=7]
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 12.4005
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "animation"
+length = 0.25
+loop = true
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0625, 0.125, 0.1875 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "impact"
+length = 0.291667
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 9, 10 ]
+}
+
+[node name="keyblast" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+INANIMATE = false
+FLYING = false
+truName = "keyblast"
+PENETRATES = 2
+auto_rotate = false
+SPAWN_SOUND = ExtResource( 4 )
+HIT_SOUND = ExtResource( 6 )
+KILL_SOUND = ExtResource( 6 )
+BLOCKED_SOUND = ExtResource( 6 )
+COLLIDE_SOUND = ExtResource( 5 )
+KILLED_SOUND = ExtResource( 5 )
+SPEED = 70
+VELOCITY_ARMOR = 99
+ONHIT_SPEED_MULTIPLIER = 0.0
+VELOCITY_INHERITENCE = 0.0
+
+[node name="entity_sprite" parent="." index="0"]
+material = SubResource( 2 )
+texture = ExtResource( 3 )
+hframes = 12
+frame = 4
+
+[node name="hitbox" parent="." index="1"]
+COOLDOWN = 0.25
+MULTIHITS = true
+DAMAGE = 0
+TRUE_DAMAGE = 1
+TEAM_ATTACK = false
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+shape = SubResource( 1 )
+
+[node name="zap" parent="sound" index="0" instance=ExtResource( 7 )]
+stream = ExtResource( 6 )
+bus = "Master"
+MODE = 1
+AUTO_PLAY = false
+
+[node name="projectile_field" type="Area2D" parent="." index="5"]
+collision_layer = 0
+collision_mask = 72
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectile_field" index="0"]
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+autoplay = "animation"
+anims/RESET = SubResource( 3 )
+anims/animation = SubResource( 4 )
+anims/impact = SubResource( 5 )
+
+[connection signal="body_entered" from="projectile_field" to="." method="_on_projectile_field_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+
+[editable path="entity_sprite"]
+[editable path="hitbox"]

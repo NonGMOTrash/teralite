@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=2]
+[gd_scene load_steps=83 format=2]
 
 [ext_resource path="res://Levels/Level Resources/scene_batcher/scene_batcher.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Item_Pickups/pistol/pistol.png" type="Texture" id=2]
@@ -80,6 +80,7 @@
 [ext_resource path="res://Entities/Item_Pickups/portal_gun/portal_gun.png" type="Texture" id=78]
 [ext_resource path="res://Entities/Item_Pickups/laser_pistol/laser_pistol.png" type="Texture" id=79]
 [ext_resource path="res://Entities/drone/drone.png" type="Texture" id=80]
+[ext_resource path="res://Entities/Item_Pickups/keyblaster/keyblaster.png" type="Texture" id=81]
 
 [sub_resource type="TileSet" id=1]
 2/name = "player.png 2"
@@ -1188,6 +1189,20 @@
 86/shape_one_way_margin = 0.0
 86/shapes = [  ]
 86/z_index = 0
+87/name = "keyblaster.png 87"
+87/texture = ExtResource( 81 )
+87/tex_offset = Vector2( 0, 0 )
+87/modulate = Color( 1, 1, 1, 1 )
+87/region = Rect2( 1, 3, 14, 10 )
+87/tile_mode = 0
+87/occluder_offset = Vector2( 0, 0 )
+87/navigation_offset = Vector2( 0, 0 )
+87/shape_offset = Vector2( 0, 0 )
+87/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+87/shape_one_way = false
+87/shape_one_way_margin = 0.0
+87/shapes = [  ]
+87/z_index = 0
 
 [node name="entity_spawns" instance=ExtResource( 1 )]
 position = Vector2( 4, 4 )

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/keyblast_shoot.wav-366f52d3c83bbc6933c046913407269a.sample"
+
+[deps]
+
+source_file="res://Entities/Attacks/Projectile/keyblast/keyblast_shoot.wav"
+dest_files=[ "res://.import/keyblast_shoot.wav-366f52d3c83bbc6933c046913407269a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
