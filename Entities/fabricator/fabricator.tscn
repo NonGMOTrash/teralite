@@ -1,0 +1,128 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Entities/fabricator/fabricator.gd" type="Script" id=1]
+[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/fabricator/fabricator.png" type="Texture" id=10]
+[ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=11]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 7.35846
+
+[sub_resource type="Animation" id=3]
+resource_name = "spawn"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 0.8 ), Vector2( 1, 1 ), Vector2( 1.2, 0.8 ), Vector2( 1, 1 ), Vector2( 1.2, 0.8 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("entity_sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.2, 1.3, 1.4, 1.7, 1.8, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 2, 1, 0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn_drone"
+} ]
+}
+
+[node name="fabricator" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 1 )
+STATIC = true
+ACCELERATION = 0
+SLOWDOWN = 1600
+TOP_SPEED = 0
+FORCE_MULT = 0.0
+INANIMATE = true
+truName = "fabricator"
+faction = "colonist"
+
+[node name="stats" parent="." instance=ExtResource( 8 )]
+MAX_HEALTH = 22
+HEALTH = 22
+DAMAGE = 0
+poison_modifier = -99.0
+burning_modifier = -99.0
+bleed_modifier = -99.0
+speed_modifier = -99.0
+slowness_modifier = -99.0
+regeneration_modifier = -99.0
+resistance_modifier = -99.0
+infection_modifier = -99.0
+
+[node name="entity_sprite" parent="." instance=ExtResource( 2 )]
+material = SubResource( 1 )
+texture = ExtResource( 10 )
+hframes = 4
+
+[node name="health_bar" parent="." instance=ExtResource( 9 )]
+margin_left = -10.9606
+margin_top = -12.1206
+margin_right = 11.0394
+margin_bottom = -8.11881
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 2 )
+
+[node name="brain" parent="." instance=ExtResource( 3 )]
+
+[node name="action_lobe" parent="brain" instance=ExtResource( 4 )]
+PATIENCE = 0.0
+
+[node name="spawn" parent="brain/action_lobe" instance=ExtResource( 5 )]
+COOLDOWN = 2.0
+GLOBAL_COOLDOWN = true
+
+[node name="hurtbox" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+shape = SubResource( 2 )
+
+[node name="entity_effects" parent="." instance=ExtResource( 7 )]
+death_type = -1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/spawn = SubResource( 3 )
+
+[node name="sleeper" parent="." instance=ExtResource( 11 )]
+
+[connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
+
+[editable path="hurtbox"]

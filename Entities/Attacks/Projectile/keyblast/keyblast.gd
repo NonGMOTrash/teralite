@@ -18,6 +18,8 @@ func death():
 
 func collided():
 	velocity *= 0.2
+	if not animation.current_animation == "impact":
+		sound.play_sound("impact")
 	animation.play("impact")
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:

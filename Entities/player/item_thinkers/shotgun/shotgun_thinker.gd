@@ -85,11 +85,11 @@ func primary():
 		this_bullet.setup(player, global.get_look_pos())
 		this_bullet.DIRECTION = direction
 		this_bullet.velocity = Vector2(this_bullet.SPEED, this_bullet.SPEED) * direction
-		for bullet in bullets:
-			if bullet == this_bullet:
-				continue
-			else:
-				this_bullet.get_node("hitbox").blacklist.append(bullet.get_node("hurtbox"))
+#		for bullet in bullets:
+#			if bullet == this_bullet:
+#				continue
+#			else:
+#				this_bullet.get_node("hitbox").blacklist.append(bullet.get_node("hurtbox"))
 		refs.ysort.call_deferred("add_child", this_bullet)
 	
 	ammo -= 1

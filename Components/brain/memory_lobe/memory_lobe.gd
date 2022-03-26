@@ -86,7 +86,7 @@ func got_hit(body, _type):
 			return
 		else:
 			source = source.SOURCE
-	if not source is Entity or brain.targets.has(source):
+	if !is_instance_valid(source) or not source is Entity or brain.targets.has(source):
 		return
 	
 	match global.get_relation(brain.get_parent(), source):

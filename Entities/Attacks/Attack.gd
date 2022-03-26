@@ -81,14 +81,14 @@ func _physics_process(delta: float) -> void:
 
 func _on_hitbox_hit(area, type) -> void:
 	# PROBLEM_NOTE: maybe find some way to put this in the player script or something
-	if (
-		get_node_or_null(SOURCE_PATH) != null and
-		is_instance_valid(SOURCE) and
-		SOURCE.truName == "player" and
-		hit_pause_count < 2
-	):
-		OS.delay_msec((1 / 60.0) * 1000)
-		hit_pause_count += 1
+#	if (
+#		get_node_or_null(SOURCE_PATH) != null and
+#		is_instance_valid(SOURCE) and
+#		SOURCE.truName == "player" and
+#		hit_pause_count < 2
+#	):
+#		OS.delay_msec((1 / 60.0) * 1000)
+#		hit_pause_count += 1
 	
 	if (
 		PENETRATES == PEN_TYPE.NEVER or

@@ -48,6 +48,7 @@ AUTO_PLAY = false
 
 [node name="shell" parent="sound_player" instance=ExtResource( 7 )]
 stream = ExtResource( 8 )
+bus = "Master"
 MODE = 1
 AUTO_PLAY = false
 

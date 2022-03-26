@@ -23,19 +23,6 @@ COLLIDE_SOUND = ExtResource( 4 )
 SPEED = 400
 RECOIL = 20
 
-[node name="stats" parent="." index="0"]
-MAX_HEALTH = 5
-HEALTH = 5
-TRUE_DAMAGE = 1
-poison_modifier = -99.0
-burning_modifier = -99.0
-bleed_modifier = -99.0
-speed_modifier = -99.0
-slowness_modifier = -99.0
-regeneration_modifier = -99.0
-resistance_modifier = -99.0
-infection_modifier = -99.0
-
 [node name="entity_sprite" parent="." index="1"]
 material = SubResource( 5 )
 texture = ExtResource( 2 )

@@ -75,8 +75,6 @@ SPAWN_SOUND = ExtResource( 4 )
 HIT_SOUND = ExtResource( 6 )
 KILL_SOUND = ExtResource( 6 )
 BLOCKED_SOUND = ExtResource( 6 )
-COLLIDE_SOUND = ExtResource( 5 )
-KILLED_SOUND = ExtResource( 5 )
 SPEED = 70
 VELOCITY_ARMOR = 99
 ONHIT_SPEED_MULTIPLIER = 0.0
@@ -100,6 +98,12 @@ shape = SubResource( 1 )
 
 [node name="zap" parent="sound" index="0" instance=ExtResource( 7 )]
 stream = ExtResource( 6 )
+bus = "Master"
+MODE = 1
+AUTO_PLAY = false
+
+[node name="impact" parent="sound" index="1" instance=ExtResource( 7 )]
+stream = ExtResource( 5 )
 bus = "Master"
 MODE = 1
 AUTO_PLAY = false

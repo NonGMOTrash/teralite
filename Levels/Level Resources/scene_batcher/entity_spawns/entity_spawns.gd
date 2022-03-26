@@ -82,4 +82,5 @@ func set_data():
 		"laser_pistol": get_used_cells_by_id(85),
 		"drone": get_used_cells_by_id(86),
 		"keyblaster": get_used_cells_by_id(87),
+		"fabricator": get_used_cells_by_id(88),
 	}
