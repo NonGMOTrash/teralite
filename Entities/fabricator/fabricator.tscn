@@ -70,11 +70,12 @@ TOP_SPEED = 0
 FORCE_MULT = 0.0
 INANIMATE = true
 truName = "fabricator"
-faction = "colonist"
+faction = "future"
 
 [node name="stats" parent="." instance=ExtResource( 8 )]
 MAX_HEALTH = 22
 HEALTH = 22
+DEFENCE = 5
 DAMAGE = 0
 poison_modifier = -99.0
 burning_modifier = -99.0

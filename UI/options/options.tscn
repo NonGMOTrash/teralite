@@ -59,7 +59,7 @@ __meta__ = {
 
 [node name="VBox" type="VBoxContainer" parent="tabs/video"]
 margin_right = 352.0
-margin_bottom = 266.0
+margin_bottom = 238.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
@@ -96,7 +96,7 @@ margin_bottom = 158.0
 hint_tooltip = "accuracy of shadows, higher is better but more resource intensive"
 min_value = 256.0
 max_value = 4096.0
-step = 64.0
+step = 256.0
 value = 512.0
 TEXT = "shadow buffer size"
 PROGRESS = 1

@@ -256,7 +256,7 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 	var entity_name: String = entity.truName
 	var source: Entity
 	var source_name: String
-	if entity is Attack and get_node_or_null(entity.SOURCE_PATH) != null:
+	if entity is Attack and is_instance_valid(entity.SOURCE):#get_node_or_null(entity.SOURCE_PATH) != null:
 		source = entity.SOURCE
 		source_name = source.truName
 	
@@ -291,14 +291,14 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 			"shotgun_shell": death_message = "shot by a %s" % source_name
 			"big_bullet": death_message = "shot by a %s" % source_name
 			"bullet": death_message = "shot by a %s" % source_name
-			"syringe": death_message = "injected by a %s" % source_name
+			"syringe": death_message = "infected by a %s" % source_name
 			"rocket": death_message = "blown up by a %s" % source_name
 			"zombie": death_message = "joined the horde"
 			"heart_mimic": death_message = "killed by a %s" % source_name
 			"stalker": death_message = "trampled by a %s" % source_name
 			"rocket_scorpian": death_message = "mauled by a rocket scorpian"
 			"king": death_message = "crushed by a %s" % source_name
-			_: death_message = "death message messed up, report pls ;-;"
+			_: death_message = "(death message error)"
 	
 	death_message = death_message.replace("_", " ")
 	

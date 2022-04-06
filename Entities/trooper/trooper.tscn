@@ -89,7 +89,7 @@ tracks/0/keys = {
 collision_layer = 2
 script = ExtResource( 1 )
 truName = "trooper"
-faction = "colonist"
+faction = "future"
 warnings = 1
 
 [node name="stats" parent="." instance=ExtResource( 2 )]

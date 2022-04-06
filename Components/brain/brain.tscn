@@ -5,11 +5,14 @@
 [ext_resource path="res://Effects/exclaimation/exclaimation.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 50.0
+radius = 1.0
 
 [node name="brain" type="Node2D"]
 script = ExtResource( 2 )
+TOLERANCE = 2
+THINK_TIME = 0.1
 SIGHT_RANGE = 135.0
+MAX_TARGETS = 5
 EXCLAIMATION = ExtResource( 3 )
 QUESTION = ExtResource( 1 )
 

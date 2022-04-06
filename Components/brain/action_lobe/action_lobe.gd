@@ -57,7 +57,7 @@ func _on_action_timer_timeout() -> void:
 		return
 	
 	if actions == []:
-		action_timer.stop()
+		return
 	elif brain.targets != [] or acts_on_self == true:
 		act()
 		yield(self, "action")
@@ -118,11 +118,13 @@ func act(warned = false):
 		if chosen_action.GLOBAL_COOLDOWN == true:
 			on_global_cooldown = true
 
-func weigh_actions(chosen_action: String):
+func weigh_actions(chosen_action: String) -> void:
 	for i in actions.size():
 		var action = actions[i]
+		var old_weight = action.weight
 		if action.get_name() == chosen_action:
 			action.weight += ACTION_WEIGHTING
 		else:
 			action.weight -= ACTION_DEWEIGHTING
 		action.weight = clamp(action.weight, 0, 1)
+

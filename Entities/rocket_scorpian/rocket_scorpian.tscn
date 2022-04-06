@@ -339,8 +339,8 @@ rage_speed_mult = 1.0
 burrow_speed_mult = 2.5
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
-MAX_HEALTH = 400
-HEALTH = 400
+MAX_HEALTH = 350
+HEALTH = 350
 DAMAGE = 0
 poison_modifier = -99.0
 infection_modifier = -99.0

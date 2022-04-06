@@ -4,10 +4,10 @@
 
 [node name="Barricade" instance=ExtResource( 1 )]
 
-[node name="Camera" parent="." index="2"]
+[node name="Camera" parent="." index="3"]
 position = Vector2( 0, -1 )
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 5308540, 0, 0, 5636212, 0, 0, 6226054, 0, 0, 7733343, 2, 0, 7733381, 1, 0, 8585307, 1, 0, 10092638, 0, 0, 10551428, 2, 0, 11599966, 2, 0, 11796611, 0, 0, 12189833, 0, 0 )
 
 [node name="entity_spawns" parent="YSort" index="1"]

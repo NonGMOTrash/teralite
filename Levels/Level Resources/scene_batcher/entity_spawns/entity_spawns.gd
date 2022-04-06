@@ -83,4 +83,5 @@ func set_data():
 		"drone": get_used_cells_by_id(86),
 		"keyblaster": get_used_cells_by_id(87),
 		"fabricator": get_used_cells_by_id(88),
+		"enforcer": get_used_cells_by_id(89),
 	}

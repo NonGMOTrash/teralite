@@ -55,9 +55,6 @@ func _ready():
 #				OS.alert("held_item could not be bound to source because they have no brain", "error")
 
 func _physics_process(_delta: float) -> void:
-	if get_parent().truName == "player":
-		prints(rotation_degrees, anchor.rotation_degrees, sprite.rotation_degrees)
-	
 	if TARGETING != TT.MANUAL and visible == true:
 		if TARGETING == TT.CURSOR:
 			target_pos = global.get_look_pos()

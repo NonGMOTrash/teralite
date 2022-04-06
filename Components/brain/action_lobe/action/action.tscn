@@ -5,12 +5,8 @@
 [node name="action" type="Node"]
 script = ExtResource( 1 )
 
-[node name="deweight_timer" type="Timer" parent="."]
-autostart = true
-
 [node name="cooldown_timer" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="tree_exiting" from="." to="." method="_on_action_tree_exiting"]
-[connection signal="timeout" from="deweight_timer" to="." method="_on_deweight_timer_timeout"]
 [connection signal="timeout" from="cooldown_timer" to="." method="_on_cooldown_timer_timeout"]

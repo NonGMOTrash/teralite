@@ -133,10 +133,6 @@ BLOCKED_SOUND = ExtResource( 2 )
 COLLIDE_SOUND = ExtResource( 3 )
 RECOIL = 20
 
-[node name="stats" parent="." index="0"]
-MAX_HEALTH = 5
-HEALTH = 5
-
 [node name="entity_sprite" parent="." index="1"]
 material = SubResource( 5 )
 position = Vector2( -2, -5 )

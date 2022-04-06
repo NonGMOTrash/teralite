@@ -135,7 +135,7 @@ const faction_relationships = {
 			"monster": "hostile",
 			"blue_kingdom": "hostile",
 			"army": "hostile",
-			"colonist": "hostile",
+			"future": "hostile",
 		},
 	"monster":
 		{
@@ -144,7 +144,7 @@ const faction_relationships = {
 			"monster": "friendly",
 			"blue_kingdom": "hostile",
 			"army": "hostile",
-			"colonist": "hostile",
+			"future": "hostile",
 		},
 	"blue_kingdom":
 		{
@@ -153,7 +153,7 @@ const faction_relationships = {
 			"monster": "hostile",
 			"blue_kingdom": "friendly",
 			"army": "hostile",
-			"colonist": "hostile",
+			"future": "hostile",
 		},
 	"solo":
 		{
@@ -162,7 +162,7 @@ const faction_relationships = {
 			"monster": "hostile",
 			"blue_kingdom": "hostile",
 			"army": "hostile",
-			"colonist": "hostile",
+			"future": "hostile",
 		},
 	"army":
 		{
@@ -171,16 +171,16 @@ const faction_relationships = {
 			"monster": "hostile",
 			"blue_kingdom": "hostile",
 			"army": "friendly",
-			"colonist": "hostile",
+			"future": "hostile",
 		},
-	"colonist":
+	"future":
 		{
 			"solo": "hostile",
 			"player": "hostile",
 			"monster": "hostile",
 			"blue_kingdom": "hostile",
 			"army": "hostile",
-			"colonist": "friendly",
+			"future": "friendly",
 		},
 	"my_entity": # special: friendly to the same entities (truName), but hostile to everyone else
 		{
@@ -189,7 +189,7 @@ const faction_relationships = {
 			"monster": "hostile",
 			"blue_kingdom": "hostile",
 			"army": "hostile",
-			"colonist": "hostile",
+			"future": "hostile",
 		},
 }
 
@@ -652,7 +652,6 @@ func _prep_scene(loader):
 
 func _prep_finished():
 	var scene: PackedScene = thread.wait_to_finish()
-	print(refs.transition.animation.current_animation_position)
 	if refs.transition.animation.is_playing():
 		yield(refs.transition, "finished")
 	get_tree().change_scene_to(scene)

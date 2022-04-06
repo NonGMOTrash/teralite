@@ -95,7 +95,7 @@ func attack(finished_animation:String):
 	if stored_attack.truName == "bolt":
 		stored_attack.setup(self,
 				stored_target.global_position + stored_target.velocity * get_physics_process_delta_time() * 15)
-	else:
+	elif is_instance_valid(stored_target):
 		stored_attack.setup(self, stored_target.global_position)
 	stored_attack.SOURCE_PATH = get_path()
 	refs.ysort.add_child(stored_attack)

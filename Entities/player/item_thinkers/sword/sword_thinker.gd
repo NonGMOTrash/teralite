@@ -88,7 +88,7 @@ func _on_counter_area_entered(area: Area2D) -> void:
 	
 	var slash: Melee = SLASH.instance()
 	slash.setup(player, area.global_position)
-	slash.find_node("hitbox").DAMAMGE = counter_damage
+	slash.find_node("hitbox").DAMAGE = counter_damage
 	refs.ysort.call_deferred("add_child", slash)
 	
 	sound_player.skip_sound()

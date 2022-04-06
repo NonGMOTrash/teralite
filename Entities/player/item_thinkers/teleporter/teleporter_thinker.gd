@@ -14,7 +14,7 @@ func _ready() -> void:
 	var shape := CircleShape2D.new()
 	shape.radius = telefrag_radius
 	telefrag.get_child(0).shape = shape
-	telefrag.TRUE_DAMAGE = 999
+	telefrag.TRUE_DAMAGE = 99
 	telefrag.TEAM_ATTACK = false
 	telefrag.CLANKS = false
 

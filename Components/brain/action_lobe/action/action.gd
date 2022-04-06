@@ -129,7 +129,8 @@ func evaluate(warned = false) -> Array: #-> [score, target]
 			# adjusting for custom score modification
 			score = score_modification(score)
 			
-			if score.size() == 0: scores.append(default_score)
+			if score.size() == 0:
+				scores.append(max(default_score - weight, 0))
 			else:
 				var new_score = 0
 				for num in score: new_score += num
@@ -153,9 +154,6 @@ func evaluate(warned = false) -> Array: #-> [score, target]
 
 func score_modification(score): # for custom score modification
 	return score
-
-func _on_deweight_timer_timeout() -> void:
-	weight *= 0.8
 
 func _on_cooldown_timer_timeout() -> void:
 	if GLOBAL_COOLDOWN == true:

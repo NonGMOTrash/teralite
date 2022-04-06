@@ -70,6 +70,7 @@ INANIMATE = false
 FLYING = false
 truName = "keyblast"
 PENETRATES = 2
+RANGE = 130
 auto_rotate = false
 SPAWN_SOUND = ExtResource( 4 )
 HIT_SOUND = ExtResource( 6 )

@@ -28,8 +28,8 @@ func _ready() -> void:
 	#var bounds_min = Vector2(0, 0)
 	#var bounds_max = Vector2(64, 64)
 	
-	var bounds_min = get_used_rect().position - Vector2(5, 5)
-	var bounds_max = get_used_rect().end + Vector2(5, 5)
+	var bounds_min := get_used_rect().position - Vector2(5, 5)
+	var bounds_max := get_used_rect().end + Vector2(5, 5)
 
 	# Replace all empty tiles with the provided navigation tile
 	for x in range(bounds_min.x, bounds_max.x):

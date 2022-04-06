@@ -1,0 +1,525 @@
+[gd_scene load_steps=45 format=2]
+
+[ext_resource path="res://Entities/universe_core/universe_core.gd" type="Script" id=1]
+[ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/universe_core/core_barrier.png" type="Texture" id=3]
+[ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/universe_core/core_barrier_back.png" type="Texture" id=5]
+[ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/universe_core/core_platform.png" type="Texture" id=8]
+[ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/universe_core/core_eye.png" type="Texture" id=10]
+[ext_resource path="res://Entities/universe_core/core_shape.png" type="Texture" id=11]
+[ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=13]
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 44, 50 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 3 )
+region = Rect2( 44, 0, 44, 50 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 3 )
+region = Rect2( 88, 0, 44, 50 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 3 )
+region = Rect2( 132, 0, 44, 50 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 38, 38 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 11 )
+region = Rect2( 38, 0, 38, 38 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 11 )
+region = Rect2( 76, 0, 38, 38 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 11 )
+region = Rect2( 114, 0, 38, 38 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 11 )
+region = Rect2( 152, 0, 38, 38 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 11 )
+region = Rect2( 190, 0, 38, 38 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 11 )
+region = Rect2( 228, 0, 38, 38 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 11 )
+region = Rect2( 266, 0, 38, 38 )
+
+[sub_resource type="SpriteFrames" id=17]
+animations = [ {
+"frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ) ],
+"loop": true,
+"name": "default",
+"speed": 16.0
+} ]
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 44, 50 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 5 )
+region = Rect2( 44, 0, 44, 50 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 5 )
+region = Rect2( 88, 0, 44, 50 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 5 )
+region = Rect2( 132, 0, 44, 50 )
+
+[sub_resource type="SpriteFrames" id=45]
+animations = [ {
+"frames": [ SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=46]
+radius = 26.8594
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 10.5785
+height = 23.6401
+
+[sub_resource type="Animation" id=20]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("barrier/platform/eye:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("barrier/platform/eye:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:eye_shaking")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "spawn_bullets"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("barrier/platform/eye:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 11, 12 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:eye_shaking")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "spawn_drones"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("barrier/platform/eye:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 9, 10 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:eye_shaking")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "spawn_explosions"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("barrier/platform/eye:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 13, 14 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:eye_shaking")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "spawn_keyblasts"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("barrier/platform/eye:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 7, 8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:eye_shaking")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "spawn_monarchs"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("barrier/platform/eye:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 15, 16 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:eye_shaking")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "spawn_poison"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("barrier/platform/eye:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 19, 20 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:eye_shaking")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "spawn_rogues"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("barrier/platform/eye:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:eye_shaking")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "spawn_scorpian"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("barrier/platform/eye:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 17, 18 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:eye_shaking")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[node name="universe_core" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 1 )
+STATIC = true
+ACCELERATION = 0
+SLOWDOWN = 0
+TOP_SPEED = 0
+FORCE_MULT = 0.2
+truName = "universe_core"
+faction = "future"
+
+[node name="stats" parent="." instance=ExtResource( 2 )]
+MAX_HEALTH = 800
+HEALTH = 800
+DEFENCE = 3
+DAMAGE = 0
+poison_modifier = -99.0
+burning_modifier = -99.0
+bleed_modifier = -99.0
+speed_modifier = -99.0
+slowness_modifier = -99.0
+regeneration_modifier = -99.0
+resistance_modifier = -99.0
+infection_modifier = -99.0
+
+[node name="barrier" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -10 )
+frames = SubResource( 8 )
+frame = 1
+playing = true
+
+[node name="platform" type="Sprite" parent="barrier"]
+show_behind_parent = true
+position = Vector2( 0, 15 )
+texture = ExtResource( 8 )
+
+[node name="eye" type="Sprite" parent="barrier/platform"]
+position = Vector2( 0, -20 )
+texture = ExtResource( 10 )
+hframes = 21
+frame = 1
+
+[node name="shape" type="AnimatedSprite" parent="barrier/platform/eye"]
+show_behind_parent = true
+frames = SubResource( 17 )
+frame = 5
+playing = true
+
+[node name="barrier_back" type="AnimatedSprite" parent="barrier/platform/eye/shape"]
+show_behind_parent = true
+position = Vector2( 0, 5 )
+frames = SubResource( 45 )
+frame = 3
+playing = true
+
+[node name="hurtbox" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+position = Vector2( 0, -8 )
+rotation = 1.5708
+shape = SubResource( 46 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 4 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 20 )
+anims/open = SubResource( 19 )
+anims/spawn_bullets = SubResource( 23 )
+anims/spawn_drones = SubResource( 24 )
+anims/spawn_explosions = SubResource( 22 )
+anims/spawn_keyblasts = SubResource( 25 )
+anims/spawn_monarchs = SubResource( 26 )
+anims/spawn_poison = SubResource( 27 )
+anims/spawn_rogues = SubResource( 18 )
+anims/spawn_scorpian = SubResource( 28 )
+
+[node name="brain" parent="." instance=ExtResource( 6 )]
+TOLERANCE = 20
+SIGHT_RANGE = 300.0
+WALLHACKS = true
+
+[node name="action_lobe" parent="brain" instance=ExtResource( 7 )]
+PATIENCE = 0.0
+ACTION_WEIGHTING = 0.4
+AUTO_ACTION_WEIGHTING = true
+
+[node name="spawn_explosions" parent="brain/action_lobe" instance=ExtResource( 9 )]
+distance_weight = 0
+default_score = 0.9
+COOLDOWN = 2.5
+GLOBAL_COOLDOWN = true
+
+[node name="spawn_bullets" parent="brain/action_lobe" instance=ExtResource( 9 )]
+distance_weight = 0
+COOLDOWN = 2.6
+GLOBAL_COOLDOWN = true
+
+[node name="spawn_drones" parent="brain/action_lobe" instance=ExtResource( 9 )]
+best_distance = 50
+COOLDOWN = 4.0
+GLOBAL_COOLDOWN = true
+
+[node name="spawn_keyblasts" parent="brain/action_lobe" instance=ExtResource( 9 )]
+best_distance = 100
+COOLDOWN = 1.4
+GLOBAL_COOLDOWN = true
+
+[node name="spawn_monarchs" parent="brain/action_lobe" instance=ExtResource( 9 )]
+best_distance = 120
+COOLDOWN = 3.0
+GLOBAL_COOLDOWN = true
+
+[node name="spawn_poison" parent="brain/action_lobe" instance=ExtResource( 9 )]
+distance_weight = 0
+COOLDOWN = 1.85
+GLOBAL_COOLDOWN = true
+
+[node name="spawn_rogues" parent="brain/action_lobe" instance=ExtResource( 9 )]
+best_distance = 20
+COOLDOWN = 2.0
+GLOBAL_COOLDOWN = true
+
+[node name="spawn_scorpian" parent="brain/action_lobe" instance=ExtResource( 9 )]
+distance_weight = 0
+COOLDOWN = 30.0
+GLOBAL_COOLDOWN = true
+
+[node name="memory_lobe" parent="brain" instance=ExtResource( 13 )]
+MEMORY_TIME = 8.0
+
+[node name="health_bar" parent="." instance=ExtResource( 12 )]
+margin_left = -11.1362
+margin_top = 8.68626
+margin_right = 10.8638
+margin_bottom = 12.688
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="found_target" from="brain" to="." method="_on_brain_found_target"]
+[connection signal="lost_target" from="brain" to="." method="_on_brain_lost_target"]
+[connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
+
+[editable path="hurtbox"]

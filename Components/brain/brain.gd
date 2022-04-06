@@ -2,22 +2,17 @@ extends Node2D
 
 onready var think_timer = $think_timer
 onready var sight = $sight
-onready var sight_shape = $sight/CollisionShape2D
 var movement_lobe: Node
 var action_lobe: Node
 var memory_lobe: Node
 var warning_lobe: Node
 var communication_lobe: Node
 
-export(int, 0, 20) var TOLERANCE = 2 # the amount of times it will tolerate friendly fire before infighting
-export(float, 0.01666, 1.0) var THINK_TIME = 0.1
-export(float, 0, 300) var SIGHT_RANGE = 100
-export(int, 1, 99) var MAX_TARGETS = 5
+export(int, 0, 20) var TOLERANCE # the amount of times it will tolerate friendly fire before infighting
+export(float, 0.01666, 1.0) var THINK_TIME
+export(float, 0, 300) var SIGHT_RANGE
+export(int, 1, 99) var MAX_TARGETS
 export(bool) var SIGHT_EFFECTS := true
-# PROBLEM_NOTE: idk why this is in the brain
-export var COMMUNICATES = true
-export(float, 0.01, 10.0) var COMM_DELAY = 1.2
-export(float, 0.0, 5.0) var COMM_DELAY_VARIANCE = 0.5
 export(bool) var WALLHACKS := false # can see through walls
 export var IGNORE_ATTACKS := true
 export var IGNORE_INANIMATE := true
@@ -44,9 +39,8 @@ func _on_brain_tree_entered():
 	entity.components["brain"] = self
 
 func _ready():
-	sight_shape.shape.radius = SIGHT_RANGE
 	think_timer.wait_time = THINK_TIME
-	
+	sight.scale = Vector2(SIGHT_RANGE, SIGHT_RANGE) # setting the radius in code seems to not work
 	excluded.append(weakref(entity))
 
 # for debugging purposes:
@@ -109,7 +103,7 @@ func get_closest_target(exclude_self:=true) -> Entity:
 			elif global_position.distance_to(targets[i].global_position) < dist:
 				target = targets[i]
 				dist = global_position.distance_to(targets[i].global_position)
-	return target 
+	return target
 
 func is_target_valid(index: int) -> bool: # maybe make this work with the target node OR target index
 	if index > targets.size() - 1 or index > target_paths.size() -1:
@@ -241,9 +235,9 @@ func remove_target(tar):
 			if entity.is_queued_for_deletion() == true: return
 			
 			movement_lobe.best_position_paths.remove(target_id)
-			memory_lobe.add_memory(targets[target_id].global_position, 
-					movement_lobe.get_spring(targets[target_id]), 
-					targets[target_id].get_instance_id())
+			memory_lobe.add_memory(targets[target_id].global_position,
+				movement_lobe.get_spring(targets[target_id]),
+				targets[target_id].get_instance_id())
 			
 			spawn_effect("question", global_position.move_toward(targets[target_id].global_position, 32))
 	
@@ -251,7 +245,7 @@ func remove_target(tar):
 	target_paths.remove(target_id)
 	emit_signal("lost_target")
 	
-	if targets == []: 
+	if targets == []:
 		entity.input_vector = Vector2.ZERO
 		if movement_lobe != null and movement_lobe.wander_timer.is_inside_tree() == true:
 			movement_lobe.wander_timer.start()
