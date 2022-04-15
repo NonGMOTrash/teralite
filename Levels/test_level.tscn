@@ -93,7 +93,7 @@ __meta__ = {
 }
 
 [node name="universe_core" parent="YSort" index="6" instance=ExtResource( 6 )]
-position = Vector2( 796.818, 875.094 )
+position = Vector2( 732.563, 739.634 )
 
 [editable path="background"]
 [editable path="YSort/world_tiles"]

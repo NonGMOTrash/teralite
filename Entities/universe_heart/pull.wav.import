@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pull.wav-3d7d4482739e375ec195d2926e3bf6cc.sample"
+
+[deps]
+
+source_file="res://Entities/universe_heart/pull.wav"
+dest_files=[ "res://.import/pull.wav-3d7d4482739e375ec195d2926e3bf6cc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

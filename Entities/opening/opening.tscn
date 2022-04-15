@@ -1,10 +1,11 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Entities/opening/opening.png" type="Texture" id=1]
 [ext_resource path="res://Entities/opening/opening.gd" type="Script" id=2]
 [ext_resource path="res://Effects/light.png" type="Texture" id=3]
 [ext_resource path="res://Effects/LightSource.gd" type="Script" id=4]
 [ext_resource path="res://Entities/opening/opening_symbol.png" type="Texture" id=5]
+[ext_resource path="res://Entities/opening/opening.wav" type="AudioStream" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -174,6 +175,20 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/3/type = "audio"
+tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 6 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [node name="opening" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -184,10 +199,10 @@ truName = "opening"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 21 )
+frame = 1
 playing = true
 
 [node name="symbol" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 texture = ExtResource( 5 )
 hframes = 8
 
@@ -204,5 +219,8 @@ mode = 2
 script = ExtResource( 4 )
 
 [node name="rate_timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
 
 [connection signal="timeout" from="rate_timer" to="." method="_on_rate_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://Entities/universe_core/universe_core.gd" type="Script" id=1]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=2]
@@ -13,6 +13,11 @@
 [ext_resource path="res://Entities/universe_core/core_shape.png" type="Texture" id=11]
 [ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Entities/universe_heart/universe_eye.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Entities/universe_core/richard.wav" type="AudioStream" id=18]
 
 [sub_resource type="AtlasTexture" id=37]
 atlas = ExtResource( 3 )
@@ -122,6 +127,87 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=48]
+resource_name = "death"
+length = 3.5
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.7, 1.9, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "explosion"
+}, {
+"args": [  ],
+"method": "explosion"
+}, {
+"args": [  ],
+"method": "explosion"
+}, {
+"args": [  ],
+"method": "explosion"
+}, {
+"args": [  ],
+"method": "explosion"
+}, {
+"args": [  ],
+"method": "explosion"
+}, {
+"args": [  ],
+"method": "explosion"
+}, {
+"args": [  ],
+"method": "explosion"
+}, {
+"args": [  ],
+"method": "explosion"
+}, {
+"args": [  ],
+"method": "explosion"
+}, {
+"args": [  ],
+"method": "explosion"
+}, {
+"args": [  ],
+"method": "explosion"
+}, {
+"args": [  ],
+"method": "explosion"
+}, {
+"args": [  ],
+"method": "explosion"
+}, {
+"args": [  ],
+"method": "explosion"
+}, {
+"args": [  ],
+"method": "explosion"
+}, {
+"args": [  ],
+"method": "explosion"
+}, {
+"args": [  ],
+"method": "death_real"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("barrier:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=19]
@@ -376,7 +462,10 @@ tracks/1/keys = {
 "values": [ false, true, false ]
 }
 
+[sub_resource type="CapsuleShape2D" id=47]
+
 [node name="universe_core" type="KinematicBody2D"]
+z_index = 1
 collision_layer = 2
 script = ExtResource( 1 )
 STATIC = true
@@ -421,7 +510,7 @@ frame = 1
 [node name="shape" type="AnimatedSprite" parent="barrier/platform/eye"]
 show_behind_parent = true
 frames = SubResource( 17 )
-frame = 5
+frame = 2
 playing = true
 
 [node name="barrier_back" type="AnimatedSprite" parent="barrier/platform/eye/shape"]
@@ -447,6 +536,7 @@ shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 20 )
+anims/death = SubResource( 48 )
 anims/open = SubResource( 19 )
 anims/spawn_bullets = SubResource( 23 )
 anims/spawn_drones = SubResource( 24 )
@@ -516,6 +606,24 @@ margin_left = -11.1362
 margin_top = 8.68626
 margin_right = 10.8638
 margin_bottom = 12.688
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+rotation = 1.5708
+shape = SubResource( 47 )
+
+[node name="spawner" parent="." instance=ExtResource( 15 )]
+thing = ExtResource( 14 )
+
+[node name="sound_player" parent="." instance=ExtResource( 16 )]
+
+[node name="spotted" parent="sound_player" instance=ExtResource( 17 )]
+stream = ExtResource( 18 )
+bus = "Master"
+MODE = 1
+AUTO_PLAY = false
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="found_target" from="brain" to="." method="_on_brain_found_target"]

@@ -59,6 +59,7 @@ func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	var raycast = ss.intersect_ray(start_pos,SOURCE.global_position.move_toward(start_pos, 4), [], 1)
 	if raycast and not raycast.collider == SOURCE:
 		yield(self, "ready")
+		yield(sound, "ready")
 		collided()
 
 func _physics_process(delta):

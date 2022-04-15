@@ -15,20 +15,24 @@ onready var animation: AnimationPlayer = $AnimationPlayer
 onready var stats: Node = $stats
 onready var eye: Sprite = $barrier/platform/eye
 onready var brain: Node2D = $brain
+onready var sound: Node = $sound_player
 
 export var eye_shaking := false
 
 var stored_target: Entity
+var played_spotted_sound := false
 
 func _ready() -> void:
 	brain.SIGHT_RANGE = 999
 	brain.sight.scale = Vector2(999, 999)
 
 func _on_action_lobe_action(action, target) -> void:
+	if animation.current_animation == "death":
+		return
+	
 	stored_target = target
 	animation.play_backwards("open")
 	animation.queue(action)
-	
 	
 	match action:
 		"spawn_explosions":
@@ -127,6 +131,10 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 		animation.play("open")
 
 func _on_brain_found_target() -> void:
+	if not played_spotted_sound:
+		sound.play_sound("spotted")
+		played_spotted_sound = true
+	
 	if brain.targets.size() == 1:
 		animation.play("open")
 
@@ -140,3 +148,14 @@ func _process(delta: float) -> void:
 	else:
 		eye.offset = Vector2.ZERO
 
+func death():
+	animation.play("death")
+	$health_bar.visible = false
+
+func death_real(): # more real than a goblin
+	.death()
+
+func explosion():
+	var explosion: Entity = EXPLOSION.instance()
+	explosion.position = global_position + Vector2(rand_range(-25, 25), rand_range(-25, 25))
+	refs.ysort.add_child(explosion)

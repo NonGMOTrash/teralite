@@ -1,0 +1,252 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Entities/universe_heart/universe_eye.gd" type="Script" id=1]
+[ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/universe_heart/universe_heart_eye.png" type="Texture" id=4]
+[ext_resource path="res://Entities/universe_heart/universe_heart_shape.png" type="Texture" id=5]
+[ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/Item_Pickups/star/star.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Components/sound_player/global_sound/global_sound.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Entities/universe_heart/pull.wav" type="AudioStream" id=12]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 65.0
+
+[sub_resource type="Animation" id=9]
+resource_name = "death"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 8, 9 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("eye:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "death_real"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 4, 5, 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("eye:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 4 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "spawn"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("entity_sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("eye:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "idle", -1, 1.0, false ],
+"method": "play"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("hitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("hurtbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Curve" id=4]
+max_value = 4.0
+_data = [ Vector2( 0.017341, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.127168, 4 ), 1.57273, 1.57273, 0, 0, Vector2( 1, 2.29091 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 5
+emission_ring_radius = 250.0
+emission_ring_inner_radius = 0.0
+emission_ring_height = 1.0
+emission_ring_axis = Vector3( 0, 0, 1 )
+flag_disable_z = true
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.05
+orbit_velocity_random = 1.0
+radial_accel = -200.0
+scale_curve = SubResource( 5 )
+hue_variation = 1.0
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 72.7518
+
+[node name="universe_eye" type="KinematicBody2D"]
+script = ExtResource( 1 )
+TOP_SPEED = 50
+FORCE_MULT = 0.2
+truName = "universe_eye"
+faction = "future"
+
+[node name="stats" parent="." instance=ExtResource( 6 )]
+MAX_HEALTH = 250
+HEALTH = 250
+
+[node name="entity_sprite" parent="." instance=ExtResource( 3 )]
+material = SubResource( 1 )
+texture = ExtResource( 5 )
+hframes = 10
+frame = 9
+
+[node name="eye" type="Sprite" parent="."]
+z_index = 10
+texture = ExtResource( 4 )
+hframes = 5
+frame = 3
+
+[node name="hitbox" parent="." instance=ExtResource( 2 )]
+visible = false
+COOLDOWN = 0.001
+TRUE_DAMAGE = 999
+CLANKS = false
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+shape = SubResource( 2 )
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "spawn"
+anims/death = SubResource( 9 )
+anims/idle = SubResource( 3 )
+anims/spawn = SubResource( 7 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+amount = 50
+lifetime = 0.7
+process_material = SubResource( 6 )
+
+[node name="hurtbox" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+shape = SubResource( 8 )
+
+[node name="spawner" parent="." instance=ExtResource( 9 )]
+thing = ExtResource( 8 )
+
+[node name="spawn_timer" type="Timer" parent="."]
+wait_time = 0.01
+autostart = true
+
+[node name="sound_player" parent="." instance=ExtResource( 10 )]
+
+[node name="global_sound" parent="sound_player" instance=ExtResource( 11 )]
+stream = ExtResource( 12 )
+volume_db = -80.0
+bus = "Master"
+MODE = 2
+
+[connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
+
+[editable path="hitbox"]
+[editable path="hurtbox"]

@@ -78,11 +78,6 @@ func attack(finished_animation:String):
 			this_bullet.setup(self, targit.global_position)
 			this_bullet.DIRECTION = direction
 			this_bullet.velocity = Vector2(this_bullet.SPEED, this_bullet.SPEED) * direction
-			for bullet in bullets:
-				if bullet == this_bullet:
-					continue
-				else:
-					this_bullet.get_node("hitbox").blacklist.append(bullet.get_node("hurtbox"))
 			refs.ysort.call_deferred("add_child", this_bullet)
 		shots -= 1
 	elif queued_action == "reload":
