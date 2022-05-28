@@ -97,7 +97,7 @@ func _on_proceed_pressed() -> void:
 	
 	refs.transition.exit()
 	yield(refs.transition, "finished")
-	if lvl == "Abomination":
+	if lvl == "Core":
 		get_tree().change_scene("res://Levels/thx.tscn")
 	elif global.last_hub == null or global.last_hub.length() != 1:
 			get_tree().change_scene("res://Levels/A/A-Hub.tscn")

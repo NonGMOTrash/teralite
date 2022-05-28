@@ -87,7 +87,6 @@ anims/spikes = SubResource( 1 )
 FREE_WHEN_EMPTY = false
 
 [node name="detection" type="Area2D" parent="." index="6"]
-visible = false
 collision_layer = 0
 collision_mask = 2
 

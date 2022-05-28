@@ -30,6 +30,7 @@ COLLIDE_SOUND = ExtResource( 7 )
 SPEED = 200
 ONHIT_SPEED_MULTIPLIER = 0.3
 RECOIL = -10
+VELOCITY_INHERITENCE = 0.05
 ROTATION_OFFSET = 90.0
 
 [node name="entity_sprite" parent="." index="0"]

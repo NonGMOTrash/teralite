@@ -102,6 +102,11 @@ const SCENES := {
 	"keyblaster": "res://Entities/Item_Pickups/keyblaster/keyblaster.tscn",
 	"fabricator": "res://Entities/fabricator/fabricator.tscn",
 	"enforcer": "res://Entities/enforcer/enforcer.tscn",
+	"antenna": "res://Props/antenna/antenna.tscn",
+	"offworld_plant1": "res://Props/offworld_plant1/offworld_plant1.tscn",
+	"offworld_plant2": "res://Props/offworld_plant2/offworld_plant2.tscn",
+	"offworld_rock": "res://Props/offworld_rock/offworld_rock.tscn",
+	"supplies": "res://Props/supplies/supplies.tscn",
 }
 
 export var placement_offset: Vector2 = Vector2.ZERO

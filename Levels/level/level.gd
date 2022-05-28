@@ -1,6 +1,6 @@
 extends Navigation2D
 
-enum TYPES {CUSTOM = -1, NONE, AUTUMN, UNDERGROUND, WASTELAND}
+enum TYPES {CUSTOM = -1, NONE, AUTUMN, UNDERGROUND, WASTELAND, OFFWORLD, SITE}
 
 export(TYPES) var AMBIANCE = TYPES.AUTUMN
 export(TYPES) var GLOBAL_PARTICLES = TYPES.AUTUMN
@@ -90,7 +90,7 @@ func _ready() -> void:
 		TYPES.AUTUMN: ambiance.stream = load("res://Levels/level/forest_ambiance.ogg")
 		TYPES.UNDERGROUND: ambiance.stream = load("res://Levels/level/cave_ambiance.ogg")
 		TYPES.WASTELAND: ambiance.stream = load("res://Levels/level/wasteland_ambience.ogg")
-		_: return
+		TYPES.OFFWORLD: ambiance.stream = load("res://Levels/level/forest_ambiance.ogg")
 	
 	global.add_child(ambiance)
 	refs.update_ref("ambiance", ambiance)
@@ -105,6 +105,10 @@ func _ready() -> void:
 				ambient_lighting.color = Color(0.6, 0.6, 0.6)
 			TYPES.WASTELAND:
 				ambient_lighting.color = Color(1, 1, 0.7)
+			TYPES.OFFWORLD:
+				ambient_lighting.color = Color(1.0, 0.72, 0.9)
+			TYPES.SITE:
+				ambient_lighting.color = Color(0.84, 0.88, 0.9)
 
 func pathfind(start:Vector2, end:Vector2) -> PoolVector2Array:
 	var path := get_simple_path(start, get_closest_point(end), true)

@@ -1574,7 +1574,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
-valid_ids = PoolIntArray( 2, 7, 9, 10, 11, 12 )
+valid_ids = PoolIntArray( 2, 7, 9, 10, 11, 12, 13, 14 )
 
 [node name="nav" type="TileMap" parent="."]
 tile_set = SubResource( 3 )

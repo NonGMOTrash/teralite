@@ -24,3 +24,10 @@ func _on_brain_think() -> void:
 		# rise
 		animation.play("rise")
 		sound_player.play_sound("rise")
+
+
+var chaser: Entity
+func _process(_delta: float) -> void:
+	chaser = refs.ysort.find_node("chaser", true)
+	if chaser:
+		brain.add_target(chaser)

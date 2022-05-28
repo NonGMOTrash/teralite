@@ -8,7 +8,7 @@ const MAGE := preload("res://Entities/archer/mage/mage.tscn")
 const ZOMBIE := preload("res://Entities/zombie/zombie.tscn")
 const ARCHER := preload("res://Entities/archer/archer.tscn")
 
-var pull_strength: float = 5.0
+export var pull_strength: float = 4.0
 
 onready var spawn_timer: Timer = $spawn_timer
 
@@ -18,11 +18,13 @@ func _physics_process(delta: float) -> void:
 		entity = entity as Entity
 		if entity == self or entity.STATIC:
 			continue
+		elif entity is Item and entity.global_position.distance_to(global_position) <= 5:
+			entity.queue_free()
 		else:
 			entity.apply_force(
 				entity.global_position.direction_to(global_position).normalized() * pull_strength)
 	
-	pull_strength += 0.01
+	pull_strength *= 1.002
 
 func _on_spawn_timer_timeout() -> void:
 	var entity: Entity

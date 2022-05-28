@@ -13,8 +13,8 @@ func _init() -> void:
 func _ready() -> void:
 	autoplay = AUTO_PLAY
 	
-	if stream == null:
-		push_error("global_sound has no stream")
+	if stream == null and get_name() != "ambiance":
+		push_error("global_sound (%s) has no stream" % get_name())
 	
 	if MODE == MODES.ONESHOT:
 		connect("finished", self, "queue_free")

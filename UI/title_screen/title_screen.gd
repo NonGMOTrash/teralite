@@ -68,7 +68,11 @@ func _ready() -> void:
 	play.grab_focus()
 	
 	# set display version
-	version.text = global.ver_phase + " " + str(global.ver_num)
+	if global.ver_phase != "release":
+		version.text = global.ver_phase
+	else:
+		version.text = ""
+	version.text += " v" + str(global.ver_num)
 	if global.ver_num == round(global.ver_num):
 		version.text = version.text + ".0"
 	if global.ver_hotfix > 0:

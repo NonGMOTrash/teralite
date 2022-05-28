@@ -30,7 +30,7 @@ height = 7.48858
 
 [sub_resource type="CapsuleShape2D" id=8]
 radius = 3.50571
-height = 1.38178
+height = 4.03988
 
 [sub_resource type="CapsuleShape2D" id=7]
 radius = 4.15065
@@ -89,7 +89,7 @@ tracks/0/keys = {
 collision_layer = 2
 script = ExtResource( 1 )
 truName = "trooper"
-faction = "future"
+faction = "offworld"
 warnings = 1
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
@@ -132,6 +132,7 @@ margin_right = 11.1405
 margin_bottom = -8.97668
 
 [node name="brain" parent="." instance=ExtResource( 9 )]
+SIGHT_RANGE = 170.0
 
 [node name="movement_lobe" parent="brain" instance=ExtResource( 8 )]
 general_springs = {
@@ -146,7 +147,9 @@ FARZONE = 50
 USE_FARZONE = true
 
 [node name="action_lobe" parent="brain" instance=ExtResource( 12 )]
-PATIENCE = 0.0
+PATIENCE = 0.1
+ACTION_WEIGHTING = 0.0
+ACTION_DEWEIGHTING = 0.0
 
 [node name="shoot" parent="brain/action_lobe" instance=ExtResource( 10 )]
 best_distance = 80

@@ -30,7 +30,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="prop_placer" parent="." index="4"]
+[node name="prop_placer" parent="." index="5"]
 tile_data = PoolIntArray( 5111987, 5, 0, 5439617, 3, 0, 5832793, 3, 0, 6815923, 5, 0, 7798920, 3, 0, 8257635, 3, 0, 8323123, 3, 0, 9568331, 1, 0, 9896069, 3, 0, 10879074, 3, 0 )
 
 [node name="background_tiles" parent="YSort" index="0"]

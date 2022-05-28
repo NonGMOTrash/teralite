@@ -106,7 +106,7 @@ func _on_brain_lost_target() -> void:
 		var target: Entity = get_node_or_null(target_path)
 		if target == null:
 			return
-		else:
+		elif is_inside_tree():
 			var ss := get_world_2d().direct_space_state
 			if ss.intersect_ray(global_position, target.global_position, [], 1).has("collider"):
 				queued_burrow = true

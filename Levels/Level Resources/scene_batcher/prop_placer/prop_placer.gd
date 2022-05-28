@@ -20,4 +20,9 @@ func set_data():
 		"dead_bush": get_used_cells_by_id(15),
 		"dead_tree": get_used_cells_by_id(16),
 		"old_barrel": get_used_cells_by_id(17),
+		"antenna": get_used_cells_by_id(18),
+		"offworld_plant1": get_used_cells_by_id(19),
+		"offworld_plant2": get_used_cells_by_id(20),
+		"offworld_rock": get_used_cells_by_id(21),
+		"supplies": get_used_cells_by_id(22),
 	}

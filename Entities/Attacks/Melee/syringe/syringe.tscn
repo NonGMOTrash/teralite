@@ -42,24 +42,12 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("hurtbox:position")
+tracks/2/path = NodePath("entity_sprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 0.2, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 10, 0 ), Vector2( 10, 0 ), Vector2( 0, 0 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("entity_sprite:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0, 0.05, 0.1, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 0.2, 1 ),
 "update": 0,
@@ -80,19 +68,14 @@ RECOIL = 0
 ANIMATION_NEVER_BACKWARDS = true
 REVERSE_HELD_ITEM = false
 
-[node name="stats" parent="." index="0"]
-MAX_HEALTH = 99
-HEALTH = 99
-
-[node name="entity_sprite" parent="." index="1"]
+[node name="entity_sprite" parent="." index="0"]
 material = SubResource( 3 )
 texture = ExtResource( 2 )
 
-[node name="hitbox" parent="." index="2"]
-modulate = Color( 0.937255, 0.231373, 0.117647, 1 )
+[node name="hitbox" parent="." index="1"]
+position = Vector2( 0, 0 )
 COOLDOWN = 1.0
 MULTIHITS = false
-DAMAGE = 1
 KNOCKBACK = 10
 STATUS_EFFECT = "infection"
 STATUS_DURATION = 60.0
@@ -101,12 +84,11 @@ STATUS_LEVEL = 2.0
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 rotation = 1.5708
 shape = SubResource( 2 )
-disabled = true
 
-[node name="sound" parent="." index="3"]
+[node name="sound" parent="." index="2"]
 FREE_WHEN_EMPTY = false
 
-[node name="animation" parent="." index="5"]
+[node name="animation" parent="." index="4"]
 anims/animation = SubResource( 1 )
 anims/animation_reverse = SubResource( 4 )
 

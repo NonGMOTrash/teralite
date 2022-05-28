@@ -51,7 +51,6 @@ margin_bottom = 24.0
 [node name="transition" parent="CanvasLayer" instance=ExtResource( 14 )]
 
 [node name="vignette" parent="CanvasLayer" instance=ExtResource( 16 )]
-visible = false
 
 [node name="Camera" parent="." instance=ExtResource( 8 )]
 pause_mode = 1

@@ -37,6 +37,7 @@ signal think
 func _on_brain_tree_entered():
 	entity = get_parent()
 	entity.components["brain"] = self
+	excluded.append(weakref(entity))
 
 func _ready():
 	think_timer.wait_time = THINK_TIME
@@ -122,7 +123,7 @@ func is_target_valid(index: int) -> bool: # maybe make this work with the target
 	else:
 		return true
 
-func los_check(target, ignore_low_barriers:=true) -> bool:
+func los_check(target, ignore_low_barriers := true) -> bool:
 	if WALLHACKS == true:
 		return true
 	
@@ -144,7 +145,6 @@ func los_check(target, ignore_low_barriers:=true) -> bool:
 	
 	var ss = get_world_2d().direct_space_state
 	var vision = ss.intersect_ray(target_pos, global_position, excludes, mask)
-	
 	
 	while (
 		vision and

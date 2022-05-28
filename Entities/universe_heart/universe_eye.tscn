@@ -186,11 +186,11 @@ script = ExtResource( 1 )
 TOP_SPEED = 50
 FORCE_MULT = 0.2
 truName = "universe_eye"
-faction = "future"
+faction = "offworld"
 
 [node name="stats" parent="." instance=ExtResource( 6 )]
-MAX_HEALTH = 250
-HEALTH = 250
+MAX_HEALTH = 200
+HEALTH = 200
 
 [node name="entity_sprite" parent="." instance=ExtResource( 3 )]
 material = SubResource( 1 )
@@ -206,8 +206,7 @@ frame = 3
 
 [node name="hitbox" parent="." instance=ExtResource( 2 )]
 visible = false
-COOLDOWN = 0.001
-TRUE_DAMAGE = 999
+TRUE_DAMAGE = 99
 CLANKS = false
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]

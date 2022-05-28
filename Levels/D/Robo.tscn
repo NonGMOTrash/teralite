@@ -1,0 +1,114 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Levels/level/level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Level Resources/world_tiles/bg_site.png" type="Texture" id=2]
+[ext_resource path="res://Entities/portal/portal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/enforcer/enforcer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Item_Pickups/key/key.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Effects/Particles/sparkle_particles.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Animation" id=1]
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("blue_portal/Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("orange_portal/Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+
+[node name="Robo" instance=ExtResource( 1 )]
+AMBIANCE = 5
+GLOBAL_PARTICLES = 5
+AMBIENT_LIGHTING = 5
+FORCE_SLEEP_UNTIL_VISIBLE = true
+WORLD = "D"
+
+[node name="background" parent="." index="0"]
+texture = ExtResource( 2 )
+ID = 4
+
+[node name="entity_spawns" parent="YSort" index="1"]
+tile_data = PoolIntArray( 2752544, 89, 0, 2752558, 63, 0, 2883630, 2, 0, 3211321, 80, 0, 3342360, 53, 0, 3342372, 53, 0, 3407898, 53, 0, 3407908, 53, 0, 3407910, 89, 0, 3473432, 53, 0, 3473444, 53, 0, 4063264, 89, 0, 6946888, 51, 0, 7077960, 51, 0, 7209032, 51, 0, 7340104, 14, 0 )
+
+[node name="world_tiles" parent="YSort" index="2"]
+tile_data = PoolIntArray( 1245198, 14, 131073, 1245199, 14, 65543, 1245200, 14, 65543, 1245201, 14, 65543, 1245202, 14, 65541, 1245204, 14, 131073, 1245205, 14, 65543, 1245206, 14, 65543, 1245207, 14, 65543, 1245208, 14, 65543, 1245209, 14, 65543, 1245210, 14, 65543, 1245211, 14, 65543, 1245212, 14, 65543, 1245213, 14, 65543, 1245214, 14, 65543, 1245215, 14, 65543, 1245216, 14, 65541, 1310733, 14, 131073, 1310734, 14, 262145, 1310735, 14, 4, 1310736, 14, 4, 1310737, 14, 196610, 1310738, 14, 65537, 1310740, 14, 131075, 1310741, 14, 196611, 1310742, 14, 4, 1310743, 14, 4, 1310744, 14, 4, 1310745, 14, 4, 1310746, 14, 4, 1310747, 14, 4, 1310748, 14, 4, 1310749, 14, 4, 1310750, 14, 4, 1310751, 14, 196610, 1310752, 14, 65537, 1376268, 14, 131073, 1376269, 14, 262145, 1376270, 14, 5, 1376273, 14, 131075, 1376274, 14, 65537, 1376276, 14, 131075, 1376277, 14, 65537, 1376287, 14, 131075, 1376288, 14, 65537, 1441803, 14, 131073, 1441804, 14, 262145, 1441805, 14, 5, 1441809, 14, 131075, 1441810, 14, 65537, 1441812, 14, 131075, 1441813, 14, 65537, 1441817, 14, 131073, 1441818, 14, 65541, 1441823, 14, 131075, 1441824, 14, 65537, 1507338, 14, 131073, 1507339, 14, 262145, 1507340, 14, 5, 1507345, 14, 131075, 1507346, 14, 65537, 1507348, 14, 131075, 1507349, 14, 196613, 1507350, 14, 65543, 1507351, 14, 65543, 1507352, 14, 65543, 1507353, 14, 196614, 1507354, 14, 65537, 1507359, 14, 131075, 1507360, 14, 65537, 1572871, 14, 131074, 1572872, 14, 65536, 1572873, 14, 65536, 1572874, 14, 196617, 1572875, 14, 65537, 1572881, 14, 131075, 1572882, 14, 196613, 1572883, 14, 65543, 1572884, 14, 196614, 1572885, 14, 196611, 1572886, 14, 4, 1572887, 14, 4, 1572888, 14, 4, 1572889, 14, 4, 1572890, 14, 262146, 1572891, 14, 65541, 1572895, 14, 131075, 1572896, 14, 65537, 1638407, 14, 131079, 1638410, 14, 2, 1638411, 14, 5, 1638417, 14, 2, 1638418, 14, 4, 1638419, 14, 4, 1638420, 14, 4, 1638421, 14, 5, 1638426, 14, 2, 1638427, 14, 262146, 1638428, 14, 65541, 1638431, 14, 131075, 1638432, 14, 65537, 1703943, 14, 131079, 1703963, 14, 2, 1703964, 14, 262146, 1703965, 14, 65541, 1703967, 14, 131075, 1703968, 14, 65537, 1769479, 14, 131079, 1769482, 14, 131073, 1769483, 14, 65541, 1769489, 14, 131073, 1769490, 14, 65543, 1769491, 14, 65543, 1769492, 14, 65543, 1769493, 14, 65541, 1769500, 14, 131075, 1769501, 14, 65537, 1769503, 14, 131075, 1769504, 14, 65537, 1835015, 14, 3, 1835016, 14, 65536, 1835017, 14, 65536, 1835018, 14, 196617, 1835019, 14, 65537, 1835025, 14, 131075, 1835026, 14, 196611, 1835027, 14, 4, 1835028, 14, 196610, 1835029, 14, 196613, 1835030, 14, 65543, 1835031, 14, 65543, 1835032, 14, 65543, 1835033, 14, 65543, 1835034, 14, 65543, 1835035, 14, 65543, 1835036, 14, 196614, 1835037, 14, 196613, 1835038, 14, 65543, 1835039, 14, 196614, 1835040, 14, 65537, 1900554, 14, 2, 1900555, 14, 262146, 1900556, 14, 65541, 1900561, 14, 131075, 1900562, 14, 65537, 1900564, 14, 2, 1900565, 14, 4, 1900566, 14, 4, 1900567, 14, 4, 1900568, 14, 4, 1900569, 14, 4, 1900570, 14, 4, 1900571, 14, 4, 1900572, 14, 4, 1900573, 14, 4, 1900574, 14, 4, 1900575, 14, 4, 1900576, 14, 5, 1966091, 14, 2, 1966092, 14, 262146, 1966093, 14, 65541, 1966097, 14, 131075, 1966098, 14, 65537, 2031628, 14, 2, 2031629, 14, 262146, 2031630, 14, 65541, 2031633, 14, 131075, 2031634, 14, 65537, 2097165, 14, 2, 2097166, 14, 262146, 2097167, 14, 65543, 2097168, 14, 65543, 2097169, 14, 196614, 2097170, 14, 65537, 2162702, 14, 2, 2162703, 14, 4, 2162704, 14, 4, 2162705, 14, 4, 2162706, 14, 5, 2883618, 14, 131074, 2883619, 14, 65536, 2883620, 14, 65536, 2883621, 14, 65536, 2883622, 14, 65542, 2949153, 14, 131074, 2949154, 14, 6, 2949158, 14, 3, 2949159, 14, 65542, 3014688, 14, 131074, 3014689, 14, 6, 3014695, 14, 3, 3014696, 14, 65542, 3080223, 14, 131074, 3080224, 14, 6, 3080232, 14, 3, 3080233, 14, 65542, 3145759, 14, 131079, 3145769, 14, 131079, 3211295, 14, 131079, 3211305, 14, 131079, 3276831, 14, 131079, 3276841, 14, 131079, 3342367, 14, 3, 3342368, 14, 65542, 3342376, 14, 131074, 3342377, 14, 6, 3407904, 14, 3, 3407905, 14, 65542, 3407911, 14, 131074, 3407912, 14, 6, 3473441, 14, 3, 3473442, 14, 65545, 3473443, 14, 65541, 3473445, 14, 131073, 3473446, 14, 65544, 3473447, 14, 6, 3538978, 14, 131075, 3538979, 14, 65537, 3538981, 14, 131075, 3538982, 14, 65537, 3604514, 14, 2, 3604515, 14, 65539, 3604517, 14, 131077, 3604518, 14, 5, 3670051, 14, 131079, 3670053, 14, 131079, 3735587, 14, 3, 3735588, 14, 65536, 3735589, 14, 6 )
+
+[node name="low_walls" parent="YSort/world_tiles" index="1"]
+tile_data = PoolIntArray( 1441805, 2, 131080, 1441806, 2, 65536, 1441807, 2, 65536, 1441808, 2, 65536, 1441809, 2, 131081, 1966093, 2, 131080, 1966094, 2, 65536, 1966095, 2, 65536, 1966096, 2, 65536, 1966097, 2, 131081 )
+
+[node name="portal" parent="YSort" index="3" instance=ExtResource( 3 )]
+
+[node name="blue_portal" parent="YSort/portal" index="0"]
+position = Vector2( 488.271, 438.584 )
+
+[node name="orange_portal" parent="YSort/portal" index="1"]
+position = Vector2( 437.558, 438.652 )
+
+[node name="LightSource" parent="YSort/portal/orange_portal" index="4"]
+position = Vector2( 0.235992, 0.117981 )
+
+[node name="portal_2" parent="YSort" index="4" instance=ExtResource( 3 )]
+
+[node name="blue_portal" parent="YSort/portal_2" index="0"]
+position = Vector2( 144.597, 422.458 )
+
+[node name="orange_portal" parent="YSort/portal_2" index="1"]
+position = Vector2( 583.713, 792.274 )
+
+[node name="LightSource" parent="YSort/portal_2/orange_portal" index="4"]
+position = Vector2( 0.235992, 0.117981 )
+
+[node name="AnimationPlayer" parent="YSort/portal_2" index="2"]
+"anims/New Anim" = SubResource( 1 )
+
+[node name="enforcer" parent="YSort" index="5" instance=ExtResource( 4 )]
+position = Vector2( 584.603, 724.438 )
+
+[node name="sparkle_particles" parent="YSort/enforcer" index="12" instance=ExtResource( 6 )]
+
+[node name="spawner" parent="YSort/enforcer" index="13" instance=ExtResource( 7 )]
+thing = ExtResource( 5 )
+
+[node name="enforcer_2" parent="YSort" index="6" instance=ExtResource( 4 )]
+position = Vector2( 519.263, 786.496 )
+
+[node name="sparkle_particles" parent="YSort/enforcer_2" index="12" instance=ExtResource( 6 )]
+
+[node name="spawner" parent="YSort/enforcer_2" index="13" instance=ExtResource( 7 )]
+thing = ExtResource( 5 )
+custom_properties = {
+}
+
+[node name="enforcer_3" parent="YSort" index="7" instance=ExtResource( 4 )]
+position = Vector2( 647.258, 789.182 )
+
+[node name="sparkle_particles" parent="YSort/enforcer_3" index="12" instance=ExtResource( 6 )]
+
+[node name="spawner" parent="YSort/enforcer_3" index="13" instance=ExtResource( 7 )]
+thing = ExtResource( 5 )
+custom_properties = {
+}
+
+[editable path="YSort/world_tiles"]
+[editable path="YSort/portal"]
+[editable path="YSort/portal_2"]

@@ -5,10 +5,13 @@ export var STAR_REQUIREMENT = 0
 export var WORLD_ENTRANCE := false
 export var CUSTOM_SCENE_PATH := ""
 export var REQUIRED_LEVEL := ""
+export var CUSTOM_LETTER := ""
+export var SET_HUB_POS := true
 
 var player = null
 var pressed := false
 var open := false
+var letter
 
 onready var info = $Node2D/info
 onready var header = $Node2D/info/header
@@ -17,6 +20,13 @@ onready var time = $Node2D/info/HBoxContainer/time
 onready var sprite = $Area2D/Sprite
 
 func _ready() -> void:
+	if CUSTOM_LETTER != "":
+		letter = CUSTOM_LETTER
+	elif "LETTER" in get_tree().current_scene:
+		letter = get_tree().current_scene.LETTER
+	else:
+		letter = "A"
+	
 	if (
 		global.stars >= STAR_REQUIREMENT and
 		(REQUIRED_LEVEL == "" or REQUIRED_LEVEL in global.cleared_levels)
@@ -81,9 +91,10 @@ func _input(event: InputEvent) -> void:
 		return
 	
 	if Input.is_action_just_released("interact") and pressed == true:
-		global.player_hub_pos[get_tree().current_scene.LETTER] = global_position + Vector2(0, 16)
+		if SET_HUB_POS:
+			global.player_hub_pos[letter] = global_position + Vector2(0, 16)
 		if CUSTOM_SCENE_PATH == "":
-			global.goto_scene("res://Levels/%s/%s.tscn" % [get_tree().current_scene.LETTER, LEVEL])
+			global.goto_scene("res://Levels/%s/%s.tscn" % [letter, LEVEL])
 		else:
 			global.goto_scene(CUSTOM_SCENE_PATH)
 

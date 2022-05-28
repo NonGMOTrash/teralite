@@ -65,11 +65,6 @@ func _ready():
 	
 	if player.get_name() == "player":
 		global.emit_signal("update_item_bar", player.inventory)
-	
-	if ITEM_BAR_TEXTURE != null:
-		refs.item_bar.replace_icon(slot, ITEM_BAR_TEXTURE)
-	else:
-		refs.item_bar.replace_icon(slot, HELD_ITEM_TEXTURE)
 
 # PROBLEM_NOTE: this is kinda bad because the name implies a return value
 func _check_if_selected(swapped_item) -> void:
@@ -245,6 +240,7 @@ func delete():
 		global.emit_signal("update_item_bar", player.inventory)
 	
 	refs.item_bar.replace_icon(slot, null)
+	prints(slot, "removed texture")
 	
 	queue_free()
 
@@ -252,10 +248,11 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouse:
 		accurate_mouse_pos = global.get_look_pos()
 	
-	if ITEM_BAR_TEXTURE != null:
-		refs.item_bar.replace_icon(slot, ITEM_BAR_TEXTURE)
-	else:
-		refs.item_bar.replace_icon(slot, HELD_ITEM_TEXTURE)
+	if not Input.is_action_pressed("drop_item"):
+		if ITEM_BAR_TEXTURE != null:
+			refs.item_bar.replace_icon(slot, ITEM_BAR_TEXTURE)
+		else:
+			refs.item_bar.replace_icon(slot, HELD_ITEM_TEXTURE)
 
 func _death_drop():
 	var item = item_scene.duplicate()

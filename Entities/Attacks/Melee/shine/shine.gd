@@ -9,7 +9,7 @@ signal reflect
 func _on_reflection_area_entered(area: Area2D) -> void:
 	var body: Entity = area.get_parent()
 	
-	if not body is Projectile or visible == false:
+	if not body is Projectile or visible == false or body.SOURCE == self.SOURCE:
 		return
 	
 	body.velocity *= -REFLECTION_MULT

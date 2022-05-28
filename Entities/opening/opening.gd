@@ -44,7 +44,7 @@ func _on_rate_timer_timeout() -> void:
 		new_entity.position = global_position
 	
 	refs.ysort.add_child(new_entity)
-	new_entity.faction = "future"
+	new_entity.faction = "offworld"
 	
 	times -= 1
 	if times == 0:

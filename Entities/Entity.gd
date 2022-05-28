@@ -59,7 +59,6 @@ func _ready():
 
 func _physics_process(delta: float): # physics logic
 	if STATIC == true: 
-		set_physics_process(false)
 		return
 	
 	input_vector = input_vector.normalized() # diagonally is same speed as straight

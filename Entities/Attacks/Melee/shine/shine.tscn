@@ -17,7 +17,7 @@ resource_local_to_scene = true
 radius = 5.5
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 12.0
+radius = 16.0
 
 [sub_resource type="Animation" id=4]
 resource_local_to_scene = true

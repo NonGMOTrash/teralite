@@ -9,8 +9,9 @@
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 5.88936
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 0.964828
+height = 7.89373
 
 [sub_resource type="Animation" id=3]
 resource_name = "New Anim"
@@ -52,7 +53,8 @@ TRUE_DAMAGE = 2
 KNOCKBACK = 80
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
-shape = SubResource( 1 )
+rotation = 1.5708
+shape = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 autoplay = "New Anim"

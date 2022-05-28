@@ -64,7 +64,7 @@ TOP_SPEED = 100
 FORCE_MULT = 1.1
 FLYING = true
 truName = "drone"
-faction = "future"
+faction = "offworld"
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
 MAX_HEALTH = 7
@@ -139,7 +139,7 @@ PATIENCE = 0.0
 
 [node name="shoot" parent="brain/action_lobe" instance=ExtResource( 14 )]
 best_distance = 1
-COOLDOWN = 0.8
+COOLDOWN = 1.0
 
 [node name="entity_effects" parent="." instance=ExtResource( 12 )]
 

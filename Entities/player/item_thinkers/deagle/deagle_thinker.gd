@@ -63,8 +63,7 @@ func primary():
 		return
 	
 	var bullet: Projectile = BULLET.instance()
-	bullet.ONHIT_SELF_DAMAGE = 1
-	bullet.find_node("stats").DAMAGE += bonus_damage
+	bullet.find_node("hitbox").DAMAGE += bonus_damage
 	bullet.SPAWN_SOUND = SHOOT_SOUND
 	bullet.SPEED += 60
 	bullet.setup(player, global.get_look_pos())

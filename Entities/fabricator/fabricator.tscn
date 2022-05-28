@@ -70,7 +70,7 @@ TOP_SPEED = 0
 FORCE_MULT = 0.0
 INANIMATE = true
 truName = "fabricator"
-faction = "future"
+faction = "offworld"
 
 [node name="stats" parent="." instance=ExtResource( 8 )]
 MAX_HEALTH = 22
@@ -102,6 +102,7 @@ visible = false
 shape = SubResource( 2 )
 
 [node name="brain" parent="." instance=ExtResource( 3 )]
+WALLHACKS = true
 
 [node name="action_lobe" parent="brain" instance=ExtResource( 4 )]
 PATIENCE = 0.0

@@ -104,15 +104,15 @@ anims/rise = SubResource( 2 )
 [node name="brain" parent="." instance=ExtResource( 3 )]
 TOLERANCE = 20
 SIGHT_RANGE = 300.0
-MAX_TARGETS = 3
+MAX_TARGETS = 1
 SIGHT_EFFECTS = false
-COMMUNICATES = false
 BLACKLIST = [ "player", "watcher_lock" ]
 
 [node name="sound_player" parent="." instance=ExtResource( 5 )]
 
 [node name="rise" parent="sound_player" instance=ExtResource( 6 )]
 stream = ExtResource( 7 )
+bus = "Master"
 MODE = 1
 AUTO_PLAY = false
 

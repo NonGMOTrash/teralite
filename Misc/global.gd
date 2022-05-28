@@ -66,12 +66,12 @@ const DEV_TIMES := {
 	"Abomination": 15.3,
 }
 
-#all the global variables
+# all the global variables
 var quality_of_this_game = -999 # = very bad game
 var the_seed = "downwardspiral"
 
 # PROBLEM_NOTE: this should probably be in the player
-var selection = 0 # <-- for the item bar (0 1 2)
+var selection = 0 # for the item bar (0 1 2)
 var joy_connected := false
 var look_pos := Vector2.RIGHT
 var FOV = Vector2(1, 1)
@@ -84,18 +84,18 @@ var loader
 var thread := Thread.new()
 
 # data vars
-var stars = 0
+var stars := 0
 var last_hub = null
-var cleared_levels = []
-var perfected_levels = []
-var level_deaths = {}
-var level_times = {}
-var total_time = 0.0
-var speedrun_time = 0.0
+var cleared_levels := []
+var perfected_levels := []
+var level_deaths := {}
+var level_times := {}
+var total_time := 0.0
+var speedrun_time := 0.0
 var icon = 0
 
-const ver_phase = "beta"
-const ver_num = 5.0
+const ver_phase = "release"
+const ver_num = 1.0
 const ver_hotfix = 0
 
 # for saving things
@@ -135,7 +135,7 @@ const faction_relationships = {
 			"monster": "hostile",
 			"blue_kingdom": "hostile",
 			"army": "hostile",
-			"future": "hostile",
+			"offworld": "hostile",
 		},
 	"monster":
 		{
@@ -144,7 +144,7 @@ const faction_relationships = {
 			"monster": "friendly",
 			"blue_kingdom": "hostile",
 			"army": "hostile",
-			"future": "hostile",
+			"offworld": "hostile",
 		},
 	"blue_kingdom":
 		{
@@ -153,7 +153,7 @@ const faction_relationships = {
 			"monster": "hostile",
 			"blue_kingdom": "friendly",
 			"army": "hostile",
-			"future": "hostile",
+			"offworld": "hostile",
 		},
 	"solo":
 		{
@@ -162,7 +162,7 @@ const faction_relationships = {
 			"monster": "hostile",
 			"blue_kingdom": "hostile",
 			"army": "hostile",
-			"future": "hostile",
+			"offworld": "hostile",
 		},
 	"army":
 		{
@@ -171,16 +171,16 @@ const faction_relationships = {
 			"monster": "hostile",
 			"blue_kingdom": "hostile",
 			"army": "friendly",
-			"future": "hostile",
+			"offworld": "hostile",
 		},
-	"future":
+	"offworld":
 		{
 			"solo": "hostile",
 			"player": "hostile",
 			"monster": "hostile",
 			"blue_kingdom": "hostile",
 			"army": "hostile",
-			"future": "friendly",
+			"offworld": "friendly",
 		},
 	"my_entity": # special: friendly to the same entities (truName), but hostile to everyone else
 		{
@@ -189,7 +189,7 @@ const faction_relationships = {
 			"monster": "hostile",
 			"blue_kingdom": "hostile",
 			"army": "hostile",
-			"future": "hostile",
+			"offworld": "hostile",
 		},
 }
 
@@ -484,7 +484,8 @@ func update_settings(save_settings_config:=true):
 	OS.window_fullscreen = settings["fullscreen"]
 	OS.vsync_enabled = settings["vsync"]
 	ProjectSettings.set_setting("rendering/2d/snapping/use_gpu_pixel_snap", settings["gpu_snap"])
-	AudioServer.set_bus_volume_db(0, linear2db(settings["volume"]))
+	# disabled cus sound is annoying for debug AudioServer.set_bus_volume_db(0, linear2db(settings["volume"]))
+	AudioServer.set_bus_volume_db(0, linear2db(0))
 	AudioServer.set_bus_volume_db(1, linear2db(settings["sound_volume"]))
 	AudioServer.set_bus_volume_db(2, linear2db(settings["menu_volume"]))
 	AudioServer.set_bus_volume_db(3, linear2db(settings["ambiance_volume"]))
@@ -514,7 +515,7 @@ func update_settings(save_settings_config:=true):
 		
 		var ambient_lighting: CanvasModulate = refs.ambient_lighting
 		var level: Node2D = refs.level
-		if global.settings["ambient_lighting"] == true:
+		if level != null and global.settings["ambient_lighting"] == true:
 			match level.AMBIENT_LIGHTING:
 				level.TYPES.NONE, level.TYPES.AUTUMN:
 					ambient_lighting.color = Color(1, 1, 1)
@@ -530,7 +531,7 @@ func update_settings(save_settings_config:=true):
 			push_warning("could not find item_bar")
 		else:
 			var player = refs.player
-			if player == null: return
+			if not is_instance_valid(player): return
 			
 			var inventory = player.inventory
 			if (

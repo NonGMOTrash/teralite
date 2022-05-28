@@ -24,7 +24,7 @@ resource_local_to_scene = true
 [sub_resource type="CircleShape2D" id=3]
 
 [sub_resource type="CapsuleShape2D" id=5]
-radius = 3.42834
+radius = 5.2287
 height = 6.69887
 
 [sub_resource type="Animation" id=4]
@@ -53,7 +53,7 @@ SLOWDOWN = 900
 TOP_SPEED = 35
 FORCE_MULT = 0.9
 truName = "enforcer"
-faction = "future"
+faction = "offworld"
 warnings = 1
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
@@ -82,7 +82,6 @@ visible = false
 shape = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 5 )
 rotation = 1.5708
 shape = SubResource( 5 )
@@ -105,12 +104,13 @@ margin_bottom = -9.8622
 [node name="brain" parent="." instance=ExtResource( 8 )]
 
 [node name="movement_lobe" parent="brain" instance=ExtResource( 9 )]
-IDLE_TIME = 1.0
+IDLE_TIME = 999.0
 IDLE_OFFSET = 0.0
-WANDER_TIME = 1.0
+WANDER_TIME = 0.01
 WANDER_OFFSET = 0.0
 WANDER_SPEED = 0.0
-WANDER_RANGE = 0.0
+WANDER_RANGE = 16.0
+SMART_SLOWDOWN = false
 EIGHT_WAY_MOVEMENT = true
 MOVEMENT_EFFICIENCY = 20
 general_springs = {

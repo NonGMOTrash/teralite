@@ -47,6 +47,4 @@ func skip_shine_cooldown():
 	shine_cooldown.start()
 
 func skip_shine_cooldown_hit(_arg1, _arg2):
-	var animation: AnimationPlayer = shine.animation
-	shine_cooldown.wait_time = animation.current_animation_length - animation.current_animation_position
-	shine_cooldown.start()
+	skip_shine_cooldown()

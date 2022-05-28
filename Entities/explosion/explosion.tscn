@@ -66,7 +66,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.189, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 1.0, 2.0, 0.0 ]
+"values": [ 0.8, 1.5, 0.0 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Sprite:frame")
@@ -125,7 +125,6 @@ AUTO_SET_PHYSICAL = false
 texture = ExtResource( 8 )
 texture_scale = 0.8
 color = Color( 0.929412, 0.266667, 0.137255, 1 )
-energy = 1.5
 mode = 2
 shadow_enabled = true
 shadow_buffer_size = 4096

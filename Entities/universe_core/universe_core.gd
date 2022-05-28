@@ -13,7 +13,7 @@ const ROCKET_SCORPIAN := preload("res://Entities/rocket_scorpian/rocket_scorpian
 
 onready var animation: AnimationPlayer = $AnimationPlayer
 onready var stats: Node = $stats
-onready var eye: Sprite = $barrier/platform/eye
+onready var eye: Sprite = $eye
 onready var brain: Node2D = $brain
 onready var sound: Node = $sound_player
 
@@ -46,10 +46,20 @@ func _on_action_lobe_action(action, target) -> void:
 			var opening := OPENING.instance()
 			opening.entity = BULLET
 			opening.symbol_frame = 3
-			opening.position = get_opening_pos(80, 75)
+			opening.position = stored_target.global_position
+			var dist2tar: float = opening.position.distance_to(stored_target.global_position)
+			var tries: int = 10
+			while dist2tar < opening.position.distance_to(self.global_position):
+				opening.position = stored_target.global_position + Vector2(
+						rand_range(-120, 120), rand_range(-80, 80))
+				dist2tar = opening.position.distance_to(stored_target.global_position)
+				prints(dist2tar, opening.position.distance_to(self.global_position))
+				tries -= 1
+				if tries == 0:
+					break
 			opening.times = 6
 			opening.rate = 6
-			opening.tracking_target = brain.get_closest_target()
+			opening.tracking_target = stored_target
 			refs.ysort.add_child(opening)
 		"spawn_drones":
 			for _i in range(4):
@@ -120,7 +130,7 @@ func get_opening_pos(leap_dist:float = 100, min_spacing:float = 32, min_leaps:in
 	while (
 		leaps < min_leaps or
 		pos.distance_to(global_position) < min_spacing or
-		pos.distance_to(brain.get_closest_target().global_position) < min_spacing
+		pos.distance_to(stored_target.global_position) < min_spacing
 	):
 		pos += Vector2(rand_range(-leap_dist, leap_dist), rand_range(leap_dist, -leap_dist))
 		leaps += 1
