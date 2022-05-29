@@ -80,28 +80,23 @@ INANIMATE = true
 truName = "spikes"
 
 [node name="stats" parent="." instance=ExtResource( 1 )]
-TRUE_DAMAGE = 2
 
 [node name="base" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 
 [node name="pokey" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 8 )
 hframes = 2
-frame = 1
 
 [node name="hitbox" parent="." instance=ExtResource( 4 )]
 position = Vector2( -0.5, 0 )
 scale = Vector2( 0.9, 0.9 )
-COOLDOWN = 0.05
-iTime = 0.4
+COOLDOWN = 0.4
 KNOCKBACK = 50
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 position = Vector2( 0.5, 0 )
 shape = SubResource( 1 )
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/spikes = SubResource( 2 )
@@ -116,6 +111,7 @@ autostart = true
 [node name="sound" parent="sound_player" instance=ExtResource( 6 )]
 stream = SubResource( 3 )
 volume_db = -0.2
+bus = "Master"
 MODE = 1
 AUTO_PLAY = false
 

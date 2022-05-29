@@ -17,6 +17,7 @@ export(AudioStream) var TRIGGERED_SOUND
 
 onready var entity = get_parent()
 onready var timer = $Timer
+onready var collision_shape: CollisionShape2D = $CollisionShape2D
 var stats: Node
 
 var other_hitboxes := []
@@ -53,7 +54,7 @@ func _ready():
 			other_hitboxes.append(child)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	var area_entity = area.get_parent()
+	var area_entity: Entity = area.entity
 	
 	# clanking
 	if CLANKS and area.collision_layer == 8 and area.CLANKS: # is hitbox check
@@ -94,8 +95,9 @@ func _on_Timer_timeout() -> void:
 	set_deferred("monitorable", true)
 	
 	if monitoring == true:
+		prints("check:", get_overlapping_areas())
 		for area in get_overlapping_areas():
-			if "the_area" in area:
+			if "the_area" in area and overlaps_area(area):
 				_on_hitbox_area_entered(area)
 				area._on_hurtbox_area_entered(self)
 
@@ -110,3 +112,7 @@ func clank(hit_pos: Vector2):
 		#if entity is Melee:
 		#	yield(spark, "ready")
 		#	spark.global_position = entity.global_position.move_toward(hit_pos, entity.RANGE)
+
+func _on_hitbox_area_exited(area: Area2D) -> void:
+	if entity.get_name() == "spikes_offset":
+		print(area)

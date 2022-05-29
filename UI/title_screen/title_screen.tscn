@@ -104,7 +104,7 @@ margin_right = -2.0
 grow_horizontal = 0
 theme = ExtResource( 1 )
 custom_colors/font_color = Color( 0.905882, 0.87451, 0.129412, 1 )
-text = "beta X.X hotfix #0"
+text = "v_._._"
 align = 2
 valign = 1
 __meta__ = {
@@ -158,10 +158,7 @@ align = 1
 valign = 1
 
 [node name="saves_list" type="GridContainer" parent="saves/ScrollContainer"]
-margin_right = 374.0
 margin_bottom = 170.0
-grow_horizontal = 0
-size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/vseparation = 3
 custom_constants/hseparation = 3

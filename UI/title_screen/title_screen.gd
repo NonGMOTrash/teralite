@@ -68,11 +68,7 @@ func _ready() -> void:
 	play.grab_focus()
 	
 	# set display version
-	if global.ver_phase != "release":
-		version.text = global.ver_phase
-	else:
-		version.text = ""
-	version.text += " v" + str(global.ver_num)
+	version.text = global.ver_phase + " v" + str(global.ver_num)
 	if global.ver_num == round(global.ver_num):
 		version.text = version.text + ".0"
 	if global.ver_hotfix > 0:
@@ -159,16 +155,30 @@ func load_saves_list_items(): # add save previews from the saves directory into 
 			if "icon" in data:
 				save_preview.icon.texture = SAVE_ICONS[data["icon"]]
 			if "ver_num" in data:
-				save_preview.version.text = str(data["ver_num"])
+				save_preview.version.text = "v"
+				save_preview.version.text += str(data["ver_num"])
 				if data["ver_num"] == floor(data["ver_num"]):
-					save_preview.version.text = save_preview.version.text + ".0"
-				if data["ver_num"] < global.ver_num:
-					if floor(data["ver_num"]) < 1.0:
+					save_preview.version.text += ".0"
+				save_preview.version.text += "." + str(data["ver_hotfix"])
+				if data["ver_phase"].to_lower() == "beta":
+					save_preview.version.text += "b"
+				var save_ver_val: float = data["ver_num"] + (data["ver_hotfix"] * 0.01)
+				if data["ver_phase"].to_lower() == "beta":
+					save_ver_val /= 10.0
+				prints(save_ver_val, data["ver_phase"], data["ver_num"], data["ver_hotfix"])
+				var current_ver_val: float = global.ver_num + (global.ver_hotfix * 0.01)
+				if global.ver_phase.to_lower() == "beta":
+					current_ver_val /= 10.0
+				if save_ver_val < current_ver_val:
+					if floor(save_ver_val) <= 1.0:
 						save_preview.version.set_deferred("custom_colors/font_color", Color.yellow)
 					else:
 						save_preview.version.set_deferred("custom_colors/font_color", Color.greenyellow)
-				elif data["ver_num"] > global.ver_num:
-					save_preview.version.set_deferred("custom_colors/font_color", Color.lightblue)
+				elif save_ver_val > current_ver_val:
+					if floor(save_ver_val) > floor(current_ver_val):
+						save_preview.version.set_deferred("custom_colors/font_color", Color.aqua)
+					else:
+						save_preview.version.set_deferred("custom_colors/font_color", Color.lightblue)
 			
 			var deaths: int = 0
 			for amount in data["level_deaths"].values():

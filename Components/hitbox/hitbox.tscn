@@ -19,6 +19,7 @@ wait_time = 0.1
 one_shot = true
 
 [connection signal="area_entered" from="." to="." method="_on_hitbox_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_hitbox_area_exited"]
 [connection signal="body_exited" from="." to="." method="_on_hitbox_body_exited"]
 [connection signal="tree_entered" from="." to="." method="_on_hitbox_tree_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

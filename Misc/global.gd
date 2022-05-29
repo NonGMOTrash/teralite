@@ -94,7 +94,7 @@ var total_time := 0.0
 var speedrun_time := 0.0
 var icon = 0
 
-const ver_phase = "release"
+const ver_phase = ""
 const ver_num = 1.0
 const ver_hotfix = 0
 
@@ -591,22 +591,22 @@ func quit():
 	get_tree().quit()
 
 func sec_to_time(time: float, round_seconds := false) -> String:
-	var hours = int(floor(time / 3600))
-	var minutes = int(floor((time - hours * 3600) / 60))
-	var seconds = int(floor(time - (minutes * 60) - (hours * 3600)))
-	var tenth = stepify(time - ((hours * 3600) + (minutes*60) + seconds), 0.1) * 10
+	var hours := int(floor(time / 3600))
+	var minutes := int(floor((time - hours * 3600) / 60))
+	var seconds := int(floor(time - (minutes * 60) - (hours * 3600)))
+	var tenth := stepify(time - ((hours * 3600) + (minutes*60) + seconds), 0.1) * 10
 	if tenth == 10: tenth = 0
 	
-	if seconds < 10: 
-		seconds = str(seconds)
-		seconds = "0"+seconds
+	var sec_string: String = str(seconds)
+	if seconds < 10:
+		sec_string = "0" + sec_string
 	
 	var text: String
-	if hours > 1:
-		text = "%s:" % str(hours)
-	text = text + "%s:%s" % [str(minutes), str(seconds)]
+	if hours >= 1:
+		text = str(hours) + ":"
+	text = text + str(minutes) + ":" + sec_string
 	if round_seconds == false:
-		text = text + ".%s" % str(tenth)
+		text = text + "." + str(tenth)
 	return text
 
 func get_look_pos() -> Vector2:

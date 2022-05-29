@@ -185,7 +185,6 @@ back_texture = ExtResource( 15 )
 [node name="playerControlled" parent="." instance=ExtResource( 5 )]
 
 [node name="hurtbox" parent="." instance=ExtResource( 3 )]
-visible = false
 HURT_SOUND = ExtResource( 12 )
 BLOCK_SOUND = ExtResource( 13 )
 

@@ -19,12 +19,11 @@ func _on_hurtbox_tree_entered() -> void:
 	get_parent().components["hurtbox"] = self
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	var area_entity: Entity = area.entity
+	#if area.timer.time_left > 0 or area.collision_shape.disabled:
+	#	return
 	
-	if (
-		entity == area_entity or
-		(entity.FLYING == true and not area_entity.FLYING)
-	):
+	var area_entity: Entity = area.entity
+	if entity == area_entity or (entity.FLYING == true and not area_entity.FLYING):
 		return
 	
 	# los check
@@ -47,10 +46,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 			return
 	
 	if area.MULTIHITS == false:
-		if (
-			the_area == null or
-			the_area_path != null and get_node_or_null(the_area_path) != null
-		): 
+		if the_area == null or the_area_path != null and get_node_or_null(the_area_path) != null:
 			the_area = area
 			the_area_path = area.get_path()
 		
@@ -99,7 +95,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 					sfx.queue_free()
 			
 			else:
-				push_warning("hurtbox can not play sounds because "+entity.truName+" has no sound_player")
+				push_warning("hurtbox can't play sounds because "+entity.truName+" has no sound_player")
 		
 	area.emit_signal("hit", self, result_type)
 	

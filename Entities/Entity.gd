@@ -72,7 +72,7 @@ func _physics_process(delta: float): # physics logic
 	
 	velocity = move_and_slide(velocity)
 
-func apply_force(force:Vector2):
+func apply_force(force: Vector2):
 	velocity += force * FORCE_MULT
 
 func death():
@@ -88,3 +88,7 @@ func get_speed() -> float:
 	var velo = velocity
 	if input_vector != Vector2.ZERO: velo *= input_vector.normalized()
 	return abs(velo.x) + abs(velo.y)
+
+#func _process(delta: float) -> void:
+#	if truName == "spikes":
+#		prints(name, $hitbox/Timer.time_left)
