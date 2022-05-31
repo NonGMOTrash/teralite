@@ -62,6 +62,7 @@ func _on_options_pressed() -> void:
 	options_menu.visible = true
 
 func _on_restart_pressed() -> void:
+	global.total_time += refs.stopwatch.time
 	refs.transition.exit()
 	yield(refs.transition, "finished")
 	get_tree().paused = false

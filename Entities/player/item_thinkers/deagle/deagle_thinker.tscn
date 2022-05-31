@@ -35,6 +35,7 @@ FREE_WHEN_EMPTY = false
 
 [node name="reload" parent="sound_player" instance=ExtResource( 4 )]
 stream = ExtResource( 9 )
+bus = "Master"
 MODE = 1
 AUTO_PLAY = false
 
@@ -42,5 +43,6 @@ AUTO_PLAY = false
 standby_mode = true
 thing = ExtResource( 5 )
 rotation_mode = 1
+effect_inherit_flipping = false
 
 [connection signal="timeout" from="reload" to="." method="_on_reload_timeout"]

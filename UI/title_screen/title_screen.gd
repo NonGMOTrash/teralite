@@ -165,7 +165,6 @@ func load_saves_list_items(): # add save previews from the saves directory into 
 				var save_ver_val: float = data["ver_num"] + (data["ver_hotfix"] * 0.01)
 				if data["ver_phase"].to_lower() == "beta":
 					save_ver_val /= 10.0
-				prints(save_ver_val, data["ver_phase"], data["ver_num"], data["ver_hotfix"])
 				var current_ver_val: float = global.ver_num + (global.ver_hotfix * 0.01)
 				if global.ver_phase.to_lower() == "beta":
 					current_ver_val /= 10.0

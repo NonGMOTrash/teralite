@@ -240,7 +240,6 @@ func delete():
 		global.emit_signal("update_item_bar", player.inventory)
 	
 	refs.item_bar.replace_icon(slot, null)
-	prints(slot, "removed texture")
 	
 	queue_free()
 

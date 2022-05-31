@@ -121,7 +121,7 @@ STAR_REQUIREMENT = 9
 [node name="Underground" parent="YSort" index="18" instance=ExtResource( 3 )]
 position = Vector2( 656, 177 )
 LEVEL = "Underground"
-STAR_REQUIREMENT = 12
+STAR_REQUIREMENT = 10
 WORLD_ENTRANCE = true
 CUSTOM_SCENE_PATH = "res://Levels/B/B-Hub.tscn"
 REQUIRED_LEVEL = "Monarch"

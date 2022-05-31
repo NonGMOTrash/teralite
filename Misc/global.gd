@@ -208,8 +208,10 @@ signal unpaused()
 
 func _ready():
 	seed(the_seed.hash())
-	var v: String
-	v = ver_phase + " " + str(ver_num)
+	var v: String = ""
+	if ver_phase != "":
+		v = ver_phase + " "
+	v += "v" + str(ver_num)
 	if ver_num == round(ver_num):
 		v = v + ".0"
 	if ver_hotfix > 0:
@@ -334,6 +336,7 @@ func update_saves():
 	dir.list_dir_end()
 
 func write_save(entered_save_name, data):
+	print("save written")
 	var new_save_name = entered_save_name
 	if new_save_name == "":
 		new_save_name = "untitled_save"
@@ -484,8 +487,7 @@ func update_settings(save_settings_config:=true):
 	OS.window_fullscreen = settings["fullscreen"]
 	OS.vsync_enabled = settings["vsync"]
 	ProjectSettings.set_setting("rendering/2d/snapping/use_gpu_pixel_snap", settings["gpu_snap"])
-	# disabled cus sound is annoying for debug AudioServer.set_bus_volume_db(0, linear2db(settings["volume"]))
-	AudioServer.set_bus_volume_db(0, linear2db(0))
+	AudioServer.set_bus_volume_db(0, linear2db(settings["volume"]))
 	AudioServer.set_bus_volume_db(1, linear2db(settings["sound_volume"]))
 	AudioServer.set_bus_volume_db(2, linear2db(settings["menu_volume"]))
 	AudioServer.set_bus_volume_db(3, linear2db(settings["ambiance_volume"]))
@@ -633,6 +635,7 @@ func _update_activity_callback(result: int):
 		push_error("failed to update discord activity: %s" % result)
 
 func _process(_delta: float) -> void:
+	prints(total_time, speedrun_time)
 	if discord:
 		var result: int = discord.run_callbacks()
 		if result != Discord.Result.OK:

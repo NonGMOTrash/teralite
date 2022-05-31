@@ -54,7 +54,7 @@ func _ready():
 			other_hitboxes.append(child)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	var area_entity: Entity = area.entity
+	var area_entity: Entity = area.get_parent()
 	
 	# clanking
 	if CLANKS and area.collision_layer == 8 and area.CLANKS: # is hitbox check
@@ -95,7 +95,6 @@ func _on_Timer_timeout() -> void:
 	set_deferred("monitorable", true)
 	
 	if monitoring == true:
-		prints("check:", get_overlapping_areas())
 		for area in get_overlapping_areas():
 			if "the_area" in area and overlaps_area(area):
 				_on_hitbox_area_entered(area)
@@ -113,6 +112,3 @@ func clank(hit_pos: Vector2):
 		#	yield(spark, "ready")
 		#	spark.global_position = entity.global_position.move_toward(hit_pos, entity.RANGE)
 
-func _on_hitbox_area_exited(area: Area2D) -> void:
-	if entity.get_name() == "spikes_offset":
-		print(area)

@@ -33,6 +33,7 @@ tile_data = PoolIntArray( 196621, 11, 0, 196626, 11, 0, 196639, 11, 0, 262149, 1
 [node name="shadow_chaser" parent="YSort" index="2" instance=ExtResource( 3 )]
 position = Vector2( 187.63, 57.5155 )
 ACCELERATION = 165
+dash_power = 190
 
 [node name="stats" parent="YSort/shadow_chaser" index="0"]
 MAX_HEALTH = 25
@@ -59,6 +60,14 @@ general_springs = {
 "hostile": "default_spring",
 "neutral": ""
 }
+
+[node name="fdash" parent="YSort/shadow_chaser/brain/action_lobe" index="2"]
+COOLDOWN = 0.4
+GLOBAL_COOLDOWN = false
+
+[node name="sdash" parent="YSort/shadow_chaser/brain/action_lobe" index="3"]
+COOLDOWN = 0.4
+GLOBAL_COOLDOWN = false
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="YSort/shadow_chaser" index="12"]
 autoplay = "vibrate"

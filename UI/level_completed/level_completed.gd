@@ -44,17 +44,17 @@ func start():
 			damage_comment.text = "perfect!"
 			perfected = true
 	
-	var time_value: float = refs.stopwatch.time
-	time.text = time.text + global.sec_to_time(time_value)
+	var final_time: float = refs.stopwatch.time
+	time.text = time.text + global.sec_to_time(final_time)
 	
 	# PB check
 	if global.level_times.has(lvl):
-		if time_value < global.level_times[lvl]:
+		if final_time < global.level_times[lvl]:
 			time.set("custom_colors/font_color", YELLOW)
 			time_comment.set("custom_colors/font_color", YELLOW)
 			time_comment.text = "personal best!"
 	# devtime check
-	if lvl in global.DEV_TIMES and time_value < global.DEV_TIMES[lvl]:
+	if lvl in global.DEV_TIMES and final_time < global.DEV_TIMES[lvl]:
 		time_comment.set("custom_colors/font_color", Color.cyan)
 		time_comment.text = "better than the dev!"
 	
@@ -87,6 +87,9 @@ func _process(delta: float) -> void:
 		visible = not refs.pause_menu.visible
 
 func _on_proceed_pressed() -> void:
+	global.total_time += refs.stopwatch.time
+	global.speedrun_time += refs.stopwatch.time
+	
 	if lvl == "thx":
 		if global.last_hub == null:
 			global.last_hub = "A"

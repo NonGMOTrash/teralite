@@ -42,4 +42,4 @@ func secondary():
 	if player.get_name() == "player":
 		global.emit_signal("update_item_bar", get_parent().inventory)
 	
-	queue_free()
+	delete()

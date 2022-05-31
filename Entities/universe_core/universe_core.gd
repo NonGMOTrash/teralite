@@ -53,7 +53,6 @@ func _on_action_lobe_action(action, target) -> void:
 				opening.position = stored_target.global_position + Vector2(
 						rand_range(-120, 120), rand_range(-80, 80))
 				dist2tar = opening.position.distance_to(stored_target.global_position)
-				prints(dist2tar, opening.position.distance_to(self.global_position))
 				tries -= 1
 				if tries == 0:
 					break

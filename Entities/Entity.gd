@@ -88,7 +88,3 @@ func get_speed() -> float:
 	var velo = velocity
 	if input_vector != Vector2.ZERO: velo *= input_vector.normalized()
 	return abs(velo.x) + abs(velo.y)
-
-#func _process(delta: float) -> void:
-#	if truName == "spikes":
-#		prints(name, $hitbox/Timer.time_left)

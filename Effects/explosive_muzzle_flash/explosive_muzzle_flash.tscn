@@ -21,6 +21,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../light:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.084, 0.208 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.937255, 0.403922, 0.243137, 1 ), Color( 0.937255, 0.403922, 0.243137, 1 ), Color( 0.937255, 0.403922, 0.243137, 0 ) ]
+}
 
 [node name="explosive_muzzle_flash" instance=ExtResource( 1 )]
 
@@ -37,7 +49,7 @@ anims/animation = SubResource( 1 )
 [node name="light" type="Light2D" parent="." index="2"]
 texture = ExtResource( 3 )
 texture_scale = 0.4
-color = Color( 0.937255, 0.403922, 0.243137, 1 )
+color = Color( 0.937255, 0.403922, 0.243137, 0 )
 energy = 3.5
 mode = 2
 script = ExtResource( 4 )

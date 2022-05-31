@@ -127,10 +127,6 @@ func _physics_process(delta: float) -> void:
 				particle_anchor.position += player.velocity * 2
 			particle_anchor.position.y -= 216
 
-func _on_level_tree_exiting() -> void:
-	global.total_time += refs.stopwatch.time
-	global.speedrun_time += refs.stopwatch.time
-
 func _input(event: InputEvent) -> void:
 	if spawn_paused == false:
 		return
