@@ -83,16 +83,16 @@ margin_bottom = 80.0
 text = "enable lighting"
 
 [node name="shadows" parent="tabs/video/VBox" instance=ExtResource( 2 )]
-margin_top = 112.0
+margin_top = 84.0
 margin_right = 336.0
-margin_bottom = 136.0
+margin_bottom = 108.0
 text = "enable shadows"
 
 [node name="shadow_buffer" parent="tabs/video/VBox" instance=ExtResource( 5 )]
 anchor_right = 0.0
-margin_top = 140.0
+margin_top = 112.0
 margin_right = 336.0
-margin_bottom = 158.0
+margin_bottom = 130.0
 hint_tooltip = "accuracy of shadows, higher is better but more resource intensive"
 min_value = 256.0
 max_value = 4096.0
@@ -102,30 +102,30 @@ TEXT = "shadow buffer size"
 PROGRESS = 1
 
 [node name="ambient_lighting" parent="tabs/video/VBox" instance=ExtResource( 2 )]
-margin_top = 162.0
+margin_top = 134.0
 margin_right = 336.0
-margin_bottom = 186.0
+margin_bottom = 158.0
 hint_tooltip = "natural lighting of the environment"
 text = "enable ambient lighting"
 
 [node name="pixel" parent="tabs/video/VBox" instance=ExtResource( 2 )]
-margin_top = 190.0
+margin_top = 162.0
 margin_right = 336.0
-margin_bottom = 214.0
+margin_bottom = 186.0
 hint_tooltip = "pixels are snapped to the game resolution instead of native resolution"
 text = "pixel perfect filter (not recomended)"
 
 [node name="gpu_snap" parent="tabs/video/VBox" instance=ExtResource( 2 )]
-margin_top = 218.0
+margin_top = 190.0
 margin_right = 336.0
-margin_bottom = 242.0
+margin_bottom = 214.0
 hint_tooltip = "fixes tilemap artifacts, but makes camera movement a bit jittery"
 text = "GPU pixel snap"
 
 [node name="particles" type="HBoxContainer" parent="tabs/video/VBox"]
-margin_top = 246.0
+margin_top = 218.0
 margin_right = 336.0
-margin_bottom = 266.0
+margin_bottom = 238.0
 
 [node name="Label" type="Label" parent="tabs/video/VBox/particles"]
 margin_top = 2.0
@@ -167,37 +167,37 @@ alignment = 1
 
 [node name="master_volume" parent="tabs/audio/VBox" instance=ExtResource( 5 )]
 anchor_right = 0.0
-margin_top = 35.0
+margin_top = 24.0
 margin_right = 352.0
-margin_bottom = 53.0
+margin_bottom = 42.0
 TEXT = "master volume"
 
 [node name="sound_volume" parent="tabs/audio/VBox" instance=ExtResource( 5 )]
 anchor_right = 0.0
-margin_top = 57.0
+margin_top = 46.0
 margin_right = 352.0
-margin_bottom = 75.0
+margin_bottom = 64.0
 TEXT = "sound effects volume"
 
 [node name="menu_volume" parent="tabs/audio/VBox" instance=ExtResource( 5 )]
 anchor_right = 0.0
-margin_top = 79.0
+margin_top = 68.0
 margin_right = 352.0
-margin_bottom = 97.0
+margin_bottom = 86.0
 TEXT = "menu volume"
 
 [node name="ambiance_volume" parent="tabs/audio/VBox" instance=ExtResource( 5 )]
 anchor_right = 0.0
-margin_top = 101.0
+margin_top = 90.0
 margin_right = 352.0
-margin_bottom = 119.0
+margin_bottom = 108.0
 TEXT = "ambiance volume"
 
 [node name="footsteps_volume" parent="tabs/audio/VBox" instance=ExtResource( 5 )]
 anchor_right = 0.0
-margin_top = 101.0
+margin_top = 112.0
 margin_right = 352.0
-margin_bottom = 119.0
+margin_bottom = 130.0
 TEXT = "footsteps volume"
 
 [node name="game" type="ScrollContainer" parent="tabs"]
@@ -214,56 +214,62 @@ follow_focus = true
 
 [node name="VBox" type="VBoxContainer" parent="tabs/game"]
 margin_right = 352.0
-margin_bottom = 164.0
+margin_bottom = 192.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="discord" parent="tabs/game/VBox" instance=ExtResource( 2 )]
-margin_top = 65.0
-margin_right = 352.0
-margin_bottom = 89.0
+margin_right = 336.0
 hint_tooltip = "shows \"playing teralite\" on your discord profile"
 shortcut_in_tooltip = false
 text = "show activity on discord"
 
 [node name="perfection" parent="tabs/game/VBox" instance=ExtResource( 2 )]
-margin_top = 9.0
-margin_right = 352.0
-margin_bottom = 33.0
+margin_top = 28.0
+margin_right = 336.0
+margin_bottom = 52.0
 hint_tooltip = "useful if you're going for perfects on levels"
 shortcut_in_tooltip = false
 text = "perfection mode (1 hit death)"
 
 [node name="smooth" parent="tabs/game/VBox" instance=ExtResource( 2 )]
-margin_top = 65.0
-margin_right = 352.0
-margin_bottom = 89.0
+margin_top = 56.0
+margin_right = 336.0
+margin_bottom = 80.0
 shortcut_in_tooltip = false
 text = "smooth camera"
 
 [node name="spawn_pause" parent="tabs/game/VBox" instance=ExtResource( 2 )]
-margin_top = 93.0
-margin_right = 352.0
-margin_bottom = 117.0
+margin_top = 84.0
+margin_right = 336.0
+margin_bottom = 108.0
 hint_tooltip = "pauses the level until you start moving"
 pressed = true
 text = "spawn pause"
 
 [node name="damage_numbers" parent="tabs/game/VBox" instance=ExtResource( 2 )]
-margin_top = 121.0
-margin_right = 352.0
-margin_bottom = 145.0
+margin_top = 112.0
+margin_right = 336.0
+margin_bottom = 136.0
 hint_tooltip = "display the amount of damage an attack dealt"
 pressed = true
 text = "damage numbers"
 
 [node name="hidebar" parent="tabs/game/VBox" instance=ExtResource( 2 )]
-margin_top = 37.0
-margin_right = 352.0
-margin_bottom = 61.0
+margin_top = 140.0
+margin_right = 336.0
+margin_bottom = 164.0
 shortcut_in_tooltip = false
 text = "hide item bar when empty"
+
+[node name="show_hud" parent="tabs/game/VBox" instance=ExtResource( 2 )]
+margin_top = 168.0
+margin_right = 336.0
+margin_bottom = 192.0
+shortcut_in_tooltip = false
+pressed = true
+text = "toggle HUD"
 
 [node name="exit" parent="." instance=ExtResource( 3 )]
 anchor_left = 1.0

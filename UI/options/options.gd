@@ -26,6 +26,7 @@ onready var hidebar = $tabs/game/VBox/hidebar
 onready var spawn_pause = $tabs/game/VBox/spawn_pause
 onready var damage_numbers = $tabs/game/VBox/damage_numbers
 onready var discord = $tabs/game/VBox/discord
+onready var show_hud = $tabs/game/VBox/show_hud
 
 signal closed
 
@@ -89,6 +90,7 @@ func _on_exit_pressed() -> void:
 	global.settings["ambient_lighting"] = ambient_lighting.pressed
 	global.settings["damage_numbers"] = damage_numbers.pressed
 	global.settings["discord"] = discord.pressed
+	global.settings["show_hud"] = show_hud.pressed
 	
 	global.update_settings()
 	

@@ -124,6 +124,7 @@ var settings := {
 	"ambient_lighting": true,
 	"damage_numbers": true,
 	"discord": true,
+	"show_hud": true,
 }
 
 # should move this and get_relation to Entity.gd probably
@@ -218,7 +219,7 @@ func _ready():
 		if ver_hotfix == 1:
 			v = v + " hotfix"
 		else:
-			v = v + " hotfix #" + str(global.ver_hotfix)
+			v = v + " hotfix #" + str(ver_hotfix)
 	if OS.is_debug_build() == true:
 		v = v + " (debug)"
 	prints("teralite", v)
@@ -493,7 +494,7 @@ func update_settings(save_settings_config:=true):
 	AudioServer.set_bus_volume_db(3, linear2db(settings["ambiance_volume"]))
 	AudioServer.set_bus_volume_db(4, linear2db(settings["footsteps_volume"]))
 	
-	if global.settings["pixel_perfect"] == true:
+	if settings["pixel_perfect"] == true:
 			get_tree().set_screen_stretch(
 					SceneTree.STRETCH_MODE_VIEWPORT, SceneTree.STRETCH_ASPECT_KEEP, Vector2(384, 216)
 				)
@@ -507,17 +508,17 @@ func update_settings(save_settings_config:=true):
 		if not camera is Camera2D:
 			push_warning("could not find camera")
 		else:
-			camera.smoothing_enabled = global.settings["smooth_camera"]
-			camera.limit_smoothed = global.settings["smooth_camera"]
+			camera.smoothing_enabled = settings["smooth_camera"]
+			camera.limit_smoothed = settings["smooth_camera"]
 		
 		for light in get_tree().get_nodes_in_group("lights"):
-			light.enabled = global.settings["lighting"]
-			light.shadow_enabled = global.settings["shadows"]
-			light.shadow_buffer_size = global.settings["shadow_buffer"]
+			light.enabled = settings["lighting"]
+			light.shadow_enabled = settings["shadows"]
+			light.shadow_buffer_size = settings["shadow_buffer"]
 		
 		var ambient_lighting: CanvasModulate = refs.ambient_lighting
 		var level: Node2D = refs.level
-		if level != null and global.settings["ambient_lighting"] == true:
+		if level != null and settings["ambient_lighting"] == true:
 			match level.AMBIENT_LIGHTING:
 				level.TYPES.NONE, level.TYPES.AUTUMN:
 					ambient_lighting.color = Color(1, 1, 1)
@@ -537,7 +538,7 @@ func update_settings(save_settings_config:=true):
 			
 			var inventory = player.inventory
 			if (
-				global.settings["hide_bar"] == true and 
+				settings["hide_bar"] == true and 
 				inventory[0] == null and
 				inventory[1] == null and
 				inventory[2] == null
@@ -550,13 +551,17 @@ func update_settings(save_settings_config:=true):
 			var particles: Particles2D = get_tree().current_scene.particles
 			
 			var enabled := false
-			if global.settings["particles"] == 3:
+			if settings["particles"] == 3:
 				enabled = true
 			
 			get_tree().current_scene.update_particles = enabled
 			get_tree().current_scene.set_physics_process(enabled)
 			particles.visible = enabled
 			particles.emitting = enabled
+		
+		var hud_elements := [refs.health_ui, refs.item_bar, refs.item_info, refs.stopwatch]
+		for element in hud_elements:
+			element.visible = settings["show_hud"]
 	
 	if save_settings_config == false:
 		return
@@ -567,7 +572,7 @@ func update_settings(save_settings_config:=true):
 	var error = settings_config.open("user://settings_config", File.WRITE)
 	if error == OK:
 		# load works
-		settings_config.store_var(global.settings)
+		settings_config.store_var(settings)
 		settings_config.close()
 	else:
 		# load failed
