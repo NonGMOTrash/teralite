@@ -8,62 +8,75 @@ const OLD_LEVEL_CODES := [
 ]
 
 const DEV_TIMES := {
-	"Redwood": 9.5,
-	"Midpoint": 12.7,
-	"Quickstep": 14.8,
-	"Barricade": 17.1,
-	"Brick": 15.7,
-	"Gauntlet": 22.1,
-	"Sprint": 24.1,
+	"Redwood": 9.3,
+	"Midpoint": 11.8,
+	"Quickstep": 13.4,
+	"Barricade": 16.2,
+	"Brick": 9.0,
+	"Gauntlet": 22.6,
+	"Sprint": 23.8,
 	"Timber": 8.8,
-	"Army": 8.2,
-	"Entrance": 10.5,
-	"Ambushed": 10.4,
+	"Army": 7.1,
+	"Entrance": 9.1,
+	"Ambushed": 8.6,
 	"Caged": 22.5,
-	"Monarch": 19.6,
-	"River": 8.4,
+	"Monarch": 9.4,
+	"River": 7.6,
 	"Conflict": 23.8,
 	"Settlement": 80.9,
 	"Horde": 25.3,
-	"Duo": 21.8,
-	"Spiral": 14.1,
+	"Duo": 19.1,
+	"Spiral": 12.0,
 	"Shadow": 21.7,
-	"Fortified": 17.6,
-	"Vault": 14.4,
-	"Pathway": 9.2,
+	"Fortified": 24.3,
+	"Vault": 14.2,
+	"Pathway": 7.0,
 	"Slice": 12.5,
 	"Disorderly": 16.5,
-	"Across": 15.0,
+	"Across": 13.3,
 	"Halls": 30.5,
-	"Mythical": 21.8,
-	"Ranger": 16.6,
-	"Breach": 26.7,
-	"Duel": 27.3,
+	"Mythical": 22.4,
+	"Ranger": 13.2,
+	"Breach": 25.0,
+	"Duel": 11.4,
 	"Poison": 22.3,
 	"Isolated": 11.2,
 	"Hex": 11.1,
-	"Ghastly": 27.7,
-	"Scrapyard": 14.3,
-	"Dusk": 17.0,
-	"Breakin": 20.0,
+	"Ghastly": 10.1,
+	"Scrapyard": 10.5,
+	"Dusk": 11.4,
+	"Breakin": 13.4,
 	"Infected": 17.2,
-	"Longshot": 17.0,
-	"Fair": 15.2,
-	"Sincerity": 27.3,
-	"Maze": 20.4,
-	"Haunting": 16.6,
-	"Patrol": 9.7,
+	"Longshot": 14.1,
+	"Fair": 8.8,
+	"Sincerity": 15.8,
+	"Maze": 18.5,
+	"Haunting": 9.7,
+	"Tailend": 5.6,
+	"Patrol": 5.8,
 	"Scavenge": 14.6,
-	"Doctor": 10.4,
-	"Scorch": 14.9,
-	"Outpost": 27.7,
-	"Outgunned": 5.08,
+	"Doctor": 9.3,
+	"Scorch": 5.4,
+	"Outpost": 17.8,
+	"Outgunned": 4.9,
 	"Pinned": 20.4,
-	"Mined": 13.5,
-	"Boom": 33.1,
-	"Might": 6.2,
+	"Mined": 12.5,
+	"Boom": 24.7,
+	"Might": 4.6,
 	"Knight": 41.2,
-	"Abomination": 15.3,
+	"Abomination": 20.3,
+	"Exploration": 8.9,
+	"Automation": 29.8,
+	"Even": 17.7,
+	"Ricochet": 21.2,
+	"Light": 14.1,
+	"Cliffside": 32.0,
+	"Lost": 24.4,
+	"Telefrag": 9.5,
+	"Production": 52.2,
+	"Ray": 23.3,
+	"Airfoce": 13.4,
+	"Fugitive": 13.4,
 }
 
 # all the global variables
@@ -337,7 +350,6 @@ func update_saves():
 	dir.list_dir_end()
 
 func write_save(entered_save_name, data):
-	print("save written")
 	var new_save_name = entered_save_name
 	if new_save_name == "":
 		new_save_name = "untitled_save"
@@ -561,7 +573,8 @@ func update_settings(save_settings_config:=true):
 		
 		var hud_elements := [refs.health_ui, refs.item_bar, refs.item_info, refs.stopwatch]
 		for element in hud_elements:
-			element.visible = settings["show_hud"]
+			if is_instance_valid(element):
+				element.visible = settings["show_hud"]
 	
 	if save_settings_config == false:
 		return
@@ -640,7 +653,6 @@ func _update_activity_callback(result: int):
 		push_error("failed to update discord activity: %s" % result)
 
 func _process(_delta: float) -> void:
-	prints(total_time, speedrun_time)
 	if discord:
 		var result: int = discord.run_callbacks()
 		if result != Discord.Result.OK:

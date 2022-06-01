@@ -109,6 +109,11 @@ func _ready() -> void:
 				ambient_lighting.color = Color(1.0, 0.72, 0.9)
 			TYPES.SITE:
 				ambient_lighting.color = Color(0.84, 0.88, 0.9)
+	
+	var hud_elements := [refs.health_ui, refs.item_bar, refs.item_info, refs.stopwatch]
+	for element in hud_elements:
+		if is_instance_valid(element):
+			element.visible = global.settings["show_hud"]
 
 func pathfind(start:Vector2, end:Vector2) -> PoolVector2Array:
 	var path := get_simple_path(start, get_closest_point(end), true)

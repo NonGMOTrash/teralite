@@ -58,6 +58,7 @@ func _on_tabs_visibility_changed() -> void:
 	ambient_lighting.pressed = global.settings["ambient_lighting"]
 	damage_numbers.pressed = global.settings["damage_numbers"]
 	discord.pressed = global.settings["discord"]
+	show_hud.pressed = global.settings["show_hud"]
 	
 	if visible == false: return
 	tabs.current_tab = 0

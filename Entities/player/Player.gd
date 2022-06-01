@@ -182,7 +182,6 @@ func death():
 					child.name = "player"
 					child.components["health_bar"].visible = false
 					refs.update_ref("player", child)
-					refs.emit_signal("got_player")
 					global.emit_signal("update_health")
 					global.emit_signal("update_item_bar", child.inventory)
 					global.emit_signal("update_item_info", # set a condition to null to hide it

@@ -36,6 +36,7 @@ standby_mode = true
 thing = ExtResource( 6 )
 spawn_on_free = false
 rotation_mode = 1
+effect_inherit_flipping = false
 
 [node name="sound_player" parent="." instance=ExtResource( 3 )]
 FREE_WHEN_EMPTY = false

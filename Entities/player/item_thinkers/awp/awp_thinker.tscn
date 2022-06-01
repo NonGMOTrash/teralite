@@ -34,7 +34,7 @@ reload_time = 1.7
 ads_dist_ratio = 1.0
 ads_dist_max = 200
 ads_dist_min = 0
-ads_zoom = 0.6
+ads_zoom = 2.0
 ads_zoom_speed = 0.4
 mlg_time = 1.0
 mlg_damage_bonus = 7
@@ -55,6 +55,7 @@ FREE_WHEN_EMPTY = false
 
 [node name="reload" parent="sound_player" instance=ExtResource( 3 )]
 stream = ExtResource( 10 )
+bus = "Master"
 MODE = 1
 AUTO_PLAY = false
 

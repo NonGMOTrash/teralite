@@ -158,6 +158,7 @@ standby_mode = true
 thing = ExtResource( 21 )
 spawn_on_free = false
 rotation_mode = 2
+effect_inherit_flipping = false
 custom_properties = {
 }
 

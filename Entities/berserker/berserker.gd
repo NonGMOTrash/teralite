@@ -18,6 +18,7 @@ onready var brain := $brain
 onready var held_item := $held_item
 onready var stats := $stats
 onready var animation := $AnimationPlayer
+onready var muzzle_flash: Node = $muzzle_flash
 
 func _ready() -> void:
 	held_item.animation.connect("animation_finished", self, "attack")
@@ -80,6 +81,10 @@ func attack(finished_animation:String):
 			this_bullet.velocity = Vector2(this_bullet.SPEED, this_bullet.SPEED) * direction
 			refs.ysort.call_deferred("add_child", this_bullet)
 		shots -= 1
+		
+		if brain.get_closest_target() != null:
+			muzzle_flash.spawn()
+		
 	elif queued_action == "reload":
 		shots = 2
 		actionable = true

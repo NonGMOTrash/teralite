@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Entities/berserker/berserker.gd" type="Script" id=1]
 [ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=2]
@@ -19,6 +19,8 @@
 [ext_resource path="res://Components/brain/movement_lobe/spring/spring.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Entities/berserker/berserker_back.png" type="Texture" id=19]
+[ext_resource path="res://Effects/muzzle_flash/muzzle_flash.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Components/spawner/spawner.tscn" type="PackedScene" id=21]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -163,6 +165,15 @@ TARGETING = 1
 [node name="sprite" parent="held_item/anchor" index="0"]
 texture = ExtResource( 13 )
 hframes = 1
+
+[node name="muzzle_flash" parent="." instance=ExtResource( 21 )]
+standby_mode = true
+thing = ExtResource( 20 )
+spawn_on_free = false
+rotation_mode = 2
+effect_inherit_flipping = false
+custom_properties = {
+}
 
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 

@@ -19,6 +19,7 @@ RELOAD_ANIM = "load"
 my_item = "rocket_launcher"
 display_name = "rocket launcher"
 CURSOR = ExtResource( 8 )
+CURSOR_MODE = 1
 reload_time = 1.2
 ROCKET = ExtResource( 9 )
 

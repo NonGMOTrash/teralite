@@ -83,9 +83,9 @@ shape = SubResource( 3 )
 [node name="Ghastly" parent="YSort" index="4" instance=ExtResource( 4 )]
 position = Vector2( 880, 837 )
 LEVEL = "Ghastly"
-STAR_REQUIREMENT = 24
+STAR_REQUIREMENT = 22
 
-[node name="Ghastly_2" parent="YSort" index="5" instance=ExtResource( 4 )]
+[node name="Firepower" parent="YSort" index="5" instance=ExtResource( 4 )]
 position = Vector2( 891, 927 )
 LEVEL = "Firepower"
 STAR_REQUIREMENT = 30
@@ -93,22 +93,22 @@ STAR_REQUIREMENT = 30
 [node name="Scrapyard" parent="YSort" index="6" instance=ExtResource( 4 )]
 position = Vector2( 848, 765 )
 LEVEL = "Scrapyard"
-STAR_REQUIREMENT = 24
+STAR_REQUIREMENT = 23
 
 [node name="Dusk" parent="YSort" index="7" instance=ExtResource( 4 )]
 position = Vector2( 736, 783 )
 LEVEL = "Dusk"
-STAR_REQUIREMENT = 25
+STAR_REQUIREMENT = 24
 
 [node name="Breakin" parent="YSort" index="8" instance=ExtResource( 4 )]
 position = Vector2( 661, 881.591 )
 LEVEL = "Breakin"
-STAR_REQUIREMENT = 27
+STAR_REQUIREMENT = 26
 
 [node name="Infected" parent="YSort" index="9" instance=ExtResource( 4 )]
 position = Vector2( 640, 765 )
 LEVEL = "Infected"
-STAR_REQUIREMENT = 26
+STAR_REQUIREMENT = 25
 
 [node name="Haunting" parent="YSort" index="10" instance=ExtResource( 4 )]
 position = Vector2( 512, 756 )
@@ -183,28 +183,28 @@ STAR_REQUIREMENT = 33
 [node name="Boom" parent="YSort" index="24" instance=ExtResource( 4 )]
 position = Vector2( 832, 577.548 )
 LEVEL = "Boom"
-STAR_REQUIREMENT = 35
+STAR_REQUIREMENT = 36
 
 [node name="Might" parent="YSort" index="25" instance=ExtResource( 4 )]
 position = Vector2( 864, 497.548 )
 LEVEL = "Might"
-STAR_REQUIREMENT = 36
+STAR_REQUIREMENT = 37
 
 [node name="Knight" parent="YSort" index="26" instance=ExtResource( 4 )]
 position = Vector2( 934.293, 461.548 )
 LEVEL = "Knight"
-STAR_REQUIREMENT = 47
+STAR_REQUIREMENT = 50
 
 [node name="Abomination" parent="YSort" index="27" instance=ExtResource( 4 )]
 position = Vector2( 864, 389.588 )
 LEVEL = "Abomination"
-STAR_REQUIREMENT = 38
+STAR_REQUIREMENT = 39
 
 [node name="Offworld" parent="YSort" index="28" instance=ExtResource( 4 )]
 position = Vector2( 851.5, 297.249 )
 z_index = 0
 LEVEL = "Offworld"
-STAR_REQUIREMENT = 39
+STAR_REQUIREMENT = 40
 WORLD_ENTRANCE = true
 CUSTOM_SCENE_PATH = "res://Levels/D/D-Hub.tscn"
 REQUIRED_LEVEL = "Abomination"

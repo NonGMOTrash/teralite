@@ -58,8 +58,8 @@ func pre_input_action():
 	if Input.is_action_just_pressed("primary_action") and cooldown.time_left == 0:
 		charge.start()
 		state = CHARGING
-		if get_parent().components["held_item"] != null:
-			get_parent().components["held_item"].animation.play(CHARGE_ANIM)
+		if player.components["held_item"] != null:
+			player.components["held_item"].animation.play(CHARGE_ANIM)
 
 func get_ready():
 	if cooldown.time_left > 0: return false
@@ -137,8 +137,8 @@ func _on_cooldown_timeout() -> void:
 	if Input.is_action_pressed("primary_action") and global.selection == slot:
 		charge.start()
 		state = CHARGING
-		if get_parent().components["held_item"] != null:
-			get_parent().components["held_item"].animation.play(CHARGE_ANIM)
+		if player.components["held_item"] != null:
+			player.components["held_item"].animation.play(CHARGE_ANIM)
 
 func _on_buffer_timeout() -> void:
 	primary()
