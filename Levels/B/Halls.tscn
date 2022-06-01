@@ -13,6 +13,7 @@ AMBIANCE = 2
 GLOBAL_PARTICLES = 2
 AMBIENT_LIGHTING = 2
 WORLD = "B"
+DISPLAY_NAME = "halls of scholars"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )
@@ -41,17 +42,11 @@ position = Vector2( -14.1581, -10.3826 )
 [node name="sound_player" parent="YSort/portal/blue_portal" index="2"]
 FREE_WHEN_EMPTY = false
 
-[node name="teleport" parent="YSort/portal/blue_portal/sound_player" index="0"]
-bus = "Master"
-
 [node name="orange_portal" parent="YSort/portal" index="1"]
 position = Vector2( -174.145, 162.346 )
 
 [node name="sound_player" parent="YSort/portal/orange_portal" index="2"]
 FREE_WHEN_EMPTY = false
-
-[node name="teleport" parent="YSort/portal/orange_portal/sound_player" index="0"]
-bus = "Master"
 
 [node name="warden" parent="YSort" index="4" instance=ExtResource( 3 )]
 position = Vector2( 256, 880 )

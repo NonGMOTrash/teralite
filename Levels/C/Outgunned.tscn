@@ -7,6 +7,7 @@
 AMBIANCE = 3
 GLOBAL_PARTICLES = 3
 AMBIENT_LIGHTING = 3
+DISPLAY_NAME = "out gunned"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 1 )

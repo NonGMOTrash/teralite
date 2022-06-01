@@ -12,6 +12,7 @@ AMBIANCE = 4
 GLOBAL_PARTICLES = 4
 AMBIENT_LIGHTING = 4
 WORLD = "D"
+DISPLAY_NAME = "scanner drone"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )

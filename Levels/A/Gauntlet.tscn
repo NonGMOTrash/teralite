@@ -3,8 +3,9 @@
 [ext_resource path="res://Levels/level/level.tscn" type="PackedScene" id=1]
 
 [node name="Gauntlet" instance=ExtResource( 1 )]
+DISPLAY_NAME = "fork in the road"
 
-[node name="prop_placer" parent="." index="3"]
+[node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 4063300, 0, 0, 4718708, 2, 0, 4915227, 0, 0, 6226036, 0, 0, 6815753, 0, 0, 6815786, 0, 0, 6881428, 1, 0, 8126550, 0, 0, 8519864, 1, 0, 8781969, 0, 0, 9764981, 2, 0, 10354750, 0, 0, 10420403, 0, 0, 11993159, 0, 0, 12255435, 2, 0, 12386428, 1, 0, 12910599, 0, 0, 13172884, 0, 0, 13434928, 2, 0, 13697139, 2, 0, 14811339, 1, 0, 15204449, 1, 0, 15466508, 1, 0, 15466544, 0, 0 )
 
 [node name="entity_spawns" parent="YSort" index="1"]

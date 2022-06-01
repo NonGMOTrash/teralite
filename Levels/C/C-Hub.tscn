@@ -88,6 +88,7 @@ STAR_REQUIREMENT = 22
 [node name="Firepower" parent="YSort" index="5" instance=ExtResource( 4 )]
 position = Vector2( 891, 927 )
 LEVEL = "Firepower"
+DISPLAY_NAME = "firing squad"
 STAR_REQUIREMENT = 30
 
 [node name="Scrapyard" parent="YSort" index="6" instance=ExtResource( 4 )]
@@ -103,6 +104,7 @@ STAR_REQUIREMENT = 24
 [node name="Breakin" parent="YSort" index="8" instance=ExtResource( 4 )]
 position = Vector2( 661, 881.591 )
 LEVEL = "Breakin"
+DISPLAY_NAME = "open up"
 STAR_REQUIREMENT = 26
 
 [node name="Infected" parent="YSort" index="9" instance=ExtResource( 4 )]
@@ -123,6 +125,7 @@ STAR_REQUIREMENT = 27
 [node name="Sincerity" parent="YSort" index="12" instance=ExtResource( 4 )]
 position = Vector2( 416, 793 )
 LEVEL = "Sincerity"
+DISPLAY_NAME = "sincerley"
 STAR_REQUIREMENT = 28
 
 [node name="Fair" parent="YSort" index="13" instance=ExtResource( 4 )]
@@ -138,16 +141,19 @@ STAR_REQUIREMENT = 29
 [node name="Maze" parent="YSort" index="15" instance=ExtResource( 4 )]
 position = Vector2( 336, 729 )
 LEVEL = "Maze"
+DISPLAY_NAME = "cheese maze"
 STAR_REQUIREMENT = 28
 
 [node name="Scavenge" parent="YSort" index="16" instance=ExtResource( 4 )]
 position = Vector2( 405, 621.774 )
 LEVEL = "Scavenge"
+DISPLAY_NAME = "scavenger"
 STAR_REQUIREMENT = 30
 
 [node name="Doctor" parent="YSort" index="17" instance=ExtResource( 4 )]
 position = Vector2( 491, 549 )
 LEVEL = "Doctor"
+DISPLAY_NAME = "bad doctor"
 STAR_REQUIREMENT = 31
 
 [node name="Tailend" parent="YSort" index="18" instance=ExtResource( 4 )]
@@ -173,11 +179,13 @@ STAR_REQUIREMENT = 35
 [node name="Outpost" parent="YSort" index="22" instance=ExtResource( 4 )]
 position = Vector2( 688, 648 )
 LEVEL = "Outpost"
+DISPLAY_NAME = "sandswept outpost"
 STAR_REQUIREMENT = 32
 
 [node name="Outgunned" parent="YSort" index="23" instance=ExtResource( 4 )]
 position = Vector2( 763, 614.322 )
 LEVEL = "Outgunned"
+DISPLAY_NAME = "out gunned"
 STAR_REQUIREMENT = 33
 
 [node name="Boom" parent="YSort" index="24" instance=ExtResource( 4 )]
@@ -188,11 +196,13 @@ STAR_REQUIREMENT = 36
 [node name="Might" parent="YSort" index="25" instance=ExtResource( 4 )]
 position = Vector2( 864, 497.548 )
 LEVEL = "Might"
+DISPLAY_NAME = "fearless"
 STAR_REQUIREMENT = 37
 
 [node name="Knight" parent="YSort" index="26" instance=ExtResource( 4 )]
 position = Vector2( 934.293, 461.548 )
 LEVEL = "Knight"
+DISPLAY_NAME = "the knight"
 STAR_REQUIREMENT = 50
 
 [node name="Abomination" parent="YSort" index="27" instance=ExtResource( 4 )]

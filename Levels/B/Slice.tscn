@@ -8,6 +8,7 @@ AMBIANCE = 2
 GLOBAL_PARTICLES = 2
 AMBIENT_LIGHTING = 2
 WORLD = "B"
+DISPLAY_NAME = "slice & dice"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 1 )

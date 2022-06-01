@@ -27,6 +27,7 @@ onready var spawn_pause = $tabs/game/VBox/spawn_pause
 onready var damage_numbers = $tabs/game/VBox/damage_numbers
 onready var discord = $tabs/game/VBox/discord
 onready var show_hud = $tabs/game/VBox/show_hud
+onready var brain_sapping = $tabs/game/VBox/brain_sapping
 
 signal closed
 
@@ -59,6 +60,7 @@ func _on_tabs_visibility_changed() -> void:
 	damage_numbers.pressed = global.settings["damage_numbers"]
 	discord.pressed = global.settings["discord"]
 	show_hud.pressed = global.settings["show_hud"]
+	brain_sapping.pressed = global.settings["brain_sapping"]
 	
 	if visible == false: return
 	tabs.current_tab = 0
@@ -92,6 +94,7 @@ func _on_exit_pressed() -> void:
 	global.settings["damage_numbers"] = damage_numbers.pressed
 	global.settings["discord"] = discord.pressed
 	global.settings["show_hud"] = show_hud.pressed
+	global.settings["brain_sapping"] = brain_sapping.pressed
 	
 	global.update_settings()
 	

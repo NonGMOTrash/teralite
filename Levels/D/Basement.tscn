@@ -35,6 +35,7 @@ CUSTOM_SCENE_PATH = "res://Levels/D/D-Hub.tscn"
 [node name="Core" parent="YSort" index="4" instance=ExtResource( 4 )]
 position = Vector2( 479.907, 361.369 )
 LEVEL = "Core"
+DISPLAY_NAME = "the core"
 CUSTOM_LETTER = "D"
 SET_HUB_POS = false
 

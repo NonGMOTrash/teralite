@@ -32,7 +32,10 @@ func start():
 	refs.item_bar.visible = false
 	refs.health_ui.visible = false
 	
-	header.text = "%s completed" % lvl.to_lower()
+	if get_tree().current_scene.DISPLAY_NAME == "":
+		header.text = "%s completed" % lvl.to_lower()
+	else:
+		header.text = "%s completed" % get_tree().current_scene.DISPLAY_NAME
 	
 	if refs.player == null:
 		damage.text = damage.text + "? (this is a bug, pls report)"

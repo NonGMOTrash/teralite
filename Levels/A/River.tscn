@@ -3,6 +3,7 @@
 [ext_resource path="res://Levels/level/level.tscn" type="PackedScene" id=1]
 
 [node name="River" instance=ExtResource( 1 )]
+DISPLAY_NAME = "riverside"
 
 [node name="prop_placer" parent="." index="4"]
 tile_data = PoolIntArray( 6488210, 2, 0, 7602314, 5, 0, 7864376, 0, 0, 8847499, 5, 0, 10158088, 1, 0, 10616915, 1, 0, 10617008, 0, 0, 10682407, 2, 0, 11075705, 2, 0 )

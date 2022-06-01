@@ -13,6 +13,7 @@ AMBIANCE = 3
 GLOBAL_PARTICLES = 3
 AMBIENT_LIGHTING = 3
 WORLD = "C"
+DISPLAY_NAME = "open up"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )

@@ -1,6 +1,7 @@
 extends Node2D
 
 export var LEVEL := "level"
+export var DISPLAY_NAME := ""
 export var STAR_REQUIREMENT = 0
 export var WORLD_ENTRANCE := false
 export var CUSTOM_SCENE_PATH := ""
@@ -72,7 +73,11 @@ func _ready() -> void:
 		1, 2, 3:
 			enter_text = "press [E] to enter"
 	
-	header.text = LEVEL.to_lower() + "\n" + enter_text
+	if DISPLAY_NAME == "":
+		header.text = LEVEL.to_lower()
+	else:
+		header.text = DISPLAY_NAME
+	header.text += "\n" + enter_text
 	
 	if LEVEL in global.level_deaths:
 		deaths.text = str(global.level_deaths[LEVEL])

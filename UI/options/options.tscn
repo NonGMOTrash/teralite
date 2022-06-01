@@ -271,6 +271,13 @@ shortcut_in_tooltip = false
 pressed = true
 text = "toggle HUD"
 
+[node name="brain_sapping" parent="tabs/game/VBox" instance=ExtResource( 2 )]
+margin_top = 168.0
+margin_right = 336.0
+margin_bottom = 192.0
+shortcut_in_tooltip = false
+text = "brain sapping"
+
 [node name="exit" parent="." instance=ExtResource( 3 )]
 anchor_left = 1.0
 anchor_right = 1.0

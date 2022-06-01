@@ -61,11 +61,13 @@ STAR_REQUIREMENT = 41
 [node name="Automation" parent="YSort" index="5" instance=ExtResource( 4 )]
 position = Vector2( 256.5, 219.249 )
 LEVEL = "Automation"
+DISPLAY_NAME = "scanner drones"
 STAR_REQUIREMENT = 41
 
 [node name="Even" parent="YSort" index="6" instance=ExtResource( 4 )]
 position = Vector2( 127, 252 )
 LEVEL = "Even"
+DISPLAY_NAME = "the complex"
 STAR_REQUIREMENT = 43
 
 [node name="Ricochet" parent="YSort" index="7" instance=ExtResource( 4 )]
@@ -76,6 +78,7 @@ STAR_REQUIREMENT = 44
 [node name="Light" parent="YSort" index="8" instance=ExtResource( 4 )]
 position = Vector2( 300.217, 396 )
 LEVEL = "Light"
+DISPLAY_NAME = "light blade"
 STAR_REQUIREMENT = 45
 
 [node name="Lost" parent="YSort" index="9" instance=ExtResource( 4 )]
@@ -111,6 +114,7 @@ STAR_REQUIREMENT = 49
 [node name="Ray" parent="YSort" index="15" instance=ExtResource( 4 )]
 position = Vector2( 150, 657 )
 LEVEL = "Ray"
+DISPLAY_NAME = "royal army"
 STAR_REQUIREMENT = 49
 
 [node name="Airforce" parent="YSort" index="16" instance=ExtResource( 4 )]

@@ -9,6 +9,7 @@ AMBIANCE = 5
 GLOBAL_PARTICLES = 0
 AMBIENT_LIGHTING = -1
 WORLD = "D"
+DISPLAY_NAME = "the core"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )

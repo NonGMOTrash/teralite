@@ -61,21 +61,25 @@ STAR_REQUIREMENT = 8
 [node name="Brick" parent="YSort" index="6" instance=ExtResource( 3 )]
 position = Vector2( 272, 461.1 )
 LEVEL = "Brick"
+DISPLAY_NAME = "brick & mortar"
 STAR_REQUIREMENT = 2
 
 [node name="Barricade" parent="YSort" index="7" instance=ExtResource( 3 )]
 position = Vector2( 356.491, 556.206 )
 LEVEL = "Barricade"
+DISPLAY_NAME = "layers"
 STAR_REQUIREMENT = 2
 
 [node name="Sprint" parent="YSort" index="8" instance=ExtResource( 3 )]
 position = Vector2( 160, 384 )
 LEVEL = "Sprint"
+DISPLAY_NAME = "marathon"
 STAR_REQUIREMENT = 4
 
 [node name="Quickstep" parent="YSort" index="9" instance=ExtResource( 3 )]
 position = Vector2( 464.392, 411 )
 LEVEL = "Quickstep"
+DISPLAY_NAME = "quick step"
 STAR_REQUIREMENT = 3
 
 [node name="Entrance" parent="YSort" index="10" instance=ExtResource( 3 )]
@@ -91,6 +95,7 @@ STAR_REQUIREMENT = 8
 [node name="Gauntlet" parent="YSort" index="12" instance=ExtResource( 3 )]
 position = Vector2( 120, 498.59 )
 LEVEL = "Gauntlet"
+DISPLAY_NAME = "fork in the road"
 STAR_REQUIREMENT = 4
 
 [node name="Army" parent="YSort" index="13" instance=ExtResource( 3 )]
@@ -106,6 +111,7 @@ STAR_REQUIREMENT = 7
 [node name="Caged" parent="YSort" index="15" instance=ExtResource( 3 )]
 position = Vector2( 336, 205 )
 LEVEL = "Caged"
+DISPLAY_NAME = "lock & key"
 STAR_REQUIREMENT = 8
 
 [node name="Monarch" parent="YSort" index="16" instance=ExtResource( 3 )]
@@ -154,6 +160,7 @@ STAR_REQUIREMENT = 17
 [node name="River" parent="YSort" index="21" instance=ExtResource( 3 )]
 position = Vector2( 715, 260.774 )
 LEVEL = "River"
+DISPLAY_NAME = "riverside"
 STAR_REQUIREMENT = 10
 
 [node name="Settlement" parent="YSort" index="22" instance=ExtResource( 3 )]

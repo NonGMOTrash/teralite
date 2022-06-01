@@ -8,6 +8,7 @@ export(TYPES) var AMBIENT_LIGHTING = TYPES.AUTUMN
 export var FORCE_SLEEP_UNTIL_VISIBLE = false
 
 export(String) var WORLD := "A"
+export(String) var DISPLAY_NAME := ""
 const LEVEL_TYPE := 0 # PROBLEM_NOTE: make this a string
 
 var update_particles := true

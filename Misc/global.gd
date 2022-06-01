@@ -63,7 +63,7 @@ const DEV_TIMES := {
 	"Mined": 12.5,
 	"Boom": 24.7,
 	"Might": 4.6,
-	"Knight": 41.2,
+	"Knight": 31.8,
 	"Abomination": 20.3,
 	"Exploration": 8.9,
 	"Automation": 29.8,
@@ -138,6 +138,7 @@ var settings := {
 	"damage_numbers": true,
 	"discord": true,
 	"show_hud": true,
+	"brain_sapping": true,
 }
 
 # should move this and get_relation to Entity.gd probably
@@ -653,6 +654,7 @@ func _update_activity_callback(result: int):
 		push_error("failed to update discord activity: %s" % result)
 
 func _process(_delta: float) -> void:
+	print(last_hub)
 	if discord:
 		var result: int = discord.run_callbacks()
 		if result != Discord.Result.OK:
