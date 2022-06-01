@@ -187,6 +187,7 @@ TOP_SPEED = 50
 FORCE_MULT = 0.2
 truName = "universe_eye"
 faction = "offworld"
+pull_strength = 5.0
 
 [node name="stats" parent="." instance=ExtResource( 6 )]
 MAX_HEALTH = 200

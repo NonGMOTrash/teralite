@@ -105,7 +105,7 @@ PROGRESS = 1
 margin_top = 134.0
 margin_right = 336.0
 margin_bottom = 158.0
-hint_tooltip = "natural lighting of the environment"
+hint_tooltip = "the natural environment's lighting. this includes darkness in caves"
 text = "enable ambient lighting"
 
 [node name="pixel" parent="tabs/video/VBox" instance=ExtResource( 2 )]
@@ -214,7 +214,7 @@ follow_focus = true
 
 [node name="VBox" type="VBoxContainer" parent="tabs/game"]
 margin_right = 352.0
-margin_bottom = 192.0
+margin_bottom = 242.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
@@ -239,6 +239,19 @@ margin_right = 336.0
 margin_bottom = 80.0
 shortcut_in_tooltip = false
 text = "smooth camera"
+
+[node name="camera_zoom" parent="tabs/game/VBox" instance=ExtResource( 5 )]
+anchor_right = 0.0
+margin_top = 112.0
+margin_right = 336.0
+margin_bottom = 130.0
+hint_tooltip = "accuracy of shadows, higher is better but more resource intensive"
+min_value = 0.5
+max_value = 1.5
+step = 0.1
+value = 1.0
+TEXT = "camera zoom"
+PROGRESS = 1
 
 [node name="spawn_pause" parent="tabs/game/VBox" instance=ExtResource( 2 )]
 margin_top = 84.0

@@ -99,5 +99,6 @@ func _on_duration_timeout() -> void:
 	stop_shaking()
 
 func zoom_to(new_zoom: Vector2, time: float = 0.2, trans:int = Tween.TRANS_LINEAR, eaze:int = DEFAULT_EASE):
-	zoom_tween.interpolate_property(self, "zoom", zoom, new_zoom, time, trans, eaze) # ease is taken
+	zoom_tween.interpolate_property(self, "zoom", zoom, new_zoom * global.settings["camera_zoom"], 
+			time, trans, eaze) # "ease" is taken lol
 	zoom_tween.start()

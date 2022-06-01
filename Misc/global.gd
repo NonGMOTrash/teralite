@@ -77,6 +77,7 @@ const DEV_TIMES := {
 	"Ray": 23.3,
 	"Airfoce": 13.4,
 	"Fugitive": 13.4,
+	"Core": 108.8,
 }
 
 # all the global variables
@@ -139,6 +140,7 @@ var settings := {
 	"discord": true,
 	"show_hud": true,
 	"brain_sapping": true,
+	"camera_zoom": 1.0,
 }
 
 # should move this and get_relation to Entity.gd probably
@@ -506,6 +508,9 @@ func update_settings(save_settings_config:=true):
 	AudioServer.set_bus_volume_db(2, linear2db(settings["menu_volume"]))
 	AudioServer.set_bus_volume_db(3, linear2db(settings["ambiance_volume"]))
 	AudioServer.set_bus_volume_db(4, linear2db(settings["footsteps_volume"]))
+	
+	if is_instance_valid(refs.camera):
+		refs.camera.zoom_to(Vector2(1, 1))
 	
 	if settings["pixel_perfect"] == true:
 			get_tree().set_screen_stretch(
