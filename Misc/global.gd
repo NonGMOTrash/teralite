@@ -141,6 +141,7 @@ var settings := {
 	"show_hud": true,
 	"brain_sapping": true,
 	"camera_zoom": 1.0,
+	"show_fps": false,
 }
 
 # should move this and get_relation to Entity.gd probably
@@ -547,10 +548,8 @@ func update_settings(save_settings_config:=true):
 		else:
 			ambient_lighting.color = Color(1, 1, 1)
 		
-		var item_bar = refs.item_bar
-		if item_bar == null: 
-			push_warning("could not find item_bar")
-		else:
+		var item_bar: Node = refs.item_bar
+		if is_instance_valid(item_bar): 
 			var player = refs.player
 			if not is_instance_valid(player): return
 			
@@ -582,10 +581,14 @@ func update_settings(save_settings_config:=true):
 			if is_instance_valid(element):
 				element.visible = settings["show_hud"]
 	
+	if is_instance_valid(refs.fps):
+		refs.fps.visible = settings["show_fps"]
+	
 	if save_settings_config == false:
 		return
 	
 	# saving to settings_config file
+	
 	var settings_config = File.new()
 	
 	var error = settings_config.open("user://settings_config", File.WRITE)

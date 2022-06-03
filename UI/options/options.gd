@@ -29,6 +29,7 @@ onready var discord = $tabs/game/VBox/discord
 onready var show_hud = $tabs/game/VBox/show_hud
 onready var brain_sapping = $tabs/game/VBox/brain_sapping
 onready var camera_zoom = $tabs/game/VBox/camera_zoom
+onready var show_fps = $tabs/game/VBox/show_fps
 
 signal closed
 
@@ -61,8 +62,9 @@ func _on_tabs_visibility_changed() -> void:
 	damage_numbers.pressed = global.settings["damage_numbers"]
 	discord.pressed = global.settings["discord"]
 	show_hud.pressed = global.settings["show_hud"]
-	brain_sapping.pressed = global.settings["brain_sapping"]
+	brain_sapping.value = global.settings["brain_sapping"]
 	camera_zoom.value = global.settings["camera_zoom"]
+	show_fps.pressed = global.settings["show_fps"]
 	
 	if visible == false: return
 	tabs.current_tab = 0
@@ -96,8 +98,9 @@ func _on_exit_pressed() -> void:
 	global.settings["damage_numbers"] = damage_numbers.pressed
 	global.settings["discord"] = discord.pressed
 	global.settings["show_hud"] = show_hud.pressed
-	global.settings["brain_sapping"] = brain_sapping.pressed
+	global.settings["brain_sapping"] = brain_sapping.value
 	global.settings["camera_zoom"] = camera_zoom.value
+	global.settings["show_fps"] = show_fps.pressed
 	
 	global.update_settings()
 	

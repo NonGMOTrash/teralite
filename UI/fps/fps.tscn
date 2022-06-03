@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/Themes/Fonts/smallest_pixel_7.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/fps/fps.gd" type="Script" id=2]
+
+[node name="fps" type="Label"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -40.0
+margin_top = -1.0
+margin_right = -1.0
+margin_bottom = 14.0
+size_flags_vertical = 0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_fonts/font = ExtResource( 1 )
+text = "60"
+align = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+good_color = Color( 0.682353, 1, 0.262745, 1 )
+okay_color = Color( 0.835294, 0.933333, 0.133333, 1 )
+bad_color = Color( 0.905882, 0.509804, 0.12549, 1 )
+horrible_color = Color( 0.976471, 0.0627451, 0.0627451, 1 )
+
+[connection signal="tree_entered" from="." to="." method="_on_fps_tree_entered"]

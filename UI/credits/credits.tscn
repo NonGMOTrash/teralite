@@ -1,0 +1,1071 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://UI/credits/credits.gd" type="Script" id=1]
+[ext_resource path="res://UI/credits/credits.ogg" type="AudioStream" id=2]
+[ext_resource path="res://UI/Themes/general_theme.tres" type="Theme" id=3]
+[ext_resource path="res://UI/Themes/Fonts/smallest_pixel_7.tres" type="DynamicFont" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "anim"
+length = 32.8
+step = 0.05
+tracks/0/type = "audio"
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+} ],
+"times": PoolRealArray( 1 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("developer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 4.25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("developer/title:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1, 1.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("developer/name:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("playtesters:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 5, 8.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("playtesters/HBoxContainer/VBoxContainer:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 5, 5.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("playtesters/HBoxContainer/VBoxContainer_2:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 5, 5.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("engine:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 9, 12.25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("engine/title:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 9, 9.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("engine/name:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 9, 9.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("engine/license:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 9, 9.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("sound_credits:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 13, 16 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("sound_credits/VBoxContainer_2/HBoxContainer:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 13, 13.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("sound_credits/VBoxContainer_2/HBoxContainer_2:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 13, 13.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/14/type = "method"
+tracks/14/path = NodePath(".")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 13.1, 13.15, 13.2, 13.25, 13.3, 13.35, 13.4, 13.45, 13.5, 13.55, 13.6, 13.65, 13.7, 13.75, 13.8, 13.85, 13.9, 13.95, 14, 14.05, 14.1, 14.15, 14.2, 14.25, 14.3, 14.35, 14.4, 14.45, 14.5, 14.55, 14.6, 14.65, 14.7, 14.75, 14.8, 14.85, 14.9, 14.95, 15, 15.05, 15.1, 15.15, 15.2, 15.25, 15.3, 15.35, 15.4, 15.45, 15.5, 15.55, 15.6, 15.65, 15.7, 15.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+}, {
+"args": [  ],
+"method": "set_sound_credit"
+} ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("shader_credits:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 17, 20.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("shader_credits/title:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 17, 17.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("shader_credits/name:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 17, 17.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("shader_credits/name_2:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 17, 17.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("shader_credits/name_3:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 17, 17.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("discord_integration:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 21, 23.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("discord_integration/title:modulate")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 21, 21.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("discord_integration/name:modulate")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 21, 21.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("license:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0, 25, 28.65 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("license/title:modulate")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 25, 25.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("license/name:modulate")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 25, 25.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("thx:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0, 29 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="credits" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "anim"
+anims/anim = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="developer" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.15
+anchor_top = 0.1
+anchor_right = 0.85
+anchor_bottom = 0.9
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="developer"]
+margin_right = 268.0
+margin_bottom = 16.0
+size_flags_vertical = 6
+text = "developer"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="developer"]
+margin_top = 20.0
+margin_right = 268.0
+margin_bottom = 21.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="developer"]
+margin_top = 90.0
+margin_right = 268.0
+margin_bottom = 106.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+custom_colors/font_color = Color( 0.905882, 0.439216, 0.184314, 1 )
+text = "NonGMOTrash"
+align = 1
+
+[node name="playtesters" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.15
+anchor_top = 0.1
+anchor_right = 0.85
+anchor_bottom = 0.9
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="playtesters"]
+margin_right = 268.0
+margin_bottom = 16.0
+size_flags_vertical = 6
+text = "play testers"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="playtesters"]
+margin_top = 20.0
+margin_right = 268.0
+margin_bottom = 21.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="playtesters"]
+margin_top = 25.0
+margin_right = 268.0
+margin_bottom = 172.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="playtesters/HBoxContainer"]
+margin_right = 129.0
+margin_bottom = 147.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="name" type="Label" parent="playtesters/HBoxContainer/VBoxContainer"]
+margin_top = 5.0
+margin_right = 129.0
+margin_bottom = 21.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+custom_colors/font_color = Color( 0.960784, 0.662745, 0.152941, 1 )
+text = "legominfig"
+align = 1
+
+[node name="name_2" type="Label" parent="playtesters/HBoxContainer/VBoxContainer"]
+margin_top = 35.0
+margin_right = 129.0
+margin_bottom = 51.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+custom_colors/font_color = Color( 0.941176, 0.247059, 0.831373, 1 )
+text = "PurpGurp"
+align = 1
+
+[node name="name_3" type="Label" parent="playtesters/HBoxContainer/VBoxContainer"]
+margin_top = 65.0
+margin_right = 129.0
+margin_bottom = 81.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+custom_colors/font_color = Color( 0.188235, 0.635294, 0.231373, 1 )
+text = "AUSTROIDS"
+align = 1
+
+[node name="name_4" type="Label" parent="playtesters/HBoxContainer/VBoxContainer"]
+margin_top = 95.0
+margin_right = 129.0
+margin_bottom = 111.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+custom_colors/font_color = Color( 0.913725, 0.870588, 0.247059, 1 )
+text = "HundredMender"
+align = 1
+
+[node name="name_5" type="Label" parent="playtesters/HBoxContainer/VBoxContainer"]
+margin_top = 125.0
+margin_right = 129.0
+margin_bottom = 141.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+custom_colors/font_color = Color( 0.803922, 0.235294, 0.866667, 1 )
+text = "phantom_boyy08"
+align = 1
+
+[node name="VSeparator" type="VSeparator" parent="playtesters/HBoxContainer"]
+margin_left = 133.0
+margin_right = 134.0
+margin_bottom = 147.0
+
+[node name="VBoxContainer_2" type="VBoxContainer" parent="playtesters/HBoxContainer"]
+margin_left = 138.0
+margin_right = 268.0
+margin_bottom = 147.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="name" type="Label" parent="playtesters/HBoxContainer/VBoxContainer_2"]
+margin_top = 5.0
+margin_right = 130.0
+margin_bottom = 21.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+custom_colors/font_color = Color( 0.858824, 0.172549, 0.733333, 1 )
+text = "MacysADog"
+align = 1
+
+[node name="name_2" type="Label" parent="playtesters/HBoxContainer/VBoxContainer_2"]
+margin_top = 35.0
+margin_right = 130.0
+margin_bottom = 51.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+custom_colors/font_color = Color( 0.196078, 0.164706, 0.556863, 1 )
+text = "Something Ironic"
+align = 1
+
+[node name="name_3" type="Label" parent="playtesters/HBoxContainer/VBoxContainer_2"]
+margin_top = 65.0
+margin_right = 130.0
+margin_bottom = 81.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+custom_colors/font_color = Color( 0.164706, 0.4, 0.133333, 1 )
+text = "RJW_05"
+align = 1
+
+[node name="name_4" type="Label" parent="playtesters/HBoxContainer/VBoxContainer_2"]
+margin_top = 95.0
+margin_right = 130.0
+margin_bottom = 111.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+custom_colors/font_color = Color( 0.894118, 0.113725, 0.113725, 1 )
+text = "ParrotGang"
+align = 1
+
+[node name="name_5" type="Label" parent="playtesters/HBoxContainer/VBoxContainer_2"]
+margin_top = 125.0
+margin_right = 130.0
+margin_bottom = 141.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+custom_colors/font_color = Color( 1, 0, 0.768627, 1 )
+text = "purple guy"
+align = 1
+
+[node name="engine" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.15
+anchor_top = 0.1
+anchor_right = 0.85
+anchor_bottom = 0.9
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="engine"]
+margin_right = 268.0
+margin_bottom = 16.0
+size_flags_vertical = 6
+text = "engine"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="engine"]
+margin_top = 20.0
+margin_right = 268.0
+margin_bottom = 21.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="engine"]
+margin_top = 83.0
+margin_right = 268.0
+margin_bottom = 99.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+custom_colors/font_color = Color( 0.247059, 0.560784, 1, 1 )
+text = "Godot Engine"
+align = 1
+
+[node name="license" type="Label" parent="engine"]
+margin_top = 161.0
+margin_right = 268.0
+margin_bottom = 172.0
+size_flags_vertical = 12
+custom_fonts/font = ExtResource( 4 )
+text = "(license is in the readme)"
+align = 1
+valign = 2
+
+[node name="fonts" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.15
+anchor_top = 0.1
+anchor_right = 0.85
+anchor_bottom = 0.9
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="fonts"]
+margin_right = 268.0
+margin_bottom = 16.0
+size_flags_vertical = 6
+text = "font credits"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="fonts"]
+margin_top = 20.0
+margin_right = 268.0
+margin_bottom = 21.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="fonts"]
+margin_top = 39.0
+margin_right = 268.0
+margin_bottom = 74.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+text = "m6x11
+by Managore"
+align = 1
+
+[node name="name_2" type="Label" parent="fonts"]
+margin_top = 107.0
+margin_right = 268.0
+margin_bottom = 142.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+text = "Smallest Pixel-7
+by Style 7"
+align = 1
+
+[node name="license" type="Label" parent="fonts"]
+margin_top = 161.0
+margin_right = 268.0
+margin_bottom = 172.0
+size_flags_vertical = 12
+custom_fonts/font = ExtResource( 4 )
+text = "(links are in the readme)"
+align = 1
+valign = 2
+
+[node name="sound_credits" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.15
+anchor_top = 0.1
+anchor_right = 0.85
+anchor_bottom = 0.9
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="sound_credits"]
+margin_right = 268.0
+margin_bottom = 16.0
+size_flags_vertical = 6
+text = "sound credits"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="sound_credits"]
+margin_top = 20.0
+margin_right = 268.0
+margin_bottom = 21.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer_2" type="VBoxContainer" parent="sound_credits"]
+margin_top = 25.0
+margin_right = 268.0
+margin_bottom = 152.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="sound_credits/VBoxContainer_2"]
+margin_left = 107.0
+margin_right = 161.0
+margin_bottom = 61.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+alignment = 1
+
+[node name="name" type="Label" parent="sound_credits/VBoxContainer_2/HBoxContainer"]
+margin_top = 18.0
+margin_right = 54.0
+margin_bottom = 43.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+custom_fonts/font = ExtResource( 4 )
+text = "\"slashkut\"
+by Abyssmal"
+align = 1
+
+[node name="HBoxContainer_2" type="HBoxContainer" parent="sound_credits/VBoxContainer_2"]
+margin_left = 102.0
+margin_top = 65.0
+margin_right = 166.0
+margin_bottom = 127.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+alignment = 1
+
+[node name="name" type="Label" parent="sound_credits/VBoxContainer_2/HBoxContainer_2"]
+margin_top = 18.0
+margin_right = 64.0
+margin_bottom = 43.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+custom_fonts/font = ExtResource( 4 )
+text = "\"Sword clash\"
+by spycrah"
+align = 1
+
+[node name="HSeparator_2" type="HSeparator" parent="sound_credits"]
+margin_top = 156.0
+margin_right = 268.0
+margin_bottom = 157.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="license" type="Label" parent="sound_credits"]
+margin_top = 161.0
+margin_right = 268.0
+margin_bottom = 172.0
+size_flags_vertical = 12
+custom_fonts/font = ExtResource( 4 )
+text = "(links are in the readme)"
+align = 1
+valign = 2
+
+[node name="shader_credits" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.15
+anchor_top = 0.1
+anchor_right = 0.85
+anchor_bottom = 0.9
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="shader_credits"]
+margin_right = 268.0
+margin_bottom = 16.0
+size_flags_vertical = 6
+text = "shader credits"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="shader_credits"]
+margin_top = 20.0
+margin_right = 268.0
+margin_bottom = 21.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="shader_credits"]
+margin_top = 37.0
+margin_right = 268.0
+margin_bottom = 53.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+text = "heartbeast"
+align = 1
+
+[node name="name_2" type="Label" parent="shader_credits"]
+margin_top = 82.0
+margin_right = 268.0
+margin_bottom = 98.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+text = "Juulpower"
+align = 1
+
+[node name="name_3" type="Label" parent="shader_credits"]
+margin_top = 127.0
+margin_right = 268.0
+margin_bottom = 143.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+text = "Arcane Energy"
+align = 1
+
+[node name="license" type="Label" parent="shader_credits"]
+margin_top = 160.0
+margin_right = 268.0
+margin_bottom = 171.0
+size_flags_vertical = 12
+custom_fonts/font = ExtResource( 4 )
+text = "(links in readme)"
+align = 1
+valign = 2
+
+[node name="discord_integration" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.15
+anchor_top = 0.1
+anchor_right = 0.85
+anchor_bottom = 0.9
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="discord_integration"]
+margin_right = 268.0
+margin_bottom = 16.0
+size_flags_vertical = 6
+text = "discord_integration"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="discord_integration"]
+margin_top = 20.0
+margin_right = 268.0
+margin_bottom = 21.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="discord_integration"]
+margin_top = 83.0
+margin_right = 268.0
+margin_bottom = 99.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+text = "GodotDiscordSDK plugin"
+align = 1
+
+[node name="license" type="Label" parent="discord_integration"]
+margin_top = 161.0
+margin_right = 268.0
+margin_bottom = 172.0
+size_flags_vertical = 12
+custom_fonts/font = ExtResource( 4 )
+text = "(link in readme)"
+align = 1
+valign = 2
+
+[node name="license" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.15
+anchor_top = 0.1
+anchor_right = 0.85
+anchor_bottom = 0.9
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="license"]
+margin_right = 268.0
+margin_bottom = 16.0
+size_flags_vertical = 6
+text = "license"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="license"]
+margin_top = 20.0
+margin_right = 268.0
+margin_bottom = 21.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="license"]
+margin_top = 83.0
+margin_right = 268.0
+margin_bottom = 99.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 20.0
+text = "GPL v3.0"
+align = 1
+
+[node name="license" type="Label" parent="license"]
+margin_top = 161.0
+margin_right = 268.0
+margin_bottom = 172.0
+size_flags_vertical = 12
+custom_fonts/font = ExtResource( 4 )
+text = "(more info in readme)"
+align = 1
+valign = 2
+
+[node name="thx" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.15
+anchor_top = 0.1
+anchor_right = 0.85
+anchor_bottom = 0.9
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="thx"]
+margin_top = 78.0
+margin_right = 268.0
+margin_bottom = 94.0
+size_flags_vertical = 6
+text = "thanks for playing :D"
+align = 1
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

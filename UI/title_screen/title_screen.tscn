@@ -103,7 +103,6 @@ margin_top = -17.0
 margin_right = -2.0
 grow_horizontal = 0
 theme = ExtResource( 1 )
-custom_colors/font_color = Color( 0.905882, 0.87451, 0.129412, 1 )
 text = "v_._._"
 align = 2
 valign = 1

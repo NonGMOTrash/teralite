@@ -20,6 +20,7 @@ var ambiance: Global_Sound
 var ambient_lighting: CanvasModulate
 var transition: TextureRect
 var vignette: CanvasLayer
+var fps: Label
 
 class safe:
 	var level := weakref(Object())

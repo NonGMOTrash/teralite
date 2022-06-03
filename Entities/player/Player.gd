@@ -58,7 +58,7 @@ func _ready():
 		health_bar.update_bar(0, 0, 0)
 		health_bar.visible = true
 	
-	var camera = refs.camera
+	var camera := refs.camera
 	camera.smoothing_enabled = false
 	camera.global_position = global_position
 	camera.smoothing_enabled = true

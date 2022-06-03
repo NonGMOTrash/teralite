@@ -16,6 +16,8 @@ var letter
 
 onready var info = $Node2D/info
 onready var header = $Node2D/info/header
+onready var details = $Node2D/info/HBoxContainer
+onready var seperator = $Node2D/info/HSeparator
 onready var deaths = $Node2D/info/HBoxContainer/deaths
 onready var time = $Node2D/info/HBoxContainer/time
 onready var sprite = $Area2D/Sprite
@@ -27,6 +29,7 @@ func _ready() -> void:
 		letter = get_tree().current_scene.LETTER
 	else:
 		letter = "A"
+	
 	
 	if (
 		global.stars >= STAR_REQUIREMENT and
@@ -45,6 +48,9 @@ func _ready() -> void:
 			if missing_stars < 1: enter_text = "press [E] to enter"
 			elif missing_stars == 1: enter_text = "you need 1 more star"
 			elif missing_stars > 1: enter_text = "you need %s more stars" % missing_stars
+		
+		seperator.visible = false
+		details.visible = false
 		
 		header.text = LEVEL.to_lower() + "\n" + enter_text
 		return

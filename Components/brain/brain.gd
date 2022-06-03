@@ -213,7 +213,8 @@ func add_target(tar: Entity, force = false) -> void:
 	
 	emit_signal("found_target")
 	
-	spawn_effect("exclaimation", global_position.move_toward(tar.global_position, 32))
+	if tar.truName == "player":
+		spawn_effect("exclaimation", global_position.move_toward(tar.global_position, 32))
 
 func remove_target(tar):
 	if targets == []: return
@@ -237,9 +238,11 @@ func remove_target(tar):
 			movement_lobe.best_position_paths.remove(target_id)
 			memory_lobe.add_memory(targets[target_id].global_position,
 				movement_lobe.get_spring(targets[target_id]),
-				targets[target_id].get_instance_id())
+				targets[target_id].get_instance_id()
+			)
 			
-			spawn_effect("question", global_position.move_toward(targets[target_id].global_position, 32))
+			if targets[target_id].truName == "player":
+				spawn_effect("question", global_position.move_toward(targets[target_id].global_position, 32))
 	
 	targets.remove(target_id)
 	target_paths.remove(target_id)
