@@ -109,7 +109,7 @@ var speedrun_time := 0.0
 var icon = 0
 
 const ver_phase = ""
-const ver_num = 1.0
+const ver_num = 1.1
 const ver_hotfix = 0
 
 # for saving things
@@ -662,7 +662,6 @@ func _update_activity_callback(result: int):
 		push_error("failed to update discord activity: %s" % result)
 
 func _process(_delta: float) -> void:
-	print(last_hub)
 	if discord:
 		var result: int = discord.run_callbacks()
 		if result != Discord.Result.OK:

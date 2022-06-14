@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/offworld_ambiance.ogg-d403d30feaedcffceac12279931a1781.oggstr"
+
+[deps]
+
+source_file="res://Levels/level/offworld_ambiance.ogg"
+dest_files=[ "res://.import/offworld_ambiance.ogg-d403d30feaedcffceac12279931a1781.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

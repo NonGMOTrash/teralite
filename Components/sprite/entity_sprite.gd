@@ -1,5 +1,7 @@
 extends Sprite
 
+const OUTLINE_SHADER: Shader = preload("res://UI/Themes/Shaders and Materials/outline.shader")
+
 enum AFM { # auto flip modes
 	OFF,
 	MOVEMENT,

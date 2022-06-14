@@ -7,6 +7,7 @@ onready var exit = $exit
 onready var fullscreen = $tabs/video/VBox/fullscreen
 onready var pixel = $tabs/video/VBox/pixel
 onready var vsync = $tabs/video/VBox/vsync
+onready var outlines = $tabs/video/VBox/outlines
 onready var lighting = $tabs/video/VBox/lighting
 onready var shadows = $tabs/video/VBox/shadows
 onready var shadow_buffer = $tabs/video/VBox/shadow_buffer

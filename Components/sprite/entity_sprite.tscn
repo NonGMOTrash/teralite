@@ -7,7 +7,6 @@
 [ext_resource path="res://Misc/generic.png" type="Texture" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
-resource_local_to_scene = true
 
 [node name="entity_sprite" type="Sprite"]
 material = SubResource( 1 )

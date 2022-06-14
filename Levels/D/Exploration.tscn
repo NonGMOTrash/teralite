@@ -4,6 +4,10 @@
 [ext_resource path="res://Levels/Level Resources/world_tiles/bg_offworld.png" type="Texture" id=2]
 
 [node name="Exploration" instance=ExtResource( 1 )]
+AMBIANCE = 4
+GLOBAL_PARTICLES = 4
+AMBIENT_LIGHTING = 4
+WORLD = "D"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )

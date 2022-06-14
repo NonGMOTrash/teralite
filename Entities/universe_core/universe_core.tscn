@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Entities/universe_core/universe_core.gd" type="Script" id=1]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=2]
@@ -18,6 +18,8 @@
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Entities/universe_core/richard.wav" type="AudioStream" id=18]
+[ext_resource path="res://Effects/LightSource.gd" type="Script" id=19]
+[ext_resource path="res://Effects/light.png" type="Texture" id=20]
 
 [sub_resource type="AtlasTexture" id=41]
 atlas = ExtResource( 5 )
@@ -506,6 +508,7 @@ infection_modifier = -99.0
 show_behind_parent = true
 position = Vector2( 0, -15 )
 frames = SubResource( 45 )
+frame = 1
 playing = true
 
 [node name="eye" type="Sprite" parent="."]
@@ -517,6 +520,7 @@ frame = 1
 [node name="barrier" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -15 )
 frames = SubResource( 8 )
+frame = 2
 playing = true
 
 [node name="platform" type="Sprite" parent="."]
@@ -527,6 +531,7 @@ texture = ExtResource( 8 )
 show_behind_parent = true
 position = Vector2( 0, -20 )
 frames = SubResource( 17 )
+frame = 5
 playing = true
 
 [node name="hurtbox" parent="." instance=ExtResource( 4 )]
@@ -633,6 +638,14 @@ stream = ExtResource( 18 )
 bus = "Master"
 MODE = 1
 AUTO_PLAY = false
+
+[node name="LightSource" type="Light2D" parent="."]
+position = Vector2( 0, -15.749 )
+texture = ExtResource( 20 )
+texture_scale = 0.4
+color = Color( 0.513726, 0.960784, 0.917647, 1 )
+mode = 2
+script = ExtResource( 19 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="found_target" from="brain" to="." method="_on_brain_found_target"]

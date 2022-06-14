@@ -84,7 +84,7 @@ func _ready() -> void:
 		TYPES.AUTUMN: ambiance.stream = load("res://Levels/level/forest_ambiance.ogg")
 		TYPES.UNDERGROUND: ambiance.stream = load("res://Levels/level/cave_ambiance.ogg")
 		TYPES.WASTELAND: ambiance.stream = load("res://Levels/level/wasteland_ambience.ogg")
-		TYPES.OFFWORLD: ambiance.stream = load("res://Levels/level/forest_ambiance.ogg")
+		TYPES.OFFWORLD: ambiance.stream = load("res://Levels/level/offworld_ambiance.ogg")
 	
 	global.add_child(ambiance)
 	refs.update_ref("ambiance", ambiance)

@@ -79,11 +79,13 @@ func footstep():
 				-1: pass # nothing
 				0: audio = FOOTSTEP_GRASS # autumn
 				1: audio = FOOTSTEP_STONE # underground
-				2: audio = FOOTSTEP_SAND
+				2: audio = FOOTSTEP_SAND # wasteland
+				3: audio = FOOTSTEP_GRASS # offworld
+				4: audio = FOOTSTEP_METAL # site
 		0: audio = FOOTSTEP_DIRT
 		1: audio = FOOTSTEP_WOOD
 		2: audio = FOOTSTEP_CARPET
-		3: audio = FOOTSTEP_METAL
+		3, 4: audio = FOOTSTEP_METAL
 	
 	if audio == null: return
 	

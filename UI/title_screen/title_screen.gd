@@ -50,13 +50,12 @@ const MESSAGES = [
 ]
 const SAVE_ICONS := [
 	preload("res://UI/Icons/save.png"),
-	preload("res://Entities/player/player_flat.png"),
-	preload("res://UI/Icons/plain_star.png"),
-	preload("res://UI/Icons/teralite_logo_small.png"),
-	preload("res://Entities/Item_Pickups/sword/sword.png"),
-	preload("res://Entities/Item_Pickups/heart/heart.png"),
-	preload("res://Entities/Item_Pickups/bow/bow.png"),
-	preload("res://Entities/Item_Pickups/pistol/pistol.png"),
+	preload("res://UI/Icons/save2.png"),
+	preload("res://UI/Icons/save3.png"),
+	preload("res://UI/Icons/save4.png"),
+	preload("res://UI/Icons/save5.png"),
+	preload("res://UI/Icons/save6.png"),
+	preload("res://UI/Icons/save7.png"),
 ]
 var save_icon_id: int = 0
 

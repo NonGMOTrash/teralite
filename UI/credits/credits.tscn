@@ -155,229 +155,70 @@ tracks/11/keys = {
 "update": 1,
 "values": [ false, true, false ]
 }
-tracks/12/type = "value"
-tracks/12/path = NodePath("sound_credits/VBoxContainer_2/HBoxContainer:modulate")
+tracks/12/type = "method"
+tracks/12/path = NodePath(".")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 13, 13.35 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+"times": PoolRealArray( 13 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 3.0 ],
+"method": "start_sound_credits"
+} ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("sound_credits/VBoxContainer_2/HBoxContainer_2:modulate")
+tracks/13/path = NodePath("shader_credits:visible")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 13, 13.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/14/type = "method"
-tracks/14/path = NodePath(".")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/keys = {
-"times": PoolRealArray( 13.1, 13.15, 13.2, 13.25, 13.3, 13.35, 13.4, 13.45, 13.5, 13.55, 13.6, 13.65, 13.7, 13.75, 13.8, 13.85, 13.9, 13.95, 14, 14.05, 14.1, 14.15, 14.2, 14.25, 14.3, 14.35, 14.4, 14.45, 14.5, 14.55, 14.6, 14.65, 14.7, 14.75, 14.8, 14.85, 14.9, 14.95, 15, 15.05, 15.1, 15.15, 15.2, 15.25, 15.3, 15.35, 15.4, 15.45, 15.5, 15.55, 15.6, 15.65, 15.7, 15.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-}, {
-"args": [  ],
-"method": "set_sound_credit"
-} ]
-}
-tracks/15/type = "value"
-tracks/15/path = NodePath("shader_credits:visible")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
 "times": PoolRealArray( 0, 17, 20.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
 }
-tracks/16/type = "value"
-tracks/16/path = NodePath("shader_credits/title:modulate")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/keys = {
+tracks/14/type = "value"
+tracks/14/path = NodePath("shader_credits/title:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
 "times": PoolRealArray( 17, 17.35 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/15/type = "value"
+tracks/15/path = NodePath("shader_credits/name:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 17, 17.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("shader_credits/name_2:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 17, 17.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
 tracks/17/type = "value"
-tracks/17/path = NodePath("shader_credits/name:modulate")
+tracks/17/path = NodePath("shader_credits/name_3:modulate")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -389,112 +230,124 @@ tracks/17/keys = {
 "values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("shader_credits/name_2:modulate")
+tracks/18/path = NodePath("discord_integration:visible")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
 tracks/18/enabled = true
 tracks/18/keys = {
-"times": PoolRealArray( 17, 17.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/19/type = "value"
-tracks/19/path = NodePath("shader_credits/name_3:modulate")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/keys = {
-"times": PoolRealArray( 17, 17.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/20/type = "value"
-tracks/20/path = NodePath("discord_integration:visible")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/keys = {
 "times": PoolRealArray( 0, 21, 23.9 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
 }
-tracks/21/type = "value"
-tracks/21/path = NodePath("discord_integration/title:modulate")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/keys = {
+tracks/19/type = "value"
+tracks/19/path = NodePath("discord_integration/title:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
 "times": PoolRealArray( 21, 21.35 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/22/type = "value"
-tracks/22/path = NodePath("discord_integration/name:modulate")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/keys = {
+tracks/20/type = "value"
+tracks/20/path = NodePath("discord_integration/name:modulate")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
 "times": PoolRealArray( 21, 21.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/23/type = "value"
-tracks/23/path = NodePath("license:visible")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/keys = {
+tracks/21/type = "value"
+tracks/21/path = NodePath("license:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
 "times": PoolRealArray( 0, 25, 28.65 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
 }
-tracks/24/type = "value"
-tracks/24/path = NodePath("license/title:modulate")
-tracks/24/interp = 1
-tracks/24/loop_wrap = true
-tracks/24/imported = false
-tracks/24/enabled = true
-tracks/24/keys = {
+tracks/22/type = "value"
+tracks/22/path = NodePath("license/title:modulate")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
 "times": PoolRealArray( 25, 25.35 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/25/type = "value"
-tracks/25/path = NodePath("license/name:modulate")
-tracks/25/interp = 1
-tracks/25/loop_wrap = true
-tracks/25/imported = false
-tracks/25/enabled = true
-tracks/25/keys = {
+tracks/23/type = "value"
+tracks/23/path = NodePath("license/name:modulate")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
 "times": PoolRealArray( 25, 25.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/24/type = "value"
+tracks/24/path = NodePath("thx:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0, 29 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("thx/title:text")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 29, 29.35, 29.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ "thanks", "thanks for", "thanks for playing" ]
+}
 tracks/26/type = "value"
-tracks/26/path = NodePath("thx:visible")
+tracks/26/path = NodePath("sound_credits/VBoxContainer_2/name:modulate")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/imported = false
 tracks/26/enabled = true
 tracks/26/keys = {
-"times": PoolRealArray( 0, 29 ),
+"times": PoolRealArray( 13, 13.35 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("sound_credits/VBoxContainer_2/name_2:modulate")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 13, 13.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="credits" type="ColorRect"]
@@ -839,17 +692,9 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 20.0
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="sound_credits/VBoxContainer_2"]
-margin_left = 107.0
-margin_right = 161.0
-margin_bottom = 61.0
-size_flags_horizontal = 4
-size_flags_vertical = 3
-alignment = 1
-
-[node name="name" type="Label" parent="sound_credits/VBoxContainer_2/HBoxContainer"]
+[node name="name" type="Label" parent="sound_credits/VBoxContainer_2"]
 margin_top = 18.0
-margin_right = 54.0
+margin_right = 268.0
 margin_bottom = 43.0
 size_flags_vertical = 6
 size_flags_stretch_ratio = 20.0
@@ -858,19 +703,10 @@ text = "\"slashkut\"
 by Abyssmal"
 align = 1
 
-[node name="HBoxContainer_2" type="HBoxContainer" parent="sound_credits/VBoxContainer_2"]
-margin_left = 102.0
-margin_top = 65.0
-margin_right = 166.0
-margin_bottom = 127.0
-size_flags_horizontal = 4
-size_flags_vertical = 3
-alignment = 1
-
-[node name="name" type="Label" parent="sound_credits/VBoxContainer_2/HBoxContainer_2"]
-margin_top = 18.0
-margin_right = 64.0
-margin_bottom = 43.0
+[node name="name_2" type="Label" parent="sound_credits/VBoxContainer_2"]
+margin_top = 83.0
+margin_right = 268.0
+margin_bottom = 108.0
 size_flags_vertical = 6
 size_flags_stretch_ratio = 20.0
 custom_fonts/font = ExtResource( 4 )
@@ -908,6 +744,7 @@ __meta__ = {
 }
 
 [node name="title" type="Label" parent="shader_credits"]
+modulate = Color( 1, 1, 1, 0.196078 )
 margin_right = 268.0
 margin_bottom = 16.0
 size_flags_vertical = 6
@@ -923,6 +760,7 @@ __meta__ = {
 }
 
 [node name="name" type="Label" parent="shader_credits"]
+modulate = Color( 1, 1, 1, 0.196078 )
 margin_top = 37.0
 margin_right = 268.0
 margin_bottom = 53.0
@@ -932,6 +770,7 @@ text = "heartbeast"
 align = 1
 
 [node name="name_2" type="Label" parent="shader_credits"]
+modulate = Color( 1, 1, 1, 0.196078 )
 margin_top = 82.0
 margin_right = 268.0
 margin_bottom = 98.0
@@ -941,6 +780,7 @@ text = "Juulpower"
 align = 1
 
 [node name="name_3" type="Label" parent="shader_credits"]
+modulate = Color( 1, 1, 1, 0.196078 )
 margin_top = 127.0
 margin_right = 268.0
 margin_bottom = 143.0
@@ -1065,7 +905,7 @@ margin_top = 78.0
 margin_right = 268.0
 margin_bottom = 94.0
 size_flags_vertical = 6
-text = "thanks for playing :D"
+text = "thanks for playing"
 align = 1
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

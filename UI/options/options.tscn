@@ -76,6 +76,13 @@ margin_bottom = 52.0
 hint_tooltip = "fixes screen tearing but causes higher input latency"
 text = "vsync"
 
+[node name="outlines" parent="tabs/video/VBox" instance=ExtResource( 2 )]
+margin_top = 28.0
+margin_right = 336.0
+margin_bottom = 52.0
+hint_tooltip = "fixes screen tearing but causes higher input latency"
+text = "show sprite outlines"
+
 [node name="lighting" parent="tabs/video/VBox" instance=ExtResource( 2 )]
 margin_top = 56.0
 margin_right = 336.0

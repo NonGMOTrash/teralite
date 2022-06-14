@@ -114,4 +114,3 @@ func _on_Melee_tree_exiting() -> void:
 
 func _on_animation_animation_finished(anim_name: String) -> void:
 	queue_free()
-

@@ -9,14 +9,15 @@
 resource_local_to_scene = true
 
 [node name="metal_crate" instance=ExtResource( 1 )]
+truName = "metal_crate"
 
 [node name="entity_sprite" parent="." index="0"]
 material = SubResource( 1 )
 texture = ExtResource( 3 )
 
 [node name="stats" parent="." index="1"]
-MAX_HEALTH = 18
-HEALTH = 18
+MAX_HEALTH = 10
+HEALTH = 10
 burning_modifier = -99.0
 
 [node name="hurtbox" parent="." index="2"]
