@@ -1,5 +1,9 @@
 extends Entity
 
+const SPRITE_NORM = preload("res://Entities/player/player.png")
+const SPRITE_NORM_BACK = preload("res://Entities/player/player_back.png")
+const SPRITE_CUSTOM = preload("res://Entities/player/player_custom.png")
+const SPRITE_CUSTOM_BACK = preload("res://Entities/player/player_custom_back.png")
 const CURSOR_EMPTY = preload("res://UI/cursors/cursor_empty.png")
 
 export(PackedScene) var dash_effect
@@ -69,6 +73,10 @@ func _ready():
 	
 	connect("swapped_item", self, "swapped_item")
 	swapped_item(null)
+	
+	if global.settings["use_color"]:
+		sprite.texture = SPRITE_CUSTOM
+		sprite.self_modulate = global.settings["player_color"]
 
 func _physics_process(_delta):
 	if global.get_look_pos().x > global_position.x:
@@ -99,14 +107,14 @@ func dash(direction: Vector2 = input_vector) -> void:
 		animation.play("dash")
 		apply_force(dash_strength * direction.normalized())
 		dash_cooldown.start()
-
+		
 		# particle effect
 		var effect = dash_effect.instance()
 		effect.rotation_degrees = rad2deg(direction.angle())
 		refs.ysort.call_deferred("add_child", effect)
 		yield(effect, "ready")
 		effect.global_position = global_position + Vector2(0, 6)
-
+	
 	buffered_dash = Vector2.ZERO
 
 func _input(_event: InputEvent) -> void:

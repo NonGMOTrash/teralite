@@ -59,7 +59,7 @@ __meta__ = {
 
 [node name="VBox" type="VBoxContainer" parent="tabs/video"]
 margin_right = 352.0
-margin_bottom = 238.0
+margin_bottom = 266.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
@@ -221,7 +221,7 @@ follow_focus = true
 
 [node name="VBox" type="VBoxContainer" parent="tabs/game"]
 margin_right = 352.0
-margin_bottom = 264.0
+margin_bottom = 716.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
@@ -284,6 +284,22 @@ hint_tooltip = "displays framerate in the top right corner"
 shortcut_in_tooltip = false
 pressed = true
 text = "show FPS"
+
+[node name="use_color" parent="tabs/game/VBox" instance=ExtResource( 2 )]
+margin_top = 168.0
+margin_right = 336.0
+margin_bottom = 192.0
+hint_tooltip = "displays framerate in the top right corner"
+shortcut_in_tooltip = false
+pressed = true
+text = "use custom player color"
+
+[node name="player_color" type="ColorPicker" parent="tabs/game/VBox"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 332.0
+margin_bottom = 444.0
+edit_alpha = false
 
 [node name="hidebar" parent="tabs/game/VBox" instance=ExtResource( 2 )]
 margin_top = 140.0

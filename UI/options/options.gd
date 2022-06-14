@@ -31,6 +31,8 @@ onready var show_hud = $tabs/game/VBox/show_hud
 onready var brain_sapping = $tabs/game/VBox/brain_sapping
 onready var camera_zoom = $tabs/game/VBox/camera_zoom
 onready var show_fps = $tabs/game/VBox/show_fps
+onready var use_color = $tabs/game/VBox/use_color
+onready var player_color = $tabs/game/VBox/player_color
 
 signal closed
 
@@ -66,6 +68,8 @@ func _on_tabs_visibility_changed() -> void:
 	brain_sapping.value = global.settings["brain_sapping"]
 	camera_zoom.value = global.settings["camera_zoom"]
 	show_fps.pressed = global.settings["show_fps"]
+	use_color.pressed = global.settings["use_color"]
+	player_color.color = global.settings["player_color"]
 	
 	if visible == false: return
 	tabs.current_tab = 0
@@ -102,6 +106,8 @@ func _on_exit_pressed() -> void:
 	global.settings["brain_sapping"] = brain_sapping.value
 	global.settings["camera_zoom"] = camera_zoom.value
 	global.settings["show_fps"] = show_fps.pressed
+	global.settings["use_color"] = use_color.pressed
+	global.settings["player_color"] = player_color.color
 	
 	global.update_settings()
 	

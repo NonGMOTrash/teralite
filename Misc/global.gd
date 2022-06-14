@@ -109,7 +109,7 @@ var speedrun_time := 0.0
 var icon = 0
 
 const ver_phase = ""
-const ver_num = 1.1
+const ver_num = 1.2
 const ver_hotfix = 0
 
 # for saving things
@@ -142,6 +142,8 @@ var settings := {
 	"brain_sapping": true,
 	"camera_zoom": 1.0,
 	"show_fps": false,
+	"use_color": false,
+	"player_color": Color.white,
 }
 
 # should move this and get_relation to Entity.gd probably
@@ -583,6 +585,17 @@ func update_settings(save_settings_config:=true):
 	
 	if is_instance_valid(refs.fps):
 		refs.fps.visible = settings["show_fps"]
+	
+	if is_instance_valid(refs.player):
+		if global.settings["use_color"]:
+			refs.player.sprite.front_texture = refs.player.SPRITE_CUSTOM
+			refs.player.sprite.back_texture = refs.player.SPRITE_CUSTOM_BACK
+			refs.player.sprite.modulate = global.settings["player_color"]
+			var s = refs.player.sprite.texture
+		else:
+			refs.player.sprite.front_texture = refs.player.SPRITE_NORM
+			refs.player.sprite.back_texture = refs.player.SPRITE_NORM_BACK
+			refs.player.sprite.modulate = Color.white
 	
 	if save_settings_config == false:
 		return
