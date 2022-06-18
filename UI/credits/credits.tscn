@@ -7,7 +7,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "anim"
-length = 32.8
+length = 40.0
 step = 0.05
 tracks/0/type = "audio"
 tracks/0/path = NodePath("AudioStreamPlayer")
@@ -308,10 +308,10 @@ tracks/24/loop_wrap = true
 tracks/24/imported = false
 tracks/24/enabled = true
 tracks/24/keys = {
-"times": PoolRealArray( 0, 29 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 29, 32.95 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ false, true, false ]
 }
 tracks/25/type = "value"
 tracks/25/path = NodePath("thx/title:text")
@@ -348,6 +348,42 @@ tracks/27/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("fin:visible")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0, 32.95 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/29/type = "value"
+tracks/29/path = NodePath("fin:modulate")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"times": PoolRealArray( 32.95, 33.6, 33.75, 34.1, 34.25, 34.6, 34.75, 35.1, 35.25, 35.6, 35.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.0980392 ), Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 0.294118 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 0.490196 ), Color( 1, 1, 1, 0.588235 ), Color( 1, 1, 1, 0.686275 ), Color( 1, 1, 1, 0.784314 ), Color( 1, 1, 1, 0.882353 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/30/type = "value"
+tracks/30/path = NodePath("fin/fin:visible")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"times": PoolRealArray( 0, 37 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [node name="credits" type="ColorRect"]
@@ -744,7 +780,6 @@ __meta__ = {
 }
 
 [node name="title" type="Label" parent="shader_credits"]
-modulate = Color( 1, 1, 1, 0.196078 )
 margin_right = 268.0
 margin_bottom = 16.0
 size_flags_vertical = 6
@@ -760,7 +795,6 @@ __meta__ = {
 }
 
 [node name="name" type="Label" parent="shader_credits"]
-modulate = Color( 1, 1, 1, 0.196078 )
 margin_top = 37.0
 margin_right = 268.0
 margin_bottom = 53.0
@@ -770,7 +804,6 @@ text = "heartbeast"
 align = 1
 
 [node name="name_2" type="Label" parent="shader_credits"]
-modulate = Color( 1, 1, 1, 0.196078 )
 margin_top = 82.0
 margin_right = 268.0
 margin_bottom = 98.0
@@ -780,7 +813,6 @@ text = "Juulpower"
 align = 1
 
 [node name="name_3" type="Label" parent="shader_credits"]
-modulate = Color( 1, 1, 1, 0.196078 )
 margin_top = 127.0
 margin_right = 268.0
 margin_bottom = 143.0
@@ -908,4 +940,28 @@ size_flags_vertical = 6
 text = "thanks for playing"
 align = 1
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[node name="fin" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="times" type="Label" parent="fin"]
+margin_top = 80.0
+margin_right = 384.0
+margin_bottom = 115.0
+text = "total time: _
+inlevel time: _"
+align = 1
+
+[node name="fin" type="Label" parent="fin"]
+margin_top = 119.0
+margin_right = 384.0
+margin_bottom = 135.0
+text = "press any key to continue"
+align = 1
+valign = 2

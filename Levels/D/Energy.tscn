@@ -40,6 +40,7 @@ thing = ExtResource( 4 )
 
 [node name="portal" parent="YSort" index="4" instance=ExtResource( 7 )]
 position = Vector2( 401.546, 507.926 )
+single_use = true
 
 [node name="orange_portal" parent="YSort/portal" index="1"]
 position = Vector2( -113.461, 107.594 )

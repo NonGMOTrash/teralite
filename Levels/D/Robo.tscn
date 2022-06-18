@@ -68,6 +68,7 @@ position = Vector2( 437.558, 438.652 )
 position = Vector2( 0.235992, 0.117981 )
 
 [node name="portal_2" parent="YSort" index="4" instance=ExtResource( 3 )]
+single_use = true
 
 [node name="blue_portal" parent="YSort/portal_2" index="0"]
 position = Vector2( 144.597, 422.458 )

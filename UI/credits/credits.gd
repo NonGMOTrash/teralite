@@ -141,19 +141,30 @@ var sound_credits := [
 	'"Artblock"\n by Jan125',
 ]
 
+onready var animation: AnimationPlayer = $AnimationPlayer
 onready var sfx1 := $sound_credits/VBoxContainer_2/name
-onready var sfx2 := $sound_credits/VBoxContainer_2/name
+onready var sfx2 := $sound_credits/VBoxContainer_2/name_2
+onready var times := $fin/times
+
+func _ready() -> void:
+	times.text = (
+		"final time: " + str(global.total_time) + "\n" +
+		"level time: " + str(global.speedrun_time) + "\n"
+	)
 
 func start_sound_credits(time: float):
 	for i in sound_credits.size()-1:
 		if (i / 2.0) != floor(i / 2.0): # is odd
 			sfx1.text = sound_credits[i]
-			prints(i, sfx1.margin_right, "\n", sound_credits[i], "\n----")
 		else: # is even
 			sfx2.text = sound_credits[i]
-			prints(i, sfx2.margin_right, "\n", sound_credits[i], "\n----")
 		
 		yield(get_tree().create_timer(time / sound_credits.size()), "timeout")
 
-func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
-	get_tree().change_scene("res://UI/title_screen/title_screen.tscn")
+func _input(event: InputEvent) -> void:
+	if animation.is_playing():
+		return
+	
+	if event is InputEventKey or event is InputEventJoypadButton or event is InputEventMouseButton:
+		if event.pressed:
+			get_tree().change_scene("res://UI/title_screen/title_screen.tscn")

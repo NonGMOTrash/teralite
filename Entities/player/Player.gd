@@ -307,7 +307,7 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 			"rocket_scorpian": death_message = "mauled by a rocket scorpian"
 			"king": death_message = "crushed by a %s" % source_name
 			"laser": death_message = "shot by a %s" % source_name
-			"energy": death_message = "shot by a %s" % source_name
+			"blast": death_message = "shot by a %s" % source_name
 			"keyblast": death_message = "shot by a %s" % source_name
 			_: death_message = "(death message error)"
 	
