@@ -588,14 +588,21 @@ func update_settings(save_settings_config:=true):
 	
 	if is_instance_valid(refs.player):
 		if global.settings["use_color"]:
-			refs.player.sprite.front_texture = refs.player.SPRITE_CUSTOM
-			refs.player.sprite.back_texture = refs.player.SPRITE_CUSTOM_BACK
-			refs.player.sprite.modulate = global.settings["player_color"]
-			var s = refs.player.sprite.texture
+			for entity in get_tree().get_nodes_in_group("entity"):
+				entity = entity as Entity
+				if entity.truName != "player":
+					continue
+				entity.sprite.front_texture = refs.player.SPRITE_CUSTOM
+				entity.sprite.back_texture = refs.player.SPRITE_CUSTOM_BACK
+				entity.sprite.modulate = global.settings["player_color"]
 		else:
-			refs.player.sprite.front_texture = refs.player.SPRITE_NORM
-			refs.player.sprite.back_texture = refs.player.SPRITE_NORM_BACK
-			refs.player.sprite.modulate = Color.white
+			for entity in get_tree().get_nodes_in_group("entity"):
+				entity = entity as Entity
+				if entity.truName != "player":
+					continue
+				entity.sprite.front_texture = refs.player.SPRITE_NORM
+				entity.sprite.back_texture = refs.player.SPRITE_NORM_BACK
+				entity.sprite.modulate = Color.white
 	
 	if save_settings_config == false:
 		return

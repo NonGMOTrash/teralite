@@ -224,7 +224,7 @@ func remove_target(tar):
 	if tar is int and not targets.size()-1 < tar:
 		target_id = tar
 		target = targets[target_id]
-	elif tar is Node:
+	elif is_instance_valid(tar):
 		target = tar
 		target_id = targets.find(target)
 	

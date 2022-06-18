@@ -101,5 +101,6 @@ __meta__ = {
 
 [node name="sound" parent="." instance=ExtResource( 5 )]
 stream = ExtResource( 4 )
+bus = "Master"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

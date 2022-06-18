@@ -238,6 +238,7 @@ func death():
 	my_death.death_message = death_message
 	get_parent().add_child(my_death)
 	my_death.global_position = global_position
+	my_death.modulate = sprite.modulate
 	
 	queue_free()
 

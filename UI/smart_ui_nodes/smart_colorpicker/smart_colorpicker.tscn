@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/Themes/general_theme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/smart_ui_nodes/smart_colorpicker/smart_colorpicker.gd" type="Script" id=2]
+
+[node name="smart_colorpicker" type="ColorPickerButton"]
+theme = ExtResource( 1 )
+custom_constants/hseparation = -5
+text = "text"
+color = Color( 1, 1, 1, 1 )
+edit_alpha = false
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="picker_created" from="." to="." method="_on_smart_colorpicker_picker_created"]

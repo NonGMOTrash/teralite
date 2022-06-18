@@ -4,11 +4,12 @@
 [ext_resource path="res://Levels/level/level.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Themes/general_theme.tres" type="Theme" id=3]
 
-[node name="Hex" instance=ExtResource( 2 )]
+[node name="Shine" instance=ExtResource( 2 )]
 AMBIANCE = 2
 GLOBAL_PARTICLES = 2
 AMBIENT_LIGHTING = 2
 WORLD = "B"
+DISPLAY_NAME = "Shine"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 1 )

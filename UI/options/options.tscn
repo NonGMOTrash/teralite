@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/smart_ui_nodes/smart_checkbox/smart_checkbox.tscn" type="PackedScene" id=2]
@@ -9,9 +9,9 @@
 [ext_resource path="res://UI/Themes/general_theme.tres" type="Theme" id=7]
 [ext_resource path="res://UI/Themes/Styles/stylebox_box.tres" type="StyleBox" id=8]
 [ext_resource path="res://UI/Icons/x.png" type="Texture" id=9]
+[ext_resource path="res://UI/smart_ui_nodes/smart_colorpicker/smart_colorpicker.tscn" type="PackedScene" id=10]
 
 [node name="options" type="Control"]
-visible = false
 modulate = Color( 1, 1, 1, 0.784314 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -58,7 +58,7 @@ __meta__ = {
 }
 
 [node name="VBox" type="VBoxContainer" parent="tabs/video"]
-margin_right = 352.0
+margin_right = 336.0
 margin_bottom = 266.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -77,29 +77,29 @@ hint_tooltip = "fixes screen tearing but causes higher input latency"
 text = "vsync"
 
 [node name="outlines" parent="tabs/video/VBox" instance=ExtResource( 2 )]
-margin_top = 28.0
+margin_top = 56.0
 margin_right = 336.0
-margin_bottom = 52.0
+margin_bottom = 80.0
 hint_tooltip = "fixes screen tearing but causes higher input latency"
 text = "show sprite outlines"
 
 [node name="lighting" parent="tabs/video/VBox" instance=ExtResource( 2 )]
-margin_top = 56.0
-margin_right = 336.0
-margin_bottom = 80.0
-text = "enable lighting"
-
-[node name="shadows" parent="tabs/video/VBox" instance=ExtResource( 2 )]
 margin_top = 84.0
 margin_right = 336.0
 margin_bottom = 108.0
+text = "enable lighting"
+
+[node name="shadows" parent="tabs/video/VBox" instance=ExtResource( 2 )]
+margin_top = 112.0
+margin_right = 336.0
+margin_bottom = 136.0
 text = "enable shadows"
 
 [node name="shadow_buffer" parent="tabs/video/VBox" instance=ExtResource( 5 )]
 anchor_right = 0.0
-margin_top = 112.0
+margin_top = 140.0
 margin_right = 336.0
-margin_bottom = 130.0
+margin_bottom = 158.0
 hint_tooltip = "accuracy of shadows, higher is better but more resource intensive"
 min_value = 256.0
 max_value = 4096.0
@@ -109,30 +109,30 @@ TEXT = "shadow buffer size"
 PROGRESS = 1
 
 [node name="ambient_lighting" parent="tabs/video/VBox" instance=ExtResource( 2 )]
-margin_top = 134.0
+margin_top = 162.0
 margin_right = 336.0
-margin_bottom = 158.0
+margin_bottom = 186.0
 hint_tooltip = "the natural environment's lighting. this includes darkness in caves"
 text = "enable ambient lighting"
 
 [node name="pixel" parent="tabs/video/VBox" instance=ExtResource( 2 )]
-margin_top = 162.0
+margin_top = 190.0
 margin_right = 336.0
-margin_bottom = 186.0
+margin_bottom = 214.0
 hint_tooltip = "pixels are snapped to the game resolution instead of native resolution"
 text = "pixel perfect filter (not recomended)"
 
 [node name="gpu_snap" parent="tabs/video/VBox" instance=ExtResource( 2 )]
-margin_top = 190.0
+margin_top = 218.0
 margin_right = 336.0
-margin_bottom = 214.0
+margin_bottom = 242.0
 hint_tooltip = "fixes tilemap artifacts, but makes camera movement a bit jittery"
 text = "GPU pixel snap"
 
 [node name="particles" type="HBoxContainer" parent="tabs/video/VBox"]
-margin_top = 218.0
+margin_top = 246.0
 margin_right = 336.0
-margin_bottom = 238.0
+margin_bottom = 266.0
 
 [node name="Label" type="Label" parent="tabs/video/VBox/particles"]
 margin_top = 2.0
@@ -221,7 +221,7 @@ follow_focus = true
 
 [node name="VBox" type="VBoxContainer" parent="tabs/game"]
 margin_right = 352.0
-margin_bottom = 716.0
+margin_bottom = 316.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
@@ -249,9 +249,9 @@ text = "smooth camera"
 
 [node name="camera_zoom" parent="tabs/game/VBox" instance=ExtResource( 5 )]
 anchor_right = 0.0
-margin_top = 112.0
+margin_top = 84.0
 margin_right = 336.0
-margin_bottom = 130.0
+margin_bottom = 102.0
 hint_tooltip = "accuracy of shadows, higher is better but more resource intensive"
 min_value = 0.5
 max_value = 1.5
@@ -261,66 +261,64 @@ TEXT = "camera zoom"
 PROGRESS = 1
 
 [node name="spawn_pause" parent="tabs/game/VBox" instance=ExtResource( 2 )]
-margin_top = 84.0
+margin_top = 106.0
 margin_right = 336.0
-margin_bottom = 108.0
+margin_bottom = 130.0
 hint_tooltip = "pauses the level until you start moving"
 pressed = true
 text = "spawn pause"
 
 [node name="damage_numbers" parent="tabs/game/VBox" instance=ExtResource( 2 )]
-margin_top = 112.0
+margin_top = 134.0
 margin_right = 336.0
-margin_bottom = 136.0
+margin_bottom = 158.0
 hint_tooltip = "display the amount of damage an attack dealt"
 pressed = true
 text = "damage numbers"
 
 [node name="show_fps" parent="tabs/game/VBox" instance=ExtResource( 2 )]
-margin_top = 168.0
+margin_top = 162.0
 margin_right = 336.0
-margin_bottom = 192.0
+margin_bottom = 186.0
 hint_tooltip = "displays framerate in the top right corner"
 shortcut_in_tooltip = false
 pressed = true
 text = "show FPS"
 
 [node name="use_color" parent="tabs/game/VBox" instance=ExtResource( 2 )]
-margin_top = 168.0
+margin_top = 190.0
 margin_right = 336.0
-margin_bottom = 192.0
+margin_bottom = 214.0
 hint_tooltip = "displays framerate in the top right corner"
 shortcut_in_tooltip = false
 pressed = true
 text = "use custom player color"
 
-[node name="player_color" type="ColorPicker" parent="tabs/game/VBox"]
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 332.0
-margin_bottom = 444.0
-edit_alpha = false
+[node name="player_color" parent="tabs/game/VBox" instance=ExtResource( 10 )]
+margin_right = 41.0
+margin_bottom = 20.4988
+text = "custom player color"
 
 [node name="hidebar" parent="tabs/game/VBox" instance=ExtResource( 2 )]
-margin_top = 140.0
+margin_top = 244.0
 margin_right = 336.0
-margin_bottom = 164.0
+margin_bottom = 268.0
 shortcut_in_tooltip = false
 text = "hide item bar when empty"
 
 [node name="show_hud" parent="tabs/game/VBox" instance=ExtResource( 2 )]
-margin_top = 168.0
+margin_top = 272.0
 margin_right = 336.0
-margin_bottom = 192.0
+margin_bottom = 296.0
 shortcut_in_tooltip = false
 pressed = true
 text = "show HUD"
 
 [node name="brain_sapping" parent="tabs/game/VBox" instance=ExtResource( 5 )]
 anchor_right = 0.0
-margin_top = 112.0
+margin_top = 300.0
 margin_right = 336.0
-margin_bottom = 130.0
+margin_bottom = 318.0
 hint_tooltip = "accuracy of shadows, higher is better but more resource intensive"
 value = 1.0
 TEXT = "brain sapping"
