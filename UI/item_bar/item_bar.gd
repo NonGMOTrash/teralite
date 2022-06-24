@@ -53,7 +53,7 @@ func _input(_event: InputEvent):
 			right_icon.get_material().set_shader_param("color", SELECTED_COLOR)
 
 func replace_icon(slot: int, texture: Texture):
-	if is_queued_for_deletion():
+	if is_queued_for_deletion() or !is_instance_valid(left_icon):
 		return
 	
 	match slot:

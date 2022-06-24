@@ -78,6 +78,7 @@ texture = ExtResource( 3 )
 
 [node name="pokey" parent="." index="2"]
 texture = ExtResource( 4 )
+frame = 1
 
 [node name="AnimationPlayer" parent="." index="4"]
 autoplay = ""

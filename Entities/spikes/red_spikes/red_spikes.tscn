@@ -90,7 +90,6 @@ texture = ExtResource( 2 )
 
 [node name="pokey" parent="." index="2"]
 texture = ExtResource( 4 )
-frame = 0
 
 [node name="hitbox" parent="." index="3"]
 visible = false
@@ -100,7 +99,6 @@ disabled = true
 
 [node name="activation" type="Area2D" parent="." index="4"]
 visible = false
-position = Vector2( 0.5, 0 )
 collision_layer = 0
 collision_mask = 2
 
@@ -111,6 +109,6 @@ shape = SubResource( 1 )
 autoplay = ""
 anims/spikes = SubResource( 2 )
 
-[connection signal="area_entered" from="activation" to="." method="_on_activation_area_entered"]
+[connection signal="body_entered" from="activation" to="." method="_on_activation_body_entered"]
 
 [editable path="hitbox"]

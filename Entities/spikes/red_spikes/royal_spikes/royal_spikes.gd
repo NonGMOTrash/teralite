@@ -7,31 +7,33 @@ func _ready():
 	animation.play("spikes")
 	active = true
 
-func _on_activation_area_entered(area: Area2D) -> void:
-	var area_entity := area.get_parent() as Entity
-	entities.append(area_entity)
+func _on_activation_body_entered(body: Node) -> void:
+	var entity := body as Entity
+	prints("entert", body)
+	entities.append(body)
 	
-	if area_entity.faction == "blue_kingdom":
+	if entity.faction == "blue_kingdom":
 		if active == true:
 			animation.play_backwards("spikes")
 			active = false
 	else:
 		if active == false:
 			if active == false:
-				for entity in entities:
-					if entity.faction == "blue_kingdom":
+				for e in entities:
+					if e.faction == "blue_kingdom":
 						return
 				animation.play("spikes")
 				active = true
 
-func _on_activation_area_exited(area: Area2D) -> void:
-	var area_entity := area.get_parent() as Entity
-	entities.remove(entities.find(area_entity))
+func _on_activation_body_exited(body: Node) -> void:
+	var entity := body as Entity
+	prints("exit", body)
+	entities.remove(entities.find(entity))
 	if active == true:
 		return
 	
-	for entity in entities:
-		if entity.faction == "blue_kingdom":
+	for e in entities:
+		if e.faction == "blue_kingdom":
 			return
 	
 	animation.play("spikes")

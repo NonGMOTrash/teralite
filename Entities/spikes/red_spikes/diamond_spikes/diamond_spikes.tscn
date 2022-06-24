@@ -97,6 +97,9 @@ position = Vector2( 0, -1 )
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 scale = Vector2( 0.8, 0.9 )
 
+[node name="activation" parent="." index="4"]
+visible = true
+
 [node name="CollisionShape2D" parent="activation" index="0"]
 shape = SubResource( 1 )
 

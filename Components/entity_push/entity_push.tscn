@@ -3,7 +3,7 @@
 [ext_resource path="res://Components/entity_push/entity_push.gd" type="Script" id=1]
 
 [node name="entity_push" type="Area2D"]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 script = ExtResource( 1 )
 

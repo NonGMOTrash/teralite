@@ -12,6 +12,8 @@ export(PackedScene) var PROJECTILE
 export(float, 0.01, 5.0) var melee_cooldown = 0.85
 export(float, 0.1, 5.0) var shoot_cooldown = 2.1
 
+var next_attack: String = "slash"
+
 func _ready():
 	attack_cooldown.wait_time = melee_cooldown
 	held_item.animation.connect("animation_finished", self, "attack")
@@ -31,13 +33,13 @@ func attack(finished_animation):
 	if closest_target != null:
 		target_pos = closest_target.global_position
 	
-	if finished_animation == "warn":
+	if next_attack == "slash":
 		var melee: Melee = MELEE.instance()
 		melee.setup(self, target_pos)
 		add_child(melee)
 		melee.SOURCE_PATH = self.get_path()
 		attack_cooldown.wait_time = melee_cooldown
-	elif finished_animation == "bow_charge":
+	elif next_attack == "shoot":
 		var projectile: Projectile = PROJECTILE.instance()
 		projectile.setup(self, target_pos)
 		refs.ysort.add_child(projectile)
@@ -56,6 +58,9 @@ func _on_action_lobe_action(action, target) -> void:
 		held_item.sprite.texture = SWORD
 		held_item.animation.play("warn")
 		held_item.animation.queue("warn")
+		next_attack = "slash"
 	elif action == "shoot":
 		brain.movement_lobe.general_springs["hostile"] = "far"
 		held_item.animation.play("bow_charge")
+		held_item.animation.queue("warn")
+		next_attack = "shoot"

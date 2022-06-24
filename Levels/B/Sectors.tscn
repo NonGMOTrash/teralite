@@ -1,0 +1,840 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Levels/Level Resources/world_tiles/bg_stone.png" type="Texture" id=1]
+[ext_resource path="res://Levels/level/level.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/portal/portal.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("blue_portal/Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("orange_portal/Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("blue_portal/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("orange_portal/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("blue_portal/Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("orange_portal/Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("blue_portal/Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.001, 0.001 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("orange_portal/Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.001, 0.001 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("blue_portal/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("orange_portal/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=3]
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("blue_portal/Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("orange_portal/Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("blue_portal/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("orange_portal/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "fade"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("blue_portal/Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("orange_portal/Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("blue_portal/Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.001, 0.001 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("orange_portal/Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.001, 0.001 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("blue_portal/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("orange_portal/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=5]
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("blue_portal/Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("orange_portal/Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("blue_portal/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("orange_portal/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "fade"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("blue_portal/Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("orange_portal/Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("blue_portal/Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.001, 0.001 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("orange_portal/Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.001, 0.001 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("blue_portal/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("orange_portal/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=7]
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("blue_portal/Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("orange_portal/Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("blue_portal/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("orange_portal/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "fade"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("blue_portal/Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("orange_portal/Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("blue_portal/Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.001, 0.001 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("orange_portal/Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.001, 0.001 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("blue_portal/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("orange_portal/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=9]
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("blue_portal/Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("orange_portal/Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("blue_portal/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("orange_portal/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "fade"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("blue_portal/Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("orange_portal/Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 90.0, 180.0, 270.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("blue_portal/Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.001, 0.001 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("orange_portal/Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.001, 0.001 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("blue_portal/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("orange_portal/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="Sectors" instance=ExtResource( 2 )]
+AMBIANCE = 2
+GLOBAL_PARTICLES = 2
+AMBIENT_LIGHTING = 2
+WORLD = "B"
+
+[node name="background" parent="." index="0"]
+texture = ExtResource( 1 )
+ID = 1
+
+[node name="health_ui" parent="CanvasLayer" index="0"]
+visible = false
+
+[node name="item_bar" parent="CanvasLayer" index="1"]
+visible = false
+
+[node name="item_info" parent="CanvasLayer" index="2"]
+visible = false
+
+[node name="stopwatch" parent="CanvasLayer" index="3"]
+visible = false
+
+[node name="fps" parent="CanvasLayer" index="7"]
+visible = false
+
+[node name="prop_placer" parent="." index="4"]
+tile_data = PoolIntArray( 262229, 6, 0, 262241, 6, 0, 3145813, 6, 0, 3145825, 6, 0, 5505109, 6, 0, 5505121, 6, 0, 7340117, 6, 0, 7340129, 6, 0, 12582997, 6, 0, 12583009, 6, 0 )
+
+[node name="entity_spawns" parent="YSort" index="1"]
+tile_data = PoolIntArray( 65581, 14, 0, 131116, 11, 0, 131118, 11, 0, 262188, 53, 0, 262190, 53, 0, 327718, 89, 0, 327733, 89, 0, 1376300, 11, 0, 1376302, 11, 0, 1507372, 32, 0, 1507373, 32, 0, 1507374, 32, 0, 1572908, 11, 0, 1572910, 11, 0, 1703980, 53, 0, 1703982, 53, 0, 1769496, 49, 0, 1769538, 49, 0, 2097186, 49, 0, 2097209, 49, 0, 2490392, 49, 0, 2490434, 49, 0, 2555948, 11, 0, 2555950, 11, 0, 2752556, 32, 0, 2752557, 32, 0, 2752558, 32, 0, 2818092, 11, 0, 2818094, 11, 0, 2949164, 53, 0, 2949166, 53, 0, 3014694, 40, 0, 3014708, 40, 0, 3145773, 22, 0, 3473452, 11, 0, 3473454, 11, 0, 3670060, 32, 0, 3670061, 32, 0, 3670062, 32, 0, 3735596, 11, 0, 3735598, 11, 0, 3866668, 53, 0, 3866670, 53, 0, 3997734, 24, 0, 3997748, 24, 0, 4128806, 24, 0, 4128820, 24, 0, 4259878, 24, 0, 4259892, 24, 0, 4653100, 11, 0, 4653102, 11, 0, 4849708, 32, 0, 4849709, 32, 0, 4849710, 32, 0, 4915244, 11, 0, 4915246, 11, 0, 5046316, 53, 0, 5046318, 53, 0, 5177389, 23, 0, 6160428, 11, 0, 6160430, 11, 0, 6291500, 32, 0, 6291501, 32, 0, 6291502, 32, 0, 6357036, 11, 0, 6357038, 11, 0, 6488108, 53, 0, 6488110, 53, 0, 6553636, 62, 0, 6553654, 62, 0, 7143468, 11, 0, 7143470, 11, 0, 7340076, 32, 0, 7340077, 32, 0, 7340078, 32, 0, 7405612, 11, 0, 7405614, 11, 0, 7536684, 53, 0, 7536686, 53, 0, 7798829, 10, 0, 7864364, 54, 0, 7864366, 54, 0, 7995437, 2, 0 )
+
+[node name="world_tiles" parent="YSort" index="2"]
+tile_data = PoolIntArray( 21, 9, 131074, 22, 9, 65536, 23, 9, 65536, 24, 9, 65542, 65557, 9, 131079, 65560, 9, 131079, 131089, 9, 131074, 131090, 9, 65536, 131091, 9, 65536, 131092, 9, 65536, 131093, 9, 6, 131096, 9, 3, 131097, 9, 65536, 131098, 9, 65536, 131099, 9, 65536, 131100, 9, 65542, 196625, 9, 131079, 196636, 9, 131079, 262161, 9, 131079, 262172, 9, 131079, 327697, 9, 131079, 327708, 9, 131079, 393233, 9, 131079, 393244, 9, 131079, 458769, 9, 131079, 458780, 9, 131079, 524305, 9, 131079, 524316, 9, 131079, 589841, 9, 131079, 589852, 9, 131079, 655377, 9, 131079, 655388, 9, 131079, 720913, 9, 3, 720914, 9, 65536, 720915, 9, 65536, 720916, 9, 65536, 720917, 9, 65542, 720920, 9, 131074, 720921, 9, 65536, 720922, 9, 65536, 720923, 9, 65536, 720924, 9, 6, 786453, 9, 131079, 786456, 9, 131079, 851979, 9, 131074, 851980, 9, 65536, 851981, 9, 65536, 851982, 9, 65536, 851983, 9, 65536, 851984, 9, 65536, 851985, 9, 65536, 851986, 9, 65536, 851987, 9, 65536, 851988, 9, 65536, 851989, 9, 6, 851992, 9, 3, 851993, 9, 65536, 851994, 9, 65536, 851995, 9, 65536, 851996, 9, 65536, 851997, 9, 65536, 851998, 9, 65536, 851999, 9, 65536, 852000, 9, 65536, 852001, 9, 65536, 852002, 9, 65542, 917515, 9, 131079, 917538, 9, 131079, 983051, 9, 131079, 983074, 9, 131079, 1048587, 9, 131079, 1048610, 9, 131079, 1114123, 9, 131079, 1114146, 9, 131079, 1179659, 9, 131079, 1179682, 9, 131079, 1245195, 9, 131079, 1245218, 9, 131079, 1310731, 9, 3, 1310732, 9, 65536, 1310733, 9, 65536, 1310734, 9, 65536, 1310735, 9, 65536, 1310736, 9, 65536, 1310737, 9, 65536, 1310738, 9, 65536, 1310739, 9, 65536, 1310740, 9, 65536, 1310741, 9, 65542, 1310744, 9, 131074, 1310745, 9, 65536, 1310746, 9, 65536, 1310747, 9, 65536, 1310748, 9, 65536, 1310749, 9, 65536, 1310750, 9, 65536, 1310751, 9, 65536, 1310752, 9, 65536, 1310753, 9, 65536, 1310754, 9, 6, 1376277, 9, 131079, 1376280, 9, 131079, 1441810, 9, 131074, 1441811, 9, 65536, 1441812, 9, 65536, 1441813, 9, 6, 1441816, 9, 3, 1441817, 9, 65536, 1441818, 9, 65536, 1441819, 9, 65542, 1507346, 9, 131079, 1507355, 9, 131079, 1572882, 9, 131079, 1572891, 9, 131079, 1638418, 9, 131079, 1638427, 9, 131079, 1703954, 9, 131079, 1703963, 9, 131079, 1769490, 9, 3, 1769491, 9, 65536, 1769492, 9, 65536, 1769493, 9, 65542, 1769496, 9, 131074, 1769497, 9, 65536, 1769498, 9, 65536, 1769499, 9, 6, 1835029, 9, 131079, 1835032, 9, 131079, 1900562, 9, 131074, 1900563, 9, 65536, 1900564, 9, 65536, 1900565, 9, 6, 1900568, 9, 3, 1900569, 9, 65536, 1900570, 9, 65536, 1900571, 9, 65542, 1966098, 9, 131079, 1966107, 9, 131079, 2031634, 9, 131079, 2031643, 9, 131079, 2097170, 9, 131079, 2097179, 9, 131079, 2162706, 9, 131079, 2162715, 9, 131079, 2228242, 9, 131079, 2228251, 9, 131079, 2293778, 9, 131079, 2293787, 9, 131079, 2359314, 9, 3, 2359315, 9, 65536, 2359316, 9, 65536, 2359317, 9, 65542, 2359320, 9, 131074, 2359321, 9, 65536, 2359322, 9, 65536, 2359323, 9, 6, 2424853, 9, 131079, 2424856, 9, 131079, 2490389, 9, 131079, 2490392, 9, 131079, 2555925, 9, 131079, 2555928, 9, 131079, 2621461, 9, 131079, 2621464, 9, 131079, 2686997, 9, 131079, 2687000, 9, 131079, 2752533, 9, 131079, 2752536, 9, 131079, 2818069, 9, 131079, 2818072, 9, 131079, 2883605, 9, 131079, 2883608, 9, 131079, 2949141, 9, 131079, 2949144, 9, 131079, 3014677, 9, 131079, 3014680, 9, 131079, 3080213, 9, 131079, 3080216, 9, 131079, 3145749, 9, 131079, 3145752, 9, 131079, 3211281, 9, 131074, 3211282, 9, 65536, 3211283, 9, 65536, 3211284, 9, 65536, 3211285, 9, 6, 3211288, 9, 3, 3211289, 9, 65536, 3211290, 9, 65536, 3211291, 9, 65536, 3211292, 9, 65542, 3276817, 9, 131079, 3276828, 9, 131079, 3342353, 9, 131079, 3342364, 9, 131079, 3407889, 9, 131079, 3407900, 9, 131079, 3473425, 9, 131079, 3473436, 9, 131079, 3538961, 9, 131079, 3538972, 9, 131079, 3604497, 9, 3, 3604498, 9, 65536, 3604499, 9, 65536, 3604500, 9, 65536, 3604501, 9, 65542, 3604504, 9, 131074, 3604505, 9, 65536, 3604506, 9, 65536, 3604507, 9, 65536, 3604508, 9, 6, 3670037, 9, 131079, 3670040, 9, 131079, 3735572, 9, 131074, 3735573, 9, 6, 3735576, 9, 3, 3735577, 9, 65542, 3801108, 9, 131079, 3801113, 9, 131079, 3866644, 9, 131079, 3866649, 9, 131079, 3932180, 9, 131079, 3932185, 9, 131079, 3997716, 9, 131079, 3997721, 9, 131079, 4063252, 9, 3, 4063253, 9, 65536, 4063254, 9, 65536, 4063255, 9, 65536, 4063256, 9, 65536, 4063257, 9, 6 )
+
+[node name="low_walls" parent="YSort/world_tiles" index="1"]
+tile_data = PoolIntArray( 2031636, 1, 196609, 2031641, 1, 196609, 2097172, 1, 131079, 2097177, 1, 131079, 2162708, 1, 131079, 2162713, 1, 131079, 2228244, 1, 196608, 2228249, 1, 196608 )
+
+[node name="portal" parent="YSort" index="3" instance=ExtResource( 3 )]
+position = Vector2( 267.635, -2.66974 )
+single_use = true
+
+[node name="blue_portal" parent="YSort/portal" index="0"]
+position = Vector2( 367.673, 910.914 )
+
+[node name="orange_portal" parent="YSort/portal" index="1"]
+position = Vector2( 367.415, 870.588 )
+
+[node name="portal_2" parent="YSort" index="4" instance=ExtResource( 3 )]
+position = Vector2( 267.635, -2.66974 )
+single_use = true
+
+[node name="blue_portal" parent="YSort/portal_2" index="0"]
+position = Vector2( 367.006, 773.949 )
+
+[node name="orange_portal" parent="YSort/portal_2" index="1"]
+position = Vector2( 368.306, 744.08 )
+
+[node name="AnimationPlayer" parent="YSort/portal_2" index="2"]
+"anims/New Anim" = SubResource( 1 )
+anims/fade = SubResource( 2 )
+
+[node name="portal_3" parent="YSort" index="5" instance=ExtResource( 3 )]
+position = Vector2( 267.635, -2.66974 )
+single_use = true
+
+[node name="blue_portal" parent="YSort/portal_3" index="0"]
+position = Vector2( 367.006, 596.66 )
+
+[node name="orange_portal" parent="YSort/portal_3" index="1"]
+position = Vector2( 365.633, 565.009 )
+
+[node name="AnimationPlayer" parent="YSort/portal_3" index="2"]
+"anims/New Anim" = SubResource( 3 )
+anims/fade = SubResource( 4 )
+
+[node name="portal_4" parent="YSort" index="6" instance=ExtResource( 3 )]
+position = Vector2( 267.005, -2.66974 )
+single_use = true
+
+[node name="blue_portal" parent="YSort/portal_4" index="0"]
+position = Vector2( 368.266, 451.769 )
+
+[node name="orange_portal" parent="YSort/portal_4" index="1"]
+position = Vector2( 369.413, 422.638 )
+
+[node name="AnimationPlayer" parent="YSort/portal_4" index="2"]
+"anims/New Anim" = SubResource( 5 )
+anims/fade = SubResource( 6 )
+
+[node name="portal_5" parent="YSort" index="7" instance=ExtResource( 3 )]
+position = Vector2( 278.975, 55.9166 )
+single_use = true
+
+[node name="blue_portal" parent="YSort/portal_5" index="0"]
+position = Vector2( 356.398, 283.179 )
+
+[node name="orange_portal" parent="YSort/portal_5" index="1"]
+position = Vector2( 356.678, 253.196 )
+
+[node name="AnimationPlayer" parent="YSort/portal_5" index="2"]
+"anims/New Anim" = SubResource( 7 )
+anims/fade = SubResource( 8 )
+
+[node name="portal_6" parent="YSort" index="8" instance=ExtResource( 3 )]
+position = Vector2( 278.975, 55.9166 )
+single_use = true
+
+[node name="blue_portal" parent="YSort/portal_6" index="0"]
+position = Vector2( 357.147, 140.091 )
+
+[node name="orange_portal" parent="YSort/portal_6" index="1"]
+position = Vector2( 359.674, 107.86 )
+
+[node name="AnimationPlayer" parent="YSort/portal_6" index="2"]
+"anims/New Anim" = SubResource( 9 )
+anims/fade = SubResource( 10 )
+
+[editable path="YSort/world_tiles"]
+[editable path="YSort/portal"]
+[editable path="YSort/portal_2"]
+[editable path="YSort/portal_3"]
+[editable path="YSort/portal_4"]
+[editable path="YSort/portal_5"]
+[editable path="YSort/portal_6"]
