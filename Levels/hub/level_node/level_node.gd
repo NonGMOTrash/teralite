@@ -104,6 +104,7 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_released("interact") and pressed == true:
 		if SET_HUB_POS:
 			global.player_hub_pos[letter] = global_position + Vector2(0, 16)
+		
 		if CUSTOM_SCENE_PATH == "":
 			global.goto_scene("res://Levels/%s/%s.tscn" % [letter, LEVEL])
 		else:

@@ -1,9 +1,11 @@
 teralite is a videogame. please play videogame https://nongmotrash.itch.io/teralite/
 
-if you find a bug pls make an issue			
+if you find a bug pls make an issue! i'm not really expecting any PRs - i i mostly just opened sourced this game because it's free so why not.
 
-i'm not expecting anyone to make a PR but if you fix a bug or add a funny enemy i'll probably merge it
+i hope this code can maybe help you, although it's definitely not the cleanest... sorry!!
 
-i mostly just opened sourced this game because it's free so why not			
+# building the game
 
-a lot of this code is seriously awful, so i wouldn't recomend using it as inspiration or something
+use godot 3.5.3 (LTS)!!!!!! it should just work. i've had multiple people who have had trouble exporting the game and i have no idea why. wish i could be more help, sorry ;-;
+
+also any platform other than windows desktop is UNTESTED, but should still work.
