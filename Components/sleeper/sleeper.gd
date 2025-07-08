@@ -35,7 +35,7 @@ func set_activation(activation: bool, force:=false):
 	if sleep_timer.is_inside_tree() == false: return
 	
 	if (
-		activation == true and get_tree().current_scene.FORCE_SLEEP_UNTIL_VISIBLE == false 
+		activation == true and (get_tree().current_scene.LEVEL_TYPE == 1 or get_tree().current_scene.FORCE_SLEEP_UNTIL_VISIBLE == false) 
 		or has_awoken == true
 		or is_on_screen() == true
 	):

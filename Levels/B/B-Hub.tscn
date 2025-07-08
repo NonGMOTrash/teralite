@@ -47,6 +47,10 @@ position = Vector2( 560, 112.249 )
 [node name="sprite" parent="YSort/player" index="1"]
 material = SubResource( 1 )
 
+[node name="foot_stepper" parent="YSort/player" index="10"]
+CONSTANT_RATE = true
+VOLUME_ADJUST = 0.0
+
 [node name="Autumn" parent="YSort" index="3" instance=ExtResource( 4 )]
 position = Vector2( 539, 72 )
 z_index = 0

@@ -239,7 +239,8 @@ func delete():
 	if player.get_name() == "player":
 		global.emit_signal("update_item_bar", player.inventory)
 	
-	refs.item_bar.replace_icon(slot, null)
+	if get_tree().current_scene.LEVEL_TYPE == 0:
+		refs.item_bar.replace_icon(slot, null)
 	
 	queue_free()
 
@@ -248,6 +249,9 @@ func _input(event: InputEvent) -> void:
 		accurate_mouse_pos = global.get_look_pos()
 	
 	if not Input.is_action_pressed("drop_item"):
+		if get_tree().current_scene.LEVEL_TYPE == 1:
+			return
+		
 		if ITEM_BAR_TEXTURE != null:
 			refs.item_bar.replace_icon(slot, ITEM_BAR_TEXTURE)
 		else:
