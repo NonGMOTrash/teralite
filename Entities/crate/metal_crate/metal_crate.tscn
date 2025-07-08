@@ -16,8 +16,8 @@ material = SubResource( 1 )
 texture = ExtResource( 3 )
 
 [node name="stats" parent="." index="1"]
-MAX_HEALTH = 10
-HEALTH = 10
+MAX_HEALTH = 8
+HEALTH = 8
 burning_modifier = -99.0
 
 [node name="hurtbox" parent="." index="2"]

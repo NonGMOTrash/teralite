@@ -9,7 +9,6 @@ func _ready():
 
 func _on_activation_body_entered(body: Node) -> void:
 	var entity := body as Entity
-	prints("entert", body)
 	entities.append(body)
 	
 	if entity.faction == "blue_kingdom":
@@ -27,7 +26,6 @@ func _on_activation_body_entered(body: Node) -> void:
 
 func _on_activation_body_exited(body: Node) -> void:
 	var entity := body as Entity
-	prints("exit", body)
 	entities.remove(entities.find(entity))
 	if active == true:
 		return

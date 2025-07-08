@@ -78,6 +78,7 @@ const DEV_TIMES := {
 	"Airfoce": 13.4,
 	"Fugitive": 13.4,
 	"Core": 108.8,
+	"Sectors": 80.3,
 }
 
 # all the global variables

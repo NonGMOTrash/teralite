@@ -61,6 +61,9 @@ func _on_Area2D_body_entered(body: Node) -> void:
 			if body.inventory[0] == null: x = 0
 			if body.inventory[global.selection] == null: x = global.selection
 			
+			if get_tree().current_scene.LEVEL_TYPE == 1:
+				global.selection = x
+			
 			if body.inventory[x] != null:
 				velocity = global_position.direction_to(global_position + Vector2(rand_range(-1, 1), rand_range(-1, 1))) * 125
 				set_physics_process(true)
