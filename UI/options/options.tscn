@@ -17,9 +17,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 7 )
 script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="tabs" type="TabContainer" parent="."]
 anchor_left = 0.5
@@ -59,7 +56,7 @@ __meta__ = {
 
 [node name="VBox" type="VBoxContainer" parent="tabs/video"]
 margin_right = 336.0
-margin_bottom = 266.0
+margin_bottom = 260.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
@@ -76,30 +73,23 @@ margin_bottom = 52.0
 hint_tooltip = "fixes screen tearing but causes higher input latency"
 text = "vsync"
 
-[node name="outlines" parent="tabs/video/VBox" instance=ExtResource( 2 )]
+[node name="lighting" parent="tabs/video/VBox" instance=ExtResource( 2 )]
 margin_top = 56.0
 margin_right = 336.0
 margin_bottom = 80.0
-hint_tooltip = "fixes screen tearing but causes higher input latency"
-text = "show sprite outlines"
-
-[node name="lighting" parent="tabs/video/VBox" instance=ExtResource( 2 )]
-margin_top = 84.0
-margin_right = 336.0
-margin_bottom = 108.0
 text = "enable lighting"
 
 [node name="shadows" parent="tabs/video/VBox" instance=ExtResource( 2 )]
-margin_top = 112.0
+margin_top = 84.0
 margin_right = 336.0
-margin_bottom = 136.0
+margin_bottom = 108.0
 text = "enable shadows"
 
 [node name="shadow_buffer" parent="tabs/video/VBox" instance=ExtResource( 5 )]
 anchor_right = 0.0
-margin_top = 140.0
+margin_top = 112.0
 margin_right = 336.0
-margin_bottom = 158.0
+margin_bottom = 130.0
 hint_tooltip = "accuracy of shadows, higher is better but more resource intensive"
 min_value = 256.0
 max_value = 4096.0
@@ -109,30 +99,30 @@ TEXT = "shadow buffer size"
 PROGRESS = 1
 
 [node name="ambient_lighting" parent="tabs/video/VBox" instance=ExtResource( 2 )]
-margin_top = 162.0
+margin_top = 134.0
 margin_right = 336.0
-margin_bottom = 186.0
+margin_bottom = 158.0
 hint_tooltip = "the natural environment's lighting. this includes darkness in caves"
 text = "enable ambient lighting"
 
 [node name="pixel" parent="tabs/video/VBox" instance=ExtResource( 2 )]
-margin_top = 190.0
+margin_top = 162.0
 margin_right = 336.0
-margin_bottom = 214.0
+margin_bottom = 186.0
 hint_tooltip = "pixels are snapped to the game resolution instead of native resolution"
 text = "pixel perfect filter (not recomended)"
 
 [node name="gpu_snap" parent="tabs/video/VBox" instance=ExtResource( 2 )]
-margin_top = 218.0
+margin_top = 190.0
 margin_right = 336.0
-margin_bottom = 242.0
+margin_bottom = 214.0
 hint_tooltip = "fixes tilemap artifacts, but makes camera movement a bit jittery"
 text = "GPU pixel snap"
 
 [node name="particles" type="HBoxContainer" parent="tabs/video/VBox"]
-margin_top = 246.0
+margin_top = 218.0
 margin_right = 336.0
-margin_bottom = 266.0
+margin_bottom = 238.0
 
 [node name="Label" type="Label" parent="tabs/video/VBox/particles"]
 margin_top = 2.0
@@ -152,6 +142,17 @@ text = "none"
 flat = true
 items = [ "none", null, false, 0, null, "few", null, false, 1, null, "most", null, false, 2, null, "all", null, false, 3, null ]
 selected = 0
+
+[node name="fps_cap" parent="tabs/video/VBox" instance=ExtResource( 5 )]
+anchor_right = 0.0
+margin_top = 242.0
+margin_right = 336.0
+margin_bottom = 260.0
+hint_tooltip = "(0 is unlimited)"
+max_value = 500.0
+value = 144.0
+TEXT = "framerate cap"
+PROGRESS = 1
 
 [node name="audio" type="ScrollContainer" parent="tabs"]
 visible = false
@@ -252,7 +253,6 @@ anchor_right = 0.0
 margin_top = 84.0
 margin_right = 336.0
 margin_bottom = 102.0
-hint_tooltip = "accuracy of shadows, higher is better but more resource intensive"
 min_value = 0.5
 max_value = 1.5
 step = 0.1

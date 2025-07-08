@@ -144,6 +144,7 @@ var settings := {
 	"show_fps": false,
 	"use_color": false,
 	"player_color": Color.white,
+	"fps_cap": 144,
 }
 
 # should move this and get_relation to Entity.gd probably
@@ -511,6 +512,7 @@ func update_settings(save_settings_config:=true):
 	AudioServer.set_bus_volume_db(2, linear2db(settings["menu_volume"]))
 	AudioServer.set_bus_volume_db(3, linear2db(settings["ambiance_volume"]))
 	AudioServer.set_bus_volume_db(4, linear2db(settings["footsteps_volume"]))
+	Engine.target_fps = settings["fps_cap"]
 	
 	if is_instance_valid(refs.camera):
 		refs.camera.zoom_to(Vector2(1, 1))
@@ -629,12 +631,6 @@ func update_settings(save_settings_config:=true):
 			OS.alert("could not find settings_config (on deletion)", "reportpls.jpg")
 
 func quit():
-	print(
-		"\n" +
-		"hope you had fun or whatever\n" +
-		"there's some memory leaks that happen when the game quits, and i have no idea why :(\n" +
-		"i guess it doesn't really matter\n"
-	)
 #	refs.queue_free()
 #	self.queue_free()
 	get_tree().quit()

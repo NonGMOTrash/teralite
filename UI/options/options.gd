@@ -7,13 +7,13 @@ onready var exit = $exit
 onready var fullscreen = $tabs/video/VBox/fullscreen
 onready var pixel = $tabs/video/VBox/pixel
 onready var vsync = $tabs/video/VBox/vsync
-onready var outlines = $tabs/video/VBox/outlines
 onready var lighting = $tabs/video/VBox/lighting
 onready var shadows = $tabs/video/VBox/shadows
 onready var shadow_buffer = $tabs/video/VBox/shadow_buffer
 onready var ambient_lighting = $tabs/video/VBox/ambient_lighting
 onready var particles = $tabs/video/VBox/particles/dropdown
 onready var gpu_snap = $tabs/video/VBox/gpu_snap
+onready var fps_cap = $tabs/video/VBox/fps_cap
 
 onready var master_volume = $tabs/audio/VBox/master_volume
 onready var sound_volume = $tabs/audio/VBox/sound_volume
@@ -108,6 +108,7 @@ func _on_exit_pressed() -> void:
 	global.settings["show_fps"] = show_fps.pressed
 	global.settings["use_color"] = use_color.pressed
 	global.settings["player_color"] = player_color.color
+	global.settings["fps_cap"] = fps_cap.value
 	
 	global.update_settings()
 	
