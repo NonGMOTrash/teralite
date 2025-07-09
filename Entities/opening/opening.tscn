@@ -199,7 +199,6 @@ truName = "opening"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 21 )
-frame = 1
 playing = true
 
 [node name="symbol" type="Sprite" parent="."]

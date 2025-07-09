@@ -62,6 +62,8 @@ VELOCITY_ARMOR = 999
 ONHIT_SPEED_MULTIPLIER = 1.0
 RECOIL = 100
 VELOCITY_INHERITENCE = 0.0
+ROTATION_OFFSET = 0.0
+SPAWN_OFFSET = 16.0
 bounces = 2
 
 [node name="entity_sprite" parent="." index="0"]
@@ -71,7 +73,7 @@ hframes = 7
 
 [node name="hitbox" parent="." index="1"]
 DAMAGE = 8
-TRUE_DAMAGE = 15
+TRUE_DAMAGE = 24
 KNOCKBACK = 0
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]

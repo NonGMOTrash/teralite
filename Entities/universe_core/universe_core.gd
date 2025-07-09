@@ -36,11 +36,17 @@ func _on_action_lobe_action(action, target) -> void:
 	
 	match action:
 		"spawn_explosions":
-			for _i in range(9):
+			for _i in range(24):
 				var opening := OPENING.instance()
 				opening.entity = EXPLOSION
 				opening.symbol_frame = 4
-				opening.position = get_opening_pos(200, 64)
+				opening.delay = 1.2
+				while true:
+					opening.position = get_opening_pos(500, 46)
+					if !is_instance_valid(refs.player):
+						break
+					elif opening.position.distance_to(refs.player.global_position) < 210:
+						break
 				refs.ysort.add_child(opening)
 		"spawn_bullets":
 			var opening := OPENING.instance()
@@ -78,7 +84,7 @@ func _on_action_lobe_action(action, target) -> void:
 				opening.symbol_frame = 1
 				opening.position = line_pos + ((i+1) * 24 * pdirection)
 				opening.target_pos = opening.position + (-direction * 100)
-				opening.delay = 1.3
+				opening.delay = 0.8
 				refs.ysort.add_child(opening)
 			for i in range(8):
 				var opening := OPENING.instance()
@@ -86,7 +92,7 @@ func _on_action_lobe_action(action, target) -> void:
 				opening.symbol_frame = 1
 				opening.position = line_pos - ((i+1) * 24 * pdirection)
 				opening.target_pos = opening.position + (-direction * 100)
-				opening.delay = 1.3
+				opening.delay = 0.8
 				refs.ysort.add_child(opening)
 		"spawn_monarchs":
 			var opening_a := OPENING.instance()

@@ -341,7 +341,6 @@ theme = ExtResource( 1 )
 color = Color( 0, 0, 0, 1 )
 script = ExtResource( 4 )
 __meta__ = {
-"_edit_use_anchors_": false,
 "_edit_vertical_guides_": [  ]
 }
 animation_queue = [ "madeingodot", "nongmotrash", "wtf" ]
@@ -352,6 +351,7 @@ anims/nongmotrash = SubResource( 2 )
 anims/wtf = SubResource( 3 )
 
 [node name="sound_player" parent="." instance=ExtResource( 6 )]
+FREE_WHEN_EMPTY = false
 
 [node name="madeingodot" type="VBoxContainer" parent="."]
 anchor_left = 0.5

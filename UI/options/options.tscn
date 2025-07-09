@@ -297,6 +297,7 @@ text = "use custom player color"
 [node name="player_color" parent="tabs/game/VBox" instance=ExtResource( 10 )]
 margin_right = 41.0
 margin_bottom = 20.4988
+hint_tooltip = "requries reloading the level to take effect"
 text = "custom player color"
 
 [node name="hidebar" parent="tabs/game/VBox" instance=ExtResource( 2 )]

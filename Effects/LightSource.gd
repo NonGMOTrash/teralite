@@ -25,4 +25,6 @@ func _ready() -> void:
 	# lowers saturation in daylight, otherwise it looks weird
 	match get_tree().current_scene.AMBIENT_LIGHTING:
 		1: color.s *= 0.5 # autumn
+		2: color.s *= 0.8 # underground
 		3: color.s *= 0.65 # wasteland
+		4: color.s *= 0.65 # offworld

@@ -27,9 +27,6 @@ value = 5.0
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 3 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 PROGRESS_GRAD = SubResource( 1 )
 BONUS_GRAD = SubResource( 2 )
 ARMOR_GRAD = SubResource( 3 )

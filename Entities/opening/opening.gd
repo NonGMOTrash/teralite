@@ -18,6 +18,7 @@ onready var symbol: Sprite = $symbol
 var target_pos: Vector2
 var tracking_target: Entity
 var started_spawning := false
+var last_spawned_entity: Entity
 
 func _ready() -> void:
 	rate_timer.wait_time = delay
@@ -42,6 +43,9 @@ func _on_rate_timer_timeout() -> void:
 			new_entity.setup(self, target_pos)
 	else:
 		new_entity.position = global_position
+	
+	if new_entity.truName == "rocket_scorpian":
+		new_entity.easy_version = true
 	
 	refs.ysort.add_child(new_entity)
 	new_entity.faction = "offworld"

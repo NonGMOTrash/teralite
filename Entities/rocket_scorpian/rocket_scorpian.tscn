@@ -444,6 +444,8 @@ anims/stand = SubResource( 7 )
 anims/walk = SubResource( 8 )
 
 [node name="foot_stepper" parent="." instance=ExtResource( 15 )]
+CONSTANT_RATE = true
+VOLUME_ADJUST = 0.0
 
 [node name="entity_effects" parent="." instance=ExtResource( 16 )]
 

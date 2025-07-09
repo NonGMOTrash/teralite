@@ -92,11 +92,12 @@ func attack(finished_animation:String):
 			ACCELERATION *= 2
 		held_item.sprite.frame = 0
 	
-	if stored_attack.truName == "bolt":
-		stored_attack.setup(self,
-				stored_target.global_position + stored_target.velocity * get_physics_process_delta_time() * 15)
-	elif is_instance_valid(stored_target):
-		stored_attack.setup(self, stored_target.global_position)
+	if is_instance_valid(stored_target):
+		if stored_attack.truName == "bolt":
+			stored_attack.setup(self,
+					stored_target.global_position + stored_target.velocity * get_physics_process_delta_time() * 15)
+		else:
+			stored_attack.setup(self, stored_target.global_position)
 	stored_attack.SOURCE_PATH = get_path()
 	refs.ysort.add_child(stored_attack)
 	yield(stored_attack, "tree_entered")

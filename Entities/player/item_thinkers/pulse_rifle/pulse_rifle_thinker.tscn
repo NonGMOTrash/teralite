@@ -21,7 +21,7 @@ CURSOR_MODE = 1
 PULSE = ExtResource( 3 )
 MAX_HEAT = 20
 SHOOT_HEAT = 13
-COOL_SPEED = 11.0
+COOL_SPEED = 9.0
 
 [node name="sound_player" parent="." instance=ExtResource( 2 )]
 

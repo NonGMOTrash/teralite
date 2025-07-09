@@ -1,10 +1,13 @@
 extends Entity
 
+# PROBLEM_NOTE: "scorpian" is misspelled >.<
+
 const ROCKET := preload("res://Entities/Attacks/Projectile/rocket/rocket.tscn")
 const SKELETON := preload("res://Entities/skeleton/skeleton.tscn")
 const POISON_DROP := preload("res://Entities/Attacks/Projectile/poison_drop/poison_drop.tscn")
 
 export var lunge_force: float
+# PROBLEM_NOTE: rage unused (rage_thershold set to 0 in editor)
 export var rage_threshold: int
 export var rage_speed_mult: float
 export var burrow_speed_mult: float
@@ -19,8 +22,15 @@ var target_path: NodePath
 var enraged := false
 var queued_burrow := false
 
+var easy_version: bool = false # used for universe core fight
+
 func set_attacking(to: bool):
 	attacking = to
+
+func _ready():
+	if easy_version:
+		$stats.MAX_HEALTH = 150 # from 350
+		$stats.HEALTH = 150
 
 func _physics_process(delta: float) -> void:
 	if attacking == false:

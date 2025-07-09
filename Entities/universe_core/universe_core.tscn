@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://Entities/universe_core/universe_core.gd" type="Script" id=1]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Entities/universe_core/richard.wav" type="AudioStream" id=18]
 [ext_resource path="res://Effects/LightSource.gd" type="Script" id=19]
 [ext_resource path="res://Effects/light.png" type="Texture" id=20]
+[ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=21]
 
 [sub_resource type="AtlasTexture" id=41]
 atlas = ExtResource( 5 )
@@ -483,16 +484,17 @@ z_index = 1
 collision_layer = 2
 script = ExtResource( 1 )
 STATIC = true
-ACCELERATION = 0
+ACCELERATION = 50
 SLOWDOWN = 0
-TOP_SPEED = 0
+TOP_SPEED = 20
 FORCE_MULT = 0.2
 truName = "universe_core"
 faction = "offworld"
+eye_shaking = true
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
-MAX_HEALTH = 800
-HEALTH = 800
+MAX_HEALTH = 750
+HEALTH = 750
 DEFENCE = 3
 DAMAGE = 0
 poison_modifier = -99.0
@@ -508,7 +510,6 @@ infection_modifier = -99.0
 show_behind_parent = true
 position = Vector2( 0, -15 )
 frames = SubResource( 45 )
-frame = 1
 playing = true
 
 [node name="eye" type="Sprite" parent="."]
@@ -520,7 +521,6 @@ frame = 1
 [node name="barrier" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -15 )
 frames = SubResource( 8 )
-frame = 2
 playing = true
 
 [node name="platform" type="Sprite" parent="."]
@@ -531,7 +531,6 @@ texture = ExtResource( 8 )
 show_behind_parent = true
 position = Vector2( 0, -20 )
 frames = SubResource( 17 )
-frame = 5
 playing = true
 
 [node name="hurtbox" parent="." instance=ExtResource( 4 )]
@@ -574,12 +573,12 @@ AUTO_ACTION_WEIGHTING = true
 [node name="spawn_explosions" parent="brain/action_lobe" instance=ExtResource( 9 )]
 distance_weight = 0
 default_score = 0.9
-COOLDOWN = 2.5
+COOLDOWN = 2.0
 GLOBAL_COOLDOWN = true
 
 [node name="spawn_bullets" parent="brain/action_lobe" instance=ExtResource( 9 )]
 distance_weight = 0
-COOLDOWN = 2.6
+COOLDOWN = 2.3
 GLOBAL_COOLDOWN = true
 
 [node name="spawn_drones" parent="brain/action_lobe" instance=ExtResource( 9 )]
@@ -589,17 +588,17 @@ GLOBAL_COOLDOWN = true
 
 [node name="spawn_keyblasts" parent="brain/action_lobe" instance=ExtResource( 9 )]
 best_distance = 100
-COOLDOWN = 1.4
+COOLDOWN = 0.3
 GLOBAL_COOLDOWN = true
 
 [node name="spawn_monarchs" parent="brain/action_lobe" instance=ExtResource( 9 )]
 best_distance = 120
-COOLDOWN = 3.0
+COOLDOWN = 1.25
 GLOBAL_COOLDOWN = true
 
 [node name="spawn_poison" parent="brain/action_lobe" instance=ExtResource( 9 )]
 distance_weight = 0
-COOLDOWN = 1.85
+COOLDOWN = 1.6
 GLOBAL_COOLDOWN = true
 
 [node name="spawn_rogues" parent="brain/action_lobe" instance=ExtResource( 9 )]
@@ -609,11 +608,13 @@ GLOBAL_COOLDOWN = true
 
 [node name="spawn_scorpian" parent="brain/action_lobe" instance=ExtResource( 9 )]
 distance_weight = 0
-COOLDOWN = 30.0
+COOLDOWN = 9.0
 GLOBAL_COOLDOWN = true
 
 [node name="memory_lobe" parent="brain" instance=ExtResource( 13 )]
 MEMORY_TIME = 8.0
+
+[node name="movement_lobe" parent="brain" instance=ExtResource( 21 )]
 
 [node name="health_bar" parent="." instance=ExtResource( 12 )]
 margin_left = -11.1362

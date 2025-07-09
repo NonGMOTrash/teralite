@@ -52,7 +52,7 @@ var sound_credits := [
 	'"Sharp wooden post, stake, dig into soil, ground 4"\n by ZapSplat',
 	'"Axe Swing, hit body against wood, metal clang,\n impact squelch 3"\n by ZapSplat',
 	'"Spear thrown and stick into ground with slight\nvibration of wooden spear pole on impact. Version 5"\n by ZapSplat',
-	'"Sword, stab through chain mail into flesh,\nsharp metallic scrape followed by a quick, crunchy slash / impact, close perspective"\n by Audio Hero',
+	'"Sword, stab through chain mail into flesh,\nsharp metallic scrape (...)"\n by Audio Hero', # shortened
 	'"2 x swords hit, impact 1"\n by ZapSplat',
 	'"Whoosh Heavy Spear Hammer Large" by EminYILDIRIM',
 	'"Knife, swish, swipe, through air, slashing\nmovements 3"\n by ZaplSplat',
