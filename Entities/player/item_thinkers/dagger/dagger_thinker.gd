@@ -64,9 +64,9 @@ func _on_Timer_timeout() -> void:
 		var original_mask: int  = player.collision_mask
 		player.collision_layer = 0
 		player.collision_mask = 1
-		player.move_and_slide(
+		player.move_and_collide(
 				player.global_position.direction_to(global.get_look_pos()).normalized() 
-				* dash_distance / get_physics_process_delta_time()
+				* dash_distance
 		)
 		var low_walls: TileMap = refs.low_walls
 		while low_walls.get_cellv(low_walls.world_to_map(player.global_position)) != -1:

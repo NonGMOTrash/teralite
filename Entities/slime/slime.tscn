@@ -74,7 +74,7 @@ FORCE_MULT = 0.72
 truName = "slime"
 faction = "monster"
 lunge_delay = 0.8
-lunge_speed = 150.0
+lunge_speed = 170.0
 lunge_delay_scaling = 0.75
 
 [node name="stats" parent="." instance=ExtResource( 2 )]

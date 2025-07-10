@@ -1,11 +1,11 @@
-teralite is a videogame. please play videogame https://nongmotrash.itch.io/teralite/
+- [play the game!](https://nongmotrash.itch.io/teralite/])
+see `readme.html` for complete licensing information and credits.
 
-if you find a bug pls make an issue! i'm not really expecting any PRs - i mostly just opened sourced this game because it's free so why not.
+if you find a bug pls make an issue! i'm not really expecting any PRs - i mostly just opened sourced this game because it's free so why not... that said though, if you *do* actually go out of your way to fix or add something, i'll probably merge it.
 
-i hope this code can maybe help you, although it's definitely not the cleanest... sorry!!
+i made this when i was much less experienced, mostly learning as a go along, so the code quality reflects that. many things were handeled poorly... but still, i hope this can be a useful example of a "real" game in production to look at.
 
 # building the game
 
-use godot 3.5.3 (LTS) and export for windows desktop
-
-other platforms (linux and macos) are *untested*, but should still work.
+use godot 3.5.3 (LTS).
+exports for windows, linux, and macos should all work, though the ladder two are *untested*

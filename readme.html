@@ -1,112 +1,119 @@
+<!--
+
+	HEY!! this is a webpage. open it in your web browser to view it properly :))
+
+-->
+
+
 <!DOCTYPE html>
 
 <head>
-	<style>
-	body {
-		background-color: black;
-	}
-	
-	.content {
-		color: white;
-		background-color: black;
-		margin: 100px;
-		font-family: Verdana, sans-serif;
-	}
-	
-	.content a {
-		color: orange;
-		font-style: normal;
-		text-decoration: unset;
-	}
-	
-	.content a:hover {
-		color: orange;
-		font-style: italic;
-		text-decoration: underline;
-	}
-	
-	.code {
-		font-size: 14px;
-		color: lightgray;
-	}
-	
-	.ascii-art {
-		font: monospace;
-		font-weight: bolder;
-		color: orange;
-		margin-left: auto;
-		margin-right: auto;
-		width: 100%;
-	}
-	
-	hr.major {
-		border-top: 3px solid white;
-	}
-	
-	hr.minor {
-		border-top: 1px solid grey;
-	}
-	
-	nav {
-		width: 100%;
-		background-color: rgba(0, 0, 0, 0);
-		position: fixed;
-		top: 0px;
-		background-image: linear-gradient(lightblue, rgba(0, 0, 0, 0))
-	}
-	
-	nav ul {
-		float: left;
-	}
-	
-	nav ul li {
-		float: left;
-		list-style: none;
-		position: relative;
-	}
-	
-	nav ul li a {
-		font-size: 16px;
-		font-weight: bold;
-		display: block;
-		padding: 4px 14px;
-		color: white;
-		text-decoration: none;
-	}
-	
-	nav ul li a:hover {
-		color: white;
-		text-decoration: underline;
-		background-color: #254f9e;
-	}
-	
-	nav ul li ul {
-		display: none;
-		position: absolute;
-		background-color: #56c9e2;
-		padding: 10px;
-	}
-	
-	nav ul li:hover ul {
-		display: block;
-		background-color: #56c9e2;
-	}
-	
-	nav ul li ul li {
-		width: 180px;
-	}
-	
-    nav ul li ul li a {
-		padding: 8px 14px;
-		font-weight: normal;
-		background-color: #56c9e2;
-	}
-	
-    nav ul li ul li a:hover {
-		background-color: #254f9e;
-		border-radius: 0px 0px 2px 2px;
-	}
-	</style>
+<style>
+body {
+	background-color: black;
+}
+
+.content {
+	color: white;
+	background-color: black;
+	margin: 100px;
+	font-family: Verdana, sans-serif;
+}
+
+.content a {
+	color: orange;
+	font-style: normal;
+	text-decoration: unset;
+}
+
+.content a:hover {
+	color: orange;
+	font-style: italic;
+	text-decoration: underline;
+}
+
+.code {
+	font-size: 14px;
+	color: lightgray;
+}
+
+.ascii-art {
+	font: monospace;
+	font-weight: bolder;
+	color: orange;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+
+hr.major {
+	border-top: 3px solid white;
+}
+
+hr.minor {
+	border-top: 1px solid grey;
+}
+
+nav {
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0);
+	position: fixed;
+	top: 0px;
+	background-image: linear-gradient(lightblue, rgba(0, 0, 0, 0))
+}
+
+nav ul {
+	float: left;
+}
+
+nav ul li {
+	float: left;
+	list-style: none;
+	position: relative;
+}
+
+nav ul li a {
+	font-size: 16px;
+	font-weight: bold;
+	display: block;
+	padding: 4px 14px;
+	color: white;
+	text-decoration: none;
+}
+
+nav ul li a:hover {
+	color: white;
+	text-decoration: underline;
+	background-color: #254f9e;
+}
+
+nav ul li ul {
+	display: none;
+	position: absolute;
+	background-color: #56c9e2;
+	padding: 10px;
+}
+
+nav ul li:hover ul {
+	display: block;
+	background-color: #56c9e2;
+}
+
+nav ul li ul li {
+	width: 180px;
+}
+
+nav ul li ul li a {
+	padding: 8px 14px;
+	font-weight: normal;
+	background-color: #56c9e2;
+}
+
+nav ul li ul li a:hover {
+	background-color: #254f9e;
+	border-radius: 0px 0px 2px 2px;
+}
+</style>
 </head>
 
 <body>
@@ -114,89 +121,81 @@
 		<ul>
 			<li> <a href="#faq">faq</a>
 				<ul>
-                    <li><a href="#pck-not-found">.pck not found</a></li>
-                    <li><a href="#update-when">update when?</a></li>
-                    <li><a href="#preformance-apology">preformance apology</a></li>
-                    <li><a href="#particles-not-working">particles not working</a></li>
+					<li><a href="#pck-not-found">.pck not found</a></li>
+					<li><a href="#update-when">update when?</a></li>
+					<li><a href="#preformance-apology">preformance apology</a></li>
+					<li><a href="#particles-not-working">particles not working</a></li>
 				</ul>
 			</li>
 			<li> <a href="#credits">credits</a>
 				<ul>
-                    <li><a href="#developer">developer</a></li>
-                    <li><a href="#play-testers">play testers</a></li>
-                    <li><a href="#engine">engine</a></li>
-                    <li><a href="#font-credits">fonts</a></li>
-                    <li><a href="#sound-credits">sound effects</a></li>
-                    <li><a href="#shader-credits">shaders</a></li>
-                    <li><a href="#discord-integration">discord integration</a></li>
-                    <li><a href="#license">license</a></li>
+					<li><a href="#developer">developer</a></li>
+					<li><a href="#play-testers">play testers</a></li>
+					<li><a href="#engine">engine</a></li>
+					<li><a href="#font-credits">fonts</a></li>
+					<li><a href="#sound-credits">sound effects</a></li>
+					<li><a href="#shader-credits">shaders</a></li>
+					<li><a href="#discord-integration">discord integration</a></li>
+					<li><a href="#license">license</a></li>
 				</ul>
 			</li>
 			<li> <a href="#patchnotes">patchnotes</a>
 				<ul>
-                    <li><a href="#ver-1-2-0">v1.2.0</a></li>
-                    <li><a href="#ver-1-1-0">v1.1.0</a></li>
-                    <li><a href="#ver-1-0-0">v1.0.0</a></li>
+					<li><a href="#ver-1-2-0">v1.2.0</a></li>
+					<li><a href="#ver-1-1-0">v1.1.0</a></li>
+					<li><a href="#ver-1-0-0">v1.0.0</a></li>
 				</ul>
 			</li>
 		</ul>
 	</nav>
 	<div class="content"> <pre> <code class="ascii-art">
-                        ###########
-                        ###########
-                        ###,   ,###
-                        ###,   ,###
-                        ###,   ,###
-            *##############,   ,##############*
-            *###                           ###/....
-            *###                           ###/....
-            *###                           ###/....
-            *#################################/....
-            *#################################/....
-                        ###########................
-                        ###########....
-                        ###########....
-                        ###########....
-                        ###########....
-                        ###########....
-                        ###########....
-                        ###########....
-                        ###########....
-                        ###########....
-                        ###########....
-                        ###########....
-                        ###########....
-                          *#######....
-                          *#######....
-                              ,###....
-                                  ....
-                                  ....
-        </code> </pre>   
-        <p>hello, thanks for downloading</p>
+								###########
+								###########
+								###,   ,###
+								###,   ,###
+								###,   ,###
+				*##############,   ,##############*
+				*###                           ###/....
+				*###                           ###/....
+				*###                           ###/....
+				*#################################/....
+				*#################################/....
+								###########................
+								###########....
+								###########....
+								###########....
+								###########....
+								###########....
+								###########....
+								###########....
+								###########....
+								###########....
+								###########....
+								###########....
+								###########....
+								  *#######....
+								  *#######....
+										,###....
+											 ....
+											 ....
+		</code> </pre>   
+		<p>hello, thanks for downloading</p>
 		<hr class="major">
 		<h1 id="faq">(un)frequently asked questions</h1>
 		<hr class="minor">
 		<h2 id="pck-not-found">.pck not found at path '.' error</h2>
 		<p> teralite.exe has to be in the same folder as the teralite.pck or it won't work. if you want to have access to the game somewhere else, just make a shortcut of teralite.exe </p>
-        <hr class="minor"> 
-        <h2 id="update-when">will get game get updated?</h2>
-        <p> maybe. i started on this game in august 2020, which makes this the longest time ever spent on a project, nothing else even comes close. so i'm a bit ready to move on. however, i will definitely be doing some bug fix updates, and i also had some ideas planned such as:</p>
-        <ul>
-            <li>keybinds and controller remaping (also better button prompts)</li>
-            <li>online leaderboards for level times</li>
-            <li>a endless roguelike tower mode</li>
-            <li>porting to godot 4 (preformance boost), and improving the code (particularly AI it's horrible)</li>
-            <li>goblins</li>
-        </ul>
-        <p>but like i said i kind of... never want to touch this game and it's horrible AI code again. so i don't really feel comfortable promising any of these things (especially if the game gets like 5 downloads or something) and if they do happen it will be a while from now. for the immediate future i'll be putting this project on the backburner, in the basement, locked away</p>
+		<hr class="minor"> 
+		<h2 id="update-when">will get game get updated?</h2>
+		<p>nope! (except for extremely minor polish, MAYBE.) in retrospect, i kind of... don't love this game? that sounds a bit harsh to myself maybe, and don't get me wrong, this project was a great achievement for me at the time. but there's so many things i wish i had done better that i feel it kind of has a rotten foundation, so i really ought to just move on. also, i really really want to make more story driven games going forward &em; that's another one of my biggest regrets with this project: the overall lack of character. it's very dry and mechanical, which is okay, but... i want to do something more!
 		<hr class="minor">
-        <h2 id="preformance-apology">preformance apology</h2>
-        <p> the game can be suprisingly intensive. it's better than yandare simulator (i hope?) but it's still way worse than any 2d pixel art game ever should be, to the point where I have been seriously considering using a custom engine for my future games. i think it's due to a combination of my unoptimized code, as well as godot's lighting (overlapping lights cause a huge dip). if you're having issues, turning off lighting can help a lot. i might fix it eventually, but like i said in the section above, i'm sort of done with teralite. sorry.</p>
-        <hr class="minor">
+		<h2 id="preformance-apology">preformance apology</h2>
+		<p> the game can be suprisingly intensive. it's better than yandare simulator (i hope?) but it's still way worse than any 2d pixel art game ever should be. i think it's due to a combination of my unoptimized code, as well as godot's lighting (overlapping lights cause a huge dip). if you're having issues, turning off lighting will probably fix them. sorry ;-; </p>
+		<hr class="minor">
 		<h2 id="particles-not-working">particles aren't working</h2>
-		<p> if you're using a really old CPU with integrated graphics that doesn't support OpenGL ES 3, the game will fallback to OpenGL ES 2. this mostly works okay, but the game will run worse and particle effects won't work. sorry! i might make a "CPU particles" option in the future, but it would be a hassle because i would have to make a 2nd version of every particle effect </p>
-		
-        <hr class="major">
+		<p> if you're using a really old CPU with integrated graphics that doesn't support OpenGL ES 3, the game will fallback to OpenGL ES 2. this mostly works okay, but the game will run marginally worse(?) and particle effects won't work. sorry!</p>
+
+		<hr class="major">
 		<h1 id="credits">credits</h1>
 		<hr class="minor">
 		<h3 id="developer">developer:</h3>
@@ -211,46 +210,46 @@
 		</ul>
 		<hr class="minor">
 		<h3 id="play-testers">play testers:</h3>
-        <ul>
-            <li>legominifig</li>
-            <li>MacysAPup</li>
-            <li>PurpGurp</li>
-            <li>Something Ironic</li>
-            <li>AUSTROIDS</li>
-            <li>RJW_05</li>
-            <li>HundredMender</li>
-            <li>ParrotGang</li>
-            <li>phantom_boyy08</li>
-            <li>purple guy</li>
-        </ul>
+		<ul>
+			<li>legominifig</li>
+			<li>MacysAPup</li>
+			<li>PurpGurp</li>
+			<li>Something Ironic</li>
+			<li>AUSTROIDS</li>
+			<li>RJW_05</li>
+			<li>HundredMender</li>
+			<li>ParrotGang</li>
+			<li>phantom_boyy08</li>
+			<li>purple guy</li>
+		</ul>
 		<hr class="minor">
 		<h3 id="engine">engine:</h3>
-        <p>teralite was created with Godot Engine, it's license reads as
-        follows:</p>
-        <code> <pre> 
-            Copyright (c) 2007-2021 Juan Linietsky, Ariel
-            Manzur. Copyright (c) 2014-2021 Godot Engine contributors. Permission
-            is hereby granted, free of charge, to any person obtaining a copy of this
-            software and associated documentation files (the "Software"), to deal in
-            the Software without restriction, including without limitation the
-            rights to use, copy, modify, merge, publish, distribute,
-            sublicense, and/or sell copies of the Software, and to permit
-            persons to whom the Software is furnished to do so, subject to the
-            following conditions: The above copyright notice and this permission
-            notice shall be included in all copies or substantial portions of
-            the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
-            ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
-            WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-            NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-            LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
-            ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-            CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-            SOFTWARE.
-        </pre> </code>
-        <p>addtionally,</p>
-        <code> <pre> 
-            Portions of this software are copyright ©2021 The FreeType Project (www.freetype.org). All rights reserved.
-        </pre> </code>
+		<p>teralite was created with Godot Engine, it's license reads as
+		follows:</p>
+		<code> <pre> 
+				Copyright (c) 2007-2021 Juan Linietsky, Ariel
+				Manzur. Copyright (c) 2014-2021 Godot Engine contributors. Permission
+				is hereby granted, free of charge, to any person obtaining a copy of this
+				software and associated documentation files (the "Software"), to deal in
+				the Software without restriction, including without limitation the
+				rights to use, copy, modify, merge, publish, distribute,
+				sublicense, and/or sell copies of the Software, and to permit
+				persons to whom the Software is furnished to do so, subject to the
+				following conditions: The above copyright notice and this permission
+				notice shall be included in all copies or substantial portions of
+				the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
+				ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+				WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+				NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+				LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+				ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+				CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+				SOFTWARE.
+		</pre> </code>
+		<p>addtionally,</p>
+		<code> <pre> 
+				Portions of this software are copyright ©2021 The FreeType Project (www.freetype.org). All rights reserved.
+		</pre> </code>
 		<hr class="minor">
 		<h3 id="font-credits">font credits:</h3>
 		<ul>
@@ -260,8 +259,8 @@
 		<hr class="minor">
 		<h3 id="sound-credits">sound credits:</h3>
 		<ul>
-		    <li>sword_hit: &quot;slashkut&quot; by Abyssmal (<a href="https://freesound.org/people/Abyssmal/sounds/35213/">freesound.org link</a>) licensed under CC0</li>
-		    <li>sword_clank: &quot;Sword clash 1&quot; by spycrah (<a href="https://freesound.org/people/spycrah/sounds/471095/">freesound.org link</a>) licensed under CC0</li>
+			<li>sword_hit: &quot;slashkut&quot; by Abyssmal (<a href="https://freesound.org/people/Abyssmal/sounds/35213/">freesound.org link</a>) licensed under CC0</li>
+			<li>sword_clank: &quot;Sword clash 1&quot; by spycrah (<a href="https://freesound.org/people/spycrah/sounds/471095/">freesound.org link</a>) licensed under CC0</li>
 			<li>sword_miss: &quot;Sword Swipe11&quot; by LukeSharples (<a href="https://freesound.org/people/LukeSharples/sounds/209121/">freesound.org link</a>) licensed under CC BY 3.0</li>
 			<li>sword_equip: &quot;Drawing sword from scabbard&quot; by giddster (<a href="https://freesound.org/people/giddster/sounds/484298/">freesound.org link</a>) licensed under CC0</li>
 			<li>sword_kill: &quot;Sword Attack&quot; by Saviraz (<a href="https://freesound.org/people/Saviraz/sounds/547600/">freesound.org link</a>) licensed under CC BY 3.0</li>
@@ -390,15 +389,15 @@
 			<li>pulse_shoot: &quot;Light Blaster Weapon&quot; by SeanSecret (<a href="https://freesound.org/people/SeanSecret/sounds/440660/">freesound.org link</a>) licensed under CC0</li>
 			<li>pulse_bounce: &quot;Impact_010&quot; by AlienXXX (<a href="https://freesound.org/people/AlienXXX/sounds/196223/">freesound.org link</a>) licensed under CC BY 3.0</li>
 			<li>portal_ray: &quot;Teleport&quot; by Fupicat (<a href="https://freesound.org/people/AlienXXX/sounds/196223/">freesound.org link</a>) licensed under CC0</li>
-            <li>laser_shoot: &quot;Game sound, high pitched laser gun fire, single shot 3&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/game-sound-high-pitched-laser-gun-fire-single-shot-3/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
-            <li>keyblast_shoot: &quot;SciFi Gun - Plasma Slinger&quot; by dpren (<a href="https://www.zapsplat.com/music/game-sound-high-pitched-laser-gun-fire-single-shot-3/">freesound.org link</a>) licensed under CC0</li>
-            <li>keyblast_collide: &quot;Freq Blip from 24726&quot; by Big_D123 (<a href="https://freesound.org/people/Big_D123/sounds/73218/">freesound.org link</a>) licensed under CC0</li>
-            <li>keyblast_zap: &quot;Electricity Sound&quot; by NachtmahrTV (<a href="https://freesound.org/people/NachtmahrTV/sounds/556717/">freesound.org link</a>) licensed under CC0</li>
-            <li>richard: &quot;Ominous III&quot; by Jerimee (<a href="https://freesound.org/people/Jerimee/sounds/434784/">freesound.org link</a>) licensed under CC0</li>
-            <li>opening: &quot;Magical portal open&quot; by alanmcki (<a href="https://freesound.org/people/alanmcki/sounds/401324/">freesound.org link</a>) licensed under CC BY 3.0</li>
-            <li>pull: &quot;Inside Tornado, Strong Wind, Destruction&quot; by PMSFX (<a href="https://www.zapsplat.com/music/inside-tornado-strong-wind-destruction/">freesound.org link</a>) licensed under ZapSplat standard license</li>
-            <li>credits: &quot;Artblock&quot; by Jan125 (<a href="https://opengameart.org/content/artblock">opengameart.org link</a>) licensed under CC BY 4.0</li>
-            <li>offworld_ambiance: &quot;Loud Silence&quot; by qubodup (<a href="https://freesound.org/people/qubodup/sounds/189627/">freesound.org link</a>) licensed under CC0</li>
+			<li>laser_shoot: &quot;Game sound, high pitched laser gun fire, single shot 3&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/game-sound-high-pitched-laser-gun-fire-single-shot-3/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
+			<li>keyblast_shoot: &quot;SciFi Gun - Plasma Slinger&quot; by dpren (<a href="https://www.zapsplat.com/music/game-sound-high-pitched-laser-gun-fire-single-shot-3/">freesound.org link</a>) licensed under CC0</li>
+			<li>keyblast_collide: &quot;Freq Blip from 24726&quot; by Big_D123 (<a href="https://freesound.org/people/Big_D123/sounds/73218/">freesound.org link</a>) licensed under CC0</li>
+			<li>keyblast_zap: &quot;Electricity Sound&quot; by NachtmahrTV (<a href="https://freesound.org/people/NachtmahrTV/sounds/556717/">freesound.org link</a>) licensed under CC0</li>
+			<li>richard: &quot;Ominous III&quot; by Jerimee (<a href="https://freesound.org/people/Jerimee/sounds/434784/">freesound.org link</a>) licensed under CC0</li>
+			<li>opening: &quot;Magical portal open&quot; by alanmcki (<a href="https://freesound.org/people/alanmcki/sounds/401324/">freesound.org link</a>) licensed under CC BY 3.0</li>
+			<li>pull: &quot;Inside Tornado, Strong Wind, Destruction&quot; by PMSFX (<a href="https://www.zapsplat.com/music/inside-tornado-strong-wind-destruction/">freesound.org link</a>) licensed under ZapSplat standard license</li>
+			<li>credits: &quot;Artblock&quot; by Jan125 (<a href="https://opengameart.org/content/artblock">opengameart.org link</a>) licensed under CC BY 4.0</li>
+			<li>offworld_ambiance: &quot;Loud Silence&quot; by qubodup (<a href="https://freesound.org/people/qubodup/sounds/189627/">freesound.org link</a>) licensed under CC0</li>
 
 		</ul<p>
 		<p>a big thanks to all the sound authors for letting me legally steal your hard work to use in my game &lt;3</p>
@@ -408,60 +407,60 @@
 			<li><s<strong>color_overlay.shader</strong> by heartbeast (<a href="https://www.youtube.com/watch?v=Ot9M0TlxApU=1500">from action rpg tutorial)</a></li>
 			<li><s<strong>outline.shader</strong> by Juulpower (<a href="https://godotshaders.com/shader/2d-outline-inline/">on godotshaders.com</a>)</li>
 			<li><s<strong>vignette.tres</strong> by Arcane Energy (<a href="https://www.youtube.com/watch?v=IGtQwsNDVLM">from youtube</a>)</li>
-		</ul
-		<hr <hr class="minor">
+		</ul>
+		<hr class="minor">
 		<h3 id="discord-integration">discord rich pressence</h3>
 		<p>my job was pretty much done for my thanks to this <a href="https://github.com/LennyPhoenix/GodotDiscordSDK">GodotDiscordSDK</a> plugin, thank you</p>
-        <hr class="minor">
+		<hr class="minor">
 		<h3 id="license">license (GPL)</h3>
 		<p>note that this is not the license for the engine, only the game's source code and art assests</p> 
-        <code> <pre>
-            Copyright (c) 2021 NonGMOTrash This program is free software: you
-            can redistribute it and/or modify it under the terms of the GNU
-            General Public License as published by the Free Software
-            Foundation, either version 3 of the License, or (at your option) any
-            later version. This program is distributed in the hope that it will be
-            useful, but WITHOUT ANY WARRANTY; without even the implied warranty
-            of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-            General Public License for more details. You should have received a
-            copy of the GNU General Public License along with this program. If not,
-            see &lt;https://www.gnu.org/licenses/&gt;. </pre> </code>
-		<p>i didn't include a copy of the GNU license because i believe in the power of the interwebz (just look it up)
-		<br>
-        <em><a href="https://github.com/NonGMOTrash/teralite">the horrible abomination that is teralite's source code is on github</a></em></p>
-		
-        <hr class="major">
+		<code> <pre>
+				Copyright (c) 2021 NonGMOTrash This program is free software: you
+				can redistribute it and/or modify it under the terms of the GNU
+				General Public License as published by the Free Software
+				Foundation, either version 3 of the License, or (at your option) any
+				later version. This program is distributed in the hope that it will be
+				useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+				of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+				General Public License for more details. You should have received a
+				copy of the GNU General Public License along with this program. If not,
+				see &lt;https://www.gnu.org/licenses/&gt;. </pre> </code>
+			<p>i didn't include a copy of the GNU license because i believe in the power of the interwebz (just look it up)
+			<br>
+			<em><a href="https://github.com/NonGMOTrash/teralite">the horrible abomination that is teralite's source code is on github</a></em></p>
 
-		<h1 id="patchnotes">patchnotes</h1>
+			<hr class="major">
 
-        <hr class="minor">
-        
-        <h3 id="ver-1-2-0">1.2.0 (6/23/2022)</h3>
-        <ul>
-            <li>added option to change your color</li>
-            <li>added more secret levels</li>
-            <li>better save icons</li>
-            <li>made some portals in levels one time use, making them points of no return</li>
-            <li>fixed being able to push locks out of the way by walking into them</li>
-            <li>made archer telegraph a bit more clear</li>
-            <li>slightly improved the credits</li>
-        </ul>
+			<h1 id="patchnotes">patchnotes</h1>
 
-        <h3 id="ver-1-1-0">1.1.0 (6/5/2022)</h3>
-        <ul>
-            <li>fixed metal crates frequently breaking in 1 hit</li>
-            <li>updated readme</li>
-            <li>fixed credits</li>
-            <li>added offworld ambiance</li>
-            <li>better save icons</li>
-        </ul>
+			<hr class="minor">
 
-        <hr class="minor">
-        
-        <h3 id="ver-1-0-0">1.0.0 (6/2/2022)</h3>
-        <ul>
-            <li> everything </li>
-        </ul>
+			<h3 id="ver-1-2-0">1.2.0 (6/23/2022)</h3>
+			<ul>
+				<li>added option to change your color</li>
+				<li>added more secret levels</li>
+				<li>better save icons</li>
+				<li>made some portals in levels one time use, making them points of no return</li>
+				<li>fixed being able to push locks out of the way by walking into them</li>
+				<li>made archer telegraph a bit more clear</li>
+				<li>slightly improved the credits</li>
+			</ul>
+
+			<h3 id="ver-1-1-0">1.1.0 (6/5/2022)</h3>
+			<ul>
+				<li>fixed metal crates frequently breaking in 1 hit</li>
+				<li>updated readme</li>
+				<li>fixed credits</li>
+				<li>added offworld ambiance</li>
+				<li>better save icons</li>
+			</ul>
+
+			<hr class="minor">
+
+			<h3 id="ver-1-0-0">1.0.0 (6/2/2022)</h3>
+			<ul>
+				<li> everything </li>
+			</ul>
 	</div>
 </body>
 
