@@ -19,8 +19,12 @@ PENETRATES = 2
 RANGE = 300
 SPAWN_SOUND = ExtResource( 3 )
 SPEED = 310
+VELOCITY_ARMOR = 1
+ONHIT_SPEED_MULTIPLIER = 0.8
 RECOIL = 5
 VELOCITY_INHERITENCE = 0.0
+ROTATION_OFFSET = 0.0
+SPAWN_OFFSET = 16.0
 
 [node name="entity_sprite" parent="." index="0"]
 material = SubResource( 3 )
@@ -35,9 +39,9 @@ shape = SubResource( 2 )
 
 [node name="light" type="Light2D" parent="." index="5"]
 texture = ExtResource( 5 )
-texture_scale = 0.08
+texture_scale = 0.3
 color = Color( 0.533333, 0.956863, 0.866667, 1 )
-energy = 0.8
+energy = 0.7
 script = ExtResource( 4 )
 
 [editable path="entity_sprite"]

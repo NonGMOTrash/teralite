@@ -101,11 +101,11 @@ func _ready() -> void:
 	else:
 		match AMBIENT_LIGHTING:
 			TYPES.NONE, TYPES.AUTUMN:
-				ambient_lighting.color = Color(1, 1, 1)
+				ambient_lighting.color = Color.white
 			TYPES.UNDERGROUND:
-				ambient_lighting.color = Color(0.6, 0.6, 0.6)
+				ambient_lighting.color = Color(0.55, 0.55, 0.8)
 			TYPES.WASTELAND:
-				ambient_lighting.color = Color(1, 1, 0.7)
+				ambient_lighting.color = Color(1.4, 0.9, 0.7)
 			TYPES.OFFWORLD:
 				ambient_lighting.color = Color(1.0, 0.72, 0.9)
 			TYPES.SITE:

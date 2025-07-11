@@ -48,7 +48,6 @@ anims/energy_burst = SubResource( 1 )
 [node name="light" type="Light2D" parent="." index="2"]
 position = Vector2( 18, 0 )
 texture = ExtResource( 4 )
-texture_scale = 0.2
-color = Color( 0.337255, 0.917647, 0.768627, 1 )
-energy = 2.0
+texture_scale = 0.4
+color = Color( 0.619608, 1, 0.901961, 1 )
 script = ExtResource( 3 )

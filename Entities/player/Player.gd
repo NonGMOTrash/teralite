@@ -44,6 +44,7 @@ onready var health_bar = $healthBar
 onready var sound_player = $foot_stepper
 onready var held_item = $held_item
 onready var damage_pause_cooldown := $damage_pause_cooldown
+onready var light: LightSource = $LightSource
 
 var force_death_msg := false
 var can_dash := true
@@ -77,6 +78,15 @@ func _ready():
 	if global.settings["use_color"]:
 		sprite.texture = SPRITE_CUSTOM
 		sprite.self_modulate = global.settings["player_color"]
+	
+	# refs.level doesn't seem to work in hubs for some reason
+	var level: Node = get_tree().current_scene
+	match level.AMBIENT_LIGHTING:
+		level.TYPES.AUTUMN: light.energy *= 0
+		level.TYPES.UNDERGROUND: light.energy *= 1
+		level.TYPES.WASTELAND: light.energy *= 0.3
+		level.TYPES.OFFWORLD: light.energy *= 0.7
+		level.TYPES.SITE: light.energy *= 0.2
 
 func _physics_process(_delta):
 	if global.get_look_pos().x > global_position.x:

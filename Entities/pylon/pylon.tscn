@@ -60,7 +60,6 @@ offset = Vector2( 0, -1 )
 [node name="brain" parent="." instance=ExtResource( 6 )]
 TOLERANCE = 20
 SIGHT_RANGE = 160.0
-COMMUNICATES = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -92,10 +91,9 @@ margin_bottom = -6.49886
 
 [node name="light" type="Light2D" parent="."]
 texture = ExtResource( 13 )
-texture_scale = 0.23
+texture_scale = 0.3
 color = Color( 0.592157, 0.92549, 0.854902, 1 )
-energy = 1.5
-mode = 2
+energy = 0.7
 script = ExtResource( 14 )
 
 [connection signal="timeout" from="delay" to="." method="_on_delay_timeout"]

@@ -21,6 +21,27 @@ func _ready():
 	refs.ysort.call_deferred("add_child", smoke)
 	yield(smoke, "ready")
 	smoke.global_position = global_position
+	
+	yield(get_tree().create_timer(0.1), "timeout")
+	var fire_count: int = 0
+	for entity in detection.get_overlapping_bodies():
+		if entity.truName == "fire":
+			fire_count += 1
+		else:
+			continue
+		
+		if (
+			fire_count > 5 and 
+			entity.light.enabled and 
+			entity != self and
+			global_position.distance_to(entity.global_position) < 16
+		):
+			
+			light.enabled = false
+			entity.light.energy += light.energy
+			if entity.light.energy > 2:
+				entity.light.energy = 2
+			break
 
 func death():
 	animation.play("death")

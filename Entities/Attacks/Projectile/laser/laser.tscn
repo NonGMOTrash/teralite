@@ -37,9 +37,13 @@ truName = "laser"
 PENETRATES = 2
 RANGE = 999
 SPAWN_SOUND = ExtResource( 5 )
+SPEED = 250
+VELOCITY_ARMOR = 1
 ONHIT_SPEED_MULTIPLIER = 1.0
 RECOIL = 0
 VELOCITY_INHERITENCE = 0.0
+ROTATION_OFFSET = 0.0
+SPAWN_OFFSET = 16.0
 
 [node name="entity_sprite" parent="." index="0"]
 self_modulate = Color( 10, 10, 10, 1 )
@@ -63,8 +67,9 @@ autoplay = "New Anim"
 [node name="light" type="Light2D" parent="." index="6"]
 scale = Vector2( 2, 1 )
 texture = ExtResource( 4 )
-texture_scale = 0.03
+texture_scale = 0.2
 color = Color( 0.203922, 0.894118, 0.831373, 1 )
+energy = 0.6
 script = ExtResource( 3 )
 
 [editable path="entity_sprite"]

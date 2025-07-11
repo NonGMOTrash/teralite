@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Entities/universe_heart/universe_eye.gd" type="Script" id=1]
 [ext_resource path="res://Components/hitbox/hitbox.tscn" type="PackedScene" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://Entities/universe_heart/pull.wav" type="AudioStream" id=12]
 [ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Effects/LightSource.gd" type="Script" id=15]
+[ext_resource path="res://Effects/light.png" type="Texture" id=16]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -186,17 +188,17 @@ radius = 93.0
 [node name="universe_eye" type="KinematicBody2D"]
 z_index = 999
 script = ExtResource( 1 )
-ACCELERATION = 3
+ACCELERATION = 8
 SLOWDOWN = 3
-TOP_SPEED = 55
+TOP_SPEED = 60
 FORCE_MULT = 0.01
 FLYING = true
 truName = "universe_eye"
 faction = "my_entity"
 
 [node name="stats" parent="." instance=ExtResource( 6 )]
-MAX_HEALTH = 300
-HEALTH = 300
+MAX_HEALTH = 350
+HEALTH = 350
 DAMAGE = 0
 TRUE_DAMAGE = 27
 poison_modifier = -99.0
@@ -263,6 +265,15 @@ WALLHACKS = true
 [node name="movement_lobe" parent="brain" instance=ExtResource( 14 )]
 SMART_SLOWDOWN = false
 MOVEMENT_EFFICIENCY = 5
+
+[node name="LightSource" type="Light2D" parent="."]
+texture = ExtResource( 16 )
+texture_scale = 4.5
+color = Color( 0.992157, 0, 0, 1 )
+energy = 0.5
+mode = 2
+script = ExtResource( 15 )
+CUSTOM_PROPERTIES = true
 
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
 

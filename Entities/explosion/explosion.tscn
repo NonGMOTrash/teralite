@@ -151,7 +151,6 @@ AUTO_SET_PHYSICAL = false
 
 [node name="light" type="Light2D" parent="."]
 texture = ExtResource( 8 )
-texture_scale = 0.8
 color = Color( 1, 0.752941, 0.588235, 1 )
 mode = 2
 shadow_enabled = true

@@ -212,8 +212,8 @@ anims/open = SubResource( 22 )
 
 [node name="light" type="Light2D" parent="."]
 texture = ExtResource( 3 )
+texture_scale = 0.7
 color = Color( 0.698039, 0.878431, 0.964706, 1 )
-energy = 1.1
 mode = 2
 script = ExtResource( 4 )
 

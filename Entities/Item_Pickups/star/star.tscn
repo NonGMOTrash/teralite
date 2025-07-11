@@ -108,8 +108,7 @@ anims/shine = SubResource( 2 )
 
 [node name="light" type="Light2D" parent="." index="5"]
 texture = ExtResource( 5 )
-texture_scale = 0.3
-color = Color( 0.945098, 0.85098, 0.564706, 1 )
-energy = 1.3
-mode = 2
+texture_scale = 0.4
+color = Color( 0.941176, 0.792157, 0.329412, 1 )
+energy = 0.8
 script = ExtResource( 6 )

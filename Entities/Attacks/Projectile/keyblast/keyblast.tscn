@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Entities/Attacks/Projectile/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Attacks/Projectile/keyblast/keyblast.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Entities/Attacks/Projectile/keyblast/keyblast_collide.wav" type="AudioStream" id=5]
 [ext_resource path="res://Entities/Attacks/Projectile/keyblast/keyblast_zap.wav" type="AudioStream" id=6]
 [ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Effects/LightSource.gd" type="Script" id=8]
 
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
@@ -63,6 +64,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 4, 5, 6, 7, 8, 9, 10 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("LightSource:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.264 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
 
 [node name="keyblast" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -79,7 +92,10 @@ BLOCKED_SOUND = ExtResource( 6 )
 SPEED = 70
 VELOCITY_ARMOR = 99
 ONHIT_SPEED_MULTIPLIER = 0.0
+RECOIL = 50
 VELOCITY_INHERITENCE = 0.0
+ROTATION_OFFSET = 0.0
+SPAWN_OFFSET = 16.0
 
 [node name="entity_sprite" parent="." index="0"]
 material = SubResource( 2 )
@@ -121,6 +137,12 @@ autoplay = "animation"
 anims/RESET = SubResource( 3 )
 anims/animation = SubResource( 4 )
 anims/impact = SubResource( 5 )
+
+[node name="LightSource" type="Light2D" parent="." index="7"]
+texture_scale = 0.7
+color = Color( 0.564706, 1, 0.960784, 1 )
+energy = 0.7
+script = ExtResource( 8 )
 
 [connection signal="body_entered" from="projectile_field" to="." method="_on_projectile_field_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

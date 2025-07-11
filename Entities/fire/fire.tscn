@@ -58,7 +58,7 @@ tracks/2/keys = {
 } ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("light:modulate")
+tracks/3/path = NodePath("light:color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -67,7 +67,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 0.956863, 0.533333, 0.227451, 1 ), Color( 0.956863, 0.533333, 0.227451, 0 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -124,7 +124,7 @@ anims/death = SubResource( 3 )
 anims/fire = SubResource( 4 )
 
 [node name="fuel" type="Timer" parent="."]
-wait_time = 2.5
+wait_time = 3.8
 one_shot = true
 autostart = true
 __meta__ = {
@@ -153,12 +153,13 @@ MODE = 2
 
 [node name="light" type="Light2D" parent="."]
 texture = ExtResource( 8 )
-color = Color( 0.956863, 0.537255, 0.368627, 1 )
-energy = 2.0
-mode = 2
+texture_scale = 0.5
+color = Color( 0.956863, 0.533333, 0.227451, 1 )
+energy = 0.5
 shadow_enabled = true
 shadow_buffer_size = 512
 script = ExtResource( 9 )
+CUSTOM_PROPERTIES = true
 
 [connection signal="tree_exited" from="." to="." method="_on_fire_tree_exited"]
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

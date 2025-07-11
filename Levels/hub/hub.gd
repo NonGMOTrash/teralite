@@ -17,6 +17,7 @@ onready var particles: Particles2D = $particle_anchor/particles
 onready var timer: Timer = $Timer
 onready var ambient_lighting: CanvasModulate = $ambient_lighting
 
+
 func _ready() -> void:
 	refs.update_ref("level", self)
 	refs.update_ref("canvas_layer", $CanvasLayer)
@@ -36,7 +37,9 @@ func _ready() -> void:
 	if player == null: 
 		push_warning("could not find player")
 	else:
-		var pos = global.player_hub_pos.get(LETTER)
+		var pos: Vector2
+		if global.player_hub_pos is Dictionary && global.player_hub_pos.has(LETTER):
+			pos = global.player_hub_pos[LETTER]
 		if pos != null and pos != Vector2.ZERO:
 			player.global_position = global.player_hub_pos[LETTER]
 	

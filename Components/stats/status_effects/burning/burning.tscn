@@ -15,9 +15,9 @@ spread_time = 1.5
 
 [node name="light" type="Light2D" parent="." index="3"]
 texture = ExtResource( 3 )
-color = Color( 0.976471, 0.396078, 0.168627, 1 )
-energy = 2.0
-mode = 2
+texture_scale = 0.5
+color = Color( 0.968627, 0.678431, 0.537255, 1 )
+energy = 0.5
 shadow_enabled = true
 shadow_buffer_size = 512
 script = ExtResource( 4 )

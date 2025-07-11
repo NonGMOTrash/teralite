@@ -246,9 +246,9 @@ __meta__ = {
 
 [node name="LightSource" type="Light2D" parent="orange_portal"]
 texture = ExtResource( 10 )
-texture_scale = 0.2
+texture_scale = 0.8
 color = Color( 0.905882, 0.505882, 0.188235, 1 )
-energy = 1.1
+energy = 0.4
 script = ExtResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

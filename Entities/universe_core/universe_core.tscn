@@ -493,7 +493,6 @@ faction = "offworld"
 eye_shaking = true
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
-MAX_HEALTH = 750
 HEALTH = 750
 DEFENCE = 3
 DAMAGE = 0
@@ -643,8 +642,8 @@ AUTO_PLAY = false
 [node name="LightSource" type="Light2D" parent="."]
 position = Vector2( 0, -15.749 )
 texture = ExtResource( 20 )
-texture_scale = 0.4
-color = Color( 0.513726, 0.960784, 0.917647, 1 )
+texture_scale = 2.0
+color = Color( 0.8, 0.992157, 0.972549, 1 )
 mode = 2
 script = ExtResource( 19 )
 
