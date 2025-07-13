@@ -14,6 +14,7 @@ script = ExtResource( 3 )
 truName = "white_armor"
 type = 1
 pickup_sound = SubResource( 1 )
+ITEM_TEXTURE = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )

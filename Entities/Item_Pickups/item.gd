@@ -12,6 +12,7 @@ export var thinker: PackedScene
 export var pickup_sound: AudioStream
 export(bool) var player_only := true
 export var ITEM_PICKUP_EFFECT: PackedScene
+export var ITEM_TEXTURE: Texture # only used for passive items (dumb)
 var SOURCE: Entity
 var times_used: int = 0
 var the_body = null
@@ -94,6 +95,7 @@ func _on_Area2D_body_entered(body: Node) -> void:
 				velocity = global_position.direction_to(global_position + Vector2(rand_range(-1, 1), rand_range(-1, 1))) * 125
 				set_physics_process(true)
 				return
+			refs.item_bar.replace_icon(x, ITEM_TEXTURE)
 			
 			body.inventory[x] = truName
 			if thinker != null:

@@ -75,7 +75,7 @@ func _ready() -> void:
 			old_ambiance.free()
 	
 	var ambiance = Global_Sound.new()
-	ambiance.volume_db = 0.2
+	ambiance.volume_db = 0.4
 	ambiance.name = "ambiance"
 	ambiance.SCENE_PERSIST = true
 	ambiance.autoplay = true

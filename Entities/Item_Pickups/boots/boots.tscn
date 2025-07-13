@@ -9,6 +9,7 @@ script = ExtResource( 2 )
 INANIMATE = false
 truName = "boots"
 type = 1
+ITEM_TEXTURE = ExtResource( 3 )
 top_speed_boost = 20
 acceleration_boost = 300
 slowdown_boost = 200

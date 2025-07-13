@@ -49,6 +49,5 @@ anims/animation = SubResource( 1 )
 [node name="light" type="Light2D" parent="." index="2"]
 texture = ExtResource( 3 )
 texture_scale = 0.8
-energy = 1.3
-mode = 2
+energy = 0.7
 script = ExtResource( 4 )

@@ -79,7 +79,7 @@ tracks/0/keys = {
 collision_layer = 2
 script = ExtResource( 1 )
 ACCELERATION = 200
-TOP_SPEED = 75
+TOP_SPEED = 65
 truName = "archer"
 faction = "blue_kingdom"
 PROJECTILE = ExtResource( 6 )
@@ -165,6 +165,8 @@ anims/stand = SubResource( 4 )
 anims/walk = SubResource( 5 )
 
 [node name="foot_stepper" parent="." instance=ExtResource( 17 )]
+CONSTANT_RATE = true
+VOLUME_ADJUST = 0.0
 
 [node name="entity_effects" parent="." instance=ExtResource( 5 )]
 death_type = 3

@@ -31,6 +31,7 @@ self_modulate = Color( 1, 1, 1, 0.392157 )
 shape = SubResource( 1 )
 
 [node name="Node2D" type="Node2D" parent="."]
+light_mask = 0
 z_index = 4096
 __meta__ = {
 "_edit_lock_": true

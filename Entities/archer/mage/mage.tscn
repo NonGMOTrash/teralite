@@ -34,7 +34,6 @@ tracks/0/keys = {
 [node name="mage" instance=ExtResource( 1 )]
 ACCELERATION = 220
 SLOWDOWN = 600
-TOP_SPEED = 68
 FORCE_MULT = 1.02
 truName = "mage"
 PROJECTILE = ExtResource( 2 )
