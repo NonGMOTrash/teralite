@@ -110,5 +110,5 @@ anims/shine = SubResource( 2 )
 texture = ExtResource( 5 )
 texture_scale = 0.4
 color = Color( 0.941176, 0.792157, 0.329412, 1 )
-energy = 0.8
+energy = 0.65
 script = ExtResource( 6 )

@@ -256,7 +256,7 @@ thing = ExtResource( 8 )
 position = Vector2( 524, 1006 )
 LEVEL = "dream"
 DISPLAY_NAME = "a dream"
-CUSTOM_SCENE_PATH = "res://Levels/dream.tscn"
+CUSTOM_SCENE_PATH = "res://Levels/dream/dream.tscn"
 SET_HUB_POS = false
 
 [editable path="YSort/WorldTiles"]

@@ -88,6 +88,7 @@ func _ready() -> void:
 	ambiance.bus = "ambiance"
 	
 	match AMBIANCE:
+		TYPES.NONE: pass
 		TYPES.AUTUMN: ambiance.stream = load("res://Levels/level/forest_ambiance.ogg")
 		TYPES.UNDERGROUND: ambiance.stream = load("res://Levels/level/cave_ambiance.ogg")
 		TYPES.WASTELAND: ambiance.stream = load("res://Levels/level/wasteland_ambience.ogg")

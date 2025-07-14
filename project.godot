@@ -106,6 +106,7 @@ boot_splash/image="res://UI/splashscreen.png"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://UI/Icons/teralite_logo_big.png"
+config/macos_native_icon="res://UI/Icons/teralite_icns.icns"
 config/windows_native_icon="res://UI/Icons/teralite_ico.ico"
 
 [audio]

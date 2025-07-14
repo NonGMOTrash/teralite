@@ -13,7 +13,10 @@ func _ready():
 		stats.get_parent().add_child(particles)
 
 func triggered():
-	stats.change_health(0, -1, "bleed")
+	if entity.truName == "player" && (stats.HEALTH + stats.BONUS_HEALTH) == 1:
+		stats.add_status_effect("slowness", 1.0, 1.5)
+	else:
+		stats.change_health(0, -1, "bleed")
 
 func depleted():
 	if particles == null:

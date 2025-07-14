@@ -7,9 +7,6 @@ export(MODES) var MODE = MODES.ONESHOT
 export var SCENE_PERSIST = false
 export(bool) var AUTO_PLAY = true
 
-func _init() -> void:
-	autoplay = AUTO_PLAY
-
 func _ready() -> void:
 	autoplay = AUTO_PLAY
 	
