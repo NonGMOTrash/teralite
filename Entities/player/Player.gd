@@ -1,7 +1,5 @@
 extends Entity
 
-const SPRITE_NORM = preload("res://Entities/player/player.png")
-const SPRITE_NORM_BACK = preload("res://Entities/player/player_back.png")
 const SPRITE_CUSTOM = preload("res://Entities/player/player_custom.png")
 const SPRITE_CUSTOM_BACK = preload("res://Entities/player/player_custom_back.png")
 const CURSOR_EMPTY = preload("res://UI/cursors/cursor_empty.png")
@@ -48,6 +46,7 @@ onready var light: LightSource = $LightSource
 
 var force_death_msg := false
 var can_dash := true
+var use_custom_sprite: bool = global.settings["use_color"]
 
 func _on_player_tree_entered() -> void:
 	if name == "player":
@@ -76,7 +75,8 @@ func _ready():
 	swapped_item(null)
 	
 	if global.settings["use_color"]:
-		sprite.texture = SPRITE_CUSTOM
+		sprite.front_texture = SPRITE_CUSTOM
+		sprite.back_texture = SPRITE_CUSTOM_BACK
 		sprite.self_modulate = global.settings["player_color"]
 	
 	# refs.level doesn't seem to work in hubs for some reason

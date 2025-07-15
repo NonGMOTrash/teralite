@@ -26,6 +26,7 @@ func _ready():
 func _input(_event: InputEvent):
 	var player: Entity = refs.player
 	if (
+		is_instance_valid(player) and 
 		global.settings["hide_bar"] == true and
 		player.inventory[0] == null and
 		player.inventory[1] == null and
