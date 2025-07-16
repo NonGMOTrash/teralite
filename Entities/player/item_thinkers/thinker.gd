@@ -258,11 +258,13 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouse:
 		accurate_mouse_pos = global.get_look_pos()
 	
+	if global.selection != slot:
+		unselected()
+	
 	if not Input.is_action_pressed("drop_item"):
 		if get_tree().current_scene.LEVEL_TYPE == 1:
 			return
 		
-		unselected()
 		if ITEM_BAR_TEXTURE != null:
 			refs.item_bar.replace_icon(slot, ITEM_BAR_TEXTURE)
 		else:
