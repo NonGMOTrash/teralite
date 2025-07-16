@@ -36,6 +36,7 @@ func selected():
 	)
 
 func unselected():
+	.unselected()
 	reload.stop()
 
 func primary():

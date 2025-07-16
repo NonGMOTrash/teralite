@@ -120,6 +120,7 @@ refs="*res://Misc/refs.gd"
 
 [debug]
 
+settings/crash_handler/message="uh oh bad things happened. please report"
 gdscript/warnings/unassigned_variable=false
 gdscript/warnings/unused_argument=false
 gdscript/warnings/function_may_yield=false

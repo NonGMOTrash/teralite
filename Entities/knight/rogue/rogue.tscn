@@ -69,11 +69,6 @@ WANDER_TIME = 0.6
 WANDER_OFFSET = 0.1
 WANDER_RANGE = 150.0
 MOVEMENT_EFFICIENCY = 22
-general_springs = {
-"friendly": "",
-"hostile": "spring",
-"neutral": ""
-}
 
 [node name="spring" parent="brain/movement_lobe" index="4"]
 DISTANCE = 8

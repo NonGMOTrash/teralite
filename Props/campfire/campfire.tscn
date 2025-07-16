@@ -22,6 +22,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("light:texture_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 0.5, 2 ),
+"update": 0,
+"values": [ 1.0, 1.08, 1.0 ]
+}
 
 [node name="campfire" type="Node2D"]
 script = ExtResource( 2 )
@@ -29,7 +41,7 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 4
-frame = 2
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "New Anim"

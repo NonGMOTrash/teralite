@@ -166,6 +166,8 @@ anims/stand = SubResource( 4 )
 anims/walk = SubResource( 5 )
 
 [node name="foot_stepper" parent="." instance=ExtResource( 13 )]
+CONSTANT_RATE = true
+VOLUME_ADJUST = 0.0
 
 [node name="entity_effects" parent="." instance=ExtResource( 14 )]
 
@@ -175,6 +177,11 @@ TARGETING = 1
 [node name="sprite" parent="held_item/anchor" index="0"]
 texture = ExtResource( 16 )
 hframes = 1
+
+[node name="light" parent="held_item/anchor" index="1"]
+texture_scale = 0.3
+color = Color( 0.572549, 0.956863, 0.521569, 1 )
+energy = 0.5
 
 [node name="cooldown" type="Timer" parent="."]
 wait_time = 0.14

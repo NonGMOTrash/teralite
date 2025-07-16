@@ -37,6 +37,7 @@ func selected():
 		)
 
 func unselected():
+	.unselected()
 	state = IDLE
 	charge.stop()
 	player.components["held_item"].animation.stop()

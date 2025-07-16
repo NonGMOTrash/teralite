@@ -2,7 +2,7 @@ extends "res://Entities/knight/knight.gd"
 
 const SWIPE = preload("res://Entities/Attacks/Melee/swipe/swipe.tscn")
 
-func attack():
+func attack(finished_animation):
 	var closest_target = brain.get_closest_target()
 	var target_pos = Vector2.ZERO
 	if not closest_target is String: 

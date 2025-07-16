@@ -22,6 +22,7 @@ onready var entity = get_parent()
 onready var sprite = $anchor/sprite
 onready var anchor = $anchor
 onready var animation: AnimationPlayer = $AnimationPlayer
+onready var light: LightSource = $anchor/light
 
 signal cant_rotate
 
@@ -45,14 +46,6 @@ func _ready():
 			OS.alert("held_item could not be bound to parent because parent isn't 2D","error")
 		else:
 			source = entity
-# annoying
-#			if TARGETING == TT.INPUT_VECTOR or TARGETING == TT.BRAIN_TARGET and not entity is Entity:
-#
-#				push_error("held_item could not be bound to source because it's not an KinematicBody2D")
-#				OS.alert("held_item could not be source bound because source is not KinematicBody2D", "error")
-#			elif TARGETING == TT.BRAIN_TARGET and source.components["brain"] == null:
-#				push_error("held_item could not be bound to source because they have no brain")
-#				OS.alert("held_item could not be bound to source because they have no brain", "error")
 
 func _physics_process(_delta: float) -> void:
 	if TARGETING != TT.MANUAL and visible == true:

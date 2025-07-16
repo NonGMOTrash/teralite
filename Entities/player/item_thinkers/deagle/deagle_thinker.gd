@@ -49,6 +49,7 @@ func selected():
 	)
 
 func unselected():
+	.unselected()
 	reload.stop()
 	var camera: Camera2D = refs.camera
 	camera.distance_ratio = camera.DEFAULT_DISTANCE_RATIO

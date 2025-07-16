@@ -1,9 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Entities/watcher_lock/watcher_lock.gd" type="Script" id=1]
 [ext_resource path="res://Entities/watcher_lock/watcher_lock.png" type="Texture" id=2]
-[ext_resource path="res://Components/brain/brain.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Components/sound_player/sound/sound.gd" type="Script" id=4]
 [ext_resource path="res://Components/sound_player/sound_player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Components/sound_player/sound/sound.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Entities/watcher_lock/watcher_lock_rise.wav" type="AudioStream" id=7]
@@ -53,29 +51,20 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath(".:state")
+tracks/3/path = NodePath("Sprite:z_index")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0, 0.14 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Sprite:z_index")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.14 ),
 "transitions": PoolRealArray( 1e+06, 1 ),
 "update": 1,
 "values": [ -1, 0 ]
 }
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 500.0
 
 [node name="watcher_lock" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -101,14 +90,8 @@ disabled = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/rise = SubResource( 2 )
 
-[node name="brain" parent="." instance=ExtResource( 3 )]
-TOLERANCE = 20
-SIGHT_RANGE = 300.0
-MAX_TARGETS = 1
-SIGHT_EFFECTS = false
-BLACKLIST = [ "player", "watcher_lock" ]
-
 [node name="sound_player" parent="." instance=ExtResource( 5 )]
+FREE_WHEN_EMPTY = false
 
 [node name="rise" parent="sound_player" instance=ExtResource( 6 )]
 stream = ExtResource( 7 )
@@ -116,13 +99,20 @@ bus = "Master"
 MODE = 1
 AUTO_PLAY = false
 
-[node name="lower" type="AudioStreamPlayer2D" parent="sound_player"]
+[node name="lower" parent="sound_player" instance=ExtResource( 6 )]
 stream = ExtResource( 8 )
-script = ExtResource( 4 )
+bus = "Master"
 MODE = 1
 AUTO_PLAY = false
 
 [node name="cooldown" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="think" from="brain" to="." method="_on_brain_think"]
+[node name="detection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]

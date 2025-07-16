@@ -79,4 +79,5 @@ func selected():
 	_update_held_item()
 
 func unselected():
+	.unselected()
 	reload.stop()

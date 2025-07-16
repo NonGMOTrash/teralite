@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Components/held_item/held_item.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Item_Pickups/bow/bow_charging.png" type="Texture" id=2]
 [ext_resource path="res://Entities/Item_Pickups/xbow/xbow.png" type="Texture" id=3]
+[ext_resource path="res://Effects/LightSource.gd" type="Script" id=4]
+[ext_resource path="res://Effects/light.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=7]
 length = 0.001
@@ -250,6 +252,12 @@ position = Vector2( 8, 0 )
 [node name="sprite" type="Sprite" parent="anchor"]
 texture = ExtResource( 2 )
 hframes = 3
+
+[node name="light" type="Light2D" parent="anchor"]
+enabled = false
+texture = ExtResource( 5 )
+energy = 0.0
+script = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 7 )

@@ -63,6 +63,7 @@ func _physics_process(_delta: float) -> void:
 	)
 
 func unselected():
+	.unselected()
 	player.components["held_item"].modulate = Color.white
 
 func _on_cooldown_timer_timeout() -> void:

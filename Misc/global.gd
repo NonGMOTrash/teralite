@@ -267,7 +267,7 @@ func _ready():
 	var result: int = discord.create(937572744365748334,
 			Discord.CreateFlags.NO_REQUIRE_DISCORD)
 	if result != Discord.Result.OK:
-		print("failed to initialize discord core")
+		print("failed to initialize discord core (is discord open?)")
 		discord = null
 	else:
 		print("discord initialized")

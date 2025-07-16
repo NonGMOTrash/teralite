@@ -38,4 +38,5 @@ func _on_cooldown_timeout() -> void:
 	)
 
 func unselected():
+	.unselected()
 	cooldown.stop()

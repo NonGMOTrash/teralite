@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Entities/Attacks/Melee/Melee.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Components/held_item/saber_spin.png" type="Texture" id=2]
 [ext_resource path="res://Entities/Attacks/Melee/beam/saber_whoosh.wav" type="AudioStream" id=3]
 [ext_resource path="res://Entities/Attacks/Melee/beam/saber_hit.wav" type="AudioStream" id=4]
+[ext_resource path="res://Effects/LightSource.gd" type="Script" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -69,8 +70,10 @@ SPAWN_SOUND = ExtResource( 3 )
 HIT_SOUND = ExtResource( 4 )
 KILL_SOUND = ExtResource( 4 )
 KILLED_SOUND = ExtResource( 4 )
+HOLDS = false
 RECOIL = 10
 ANIMATION_NEVER_BACKWARDS = true
+HIDE_HELD_ITEM = true
 REVERSE_HELD_ITEM = false
 
 [node name="entity_sprite" parent="." index="0"]
@@ -92,6 +95,12 @@ shape = SubResource( 4 )
 anims/RESET = SubResource( 5 )
 anims/animation = SubResource( 2 )
 anims/animation_reverse = SubResource( 3 )
+
+[node name="LightSource" type="Light2D" parent="." index="5"]
+texture_scale = 0.3
+color = Color( 0.309804, 0.878431, 0.243137, 1 )
+energy = 0.5
+script = ExtResource( 5 )
 
 [connection signal="hit" from="hitbox" to="." method="_on_hitbox_hit"]
 

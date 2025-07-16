@@ -41,6 +41,7 @@ func _on_Timer_timeout() -> void:
 	delete()
 
 func unselected():
+	.unselected()
 	timer.stop()
 	ready = true
 	sound_player.skip_sound("use")

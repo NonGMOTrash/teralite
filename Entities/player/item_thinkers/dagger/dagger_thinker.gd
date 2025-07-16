@@ -1,7 +1,7 @@
 extends Thinker
 
 export(float) var attack_cooldown := 0.55
-export(float) var dash_cooldown := 1.2
+export(float) var dash_cooldown := 1.08
 export(float) var dash_startup := 0.2
 export(float) var dash_distance := 100.0
 export(float) var dash_damage := 1

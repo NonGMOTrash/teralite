@@ -24,8 +24,12 @@ func _on_action_lobe_action(action, target) -> void:
 	
 	queued_action = action
 	match action:
-		"shoot": held_item.sprite.texture = BLASTER_TEXTURE
-		"melee": held_item.sprite.texture = SABER_TEXTURE
+		"shoot":
+			held_item.sprite.texture = BLASTER_TEXTURE
+			held_item.light.enabled = false
+		"melee":
+			held_item.sprite.texture = SABER_TEXTURE
+			held_item.light.enabled = true
 	current_target = target
 	current_target_path = target.get_path()
 	if not held_item.animation.is_playing():

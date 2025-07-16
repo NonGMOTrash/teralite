@@ -13,6 +13,10 @@ export(Vector2) var HELD_ITEM_OFFSET
 export(Vector2) var HELD_ITEM_ANCHOR = Vector2(8, 0)
 export(float, -360.0, 360.0) var HELD_ITEM_ROTATION := 0.0
 export(Vector2) var HELD_ITEM_FRAMES := Vector2(1, 1)
+export var HELD_ITEM_GLOW: bool = false
+export var HELD_ITEM_GLOW_ENERGY: float = 0.5
+export var HELD_ITEM_GLOW_SIZE: float = 0.3
+export(Color) var HELD_ITEM_GLOW_COLOR: Color = Color.white
 export(bool) var RESET_HELD_ITEM_FLIPPING := true
 export var ITEM_BAR_TEXTURE: Texture
 
@@ -66,7 +70,6 @@ func _ready():
 	if player.get_name() == "player":
 		global.emit_signal("update_item_bar", player.inventory)
 
-# PROBLEM_NOTE: this is kinda bad because the name implies a return value
 func _check_if_selected(swapped_item) -> void:
 	if global.selection == slot:
 		selected()
@@ -188,7 +191,8 @@ func selected():
 		player.components["held_item"].animation.play(EQUIP_ANIM)
 
 func unselected():
-	pass
+	if player.inventory[global.selection] == null:
+		player.components["held_item"].light.enabled = false
 
 func pre_input_action():
 	pass
@@ -219,6 +223,12 @@ func _update_held_item():
 		held_item.sprite.offset = -HELD_ITEM_OFFSET
 		held_item.sprite.rotation_degrees = -HELD_ITEM_ROTATION
 	held_item.anchor.position = HELD_ITEM_ANCHOR
+	
+	var light: LightSource = held_item.light
+	light.enabled = HELD_ITEM_GLOW
+	light.energy = HELD_ITEM_GLOW_ENERGY
+	light.texture_scale = HELD_ITEM_GLOW_SIZE
+	light.color = HELD_ITEM_GLOW_COLOR
 
 func _update_cursor_on_unpause():
 	if player.inventory[global.selection] == my_item.to_lower():
@@ -252,6 +262,7 @@ func _input(event: InputEvent) -> void:
 		if get_tree().current_scene.LEVEL_TYPE == 1:
 			return
 		
+		unselected()
 		if ITEM_BAR_TEXTURE != null:
 			refs.item_bar.replace_icon(slot, ITEM_BAR_TEXTURE)
 		else:
