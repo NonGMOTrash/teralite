@@ -62,10 +62,19 @@ vframes = 1
 frame = 0
 
 [node name="lightshaft" type="Sprite" parent="YSort/Autumn/Area2D" index="2"]
-self_modulate = Color( 1, 1, 1, 0.470588 )
+self_modulate = Color( 1, 1, 1, 0.196078 )
 z_index = 100
 texture = ExtResource( 6 )
 offset = Vector2( 0, -45 )
+
+[node name="LightSource_2" type="Light2D" parent="YSort/Autumn" index="2"]
+scale = Vector2( 1, 2 )
+texture = ExtResource( 8 )
+texture_scale = 0.25
+color = Color( 0.94902, 0.968627, 0.380392, 1 )
+energy = 1.5
+mode = 2
+script = ExtResource( 9 )
 
 [node name="Wasteland" parent="YSort" index="4" instance=ExtResource( 4 )]
 position = Vector2( 448, 333 )
@@ -108,7 +117,7 @@ script = ExtResource( 9 )
 [node name="Fortified" parent="YSort" index="5" instance=ExtResource( 4 )]
 position = Vector2( 619, 109 )
 LEVEL = "Fortified"
-DISPLAY_NAME = "welcome to the underground"
+DISPLAY_NAME = "fortified"
 STAR_REQUIREMENT = 10
 
 [node name="Vault" parent="YSort" index="6" instance=ExtResource( 4 )]

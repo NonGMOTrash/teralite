@@ -1,5 +1,7 @@
 extends Entity
 
+const SPRITE_NORM = preload("res://Entities/player/player.png")
+const SPRITE_NORM_BACK = preload("res://Entities/player/player_back.png")
 const SPRITE_CUSTOM = preload("res://Entities/player/player_custom.png")
 const SPRITE_CUSTOM_BACK = preload("res://Entities/player/player_custom_back.png")
 const CURSOR_EMPTY = preload("res://UI/cursors/cursor_empty.png")
@@ -43,6 +45,7 @@ onready var sound_player = $foot_stepper
 onready var held_item = $held_item
 onready var damage_pause_cooldown := $damage_pause_cooldown
 onready var light: LightSource = $LightSource
+onready var controller := $playerControlled
 
 var force_death_msg := false
 var can_dash := true

@@ -79,6 +79,8 @@ func start():
 		global.level_deaths[lvl] = 0
 	
 	Input.set_custom_mouse_cursor(NORMAL_CURSOR, CURSOR_ARROW, Vector2(0, 0))
+	
+	$area/footer/proceed.grab_focus()
 
 func _input(_event):
 	if Input.is_action_just_pressed("interact") and visible == true:

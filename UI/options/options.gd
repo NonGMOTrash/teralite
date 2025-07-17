@@ -123,6 +123,9 @@ func _on_tabs_tab_changed(tab: int) -> void:
 		2: perfection.grab_focus()
 
 func _input(event: InputEvent) -> void:
+	if !visible:
+		return
+	
 	var next_tab: int = tabs.current_tab
 	
 	if Input.is_action_just_pressed("ui_focus_next"):

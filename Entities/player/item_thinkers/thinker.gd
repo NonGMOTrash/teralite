@@ -1,8 +1,9 @@
 extends Node
 class_name Thinker
 
-enum ACTION_MODES { SEMI, AUTOMATIC, RELEASE, HOLD }
+const DEFAULT_CURSOR_TEXTURE := preload("res://UI/cursors/cursor_empty.png")
 
+enum ACTION_MODES { SEMI, AUTOMATIC, RELEASE, HOLD }
 enum CURSOR_MODES { POINTER, CENTERED }
 
 export var auto_ready_check = true
@@ -69,6 +70,9 @@ func _ready():
 	
 	if player.get_name() == "player":
 		global.emit_signal("update_item_bar", player.inventory)
+	
+	if CURSOR == null:
+		CURSOR = DEFAULT_CURSOR_TEXTURE
 
 func _check_if_selected(swapped_item) -> void:
 	if global.selection == slot:
@@ -160,6 +164,8 @@ func update_cursor(texture: Texture = null):
 		CURSOR_MODES.CENTERED: hotspot = Vector2(13.5, 13.5)
 		CURSOR_MODES.POINTER: hotspot = Vector2.ZERO
 	Input.set_custom_mouse_cursor(CURSOR, Input.CURSOR_ARROW, hotspot)
+	
+	refs.player.controller.controller_crosshair.texture = CURSOR
 
 func selected():
 	global.emit_signal("update_item_info", # set a condition to null to hide it

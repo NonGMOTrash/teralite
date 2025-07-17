@@ -28,7 +28,7 @@ const DEV_TIMES := {
 	"Duo": 19.1,
 	"Spiral": 12.0,
 	"Shadow": 21.7,
-	"Fortified": 24.3,
+	"Fortified": 39.9,
 	"Vault": 14.2,
 	"Pathway": 7.0,
 	"Slice": 12.5,
@@ -90,7 +90,8 @@ var the_seed = "downwardspiral"
 # PROBLEM_NOTE: this should probably be in the player
 var selection = 0 # for the item bar (0 1 2)
 var joy_connected := false
-var look_pos := Vector2.RIGHT
+var controller_look_direction := Vector2.RIGHT
+var last_look_pos: Vector2
 var FOV = Vector2(1, 1)
 var previous_scene = null # PROBLEM_NOTE i don't think this is used
 var player_hub_pos = {"A":Vector2(0, 0)}
@@ -245,8 +246,8 @@ func _ready():
 			v = v + " hotfix #" + str(ver_hotfix)
 	if OS.is_debug_build() == true:
 		v = v + " (debug)"
-	prints("teralite", v)
-	prints("seed:", the_seed, "(%s)" % the_seed.hash())
+	prints("game version", v)
+	prints("RNG seed:", the_seed, "(hashed: %s)" % the_seed.hash())
 	
 	Input.set_custom_mouse_cursor(CURSOR_NORMAL, Input.CURSOR_ARROW, Vector2(0, 0))
 	Input.set_custom_mouse_cursor(CURSOR_IBEAM, Input.CURSOR_IBEAM, Vector2(22.5, 22.5))
@@ -289,6 +290,9 @@ func _on_joy_connection_changed(_device_id, connected):
 
 # PROBLEM_NOTE: should probably move this to the Entity class
 func get_relation(me:Entity, other:Entity) -> String:
+	if !is_instance_valid(me):
+		return ""
+	
 	if me.marked_enemies.has(other):
 		return "hostile"
 	if me.marked_allies.has(other):
@@ -659,7 +663,9 @@ func sec_to_time(time: float, round_seconds := false) -> String:
 
 func get_look_pos() -> Vector2:
 	if joy_connected:
-		return look_pos
+		if is_instance_valid(refs.player):
+			last_look_pos = refs.player.global_position + controller_look_direction*45
+		return last_look_pos
 	else:
 		return get_tree().current_scene.get_global_mouse_position()
 
