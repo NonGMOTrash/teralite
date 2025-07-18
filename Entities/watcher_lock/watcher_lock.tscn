@@ -8,7 +8,7 @@
 [ext_resource path="res://Entities/watcher_lock/watcher_lock_lower.wav" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 4 )
+extents = Vector2( 8, 5 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "rise"

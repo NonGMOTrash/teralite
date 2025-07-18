@@ -10,6 +10,7 @@ export var VELOCITY_INHERITENCE := 0.5
 export(float, -360, 360) var ROTATION_OFFSET := 0.0
 export(float, 0, 32) var SPAWN_OFFSET := 16
 
+var spawned_in_wall := false
 var has_left_src := false
 var original_force_mult
 var distance_traveled := 0.0
@@ -25,6 +26,9 @@ func _init():
 	FORCE_MULT = 0.0
 
 func _ready():
+	if spawned_in_wall == true:
+		collided()
+	
 	old_pos = global_position
 	
 	# recoil
@@ -56,14 +60,13 @@ func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	if collision_mask == 0:
 		return
 	var ss = SOURCE.get_world_2d().direct_space_state
-	var raycast = ss.intersect_ray(start_pos,SOURCE.global_position.move_toward(start_pos, 4), [], 1)
+	var raycast = ss.intersect_ray(start_pos, SOURCE.global_position, [], 1)
+	print(raycast)
 	if raycast and not raycast.collider == SOURCE:
-		yield(self, "ready")
-		yield(sound, "ready")
-		collided()
+		spawned_in_wall = true
 
 func _physics_process(delta):
-	if visible == false: return
+	if visible == false: return # idk why this is here... but im scared to remove it
 	
 	# acceleration
 	velocity = velocity.move_toward(Vector2.ZERO, -(ACCELERATION) * delta)

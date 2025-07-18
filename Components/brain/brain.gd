@@ -149,7 +149,7 @@ func los_check(target, ignore_low_barriers := true) -> bool:
 	while (
 		vision and
 		vision.collider is Entity and
-		vision.collider.get_collision_mask_bit(1) == false and # prevents sight through crates
+		vision.collider.get_collision_layer_bit(0) == false and # prevents sight through crates
 		vision.collider.global_position != target_pos
 	):
 		excludes.append(vision.collider)

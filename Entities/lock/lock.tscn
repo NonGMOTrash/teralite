@@ -7,7 +7,7 @@
 [ext_resource path="res://Entities/lock/lock_open.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 4 )
+extents = Vector2( 8, 5 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "unlock"
@@ -81,6 +81,7 @@ collision_layer = 3
 script = ExtResource( 1 )
 STATIC = true
 FORCE_MULT = 0.0
+INANIMATE = true
 truName = "lock"
 
 [node name="Sprite" type="Sprite" parent="."]
