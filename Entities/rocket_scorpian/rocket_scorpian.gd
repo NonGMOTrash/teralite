@@ -46,6 +46,16 @@ func _on_action_lobe_action(action, target) -> void:
 	attacking = true
 	TOP_SPEED = 0
 	animation.play(action)
+	if target.truName == "player":
+		var length: float = 0.5
+		# it works like this bc most attacks trigger in the middle of the animation
+		# rather than at the end, so current_animation_length is inaccurate
+		match action:
+			"attack": length = 0.6
+			"burrow": length = 1.1
+			"poison": length = 0.6
+			"shoot": length = 0.6
+		get_tree().create_timer(length-0.5).connect("timeout", self, "attack_flash")
 
 func lunge():
 	var target: Entity = get_node_or_null(target_path)

@@ -41,6 +41,9 @@ func _on_action_lobe_action(action, target) -> void:
 		targit_path = target.get_path()
 		for _i in warnings:
 			held_item.animation.queue("warn")
+		if targit.truName == "player":
+			var length: float = held_item.animation.get_animation("warn").length * warnings
+			get_tree().create_timer(length-0.5).connect("timeout", self, "attack_flash")
 	elif action == "dash":
 		var dash_direction := global_position.direction_to(target.global_position).normalized()
 		apply_force(dash_direction * dash_strength)

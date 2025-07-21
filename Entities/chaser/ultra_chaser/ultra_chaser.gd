@@ -8,7 +8,17 @@ onready var animation := $AnimationPlayer
 export(int) var dash_power
 
 func _on_action_lobe_action(action, target) -> void:
-	var dash_direction = Vector2.ZERO
+	if action == "fdash":
+		attack_flash()
+		get_tree().create_timer(0.5).connect("timeout", self, "action", ["fdash", target])
+	else:
+		action("sdash", target)
+
+func action(action: String = "fdash", target: Entity = null) -> void:
+	if !is_instance_valid(target):
+		return
+	
+	var dash_direction := Vector2.ZERO
 	
 	if action == "fdash":
 		dash_direction = global_position.direction_to(target.global_position)

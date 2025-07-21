@@ -34,7 +34,7 @@ SLOWDOWN = 600
 TOP_SPEED = 85
 FORCE_MULT = 1.0
 truName = "ultra_chaser"
-dash_power = 140
+dash_power = 150
 
 [node name="stats" parent="." index="0"]
 MAX_HEALTH = 5
@@ -53,32 +53,29 @@ anims/dash = SubResource( 2 )
 [node name="brain" parent="." index="7"]
 SIGHT_RANGE = 120.0
 
-[node name="movement_lobe" parent="brain" index="2"]
-general_springs = {
-"friendly": "",
-"hostile": "default_spring",
-"neutral": ""
-}
-
 [node name="action_lobe" parent="brain" index="4" instance=ExtResource( 5 )]
 PATIENCE = 0.08
 
 [node name="fdash" parent="brain/action_lobe" index="2" instance=ExtResource( 4 )]
-best_distance = 16
-distance_weight = 4
-health_weight = 1
-COOLDOWN = 0.75
+best_distance = 20
+COOLDOWN = 0.25
 GLOBAL_COOLDOWN = true
 
 [node name="sdash" parent="brain/action_lobe" index="3" instance=ExtResource( 4 )]
 tag = 1
 best_distance = 50
+distance_weight = 4
+health_weight = 1
 COOLDOWN = 0.75
 GLOBAL_COOLDOWN = true
 
 [node name="healthBar" parent="." index="9"]
 margin_left = -10.2629
 margin_right = 10.7371
+
+[node name="foot_stepper" parent="." index="11"]
+CONSTANT_RATE = true
+VOLUME_ADJUST = 0.0
 
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 

@@ -36,13 +36,14 @@ func _on_action_lobe_action(action, target) -> void:
 	
 	match action:
 		"spawn_explosions":
-			for _i in range(24):
+			for _i in range(12):
 				var opening := OPENING.instance()
 				opening.entity = EXPLOSION
 				opening.symbol_frame = 4
 				opening.delay = 1.2
+				opening.attack_flash = true
 				while true:
-					opening.position = get_opening_pos(500, 46)
+					opening.position = get_opening_pos(325, 46)
 					if !is_instance_valid(refs.player):
 						break
 					elif opening.position.distance_to(refs.player.global_position) < 210:
@@ -52,6 +53,7 @@ func _on_action_lobe_action(action, target) -> void:
 			var opening := OPENING.instance()
 			opening.entity = BULLET
 			opening.symbol_frame = 3
+			opening.attack_flash = true
 			opening.position = stored_target.global_position
 			var dist2tar: float = opening.position.distance_to(stored_target.global_position)
 			var tries: int = 10
@@ -85,6 +87,7 @@ func _on_action_lobe_action(action, target) -> void:
 				opening.position = line_pos + ((i+1) * 24 * pdirection)
 				opening.target_pos = opening.position + (-direction * 100)
 				opening.delay = 0.8
+				opening.attack_flash = true
 				refs.ysort.add_child(opening)
 			for i in range(8):
 				var opening := OPENING.instance()
@@ -93,6 +96,7 @@ func _on_action_lobe_action(action, target) -> void:
 				opening.position = line_pos - ((i+1) * 24 * pdirection)
 				opening.target_pos = opening.position + (-direction * 100)
 				opening.delay = 0.8
+				opening.attack_flash = true
 				refs.ysort.add_child(opening)
 		"spawn_monarchs":
 			var opening_a := OPENING.instance()
@@ -114,6 +118,7 @@ func _on_action_lobe_action(action, target) -> void:
 				opening.eight_directional = true
 				opening.times = 8
 				opening.rate = 999
+				opening.attack_flash = true
 				refs.ysort.add_child(opening)
 		"spawn_rogues":
 			for _i in range(9):

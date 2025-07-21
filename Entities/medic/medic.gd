@@ -26,7 +26,8 @@ func _on_action_lobe_action(action, target) -> void:
 	
 	if action == "heal":
 		heart.global_position = global_position.move_toward(target.global_position, 16)
-		heart.apply_force(global_position.direction_to(target.global_position).normalized() * throw_strength)
+		var target_pos: Vector2 = target.global_position + target.velocity * 8 / global_position.distance_to(target.global_position)
+		heart.apply_force(global_position.direction_to(target_pos).normalized() * throw_strength)
 	elif action == "heal_self":
 		heart.global_position = global_position
 

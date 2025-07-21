@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Components/held_item/held_item.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Item_Pickups/bow/bow_charging.png" type="Texture" id=2]
 [ext_resource path="res://Entities/Item_Pickups/xbow/xbow.png" type="Texture" id=3]
 [ext_resource path="res://Effects/LightSource.gd" type="Script" id=4]
 [ext_resource path="res://Effects/light.png" type="Texture" id=5]
+[ext_resource path="res://Entities/Item_Pickups/sword/sword.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=7]
 length = 0.001
@@ -44,6 +45,9 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+
+[sub_resource type="Animation" id=8]
+resource_name = "attack_sword"
 
 [sub_resource type="Animation" id=1]
 resource_name = "bow_charge"
@@ -109,6 +113,35 @@ tracks/4/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=13]
+resource_name = "cast"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("anchor/sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.25, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -6 ), Vector2( 3, -8 ), Vector2( 5, -6 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("anchor/sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -30.0, 30.0, 0.0 ]
+}
+
 [sub_resource type="Animation" id=2]
 resource_name = "load"
 tracks/0/type = "value"
@@ -150,8 +183,10 @@ tracks/0/keys = {
 "values": [ 0.0, 360.0 ]
 }
 
-[sub_resource type="Animation" id=4]
-length = 0.6
+[sub_resource type="Animation" id=9]
+resource_name = "startup_swing"
+length = 0.5
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("anchor/sprite:position")
 tracks/0/interp = 1
@@ -159,10 +194,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.5, 0.6 ),
-"transitions": PoolRealArray( 2, 1, 0.5, 2, 1 ),
+"times": PoolRealArray( 0, 0.05, 0.35, 0.45, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -10 ), Vector2( 6, 0 ), Vector2( 0, 10 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( -3, -10 ), Vector2( -4, -10 ), Vector2( 1.5, -7 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("anchor/sprite:rotation_degrees")
@@ -171,10 +206,73 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.5, 0.6 ),
-"transitions": PoolRealArray( 2, 1, 0.5, 2, 1 ),
+"times": PoolRealArray( 0, 0.05, 0.35, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, -50.0, 90.0, 50.0, 0.0 ]
+"values": [ 0.0, -100.0, -110.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "startup_swing_flip"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("anchor/sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.35, 0.45, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -3, 10 ), Vector2( -4, 10 ), Vector2( 1.5, 7 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("anchor/sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.35, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 100.0, 110.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "startup_thrust"
+length = 0.5
+step = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("anchor/sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.45, 0.498, 0.5 ),
+"transitions": PoolRealArray( 1, 0.5, 1, 4, 14.42 ),
+"update": 0,
+"values": [ Vector2( 0, 4 ), Vector2( -8, 4 ), Vector2( -10, 4 ), Vector2( 0, 4 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "startup_thrust_flip"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("anchor/sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.45, 0.499, 0.5 ),
+"transitions": PoolRealArray( 1, 0.5, 1, 4, 34.2967 ),
+"update": 0,
+"values": [ Vector2( 0, -4 ), Vector2( -8, -4 ), Vector2( -10, -4 ), Vector2( 0, -4 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -250,8 +348,7 @@ script = ExtResource( 1 )
 position = Vector2( 8, 0 )
 
 [node name="sprite" type="Sprite" parent="anchor"]
-texture = ExtResource( 2 )
-hframes = 3
+texture = ExtResource( 6 )
 
 [node name="light" type="Light2D" parent="anchor"]
 enabled = false
@@ -261,10 +358,15 @@ script = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 7 )
+anims/attack_sword = SubResource( 8 )
 anims/bow_charge = SubResource( 1 )
+anims/cast = SubResource( 13 )
 anims/load = SubResource( 2 )
 anims/spin = SubResource( 3 )
-anims/test_slash = SubResource( 4 )
+anims/startup_swing = SubResource( 9 )
+anims/startup_swing_flip = SubResource( 10 )
+anims/startup_thrust = SubResource( 11 )
+anims/startup_thrust_flip = SubResource( 12 )
 anims/warn = SubResource( 5 )
 anims/xbow_charge = SubResource( 6 )
 

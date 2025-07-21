@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Entities/soldier/soldier.gd" type="Script" id=1]
 [ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=2]
@@ -10,8 +10,6 @@
 [ext_resource path="res://Components/hurtbox/hurtbox.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Components/brain/movement_lobe/spring/spring.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=15]
@@ -70,12 +68,12 @@ collision_layer = 2
 script = ExtResource( 1 )
 truName = "soldier"
 faction = "army"
-warnings = 1
+warnings = 2
 shoot_cooldown = 0.11
 
 [node name="stats" parent="." instance=ExtResource( 7 )]
-MAX_HEALTH = 5
-HEALTH = 5
+MAX_HEALTH = 7
+HEALTH = 7
 DEFENCE = 1
 DAMAGE = 2
 TRUE_DAMAGE = 1
@@ -125,20 +123,13 @@ DISTANCE = 60
 [node name="memory_lobe" parent="brain" instance=ExtResource( 13 )]
 MEMORY_TIME = 7.0
 
-[node name="action_lobe" parent="brain" instance=ExtResource( 11 )]
-PATIENCE = 0.2
-ACTION_WEIGHTING = 0.0
-ACTION_DEWEIGHTING = 0.0
-
-[node name="shoot" parent="brain/action_lobe" instance=ExtResource( 12 )]
-best_distance = 60
-COOLDOWN = 0.25
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/stand = SubResource( 4 )
 anims/walk = SubResource( 5 )
 
 [node name="foot_stepper" parent="." instance=ExtResource( 15 )]
+CONSTANT_RATE = true
+VOLUME_ADJUST = 0.0
 
 [node name="entity_effects" parent="." instance=ExtResource( 14 )]
 death_type = 7
@@ -148,7 +139,6 @@ TARGETING = 1
 
 [node name="sprite" parent="held_item/anchor" index="0"]
 texture = ExtResource( 16 )
-hframes = 1
 
 [node name="shoot_timer" type="Timer" parent="."]
 wait_time = 0.11
@@ -159,11 +149,9 @@ thing = ExtResource( 21 )
 spawn_on_free = false
 rotation_mode = 2
 effect_inherit_flipping = false
-custom_properties = {
-}
 
+[connection signal="found_target" from="brain" to="." method="_on_brain_found_target"]
 [connection signal="lost_target" from="brain" to="." method="_on_brain_lost_target"]
-[connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 [connection signal="animation_finished" from="held_item/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]
 

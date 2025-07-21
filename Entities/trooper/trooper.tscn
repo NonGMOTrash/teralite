@@ -90,7 +90,7 @@ collision_layer = 2
 script = ExtResource( 1 )
 truName = "trooper"
 faction = "offworld"
-warnings = 1
+warnings = 2
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
 MAX_HEALTH = 5
@@ -147,18 +147,19 @@ FARZONE = 50
 USE_FARZONE = true
 
 [node name="action_lobe" parent="brain" instance=ExtResource( 12 )]
-PATIENCE = 0.1
 ACTION_WEIGHTING = 0.0
 ACTION_DEWEIGHTING = 0.0
 
 [node name="shoot" parent="brain/action_lobe" instance=ExtResource( 10 )]
 best_distance = 80
 COOLDOWN = 0.5
+GLOBAL_COOLDOWN = true
 
 [node name="melee" parent="brain/action_lobe" instance=ExtResource( 10 )]
-best_distance = 16
+best_distance = 18
 default_score = 0.0
-COOLDOWN = 1.0
+COOLDOWN = 0.5
+GLOBAL_COOLDOWN = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 6 )
@@ -176,7 +177,6 @@ TARGETING = 1
 
 [node name="sprite" parent="held_item/anchor" index="0"]
 texture = ExtResource( 16 )
-hframes = 1
 
 [node name="light" parent="held_item/anchor" index="1"]
 texture_scale = 0.3

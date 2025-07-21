@@ -26,7 +26,7 @@ func primary():
 		magic.setup(player, global.get_look_pos())
 		refs.ysort.add_child(magic)
 		shoot_cooldown.start()
-		held_item.animation.play("test_slash", -1, -2, true)
+		held_item.animation.play("cast", -1, -2, true)
 
 func secondary():
 	if shine_cooldown.time_left == 0:

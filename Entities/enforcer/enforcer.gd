@@ -19,6 +19,10 @@ func _on_action_lobe_action(action, target) -> void:
 	for i in warnings:
 		held_item.animation.queue("warn")
 	stored_target = target
+	
+	if target.truName == "player":
+		var length: float = held_item.animation.get_animation("warn").length * warnings
+		get_tree().create_timer(length-0.5).connect("timeout", self, "attack_flash")
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if held_item.animation.get_queue().size() == 0 and is_instance_valid(stored_target):

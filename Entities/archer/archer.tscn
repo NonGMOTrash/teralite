@@ -84,7 +84,6 @@ truName = "archer"
 faction = "blue_kingdom"
 PROJECTILE = ExtResource( 6 )
 warn_animation = "bow_charge"
-warn_times = 1
 
 [node name="stats" parent="." instance=ExtResource( 9 )]
 MAX_HEALTH = 2
@@ -93,7 +92,6 @@ DAMAGE = 2
 
 [node name="sprite" parent="." instance=ExtResource( 2 )]
 material = SubResource( 1 )
-scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 3 )
 hframes = 4
 auto_flip_mode = 2
@@ -151,13 +149,11 @@ USE_DEADZONE = true
 MEMORY_TIME = 6.5
 
 [node name="action_lobe" parent="brain" instance=ExtResource( 13 )]
-PATIENCE = 0.3
+PATIENCE = 0.1
 
-[node name="action" parent="brain/action_lobe" instance=ExtResource( 16 )]
-best_distance = 50
-distance_weight = 4
-health_weight = 1
-COOLDOWN = 1.6
+[node name="shoot" parent="brain/action_lobe" instance=ExtResource( 16 )]
+best_distance = 0
+COOLDOWN = 1.65
 GLOBAL_COOLDOWN = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

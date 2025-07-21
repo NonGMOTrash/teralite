@@ -101,7 +101,7 @@ func _on_Melee_tree_exiting() -> void:
 	
 	# make held item visible agian
 	if get_node_or_null(SOURCE_PATH) != null and SOURCE.is_queued_for_deletion() == false:
-		var held_item = SOURCE.components["held_item"]
+		var held_item: Node2D = SOURCE.components["held_item"]
 		if held_item != null:
 			if REVERSE_HELD_ITEM == true:
 				held_item.reversed = not held_item.reversed

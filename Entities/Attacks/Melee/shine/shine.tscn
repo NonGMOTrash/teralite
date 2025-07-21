@@ -23,6 +23,7 @@ radius = 16.0
 resource_local_to_scene = true
 resource_name = "animation"
 length = 0.3
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("entity_sprite:frame")
 tracks/0/interp = 1
@@ -34,6 +35,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("light:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.2, 0.5, 0.8, 0.0 ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -72,6 +85,7 @@ SPAWN_SOUND = ExtResource( 4 )
 HIT_SOUND = ExtResource( 5 )
 KILL_SOUND = ExtResource( 5 )
 BLOCKED_SOUND = ExtResource( 5 )
+HOLDS = false
 RECOIL = 0
 ANIMATION_NEVER_BACKWARDS = true
 HIDE_HELD_ITEM = false
@@ -82,6 +96,7 @@ REFLECTION_MULT = 1.1
 material = SubResource( 6 )
 texture = ExtResource( 3 )
 hframes = 5
+frame = 4
 
 [node name="hitbox" parent="." index="1"]
 COOLDOWN = 0.3
@@ -119,10 +134,9 @@ anims/hold = SubResource( 5 )
 
 [node name="light" type="Light2D" parent="." index="6"]
 texture = ExtResource( 8 )
-texture_scale = 0.35
-color = Color( 0.470588, 0.819608, 0.827451, 1 )
-energy = 1.5
-mode = 2
+texture_scale = 0.4
+color = Color( 0.541176, 0.866667, 0.87451, 1 )
+energy = 0.8
 script = ExtResource( 9 )
 
 [connection signal="area_entered" from="reflection" to="." method="_on_reflection_area_entered"]

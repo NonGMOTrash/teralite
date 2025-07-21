@@ -493,6 +493,7 @@ faction = "offworld"
 eye_shaking = true
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
+MAX_HEALTH = 750
 HEALTH = 750
 DEFENCE = 3
 DAMAGE = 0

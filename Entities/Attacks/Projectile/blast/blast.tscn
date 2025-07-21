@@ -41,7 +41,7 @@ shape = SubResource( 2 )
 texture = ExtResource( 5 )
 texture_scale = 0.3
 color = Color( 0.533333, 0.956863, 0.866667, 1 )
-energy = 0.7
+energy = 0.45
 script = ExtResource( 4 )
 
 [editable path="entity_sprite"]

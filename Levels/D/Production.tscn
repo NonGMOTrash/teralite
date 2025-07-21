@@ -29,7 +29,7 @@ bake_navigation = true
 
 [node name="entity_spawns" parent="YSort" index="1"]
 bake_navigation = true
-tile_data = PoolIntArray( 3211321, 88, 0, 3211326, 88, 0, 3211331, 88, 0, 3342396, 88, 0, 3342400, 88, 0, 3670076, 88, 0, 3670080, 88, 0, 3866681, 88, 0, 3866686, 88, 0, 3866691, 88, 0, 4128817, 85, 0, 4194350, 54, 0, 4194351, 54, 0, 4194352, 54, 0, 4259886, 54, 0, 4259887, 2, 0, 4259888, 54, 0, 4325423, 54, 0, 4325424, 54, 0 )
+tile_data = PoolIntArray( 2883660, 85, 0, 3211321, 88, 0, 3211326, 88, 0, 3211331, 88, 0, 3342396, 88, 0, 3342400, 88, 0, 3539002, 88, 0, 3539010, 88, 0, 3670076, 88, 0, 3670080, 88, 0, 3866681, 88, 0, 3866686, 88, 0, 3866691, 88, 0, 4128817, 78, 0, 4194351, 54, 0, 4259886, 54, 0, 4259887, 2, 0, 4259888, 54, 0, 4325423, 54, 0 )
 
 [node name="world_tiles" parent="YSort" index="2"]
 bake_navigation = true
@@ -45,8 +45,8 @@ bake_navigation = true
 position = Vector2( 504.331, 437.779 )
 
 [node name="stats" parent="YSort/fabricator" index="0"]
-MAX_HEALTH = 100
-HEALTH = 100
+MAX_HEALTH = 200
+HEALTH = 200
 
 [node name="entity_sprite" parent="YSort/fabricator" index="1"]
 material = SubResource( 1 )

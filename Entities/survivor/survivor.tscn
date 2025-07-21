@@ -68,15 +68,15 @@ script = ExtResource( 1 )
 ACCELERATION = 600
 truName = "survivor"
 faction = "solo"
-warnings = 1
+warnings = 2
 PROJECTILE = ExtResource( 19 )
 regen_duration = 15.0
 regen_level = 1.0
 heal_animation_speed = 1.0
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
-MAX_HEALTH = 5
-HEALTH = 5
+MAX_HEALTH = 7
+HEALTH = 7
 DAMAGE = 0
 
 [node name="entity_sprite" parent="." instance=ExtResource( 3 )]
@@ -139,16 +139,16 @@ MEMORY_TIME = 6.0
 [node name="action_lobe" parent="brain" instance=ExtResource( 17 )]
 
 [node name="shoot" parent="brain/action_lobe" instance=ExtResource( 18 )]
-best_distance = 25
-COOLDOWN = 0.5
+best_distance = 30
+COOLDOWN = 0.6
 GLOBAL_COOLDOWN = true
 
 [node name="medkit" parent="brain/action_lobe" instance=ExtResource( 18 )]
 target_type = 2
 tag = 1
-distance_weight = 0
-best_health_percent = 25
-health_weight = 9
+best_distance = 130
+distance_weight = 2
+health_weight = 3
 default_score = 0.1
 COOLDOWN = 5.0
 
@@ -157,7 +157,8 @@ anims/stand = SubResource( 4 )
 anims/walk = SubResource( 5 )
 
 [node name="foot_stepper" parent="." instance=ExtResource( 13 )]
-FREE_WHEN_EMPTY = false
+CONSTANT_RATE = true
+VOLUME_ADJUST = 0.0
 
 [node name="entity_effects" parent="." instance=ExtResource( 12 )]
 death_type = 1
@@ -167,7 +168,6 @@ TARGETING = 1
 
 [node name="sprite" parent="held_item/anchor" index="0"]
 texture = ExtResource( 6 )
-hframes = 1
 
 [node name="friend_timer" type="Timer" parent="."]
 wait_time = 0.05

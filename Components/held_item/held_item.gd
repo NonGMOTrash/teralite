@@ -12,9 +12,9 @@ export var PARENT_BOND = true # for testing only, should be true in 99% of cases
 export var DEFAULT_HFRAMES = 1
 export var DEFAULT_VFRAMES = 1
 
-var target_pos = Vector2.ZERO
+var target_pos := Vector2.ZERO
 var source
-var reversed = false
+var reversed: bool = false
 var original_offset: Vector2
 var original_texture: Texture
 
@@ -48,7 +48,7 @@ func _ready():
 			source = entity
 
 func _physics_process(_delta: float) -> void:
-	if TARGETING != TT.MANUAL and visible == true:
+	if TARGETING != TT.MANUAL and visible:
 		if TARGETING == TT.CURSOR:
 			target_pos = global.get_look_pos()
 		
@@ -66,8 +66,8 @@ func _physics_process(_delta: float) -> void:
 					target_pos = closet_target.global_position
 				else:
 					emit_signal("cant_rotate")
-	
-	rotation_degrees = rad2deg(global_position.direction_to(target_pos).angle())
+		
+		rotation_degrees = rad2deg(global_position.direction_to(target_pos).angle())
 	
 	if facing_left():
 		sprite.flip_v = true

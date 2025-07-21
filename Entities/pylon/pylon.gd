@@ -10,6 +10,7 @@ var saved_pos := Vector2.ZERO
 
 func _on_brain_found_target() -> void:
 	delay.start()
+	get_tree().create_timer(delay.wait_time-0.5).connect("timeout", self, "attack_flash")
 
 func _on_delay_timeout() -> void:
 	var pos: Vector2
@@ -29,3 +30,4 @@ func _on_delay_timeout() -> void:
 	
 	if brain.get_closest_target() is Entity:
 		delay.start()
+		get_tree().create_timer(delay.wait_time-0.5).connect("timeout", self, "attack_flash")

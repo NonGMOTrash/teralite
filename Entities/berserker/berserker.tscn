@@ -146,7 +146,7 @@ COOLDOWN = 0.7
 GLOBAL_COOLDOWN = true
 
 [node name="dash" parent="brain/action_lobe" instance=ExtResource( 9 )]
-tag = 2
+tag = 1
 best_distance = 64
 COOLDOWN = 2.0
 
@@ -155,6 +155,8 @@ anims/stand = SubResource( 5 )
 anims/walk = SubResource( 6 )
 
 [node name="foot_stepper" parent="." instance=ExtResource( 5 )]
+CONSTANT_RATE = true
+VOLUME_ADJUST = 0.0
 
 [node name="entity_effects" parent="." instance=ExtResource( 11 )]
 death_type = 1
@@ -164,7 +166,6 @@ TARGETING = 1
 
 [node name="sprite" parent="held_item/anchor" index="0"]
 texture = ExtResource( 13 )
-hframes = 1
 
 [node name="muzzle_flash" parent="." instance=ExtResource( 21 )]
 standby_mode = true
@@ -172,8 +173,6 @@ thing = ExtResource( 20 )
 spawn_on_free = false
 rotation_mode = 2
 effect_inherit_flipping = false
-custom_properties = {
-}
 
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 

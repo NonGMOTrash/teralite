@@ -22,9 +22,16 @@ func _physics_process(delta: float) -> void:
 func _on_action_lobe_action(action, target) -> void:
 	stored_target_pos = target.global_position
 	held_item.TARGETING = held_item.TT.MANUAL
-	held_item.animation.play("warn")
+	
+#	if held_item.sprite.flip_v:
+#		held_item.animation.play("startup_thrust_flip")
+#	else:
+#		held_item.animation.play("startup_thrust")
+	get_tree().create_timer(0.5).connect("timeout", self, "attack")
+	if target.truName == "player":
+		attack_flash()
 
-func attack(_finished_animation: String) -> void:
+func attack(_finished_animation: String = "") -> void:
 	var blow_dart: Projectile = BLOW_DART.instance()
 	blow_dart.setup(self, stored_target_pos)
 	blow_dart.global_position = self.global_position

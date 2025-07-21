@@ -37,7 +37,6 @@ SLOWDOWN = 600
 FORCE_MULT = 1.02
 truName = "mage"
 PROJECTILE = ExtResource( 2 )
-warn_animation = "warn"
 
 [node name="stats" parent="." index="0"]
 DAMAGE = 0
@@ -82,7 +81,6 @@ position = Vector2( 6, 0 )
 
 [node name="sprite" parent="held_item/anchor" index="0"]
 texture = ExtResource( 5 )
-hframes = 1
 
 [node name="light" parent="held_item/anchor" index="1"]
 enabled = true

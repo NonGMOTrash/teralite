@@ -35,6 +35,9 @@ func _on_action_lobe_action(action, target) -> void:
 	if not held_item.animation.is_playing():
 		for i in range(0, warnings):
 			held_item.animation.queue("warn")
+	if target.truName == "player":
+		var length: float = held_item.animation.get_animation("warn").length * warnings
+		get_tree().create_timer(length-0.5).connect("timeout", self, "attack_flash")
 
 func _on_cooldown_timeout() -> void:
 	if held_item.animation.current_animation == "warn":

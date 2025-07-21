@@ -34,7 +34,7 @@ TOP_SPEED = 95
 FORCE_MULT = 1.1
 truName = "rogue"
 MELEE = ExtResource( 4 )
-attack_cooldown_time = 1.0
+attack_cooldown_time = 1.1
 
 [node name="stats" parent="." index="0"]
 DEFENCE = 0
@@ -81,7 +81,7 @@ PATIENCE = 0.2
 
 [node name="action" parent="brain/action_lobe" index="2"]
 best_distance = 8
-COOLDOWN = 0.95
+COOLDOWN = 0.9
 
 [node name="healthBar" parent="." index="8"]
 margin_top = -13.6138

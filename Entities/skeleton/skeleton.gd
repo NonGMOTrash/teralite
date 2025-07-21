@@ -49,18 +49,27 @@ func attack(finished_animation):
 	attack_cooldown.start()
 
 func _on_action_lobe_action(action, target) -> void:
-	if attack_cooldown.time_left > 0: return
+	if attack_cooldown.time_left > 0:
+		return
 	elif action == "slash":
 		brain.movement_lobe.general_springs["hostile"] = "close"
 		held_item.sprite.frame = 0
 		held_item.sprite.hframes = 1
 		held_item.sprite.vframes = 1
 		held_item.sprite.texture = SWORD
-		held_item.animation.play("warn")
-		held_item.animation.queue("warn")
-		next_attack = "slash"
+		held_item.sprite.rotation = 0
+		if held_item.sprite.flip_v:
+			held_item.animation.play("startup_swing_flip")
+		else:
+			held_item.animation.play("startup_swing")
 	elif action == "shoot":
 		brain.movement_lobe.general_springs["hostile"] = "far"
 		held_item.animation.play("bow_charge")
-		held_item.animation.queue("warn")
-		next_attack = "shoot"
+		held_item.sprite.rotation = 0
+		held_item.sprite.position = Vector2.ZERO
+	
+	if target.truName == "player":
+		get_tree().create_timer(held_item.animation.current_animation_length-0.5).connect(
+				"timeout", self, "attack_flash")
+	
+	next_attack = action

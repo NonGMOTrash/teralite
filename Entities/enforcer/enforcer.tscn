@@ -54,7 +54,6 @@ TOP_SPEED = 35
 FORCE_MULT = 0.9
 truName = "enforcer"
 faction = "offworld"
-warnings = 1
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
 MAX_HEALTH = 10
@@ -77,6 +76,7 @@ auto_flip_mode = 2
 
 [node name="entity_push" parent="." instance=ExtResource( 5 )]
 visible = false
+strength = 30
 
 [node name="CollisionShape2D" parent="entity_push" index="0"]
 shape = SubResource( 3 )
@@ -123,9 +123,13 @@ general_springs = {
 DISTANCE = 80
 
 [node name="action_lobe" parent="brain" instance=ExtResource( 12 )]
+ACT_ON_ENEMY_SPOTTED = true
+PATIENCE = 0.0
+ACTION_WEIGHTING = 0.0
+ACTION_DEWEIGHTING = 0.0
 
 [node name="shoot" parent="brain/action_lobe" instance=ExtResource( 11 )]
-distance_weight = 0
+best_distance = 50
 COOLDOWN = 1.7
 GLOBAL_COOLDOWN = true
 
@@ -133,6 +137,8 @@ GLOBAL_COOLDOWN = true
 anims/move = SubResource( 4 )
 
 [node name="foot_stepper" parent="." instance=ExtResource( 14 )]
+CONSTANT_RATE = true
+VOLUME_ADJUST = 0.0
 
 [node name="entity_effects" parent="." instance=ExtResource( 13 )]
 death_type = 3
@@ -142,7 +148,6 @@ TARGETING = 1
 
 [node name="sprite" parent="held_item/anchor" index="0"]
 texture = ExtResource( 16 )
-hframes = 1
 
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 [connection signal="animation_finished" from="held_item/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

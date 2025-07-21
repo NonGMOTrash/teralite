@@ -39,7 +39,6 @@ TOP_SPEED = 43
 FORCE_MULT = 0.5
 truName = "warden"
 MELEE = ExtResource( 2 )
-attack_cooldown_time = 2.0
 
 [node name="stats" parent="." index="0"]
 MAX_HEALTH = 4
@@ -66,19 +65,11 @@ position = Vector2( 0, 0 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D" parent="." index="5"]
-visible = false
 position = Vector2( 0, 4 )
 
 [node name="brain" parent="." index="7"]
 TOLERANCE = 5
 SIGHT_RANGE = 100.0
-
-[node name="movement_lobe" parent="brain" index="2"]
-general_springs = {
-"friendly": "",
-"hostile": "spring",
-"neutral": ""
-}
 
 [node name="spring" parent="brain/movement_lobe" index="4"]
 DISTANCE = 30
@@ -86,8 +77,11 @@ DISTANCE = 30
 [node name="memory_lobe" parent="brain" index="3"]
 MEMORY_TIME = 8.0
 
+[node name="action_lobe" parent="brain" index="4"]
+PATIENCE = 0.8
+
 [node name="action" parent="brain/action_lobe" index="2"]
-best_distance = 20
+best_distance = 30
 COOLDOWN = 2.0
 
 [node name="healthBar" parent="." index="8"]

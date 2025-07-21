@@ -350,13 +350,17 @@ infection_modifier = -99.0
 material = SubResource( 1 )
 texture = ExtResource( 4 )
 hframes = 23
-frame = 13
+frame = 17
 auto_flip_mode = 2
+shadow_size = 2
 
 [node name="shadow" parent="entity_sprite" index="0"]
-position = Vector2( 0, 5 )
+position = Vector2( 3, 6 )
 scale = Vector2( 2, 1 )
 texture = ExtResource( 5 )
+
+[node name="color_overlay_a" parent="entity_sprite" index="1"]
+offset = Vector2( 3, 2 )
 
 [node name="entity_push" parent="." instance=ExtResource( 7 )]
 visible = false
@@ -386,6 +390,7 @@ position = Vector2( 1.04056, 0.891906 )
 scale = Vector2( 2.12231, 1.2973 )
 
 [node name="health_bar" parent="." instance=ExtResource( 9 )]
+visible = false
 margin_left = -6.98659
 margin_top = -14.2705
 margin_right = 15.0134

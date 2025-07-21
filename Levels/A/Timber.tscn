@@ -38,6 +38,6 @@ position = Vector2( 480, 385 )
 thing = ExtResource( 2 )
 effect_inherit_flipping = false
 
-[node name="sparkle_particles" parent="YSort/knight" index="14" instance=ExtResource( 5 )]
+[node name="sparkle_particles" parent="YSort/knight" index="13" instance=ExtResource( 5 )]
 
 [editable path="YSort/world_tiles"]

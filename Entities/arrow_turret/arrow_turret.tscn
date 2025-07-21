@@ -19,7 +19,7 @@ resource_local_to_scene = true
 
 [sub_resource type="Animation" id=2]
 resource_name = "custom"
-length = 1.5
+length = 1.2
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("anchor/sprite:frame")
@@ -76,7 +76,7 @@ SLOWDOWN = 200
 FORCE_MULT = 0.2
 truName = "arrow_turret"
 faction = "blue_kingdom"
-charge_speed = 0.6
+charge_speed = 0.4
 
 [node name="stats" parent="." instance=ExtResource( 9 )]
 MAX_HEALTH = 3
@@ -120,7 +120,6 @@ anims/custom = SubResource( 2 )
 TOLERANCE = 20
 SIGHT_RANGE = 170.0
 MAX_TARGETS = 1
-COMMUNICATES = false
 
 [node name="hurtbox" parent="." instance=ExtResource( 7 )]
 KILLED_SOUND = ExtResource( 8 )

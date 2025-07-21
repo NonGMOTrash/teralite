@@ -9,6 +9,7 @@ export var rate: float = 10
 export var delay: float = 2
 export var eight_directional := false
 export var symbol_frame := 0
+export var attack_flash: bool = false
 
 onready var rate_timer: Timer = $rate_timer
 onready var animation: AnimationPlayer = $AnimationPlayer
@@ -24,6 +25,9 @@ func _ready() -> void:
 	rate_timer.wait_time = delay
 	rate_timer.start()
 	symbol.frame = symbol_frame
+	
+	if attack_flash:
+		get_tree().create_timer(delay-0.5).connect("timeout", self, "attack_flash")
 
 func _on_rate_timer_timeout() -> void:
 	if started_spawning == false:

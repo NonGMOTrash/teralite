@@ -17,15 +17,26 @@ onready var brain: Node2D = $brain
 onready var animation: AnimationPlayer = $AnimationPlayer
 onready var muzzle_flash: Node = $muzzle_flash
 
-func _on_action_lobe_action(action, target) -> void:
-	current_target = target
-	current_target_path = target.get_path()
+func _on_brain_found_target():
+	if held_item.animation.is_playing():
+		return
+	
+	if bullets <= 0:
+		held_item.animation.play("load")
+		return
+	
+	current_target = brain.get_closest_target()
+	current_target_path = current_target.get_path()
 	if not shoot_timer.time_left > 0:
 		for i in range(0, warnings):
 			held_item.animation.queue("warn")
+		
+		if current_target.truName == "player":
+			var length: float = held_item.animation.get_animation("warn").length * warnings
+			get_tree().create_timer(length-0.5).connect("timeout", self, "attack_flash")
 
 func _on_shoot_timer_timeout() -> void:
-	if held_item.animation.is_playing():
+	if held_item.animation.get_queue().size() > 0:
 		return
 	
 	var bullet: Projectile = BULLET.instance()

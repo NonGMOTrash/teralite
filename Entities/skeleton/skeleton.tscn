@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Entities/skeleton/skeleton.gd" type="Script" id=1]
 [ext_resource path="res://Components/sleeper/sleeper.tscn" type="PackedScene" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://Components/health_bar/health_bar.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Components/sound_player/foot_stepper/foot_stepper.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Entities/Item_Pickups/sword/sword.png" type="Texture" id=15]
 [ext_resource path="res://Components/held_item/held_item.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Entities/Attacks/Melee/slash/slash.tscn" type="PackedScene" id=18]
@@ -142,17 +141,18 @@ DEADZONE = 64
 USE_DEADZONE = true
 
 [node name="action_lobe" parent="brain" instance=ExtResource( 11 )]
-PATIENCE = 0.1
 ACTION_WEIGHTING = 0.333
 ACTION_DEWEIGHTING = 0.2
 AUTO_ACTION_WEIGHTING = true
 
 [node name="slash" parent="brain/action_lobe" instance=ExtResource( 10 )]
-best_distance = 16
+best_distance = 20
+distance_weight = 8
+best_health_percent = 1
 GLOBAL_COOLDOWN = true
 
 [node name="shoot" parent="brain/action_lobe" instance=ExtResource( 10 )]
-best_distance = 36
+best_distance = 40
 COOLDOWN = 2.1
 GLOBAL_COOLDOWN = true
 
@@ -169,7 +169,8 @@ anims/stand = SubResource( 4 )
 anims/walk = SubResource( 5 )
 
 [node name="foot_stepper" parent="." instance=ExtResource( 14 )]
-FREE_WHEN_EMPTY = false
+CONSTANT_RATE = true
+VOLUME_ADJUST = 0.0
 
 [node name="entity_effects" parent="." instance=ExtResource( 13 )]
 death_effect = false
@@ -177,10 +178,6 @@ death_type = 0
 
 [node name="held_item" parent="." instance=ExtResource( 16 )]
 TARGETING = 1
-
-[node name="sprite" parent="held_item/anchor" index="0"]
-texture = ExtResource( 15 )
-hframes = 1
 
 [node name="spawner" parent="." instance=ExtResource( 22 )]
 standby_mode = true

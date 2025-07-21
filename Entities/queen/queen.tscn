@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Entities/queen/queen.gd" type="Script" id=1]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=2]
@@ -17,7 +17,6 @@
 [ext_resource path="res://Entities/queen/queen.png" type="Texture" id=15]
 [ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Entities/queen/queen_back.png" type="Texture" id=17]
-[ext_resource path="res://Entities/Item_Pickups/sword/sword.png" type="Texture" id=18]
 [ext_resource path="res://Components/held_item/held_item.tscn" type="PackedScene" id=19]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -63,8 +62,8 @@ tracks/0/keys = {
 collision_layer = 2
 script = ExtResource( 1 )
 ACCELERATION = 450
-TOP_SPEED = 75
-FORCE_MULT = 0.86
+TOP_SPEED = 85
+FORCE_MULT = 0.8
 truName = "queen"
 faction = "blue_kingdom"
 shoot_speed = 215.0
@@ -73,8 +72,8 @@ danger_threshold = 4
 potions = 6
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
-MAX_HEALTH = 13
-HEALTH = 13
+MAX_HEALTH = 15
+HEALTH = 15
 DEFENCE = 1
 DAMAGE = 2
 
@@ -121,9 +120,8 @@ entity_springs = {
 }
 
 [node name="attack" parent="brain/movement_lobe" instance=ExtResource( 7 )]
-DISTANCE_MIN = 22
-DISTANCE_MAX = 50
-USE_DISTANCE_RANGE = true
+DISTANCE_MIN = 12
+DISTANCE_MAX = 36
 
 [node name="space" parent="brain/movement_lobe" instance=ExtResource( 7 )]
 DISTANCE_MIN = 100
@@ -138,32 +136,33 @@ DEADZONE = 45
 USE_DEADZONE = true
 
 [node name="action_lobe" parent="brain" instance=ExtResource( 14 )]
-PATIENCE = 0.0
+PATIENCE = 0.05
+ACTION_WEIGHTING = 0.1
 AUTO_ACTION_WEIGHTING = true
 
 [node name="slash" parent="brain/action_lobe" instance=ExtResource( 13 )]
-best_distance = 16
-COOLDOWN = 0.4
+best_distance = 18
+COOLDOWN = 0.45
 GLOBAL_COOLDOWN = true
 
 [node name="shoot" parent="brain/action_lobe" instance=ExtResource( 13 )]
-best_distance = 45
-COOLDOWN = 0.1
+best_distance = 30
+COOLDOWN = 1.0
 GLOBAL_COOLDOWN = true
 
 [node name="snipe" parent="brain/action_lobe" instance=ExtResource( 13 )]
-best_distance = 60
+best_distance = 90
 COOLDOWN = 2.0
 GLOBAL_COOLDOWN = true
 
 [node name="heal" parent="brain/action_lobe" instance=ExtResource( 13 )]
 target_type = 2
 tag = 2
-distance_weight = 0
+best_distance = 100
 best_health_percent = 20
-health_weight = 1
+health_weight = 3
 default_score = 0.0
-COOLDOWN = 7.0
+COOLDOWN = 5.5
 
 [node name="memory_lobe" parent="brain" instance=ExtResource( 16 )]
 MEMORY_TIME = 10.0
@@ -175,7 +174,8 @@ margin_right = 10.5944
 margin_bottom = -8.78223
 
 [node name="foot_stepper" parent="." instance=ExtResource( 11 )]
-FREE_WHEN_EMPTY = false
+CONSTANT_RATE = true
+VOLUME_ADJUST = 0.0
 
 [node name="entity_effects" parent="." instance=ExtResource( 12 )]
 death_type = 6
@@ -187,11 +187,6 @@ anims/walk = SubResource( 4 )
 [node name="held_item" parent="." instance=ExtResource( 19 )]
 TARGETING = 1
 
-[node name="sprite" parent="held_item/anchor" index="0"]
-texture = ExtResource( 18 )
-hframes = 1
-
-[connection signal="health_changed" from="stats" to="." method="_on_stats_health_changed"]
 [connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
 
 [editable path="entity_push"]

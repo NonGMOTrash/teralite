@@ -74,7 +74,21 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.4, 1 ),
 "transitions": PoolRealArray( 99999, 1, 1 ),
 "update": 0,
-"values": [ 0, 540, 0 ]
+"values": [ 0, 1000, 0 ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_flash"
+} ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -121,7 +135,7 @@ cooldown_time = 4.85
 [node name="stats" parent="." instance=ExtResource( 6 )]
 MAX_HEALTH = 24
 HEALTH = 24
-DAMAGE = 3
+DAMAGE = 4
 
 [node name="sprite" parent="." instance=ExtResource( 1 )]
 material = SubResource( 1 )
@@ -159,33 +173,30 @@ THINK_TIME = 0.25
 SIGHT_RANGE = 250.0
 
 [node name="action_lobe" parent="brain" instance=ExtResource( 11 )]
-STARTING_ENERGY = 10
-ENERGY_REGEN = 40.0
-MAX_ENERGY = 100
 PATIENCE = 0.0
 ACTION_WEIGHTING = 1.0
 AUTO_ACTION_WEIGHTING = true
 
 [node name="knight" parent="brain/action_lobe" instance=ExtResource( 7 )]
-best_distance = 0
-COOLDOWN = 0.0
-ENERGY_COST = 55
+best_distance = 16
+COOLDOWN = 3.25
+GLOBAL_COOLDOWN = true
 
 [node name="archer" parent="brain/action_lobe" instance=ExtResource( 7 )]
 best_distance = 60
-COOLDOWN = 0.0
-ENERGY_COST = 25
+COOLDOWN = 4.5
+GLOBAL_COOLDOWN = true
 
 [node name="rogue" parent="brain/action_lobe" instance=ExtResource( 7 )]
-best_distance = 35
-COOLDOWN = 0.0
-ENERGY_COST = 35
+best_distance = 30
+COOLDOWN = 3.0
+GLOBAL_COOLDOWN = true
 
 [node name="slam" parent="brain/action_lobe" instance=ExtResource( 7 )]
-best_distance = 16
-default_score = 0.0
-COOLDOWN = 0.0
-ENERGY_COST = 10
+best_distance = 0
+distance_weight = 2
+health_weight = 1
+COOLDOWN = 1.25
 
 [node name="cooldown" type="Timer" parent="."]
 one_shot = true

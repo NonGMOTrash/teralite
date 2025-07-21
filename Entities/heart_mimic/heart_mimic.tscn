@@ -112,7 +112,7 @@ TOP_SPEED = 90
 FORCE_MULT = 1.2
 INVISIBLE = true
 truName = "heart_mimic"
-faction = "solo"
+faction = "monster"
 
 [node name="detection" type="Area2D" parent="."]
 position = Vector2( 0, 2 )
@@ -168,7 +168,6 @@ shape = SubResource( 5 )
 SIGHT_RANGE = 100.0
 MAX_TARGETS = 3
 SIGHT_EFFECTS = false
-COMMUNICATES = false
 
 [node name="movement_lobe" parent="brain" instance=ExtResource( 8 )]
 IDLE_TIME = 0.25
@@ -197,7 +196,8 @@ margin_bottom = -9.07954
 death_type = 0
 
 [node name="foot_stepper" parent="." instance=ExtResource( 12 )]
-FREE_WHEN_EMPTY = false
+CONSTANT_RATE = true
+VOLUME_ADJUST = 0.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 15 )

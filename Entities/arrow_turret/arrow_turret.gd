@@ -11,6 +11,8 @@ onready var stats = $stats
 
 func _on_brain_found_target() -> void:
 	held_item_animation.play("custom", -1, charge_speed)
+	var length: float = held_item_animation.get_animation("custom").length / charge_speed
+	get_tree().create_timer(length-0.5).connect("timeout", self, "attack_flash")
 
 func shoot():
 	var pos
@@ -27,3 +29,5 @@ func shoot():
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if brain.get_closest_target() is Entity:
 		held_item_animation.play("custom", -1, charge_speed)
+		var length: float = held_item_animation.get_animation("custom").length / charge_speed
+		get_tree().create_timer(length-0.5).connect("timeout", self, "attack_flash")

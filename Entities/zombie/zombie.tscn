@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Entities/zombie/zombie.gd" type="Script" id=1]
 [ext_resource path="res://Components/sprite/entity_sprite.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Components/brain/movement_lobe/movement_lobe.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Entities/zombie/zombie.png" type="Texture" id=14]
+[ext_resource path="res://Entities/damage.wav" type="AudioStream" id=15]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -97,6 +98,8 @@ DAM_TYPE = "infect"
 STATUS_EFFECT = "infection"
 STATUS_DURATION = 99.0
 TEAM_ATTACK = false
+CLANKS = false
+TRIGGERED_SOUND = ExtResource( 15 )
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 shape = SubResource( 5 )
@@ -133,6 +136,8 @@ margin_bottom = -8.59581
 death_type = 5
 
 [node name="foot_stepper" parent="." instance=ExtResource( 11 )]
+CONSTANT_RATE = true
+VOLUME_ADJUST = 0.0
 
 [connection signal="hit" from="hitbox" to="." method="_on_hitbox_hit"]
 

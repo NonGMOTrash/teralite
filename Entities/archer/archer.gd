@@ -1,16 +1,18 @@
 extends Entity
 
+# NOTE: also used by
+# mage
+
 onready var sprite = $sprite
 onready var brain = $brain
-onready var animation = $AnimationPlayer
+onready var animation: AnimationPlayer = $AnimationPlayer
 onready var held_item = $held_item
 
 export(PackedScene) var PROJECTILE
-export(String) var warn_animation: String
-export(int, 1, 5) var warn_times:int
 
 var targit: Entity
 var targit_path: NodePath
+var targit_position: Vector2
 
 func _ready():
 	held_item.animation.connect("animation_finished", self, "attack")
@@ -20,32 +22,32 @@ func _physics_process(delta: float) -> void:
 		animation.play("stand")
 	elif input_vector != Vector2.ZERO:
 		animation.play("walk")
-
-func attack(finished_animation:String):
-	if finished_animation != warn_animation or held_item.animation.get_queue().size() > 0:
-		return
 	
+	if is_instance_valid(targit):
+		targit_position = targit.global_position
+
+func attack(_finished_animation:String):
 	held_item.sprite.frame = 0
 	
-	var pos: Vector2
-	if (
-		targit != null and 
-		get_node_or_null(targit_path) != null
-	): 
-		pos = targit.global_position
-	else: 
-		pos = global_position + (input_vector * 5) + Vector2(rand_range(-0.1, 0.1), rand_range(-0.1, 0.1))
-	
 	var projectile = PROJECTILE.instance()
-	projectile.setup(self, pos)
+	projectile.setup(self, targit_position)
 	refs.ysort.add_child(projectile)
 
 func _on_action_lobe_action(action, target: Entity) -> void:
 	targit = target
 	targit_path = target.get_path()
 	
-	if warn_times == 0:
-		attack(warn_animation)
-	else:
-		for _i in range(0, warn_times):
-			held_item.animation.queue(warn_animation)
+	if target.truName == "player":
+		if truName == "archer":
+			var length: float = held_item.animation.get_animation("bow_charge").length
+			get_tree().create_timer(length-0.5).connect("timeout", self, "attack_flash")
+		elif truName == "mage":
+			attack_flash()
+	
+	if truName == "archer":
+		held_item.animation.play("bow_charge")
+	elif truName == "mage":
+		if held_item.sprite.flip_v:
+			held_item.animation.play("startup_swing_flip")
+		else:
+			held_item.animation.play("startup_swing")

@@ -9,6 +9,7 @@ export(int, 0, 1000) var STARTING_ENERGY = 0
 export(float, 0, 100) var ENERGY_REGEN = 0
 export(int, 0, 1000) var MAX_ENERGY = 0
 export var AUTO_ACT = true
+export var ACT_ON_ENEMY_SPOTTED: bool = false
 export(float, 0.0, 0.99) var PATIENCE = 0.4
 export(float, 0.0, 1.0) var ACTION_WEIGHTING = 0.2
 export(float, 0.0, 1.0) var ACTION_DEWEIGHTING = 0.1
@@ -20,7 +21,7 @@ export var tag_modifiers = {
 }
 export(int, 0, 10) var tag_weight = 0
 
-var ACT_ON_WARNING = false
+var ACT_ON_WARNING: bool = false # set automatically in ready()
 
 var on_global_cooldown := false
 var energy = 50
@@ -47,6 +48,9 @@ func _ready() -> void:
 	else:
 		energy_timer.wait_time = 1 / ENERGY_REGEN
 		energy_timer.start()
+	
+	if ACT_ON_ENEMY_SPOTTED:
+		brain.connect("found_target", self, "act")
 
 func _on_energy_timer_timeout() -> void:
 	energy = clamp(energy+1, 0, MAX_ENERGY)
@@ -127,4 +131,3 @@ func weigh_actions(chosen_action: String) -> void:
 		else:
 			action.weight -= ACTION_DEWEIGHTING
 		action.weight = clamp(action.weight, 0, 1)
-

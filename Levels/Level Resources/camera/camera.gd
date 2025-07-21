@@ -31,7 +31,8 @@ func startat(pos: Vector2):
 	global_position = pos
 	smoothing_enabled = global.settings["smooth_camera"]
 	limit_smoothed = global.settings["smooth_camera"]
-	global.connect("update_camera", self, "update_fov")
+	if !global.is_connected("update_camera", self, "update_fov"):
+		global.connect("update_camera", self, "update_fov")
 
 func update_fov():
 	zoom = global.FOV

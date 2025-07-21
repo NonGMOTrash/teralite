@@ -73,8 +73,8 @@ TOP_SPEED = 15
 FORCE_MULT = 0.72
 truName = "slime"
 faction = "monster"
-lunge_delay = 0.8
-lunge_speed = 170.0
+lunge_delay = 0.9
+lunge_speed = 180.0
 lunge_delay_scaling = 0.75
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
@@ -114,7 +114,7 @@ shape = SubResource( 3 )
 
 [node name="entity_push" parent="." instance=ExtResource( 6 )]
 visible = false
-strength = 18
+strength = 20
 
 [node name="CollisionShape2D" parent="entity_push" index="0"]
 shape = SubResource( 3 )

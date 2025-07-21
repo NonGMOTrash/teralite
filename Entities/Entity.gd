@@ -1,6 +1,8 @@
 extends KinematicBody2D
 class_name Entity
 
+const ATTACK_FLASH := preload("res://Effects/attack_flash/attack_flash.tscn")
+
 export var STATIC = false
 export var ACCELERATION = 500
 export var SLOWDOWN = 500
@@ -85,6 +87,16 @@ func death():
 	visible = false
 
 func get_speed() -> float:
-	var velo = velocity
-	if input_vector != Vector2.ZERO: velo *= input_vector.normalized()
+	# NOTE: should be using pythagorean theorem here but i suck at math lol
+	# changing this requires modifying TOP_SPEED values for every entity in the game,
+	# so i'm just gonna keep this as is.
+	
+	var velo: Vector2 = velocity
+	if input_vector != Vector2.ZERO:
+		velo *= input_vector.normalized()
 	return abs(velo.x) + abs(velo.y)
+
+func attack_flash() -> void:
+	var flash: Effect = ATTACK_FLASH.instance()
+	flash.position = global_position
+	refs.ysort.add_child(flash)

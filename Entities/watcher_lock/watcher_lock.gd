@@ -15,12 +15,13 @@ func entity_died():
 		sound_player.play_sound("lower")
 
 func _on_detection_body_entered(body) -> void:
-	if (!body is Entity):
+	if !body is Entity or body.is_connected("death", self, "entity_died"):
 		return
+	
 	var entity: Entity = body as Entity
 	
 	if (
-		entity.truName == "watcher_lock" or
+		entity.INANIMATE or
 		entity is Item or
 		global.get_relation(refs.player, entity) != "hostile"
 	):

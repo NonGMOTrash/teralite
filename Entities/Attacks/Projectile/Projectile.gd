@@ -61,7 +61,6 @@ func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 		return
 	var ss = SOURCE.get_world_2d().direct_space_state
 	var raycast = ss.intersect_ray(start_pos, SOURCE.global_position, [], 1)
-	print(raycast)
 	if raycast and not raycast.collider == SOURCE:
 		spawned_in_wall = true
 

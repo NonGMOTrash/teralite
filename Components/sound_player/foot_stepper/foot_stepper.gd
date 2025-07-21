@@ -33,7 +33,7 @@ func _process(_delta: float):
 	if RATE == 0: return
 	
 	if CONSTANT_RATE == false:
-		var speed = get_parent().get_speed()
+		var speed: float = get_parent().get_speed()
 		if speed != old_speed:
 			old_speed = speed
 			RATE = base_rate * (speed / get_parent().TOP_SPEED)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Entities/drone/drone.gd" type="Script" id=1]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=2]
@@ -13,8 +13,6 @@
 [ext_resource path="res://Components/brain/movement_lobe/spring/spring.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Effects/entity_effects/entity_effects.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Entities/drone/drone.png" type="Texture" id=13]
-[ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=15]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -134,13 +132,6 @@ USE_DISTANCE_RANGE = true
 [node name="memory_lobe" parent="brain" instance=ExtResource( 8 )]
 MEMORY_TIME = 16.0
 
-[node name="action_lobe" parent="brain" instance=ExtResource( 15 )]
-PATIENCE = 0.0
-
-[node name="shoot" parent="brain/action_lobe" instance=ExtResource( 14 )]
-best_distance = 1
-COOLDOWN = 1.0
-
 [node name="entity_effects" parent="." instance=ExtResource( 12 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -150,8 +141,12 @@ anims/warning = SubResource( 5 )
 autoplay = "New Anim"
 "anims/New Anim" = SubResource( 6 )
 
-[connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
+[node name="shot_timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="found_target" from="brain" to="." method="_on_brain_found_target"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="shot_timer" to="." method="_on_shot_timer_timeout"]
 
 [editable path="entity_sprite"]
 [editable path="entity_push"]

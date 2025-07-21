@@ -57,18 +57,25 @@ func _ready():
 	color_a.texture = get_texture()
 	color_a.hframes = hframes
 	color_a.vframes = vframes
+	color_a.offset = offset
 	
 	color_b.visible = true
 	color_b_effect.play("off")
 	color_b.texture = get_texture()
 	color_b.hframes = hframes
 	color_b.vframes = vframes
+	color_b.offset = offset
 	
 	color_c.visible = true
 	color_c_effect.play("off")
 	color_c.texture = get_texture()
 	color_c.hframes = hframes
 	color_c.vframes = vframes
+	color_c.offset = offset
+	
+	texture_a.offset = offset
+	texture_b.offset = offset
+	texture_c.offset = offset
 	
 	connect("frame_changed", self, "animate_overlay")
 	

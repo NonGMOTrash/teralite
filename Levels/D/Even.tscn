@@ -6,7 +6,7 @@
 [node name="Even" instance=ExtResource( 1 )]
 AMBIANCE = 4
 GLOBAL_PARTICLES = 4
-AMBIENT_LIGHTING = 4
+AMBIENT_LIGHTING = 5
 WORLD = "D"
 DISPLAY_NAME = "the complex"
 

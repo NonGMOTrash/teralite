@@ -52,6 +52,6 @@ position = Vector2( 890.163, 759.499 )
 [node name="spawner" parent="YSort/knight" index="12" instance=ExtResource( 5 )]
 thing = ExtResource( 7 )
 
-[node name="sparkle_particles" parent="YSort/knight" index="14" instance=ExtResource( 8 )]
+[node name="sparkle_particles" parent="YSort/knight" index="13" instance=ExtResource( 8 )]
 
 [editable path="YSort/world_tiles"]

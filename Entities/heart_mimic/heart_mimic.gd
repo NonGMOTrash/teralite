@@ -13,7 +13,14 @@ func _ready() -> void:
 	TOP_SPEED = 0
 
 func _on_detection_body_entered(body: Node) -> void:
-	if body is Entity and not body.INANIMATE and not body == self and not body.INVISIBLE and not has_awoken:
+	if (
+		body is Entity and 
+		not body.INANIMATE and 
+		not body == self and 
+		not body.INVISIBLE and 
+		not has_awoken and
+		not (body.truName == "heart_mimic" && !body.has_awoken)
+	):
 		animation.play("awaken")
 
 func _on_hurtbox_got_hit(_by_area, _type) -> void:

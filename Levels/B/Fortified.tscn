@@ -11,7 +11,7 @@ AMBIANCE = 2
 GLOBAL_PARTICLES = 2
 AMBIENT_LIGHTING = 2
 WORLD = "B"
-DISPLAY_NAME = "welcome to the underground"
+DISPLAY_NAME = "fortified"
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )

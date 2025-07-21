@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Entities/hunter/hunter.gd" type="Script" id=1]
 [ext_resource path="res://Components/stats/stats.tscn" type="PackedScene" id=2]
@@ -15,8 +15,6 @@
 [ext_resource path="res://Entities/Item_Pickups/awp/awp.png" type="Texture" id=13]
 [ext_resource path="res://Components/held_item/held_item.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Components/brain/memory_lobe/memory_lobe.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Components/brain/action_lobe/action/action.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Components/brain/action_lobe/action_lobe.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Entities/Attacks/Projectile/big_bullet/big_bullet.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Entities/hunter/hunter_back.png" type="Texture" id=19]
 [ext_resource path="res://Entities/hunter/hunter.png" type="Texture" id=20]
@@ -71,11 +69,12 @@ tracks/0/keys = {
 [node name="hunter" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 1 )
-ACCELERATION = 600
+ACCELERATION = 400
 TOP_SPEED = 60
 truName = "hunter"
 faction = "army"
 warnings = 3
+shot_cooldown = 1.1
 PROJECTILE = ExtResource( 18 )
 
 [node name="stats" parent="." instance=ExtResource( 2 )]
@@ -135,38 +134,37 @@ DISTANCE = 150
 [node name="memory_lobe" parent="brain" instance=ExtResource( 15 )]
 MEMORY_TIME = 10.0
 
-[node name="action_lobe" parent="brain" instance=ExtResource( 17 )]
-PATIENCE = 0.0
-ACTION_WEIGHTING = 0.0
-ACTION_DEWEIGHTING = 0.0
-
-[node name="shoot" parent="brain/action_lobe" instance=ExtResource( 16 )]
-best_distance = 50
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/stand = SubResource( 5 )
 anims/walk = SubResource( 6 )
 
 [node name="foot_stepper" parent="." instance=ExtResource( 11 )]
-FREE_WHEN_EMPTY = false
+CONSTANT_RATE = true
+VOLUME_ADJUST = 0.0
 
 [node name="entity_effects" parent="." instance=ExtResource( 12 )]
 death_type = 3
 
 [node name="held_item" parent="." instance=ExtResource( 14 )]
-TARGETING = 1
+TARGETING = 3
 
 [node name="sprite" parent="held_item/anchor" index="0"]
 texture = ExtResource( 13 )
-hframes = 1
 
 [node name="reticle" type="Sprite" parent="."]
 visible = false
 position = Vector2( -999, 0 )
 scale = Vector2( 0.333, 0.333 )
+z_index = 4096
 texture = ExtResource( 21 )
 
-[connection signal="action" from="brain/action_lobe" to="." method="_on_action_lobe_action"]
+[node name="shot_timer" type="Timer" parent="."]
+wait_time = 1.1
+one_shot = true
+
+[connection signal="found_target" from="brain" to="." method="_on_brain_found_target"]
+[connection signal="lost_target" from="brain" to="." method="_on_brain_lost_target"]
+[connection signal="timeout" from="shot_timer" to="." method="_on_shot_timer_timeout"]
 
 [editable path="entity_push"]
 [editable path="hurtbox"]

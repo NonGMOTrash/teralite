@@ -44,21 +44,29 @@ func _on_action_lobe_action(action, target) -> void:
 		held_item.sprite.frame = 0
 		held_item.sprite.offset = Vector2(0, -4)
 		held_item.original_offset = Vector2(0, -4)
-		held_item.animation.play("warn")
-		held_item.animation.queue("warn")
+		held_item.animation.playback_speed = 1
+		if held_item.sprite.flip_v:
+			held_item.animation.play("startup_swing")
+		else:
+			held_item.animation.play("startup_swing_flip")
+		movement_lobe.general_springs["hostile"] = "attack"
 	elif action == "shoot":
 		stored_attack = ARROW.instance() as Projectile
+		held_item.animation.playback_speed = 1.2
 		held_item.animation.play("bow_charge")
 		held_item.sprite.offset = Vector2(0, 0)
 		held_item.original_offset = Vector2(0, 0)
+		movement_lobe.general_springs["hostile"] = "space"
 	elif action == "snipe":
 		stored_attack = BOLT.instance() as Projectile
+		held_item.animation.playback_speed = 1
 		held_item.animation.play("xbow_charge")
 		held_item.sprite.offset = Vector2(0, 0)
 		held_item.original_offset = Vector2(0, 0)
 		movement_lobe.general_springs["hostile"] = "space"
 		ACCELERATION *= 0.5
 	elif action == "heal" and stats.HEALTH < (stats.MAX_HEALTH * 0.8):
+		held_item.animation.playback_speed = 1
 		held_item.animation.play("spin")
 		held_item.sprite.offset = Vector2(0, 0)
 		held_item.original_offset = Vector2(0, 0)
@@ -66,11 +74,15 @@ func _on_action_lobe_action(action, target) -> void:
 		held_item.sprite.frame = 0
 		held_item.sprite.hframes = 1
 		held_item.sprite.vframes = 1
-		movement_lobe.general_springs["hostile"] = "space"
+		movement_lobe.general_springs["hostile"] = "run"
 		TOP_SPEED *= 0.1
 		potions -= 1
 		if potions <= 0:
 			$brain/action_lobe/heal.queue_free()
+	
+	if action != "heal" and target.truName == "player":
+		get_tree().create_timer(held_item.animation.current_animation_length/held_item.animation.playback_speed - 0.5).connect(
+				"timeout", self, "attack_flash")
 
 func attack(finished_animation:String):
 	if animation.get_queue().size() > 0 or get_node_or_null(stored_path) == null:
@@ -88,7 +100,6 @@ func attack(finished_animation:String):
 			stored_attack.SPEED = shoot_speed
 		elif stored_attack.truName == "bolt":
 			stored_attack.SPEED = snipe_speed
-			movement_lobe.general_springs["hostile"] = "attack"
 			ACCELERATION *= 2
 		held_item.sprite.frame = 0
 	
@@ -102,9 +113,3 @@ func attack(finished_animation:String):
 	refs.ysort.add_child(stored_attack)
 	yield(stored_attack, "tree_entered")
 	stored_attack.global_position = global_position
-
-func _on_stats_health_changed(type, result, net) -> void:
-	if stats.HEALTH <= danger_threshold:
-		movement_lobe.general_springs["hostile"] = "run"
-	else:
-		movement_lobe.general_springs["hostile"] = "attack"
