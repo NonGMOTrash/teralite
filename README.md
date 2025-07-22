@@ -1,4 +1,4 @@
-- [play the game!](https://nongmotrash.itch.io/teralite/])
+# [play the game!](https://nongmotrash.itch.io/teralite/])
 see `readme.html` for complete licensing information and credits.
 
 if you find a bug, feel free to make an issue! i'm not really expecting any PRs - i mostly just opened sourced this game because it's free so why not... that said though, if you *do* actually go out of your way to fix or add something, i'll probably merge it.

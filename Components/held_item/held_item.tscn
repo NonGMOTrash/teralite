@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Components/held_item/held_item.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Item_Pickups/bow/bow_charging.png" type="Texture" id=2]
@@ -167,6 +167,62 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 0.5, 1, 0.5, 2, 1 ),
 "update": 0,
 "values": [ 0.0, 40.0, 40.0, 10.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "parry"
+tracks/0/type = "value"
+tracks/0/path = NodePath("anchor/sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -5, 1 ), Vector2( -5, -1 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("anchor/sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 135.0, 135.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "parry_attack"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("anchor/sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -8, 0 ), Vector2( -4, -4 ), Vector2( 7, -2 ), Vector2( 8, 4 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("anchor/sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 135.0, 290.0, 410.0, 110.0, 0.0 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -362,6 +418,8 @@ anims/attack_sword = SubResource( 8 )
 anims/bow_charge = SubResource( 1 )
 anims/cast = SubResource( 13 )
 anims/load = SubResource( 2 )
+anims/parry = SubResource( 14 )
+anims/parry_attack = SubResource( 15 )
 anims/spin = SubResource( 3 )
 anims/startup_swing = SubResource( 9 )
 anims/startup_swing_flip = SubResource( 10 )

@@ -46,7 +46,7 @@ position = Vector2( 521.713, 421.231 )
 [node name="death_spawn2" parent="YSort/knight" index="12" instance=ExtResource( 1 )]
 thing = ExtResource( 2 )
 
-[node name="sparkle_particles" parent="YSort/knight" index="14" instance=ExtResource( 8 )]
+[node name="sparkle_particles" parent="YSort/knight" index="13" instance=ExtResource( 8 )]
 
 [node name="Crate2" parent="YSort" index="5" instance=ExtResource( 7 )]
 position = Vector2( 473.353, 489.124 )

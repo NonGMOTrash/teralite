@@ -43,6 +43,7 @@ CURSOR = ExtResource( 2 )
 CURSOR_MODE = 1
 EQUIP_SOUND = ExtResource( 3 )
 counter_slowness_lvl = 3.0
+counter_range = 32.0
 SLASH = ExtResource( 9 )
 
 [node name="cooldown" type="Timer" parent="."]
