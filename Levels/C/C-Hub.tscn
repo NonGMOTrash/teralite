@@ -85,7 +85,7 @@ rotation = 1.5708
 shape = SubResource( 3 )
 
 [node name="Ghastly" parent="YSort" index="4" instance=ExtResource( 4 )]
-position = Vector2( 880, 837 )
+position = Vector2( 891, 846 )
 LEVEL = "Ghastly"
 STAR_REQUIREMENT = 22
 
@@ -93,10 +93,10 @@ STAR_REQUIREMENT = 22
 position = Vector2( 891, 927 )
 LEVEL = "Firepower"
 DISPLAY_NAME = "firing squad"
-STAR_REQUIREMENT = 30
+STAR_REQUIREMENT = 27
 
 [node name="Scrapyard" parent="YSort" index="6" instance=ExtResource( 4 )]
-position = Vector2( 848, 765 )
+position = Vector2( 843, 774 )
 LEVEL = "Scrapyard"
 STAR_REQUIREMENT = 23
 
@@ -146,7 +146,7 @@ STAR_REQUIREMENT = 29
 position = Vector2( 336, 729 )
 LEVEL = "Maze"
 DISPLAY_NAME = "cheese maze"
-STAR_REQUIREMENT = 28
+STAR_REQUIREMENT = 31
 
 [node name="Scavenge" parent="YSort" index="16" instance=ExtResource( 4 )]
 position = Vector2( 405, 621.774 )
@@ -158,7 +158,7 @@ STAR_REQUIREMENT = 30
 position = Vector2( 491, 549 )
 LEVEL = "Doctor"
 DISPLAY_NAME = "bad doctor"
-STAR_REQUIREMENT = 31
+STAR_REQUIREMENT = 30
 
 [node name="Tailend" parent="YSort" index="18" instance=ExtResource( 4 )]
 position = Vector2( 277, 639 )

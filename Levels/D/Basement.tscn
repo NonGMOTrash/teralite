@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Levels/level/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level Resources/world_tiles/bg_site.png" type="Texture" id=2]
 [ext_resource path="res://Levels/D/elevator.png" type="Texture" id=3]
 [ext_resource path="res://Levels/hub/level_node/level_node.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Effects/LightSource.gd" type="Script" id=5]
+[ext_resource path="res://Effects/light.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13.4543, 4.21178 )
@@ -30,7 +32,7 @@ bake_navigation = true
 
 [node name="entity_spawns" parent="YSort" index="1"]
 bake_navigation = true
-tile_data = PoolIntArray( 4587633, 2, 0 )
+tile_data = PoolIntArray( 4587633, 2, 0, 6619249, 10, 0 )
 
 [node name="world_tiles" parent="YSort" index="2"]
 bake_navigation = true
@@ -68,6 +70,84 @@ LEVEL = "Core"
 DISPLAY_NAME = "the core"
 CUSTOM_LETTER = "D"
 SET_HUB_POS = false
+
+[node name="light" type="Light2D" parent="YSort" index="5"]
+position = Vector2( 910, 548 )
+texture = ExtResource( 6 )
+color = Color( 0.878431, 0.384314, 0.384314, 1 )
+script = ExtResource( 5 )
+
+[node name="light_2" type="Light2D" parent="YSort" index="6"]
+position = Vector2( 906, 810 )
+texture = ExtResource( 6 )
+color = Color( 0.878431, 0.384314, 0.384314, 1 )
+script = ExtResource( 5 )
+
+[node name="light_3" type="Light2D" parent="YSort" index="7"]
+position = Vector2( 631, 809 )
+texture = ExtResource( 6 )
+color = Color( 0.878431, 0.384314, 0.384314, 1 )
+script = ExtResource( 5 )
+
+[node name="light_4" type="Light2D" parent="YSort" index="8"]
+position = Vector2( 618, 218 )
+texture = ExtResource( 6 )
+color = Color( 0.878431, 0.384314, 0.384314, 1 )
+script = ExtResource( 5 )
+
+[node name="light_6" type="Light2D" parent="YSort" index="9"]
+position = Vector2( 147, 212 )
+texture = ExtResource( 6 )
+color = Color( 0.878431, 0.384314, 0.384314, 1 )
+script = ExtResource( 5 )
+
+[node name="light_7" type="Light2D" parent="YSort" index="10"]
+position = Vector2( 147, 514 )
+texture = ExtResource( 6 )
+color = Color( 0.878431, 0.384314, 0.384314, 1 )
+script = ExtResource( 5 )
+
+[node name="light_8" type="Light2D" parent="YSort" index="11"]
+position = Vector2( 298, 528 )
+texture = ExtResource( 6 )
+color = Color( 0.878431, 0.384314, 0.384314, 1 )
+script = ExtResource( 5 )
+
+[node name="light_9" type="Light2D" parent="YSort" index="12"]
+position = Vector2( 125, 683 )
+texture = ExtResource( 6 )
+color = Color( 0.878431, 0.384314, 0.384314, 1 )
+script = ExtResource( 5 )
+
+[node name="light_10" type="Light2D" parent="YSort" index="13"]
+position = Vector2( 120, 886 )
+texture = ExtResource( 6 )
+color = Color( 0.878431, 0.384314, 0.384314, 1 )
+script = ExtResource( 5 )
+
+[node name="light_11" type="Light2D" parent="YSort" index="14"]
+position = Vector2( 305, 730 )
+texture = ExtResource( 6 )
+color = Color( 0.878431, 0.384314, 0.384314, 1 )
+script = ExtResource( 5 )
+
+[node name="light_12" type="Light2D" parent="YSort" index="15"]
+position = Vector2( 473, 743 )
+texture = ExtResource( 6 )
+color = Color( 0.878431, 0.384314, 0.384314, 1 )
+script = ExtResource( 5 )
+
+[node name="light_13" type="Light2D" parent="YSort" index="16"]
+position = Vector2( 478, 380 )
+texture = ExtResource( 6 )
+color = Color( 0.878431, 0.384314, 0.384314, 1 )
+script = ExtResource( 5 )
+
+[node name="light_5" type="Light2D" parent="YSort" index="17"]
+position = Vector2( 786, 204 )
+texture = ExtResource( 6 )
+color = Color( 0.878431, 0.384314, 0.384314, 1 )
+script = ExtResource( 5 )
 
 [editable path="YSort/world_tiles"]
 [editable path="YSort/Offworld"]

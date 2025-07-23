@@ -80,7 +80,8 @@ const DEV_TIMES := {
 	"Core": 108.8,
 	"Sectors": 80.3,
 	"Stream": 83.3,
-	"Gladiator": 8.6
+	"Gladiator": 8.6,
+	"Infiltration": 47.7
 }
 
 # all the global variables

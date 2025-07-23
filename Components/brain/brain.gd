@@ -43,6 +43,7 @@ func _ready():
 	think_timer.wait_time = THINK_TIME
 	sight.scale = Vector2(SIGHT_RANGE, SIGHT_RANGE) # setting the radius in code seems to not work
 	excluded.append(weakref(entity))
+	_on_think_timer_timeout()
 
 # for debugging purposes:
 #func _draw():
