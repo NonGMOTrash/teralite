@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Misc/ominous_light/ominous_light.gd" type="Script" id=1]
+[ext_resource path="res://Components/sound_player/sound/sound.gd" type="Script" id=2]
+[ext_resource path="res://UI/menu_click.wav" type="AudioStream" id=3]
+[ext_resource path="res://Effects/light.png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 45.0
+
+[node name="ominous_light" type="Light2D"]
+texture = ExtResource( 4 )
+color = Color( 0.705882, 0.290196, 0.290196, 1 )
+script = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = 6.0
+pitch_scale = 0.4
+script = ExtResource( 2 )
+MODE = 1
+AUTO_PLAY = false
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

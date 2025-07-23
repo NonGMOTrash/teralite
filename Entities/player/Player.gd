@@ -57,10 +57,10 @@ func _on_player_tree_entered() -> void:
 
 func _ready():
 	# CHEAT
-	var teleporter: Item = load("res://Entities/Item_Pickups/teleporter/teleporter.tscn").instance()
-	teleporter.position = global_position
-	if is_instance_valid(refs.ysort):
-		refs.ysort.call_deferred("add_child", teleporter)
+	#var teleporter: Item = load("res://Entities/Item_Pickups/teleporter/teleporter.tscn").instance()
+	#teleporter.position = global_position
+	#if is_instance_valid(refs.ysort):
+	#	refs.ysort.call_deferred("add_child", teleporter)
 	
 	dash_buffer *= (1.0/60.0)
 	global.selection = 0
