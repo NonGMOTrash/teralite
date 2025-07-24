@@ -11,8 +11,8 @@
 resource_local_to_scene = true
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 1.5625
-height = 3.487
+radius = 2.0
+height = 4.875
 
 [sub_resource type="Animation" id=4]
 resource_local_to_scene = true
@@ -124,38 +124,39 @@ tracks/3/keys = {
 
 [node name="swipe" instance=ExtResource( 7 )]
 truName = "stab"
-ONHIT_SELF_DAMAGE = 1
 RANGE = 9
 SPAWN_SOUND = ExtResource( 4 )
 HIT_SOUND = ExtResource( 5 )
 KILL_SOUND = ExtResource( 5 )
 BLOCKED_SOUND = ExtResource( 2 )
 COLLIDE_SOUND = ExtResource( 3 )
+HOLDS = false
 RECOIL = 20
+ANIMATION_NEVER_BACKWARDS = false
+HIDE_HELD_ITEM = true
+REVERSE_HELD_ITEM = true
 
-[node name="entity_sprite" parent="." index="1"]
+[node name="entity_sprite" parent="." index="0"]
 material = SubResource( 5 )
-position = Vector2( -2, -5 )
+position = Vector2( -2, 5 )
+rotation = 3.14159
 texture = ExtResource( 1 )
 
-[node name="hitbox" parent="." index="2"]
-modulate = Color( 0.937255, 0.231373, 0.117647, 1 )
-position = Vector2( -4, -7 )
+[node name="hitbox" parent="." index="1"]
+position = Vector2( -4, 7 )
 COOLDOWN = 1.0
-DAMAGE = 1
-KNOCKBACK = 100
 STATUS_EFFECT = "bleed"
 STATUS_DURATION = 2.0
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 position = Vector2( 2, 0 )
-rotation = -3.14159
+rotation = 3.14159
 shape = SubResource( 2 )
 
-[node name="sound" parent="." index="3"]
+[node name="sound" parent="." index="2"]
 FREE_WHEN_EMPTY = false
 
-[node name="animation" parent="." index="5"]
+[node name="animation" parent="." index="4"]
 playback_speed = 1.6
 anims/animation = SubResource( 4 )
 anims/animation_reverse = SubResource( 6 )
