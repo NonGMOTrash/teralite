@@ -168,7 +168,9 @@ func load_saves_list_items(): # add save previews from the saves directory into 
 				if global.ver_phase.to_lower() == "beta":
 					current_ver_val /= 10.0
 				if save_ver_val < current_ver_val:
-					if floor(save_ver_val) <= 1.0:
+					if floor(save_ver_val) <= 0.3:
+						save_preview.version.set_deferred("custom_colors/font_color", Color.red)
+					elif floor(save_ver_val) <= 1.0:
 						save_preview.version.set_deferred("custom_colors/font_color", Color.yellow)
 					else:
 						save_preview.version.set_deferred("custom_colors/font_color", Color.greenyellow)

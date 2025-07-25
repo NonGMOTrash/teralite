@@ -139,6 +139,8 @@ var sound_credits := [
 	'"Magical portal open"\n by alanmcki',
 	'"Inside Tornado, Strong Wind, Destruction"\n by PMSFX',
 	'"Artblock"\n by Jan125',
+	'"Loud Silence" by qubodup',
+	'"Tonal_Impact_D" by Renovatio871'
 ]
 
 onready var animation: AnimationPlayer = $AnimationPlayer
@@ -148,8 +150,8 @@ onready var times := $fin/times
 
 func _ready() -> void:
 	times.text = (
-		"final time: " + str(global.total_time) + "\n" +
-		"level time: " + str(global.speedrun_time) + "\n"
+		"final run time: " + global.sec_to_time(global.total_time) + "\n" +
+		"sum of PRs: " + global.sec_to_time(global.speedrun_time) + "\n"
 	)
 
 func start_sound_credits(time: float):

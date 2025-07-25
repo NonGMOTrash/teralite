@@ -320,7 +320,7 @@ tracks/2/keys = {
 }
 
 [node name="color_overlay" type="Sprite"]
-self_modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 0.684706, 0.208627, 0.208627, 0.627451 )
 material = SubResource( 1 )
 texture = ExtResource( 2 )
 

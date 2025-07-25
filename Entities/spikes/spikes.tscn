@@ -92,6 +92,7 @@ position = Vector2( 0.5, -3 )
 texture = ExtResource( 8 )
 offset = Vector2( -0.5, 3 )
 hframes = 2
+frame = 1
 
 [node name="hitbox" parent="." instance=ExtResource( 2 )]
 scale = Vector2( 0.9, 0.9 )

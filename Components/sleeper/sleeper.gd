@@ -8,7 +8,7 @@ export(float, 0.01, 60.0) var sleep_delay = 3.0
 var active = true
 
 var brain
-var has_awoken = false
+var has_awoken: bool = false
 
 signal slept
 signal awoken

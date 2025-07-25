@@ -111,6 +111,7 @@ margin_bottom = -9.57493
 [node name="brain" parent="." instance=ExtResource( 4 )]
 
 [node name="movement_lobe" parent="brain" instance=ExtResource( 10 )]
+IDLE_TIME = 3.0
 general_springs = {
 "friendly": "",
 "hostile": "spring",

@@ -11,6 +11,7 @@ export(float, -360, 360) var ROTATION_OFFSET := 0.0
 export(float, 0, 32) var SPAWN_OFFSET := 16
 
 var spawned_in_wall := false
+var spawned_in_entity := false
 var has_left_src := false
 var original_force_mult
 var distance_traveled := 0.0
@@ -61,8 +62,13 @@ func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 		return
 	var ss = SOURCE.get_world_2d().direct_space_state
 	var raycast = ss.intersect_ray(start_pos, SOURCE.global_position, [], 1)
-	if raycast and raycast.collider != SOURCE and raycast.collider is TileMap:
-		spawned_in_wall = true
+	if raycast and raycast.collider != SOURCE:
+		if raycast.collider is TileMap:
+			spawned_in_wall = true
+		else:
+			start_pos = raycast.collider.global_position
+			spawned_in_entity = true
+		
 
 func _physics_process(delta):
 	if visible == false: return # idk why this is here... but im scared to remove it
@@ -108,6 +114,7 @@ func _on_hitbox_hit(area: Area2D, type: String) -> void:
 		velocity = velocity * ONHIT_SPEED_MULTIPLIER
 
 func _on_src_collision_body_exited(body: Node) -> void:
-	if body == SOURCE:
+	if body == SOURCE && !spawned_in_entity:
+		print("!!")
 		has_left_src = true
 		$src_collision.queue_free()

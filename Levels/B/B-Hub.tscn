@@ -167,7 +167,7 @@ STAR_REQUIREMENT = 16
 [node name="Hex" parent="YSort" index="14" instance=ExtResource( 4 )]
 position = Vector2( 818, 478 )
 LEVEL = "Hex"
-DISPLAY_NAME = "Shine"
+DISPLAY_NAME = "shine"
 STAR_REQUIREMENT = 15
 
 [node name="Mythical" parent="YSort" index="15" instance=ExtResource( 4 )]

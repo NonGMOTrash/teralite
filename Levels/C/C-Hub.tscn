@@ -204,7 +204,7 @@ DISPLAY_NAME = "fearless"
 STAR_REQUIREMENT = 37
 
 [node name="Knight" parent="YSort" index="26" instance=ExtResource( 4 )]
-position = Vector2( 934.293, 461.548 )
+position = Vector2( 923, 464 )
 LEVEL = "Knight"
 DISPLAY_NAME = "the knight"
 STAR_REQUIREMENT = 50

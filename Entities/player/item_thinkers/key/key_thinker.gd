@@ -28,7 +28,7 @@ func selected():
 		return
 	
 	for body in activation.get_overlapping_bodies():
-		if body is Entity and body.truName == "lock":
+		if body is Entity && body.truName == "lock" && !body.unlocked:
 			_on_activation_body_entered(body)
 			break
 

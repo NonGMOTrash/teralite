@@ -34,6 +34,7 @@ func _input(_event: InputEvent) -> void:
 		set_process(false)
 		label.visible = false
 		refs.transition.exit()
+		global.total_time += refs.stopwatch.time
 		yield(refs.transition, "finished")
 		get_tree().reload_current_scene()
 
