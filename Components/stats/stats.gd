@@ -154,10 +154,10 @@ func change_health(value: int, true_value: int, type: String = "hurt") -> String
 		if entity.truName == "player" and type != "hurt":
 			var msg: String
 			match type:
-				"burn": msg = "burned to death"
+				"burn": msg = "burned to a crisp"
 				"poison": msg = "died of poison"
 				"bleed": msg = "bleed out"
-				"infect": msg = "joined the horde"
+				"infect": msg = "joined the hoard"
 			entity.death_message = msg
 			entity.force_death_msg = true
 		

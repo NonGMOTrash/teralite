@@ -149,6 +149,7 @@ shape = SubResource( 3 )
 [node name="Horde" parent="YSort" index="19" instance=ExtResource( 3 )]
 position = Vector2( 683, 339 )
 LEVEL = "Horde"
+DISPLAY_NAME = "hoard"
 STAR_REQUIREMENT = 11
 
 [node name="Conflict" parent="YSort" index="20" instance=ExtResource( 3 )]

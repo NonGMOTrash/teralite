@@ -312,7 +312,7 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 			"arrow": death_message = "shot by a %s" % source_name
 			"bolt": death_message = "shot by a %s" % source_name
 			"magic": death_message = "killed by a %s's magic" % source_name
-			"blow_dart": death_message = "incapicitated by %s's blowgun" % source_name
+			"blow_dart": death_message = "incapicitated by a %s" % source_name
 			"slime": death_message = "killed by a slime"
 			"bullet": death_message = "shot by a %s" % source_name
 			"shotgun_shell": death_message = "shot by a %s" % source_name
@@ -321,14 +321,18 @@ func _on_hurtbox_got_hit(by_area, _type) -> void:
 			"syringe": death_message = "infected by a %s" % source_name
 			"rocket": death_message = "blown up by a %s" % source_name
 			"zombie": death_message = "joined the horde"
-			"heart_mimic": death_message = "killed by a %s" % source_name
+			"heart_mimic": death_message = "killed by a heart mimic"
 			"stalker": death_message = "trampled by a %s" % source_name
-			"rocket_scorpian": death_message = "mauled by a rocket scorpian"
-			"king": death_message = "crushed by a %s" % source_name
+			"rocket_scorpian": death_message = "mauled by a rocket scorpian" # bite attack
+			"king": death_message = "crushed by a king" # slam attack
 			"laser": death_message = "shot by a %s" % source_name
 			"blast": death_message = "shot by a %s" % source_name
-			"keyblast": death_message = "shot by a %s" % source_name
-			_: death_message = "(death message error)"
+			"keyblast": death_message = "electricuted by a %s" % source_name
+			"beam": death_message = "sliced by a %s" % source_name
+			"universe_eye": death_message = "killed by the universe eye"
+			"poison_drop": death_message = "poisoned by a %s" % source_name
+			"specter": death_message = "killed by a specter"
+			_: death_message = "died"
 	
 	death_message = death_message.replace("_", " ")
 	
