@@ -38,12 +38,10 @@ body {
 }
 
 .ascii-art {
+	white-space: pre;
 	font: monospace;
 	font-weight: bolder;
 	color: orange;
-	margin-left: auto;
-	margin-right: auto;
-	width: 100%;
 }
 
 hr.major {
@@ -119,7 +117,7 @@ nav ul li ul li a:hover {
 <body>
 	<nav>
 		<ul>
-			<li> <a href="#faq">faq</a>
+			<li> <a href="#info">info</a>
 				<ul>
 					<li><a href="#pck-not-found">.pck not found</a></li>
 					<li><a href="#update-when">update when?</a></li>
@@ -141,6 +139,7 @@ nav ul li ul li a:hover {
 			</li>
 			<li> <a href="#patchnotes">patchnotes</a>
 				<ul>
+					<li><a href="#ver-1-3-0">v1.3.0</a></li>
 					<li><a href="#ver-1-2-0">v1.2.0</a></li>
 					<li><a href="#ver-1-1-0">v1.1.0</a></li>
 					<li><a href="#ver-1-0-0">v1.0.0</a></li>
@@ -148,46 +147,75 @@ nav ul li ul li a:hover {
 			</li>
 		</ul>
 	</nav>
-	<div class="content"> <pre> <code class="ascii-art">
-								###########
-								###########
-								###,   ,###
-								###,   ,###
-								###,   ,###
-				*##############,   ,##############*
-				*###                           ###/....
-				*###                           ###/....
-				*###                           ###/....
-				*#################################/....
-				*#################################/....
-								###########................
-								###########....
-								###########....
-								###########....
-								###########....
-								###########....
-								###########....
-								###########....
-								###########....
-								###########....
-								###########....
-								###########....
-								###########....
-								  *#######....
-								  *#######....
-										,###....
-											 ....
-											 ....
-		</code> </pre>   
+	<div class="content"> <pre class="ascii-art">
+                               ###########                
+                               ###########                
+                               ###,   ,###                
+                               ###,   ,###                
+                               ###,   ,###                
+                   *##############,   ,##############*    
+                   *###                           ###/....
+                   *###                           ###/....
+                   *###                           ###/....
+                   *#################################/....
+                   *#################################/....
+                               ###########................
+                               ###########....            
+                               ###########....            
+                               ###########....            
+                               ###########....            
+                               ###########....            
+                               ###########....            
+                               ###########....            
+                               ###########....            
+                               ###########....            
+                               ###########....            
+                               ###########....            
+                               ###########....            
+                                  *#######....            
+                                  *#######....            
+                                      ,###....            
+                                          ....            
+                                          ....            
+		</pre>
 		<p>hello, thanks for downloading</p>
 		<hr class="major">
-		<h1 id="faq">(un)frequently asked questions</h1>
+		<h1 id="info">game info</h1>
 		<hr class="minor">
 		<h2 id="pck-not-found">.pck not found at path '.' error</h2>
 		<p> teralite.exe has to be in the same folder as the teralite.pck or it won't work. if you want to have access to the game somewhere else, just make a shortcut of teralite.exe </p>
 		<hr class="minor"> 
+
+		<h2 id="controls">control scheme</h2>
+		<b>for keyboard and mouse:</b>
+		<ul>
+			<li>movement: WASD / IJKL</li>
+			<li>aiming: mouse</li>
+			<li>primary attack: left click</li>
+			<li>dash: space</li>
+			<li>interact / select: E</li>
+			<li>switch item: scrollwheel / 123 / E and Q / 789</li>
+			<li>drop item: middle click</li>
+			<li>reload: R</li>
+			<li>pause: tab / escape / enter</li>
+		</ul>
+		<b>for gamepad:</b>
+		<ul>
+			<li>movement: left stick</li>
+			<li>aiming: right stick</li>
+			<li>primary attack: right trigger / right bumper</li>
+			<li>dash: bottom face button / left bumper</li>
+			<li>interact / select: left face button</li>
+			<li>switch item: d-pad</li>
+			<li>drop item: right face button</li>
+			<li>reload: left face button</li>
+			<li>pause: start / select</li>
+		</ul>
+		<hr class="minor"> 
+		
 		<h2 id="update-when">will get game get updated?</h2>
-		<p>nope! (except for extremely minor polish, MAYBE.) in retrospect, i kind of... don't love this game? that sounds a bit harsh to myself maybe, and don't get me wrong, this project was a great achievement for me at the time. but there's so many things i wish i had done better that i feel it kind of has a rotten foundation, so i really ought to just move on. also, i really really want to make more story driven games going forward &em; that's another one of my biggest regrets with this project: the overall lack of character. it's very dry and mechanical, which is okay, but... i want to do something more!
+		<p>nope. v1.3.0 will be the final update (except for hotfixes maybe). in retrospect, i kind of... don't love this game? that sounds a bit harsh to myself maybe, and don't get me wrong, this project was a great achievement for me at the time. but there's so many things i wish i had done better that i feel it kind of has a rotten foundation, so i really ought to just move on. also, i really really want to make more story driven games going forward &em; that's another one of my biggest regrets with this project: the overall lack of character. it's very dry and mechanical, which is okay, but... i want to do something more!
+
 		<hr class="minor">
 		<h2 id="preformance-apology">preformance apology</h2>
 		<p> the game can be suprisingly intensive. it's better than yandare simulator (i hope?) but it's still way worse than any 2d pixel art game ever should be. i think it's due to a combination of my unoptimized code, as well as godot's lighting (overlapping lights cause a huge dip). if you're having issues, turning off lighting will probably fix them. sorry ;-; </p>
@@ -224,27 +252,29 @@ nav ul li ul li a:hover {
 		</ul>
 		<hr class="minor">
 		<h3 id="engine">engine:</h3>
-		<p>teralite was created with Godot Engine, it's license reads as
+		<p>teralite was created with Godot Engine, under the MIT license:
 		follows:</p>
 		<code> <pre> 
-				Copyright (c) 2007-2021 Juan Linietsky, Ariel
-				Manzur. Copyright (c) 2014-2021 Godot Engine contributors. Permission
-				is hereby granted, free of charge, to any person obtaining a copy of this
-				software and associated documentation files (the "Software"), to deal in
-				the Software without restriction, including without limitation the
-				rights to use, copy, modify, merge, publish, distribute,
-				sublicense, and/or sell copies of the Software, and to permit
-				persons to whom the Software is furnished to do so, subject to the
-				following conditions: The above copyright notice and this permission
-				notice shall be included in all copies or substantial portions of
-				the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
-				ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
-				WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-				NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-				LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
-				ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-				CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-				SOFTWARE.
+			Copyright (c) 2014-present Godot Engine contributors (see AUTHORS.md).
+			Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
+
+			Permission is hereby granted, free of charge, to any person obtaining a copy
+			of this software and associated documentation files (the "Software"), to deal
+			in the Software without restriction, including without limitation the rights
+			to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+			copies of the Software, and to permit persons to whom the Software is
+			furnished to do so, subject to the following conditions:
+
+			The above copyright notice and this permission notice shall be included in all
+			copies or substantial portions of the Software.
+
+			THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+			IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+			FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+			AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+			LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+			OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+			SOFTWARE.
 		</pre> </code>
 		<p>addtionally,</p>
 		<code> <pre> 
@@ -326,7 +356,7 @@ nav ul li ul li a:hover {
 			<li>bolt_hit: &quot;Medieval crossbow bolt pass by 1&quot; by Still North Media (<a href="https://www.zapsplat.com/music/medieval-crossbow-bolt-pass-by-1/">zapslat.com link</a>) licensed under CC0</li>
 			<li> bolt_blocked: &quot;Fast swing, whoosh into a metal hit, thud or clunk, could be sword hitting shield or armor. Version 1&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/fast-swing-whoosh-into-a-metal-hit-thud-or-clunk-could-be-sword-hitting-shield-or-armor-version-1/">zapslat.com link</a>) licensed under ZapSplat standard license </li>
 			<li>potion_equip: &quot;PotionDrinkLONG&quot; by Jamius (<a href="https://freesound.org/people/Jamius/sounds/41529/">freesound.org link</a>) licensed under CC BY 3.0</li>
-			<li>potion_drink: &quot;Potion - drink - swallow&quot; by vlnpetiteau (<a href="https://freesound.org/people/vlnpetiteau/sounds/574077/#comments">freesound.org link</a>) licensed under CC0</li>
+			<li>potion_drink: &quot;Potion <li>drink - swallow&quot; by vlnpetiteau (<a href="https://freesound.org/people/vlnpetiteau/sounds/574077/#comments">freesound.org link</a>) licensed under CC0</li>
 			<li>potion_break: &quot;Bottle Shattering&quot; by spookymodem (<a href="https://freesound.org/people/spookymodem/sounds/202093/">freesound.org link</a>) licensed under CC0</li>
 			<li>speed_feather_use: &quot;Soft Wind&quot; by Animate_42 (<a href="https://freesound.org/people/Animate_42/sounds/502883/">freesound.org link</a>) licensed under CC0</li>
 			<li>warp: &quot;teleport&quot; by Leszek_Szary (<a href="https://freesound.org/people/Leszek_Szary/sounds/172206/">freesound.org link</a>) licensed under CC0</li>
@@ -342,15 +372,15 @@ nav ul li ul li a:hover {
 			<li>medkit_use: &quot;Fabric first aid medical kit with cellophane wrapped bandages inside, handling, movement&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/fabric-first-aid-medical-kit-with-cellophane-wrapped-bandages-inside-handling-movement/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
 			<li>explosion: &quot;Explosion 2&quot; by LiamG_SFX (<a href="https://freesound.org/people/LiamG_SFX/sounds/322509/">freesound.org link</a>) licensed under CC BY-NC 3.0</li>
 			<li>awp_equip: &quot;Sniper Scope zoom in 1&quot; by Supakid13 (<a href="https://freesound.org/people/Supakid13/sounds/210018/">freesound.org link</a>) licensed under CC0</li>
-			<li>awp_scope: &quot;Scope Click - Sniper Rifle (4)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522319/">freesound.org link</a>) licensed under CC0</li>
-			<li>awp_unscope: &quot;Scope Click - Sniper Rifle (5)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522318/">freesound.org link</a>) licensed under CC0</li>
+			<li>awp_scope: &quot;Scope Click <li>Sniper Rifle (4)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522319/">freesound.org link</a>) licensed under CC0</li>
+			<li>awp_unscope: &quot;Scope Click <li>Sniper Rifle (5)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522318/">freesound.org link</a>) licensed under CC0</li>
 			<li>awp_shoot: &quot;Sniper Rifle Firing Shot (4)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522359/">freesound.org link</a>) licensed under CC0</li>
 			<li>awp_shoot_crit: &quot;Sniper Rifle Firing Shot (4)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522429/">freesound.org link</a>) licensed under CC0</li>
 			<li>awp_eject: &quot;shot and reload&quot; by deathnsorrow (<a href="https://freesound.org/people/deathnsorrow/sounds/149177/">freesound.org link</a>) licensed under CC0</li>
-			<li>awp_reload: &quot;Sniper Rifle - Loading Ammo (3)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522336/">freesound.org link</a>) licensed under CC0</li>
-			<li>awp_360: &quot;Soft-Notifications - Bell - LowDing.mp3&quot; by LegitCheese (<a href="https://freesound.org/people/LegitCheese/sounds/571511/">freesound.org link</a>) licensed under CC0</li>
+			<li>awp_reload: &quot;Sniper Rifle <li>Loading Ammo (3)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522336/">freesound.org link</a>) licensed under CC0</li>
+			<li>awp_360: &quot;Soft-Notifications <li>Bell - LowDing.mp3&quot; by LegitCheese (<a href="https://freesound.org/people/LegitCheese/sounds/571511/">freesound.org link</a>) licensed under CC0</li>
 			<li>shotgun_equip: &quot;SXP_SHOTGUN_RACK_01&quot; by dasBUTCHER84 (<a href="https://freesound.org/people/dasBUTCHER84/sounds/449614/#comments">freesound.org link</a>) licensed under CC0</li>
-			<li>shotgun_shoot: &quot;Shotgun - Firing (2)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522484/">freesound.org link</a>) licensed under CC0</li>
+			<li>shotgun_shoot: &quot;Shotgun <li>Firing (2)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522484/">freesound.org link</a>) licensed under CC0</li>
 			<li>shotgun_shell: &quot;Shell Hitting Ground (17)&quot; by FilmmakersManual (<a href="https://freesound.org/people/FilmmakersManual/sounds/522295/">freesound.org link</a>) licensed under CC0</li>
 			<li>shotgun_reload: &quot;Winchester, Model 12, shotgun, pump action, 12 gauge, load mag&quot; by Still North Media (<a href="https://www.zapsplat.com/music/winchester-model-12-shotgun-pump-action-12-gauge-load-mag/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
 			<li>skeleton_death <i>and</i> skeleton_resurrect: &quot;Skeleton bones (game)&quot; by cribbler (<a href="https://freesound.org/people/cribbler/sounds/381859/">zapsplat.com link</a>) licensed under CC0</li>
@@ -390,7 +420,7 @@ nav ul li ul li a:hover {
 			<li>pulse_bounce: &quot;Impact_010&quot; by AlienXXX (<a href="https://freesound.org/people/AlienXXX/sounds/196223/">freesound.org link</a>) licensed under CC BY 3.0</li>
 			<li>portal_ray: &quot;Teleport&quot; by Fupicat (<a href="https://freesound.org/people/AlienXXX/sounds/196223/">freesound.org link</a>) licensed under CC0</li>
 			<li>laser_shoot: &quot;Game sound, high pitched laser gun fire, single shot 3&quot; by ZapSplat (<a href="https://www.zapsplat.com/music/game-sound-high-pitched-laser-gun-fire-single-shot-3/">zapsplat.com link</a>) licensed under ZapSplat standard license</li>
-			<li>keyblast_shoot: &quot;SciFi Gun - Plasma Slinger&quot; by dpren (<a href="https://www.zapsplat.com/music/game-sound-high-pitched-laser-gun-fire-single-shot-3/">freesound.org link</a>) licensed under CC0</li>
+			<li>keyblast_shoot: &quot;SciFi Gun <li>Plasma Slinger&quot; by dpren (<a href="https://www.zapsplat.com/music/game-sound-high-pitched-laser-gun-fire-single-shot-3/">freesound.org link</a>) licensed under CC0</li>
 			<li>keyblast_collide: &quot;Freq Blip from 24726&quot; by Big_D123 (<a href="https://freesound.org/people/Big_D123/sounds/73218/">freesound.org link</a>) licensed under CC0</li>
 			<li>keyblast_zap: &quot;Electricity Sound&quot; by NachtmahrTV (<a href="https://freesound.org/people/NachtmahrTV/sounds/556717/">freesound.org link</a>) licensed under CC0</li>
 			<li>richard: &quot;Ominous III&quot; by Jerimee (<a href="https://freesound.org/people/Jerimee/sounds/434784/">freesound.org link</a>) licensed under CC0</li>
@@ -432,10 +462,86 @@ nav ul li ul li a:hover {
 			<em><a href="https://github.com/NonGMOTrash/teralite">the horrible abomination that is teralite's source code is on github</a></em></p>
 
 			<hr class="major">
-
 			<h1 id="patchnotes">patchnotes</h1>
-
 			<hr class="minor">
+
+			<h3 id="ver-1-3-0">1.3.0 (7/27/2025)</h3>
+
+			<ul>
+				<li>added an attack flash that occurs 0.5 seconds before every enemy attack aimed at the player, making them much easier to read</li>
+				<ul>
+					<li>also improved the weapon animation for many enemies to look better and be more visually clear</li>
+				</ul>
+				<li>adjusted final boss</li>
+				<ul>
+					<li>first phase:</li>
+					<ul>
+						<li>changed health of spawned scorpions to be less than normal (350 to 150), but drastically decreased attack downtime after spawning to compensate</li>
+						<li>buffed explosion attack</li>
+						<li>slightly reduced cooldown of many attacks</li>
+					</ul>
+					<li>second phase:</li>
+					<ul>
+						<li>greatly reduced vacuum effect during second phase to be much more reasonable</li>
+						<li>to compensate, the boss can now move during this phase</li>
+						<li>increased health, 200 to 350</li>
+						<li>adjusted entity spawning, and added a cap to prevent lag</li>
+					</ul>
+				</ul>
+				<li>updated lighting</li>
+				<ul>
+					<li>adjusted almost every light source to look less harsh / garish</li>
+					<li>greatly optimized light from fires</li>
+					<li>the player now glows slightly in darker levels</li>
+				</ul>
+				<li>dagger changes:</li>
+				<ul>
+					<li>fixed distance of dagger dash (right click) being framerate dependent, making it much shorter than intended if above 60 FPS.</li>
+					<li>reduced dash cool down (1.2s to 1.08s)</li>
+					<li>slightly increased the size of the primary attack's hitbox</li>
+				</ul>
+				<li>greatly improved experience using controller</li>
+				<ul>
+					<li>fixed some menus not focusing, which previously forced you to use a mouse</li>
+					<li>improved control scheme (can now dash and attack with the bumpers, allowing you to do those actions while moving and aiming just like keyboard and mouse)</li>
+					<li>you will now continue to look in the same direction for a time after releasing the right stick, so you don't have to continuously hold it down</li>
+				</ul>
+				<li>adjusted watcher locks (the pink walls that lower when enemies are killed) to be less cheesable (they no longer rely on continuous line of sight)</li>
+				<li>fixed bugs allowing projectiles to be shot through thin walls (and for enemies to see through certain walls like key locks)</li>
+				<li>changed star requirements / order for many levels, making the stars required more in line with the difficulty of the levels and fixing some weird progression points that required backtracking (like when entering the final world).</li>
+				<li>fixed passive items not displaying on the HUD</li>
+				<li>you can no longer die to bleed damage, the tick that would have killed you will instead apply a slowness effect</li>
+				<li>added a framerate cap option</li>
+				<li>increased delay for survivors, soldiers, and troopers before shooting (0.3s to 0.6s)</li>
+				<li>made (mostly minor) adjustments to many levels</li>
+				<ul>
+					<li>layout adjustments were focused mostly on either making them slightly easier or harder to cheese by adding watcher locks
+					<li>completely redesigned the level cheese maze</li>
+					<li>added props (decorations) to several levels that were missing them</li>
+				</ul>
+				<li>fixed both player and enemies being able to shoot through thin walls when standing close to them</li>
+				<li>reduced health of metal creates from 10 to 8, and made their hurtbox 1 pixel bigger on all sides. this reduces issues with melee attacks clashing with them instead of actually hitting them</li>
+				<li>made custom player color more accurately match the color you select, and fixed issues with it often not displaying</li>
+				<li>buffed sword parry</li>
+				<ul>
+					<li>deals 1 true damage + 1 damage instead of just 2 damage</li>
+					<li>applies damage directly instead of creating an attack, meaning it will never whiff if in range</li>
+					<li>increased knockback on enemies when parrying melee attacks or contact damage</li>
+				</ul>
+				<li>fixed the level "shine" not showing as completed (but still giving a star)</li>
+				<ul>
+					<li>as a side effect, when transferring old saves, the level can be completed a second time for a second star (so you can get 81 stars!)
+				</ul>
+				<li>sniper enemies now move slower while aiming or reloading</li>
+				<li>increased damage of pulse rifle from 23 (15 true) to 32 (24 true), but made it cool down 18% slower</li>
+				<li>slightly reduced movement speed of archers (75 to 65)</li>
+				<li>fixed final time displayed after credits not counting time from unsuccessful level attempts</li>
+				<li>removed unused "sprite outlines" options</li>
+				<li>made shadows turned off by default because they cause a huge performance dip for a very minor visual improvement</li>
+				<li>fixed an issue where a single lock could consume multiple keys if you switch items quickly</li>
+				<li>fixed death messages being broken when killed by specific things</li>
+				<li>improved many of my personal best speed run times (and added some to levels that were missing them)</li>
+			</ul>
 
 			<h3 id="ver-1-2-0">1.2.0 (6/23/2022)</h3>
 			<ul>

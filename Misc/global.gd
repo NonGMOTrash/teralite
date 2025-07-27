@@ -1,7 +1,5 @@
 extends Node
 
-var debug: int = 0
-
 const OLD_LEVEL_CODES := [
 	"A-1", "A-2", "A-3", "A-4", "A-5", "A-6", "A-7", "A-8", "A-9", "A-10", "A-11", 
 	"A-12", "A-13", "A-14", "A-15", "A-secret"
@@ -89,8 +87,8 @@ var quality_of_this_game = -999 # = very bad game
 var the_seed = "downwardspiral"
 
 # PROBLEM_NOTE: this should probably be in the player
-var selection = 0 # for the item bar (0 1 2)
-var joy_connected := false
+var selection: int = 0 # for the item bar (0 1 2)
+var joy_connected: bool = false
 var controller_look_direction := Vector2.RIGHT
 var last_look_pos: Vector2
 var FOV = Vector2(1, 1)
@@ -114,7 +112,7 @@ var speedrun_time := 0.0
 var icon = 0
 
 const ver_phase = ""
-const ver_num = 1.2
+const ver_num = 1.3
 const ver_hotfix = 0
 
 # for saving things
