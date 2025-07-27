@@ -91,8 +91,10 @@ KILL_SOUND = ExtResource( 7 )
 BLOCKED_SOUND = ExtResource( 5 )
 COLLIDE_SOUND = ExtResource( 4 )
 KILLED_SOUND = ExtResource( 4 )
+HOLDS = false
 RECOIL = 30
 ANIMATION_NEVER_BACKWARDS = true
+HIDE_HELD_ITEM = true
 REVERSE_HELD_ITEM = false
 tipper_distance = 34.5
 tipper_damage = 1
@@ -106,6 +108,7 @@ texture = ExtResource( 2 )
 visible = true
 position = Vector2( 6, 0 )
 COOLDOWN = 0.4
+MULTIHITS = false
 KNOCKBACK = 110
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]

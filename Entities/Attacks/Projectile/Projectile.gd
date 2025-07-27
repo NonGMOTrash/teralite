@@ -60,7 +60,7 @@ func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 	# los check to the center of the source entity, prevents projectiles from spawning through walls
 	if collision_mask == 0:
 		return
-	var ss = SOURCE.get_world_2d().direct_space_state
+	var ss := SOURCE.get_world_2d().direct_space_state
 	var raycast = ss.intersect_ray(start_pos, SOURCE.global_position, [], 1)
 	if raycast and raycast.collider != SOURCE:
 		if raycast.collider is TileMap:

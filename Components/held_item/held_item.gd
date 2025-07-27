@@ -81,6 +81,14 @@ func _physics_process(_delta: float) -> void:
 		sprite.offset *= -1
 	
 	show_behind_parent = (rotation_degrees < 0) as bool
+	
+	if light.enabled && global.settings["shadows"]:
+		var ss := get_world_2d().direct_space_state
+		var raycast = ss.intersect_point(sprite.global_position, 1, [], 1)
+		if raycast:
+			light.visible = false
+		else:
+			light.visible = true
 
 func _on_AnimationPlayer_animation_started(_anim_name: String) -> void:
 	original_texture = sprite.texture

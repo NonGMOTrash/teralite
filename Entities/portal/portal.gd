@@ -23,7 +23,7 @@ func _on_blue_portal_body_entered(body: Node) -> void:
 	if body is Projectile:
 		body.RANGE += blue_portal.global_position.distance_to(orange_portal.global_position)
 	
-	if body is Entity and single_use:
+	if single_use && body is Entity && body.truName == "player":
 		$AnimationPlayer.play("fade")
 
 func _on_link_b_body_entered(body: Node) -> void:

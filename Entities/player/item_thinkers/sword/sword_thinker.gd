@@ -34,6 +34,8 @@ func primary():
 	refs.ysort.add_child(slash)
 	cooldown.wait_time = attack_cooldown
 	cooldown.start()
+	
+	player_held_item.sprite.position = Vector2.ZERO
 
 func secondary():
 	.secondary()
@@ -78,6 +80,9 @@ func set_counter_window(to: bool):
 			hitbox._on_hitbox_area_entered(player_hurtbox)
 
 func _on_counter_area_entered(area: Area2D) -> void:
+	if !is_instance_valid(player):
+		return
+	
 	var area_entity: Entity = area.get_parent()
 	
 	if can_counter == false or (area_entity is Attack and area_entity.SOURCE == player):
@@ -114,4 +119,5 @@ func _on_counter_area_entered(area: Area2D) -> void:
 		-counter_slowness_lvl # level
 	)
 	
-	player_held_item.animation.play("parry_attack")
+	if !player_held_item.animation.current_animation == "parry_attack":
+		player_held_item.animation.play("parry_attack")

@@ -543,22 +543,12 @@ func update_settings(save_settings_config:=true):
 			camera.limit_smoothed = settings["smooth_camera"]
 		
 		for light in get_tree().get_nodes_in_group("lights"):
-			light.enabled = settings["lighting"]
-			light.shadow_enabled = settings["shadows"]
-			light.shadow_buffer_size = settings["shadow_buffer"]
+			light._ready()
 		
 		var ambient_lighting: CanvasModulate = refs.ambient_lighting
 		var level: Node2D = refs.level
-		if level != null and settings["ambient_lighting"] == true:
-			match level.AMBIENT_LIGHTING:
-				level.TYPES.NONE, level.TYPES.AUTUMN:
-					ambient_lighting.color = Color(1, 1, 1)
-				level.TYPES.UNDERGROUND:
-					ambient_lighting.color = Color(0.6, 0.6, 0.6)
-				level.TYPES.WASTELAND:
-					ambient_lighting.color = Color(1, 1, 0.7)
-		else:
-			ambient_lighting.color = Color(1, 1, 1)
+		if is_instance_valid(ambient_lighting):
+			ambient_lighting.visible = settings["ambient_lighting"]
 		
 		var item_bar: Node = refs.item_bar
 		if is_instance_valid(item_bar): 

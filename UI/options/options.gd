@@ -76,7 +76,7 @@ func _on_tabs_visibility_changed() -> void:
 	fullscreen.grab_focus()
 
 func _on_volume_value_changed(value: float) -> void:
-	master_volume.label.text = "Volume ("+str(value)+"%)"
+	master_volume.label.text = "volume ("+str(value)+"%)"
 	# PROBLEM_NOTE: maybe make a smart_slider that does the above line automatically
 	# maybe it could also use a texture progress somehow to look a little nicer
 	AudioServer.set_bus_volume_db(0, linear2db(value/100))

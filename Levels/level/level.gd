@@ -137,7 +137,12 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if spawn_paused == false:
 		return
-	elif not event is InputEventMouse and not event is InputEventJoypadMotion:
+	elif (
+		Input.is_action_pressed("move_down") ||
+		Input.is_action_pressed("move_up") ||
+		Input.is_action_pressed("move_left") ||
+		Input.is_action_pressed("move_right")
+	):
 		get_tree().paused = false
 		spawn_paused = false
 		refs.camera.pause_mode = PAUSE_MODE_STOP

@@ -199,6 +199,7 @@ func selected():
 func unselected():
 	if player.inventory[global.selection] == null:
 		player.components["held_item"].light.enabled = false
+	player.components["held_item"].sprite.position = Vector2.ZERO
 
 func pre_input_action():
 	pass

@@ -16,10 +16,9 @@ func _ready() -> void:
 	if CUSTOM_PROPERTIES == true:
 		return
 	
-	#if texture == null:
 	texture = LIGHT_TEXTURE
 	shadow_enabled = global.settings["shadows"]
-	shadow_color = Color(0, 0, 0, 1)
+	shadow_color = Color.transparent
 	shadow_buffer_size = global.settings["shadow_buffer"]
 	
 	# lowers saturation in daylight, otherwise it looks weird
