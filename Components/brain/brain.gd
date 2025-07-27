@@ -97,7 +97,7 @@ func _ready():
 func get_closest_target(exclude_self:=true) -> Entity:
 	# PROBLEM_NOTE: make \/ this string more simple so it's easier to check for it (probably just use null or "")
 	var target: Entity
-	var dist = 999
+	var dist: float = 999
 	for i in targets.size():
 		if get_node_or_null(target_paths[i]) != null:
 			if exclude_self == true and targets[i] == entity:
@@ -128,7 +128,7 @@ func los_check(target, ignore_low_barriers := true) -> bool:
 	if WALLHACKS == true:
 		return true
 	
-	var mask := 3
+	var mask: int = 3 # entities and walls
 	if ignore_low_barriers == false:
 		mask += 32
 	
@@ -163,7 +163,7 @@ func los_check(target, ignore_low_barriers := true) -> bool:
 		vision = ss.intersect_ray(global_position.move_toward(target_pos, 2.5), target_pos, excludes, mask)
 	
 	if vision:
-		if vision.collider is TileMap:
+		if vision.collider.get_collision_layer_bit(0) == true:
 			return false
 		elif target is Entity and vision.collider == target and target.INVISIBLE == false:
 			return true
