@@ -68,7 +68,6 @@ func setup(new_source = Entity.new(), new_target_pos = Vector2.ZERO):
 		else:
 			start_pos = raycast.collider.global_position
 			spawned_in_entity = true
-		
 
 func _physics_process(delta):
 	if visible == false: return # idk why this is here... but im scared to remove it

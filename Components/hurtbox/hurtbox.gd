@@ -18,7 +18,7 @@ signal got_hit(by_area, type)
 func _on_hurtbox_tree_entered() -> void:
 	get_parent().components["hurtbox"] = self
 
-func _on_hurtbox_area_entered(area: Area2D, force: bool = false) -> void:
+func _on_hurtbox_area_entered(area: Area2D) -> void:
 	#if area.timer.time_left > 0 or area.collision_shape.disabled:
 	#	return
 	
@@ -36,11 +36,11 @@ func _on_hurtbox_area_entered(area: Area2D, force: bool = false) -> void:
 			return
 		elif (
 			area_entity is Attack &&
-			area_entity.SOURCE == entity &&
-			area_entity is Projectile && (
+			area_entity.SOURCE == entity or
+			(area_entity is Projectile && (
 				area_entity.has_left_src == false ||
 				area_entity.spawned_in_entity
-			)
+			))
 		):
 			return
 	

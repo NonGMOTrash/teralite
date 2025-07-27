@@ -9,7 +9,7 @@ const OLD_LEVEL_CODES := [
 
 const DEV_TIMES := {
 	"Redwood": 8.5,
-	"Midpoint": 10.6,
+	"Midpoint": 10.2,
 	"Quickstep": 12.8,
 	"Barricade": 16.2,
 	"Brick": 8.4,
